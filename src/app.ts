@@ -96,6 +96,8 @@ export function setupAppBridge (_options: any) {
     ].join('\n')
   }).dst!
 
+  nuxt.options.build.transpile.push('defu')
+
   // Fix wp4 esm
   nuxt.hook('webpack:config', (configs) => {
     for (const config of configs.filter(c => c.module)) {
