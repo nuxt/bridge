@@ -1,7 +1,7 @@
 import { createRequire } from 'module'
 import { defineNuxtModule, installModule, checkNuxtCompatibility, nuxtCtx } from '@nuxt/kit'
 import type { NuxtModule } from '@nuxt/schema'
-import { NuxtCompatibility } from '@nuxt/schema/src/types/compatibility'
+import { NuxtCompatibility } from '@nuxt/schema'
 import type { BridgeConfig, ScriptSetupOptions } from '../types'
 import { setupNitroBridge } from './nitro'
 import { setupAppBridge } from './app'

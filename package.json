@@ -12,6 +12,7 @@
     "dist"
   ],
   "scripts": {
+    "build": "yarn prepack",
     "prepack": "unbuild",
     "dev": "./bin/nuxt.mjs dev playground",
     "dev:build": "./bin/nuxt.mjs build playground",
