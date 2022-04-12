@@ -18,9 +18,9 @@
     "dev:build": "./bin/nuxt.mjs build playground",
     "dev:prepare": "unbuild --stub && ./bin/nuxt.mjs prepare playground",
     "lint": "eslint --ext .vue,.ts,.js,.mjs .",
-    "test:fixtures": "yarn dev:prepare && JITI_ESM_RESOLVE=1 vitest run --dir test",
-    "test:fixtures:dev": "NUXT_TEST_DEV=true yarn test:fixtures",
-    "test:fixtures:webpack": "TEST_WITH_WEBPACK=1 yarn test:fixtures"
+    "test:fixtures": "yarn dev:prepare && cross-env JITI_ESM_RESOLVE=1 vitest run --dir test",
+    "test:fixtures:dev": "cross-env NUXT_TEST_DEV=true yarn test:fixtures",
+    "test:fixtures:webpack": "cross-env TEST_WITH_WEBPACK=1 yarn test:fixtures"
   },
   "dependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.7",
@@ -83,6 +83,7 @@
     "@types/hash-sum": "^1.0.0",
     "@types/node-fetch": "^3.0.2",
     "@vueuse/head": "^0.7.5",
+    "cross-env": "^7.0.3",
     "eslint": "^8.13.0",
     "eslint-plugin-jsdoc": "^39.1.1",
     "nuxt": "^2",
