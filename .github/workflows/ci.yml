@@ -127,7 +127,6 @@ jobs:
       - build
       - test-fixtures
       - test-fixtures-webpack
-      - test-types
     runs-on: ${{ matrix.os }}
 
     strategy:
