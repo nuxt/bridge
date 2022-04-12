@@ -7789,12 +7789,19 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-"nuxi@npm:nuxi-edge@latest":
+nuxi-edge@latest:
   version "3.0.0-27496514.0b12666"
   resolved "https://registry.yarnpkg.com/nuxi-edge/-/nuxi-edge-3.0.0-27496514.0b12666.tgz#315cfc478b9f1751fc7a8727d37c2e979c7e73a6"
   integrity sha512-aXu/YRbybRXv+6PmRJeL8F18Pn9GA2GHVoY2CuSeGviKeVrHp3uclgDdxFI+Ewe5nw4HauVt3nd0Q92E6VjpBA==
   optionalDependencies:
     fsevents "~2.3.2"
+
+nuxi@^0.10.1:
+  version "0.10.1"
+  resolved "https://registry.yarnpkg.com/nuxi/-/nuxi-0.10.1.tgz#ba1273cbbdd6fefd1d7d0cad302b988c9903461e"
+  integrity sha512-QqKUzOqny6bWCKu6O5bfA0tCDir8eSQsOmaP8//NlIBJWsPuzvo9Vu5J7HAT4v1DSzDO9lkOa5E6CAoNEOtvjQ==
+  dependencies:
+    nuxi-edge latest
 
 nuxt@^2:
   version "2.15.8"
