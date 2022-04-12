@@ -1,12 +1,11 @@
 import type { Plugin } from 'vite'
 import fse from 'fs-extra'
 import { findExports } from 'mlly'
+import MagicString from 'magic-string'
 
 const PREFIX = 'defaultexport:'
 const hasPrefix = (id: string = '') => id.startsWith(PREFIX)
 const removePrefix = (id: string = '') => hasPrefix(id) ? id.substr(PREFIX.length) : id
-
-const addDefaultExport = (code: string = '') => code + '\n\n' + 'export default () => {}'
 
 export function defaultExportPlugin () {
   return <Plugin>{
@@ -23,15 +22,20 @@ export function defaultExportPlugin () {
     },
 
     async load (id) {
-      if (hasPrefix(id)) {
-        let code = await fse.readFile(removePrefix(id), 'utf8')
-        const exports = findExports(code)
-        if (!exports.find(i => i.names.includes('default'))) {
-          code = addDefaultExport(code)
-        }
-        return { map: null, code }
+      if (!hasPrefix(id)) { return null }
+
+      let code = await fse.readFile(removePrefix(id), 'utf8')
+      const s = new MagicString(code)
+
+      const exports = findExports(code)
+      if (!exports.find(i => i.names.includes('default'))) {
+        s.append('\n\n' + 'export default () => {}')
       }
-      return null
+
+      return {
+        code: s.toString(),
+        map: s.generateMap({ source: removePrefix(id), includeContent: true })
+      }
     }
   }
 }
