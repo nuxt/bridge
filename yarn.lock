@@ -7466,7 +7466,7 @@ neo-async@^2.5.0, neo-async@^2.6.1, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nitropack@^0.2.5:
+nitropack@^0.2.6:
   version "0.2.6"
   resolved "https://registry.yarnpkg.com/nitropack/-/nitropack-0.2.6.tgz#2e78b9ae71390d26d53d512733b5a42a8e530ed8"
   integrity sha512-GSOqEEtHUL4TnGw85CT+2aiRV/7LQqe3PLOll57lx9V3HxrSWhbJLGeNpwCgEGqMVneD/4uMqdqO+B8BoOLy2Q==

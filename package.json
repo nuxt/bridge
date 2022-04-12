@@ -18,7 +18,7 @@
     "dev:build": "./bin/nuxt.mjs build playground",
     "dev:prepare": "unbuild --stub && ./bin/nuxt.mjs prepare playground",
     "lint": "eslint --ext .vue,.ts,.js,.mjs .",
-    "test:fixtures": "cross-env JITI_ESM_RESOLVE=1 vitest run --dir test",
+    "test:fixtures": "yarn dev:prepare && cross-env JITI_ESM_RESOLVE=1 vitest run --dir test",
     "test:fixtures:dev": "cross-env NUXT_TEST_DEV=true yarn test:fixtures",
     "test:fixtures:webpack": "cross-env TEST_WITH_WEBPACK=1 yarn test:fixtures"
   },
@@ -48,7 +48,7 @@
     "knitwork": "^0.1.1",
     "magic-string": "^0.26.1",
     "mlly": "^0.5.1",
-    "nitropack": "^0.2.5",
+    "nitropack": "^0.2.6",
     "node-fetch": "^3.2.3",
     "nuxi": "npm:nuxi-edge@latest",
     "ohash": "^0.1.0",

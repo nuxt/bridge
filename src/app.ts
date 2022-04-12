@@ -1,3 +1,4 @@
+import { createRequire } from 'module'
 import { useNuxt, addTemplate, resolveAlias, addWebpackPlugin, addVitePlugin, addPlugin } from '@nuxt/kit'
 import { NuxtModule } from '@nuxt/schema'
 import { resolve } from 'pathe'
@@ -78,6 +79,18 @@ export function setupAppBridge (_options: any) {
   if (nuxt.options.globalName !== 'nuxt') {
     throw new Error('Custom global name is not supported by @nuxt/bridge.')
   }
+
+  // Alias defu to compat version - we deliberately want the local (v6) version of defu
+  const _require = createRequire(import.meta.url)
+  const defuPath = _require.resolve('defu')
+  nuxt.options.alias.defu = addTemplate({
+    filename: 'defu.alias.mjs',
+    getContents: () => [
+      `import { defu } from '${defuPath}'`,
+      `export * from '${defuPath}'`,
+      'export { defu as default }'
+    ].join('\n')
+  }).dst
 
   // Fix wp4 esm
   nuxt.hook('webpack:config', (configs) => {
