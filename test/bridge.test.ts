@@ -4,7 +4,7 @@ import { setup, $fetch, fetch, startServer } from '@nuxt/test-utils'
 
 await setup({
   rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
-  server: true,
+  server: true
 })
 
 describe('pages', () => {
@@ -27,8 +27,8 @@ describe('errors', () => {
   it('should render a JSON error page', async () => {
     const res = await fetch('/error', {
       headers: {
-        accept: 'application/json',
-      },
+        accept: 'application/json'
+      }
     })
     expect(res.status).toBe(500)
     const error = await res.json()

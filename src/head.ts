@@ -1,8 +1,8 @@
 import { resolve } from 'pathe'
-import { addPlugin, addTemplate, defineNuxtModule, isNuxt3 } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule } from '@nuxt/kit'
 import defu from 'defu'
-import { distDir } from './dirs'
 import type { MetaObject } from '@nuxt/schema'
+import { distDir } from './dirs'
 
 export default defineNuxtModule({
   meta: {

@@ -1,7 +1,7 @@
 import { logger, addPluginTemplate, defineNuxtModule, addTemplate } from '@nuxt/kit'
+import { version } from '../../package.json'
 import { middlewareTemplate, storeTemplate, publicPathTemplate, clientConfigTemplate } from './templates'
 import type { ViteOptions } from './types'
-import { version } from '../../package.json'
 
 export default defineNuxtModule<ViteOptions>({
   meta: {

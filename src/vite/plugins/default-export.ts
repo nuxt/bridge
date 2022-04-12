@@ -24,7 +24,7 @@ export function defaultExportPlugin () {
     async load (id) {
       if (!hasPrefix(id)) { return null }
 
-      let code = await fse.readFile(removePrefix(id), 'utf8')
+      const code = await fse.readFile(removePrefix(id), 'utf8')
       const s = new MagicString(code)
 
       const exports = findExports(code)
