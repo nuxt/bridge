@@ -75,12 +75,6 @@ jobs:
       - name: Install dependencies
         run: yarn --immutable
 
-      - name: Stub
-        run: yarn stub
-
-      - name: Test (unit)
-        run: yarn test:unit
-
       - name: Test (fixtures)
         run: yarn test:fixtures
 
@@ -106,9 +100,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn --immutable
-
-      - name: Stub
-        run: yarn stub
 
       - name: Test (fixtures)
         run: yarn test:fixtures:webpack
