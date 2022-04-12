@@ -1,6 +1,6 @@
 import { resolve } from 'pathe'
 import { addTemplate, useNuxt, installModule } from '@nuxt/kit'
-import metaModule from '../../nuxt3/src/head/module'
+import metaModule from './head'
 import { distDir } from './dirs'
 
 const checkDocsMsg = 'Please see https://v3.nuxtjs.org for more information.'

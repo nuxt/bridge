@@ -1,8 +1,7 @@
 import { useNuxt, addTemplate, resolveAlias, addWebpackPlugin, addVitePlugin, addPlugin } from '@nuxt/kit'
 import { NuxtModule } from '@nuxt/schema'
 import { resolve } from 'pathe'
-import { componentsTypeTemplate } from '../../nuxt3/src/components/templates'
-import { schemaTemplate } from '../../nuxt3/src/core/templates'
+import { componentsTypeTemplate, schemaTemplate } from './type-templates'
 import { distDir } from './dirs'
 import { VueCompat } from './vue-compat'
 

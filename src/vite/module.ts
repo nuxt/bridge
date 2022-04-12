@@ -1,13 +1,11 @@
 import { logger, addPluginTemplate, defineNuxtModule, addTemplate } from '@nuxt/kit'
-import { publicPathTemplate, clientConfigTemplate } from '../../../nuxt3/src/core/templates'
-import { version } from '../../package.json'
-import { middlewareTemplate, storeTemplate } from './templates'
+import { middlewareTemplate, storeTemplate, publicPathTemplate, clientConfigTemplate } from './templates'
 import type { ViteOptions } from './types'
+import { version } from '../../package.json'
 
 export default defineNuxtModule<ViteOptions>({
   meta: {
     name: 'nuxt-bridge:vite',
-    version,
     configKey: 'vite'
   },
   defaults: {},
