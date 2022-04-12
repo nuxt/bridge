@@ -18,7 +18,7 @@
     "dev:build": "./bin/nuxt.mjs build playground",
     "dev:prepare": "unbuild --stub && ./bin/nuxt.mjs prepare playground",
     "lint": "eslint --ext .vue,.ts,.js,.mjs .",
-    "test:fixtures": "yarn dev:prepare && cross-env JITI_ESM_RESOLVE=1 vitest run --dir test",
+    "test:fixtures": "cross-env JITI_ESM_RESOLVE=1 vitest run --dir test",
     "test:fixtures:dev": "cross-env NUXT_TEST_DEV=true yarn test:fixtures",
     "test:fixtures:webpack": "cross-env TEST_WITH_WEBPACK=1 yarn test:fixtures"
   },
