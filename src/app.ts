@@ -1,4 +1,5 @@
 import { createRequire } from 'module'
+import { pathToFileURL } from 'url'
 import { useNuxt, addTemplate, resolveAlias, addWebpackPlugin, addVitePlugin, addPlugin } from '@nuxt/kit'
 import { NuxtModule } from '@nuxt/schema'
 import { resolve } from 'pathe'
@@ -83,7 +84,7 @@ export function setupAppBridge (_options: any) {
 
   // Alias defu to compat version - we deliberately want the local (v6) version of defu
   const _require = createRequire(import.meta.url)
-  const defuPath = genString(_require.resolve('defu'))
+  const defuPath = genString(pathToFileURL(_require.resolve('defu')).href)
   nuxt.options.alias.defu = addTemplate({
     filename: 'defu.alias.mjs',
     getContents: () => [
@@ -91,7 +92,7 @@ export function setupAppBridge (_options: any) {
       `export * from ${defuPath};`,
       'export { defu as default };'
     ].join('\n')
-  }).dst
+  }).dst!
 
   // Fix wp4 esm
   nuxt.hook('webpack:config', (configs) => {
