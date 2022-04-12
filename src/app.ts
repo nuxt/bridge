@@ -4,6 +4,7 @@ import { useNuxt, addTemplate, resolveAlias, addWebpackPlugin, addVitePlugin, ad
 import { NuxtModule } from '@nuxt/schema'
 import { resolve } from 'pathe'
 import { genString } from 'knitwork'
+import { isWindows } from 'std-env'
 import { componentsTypeTemplate, schemaTemplate } from './type-templates'
 import { distDir } from './dirs'
 import { VueCompat } from './vue-compat'
@@ -84,12 +85,13 @@ export function setupAppBridge (_options: any) {
 
   // Alias defu to compat version - we deliberately want the local (v6) version of defu
   const _require = createRequire(import.meta.url)
-  const defuPath = genString(pathToFileURL(_require.resolve('defu')).href)
+  const defuPath = _require.resolve('defu')
+  const injectedPath = genString(isWindows ? pathToFileURL(defuPath).href : defuPath)
   nuxt.options.alias.defu = addTemplate({
     filename: 'defu.alias.mjs',
     getContents: () => [
-      `import { defu } from ${defuPath};`,
-      `export * from ${defuPath};`,
+      `import { defu } from ${injectedPath};`,
+      `export * from ${injectedPath};`,
       'export { defu as default };'
     ].join('\n')
   }).dst!
