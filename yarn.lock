@@ -913,7 +913,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/standalone@^7.17.7", "@babel/standalone@^7.17.8":
+"@babel/standalone@^7.17.7", "@babel/standalone@^7.17.9":
   version "7.17.9"
   resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.17.9.tgz#208298055c70531a81759435e443586754d693f9"
   integrity sha512-9wL9AtDlga8avxUrBvQJmhUtJWrelsUL0uV+TcP+49Sb6Pj8/bNIzQzU4dDp0NAPOvnZR/7msFIKsKoCl/W1/w==
@@ -2179,12 +2179,12 @@
     resolve-from "^5.0.0"
     rollup-pluginutils "^2.8.2"
 
-"@vitejs/plugin-legacy@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@vitejs/plugin-legacy/-/plugin-legacy-1.8.0.tgz#6521e6de924641094aad5d804eaef3ac7db71284"
-  integrity sha512-S3+uL1zp8GLUbmJAQk2wQbZLTyISKRFSMBwCFI3XQVRD3OZshqkiPyOKdRiSPlP9HoGz+q90kk+1qPm1tJRqCg==
+"@vitejs/plugin-legacy@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-legacy/-/plugin-legacy-1.8.1.tgz#9431a983f950b4343d5b80a1916f25cc03d6b9c4"
+  integrity sha512-kmBWKq7EeNvzS4AqPBqUKdoWG/NYQXh7StUFMWR3D21aN5Mfmar7CTO2a7K+bBxJH/vAL9gnnueA0wb7cycCmQ==
   dependencies:
-    "@babel/standalone" "^7.17.8"
+    "@babel/standalone" "^7.17.9"
     core-js "^3.21.1"
     magic-string "^0.26.1"
     regenerator-runtime "^0.13.9"
@@ -4911,10 +4911,10 @@ eslint-plugin-jest@^26.1.1:
   dependencies:
     "@typescript-eslint/utils" "^5.10.0"
 
-eslint-plugin-jsdoc@^39.2.0:
-  version "39.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-39.2.0.tgz#011b95ea864329135271b1e8cf377f204a0a602e"
-  integrity sha512-K3db93cbgx27ISjktNwFDkuLx7CYAGdhnBRmttTSUCEKhtmxCTjvxuiidxHh4FCfZaFCKqTSH2PiJ8Lsq9xUPA==
+eslint-plugin-jsdoc@^39.2.1:
+  version "39.2.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-jsdoc/-/eslint-plugin-jsdoc-39.2.1.tgz#39c85a7b36fd49b2799d0e8652108f1e8e85fc64"
+  integrity sha512-bNNAJPhFUKVBHJMKU7zAQ1LvlVWoDbxAA/Ty9hwSI2hy+AVpc9wq16W6YHXd0PuMhXlv4FgYtjizHMu8Mnc4GA==
   dependencies:
     "@es-joy/jsdoccomment" "~0.22.1"
     comment-parser "1.3.1"
@@ -7366,6 +7366,14 @@ mlly@^0.5.1:
   version "0.5.1"
   resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.5.1.tgz#bf15a1092d4e3e7f9fc303f6d9aa18f6a3fca58b"
   integrity sha512-0axKqxbYyQvaAfi6BNqDluCJqg6RkjdsdFxSDoiP6l5HplSTr3ie5Vkxvw9U9ogdj65x56amTnAn+xSoP727Rg==
+  dependencies:
+    pathe "^0.2.0"
+    pkg-types "^0.3.2"
+
+mlly@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.5.2.tgz#67b908e967cfcaee27e90bef8a84aaede599bd21"
+  integrity sha512-4GTELSSErv6ZZJYU98fZNuIBJcXSz+ktHdRrCYEqU1m6ZlebOCG0jwZ+IEd9vOrbpYsVBBMC5OTrEyLnKRcauQ==
   dependencies:
     pathe "^0.2.0"
     pkg-types "^0.3.2"
@@ -10931,10 +10939,10 @@ unbox-primitive@^1.0.1:
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
 
-unbuild@0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/unbuild/-/unbuild-0.7.3.tgz#76506d09821e424bdc65b2dd2f7916db66d16471"
-  integrity sha512-P3w2ZBhQ9bBOBbIEJx1n9I9lhe+WMfqHk6nIqd0D71kW8Vua+Rpn4IhWCsLYIxwP5sgy90ZRXUKa2Fbox/KITw==
+unbuild@0.7.4:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/unbuild/-/unbuild-0.7.4.tgz#e85591a75f6260d2f2a468394d537f3e60ebea66"
+  integrity sha512-gJvfMw4h5Q7xieMCeW/d3wtNKZDpFyDR9651s8kL+AGp95sMNhAFRLxy24AUKC3b5EQbB74vaDoU5R+XwsZC6A==
   dependencies:
     "@rollup/plugin-alias" "^3.1.9"
     "@rollup/plugin-commonjs" "^21.0.3"
@@ -10951,7 +10959,7 @@ unbuild@0.7.3:
     magic-string "^0.26.1"
     mkdirp "^1.0.4"
     mkdist "^0.3.10"
-    mlly "^0.5.1"
+    mlly "^0.5.2"
     mri "^1.2.0"
     pathe "^0.2.0"
     pkg-types "^0.3.2"
@@ -11036,6 +11044,21 @@ unimport@^0.1.4:
     pathe "^0.2.0"
     scule "^0.2.1"
     unplugin "^0.3.3"
+
+unimport@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/unimport/-/unimport-0.1.5.tgz#2dbf928970e14cde322e2bb8aafbbc58ac8f7e7f"
+  integrity sha512-Wv+CFdDJXkyiHD6yXeHdYMmD5LisII43o6q2ttw1s5mAhwfcBtZPRbZcqPvSkgHX4ZzMPTUIstMhVfC+tHrh6A==
+  dependencies:
+    "@rollup/pluginutils" "^4.2.0"
+    escape-string-regexp "^5.0.0"
+    globby "^13.1.1"
+    local-pkg "^0.4.1"
+    magic-string "^0.26.1"
+    mlly "^0.5.1"
+    pathe "^0.2.0"
+    scule "^0.2.1"
+    unplugin "^0.6.1"
 
 union-value@^1.0.0:
   version "1.0.1"
@@ -11322,6 +11345,18 @@ vite@^2.9.1:
   version "2.9.1"
   resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.1.tgz#84bce95fae210a7beb566a0af06246748066b48f"
   integrity sha512-vSlsSdOYGcYEJfkQ/NeLXgnRv5zZfpAsdztkIrs7AZHV8RCMZQkwjo4DS5BnrYTqoWqLoUe1Cah4aVO4oNNqCQ==
+  dependencies:
+    esbuild "^0.14.27"
+    postcss "^8.4.12"
+    resolve "^1.22.0"
+    rollup "^2.59.0"
+  optionalDependencies:
+    fsevents "~2.3.2"
+
+vite@^2.9.4:
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.4.tgz#3d1c5895ecacfcaf8e7e96316d4d4ca3dfbf983b"
+  integrity sha512-7pO6ruZMsyTpaPB7kGtW+yj15Ze5g+E4w4Ramk1sAJLIuI4uPd5sauqubmZNpq0Yc1vLVxoXRf2Uj+qWxk5aXw==
   dependencies:
     esbuild "^0.14.27"
     postcss "^8.4.12"
