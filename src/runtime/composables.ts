@@ -24,8 +24,8 @@ export const useHydration = mock()
 // Runtime config helper
 export const useRuntimeConfig = () => {
   const nuxtApp = useNuxtApp()
-  if (nuxtApp.__config) {
-    return nuxtApp.__config as RuntimeConfig
+  if (nuxtApp._config) {
+    return nuxtApp._config as RuntimeConfig
   }
   const config = reactive(nuxtApp.$config)
   nuxtApp._config = new Proxy(config, {
