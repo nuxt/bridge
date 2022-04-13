@@ -84,12 +84,13 @@ export default eventHandler(async (event) => {
   }
 
   // Initialize ssr context
+  const config = useRuntimeConfig()
   const ssrContext = {
     url,
     event,
     req: event.req,
     res: event.res,
-    runtimeConfig: useRuntimeConfig(),
+    runtimeConfig: { private: config, public: { public: config.public, app: config.app } },
     noSSR: event.req.headers['x-nuxt-no-ssr'],
 
     error: ssrError,

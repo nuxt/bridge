@@ -24,10 +24,28 @@ export const useHydration = mock()
 // Runtime config helper
 export const useRuntimeConfig = () => {
   const nuxtApp = useNuxtApp()
-  if (!nuxtApp.$config) {
-    nuxtApp.$config = reactive(nuxtApp.nuxt2Context.app.$config)
+  if (nuxtApp.__config) {
+    return nuxtApp.__config as RuntimeConfig
   }
-  return nuxtApp.$config as RuntimeConfig
+  const config = reactive(nuxtApp.$config)
+  nuxtApp._config = new Proxy(config, {
+    get (target, prop) {
+      if (prop === 'public') {
+        return target.public
+      }
+      return target[prop] ?? target.public[prop]
+    },
+    set (target, prop, value) {
+      if (prop === 'public' || prop === 'app') {
+        return false // Throws TypeError
+      }
+      target[prop] = value
+      target.public[prop] = value
+      return true
+    }
+  })
+
+  return nuxtApp._config as RuntimeConfig
 }
 
 // Auto-import equivalents for `vue-router`
