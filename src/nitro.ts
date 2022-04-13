@@ -141,7 +141,7 @@ export async function setupNitroBridge () {
 
     // Remove public files that have been duplicated into buildAssetsDir
     // TODO: Add option to configure this behaviour in vite
-    const publicDir = join(nuxt.options.srcDir, nuxt.options.dir.static)
+    const publicDir = join(nuxt.options.srcDir, nuxt.options.dir.public || nuxt.options.dir.static)
     let publicFiles: string[] = []
     if (await isDirectory(publicDir)) {
       publicFiles = readDirRecursively(publicDir).map(r => r.replace(publicDir, ''))
