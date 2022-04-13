@@ -8,7 +8,7 @@ import { createNitro, createDevServer, build, writeTypes, prepare, copyPublicAss
 import { dynamicEventHandler, toEventHandler } from 'h3'
 import type { Nitro, NitroEventHandler, NitroDevEventHandler, NitroConfig } from 'nitropack'
 import { Nuxt } from '@nuxt/schema'
-import defu from 'defu'
+import { defu } from 'defu'
 import { AsyncLoadingPlugin } from './async-loading'
 import { distDir } from './dirs'
 import { isDirectory, readDirRecursively } from './vite/utils/fs'
@@ -55,6 +55,7 @@ export async function setupNitroBridge () {
     buildDir: resolve(nuxt.options.buildDir),
     scanDirs: nuxt.options._layers.map(layer => join(layer.config.srcDir, 'server')),
     renderer: resolve(distDir, 'runtime/nitro/renderer'),
+    errorHandler: resolve(distDir, 'runtime/nitro/error'),
     nodeModulesDirs: nuxt.options.modulesDir,
     handlers: [],
     devHandlers: [],
@@ -140,7 +141,7 @@ export async function setupNitroBridge () {
 
     // Remove public files that have been duplicated into buildAssetsDir
     // TODO: Add option to configure this behaviour in vite
-    const publicDir = join(nuxt.options.srcDir, nuxt.options.dir.static)
+    const publicDir = join(nuxt.options.srcDir, nuxt.options.dir.public || nuxt.options.dir.static)
     let publicFiles: string[] = []
     if (await isDirectory(publicDir)) {
       publicFiles = readDirRecursively(publicDir).map(r => r.replace(publicDir, ''))

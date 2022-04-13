@@ -1,6 +1,6 @@
 import { resolve } from 'pathe'
 import fse from 'fs-extra'
-import { uniq, isJS, isCSS, hash } from '../../../vite/src/utils'
+import { uniq, isJS, isCSS, hash } from './utils'
 import { ViteBuildContext } from './types'
 
 const DEFAULT_APP_TEMPLATE = `

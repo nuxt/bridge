@@ -5,8 +5,8 @@ import { sanitizeFilePath } from 'mlly'
 import { getPort } from 'get-port-please'
 import { joinURL, withoutLeadingSlash } from 'ufo'
 import { distDir } from '../dirs'
-import { warmupViteServer } from '../../../vite/src/utils/warmup'
-import { DynamicBasePlugin } from '../../../vite/src/plugins/dynamic-base'
+import { warmupViteServer } from './utils/warmup'
+import { DynamicBasePlugin } from './plugins/dynamic-base'
 import { buildClient } from './client'
 import { buildServer } from './server'
 import { defaultExportPlugin } from './plugins/default-export'
@@ -39,7 +39,7 @@ async function bundle (nuxt: Nuxt, builder: any) {
         base: nuxt.options.dev
           ? joinURL(nuxt.options.app.baseURL, nuxt.options.app.buildAssetsDir)
           : '/__NUXT_BASE__/',
-        publicDir: resolve(nuxt.options.rootDir, nuxt.options.srcDir, nuxt.options.dir.static),
+        publicDir: resolve(nuxt.options.rootDir, nuxt.options.srcDir, nuxt.options.dir.public || nuxt.options.dir.static),
         vue: {
           isProduction: !nuxt.options.dev,
           template: {

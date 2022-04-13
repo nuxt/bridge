@@ -134,3 +134,34 @@ function mergeProperty (storeModule, moduleData, property) {
 }`
   }
 }
+
+export const clientConfigTemplate = {
+  filename: 'nitro.client.mjs',
+  getContents: () => `
+export const useRuntimeConfig = () => window?.__NUXT__?.config || {}
+`
+}
+
+export const publicPathTemplate = {
+  filename: 'paths.mjs',
+  getContents ({ nuxt }) {
+    return [
+      'import { joinURL } from \'ufo\'',
+      !nuxt.options.dev && 'import { useRuntimeConfig } from \'#nitro\'',
+
+      nuxt.options.dev
+        ? `const appConfig = ${JSON.stringify(nuxt.options.app)}`
+        : 'const appConfig = useRuntimeConfig().app',
+
+      'export const baseURL = () => appConfig.baseURL',
+      'export const buildAssetsDir = () => appConfig.buildAssetsDir',
+
+      'export const buildAssetsURL = (...path) => joinURL(publicAssetsURL(), buildAssetsDir(), ...path)',
+
+      'export const publicAssetsURL = (...path) => {',
+      '  const publicBase = appConfig.cdnURL || appConfig.baseURL',
+      '  return path.length ? joinURL(publicBase, ...path) : publicBase',
+      '}'
+    ].filter(Boolean).join('\n')
+  }
+}
