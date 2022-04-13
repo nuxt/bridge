@@ -1,5 +1,5 @@
 import { resolve } from 'pathe'
-import { addPlugin, addTemplate, defineNuxtModule } from '@nuxt/kit'
+import { addPlugin, addTemplate, defineNuxtModule, tryResolveModule } from '@nuxt/kit'
 import { defu } from 'defu'
 import type { MetaObject } from '@nuxt/schema'
 import { distDir } from './dirs'
@@ -33,6 +33,10 @@ export default defineNuxtModule({
       filename: 'meta.config.mjs',
       getContents: () => 'export default ' + JSON.stringify({ globalMeta, mixinKey: 'setup' })
     })
+
+    if (!tryResolveModule('@vueuse/head')) {
+      console.warn('[bridge] Could not find `@vueuse/head`. You may need to install it.')
+    }
 
     // Add generic plugin
     addPlugin({ src: resolve(runtimeDir, 'plugin') })
