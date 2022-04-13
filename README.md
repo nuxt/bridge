@@ -2,15 +2,17 @@
 
 > Experience Nuxt 3 features on existing Nuxt 2 projects.
 
-If you're starting a fresh Nuxt 3 project, please skip this section and go to [Nuxt 3 Installation](/getting-started/quick-start).
+If you're starting a fresh Nuxt 3 project, please skip this section and go to [Nuxt 3 Installation](https://v3.nuxtjs.org/getting-started/quick-start).
 
-**Note:** Nuxt Bridge provides identical features to Nuxt 3 ([docs](/guide/features)) but there are some limitations, notably that `useAsyncData` and `useFetch` composables are not available. Please read the rest of this page for details.
+**Note:** Nuxt Bridge provides identical features to Nuxt 3 ([Nuxt 3 docs](https://v3.nuxtjs.org/guide/features/views)) but there are some limitations, notably that `useAsyncData` and `useFetch` composables are not available. Please read the rest of this page for details.
 
 Bridge is a forward-compatibility layer that allows you to experience many of the new Nuxt 3 features by simply installing and enabling a Nuxt module.
 
 Using Nuxt Bridge, you can make sure your project is (almost) ready for Nuxt 3 and have the best developer experience without needing a major rewrite or risk breaking changes.
 
-## Preparation: Upgrade Nuxt 2
+## Installation
+
+### Upgrade to the latest Nuxt 2
 
 Make sure your dev server (`nuxt dev`) isn't running, remove any package lock files (`package-lock.json` and `yarn.lock`), and install the latest `nuxt-edge`:
 
@@ -29,9 +31,9 @@ yarn install
 npm install
 ```
 
-::alert
 Once the installation is complete, make sure both development and production builds are working as expected before proceeding.
-## Install Nuxt Bridge
+
+### Install Nuxt Bridge
 
 Install `@nuxt/bridge-edge` as a development dependency:
 
