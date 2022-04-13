@@ -70,7 +70,13 @@ export async function setupNitroBridge () {
     nodeModulesDirs: nuxt.options.modulesDir,
     handlers: [],
     devHandlers: [],
-    runtimeConfig: nuxt.options.runtimeConfig,
+    runtimeConfig: {
+      ...nuxt.options.runtimeConfig,
+      nitro: {
+        envPrefix: 'NUXT_',
+        ...nuxt.options.runtimeConfig.nitro
+      }
+    },
     typescript: {
       generateTsConfig: false
     },
