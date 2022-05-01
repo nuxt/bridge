@@ -1,7 +1,9 @@
 import { createRenderer } from 'vue-bundle-renderer'
 import { eventHandler, useQuery } from 'h3'
 import devalue from '@nuxt/devalue'
-import { useRuntimeConfig } from '#nitro'
+// @ts-ignore
+import { useRuntimeConfig } from '#internal/nitro'
+// @ts-ignore
 import { buildAssetsURL } from '#paths'
 // @ts-ignore
 import htmlTemplate from '#build/views/document.template.mjs'
@@ -10,17 +12,20 @@ const STATIC_ASSETS_BASE = process.env.NUXT_STATIC_BASE + '/' + process.env.NUXT
 const NUXT_NO_SSR = process.env.NUXT_NO_SSR
 const PAYLOAD_JS = '/payload.js'
 
+// @ts-ignore
 const getClientManifest = cachedImport(() => import('#build/dist/server/client.manifest.mjs'))
-const getSSRApp = !process.env.NUXT_NO_SSR && cachedImport(() => import('#build/dist/server/server.mjs'))
+// @ts-ignore
+const getSSRApp = !process.env.NUXT_NO_SSR ? cachedImport(() => import('#build/dist/server/server.mjs')) : undefined
 
 const getSSRRenderer = cachedResult(async () => {
   // Load client manifest
   const clientManifest = await getClientManifest()
   if (!clientManifest) { throw new Error('client.manifest is not available') }
   // Load server bundle
-  const createSSRApp = await getSSRApp()
+  const createSSRApp = await getSSRApp?.()
   if (!createSSRApp) { throw new Error('Server bundle is not available') }
   // Create renderer
+  // @ts-ignore
   const { renderToString } = await import('#vue-renderer') // Alias to vue2.ts or vue3.ts
   return createRenderer((createSSRApp), { clientManifest, renderToString, publicPath: buildAssetsURL() }).renderToString
 })
@@ -95,7 +100,7 @@ export default eventHandler(async (event) => {
 
     error: ssrError,
     redirected: undefined,
-    nuxt: undefined, /* NuxtApp */
+    nuxt: undefined as undefined | Record<string, any>, /* NuxtApp */
     payload: undefined
   }
 
@@ -111,29 +116,24 @@ export default eventHandler(async (event) => {
     return
   }
 
-  const error = ssrContext.error /* nuxt 3 */ || ssrContext.nuxt?.error
+  const error = ssrContext.nuxt?.error
   // Handle errors
   if (error && !ssrError) {
     throw error
   }
 
-  if (ssrContext.nuxt?.hooks) {
-    await ssrContext.nuxt.hooks.callHook('app:rendered')
-  }
-
-  // TODO: nuxt3 should not reuse `nuxt` property for different purpose!
-  const payload = ssrContext.payload /* nuxt 3 */ || ssrContext.nuxt /* nuxt 2 */
+  ssrContext.nuxt = ssrContext.nuxt || {}
 
   if (process.env.NUXT_FULL_STATIC) {
-    payload.staticAssetsBase = STATIC_ASSETS_BASE
+    ssrContext.nuxt.staticAssetsBase = STATIC_ASSETS_BASE
   }
 
   let data
   if (isPayloadReq) {
-    data = renderPayload(payload, url)
+    data = renderPayload(ssrContext.nuxt, url)
     event.res.setHeader('Content-Type', 'text/javascript;charset=UTF-8')
   } else {
-    data = await renderHTML(payload, rendered, ssrContext)
+    data = await renderHTML(ssrContext.nuxt, rendered, ssrContext)
     event.res.setHeader('Content-Type', 'text/html;charset=UTF-8')
   }
 

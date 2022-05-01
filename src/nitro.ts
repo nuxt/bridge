@@ -92,7 +92,10 @@ export async function setupNitroBridge () {
     ],
     prerender: {
       crawlLinks: nuxt.options.generate.crawler,
-      routes: nuxt.options.generate.routes
+      routes: [
+        ...nuxt.options.generate.routes || [],
+        ...nuxt.options.ssr === false ? ['/', '/200', '/404'] : []
+      ]
     },
     externals: {
       inline: [
@@ -113,9 +116,6 @@ export async function setupNitroBridge () {
       // Renderer
       '#vue-renderer': resolve(distDir, 'runtime/nitro/vue2'),
       '#vue2-server-renderer': 'vue-server-renderer/' + (nuxt.options.dev ? 'build.dev.js' : 'build.prod.js'),
-
-      // Error renderer
-      '#nitro/error': resolve(distDir, 'runtime/nitro/error'),
 
       // Paths
       '#paths': resolve(distDir, 'runtime/nitro/paths'),
