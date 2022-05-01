@@ -268,7 +268,7 @@ export async function setupNitroBridge () {
   nuxt.options.build._minifyServer = false
   nuxt.options.build.standalone = false
 
-  const waitUntilCompile = new Promise<void>(resolve => nitro.hooks.hook('nitro:compiled', () => resolve()))
+  const waitUntilCompile = new Promise<void>(resolve => nitro.hooks.hook('compiled', () => resolve()))
   nuxt.hook('build:done', async () => {
     if (nuxt.options._prepare) { return }
     await writeDocumentTemplate(nuxt)
