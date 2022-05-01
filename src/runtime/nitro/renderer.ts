@@ -122,6 +122,10 @@ export default eventHandler(async (event) => {
     throw error
   }
 
+  if (ssrContext.nuxt?.hooks) {
+    await ssrContext.nuxt.hooks.callHook('app:rendered')
+  }
+
   ssrContext.nuxt = ssrContext.nuxt || {}
 
   if (process.env.NUXT_FULL_STATIC) {

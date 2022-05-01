@@ -33,7 +33,7 @@ export function useCookie <T=string> (name: string, _opts?: CookieOptions<T>): C
   } else if (process.server) {
     const initialValue = cookie.value
     const nuxtApp = useNuxtApp()
-    nuxtApp.hooks.hookOnce('ssrContext.nuxt', () => {
+    nuxtApp.hooks.hookOnce('app:rendered', () => {
       if (cookie.value !== initialValue) {
         writeServerCookie(useRequestEvent(nuxtApp), name, cookie.value, opts)
       }
