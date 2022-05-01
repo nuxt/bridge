@@ -298,31 +298,6 @@ export async function setupNitroBridge () {
     })
     nuxt.hook('server:devMiddleware', (m) => { devMidlewareHandler.set(toEventHandler(m)) })
   }
-
-  // nuxt generate
-  nuxt.options.generate.dir = nitro.options.output.publicDir
-  nuxt.options.generate.manifest = false
-  nuxt.hook('generate:cache:ignore', (ignore: string[]) => {
-    ignore.push(nitro.options.output.dir)
-    ignore.push(nitro.options.output.serverDir)
-    if (nitro.options.output.publicDir) {
-      ignore.push(nitro.options.output.publicDir)
-    }
-  })
-  nuxt.hook('generate:before', async () => {
-    console.log('generate:before')
-    await prepare(nitro)
-  })
-  nuxt.hook('generate:extendRoutes', async () => {
-    console.log('generate:extendRoutes')
-    await build(nitro)
-    await nuxt.server.reload()
-  })
-  nuxt.hook('generate:done', async () => {
-    console.log('generate:done')
-    await nuxt.server.close()
-    await build(nitro)
-  })
 }
 
 function createNuxt2DevServer (nitro: Nitro) {
