@@ -17,7 +17,7 @@ export async function setupNitroBridge () {
   const nuxt = useNuxt()
 
   // Ensure we're not just building with 'static' target
-  if (!nuxt.options.dev && nuxt.options.target === 'static' && !nuxt.options._prepare && !(nuxt.options as any)._export && !nuxt.options._legacyGenerate) {
+  if (!nuxt.options.dev && nuxt.options.target === 'static' && !nuxt.options._prepare && !nuxt.options._generate && !(nuxt.options as any)._export) {
     throw new Error('[nitro] Please use `nuxt generate` for static target')
   }
 
@@ -279,10 +279,15 @@ export async function setupNitroBridge () {
     } else {
       await prepare(nitro)
       await copyPublicAssets(nitro)
-      if (nuxt.options._generate || nuxt.options.target === 'static') {
-        await prerender(nitro)
+      await prerender(nitro)
+      if (!nuxt.options._generate && nuxt.options.target !== 'static') {
+        await build(nitro)
+      } else {
+        const distDir = resolve(nuxt.options.rootDir, 'dist')
+        if (!existsSync(distDir)) {
+          await fsp.symlink(nitro.options.output.publicDir, distDir, 'junction').catch(() => {})
+        }
       }
-      await build(nitro)
     }
   })
 
