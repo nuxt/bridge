@@ -29,7 +29,7 @@
       <tr><td><b>shallowSsrRef</b></td><td> {{ shallow }}</td></tr>
       <tr><td><b>ssrPromise</b></td><td> {{ promise }}</td></tr>
       <tr>
-        <td><b>useMeta</b></td><td> {{ title }}</td>
+        <td><b>useHead</b></td><td> {{ title }}</td>
         <td>
           <button @click="title = '❇️'">
             update
@@ -45,14 +45,17 @@
 </template>
 
 <script lang="ts">
-import { useRoute, useContext, useStore, useAsync, ssrRef, shallowSsrRef, ssrPromise, useMeta } from '@nuxtjs/composition-api'
+import { useRoute, useContext, useStore, useAsync, ssrRef, shallowSsrRef, ssrPromise } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   setup () {
     const mounted = ref()
     const shallow = shallowSsrRef('❌')
     const { isHMR, $globalsetup } = useContext()
-    const { title } = useMeta()
+    const title = ref('❌')
+    useHead(() => ({
+      title: unref(title)
+    }))
     if (process.server || isHMR) {
       shallow.value = '✅'
       title.value = '❌'
