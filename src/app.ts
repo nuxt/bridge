@@ -1,7 +1,7 @@
 import { createRequire } from 'module'
 import { useNuxt, addTemplate, resolveAlias, addWebpackPlugin, addVitePlugin, addPlugin } from '@nuxt/kit'
 import { NuxtModule } from '@nuxt/schema'
-import { resolve } from 'pathe'
+import { resolve, dirname } from 'pathe'
 import { componentsTypeTemplate, schemaTemplate } from './type-templates'
 import { distDir } from './dirs'
 import { VueCompat } from './vue-compat'
@@ -82,7 +82,7 @@ export function setupAppBridge (_options: any) {
 
   // Alias defu to compat version - we deliberately want the local (v6) version of defu
   const _require = createRequire(import.meta.url)
-  nuxt.options.alias.defu = _require.resolve('defu')
+  nuxt.options.alias.defu = resolve(dirname(_require.resolve('defu')), 'defu.mjs')
 
   // Fix wp4 esm
   nuxt.hook('webpack:config', (configs) => {
