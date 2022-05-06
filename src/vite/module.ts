@@ -15,7 +15,7 @@ export default defineNuxtModule<ViteOptions>({
     if (viteOptions.experimentWarning !== false && !nuxt.options.test) {
       logger.log(
         '🧪  Vite mode is experimental and some nuxt modules might be incompatible\n',
-        '   If found a bug, please report via https://github.com/nuxt/bridge/issues with a minimal reproduction.'
+        '   If you find a bug, please report via https://github.com/nuxt/bridge/issues with a minimal reproduction.'
       )
     }
 
