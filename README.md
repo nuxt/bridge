@@ -10,6 +10,16 @@ Using Nuxt Bridge, you can make sure your project is (almost) ready for Nuxt 3 a
 
 🌱 **Note:** If you're starting a fresh Nuxt project, please skip this module and directly go to the [Nuxt 3 Installation](https://v3.nuxtjs.org/getting-started/quick-start).
 
+## 💻 Development
+
+- Clone repository
+- Ensure you have the latest LTS version of Node.js installed
+- Install dependencies with `npx yarn install`
+- Run `npx yarn dev:prepare` to activate passive development
+- Open playground with `npx yarn dev`
+
+Learn more about in our documentation on [how to contribute to Nuxt](https://v3.nuxtjs.org/community/contribution).
+
 
 ## Installation
 
