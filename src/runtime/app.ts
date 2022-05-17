@@ -71,7 +71,8 @@ export const setNuxtAppInstance = (nuxt: NuxtAppCompat | null) => {
 export function callWithNuxt<T extends (...args: any[]) => any> (nuxt: NuxtAppCompat, setup: T, args?: Parameters<T>) {
   setNuxtAppInstance(nuxt)
   const p: ReturnType<T> = args ? setup(...args as Parameters<T>) : setup()
-  if (process.server) {
+  const vm = getCurrentInstance()
+  if (process.server && vm) {
     // Unset nuxt instance to prevent context-sharing in server-side
     setNuxtAppInstance(null)
   }
