@@ -71,7 +71,7 @@
     "unplugin-vue2-script-setup": "^0.10.2",
     "untyped": "^0.4.4",
     "vite": "^2.9.4",
-    "vite-plugin-vue2": "^1.9.3",
+    "vite-plugin-vue2": "^2.0.1",
     "vue-bundle-renderer": "^0.3.5",
     "vue-template-compiler": "^2.6.14"
   },
