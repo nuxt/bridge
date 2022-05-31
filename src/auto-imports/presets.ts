@@ -11,7 +11,7 @@ export const commonPresets: Preset[] = [
   }),
   // vue-demi (mocked)
   defineUnimportPreset({
-    from: 'vue-demi',
+    from: '#app',
     imports: [
       'isVue2',
       'isVue3'
@@ -22,7 +22,6 @@ export const commonPresets: Preset[] = [
 export const appPreset = defineUnimportPreset({
   from: '#app',
   imports: [
-    'useAsyncData',
     'useLazyAsyncData',
     'refreshNuxtData',
     'defineNuxtComponent',
@@ -30,22 +29,17 @@ export const appPreset = defineUnimportPreset({
     'defineNuxtPlugin',
     'useRuntimeConfig',
     'useState',
-    'useFetch',
     'useLazyFetch',
     'useCookie',
     'useRequestHeaders',
     'useRequestEvent',
     'useRouter',
     'useRoute',
-    'useActiveRoute',
     'defineNuxtRouteMiddleware',
     'navigateTo',
     'abortNavigation',
     'addRouteMiddleware',
-    'throwError',
-    'clearError',
-    'useError',
-    'defineNuxtLink'
+    'useNuxt2Meta'
   ]
 })
 
