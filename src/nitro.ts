@@ -17,7 +17,7 @@ export async function setupNitroBridge () {
   const nuxt = useNuxt()
 
   // Ensure we're not just building with 'static' target
-  if (!nuxt.options.dev && nuxt.options.target === 'static' && !nuxt.options._prepare && !nuxt.options._generate && !(nuxt.options as any)._export) {
+  if (!nuxt.options.dev && nuxt.options.target === 'static' && !nuxt.options._prepare && !nuxt.options._generate && !(nuxt.options as any)._export && !nuxt.options._legacyGenerate) {
     throw new Error('[nitro] Please use `nuxt generate` for static target')
   }
 
@@ -276,12 +276,20 @@ export async function setupNitroBridge () {
     if (nuxt.options.dev) {
       await build(nitro)
       await waitUntilCompile
-      // nitro.hooks.callHook('nitro:dev:reload')
+      // nitro.hooks.callHook('dev:reload')
     } else {
       await prepare(nitro)
       await copyPublicAssets(nitro)
+
+      // Skip Nitro prerendering/building if using `nuxt generate`
+      // and allow hooks below to handle
+      if ((nuxt.options as any)._export || nuxt.options._legacyGenerate) {
+        return
+      }
+
       await prerender(nitro)
-      if (!nuxt.options._generate && nuxt.options.target !== 'static') {
+      // Skip Nitro build if we are using `nuxi generate`
+      if (!nuxt.options._generate) {
         await build(nitro)
       } else {
         const distDir = resolve(nuxt.options.rootDir, 'dist')
@@ -299,6 +307,31 @@ export async function setupNitroBridge () {
     })
     nuxt.hook('server:devMiddleware', (m) => { devMidlewareHandler.set(toEventHandler(m)) })
   }
+
+  // nuxt generate
+  nuxt.options.generate.dir = nitro.options.output.publicDir
+  nuxt.options.generate.manifest = false
+  nuxt.hook('generate:cache:ignore', (ignore: string[]) => {
+    ignore.push(nitro.options.output.dir)
+    ignore.push(nitro.options.output.serverDir)
+    if (nitro.options.output.publicDir) {
+      ignore.push(nitro.options.output.publicDir)
+    }
+  })
+  nuxt.hook('generate:before', async () => {
+    console.log('generate:before')
+    await prepare(nitro)
+  })
+  nuxt.hook('generate:extendRoutes', async () => {
+    console.log('generate:extendRoutes')
+    await build(nitro)
+    await nuxt.server.reload()
+  })
+  nuxt.hook('generate:done', async () => {
+    console.log('generate:done')
+    await nuxt.server.close()
+    await build(nitro)
+  })
 }
 
 function createNuxt2DevServer (nitro: Nitro) {
