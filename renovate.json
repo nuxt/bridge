@@ -3,6 +3,7 @@
     "@nuxtjs"
   ],
   "ignoreDeps": [
+    "nitropack",
     "vue",
     "vue-router"
   ]
