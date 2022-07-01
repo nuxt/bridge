@@ -84,8 +84,8 @@ describe('dynamic paths', () => {
     )
     expect(imageUrls).toMatchInlineSnapshot(`
         [
-          "./logo.svg",
-          "../public.svg",
+          "'./logo.svg'",
+          "'../public.svg'",
         ]
       `)
   })
