@@ -42,14 +42,16 @@ export async function buildServer (ctx: ViteBuildContext) {
     },
     ssr: {
       external: [
-        'axios'
+        'axios',
+        '#internal/nitro/utils',
+        '#internal/nitro'
       ],
       noExternal: [
         // TODO: Use externality for production (rollup) build
         /\/esm\/.*\.js$/,
         /\.(es|esm|esm-browser|esm-bundler).js$/,
         '#app',
-        /@nuxt\/nitro\/(dist|src)/,
+        /nitropack\/(dist|src)/,
         ...ctx.nuxt.options.build.transpile.filter(i => typeof i === 'string')
       ]
     },
@@ -58,7 +60,7 @@ export async function buildServer (ctx: ViteBuildContext) {
       ssr: ctx.nuxt.options.ssr ?? true,
       ssrManifest: true,
       rollupOptions: {
-        external: ['#nitro'],
+        external: ['#internal/nitro/utils', '#internal/nitro'],
         input: resolve(ctx.nuxt.options.buildDir, 'server.js'),
         output: {
           entryFileNames: 'server.mjs',
