@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 import fsExtra from 'fs-extra'
 import { addPluginTemplate, resolvePath, useNuxt } from '@nuxt/kit'
 import { joinURL, stringifyQuery, withBase, withoutTrailingSlash } from 'ufo'
-import { resolve, join, dirname } from 'pathe'
+import { resolve, join, dirname, normalize } from 'pathe'
 import { createNitro, createDevServer, build, writeTypes, prepare, copyPublicAssets, prerender } from 'nitropack'
 import { dynamicEventHandler, toEventHandler } from 'h3'
 import type { Nitro, NitroEventHandler, NitroDevEventHandler, NitroConfig } from 'nitropack'
@@ -100,7 +100,7 @@ export async function setupNitroBridge () {
     },
     externals: {
       inline: [
-        ...(nuxt.options.dev ? [] : ['vue', '@vue/', '@nuxt/', nuxt.options.buildDir]),
+        ...(nuxt.options.dev ? [] : ['vue', '@vue/', '@nuxt/', normalize(nuxt.options.buildDir)]),
         '@nuxt/bridge/dist',
         '@nuxt/bridge-edge/dist'
       ]
