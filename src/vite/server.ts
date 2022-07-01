@@ -42,9 +42,7 @@ export async function buildServer (ctx: ViteBuildContext) {
     },
     ssr: {
       external: [
-        'axios',
-        '#internal/nitro/utils',
-        '#internal/nitro'
+        'axios'
       ],
       noExternal: [
         // TODO: Use externality for production (rollup) build
