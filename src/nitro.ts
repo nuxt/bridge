@@ -1,8 +1,9 @@
 import { promises as fsp, existsSync } from 'fs'
+import { pathToFileURL } from 'url'
 import fetch from 'node-fetch'
 import fsExtra from 'fs-extra'
 import { addPluginTemplate, resolvePath, useNuxt } from '@nuxt/kit'
-import { joinURL, stringifyQuery, withoutTrailingSlash } from 'ufo'
+import { joinURL, stringifyQuery, withBase, withoutTrailingSlash } from 'ufo'
 import { resolve, join, dirname } from 'pathe'
 import { createNitro, createDevServer, build, writeTypes, prepare, copyPublicAssets, prerender } from 'nitropack'
 import { dynamicEventHandler, toEventHandler } from 'h3'
@@ -319,16 +320,13 @@ export async function setupNitroBridge () {
     }
   })
   nuxt.hook('generate:before', async () => {
-    console.log('generate:before')
-    await prepare(nitro)
+    await nuxt.server.close()
   })
   nuxt.hook('generate:extendRoutes', async () => {
-    console.log('generate:extendRoutes')
-    await build(nitro)
-    await nuxt.server.reload()
+    nuxt.server = await createNuxt2Prerenderer(nitro)
+    await nuxt.server.listen()
   })
   nuxt.hook('generate:done', async () => {
-    console.log('generate:done')
     await nuxt.server.close()
     await build(nitro)
   })
@@ -370,6 +368,40 @@ function createNuxt2DevServer (nitro: Nitro) {
     listen,
     serverMiddlewarePaths () { return [] },
     ready () { }
+  }
+}
+
+async function createNuxt2Prerenderer (nitro: Nitro) {
+  const nitroRenderer = await createNitro({
+    ...nitro.options._config,
+    rootDir: nitro.options.rootDir,
+    logLevel: 0,
+    preset: 'nitro-prerender'
+  })
+  await build(nitroRenderer)
+
+  // Import renderer entry
+  const serverEntrypoint = resolve(nitroRenderer.options.output.serverDir, 'index.mjs')
+  const { localFetch } = await import(pathToFileURL(serverEntrypoint).href)
+
+  async function renderRoute (route = '/', renderContext = {}) {
+    // Fetch the route
+    const res = await (localFetch(withBase(route, nitro.options.baseURL), {
+      headers: {
+        'nuxt-render-context': stringifyQuery(renderContext)
+      }
+    }) as ReturnType<typeof fetch>)
+
+    const html = await res.text()
+
+    if (!res.ok) { return { html, error: res.statusText } }
+
+    return { html }
+  }
+
+  return {
+    ...createNuxt2DevServer(nitroRenderer),
+    renderRoute
   }
 }
 
