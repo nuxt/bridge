@@ -49,7 +49,5 @@ const vueAliases = [
   '@vue/shared',
   '@vue/reactivity',
   '@vue/runtime-core',
-  '@vue/runtime-dom',
-  // vue-demi
-  'vue-demi'
+  '@vue/runtime-dom'
 ]
