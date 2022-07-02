@@ -23,7 +23,8 @@
     "lint": "eslint --ext .vue,.ts,.js,.mjs .",
     "test:fixtures": "yarn dev:prepare && cross-env JITI_ESM_RESOLVE=1 vitest run --dir test",
     "test:fixtures:dev": "cross-env NUXT_TEST_DEV=true yarn test:fixtures",
-    "test:fixtures:webpack": "cross-env TEST_WITH_WEBPACK=1 yarn test:fixtures"
+    "test:fixtures:webpack": "cross-env TEST_WITH_WEBPACK=1 yarn test:fixtures",
+    "test:fixtures:webpack:dev": "cross-env TEST_WITH_WEBPACK=1 NUXT_TEST_DEV=true yarn test:fixtures"
   },
   "dependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
