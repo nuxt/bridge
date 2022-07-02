@@ -34,7 +34,7 @@ export default defineNuxtModule({
   async setup (opts, nuxt) {
     const _require = createRequire(import.meta.url)
 
-    // Allow using kit compasables in all modules
+    // Allow using kit composables in all modules
     if (!nuxtCtx.use()) {
       nuxtCtx.set(nuxt)
     }
