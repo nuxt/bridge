@@ -68,7 +68,7 @@ export async function setupAppBridge (_options: any) {
     // Enable Volar support with vue 2 compat mode
     // @ts-ignore
     tsConfig.vueCompilerOptions = {
-      experimentalCompatMode: 2
+      target: 2.7
     }
   })
 
