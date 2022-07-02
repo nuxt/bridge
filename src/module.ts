@@ -71,6 +71,9 @@ export default defineNuxtModule({
     if (opts.vite) {
       const viteModule = await import('./vite/module').then(r => r.default || r) as NuxtModule
       nuxt.hook('modules:done', () => installModule(viteModule))
+    } else {
+      // with webpack, we need to transpile vue to handle the default/named exports in Vue 2.7
+      nuxt.options.build.transpile.push('vue')
     }
     if (opts.postcss8) {
       await installModule(_require.resolve('@nuxt/postcss8'))

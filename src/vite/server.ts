@@ -1,6 +1,6 @@
 import { resolve } from 'pathe'
 import * as vite from 'vite'
-import { createVuePlugin } from 'vite-plugin-vue2'
+import createVuePlugin from '@vitejs/plugin-vue2'
 import { logger } from '@nuxt/kit'
 import fse from 'fs-extra'
 import { debounce } from 'perfect-debounce'

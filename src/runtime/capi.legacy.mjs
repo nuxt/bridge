@@ -1,22 +1,18 @@
 import { defu } from 'defu'
-import { computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from '@vue/composition-api'
+import { computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
 import { useNuxtApp } from './app'
 import { useRouter as _useRouter, useState } from './composables'
 
 // Vue composition API export
 export {
   computed,
-  createApp,
-  createRef,
   customRef,
-  defineAsyncComponent,
   del,
   effectScope,
   getCurrentInstance,
   getCurrentScope,
   h,
   inject,
-  isRaw,
   isReactive,
   isReadonly,
   isRef,
@@ -34,7 +30,6 @@ export {
   onUnmounted,
   onUpdated,
   provide,
-  proxyRefs,
   reactive,
   readonly,
   set,
@@ -48,15 +43,14 @@ export {
   unref,
   useAttrs,
   useCssModule,
-  useCSSModule,
+  useCssModule as useCSSModule,
   useSlots,
   version,
-  warn,
   watch,
   watchEffect,
   watchPostEffect,
   watchSyncEffect
-} from '@vue/composition-api'
+} from 'vue'
 
 export { ref }
 
@@ -72,6 +66,13 @@ const warnOnce = (id, message) => {
     _warned[id] = true
   }
 }
+
+export const createApp = () => unsupported('`createApp` is not provided by Vue 2.7.')
+export const createRef = () => unsupported('`createRef` is not provided by Vue 2.7.')
+export const defineAsyncComponent = () => unsupported('`defineAsyncComponent` is not provided by Vue 2.7.')
+export const isRaw = () => unsupported('`isRaw` is not provided by Vue 2.7.')
+export const proxyRefs = () => unsupported('`proxyRefs` is not provided by Vue 2.7.')
+export const warn = () => unsupported('`warn` is not provided by Vue 2.7.')
 
 // Warn in case of having any imports from `@nuxtjs/composition-api`
 warnOnce('import', '`@nuxtjs/composition-api` is deprecated.')

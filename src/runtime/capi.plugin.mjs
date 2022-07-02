@@ -1,8 +1,4 @@
-import Vue from 'vue'
-import VueCompositionAPI from '@vue/composition-api'
 import { defineNuxtPlugin } from '#app'
-
-Vue.use(VueCompositionAPI.default || VueCompositionAPI)
 
 export default defineNuxtPlugin((nuxtApp) => {
   const _originalSetup = nuxtApp.nuxt2Context.app.setup

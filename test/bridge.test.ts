@@ -91,10 +91,7 @@ describe('dynamic paths', () => {
     const html = await $fetch('/foo/assets')
     for (const match of html.matchAll(/(href|src)="(.*?)"/g)) {
       const url = match[2]
-      // TODO: should be /foo/public.svg
-      expect(
-        url.startsWith('/foo/_other/') || url === '/public.svg'
-      ).toBeTruthy()
+      expect(url.startsWith('/foo/_other/') || url === '/foo/public.svg').toBeTruthy()
     }
   })
 
@@ -107,9 +104,8 @@ describe('dynamic paths', () => {
     const html = await $fetch('/foo/assets')
     for (const match of html.matchAll(/(href|src)="(.*?)"/g)) {
       const url = match[2]
-      // TODO: should be https://example.com/public.svg
       expect(
-        url.startsWith('https://example.com/_cdn/') || url === '/public.svg'
+        url.startsWith('https://example.com/_cdn/') || url === 'https://example.com/public.svg'
       ).toBeTruthy()
     }
   })
