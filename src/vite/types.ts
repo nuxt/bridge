@@ -1,5 +1,5 @@
 import type { InlineConfig, SSROptions } from 'vite'
-import type { VueViteOptions } from 'vite-plugin-vue2'
+import type { Options as VueViteOptions } from '@vitejs/plugin-vue2'
 
 export interface Nuxt {
   options: any;
@@ -10,9 +10,9 @@ export interface Nuxt {
 
 export interface ViteOptions extends Omit<InlineConfig, 'build'> {
   /**
-   * Options for vite-plugin-vue2
+   * Options for @vitejs/plugin-vue2
    *
-   * @see https://github.com/underfin/vite-plugin-vue2
+   * @see https://github.com/vitejs/vite-plugin-vue2
    */
   vue?: VueViteOptions
 

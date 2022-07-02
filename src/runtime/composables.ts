@@ -1,4 +1,4 @@
-import { getCurrentInstance, onBeforeUnmount, isRef, watch, reactive, toRef, isReactive, Ref, set } from '@vue/composition-api'
+import { getCurrentInstance, onBeforeUnmount, isRef, watch, reactive, toRef, isReactive, Ref, set } from 'vue'
 import type { CombinedVueInstance } from 'vue/types/vue'
 import type { MetaInfo } from 'vue-meta'
 import type VueRouter from 'vue-router'
@@ -13,7 +13,7 @@ export { useLazyFetch } from './fetch'
 export { useCookie } from './cookie'
 export { useRequestHeaders, useRequestEvent } from './ssr'
 
-export * from '@vue/composition-api'
+export * from 'vue'
 
 const mock = () => () => { throw new Error('not implemented') }
 

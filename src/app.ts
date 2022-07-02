@@ -64,10 +64,7 @@ export async function setupAppBridge (_options: any) {
   addWebpackPlugin(VueCompat.webpack({ src: vueCompat }))
   addVitePlugin(VueCompat.vite({ src: vueCompat }))
 
-  nuxt.hook('prepare:types', ({ tsConfig, references }) => {
-    // Type 'vue' module with composition API exports
-    references.push({ path: resolve(distDir, 'runtime/vue2-bridge.d.ts') })
-
+  nuxt.hook('prepare:types', ({ tsConfig }) => {
     // Enable Volar support with vue 2 compat mode
     // @ts-ignore
     tsConfig.vueCompilerOptions = {

@@ -1,5 +1,5 @@
 import { installModule, useNuxt } from '@nuxt/kit'
-import * as CompositionApi from '@vue/composition-api'
+import * as CompositionApi from 'vue'
 import type { Preset } from 'unimport'
 import autoImports from './auto-imports/module'
 
@@ -9,7 +9,7 @@ export function setupAutoImports () {
   const nuxt = useNuxt()
 
   const bridgePresets: Preset[] = [{
-    from: '@vue/composition-api',
+    from: 'vue',
     imports: vue3Keys.filter(i => CapiHelpers.has(i as string))
   }]
 
