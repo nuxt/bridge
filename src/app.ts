@@ -1,6 +1,6 @@
 import { useNuxt, addTemplate, resolveAlias, addWebpackPlugin, addVitePlugin, addPlugin } from '@nuxt/kit'
 import { NuxtModule } from '@nuxt/schema'
-import { resolve } from 'pathe'
+import { normalize, resolve } from 'pathe'
 import { resolveImports } from 'mlly'
 import { componentsTypeTemplate, schemaTemplate } from './type-templates'
 import { distDir } from './dirs'
@@ -14,6 +14,12 @@ export async function setupAppBridge (_options: any) {
   nuxt.options.alias['nuxt3/app'] = nuxt.options.alias['#app']
   nuxt.options.alias['nuxt/app'] = nuxt.options.alias['#app']
   nuxt.options.alias['#build'] = nuxt.options.buildDir
+
+  // Transpile internal runtime directory when developing module (windows)
+  nuxt.options.build.transpile.push(resolve(distDir, 'runtime').replace('dist', 'src'))
+
+  // Transpile build directory (windows)
+  nuxt.options.build.transpile.push(normalize(nuxt.options.buildDir))
 
   // Mock `bundleBuilder.build` to support `nuxi prepare`
   if (nuxt.options._prepare) {
