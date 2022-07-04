@@ -2,7 +2,7 @@ import { createRequire } from 'module'
 import { defineNuxtModule, installModule, checkNuxtCompatibility, nuxtCtx } from '@nuxt/kit'
 import type { NuxtModule } from '@nuxt/schema'
 import { NuxtCompatibility } from '@nuxt/schema'
-import type { BridgeConfig, ScriptSetupOptions } from '../types'
+import type { BridgeConfig } from '../types'
 import { setupNitroBridge } from './nitro'
 import { setupAppBridge } from './app'
 import { setupCAPIBridge } from './capi'
@@ -11,7 +11,6 @@ import { setupAutoImports } from './auto-imports'
 import { setupTypescript } from './typescript'
 import { setupMeta } from './meta'
 import { setupTranspile } from './transpile'
-import { setupScriptSetup } from './setup'
 
 export default defineNuxtModule({
   meta: {
@@ -24,7 +23,6 @@ export default defineNuxtModule({
     app: {},
     capi: {},
     transpile: true,
-    scriptSetup: true,
     autoImports: true,
     compatibility: true,
     meta: null,
@@ -61,9 +59,6 @@ export default defineNuxtModule({
         throw new Error('[bridge] Cannot enable composition-api with app disabled!')
       }
       await setupCAPIBridge(opts.capi === true ? {} : opts.capi)
-    }
-    if (opts.scriptSetup) {
-      await setupScriptSetup(opts.scriptSetup as ScriptSetupOptions)
     }
     if (opts.autoImports) {
       await setupAutoImports()

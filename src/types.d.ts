@@ -1,9 +1,6 @@
 /// <reference types="nitropack" />
 import type { NuxtConfig as _NuxtConfig } from '@nuxt/schema'
 import type { MetaInfo } from 'vue-meta'
-import type { PluginOptions as ScriptSetupPluginOptions } from 'unplugin-vue2-script-setup/dist'
-
-export type ScriptSetupOptions = ScriptSetupPluginOptions
 
 export interface BridgeConfig {
   nitro: boolean
@@ -12,7 +9,6 @@ export interface BridgeConfig {
   capi: boolean | {
     legacy?: boolean
   }
-  scriptSetup: boolean | ScriptSetupOptions
   autoImports: boolean
   transpile: boolean
   compatibility: boolean

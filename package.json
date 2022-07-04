@@ -67,7 +67,6 @@
     "ufo": "^0.8.4",
     "unimport": "^0.4.1",
     "unplugin": "^0.7.0",
-    "unplugin-vue2-script-setup": "^0.11.0",
     "untyped": "^0.4.4",
     "vite": "^2.9.13",
     "@vitejs/plugin-vue2": "^1.1.2",

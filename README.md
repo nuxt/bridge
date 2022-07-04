@@ -257,9 +257,6 @@ export default defineNuxtConfig({
     // Do not transpile modules
     // transpile: false,
 
-    // Disable <script setup> support
-    // scriptSetup: false,
-
     // Disable composables auto importing
     // autoImports: false,
 
