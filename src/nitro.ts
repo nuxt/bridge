@@ -406,8 +406,8 @@ async function createNuxt2Prerenderer (nitro: Nitro) {
 }
 
 async function resolveHandlers (nuxt: Nuxt) {
-  const handlers: NitroEventHandler[] = []
-  const devHandlers: NitroDevEventHandler[] = []
+  const handlers: NitroEventHandler[] = [...nuxt.options.serverHandlers || []]
+  const devHandlers: NitroDevEventHandler[] = [...nuxt.options.devServerHandlers || []]
 
   for (let m of nuxt.options.serverMiddleware) {
     if (typeof m === 'string' || typeof m === 'function' /* legacy middleware */) { m = { handler: m } }
