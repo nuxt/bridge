@@ -2,7 +2,7 @@ import { promises as fsp, existsSync } from 'fs'
 import { pathToFileURL } from 'url'
 import fetch from 'node-fetch'
 import fsExtra from 'fs-extra'
-import { addPluginTemplate, resolvePath, useNuxt } from '@nuxt/kit'
+import { addPluginTemplate, importModule, resolvePath, useNuxt } from '@nuxt/kit'
 import { joinURL, stringifyQuery, withBase, withoutTrailingSlash } from 'ufo'
 import { resolve, join, dirname, normalize } from 'pathe'
 import { createNitro, createDevServer, build, writeTypes, prepare, copyPublicAssets, prerender } from 'nitropack'
@@ -288,6 +288,16 @@ export async function setupNitroBridge () {
         return
       }
 
+      // Invokve classic generation behaviour with --classic CLI argument
+
+      const useClassicGeneration = process.argv.includes('--classic')
+      if (useClassicGeneration && nuxt.options._generate) {
+        const { Generator } = await importModule('@nuxt/generator')
+        const generator = new Generator(nuxt)
+        await generator.generate({ build: false })
+        return
+      }
+
       await prerender(nitro)
       // Skip Nitro build if we are using `nuxi generate`
       if (!nuxt.options._generate) {
@@ -320,7 +330,7 @@ export async function setupNitroBridge () {
     }
   })
   nuxt.hook('generate:before', async () => {
-    await nuxt.server.close()
+    await nuxt.server?.close()
   })
   nuxt.hook('generate:extendRoutes', async () => {
     nuxt.server = await createNuxt2Prerenderer(nitro)
