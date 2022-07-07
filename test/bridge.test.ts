@@ -26,7 +26,7 @@ describe('navigate', () => {
 describe('legacy capi', () => {
   it('should continue to work', async () => {
     const html = await $fetch('/legacy-capi/')
-    expect(html).toMatch(/(.*✅){12}/)
+    expect(html).toMatch(/([\s\S]*✅){12}/)
   })
 })
 
