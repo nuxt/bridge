@@ -7,6 +7,7 @@
   "main": "./module.cjs",
   "types": "./types.d.ts",
   "files": [
+    "bin",
     "module.cjs",
     "types.d.ts",
     "dist"
