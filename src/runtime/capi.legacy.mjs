@@ -420,13 +420,17 @@ async function serverPrefetch (vm) {
   const attrs = (vm.$vnode.data.attrs = vm.$vnode.data.attrs || {})
   attrs['data-fetch-key'] = vm._fetchKey
 
-  const data = { ...vm._data }
-  Object.entries(vm.__composition_api_state__.rawBindings).forEach(
-    ([key, val]) => {
-      if (val instanceof Function || val instanceof Promise) { return }
-
-      data[key] = isRef(val) ? val.value : val
-    }
+  const data = Object.fromEntries(
+    Object.entries(vm?._setupProxy || vm?._setupState)
+      .filter(
+        ([_key, val]) =>
+          !(
+            (val && typeof val === 'object' && '_compiled' in val) ||
+            val instanceof Function ||
+            val instanceof Promise
+          )
+      )
+      .map(([key, val]) => [key, isRef(val) ? val.value : val])
   )
 
   // Add to ssrContext for window.__NUXT__.fetch
