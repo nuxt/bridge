@@ -238,6 +238,9 @@ export default defineNuxtConfig({
     // Enable Nuxt 3 compatible useHead
     // meta: true,
 
+    // Use classic Nuxt 2 generator rather than new prerenderer
+    // classicGenerate: true,
+
     // -- Default features --
 
     // Use legacy server instead of Nitro
