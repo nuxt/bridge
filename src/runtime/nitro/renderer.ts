@@ -90,7 +90,7 @@ export default eventHandler(async (event) => {
     event,
     req: event.req,
     res: event.res,
-    runtimeConfig: { private: config, public: { public: config.public, app: config.app } },
+    runtimeConfig: { private: config, public: { ...config.public, public: config.public, app: config.app } },
     noSSR: event.req.headers['x-nuxt-no-ssr'],
 
     error: ssrError,
