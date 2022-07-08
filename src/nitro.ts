@@ -71,6 +71,7 @@ export async function setupNitroBridge () {
     nodeModulesDirs: nuxt.options.modulesDir,
     handlers: [],
     devHandlers: [],
+    baseURL: nuxt.options.app.baseURL || '/',
     virtual: {},
     runtimeConfig: {
       ...nuxt.options.runtimeConfig,
