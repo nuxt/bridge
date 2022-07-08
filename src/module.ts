@@ -32,6 +32,12 @@ export default defineNuxtModule({
     resolve: true
   } as BridgeConfig,
   async setup (opts, nuxt) {
+    // Disable if users explicitly set to false
+    if (nuxt.options.bridge === false) { return }
+
+    // Nuxt kit depends on this flag to check bridge compatibility
+    nuxt.options.bridge = nuxt.options.bridge || true
+
     const _require = createRequire(import.meta.url)
 
     // Allow using kit compasables in all modules
