@@ -23,6 +23,13 @@ describe('navigate', () => {
   })
 })
 
+describe('legacy capi', () => {
+  it('should continue to work', async () => {
+    const html = await $fetch('/legacy-capi')
+    expect(html).toMatch(/([\s\S]*✅){11}/)
+  })
+})
+
 describe('errors', () => {
   it('should render a JSON error page', async () => {
     const res = await fetch('/error', {
