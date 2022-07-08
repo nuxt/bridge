@@ -71,6 +71,7 @@ export async function setupNitroBridge () {
     nodeModulesDirs: nuxt.options.modulesDir,
     handlers: [],
     devHandlers: [],
+    virtual: {},
     runtimeConfig: {
       ...nuxt.options.runtimeConfig,
       nitro: {
@@ -124,9 +125,17 @@ export async function setupNitroBridge () {
       ...nuxt.options.alias
     },
     replace: {
-      'process.env.NUXT_NO_SSR': nuxt.options.ssr === false ? true : undefined
+      'process.env.NUXT_NO_SSR': nuxt.options.ssr === false
+    },
+    rollupConfig: {
+      plugins: []
     }
   })
+
+  // Add fallback server for `ssr: false`
+  if (!nuxt.options.ssr) {
+    nitroConfig.virtual['#build/dist/server/server.mjs'] = 'export default () => {}'
+  }
 
   // Let nitro handle #build for windows path normalization
   delete nitroConfig.alias['#build']
