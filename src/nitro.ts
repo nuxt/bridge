@@ -2,7 +2,7 @@ import { promises as fsp, existsSync } from 'fs'
 import { pathToFileURL } from 'url'
 import fetch from 'node-fetch'
 import fsExtra from 'fs-extra'
-import { addPluginTemplate, importModule, resolvePath, useNuxt } from '@nuxt/kit'
+import { addPluginTemplate, resolvePath, tryImportModule, useNuxt } from '@nuxt/kit'
 import { joinURL, stringifyQuery, withBase, withoutTrailingSlash } from 'ufo'
 import { resolve, join, dirname, normalize } from 'pathe'
 import { createNitro, createDevServer, build, writeTypes, prepare, copyPublicAssets, prerender } from 'nitropack'
@@ -292,7 +292,7 @@ export async function setupNitroBridge () {
 
       const useClassicGeneration = process.argv.includes('--classic') || (nuxt.options as any).bridge.classicGenerate
       if (useClassicGeneration && nuxt.options._generate) {
-        const { Generator } = await importModule('@nuxt/generator')
+        const { Generator } = (await tryImportModule('@nuxt/generator-edge')) || (await tryImportModule('@nuxt/generator'))
         const generator = new Generator(nuxt)
         await generator.generate({ build: false })
         return
