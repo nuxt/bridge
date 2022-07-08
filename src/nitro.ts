@@ -8,7 +8,7 @@ import { resolve, join, dirname, normalize } from 'pathe'
 import { createNitro, createDevServer, build, writeTypes, prepare, copyPublicAssets, prerender } from 'nitropack'
 import { dynamicEventHandler, toEventHandler } from 'h3'
 import type { Nitro, NitroEventHandler, NitroDevEventHandler, NitroConfig } from 'nitropack'
-import { Nuxt } from '@nuxt/schema'
+import { Nuxt, NuxtPage } from '@nuxt/schema'
 import { defu } from 'defu'
 import { AsyncLoadingPlugin } from './async-loading'
 import { distDir } from './dirs'
@@ -310,6 +310,32 @@ export async function setupNitroBridge () {
       }
     }
   })
+
+  // Prerender all non-dynamic page routes when generating app
+  if (!nuxt.options.dev && nuxt.options._generate) {
+    const routes = new Set<string>()
+    nuxt.hook('build:extendRoutes', (pages) => {
+      routes.clear()
+      for (const path of nuxt.options.nitro.prerender?.routes || []) {
+        routes.add(path)
+      }
+      const processPages = (pages: NuxtPage[], currentPath = '/') => {
+        for (const page of pages) {
+        // Skip dynamic paths
+          if (page.path.includes(':')) { continue }
+
+          const path = joinURL(currentPath, page.path)
+          routes.add(path)
+          if (page.children) { processPages(page.children, path) }
+        }
+      }
+      processPages(pages)
+    })
+
+    nuxt.hook('nitro:build:before', (nitro) => {
+      nitro.options.prerender.routes = [...routes]
+    })
+  }
 
   // nuxt dev
   if (nuxt.options.dev) {
