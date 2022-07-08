@@ -290,7 +290,7 @@ export async function setupNitroBridge () {
 
       // Invokve classic generation behaviour with --classic CLI argument
 
-      const useClassicGeneration = process.argv.includes('--classic') || (nuxt.options as any).bridge.classicGenerate
+      const useClassicGeneration = process.argv.includes('--classic') || !(nuxt.options as any).bridge.nitroGenerator
       if (useClassicGeneration && nuxt.options._generate) {
         const { Generator } = (await tryImportModule('@nuxt/generator-edge')) || (await tryImportModule('@nuxt/generator'))
         const generator = new Generator(nuxt)

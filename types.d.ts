@@ -4,7 +4,7 @@ import type { MetaInfo } from 'vue-meta'
 
 export interface BridgeConfig {
   nitro: boolean
-  classicGenerate: boolean
+  nitroGenerator: boolean
   vite: boolean
   app: boolean | {}
   capi: boolean | {

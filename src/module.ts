@@ -19,6 +19,7 @@ export default defineNuxtModule({
   },
   defaults: {
     nitro: true,
+    nitroGenerator: true,
     vite: false,
     app: {},
     capi: {},
@@ -29,9 +30,7 @@ export default defineNuxtModule({
     // TODO: Remove from 2.16
     postcss8: true,
     typescript: true,
-    resolve: true,
-    // TODO: remove when nitro supports full static
-    classicGenerate: false
+    resolve: true
   } as BridgeConfig,
   async setup (opts, nuxt) {
     const _require = createRequire(import.meta.url)
