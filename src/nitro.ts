@@ -312,6 +312,7 @@ export async function setupNitroBridge () {
   })
 
   // Prerender all non-dynamic page routes when generating app
+  nuxt.options.nitro = nuxt.options.nitro || {}
   if (!nuxt.options.dev && nuxt.options._generate) {
     const routes = new Set<string>()
     nuxt.hook('build:extendRoutes', (pages) => {
