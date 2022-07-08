@@ -11186,6 +11186,11 @@ ufo@^0.8.3, ufo@^0.8.4:
   resolved "https://registry.yarnpkg.com/ufo/-/ufo-0.8.4.tgz#23e9ed82398d2116dcb378e8fba5ced8eca2ee40"
   integrity sha512-/+BmBDe8GvlB2nIflWasLLAInjYG0bC9HRnfEpNi4sw77J2AJNnEVnTDReVrehoh825+Q/evF3THXTAweyam2g==
 
+ufo@^0.8.5:
+  version "0.8.5"
+  resolved "https://registry.yarnpkg.com/ufo/-/ufo-0.8.5.tgz#e367b4205ece9d9723f2fa54f887d43ed1bce5d0"
+  integrity sha512-e4+UtA5IRO+ha6hYklwj6r7BjiGMxS0O+UaSg9HbaTefg4kMkzj4tXzEBajRR+wkxf+golgAWKzLbytCUDMJAA==
+
 uglify-js@^3.5.1:
   version "3.16.1"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.16.1.tgz#0e7ec928b3d0b1e1d952bce634c384fd56377317"
@@ -11339,10 +11344,10 @@ unimport@^0.3.0:
     strip-literal "^0.4.0"
     unplugin "^0.7.0"
 
-unimport@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/unimport/-/unimport-0.4.3.tgz#656dcb895c233e58a0d8c2de106fbf8dd4e47bd1"
-  integrity sha512-NzQ4Oq3NbBej00hbw0W7KcSp2qLxG8OBxZaU1CPwO3o0Fki2zke/o0wV02jxFKSaGdRxNkrgTaqdtC4I6G5Rpg==
+unimport@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/unimport/-/unimport-0.4.4.tgz#bad162e57d4419761cd2e9c9f26a09a4fbf4149e"
+  integrity sha512-gYWGl4LUIasAbV7PXCaByuB6NcerrHRIRICooXtAFI7JCGY74CYGVq080P/yg7C4AYs+RYuJQdYsaRAJvG7bsQ==
   dependencies:
     "@rollup/pluginutils" "^4.2.1"
     escape-string-regexp "^5.0.0"
