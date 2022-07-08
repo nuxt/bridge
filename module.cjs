@@ -7,6 +7,10 @@ const pkg = require('./package.json')
 
 module.exports.defineNuxtConfig = (config = {}) => {
   if (config.bridge !== false) {
+    // Add new handlers options
+    config.serverHandlers = config.serverHandlers || []
+    config.devServerHandlers = config.devServerHandlers || []
+
     config.bridge = config.bridge || {}
     config.bridge._version = pkg.version
     if (!config.buildModules) {

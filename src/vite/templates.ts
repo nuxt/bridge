@@ -147,7 +147,7 @@ export const publicPathTemplate = {
   getContents ({ nuxt }) {
     return [
       'import { joinURL } from \'ufo\'',
-      !nuxt.options.dev && 'import { useRuntimeConfig } from \'#nitro\'',
+      !nuxt.options.dev && 'import { useRuntimeConfig } from \'#internal/nitro\'',
 
       nuxt.options.dev
         ? `const appConfig = ${JSON.stringify(nuxt.options.app)}`

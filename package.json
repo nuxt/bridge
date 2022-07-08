@@ -7,6 +7,7 @@
   "main": "./module.cjs",
   "types": "./types.d.ts",
   "files": [
+    "bin",
     "module.cjs",
     "types.d.ts",
     "dist"
@@ -23,7 +24,8 @@
     "lint": "eslint --ext .vue,.ts,.js,.mjs .",
     "test:fixtures": "yarn dev:prepare && cross-env JITI_ESM_RESOLVE=1 vitest run --dir test",
     "test:fixtures:dev": "cross-env NUXT_TEST_DEV=true yarn test:fixtures",
-    "test:fixtures:webpack": "cross-env TEST_WITH_WEBPACK=1 yarn test:fixtures"
+    "test:fixtures:webpack": "cross-env TEST_WITH_WEBPACK=1 yarn test:fixtures",
+    "test:fixtures:webpack:dev": "cross-env TEST_WITH_WEBPACK=1 NUXT_TEST_DEV=true yarn test:fixtures"
   },
   "dependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
@@ -50,7 +52,7 @@
     "knitwork": "^0.1.2",
     "magic-string": "^0.26.2",
     "mlly": "^0.5.4",
-    "nitropack": "^0.2.11",
+    "nitropack": "^0.4.9",
     "node-fetch": "^3.2.6",
     "nuxi": "^3.0.0-rc.4",
     "ohash": "^0.1.0",

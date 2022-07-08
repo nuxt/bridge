@@ -79,7 +79,7 @@ describe('dynamic paths', () => {
     const urls = Array.from(html.matchAll(/(href|src)="(.*?)"/g)).map(m => m[2])
     const cssURL = urls.find(u => /_nuxt\/assets.*\.css$/.test(u))
     const css = await $fetch(cssURL)
-    const imageUrls = Array.from(css.matchAll(/url\(([^)]*)\)/g)).map(m =>
+    const imageUrls = Array.from(css.matchAll(/url\(['"]?([^')]*)['"]?\)/g)).map(m =>
       m[1].replace(/[-.][\w]{8}\./g, '.')
     )
     expect(imageUrls).toMatchInlineSnapshot(`

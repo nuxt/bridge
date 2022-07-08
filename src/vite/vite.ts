@@ -74,8 +74,6 @@ async function bundle (nuxt: Nuxt, builder: any) {
         },
         optimizeDeps: {
           exclude: [
-            ...nuxt.options.build.transpile.filter(i => typeof i === 'string'),
-            'vue-demi',
             'ufo',
             'date-fns',
             'nanoid',

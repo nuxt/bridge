@@ -11,7 +11,7 @@ import { ViteBuildContext, ViteOptions } from './types'
 
 export async function buildClient (ctx: ViteBuildContext) {
   const alias = {
-    '#nitro': resolve(ctx.nuxt.options.buildDir, 'nitro.client.mjs')
+    '#internal/nitro': resolve(ctx.nuxt.options.buildDir, 'nitro.client.mjs')
   }
   for (const p of ctx.builder.plugins) {
     alias[p.name] = p.mode === 'server'

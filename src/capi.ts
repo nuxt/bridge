@@ -28,7 +28,7 @@ export function setupCAPIBridge (options: Exclude<BridgeConfig['capi'], boolean>
   }
 
   // Handle legacy `@nuxtjs/composition-api`
-  nuxt.options.alias['@nuxtjs/composition-api'] = resolve(distDir, 'runtime/capi.legacy.mjs')
+  nuxt.options.alias['@nuxtjs/composition-api'] = resolve(distDir, 'runtime/capi.legacy')
   nuxt.options.build.transpile.push('@nuxtjs/composition-api')
 
   // Enable automatic ssrRef key generation

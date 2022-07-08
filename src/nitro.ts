@@ -1,13 +1,14 @@
 import { promises as fsp, existsSync } from 'fs'
+import { pathToFileURL } from 'url'
 import fetch from 'node-fetch'
 import fsExtra from 'fs-extra'
-import { addPluginTemplate, resolvePath, useNuxt } from '@nuxt/kit'
-import { joinURL, stringifyQuery, withoutTrailingSlash } from 'ufo'
-import { resolve, join, dirname } from 'pathe'
+import { addPluginTemplate, resolvePath, tryImportModule, useNuxt } from '@nuxt/kit'
+import { joinURL, stringifyQuery, withBase, withoutTrailingSlash } from 'ufo'
+import { resolve, join, dirname, normalize } from 'pathe'
 import { createNitro, createDevServer, build, writeTypes, prepare, copyPublicAssets, prerender } from 'nitropack'
 import { dynamicEventHandler, toEventHandler } from 'h3'
 import type { Nitro, NitroEventHandler, NitroDevEventHandler, NitroConfig } from 'nitropack'
-import { Nuxt } from '@nuxt/schema'
+import { Nuxt, NuxtPage } from '@nuxt/schema'
 import { defu } from 'defu'
 import { AsyncLoadingPlugin } from './async-loading'
 import { distDir } from './dirs'
@@ -17,7 +18,7 @@ export async function setupNitroBridge () {
   const nuxt = useNuxt()
 
   // Ensure we're not just building with 'static' target
-  if (!nuxt.options.dev && nuxt.options.target === 'static' && !nuxt.options._prepare && !(nuxt.options as any)._export && !nuxt.options._legacyGenerate) {
+  if (!nuxt.options.dev && nuxt.options.target === 'static' && !nuxt.options._prepare && !nuxt.options._generate && !(nuxt.options as any)._export && !nuxt.options._legacyGenerate) {
     throw new Error('[nitro] Please use `nuxt generate` for static target')
   }
 
@@ -92,11 +93,14 @@ export async function setupNitroBridge () {
     ],
     prerender: {
       crawlLinks: nuxt.options.generate.crawler,
-      routes: nuxt.options.generate.routes
+      routes: [
+        ...nuxt.options.generate.routes || [],
+        ...nuxt.options.ssr === false ? ['/', '/200', '/404'] : []
+      ]
     },
     externals: {
       inline: [
-        ...(nuxt.options.dev ? [] : ['vue', '@vue/', '@nuxt/', nuxt.options.buildDir]),
+        ...(nuxt.options.dev ? [] : ['vue', '@vue/', '@nuxt/', normalize(nuxt.options.buildDir)]),
         '@nuxt/bridge/dist',
         '@nuxt/bridge-edge/dist'
       ]
@@ -113,9 +117,6 @@ export async function setupNitroBridge () {
       // Renderer
       '#vue-renderer': resolve(distDir, 'runtime/nitro/vue2'),
       '#vue2-server-renderer': 'vue-server-renderer/' + (nuxt.options.dev ? 'build.dev.js' : 'build.prod.js'),
-
-      // Error renderer
-      '#nitro/error': resolve(distDir, 'runtime/nitro/error'),
 
       // Paths
       '#paths': resolve(distDir, 'runtime/nitro/paths'),
@@ -268,23 +269,73 @@ export async function setupNitroBridge () {
   nuxt.options.build._minifyServer = false
   nuxt.options.build.standalone = false
 
-  const waitUntilCompile = new Promise<void>(resolve => nitro.hooks.hook('nitro:compiled', () => resolve()))
+  const waitUntilCompile = new Promise<void>(resolve => nitro.hooks.hook('compiled', () => resolve()))
   nuxt.hook('build:done', async () => {
     if (nuxt.options._prepare) { return }
     await writeDocumentTemplate(nuxt)
+    await nuxt.callHook('nitro:build:before', nitro)
     if (nuxt.options.dev) {
       await build(nitro)
       await waitUntilCompile
-      // nitro.hooks.callHook('nitro:dev:reload')
+      // nitro.hooks.callHook('dev:reload')
     } else {
       await prepare(nitro)
       await copyPublicAssets(nitro)
-      if (nuxt.options._generate || nuxt.options.target === 'static') {
-        await prerender(nitro)
+
+      // Skip Nitro prerendering/building if using `nuxt generate`
+      // and allow hooks below to handle
+      if ((nuxt.options as any)._export || nuxt.options._legacyGenerate) {
+        return
       }
-      await build(nitro)
+
+      // Invokve classic generation behaviour with --classic CLI argument
+
+      const useClassicGeneration = process.argv.includes('--classic') || !(nuxt.options as any).bridge.nitroGenerator
+      if (useClassicGeneration && nuxt.options._generate) {
+        const { Generator } = (await tryImportModule('@nuxt/generator-edge')) || (await tryImportModule('@nuxt/generator'))
+        const generator = new Generator(nuxt)
+        await generator.generate({ build: false })
+        return
+      }
+
+      await prerender(nitro)
+      // Skip Nitro build if we are using `nuxi generate`
+      if (!nuxt.options._generate) {
+        await build(nitro)
+      } else {
+        const distDir = resolve(nuxt.options.rootDir, 'dist')
+        if (!existsSync(distDir)) {
+          await fsp.symlink(nitro.options.output.publicDir, distDir, 'junction').catch(() => {})
+        }
+      }
     }
   })
+
+  // Prerender all non-dynamic page routes when generating app
+  if (!nuxt.options.dev && nuxt.options._generate) {
+    const routes = new Set<string>()
+    nuxt.hook('build:extendRoutes', (pages) => {
+      routes.clear()
+      for (const path of nuxt.options.nitro.prerender?.routes || []) {
+        routes.add(path)
+      }
+      const processPages = (pages: NuxtPage[], currentPath = '/') => {
+        for (const page of pages) {
+        // Skip dynamic paths
+          if (page.path.includes(':')) { continue }
+
+          const path = joinURL(currentPath, page.path)
+          routes.add(path)
+          if (page.children) { processPages(page.children, path) }
+        }
+      }
+      processPages(pages)
+    })
+
+    nuxt.hook('nitro:build:before', (nitro) => {
+      nitro.options.prerender.routes = [...routes]
+    })
+  }
 
   // nuxt dev
   if (nuxt.options.dev) {
@@ -305,16 +356,13 @@ export async function setupNitroBridge () {
     }
   })
   nuxt.hook('generate:before', async () => {
-    console.log('generate:before')
-    await prepare(nitro)
+    await nuxt.server?.close()
   })
   nuxt.hook('generate:extendRoutes', async () => {
-    console.log('generate:extendRoutes')
-    await build(nitro)
-    await nuxt.server.reload()
+    nuxt.server = await createNuxt2Prerenderer(nitro)
+    await nuxt.server.listen()
   })
   nuxt.hook('generate:done', async () => {
-    console.log('generate:done')
     await nuxt.server.close()
     await build(nitro)
   })
@@ -359,9 +407,43 @@ function createNuxt2DevServer (nitro: Nitro) {
   }
 }
 
+async function createNuxt2Prerenderer (nitro: Nitro) {
+  const nitroRenderer = await createNitro({
+    ...nitro.options._config,
+    rootDir: nitro.options.rootDir,
+    logLevel: 0,
+    preset: 'nitro-prerender'
+  })
+  await build(nitroRenderer)
+
+  // Import renderer entry
+  const serverEntrypoint = resolve(nitroRenderer.options.output.serverDir, 'index.mjs')
+  const { localFetch } = await import(pathToFileURL(serverEntrypoint).href)
+
+  async function renderRoute (route = '/', renderContext = {}) {
+    // Fetch the route
+    const res = await (localFetch(withBase(route, nitro.options.baseURL), {
+      headers: {
+        'nuxt-render-context': stringifyQuery(renderContext)
+      }
+    }) as ReturnType<typeof fetch>)
+
+    const html = await res.text()
+
+    if (!res.ok) { return { html, error: res.statusText } }
+
+    return { html }
+  }
+
+  return {
+    ...createNuxt2DevServer(nitroRenderer),
+    renderRoute
+  }
+}
+
 async function resolveHandlers (nuxt: Nuxt) {
-  const handlers: NitroEventHandler[] = []
-  const devHandlers: NitroDevEventHandler[] = []
+  const handlers: NitroEventHandler[] = [...nuxt.options.serverHandlers || []]
+  const devHandlers: NitroDevEventHandler[] = [...nuxt.options.devServerHandlers || []]
 
   for (let m of nuxt.options.serverMiddleware) {
     if (typeof m === 'string' || typeof m === 'function' /* legacy middleware */) { m = { handler: m } }

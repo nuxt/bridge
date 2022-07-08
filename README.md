@@ -238,10 +238,14 @@ export default defineNuxtConfig({
     // Enable Nuxt 3 compatible useHead
     // meta: true,
 
+
     // -- Default features --
 
     // Use legacy server instead of Nitro
     // nitro: false,
+
+    // Use legacy generator rather than new nitro prerenderer
+    // nitroGenerator: false,
 
     // Disable nuxt 3 compatible `nuxtApp` interface
     // app: false,
