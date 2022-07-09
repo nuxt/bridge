@@ -7,7 +7,7 @@ const pkg = require('./package.json')
 
 module.exports.defineNuxtConfig = (config = {}) => {
   // Nuxt kit depends on this flag to check bridge compatibility
-  config.bridge = config.bridge || true
+  config.bridge = config.bridge ?? true
 
   if (config.bridge !== false) {
     // Add new handlers options
