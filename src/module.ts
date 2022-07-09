@@ -1,5 +1,5 @@
 import { createRequire } from 'module'
-import { defineNuxtModule, installModule, checkNuxtCompatibility, nuxtCtx } from '@nuxt/kit'
+import { defineNuxtModule, installModule, checkNuxtCompatibility } from '@nuxt/kit'
 import type { NuxtModule } from '@nuxt/schema'
 import { NuxtCompatibility } from '@nuxt/schema'
 import type { BridgeConfig } from '../types'
@@ -36,22 +36,7 @@ export default defineNuxtModule({
     // Disable if users explicitly set to false
     if ((nuxt.options as any).bridge === false) { return }
 
-    // Nuxt kit depends on this flag to check bridge compatibility
-    (nuxt.options as any).bridge = (nuxt.options as any).bridge || true
-
     const _require = createRequire(import.meta.url)
-
-    // Allow using kit composables in all modules
-    if (!nuxtCtx.use()) {
-      nuxtCtx.set(nuxt)
-    }
-
-    // Mock _layers
-    nuxt.options._layers = nuxt.options._layers || [{
-      config: nuxt.options,
-      cwd: nuxt.options.rootDir,
-      configFile: nuxt.options._nuxtConfigFile
-    }]
 
     if (opts.nitro) {
       nuxt.hook('modules:done', async () => {
