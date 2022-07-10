@@ -30,9 +30,10 @@ module.exports.defineNuxtConfig = (config = {}) => {
     const { nuxtCtx } = await import('@nuxt/kit')
 
     // Allow using kit composables in all modules
-    if (!nuxtCtx.use()) {
-      nuxtCtx.set(nuxt)
+    if (nuxtCtx.use()) {
+      nuxtCtx.unset()
     }
+    nuxtCtx.set(nuxt)
 
     // Mock _layers for nitro and auto-imports
     nuxt.options._layers = nuxt.options._layers || [{
