@@ -63,7 +63,7 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
   const clientEntryCode = [
     polyfill,
     'var appConfig = window?.__NUXT__?.config.app || {}',
-    'var publicBase = appConfig.cdnURL || ("." + appConfig.baseURL)',
+    'var publicBase = appConfig.cdnURL || appConfig.baseURL || "/"',
     `var imports = ${JSON.stringify(clientImports)};`,
     'imports.reduce((p, id) => p.then(() => System.import(publicBase + appConfig.buildAssetsDir.slice(1) + id)), Promise.resolve())'
   ].join('\n')

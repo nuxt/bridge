@@ -20,6 +20,7 @@
     "prepack": "unbuild",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
+    "dev:preview": "node ./playground/.output/server/index.mjs",
     "dev:prepare": "unbuild --stub && nuxi prepare playground",
     "lint": "eslint --ext .vue,.ts,.js,.mjs .",
     "test:fixtures": "yarn dev:prepare && cross-env JITI_ESM_RESOLVE=1 vitest run --dir test",
