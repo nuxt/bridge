@@ -5,11 +5,11 @@
   "packageRules": [
     {
       "matchPackageNames": ["vue"],
-      "allowedVersions": "!/^3$/"
+      "allowedVersions": "!/3$/"
     },
     {
       "matchPackageNames": ["vue-router"],
-      "allowedVersions": "!/^4$/"
+      "allowedVersions": "!/4$/"
     }
   ]
 }
