@@ -36,7 +36,9 @@ export default defineNuxtModule({
     // Disable if users explicitly set to false
     if ((nuxt.options as any).bridge === false) { return }
 
-    const _require = createRequire(import.meta.url)
+    if (!(nuxt.options as any).bridge._version) {
+      throw new Error('[bridge] Bridge must be enabled by using `defineNuxtConfig` to wrap your Nuxt configuration.')
+    }
 
     if (opts.nitro) {
       nuxt.hook('modules:done', async () => {
@@ -63,6 +65,7 @@ export default defineNuxtModule({
       nuxt.options.build.transpile.push('vue')
     }
     if (opts.postcss8) {
+      const _require = createRequire(import.meta.url)
       await installModule(_require.resolve('@nuxt/postcss8'))
     }
     if (opts.typescript) {
