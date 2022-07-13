@@ -6,16 +6,14 @@ module.exports = function (...args) {
 const pkg = require('./package.json')
 
 module.exports.defineNuxtConfig = (config = {}) => {
-  // Nuxt kit depends on this flag to check bridge compatibility
-  config.bridge = config.bridge ?? true
-
-  if (!config.bridge) { return config }
+  if (config.bridge === false) { return config }
 
   // Add new handlers options
   config.serverHandlers = config.serverHandlers || []
   config.devServerHandlers = config.devServerHandlers || []
 
-  config.bridge = config.bridge || {}
+  // Nuxt kit depends on this flag to check bridge compatibility
+  config.bridge = typeof config.bridge === 'object' ? config.bridge : {}
   config.bridge._version = pkg.version
   if (!config.buildModules) {
     config.buildModules = []
