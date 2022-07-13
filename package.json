@@ -91,7 +91,7 @@
     "nuxt": "^2",
     "unbuild": "0.7.4",
     "vitest": "^0.18.0",
-    "vue": "^2.7.3",
+    "vue": "^3.2.37",
     "vue-router": "^3"
   },
   "engines": {
