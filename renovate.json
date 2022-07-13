@@ -2,8 +2,14 @@
   "extends": [
     "@nuxtjs"
   ],
-  "ignoreDeps": [
-    "vue",
-    "vue-router"
+  "packageRules": [
+    {
+      "matchPackageNames": ["vue"],
+      "allowedVersions": "!/^3$/"
+    },
+    {
+      "matchPackageNames": ["vue-router"],
+      "allowedVersions": "!/^4$/"
+    }
   ]
 }
