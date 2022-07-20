@@ -43,77 +43,69 @@ export const appPreset = defineUnimportPreset({
   ]
 })
 
+export const vueKeys: Array<keyof typeof import('vue')> = [
+  // Lifecycle
+  'onActivated',
+  'onBeforeMount',
+  'onBeforeUnmount',
+  'onBeforeUpdate',
+  'onDeactivated',
+  'onErrorCaptured',
+  'onMounted',
+  'onRenderTracked',
+  'onRenderTriggered',
+  'onServerPrefetch',
+  'onUnmounted',
+  'onUpdated',
+
+  // Reactivity
+  'computed',
+  'customRef',
+  'isProxy',
+  'isReactive',
+  'isReadonly',
+  'isRef',
+  'markRaw',
+  'proxyRefs',
+  'reactive',
+  'readonly',
+  'ref',
+  'shallowReactive',
+  'shallowReadonly',
+  'shallowRef',
+  'toRaw',
+  'toRef',
+  'toRefs',
+  'triggerRef',
+  'unref',
+  'watch',
+  'watchEffect',
+  'isShallow',
+
+  // effect
+  'effectScope',
+  'getCurrentScope',
+  'onScopeDispose',
+
+  // Component
+  'defineComponent',
+  // TODO: https://github.com/vuejs/vue/pull/12684
+  'defineAsyncComponent' as any,
+  'getCurrentInstance',
+  'h',
+  'inject',
+  'nextTick',
+  'provide',
+  'useAttrs',
+  'useCssModule',
+  'useCssVars',
+  'useSlots'
+]
+
 // vue
 export const vuePreset = defineUnimportPreset({
   from: 'vue',
-  imports: [
-    // <script setup>
-    'withCtx',
-    'withDirectives',
-    'withKeys',
-    'withMemo',
-    'withModifiers',
-    'withScopeId',
-
-    // Lifecycle
-    'onActivated',
-    'onBeforeMount',
-    'onBeforeUnmount',
-    'onBeforeUpdate',
-    'onDeactivated',
-    'onErrorCaptured',
-    'onMounted',
-    'onRenderTracked',
-    'onRenderTriggered',
-    'onServerPrefetch',
-    'onUnmounted',
-    'onUpdated',
-
-    // Reactivity
-    'computed',
-    'customRef',
-    'isProxy',
-    'isReactive',
-    'isReadonly',
-    'isRef',
-    'markRaw',
-    'proxyRefs',
-    'reactive',
-    'readonly',
-    'ref',
-    'shallowReactive',
-    'shallowReadonly',
-    'shallowRef',
-    'toRaw',
-    'toRef',
-    'toRefs',
-    'triggerRef',
-    'unref',
-    'watch',
-    'watchEffect',
-    'isShallow',
-
-    // effect
-    'effect',
-    'effectScope',
-    'getCurrentScope',
-    'onScopeDispose',
-
-    // Component
-    'defineComponent',
-    'defineAsyncComponent',
-    'resolveComponent',
-    'getCurrentInstance',
-    'h',
-    'inject',
-    'nextTick',
-    'provide',
-    'useAttrs',
-    'useCssModule',
-    'useCssVars',
-    'useSlots',
-    'useTransitionState'
-  ] as Array<keyof typeof import('vue')>
+  imports: vueKeys
 })
 
 export const defaultPresets = [
