@@ -1746,19 +1746,6 @@
   dependencies:
     slash "^3.0.0"
 
-"@rollup/plugin-commonjs@^21.0.3":
-  version "21.1.0"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-21.1.0.tgz#45576d7b47609af2db87f55a6d4b46e44fc3a553"
-  integrity sha512-6ZtHx3VHIp2ReNNDxHjuUml6ur+WcQ28N1yHgCQwsbNkQg2suhxGMDQGJOn/KuDxKtd1xuZP5xSTwBA4GQ8hbA==
-  dependencies:
-    "@rollup/pluginutils" "^3.1.0"
-    commondir "^1.0.1"
-    estree-walker "^2.0.1"
-    glob "^7.1.6"
-    is-reference "^1.2.1"
-    magic-string "^0.25.7"
-    resolve "^1.17.0"
-
 "@rollup/plugin-commonjs@^22.0.1":
   version "22.0.1"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-commonjs/-/plugin-commonjs-22.0.1.tgz#f7cb777d20de3eeeaf994f39080115c336bef810"
@@ -1788,7 +1775,7 @@
   dependencies:
     "@rollup/pluginutils" "^3.0.8"
 
-"@rollup/plugin-node-resolve@^13.2.0", "@rollup/plugin-node-resolve@^13.3.0":
+"@rollup/plugin-node-resolve@^13.3.0":
   version "13.3.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-13.3.0.tgz#da1c5c5ce8316cef96a2f823d111c1e4e498801c"
   integrity sha512-Lus8rbUo1eEcnS4yTFKLZrVumLPY+YayBdWXgFSHYhTT2iJbMhoaaBL3xl5NCdeRytErGr8tZ0L71BMRmnlwSw==
@@ -1822,7 +1809,7 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@rollup/pluginutils@^4.1.1", "@rollup/pluginutils@^4.2.0", "@rollup/pluginutils@^4.2.1":
+"@rollup/pluginutils@^4.1.1", "@rollup/pluginutils@^4.2.1":
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-4.2.1.tgz#e6c6c3aba0744edce3fb2074922d3776c0af2a6d"
   integrity sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==
@@ -4834,7 +4821,7 @@ esbuild-windows-arm64@0.14.49:
   resolved "https://registry.yarnpkg.com/esbuild-windows-arm64/-/esbuild-windows-arm64-0.14.49.tgz#d83c03ff6436caf3262347cfa7e16b0a8049fae7"
   integrity sha512-v+HYNAXzuANrCbbLFJ5nmO3m5y2PGZWLe3uloAkLt87aXiO2mZr3BTmacZdjwNkNEHuH3bNtN8cak+mzVjVPfA==
 
-esbuild@^0.14.27, esbuild@^0.14.36, esbuild@^0.14.47:
+esbuild@^0.14.27, esbuild@^0.14.47:
   version "0.14.48"
   resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.14.48.tgz#da5d8d25cd2d940c45ea0cfecdca727f7aee2b85"
   integrity sha512-w6N1Yn5MtqK2U1/WZTX9ZqUVb8IOLZkZ5AdHkT6x3cHDMVsYWC7WPdiLmx19w3i4Rwzy5LqsEMtVihG3e4rFzA==
@@ -6645,7 +6632,7 @@ jest-worker@^26.2.1, jest-worker@^26.5.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
-jiti@^1.12.9, jiti@^1.13.0, jiti@^1.14.0, jiti@^1.9.2:
+jiti@^1.12.9, jiti@^1.14.0, jiti@^1.9.2:
   version "1.14.0"
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.14.0.tgz#5350fff532a4d891ca4bcd700c47c1f40e6ee326"
   integrity sha512-4IwstlaKQc9vCTC+qUXLM1hajy2ImiL9KnLvVYiaHOtS/v3wRjhLlGl121AmgDgx/O43uKmxownJghS5XMya2A==
@@ -7357,7 +7344,7 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-mkdist@^0.3.10:
+mkdist@^0.3.13:
   version "0.3.13"
   resolved "https://registry.yarnpkg.com/mkdist/-/mkdist-0.3.13.tgz#1f0494a1017cdfd1e5c8175c815f5b51cb8aebc0"
   integrity sha512-+eCPpkr8l2X630y5PIlkts2tzYEsb+aGIgXdrQv9ZGtWE2bLlD6kVIFfI6FJwFpjjw4dPPyorxQc6Uhm/oXlvg==
@@ -7376,6 +7363,14 @@ mlly@^0.5.2, mlly@^0.5.3, mlly@^0.5.4:
   integrity sha512-gFlsLWCjVwu/LM/ZfYUkmnbBoz7eyBIMUwVQYDqhd8IvtNFDeZ95uwAyxHE2Xx7tQwePQaCo4fECZ9MWFEUTgQ==
   dependencies:
     pathe "^0.3.1"
+    pkg-types "^0.3.3"
+
+mlly@^0.5.5:
+  version "0.5.5"
+  resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.5.5.tgz#80643b3a96671a0d6f41411e3daf7e4e188544d5"
+  integrity sha512-2R4JT/SxRDPexomw4rmHYY/gWAGmL9Kkq1OR76Ua6w+P340a1aBDTWzKo2kAlxzrG82OdXs5VB9Lmcmyit0Obg==
+  dependencies:
+    pathe "^0.3.2"
     pkg-types "^0.3.3"
 
 move-concurrently@^1.0.1:
@@ -8246,7 +8241,7 @@ pkg-dir@^4.1.0:
   dependencies:
     find-up "^4.0.0"
 
-pkg-types@^0.3.2, pkg-types@^0.3.3:
+pkg-types@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/pkg-types/-/pkg-types-0.3.3.tgz#3c25e45274e1c586ec7811dcc3449afde846e463"
   integrity sha512-6AJcCMnjUQPQv/Wk960w0TOmjhdjbeaQJoSKWRQv9N3rgkessCu6J0Ydsog/nw1MbpnxHuPzYbfOn2KmlZO1FA==
@@ -9732,7 +9727,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rollup-plugin-dts@^4.2.1:
+rollup-plugin-dts@^4.2.2:
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/rollup-plugin-dts/-/rollup-plugin-dts-4.2.2.tgz#82876b8784213af29b02cf260b45e404ff835ce1"
   integrity sha512-A3g6Rogyko/PXeKoUlkjxkP++8UDVpgA7C+Tdl77Xj4fgEaIjPSnxRmR53EzvoYy97VMVwLAOcWJudaVAuxneQ==
@@ -9779,7 +9774,7 @@ rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^2.59.0, rollup@^2.70.1:
+rollup@^2.59.0:
   version "2.75.7"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.75.7.tgz#221ff11887ae271e37dcc649ba32ce1590aaa0b9"
   integrity sha512-VSE1iy0eaAYNCxEXaleThdFXqZJ42qDBatAwrfnPlENEZ8erQ+0LYX4JXOLPceWfZpV1VtZwZ3dFCuOZiSyFtQ==
@@ -9790,6 +9785,13 @@ rollup@^2.76.0:
   version "2.76.0"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.76.0.tgz#c69fe03db530ac53fcb9523b3caa0d3c0b9491a1"
   integrity sha512-9jwRIEY1jOzKLj3nsY/yot41r19ITdQrhs+q3ggNWhr9TQgduHqANvPpS32RNpzGklJu3G1AJfvlZLi/6wFgWA==
+  optionalDependencies:
+    fsevents "~2.3.2"
+
+rollup@^2.77.0:
+  version "2.77.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.77.0.tgz#749eaa5ac09b6baa52acc076bc46613eddfd53f4"
+  integrity sha512-vL8xjY4yOQEw79DvyXLijhnhh+R/O9zpF/LEgkCebZFtb6ELeN9H3/2T0r8+mp+fFTBHZ5qGpOpW2ela2zRt3g==
   optionalDependencies:
     fsevents "~2.3.2"
 
@@ -10806,7 +10808,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typescript@^4.6.3:
+typescript@^4.7.4:
   version "4.7.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.4.tgz#1a88596d1cf47d59507a1bcdfb5b9dfe4d488235"
   integrity sha512-C0WQT0gezHuw6AdY1M2jxUO83Rjf0HP7Sk1DtXj6j1EwkQNZrHAg2XPWlq62oqEhYvONq5pkC2Y9oPljWToLmQ==
@@ -10841,37 +10843,37 @@ unbox-primitive@^1.0.2:
     has-symbols "^1.0.3"
     which-boxed-primitive "^1.0.2"
 
-unbuild@0.7.4:
-  version "0.7.4"
-  resolved "https://registry.yarnpkg.com/unbuild/-/unbuild-0.7.4.tgz#e85591a75f6260d2f2a468394d537f3e60ebea66"
-  integrity sha512-gJvfMw4h5Q7xieMCeW/d3wtNKZDpFyDR9651s8kL+AGp95sMNhAFRLxy24AUKC3b5EQbB74vaDoU5R+XwsZC6A==
+unbuild@0.7.6:
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/unbuild/-/unbuild-0.7.6.tgz#fdf5a812f5ed44066b375d58f72759872c5f57bf"
+  integrity sha512-W6pFPS6/ewlEV5uWbNgfo0i2LbVBsue5GKlOkCo6ozIrInOBEgq4s3HCUB5eZSw6Ty2iwF8dKM65pZX7QGZJ0g==
   dependencies:
     "@rollup/plugin-alias" "^3.1.9"
-    "@rollup/plugin-commonjs" "^21.0.3"
+    "@rollup/plugin-commonjs" "^22.0.1"
     "@rollup/plugin-json" "^4.1.0"
-    "@rollup/plugin-node-resolve" "^13.2.0"
+    "@rollup/plugin-node-resolve" "^13.3.0"
     "@rollup/plugin-replace" "^4.0.0"
-    "@rollup/pluginutils" "^4.2.0"
+    "@rollup/pluginutils" "^4.2.1"
     chalk "^5.0.1"
     consola "^2.15.3"
     defu "^6.0.0"
-    esbuild "^0.14.36"
+    esbuild "^0.14.49"
     hookable "^5.1.1"
-    jiti "^1.13.0"
-    magic-string "^0.26.1"
+    jiti "^1.14.0"
+    magic-string "^0.26.2"
     mkdirp "^1.0.4"
-    mkdist "^0.3.10"
-    mlly "^0.5.2"
+    mkdist "^0.3.13"
+    mlly "^0.5.4"
     mri "^1.2.0"
-    pathe "^0.2.0"
-    pkg-types "^0.3.2"
+    pathe "^0.3.2"
+    pkg-types "^0.3.3"
     pretty-bytes "^6.0.0"
     rimraf "^3.0.2"
-    rollup "^2.70.1"
-    rollup-plugin-dts "^4.2.1"
+    rollup "^2.77.0"
+    rollup-plugin-dts "^4.2.2"
     rollup-plugin-esbuild "^4.9.1"
     scule "^0.2.1"
-    typescript "^4.6.3"
+    typescript "^4.7.4"
     untyped "^0.4.4"
 
 unctx@^1.1.4:
