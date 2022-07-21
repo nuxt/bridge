@@ -138,7 +138,7 @@ function mergeProperty (storeModule, moduleData, property) {
 export const clientConfigTemplate = {
   filename: 'nitro.client.mjs',
   getContents: () => `
-export const useRuntimeConfig = () => window?.__NUXT__?.config || {}
+export const useRuntimeConfig = () => window && window.__NUXT__ && window.__NUXT__.config || {}
 `
 }
 
