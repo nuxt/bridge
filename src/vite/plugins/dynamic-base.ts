@@ -21,7 +21,7 @@ export const RelativeAssetPlugin = function (): Plugin {
             asset.code = asset.code.replace(
               new RegExp(`(?<=innerHTML=)${delimiter}([^${delimiter}]*)\\/__NUXT_BASE__\\/([^${delimiter}]*)${delimiter}`, 'g'),
               /* eslint-disable-next-line no-template-curly-in-string */
-              '`$1${(window?.__NUXT__?.config.app.cdnURL || window?.__NUXT__?.config.app.baseURL) + window?.__NUXT__?.config.app.buildAssetsDir.slice(1)}$2`'
+              '`$1${window && window.__NUXT__ && (window.__NUXT__.config.app.cdnURL || window.__NUXT__.config.app.baseURL) + window.__NUXT__.config.app.buildAssetsDir.slice(1)}$2`'
             )
           }
         }
