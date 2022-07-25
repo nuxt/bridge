@@ -6,7 +6,9 @@ Bridge is a forward-compatibility layer that allows you to experience many of th
 
 Using Nuxt Bridge, you can make sure your project is (almost) ready for Nuxt 3 and have the best developer experience without needing a major rewrite or risk breaking changes.
 
-⚠️ **Note:** Nuxt Bridge provides identical features to Nuxt 3 ([Nuxt 3 docs](https://v3.nuxtjs.org/guide/features/views)) but there are some limitations, notably that `useAsyncData` and `useFetch` composables are not available. Please read the rest of this page for details.
+⚠️ **Note:** Nuxt Bridge provides identical features to Nuxt 3 ([Nuxt 3 docs](https://v3.nuxtjs.org/guide/features/views)) but there are some limitations, notably that `useAsyncData` and `useFetch` composables are not available. Please read the rest of this page for details. 
+
+⚠️ **Note:** Nuxt Bridge don't plan support internet explorer. The least base line for bridge is browsers listed in https://caniuse.com/es6-module-dynamic-import.
 
 🌱 **Note:** If you're starting a fresh Nuxt project, please skip this module and directly go to the [Nuxt 3 Installation](https://v3.nuxtjs.org/getting-started/quick-start).
 
