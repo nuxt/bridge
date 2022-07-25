@@ -1,15 +1,22 @@
 import Vue from 'vue'
 import { createHooks } from 'hookable'
-import { def } from './def'
 import { callWithNuxt, setNuxtAppInstance } from '#app'
 
 // Reshape payload to match key `useLazyAsyncData` expects
 function proxiedState (state) {
   state._asyncData = state._asyncData || {}
   state._errors = state._errors || {}
-  def(state, 'data', state._asyncData)
-  def(state, '_data', state.state)
-  return state
+  return new Proxy(state, {
+    get (target, prop) {
+      if (prop === 'data') {
+        return target._asyncData
+      }
+      if (prop === '_data') {
+        return target.state
+      }
+      return Reflect.get(target, prop)
+    }
+  })
 }
 
 const runOnceWith = (obj, fn) => {
@@ -89,8 +96,16 @@ export default async (ctx, inject) => {
 
   ctx.app.mounted.push(() => { nuxtApp.isHydrating = false })
 
-  def(nuxtApp, '$', target.nuxt2Context[prop] || target.vue2App?.[prop])
-  setNuxtAppInstance(nuxtApp)
+  const proxiedApp = new Proxy(nuxtApp, {
+    get (target, prop) {
+      if (prop[0] === '$') {
+        return target.nuxt2Context[prop] || target.vue2App?.[prop]
+      }
+      return Reflect.get(target, prop)
+    }
+  })
+
+  setNuxtAppInstance(proxiedApp)
 
   if (process.client) {
     window.onNuxtReady(() => {
@@ -98,5 +113,5 @@ export default async (ctx, inject) => {
     })
   }
 
-  inject('_nuxtApp', nuxtApp)
+  inject('_nuxtApp', proxiedApp)
 }
