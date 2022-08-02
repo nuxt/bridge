@@ -20,7 +20,7 @@ export interface ViteOptions extends Omit<InlineConfig, 'build'> {
   /**
    * Options for @vitejs/plugin-legacy
    *
-   * @see https://github.com/vitejs/vite-plugin-vue2
+   * @see https://github.com/vitejs/vite/tree/main/packages/plugin-legacy
    */
   legacy?: LegacyViteOptions
 
