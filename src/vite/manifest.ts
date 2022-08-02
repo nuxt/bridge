@@ -62,10 +62,10 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
   const clientImports = initialJs.filter(id => id !== polyfillName)
   const clientEntryCode = [
     polyfill,
-    'var appConfig = window?.__NUXT__?.config.app || {}',
+    'var appConfig = window && window.__NUXT__ && window.__NUXT__.config.app || {}',
     'var publicBase = appConfig.cdnURL || appConfig.baseURL || "/"',
     `var imports = ${JSON.stringify(clientImports)};`,
-    'imports.reduce((p, id) => p.then(() => System.import(publicBase + appConfig.buildAssetsDir.slice(1) + id)), Promise.resolve())'
+    'imports.reduce(function(p, id){return p.then(function(){return System.import(publicBase + appConfig.buildAssetsDir.slice(1) + id)})}, Promise.resolve())'
   ].join('\n')
   const clientEntryName = 'entry-legacy.' + hash(clientEntryCode) + '.js'
 
