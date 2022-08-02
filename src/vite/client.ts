@@ -40,7 +40,7 @@ export async function buildClient (ctx: ViteBuildContext) {
     plugins: [
       jsxPlugin(),
       createVuePlugin(ctx.config.vue),
-      PluginLegacy(),
+      PluginLegacy(ctx.config.legacy),
       RelativeAssetPlugin(),
       devStyleSSRPlugin({
         rootDir: ctx.nuxt.options.rootDir,
