@@ -6,6 +6,8 @@
 
 <script>
 export default {
-  props: ['error']
+  props: {
+    error: Error
+  }
 }
 </script>

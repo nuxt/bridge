@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue, { version } from 'vue'
 import { createHooks } from 'hookable'
 import { callWithNuxt, setNuxtAppInstance } from '#app'
 
@@ -43,7 +43,7 @@ export default async (ctx, inject) => {
       use (vuePlugin) {
         runOnceWith(vuePlugin, () => vuePlugin.install(this))
       },
-      version: Vue.version
+      version
     },
     provide: inject,
     globalName: 'nuxt',
