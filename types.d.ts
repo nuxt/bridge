@@ -19,9 +19,8 @@ export interface BridgeConfig {
   meta: boolean | null
 }
 
-// TODO: Also inherit from @nuxt/types.NuxtConfig for legacy type compat
 export interface NuxtConfig extends _NuxtConfig {
-  head?: _NuxtConfig['head'] | MetaInfo
+  head?: _NuxtConfig['head'] | MetaInfo | (() => MetaInfo)
 }
 
 declare module '@nuxt/schema' {
