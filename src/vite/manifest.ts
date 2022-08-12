@@ -1,7 +1,9 @@
-import { resolve } from 'pathe'
+import { join, resolve } from 'pathe'
 import fse from 'fs-extra'
 import { Manifest as ViteManifest } from 'vite'
 import { normalizeViteManifest, Manifest, ResourceMeta } from 'vue-bundle-renderer'
+import { withoutLeadingSlash, withTrailingSlash } from 'ufo'
+import escapeRE from 'escape-string-regexp'
 import { hash } from './utils'
 import { ViteBuildContext } from './types'
 
@@ -47,11 +49,26 @@ export async function prepareManifests (ctx: ViteBuildContext) {
 export async function generateBuildManifest (ctx: ViteBuildContext) {
   const rDist = (...args: string[]): string => resolve(ctx.nuxt.options.buildDir, 'dist', ...args)
 
-  const viteClientManifest: ViteManifest = await fse.readJSON(rDist('client/manifest.json'))
+  const clientManifest: ViteManifest = await fse.readJSON(rDist('client/manifest.json'))
+
+  // Remove build assets directory from manifest
+  const buildAssetsDir = withTrailingSlash(withoutLeadingSlash(ctx.nuxt.options.app.buildAssetsDir))
+  const BASE_RE = new RegExp(`^${escapeRE(buildAssetsDir)}`)
+
+  for (const key in clientManifest) {
+    if (clientManifest[key].file) {
+      clientManifest[key].file = clientManifest[key].file.replace(BASE_RE, '')
+    }
+    for (const item of ['css', 'assets']) {
+      if (clientManifest[key][item]) {
+        clientManifest[key][item] = clientManifest[key][item].map(i => i.replace(BASE_RE, ''))
+      }
+    }
+  }
 
   // Search for polyfill file, we don't include it in the client entry
-  const polyfillName = Object.values(viteClientManifest).find(entry => entry.file.startsWith('polyfills-legacy.'))?.file
-  const polyfill = await fse.readFile(rDist('client/' + polyfillName), 'utf-8')
+  const polyfillName = Object.values(clientManifest).find(entry => entry.file.startsWith('polyfills-legacy.'))?.file
+  const polyfill = await fse.readFile(rDist('client', buildAssetsDir, polyfillName), 'utf-8')
 
   const clientImports = new Set<string>()
   const clientEntry: Partial<Record<keyof ResourceMeta, Set<string>>> = {
@@ -60,16 +77,16 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
     dynamicImports: new Set()
   }
 
-  for (const entry in viteClientManifest) {
-    if (!viteClientManifest[entry].file.startsWith('polyfills-legacy')) {
-      clientImports.add(viteClientManifest[entry].file)
+  for (const entry in clientManifest) {
+    if (!clientManifest[entry].file.startsWith('polyfills-legacy')) {
+      clientImports.add(clientManifest[entry].file)
       for (const key of ['css', 'assets', 'dynamicImports']) {
-        for (const file of viteClientManifest[entry][key] || []) {
+        for (const file of clientManifest[entry][key] || []) {
           clientEntry[key].add(file)
         }
       }
     }
-    delete viteClientManifest[entry].isEntry
+    delete clientManifest[entry].isEntry
   }
 
   // @vitejs/plugin-legacy uses SystemJS which need to call `System.import` to load modules
@@ -82,7 +99,7 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
   ].join('\n')
   const clientEntryName = 'entry-legacy.' + hash(clientEntryCode) + '.js'
 
-  await fse.writeFile(rDist('client', clientEntryName), clientEntryCode, 'utf-8')
+  await fse.writeFile(rDist('client', buildAssetsDir, clientEntryName), clientEntryCode, 'utf-8')
 
   const manifest = normalizeViteManifest({
     [clientEntryName]: {
@@ -93,7 +110,7 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
       assets: [...clientEntry.assets],
       dynamicImports: [...clientEntry.dynamicImports]
     },
-    ...viteClientManifest
+    ...clientManifest
   })
 
   await writeClientManifest(manifest, ctx.nuxt.options.buildDir)

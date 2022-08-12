@@ -87,7 +87,7 @@ export async function setupNitroBridge () {
     },
     publicAssets: [
       {
-        baseURL: nuxt.options.app.buildAssetsDir,
+        baseURL: (nuxt.options as any).bridge.vite ? '/' : nuxt.options.app.buildAssetsDir,
         dir: resolve(nuxt.options.buildDir, 'dist/client')
       },
       ...nuxt.options._layers

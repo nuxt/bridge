@@ -6,6 +6,7 @@ import type { RuntimeConfig } from '@nuxt/schema'
 import { sendRedirect } from 'h3'
 import { defu } from 'defu'
 import { useRouter } from 'vue-router/composables'
+import { joinURL } from 'ufo'
 import { useNuxtApp } from './app'
 
 export { useLazyAsyncData, refreshNuxtData } from './asyncData'
@@ -182,7 +183,7 @@ export const navigateTo = (to: RawLocation, options: NavigateToOptions = {}): Pr
   if (process.server && useNuxtApp().ssrContext) {
     // Server-side redirection using h3 res from ssrContext
     const res = useNuxtApp().ssrContext?.res
-    const redirectLocation = router.resolve(to).route.fullPath
+    const redirectLocation = joinURL(useRuntimeConfig().app.baseURL, router.resolve(to).fullPath || '/')
     return sendRedirect(res, redirectLocation)
   }
   // Client-side redirection using vue-router

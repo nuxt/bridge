@@ -18,3 +18,6 @@ export function publicAssetsURL (...path: string[]): string {
   const publicBase = useRuntimeConfig().app.cdnURL || useRuntimeConfig().app.baseURL
   return path.length ? joinURL(publicBase, ...path) : publicBase
 }
+
+globalThis.__publicAssetsURL = publicAssetsURL
+globalThis.__buildAssetsURL = buildAssetsURL

@@ -1,14 +1,14 @@
-import type { InlineConfig, SSROptions } from 'vite'
+import type { InlineConfig, ViteDevServer } from 'vite'
 import type { Options as VueViteOptions } from '@vitejs/plugin-vue2'
 
 export interface Nuxt {
-  options: any;
-  resolver: any;
-  hook: Function;
-  callHook: Function;
+  options: any
+  resolver: any
+  hook: Function
+  callHook: Function
 }
 
-export interface ViteOptions extends Omit<InlineConfig, 'build'> {
+export interface ViteOptions extends InlineConfig {
   /**
    * Options for @vitejs/plugin-vue2
    *
@@ -16,17 +16,19 @@ export interface ViteOptions extends Omit<InlineConfig, 'build'> {
    */
   vue?: VueViteOptions
 
-  ssr?: boolean | SSROptions
-
-  build?: boolean | InlineConfig['build']
-
   experimentWarning?: boolean
 }
 
 export interface ViteBuildContext {
-  nuxt: Nuxt;
+  nuxt: Nuxt
+  config: ViteOptions
+  clientServer?: ViteDevServer
+  ssrServer?: ViteDevServer
   builder: {
-    plugins: { name: string; mode?: 'client' | 'server'; src: string; }[];
-  };
-  config: ViteOptions;
+    plugins: Array<{
+      name: string
+      src: string
+      mode?: 'client' | 'server'
+    }>
+  }
 }
