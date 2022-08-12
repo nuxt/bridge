@@ -60,7 +60,7 @@ export async function setupNitroBridge () {
   // Resolve config
   const _nitroConfig = (nuxt.options as any).nitro || {} as NitroConfig
   const routes = Array.isArray(nuxt.options.generate.routes) ? nuxt.options.generate.routes : []
-  const nitroConfig: NitroConfig = defu(_nitroConfig, <NitroConfig>{
+  const nitroConfig: NitroConfig = defu(_nitroConfig, <NitroConfig> {
     rootDir: resolve(nuxt.options.rootDir),
     srcDir: resolve(nuxt.options.srcDir, 'server'),
     dev: nuxt.options.dev,
@@ -142,7 +142,7 @@ export async function setupNitroBridge () {
   // Let nitro handle #build for windows path normalization
   delete nitroConfig.alias['#build']
 
-  if (nuxt.options.generate.routes instanceof Function) {
+  if (nuxt.options.generate.routes instanceof Function && !nuxt.options.dev && !nuxt.options._prepare) {
     console.warn('It is recommended to migrate the `generate.routes` function to the `nitro:config` hook instead. See https://github.com/nuxt/bridge/pull/475.')
     nitroConfig.prerender.routes.push(...await nuxt.options.generate.routes() || [])
   }
