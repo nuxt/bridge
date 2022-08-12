@@ -3,10 +3,6 @@
   "extends": [
     "@nuxtjs"
   ],
-  "ignoreDeps": [
-    "vitest",
-    "vite"
-  ],
   "packageRules": [
     {
       "matchPackageNames": ["vue"],
