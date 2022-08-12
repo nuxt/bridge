@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
 import { setup, $fetch, fetch, startServer } from '@nuxt/test-utils'
+import { expectNoClientErrors } from './utils'
 
 await setup({
   rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
@@ -10,6 +11,7 @@ await setup({
 describe('pages', () => {
   it('render hello world', async () => {
     expect(await $fetch('/')).to.contain('Hello Vue 2!')
+    await expectNoClientErrors('/')
   })
   it('uses server Vue build', async () => {
     expect(await $fetch('/')).to.contain('Rendered on server: true')
@@ -20,6 +22,7 @@ describe('navigate', () => {
   it('should redirect to index with navigateTo', async () => {
     const html = await $fetch('/navigate-to/')
     expect(html).toContain('Hello Vue 2!')
+    await expectNoClientErrors('/navigate-to/')
   })
 })
 
@@ -27,6 +30,7 @@ describe('legacy capi', () => {
   it('should continue to work', async () => {
     const html = await $fetch('/legacy-capi')
     expect(html).toMatch(/([\s\S]*✅){11}/)
+    await expectNoClientErrors('/legacy-capi')
   })
 })
 
@@ -52,6 +56,7 @@ describe('errors', () => {
   it('should render a HTML error page', async () => {
     const res = await fetch('/error')
     expect(await res.text()).toContain('This is a custom error')
+    await expectNoClientErrors('/error')
   })
 })
 
@@ -72,6 +77,7 @@ describe('dynamic paths', () => {
       const url = match[2]
       expect(url.startsWith('/_nuxt/') || url === '/public.svg').toBeTruthy()
     }
+    await expectNoClientErrors('/assets')
   })
 
   it('adds relative paths to CSS', async () => {
@@ -100,6 +106,7 @@ describe('dynamic paths', () => {
       const url = match[2]
       expect(url.startsWith('/foo/_other/') || url === '/foo/public.svg').toBeTruthy()
     }
+    await expectNoClientErrors('/foo/assets')
   })
 
   it('should allow setting CDN URL', async () => {
@@ -115,5 +122,6 @@ describe('dynamic paths', () => {
         url.startsWith('https://example.com/_cdn/') || url === 'https://example.com/public.svg'
       ).toBeTruthy()
     }
+    await expectNoClientErrors('/foo/assets')
   })
 })
