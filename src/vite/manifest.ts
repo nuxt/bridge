@@ -1,6 +1,8 @@
 import { resolve } from 'pathe'
 import fse from 'fs-extra'
-import { uniq, isJS, isCSS, hash } from './utils'
+import { Manifest as ViteManifest } from 'vite'
+import { normalizeViteManifest, Manifest, ResourceMeta } from 'vue-bundle-renderer'
+import { hash } from './utils'
 import { ViteBuildContext } from './types'
 
 const DEFAULT_APP_TEMPLATE = `
@@ -42,131 +44,98 @@ export async function prepareManifests (ctx: ViteBuildContext) {
   }
 }
 
-// convert vite's manifest to webpack style
 export async function generateBuildManifest (ctx: ViteBuildContext) {
   const rDist = (...args: string[]): string => resolve(ctx.nuxt.options.buildDir, 'dist', ...args)
 
-  const viteClientManifest = await fse.readJSON(rDist('client/manifest.json'))
-  const clientEntries = Object.entries(viteClientManifest)
-
-  const asyncEntries = uniq(clientEntries.filter((id: any) => id[1].isDynamicEntry).flatMap(getModuleIds)).filter(Boolean)
-  const initialEntries = uniq(clientEntries.filter((id: any) => !id[1].isDynamicEntry).flatMap(getModuleIds)).filter(Boolean)
-  const initialJs = initialEntries.filter(isJS)
-  const initialAssets = initialEntries.filter(isCSS)
+  const viteClientManifest: ViteManifest = await fse.readJSON(rDist('client/manifest.json'))
 
   // Search for polyfill file, we don't include it in the client entry
-  const polyfillName = initialEntries.find(id => id.startsWith('polyfills-legacy.'))
+  const polyfillName = Object.values(viteClientManifest).find(entry => entry.file.startsWith('polyfills-legacy.'))?.file
   const polyfill = await fse.readFile(rDist('client/' + polyfillName), 'utf-8')
 
+  const clientImports = new Set<string>()
+  const clientEntry: Partial<Record<keyof ResourceMeta, Set<string>>> = {
+    assets: new Set(),
+    css: new Set(),
+    dynamicImports: new Set()
+  }
+
+  for (const entry in viteClientManifest) {
+    if (!viteClientManifest[entry].file.startsWith('polyfills-legacy')) {
+      clientImports.add(viteClientManifest[entry].file)
+      for (const key of ['css', 'assets', 'dynamicImports']) {
+        for (const file of viteClientManifest[entry][key] || []) {
+          clientEntry[key].add(file)
+        }
+      }
+    }
+    delete viteClientManifest[entry].isEntry
+  }
+
   // @vitejs/plugin-legacy uses SystemJS which need to call `System.import` to load modules
-  const clientImports = initialJs.filter(id => id !== polyfillName)
   const clientEntryCode = [
     polyfill,
     'var appConfig = window && window.__NUXT__ && window.__NUXT__.config.app || {}',
     'var publicBase = appConfig.cdnURL || appConfig.baseURL || "/"',
-    `var imports = ${JSON.stringify(clientImports)};`,
+    `var imports = ${JSON.stringify([...clientImports])};`,
     'imports.reduce(function(p, id){return p.then(function(){return System.import(publicBase + appConfig.buildAssetsDir.slice(1) + id)})}, Promise.resolve())'
   ].join('\n')
   const clientEntryName = 'entry-legacy.' + hash(clientEntryCode) + '.js'
 
-  const clientManifest = {
-    // This publicPath will be ignored by Nitro and computed dynamically
-    publicPath: ctx.nuxt.options.app.buildAssetsDir,
-    all: uniq([
-      clientEntryName,
-      ...clientEntries.flatMap(getModuleIds)
-    ]).filter(Boolean),
-    initial: [
-      clientEntryName,
-      ...initialAssets
-    ].filter(Boolean),
-    async: [
-      // We move initial entries to the client entry
-      ...initialJs,
-      ...asyncEntries
-    ].filter(Boolean),
-    modules: {},
-    assetsMapping: {}
-  }
-
-  const serverManifest = {
-    entry: 'server.js',
-    files: {
-      'server.js': 'server.js',
-      ...Object.fromEntries(clientEntries.map(([id, entry]) => [id, (entry as any).file]))
-    },
-    maps: {}
-  }
-
   await fse.writeFile(rDist('client', clientEntryName), clientEntryCode, 'utf-8')
 
-  await writeClientManifest(clientManifest, ctx.nuxt.options.buildDir)
-  await writeServerManifest(serverManifest, ctx.nuxt.options.buildDir)
+  const manifest = normalizeViteManifest({
+    [clientEntryName]: {
+      file: clientEntryName,
+      module: true,
+      isEntry: true,
+      css: [...clientEntry.css],
+      assets: [...clientEntry.assets],
+      dynamicImports: [...clientEntry.dynamicImports]
+    },
+    ...viteClientManifest
+  })
+
+  await writeClientManifest(manifest, ctx.nuxt.options.buildDir)
 
   // Remove SSR manifest from public client dir
   await fse.remove(rDist('client/manifest.json'))
-  await fse.remove(rDist('client/ssr-manifest.json'))
 }
 
 // stub manifest on dev
 export async function stubManifest (ctx: ViteBuildContext) {
-  const clientManifest = {
-    publicPath: '',
-    all: [
-      'empty.js'
-    ],
-    initial: [
-      'empty.js'
-    ],
-    async: [],
-    modules: {},
-    assetsMapping: {}
+  const clientManifest: Manifest = {
+    'empty.js': {
+      isEntry: true,
+      file: 'empty.js'
+    }
   }
-  const serverManifest = {
-    entry: 'server.js',
-    files: {
-      'server.js': 'server.js'
+
+  await writeClientManifest(normalizeViteManifest(clientManifest), ctx.nuxt.options.buildDir)
+}
+
+export async function generateDevSSRManifest (ctx: ViteBuildContext, css: string[] = []) {
+  const devClientManifest: Manifest = {
+    '@vite/client': {
+      isEntry: true,
+      file: '@vite/client',
+      css,
+      module: true,
+      resourceType: 'script'
     },
-    maps: {}
+    'entry.mjs': {
+      isEntry: true,
+      file: 'entry.mjs',
+      module: true,
+      resourceType: 'script'
+    }
   }
 
-  await writeClientManifest(clientManifest, ctx.nuxt.options.buildDir)
-  await writeServerManifest(serverManifest, ctx.nuxt.options.buildDir)
+  await writeClientManifest(normalizeViteManifest(devClientManifest), ctx.nuxt.options.buildDir)
 }
 
-export async function generateDevSSRManifest (ctx: ViteBuildContext, extraEntries: string[] = []) {
-  const entires = [
-    '@vite/client',
-    'entry.mjs',
-    ...extraEntries
-  ]
-
-  const clientManifest = {
-    publicPath: '',
-    all: entires,
-    initial: entires,
-    async: [],
-    modules: {},
-    assetsMapping: {}
-  }
-
-  await writeClientManifest(clientManifest, ctx.nuxt.options.buildDir)
-}
-
-async function writeServerManifest (serverManifest: any, buildDir: string) {
-  const serverManifestJSON = JSON.stringify(serverManifest, null, 2)
-  await fse.writeFile(resolve(buildDir, 'dist/server/server.manifest.json'), serverManifestJSON, 'utf-8')
-  await fse.writeFile(resolve(buildDir, 'dist/server/server.manifest.mjs'), `export default ${serverManifestJSON}`, 'utf-8')
-}
-
-async function writeClientManifest (clientManifest: any, buildDir: string) {
+export async function writeClientManifest (clientManifest: any, buildDir: string) {
   const clientManifestJSON = JSON.stringify(clientManifest, null, 2)
   await fse.writeFile(resolve(buildDir, 'dist/server/client.manifest.json'), clientManifestJSON, 'utf-8')
   await fse.writeFile(resolve(buildDir, 'dist/server/client.manifest.mjs'), `export default ${clientManifestJSON}`, 'utf-8')
-}
-
-function getModuleIds ([, value]: [string, any]) {
-  if (!value) { return [] }
-  // Only include legacy and css ids
-  return [value.file, ...value.css || []].filter(id => isCSS(id) || id.match(/-legacy\./))
 }

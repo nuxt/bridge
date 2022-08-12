@@ -11,6 +11,7 @@ import autoImports from './auto-imports/module'
 import { setupTypescript } from './typescript'
 import { setupMeta } from './meta'
 import { setupTranspile } from './transpile'
+import { generateWebpackBuildManifest } from './webpack/manifest'
 
 export default defineNuxtModule({
   meta: {
@@ -63,6 +64,9 @@ export default defineNuxtModule({
     } else {
       // with webpack, we need to transpile vue to handle the default/named exports in Vue 2.7
       nuxt.options.build.transpile.push('vue')
+      nuxt.hook('build:done', async () => {
+        await generateWebpackBuildManifest()
+      })
     }
     if (opts.postcss8) {
       const _require = createRequire(import.meta.url)

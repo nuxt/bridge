@@ -1,6 +1,6 @@
-import { createRenderer } from 'vue-bundle-renderer'
-import type { SSRContext } from 'vue-bundle-renderer'
-import { CompatibilityEvent, eventHandler, useQuery } from 'h3'
+import { createRenderer } from 'vue-bundle-renderer/runtime'
+import type { SSRContext } from 'vue-bundle-renderer/runtime'
+import { CompatibilityEvent, eventHandler, getQuery } from 'h3'
 import devalue from '@nuxt/devalue'
 import { RuntimeConfig } from '@nuxt/schema'
 // @ts-ignore
@@ -39,70 +39,59 @@ interface RenderResult {
     bodyAttrs: string,
     headAttrs: string,
     headTags: string,
-    bodyScriptsPrepend : string,
-    bodyScripts : string
+    bodyScriptsPrepend: string,
+    bodyScripts: string
   }>
 }
 
 // @ts-ignore
-const getClientManifest = () => import('#build/dist/server/client.manifest.mjs').then(r => r.default || r)
+const getClientManifest: () => Promise<Manifest> = () => import('#build/dist/server/client.manifest.mjs')
+  .then(r => r.default || r)
+  .then(r => typeof r === 'function' ? r() : r)
 
 // @ts-ignore
-const getServerEntry = () => process.env.NUXT_NO_SSR ? Promise.resolve(null) : import('#build/dist/server/server.mjs').then(r => r.default || r)
+const getServerEntry = () => import('#build/dist/server/server.mjs').then(r => r.default || r)
 
 const getSSRRenderer = lazyCachedFunction(async () => {
   // Load client manifest
-  const clientManifest = await getClientManifest()
-  if (!clientManifest) { throw new Error('client.manifest is not available') }
+  const manifest = await getClientManifest()
+  if (!manifest) { throw new Error('client.manifest is not available') }
 
   // Load server bundle
   const createSSRApp = await getServerEntry()
   if (!createSSRApp) { throw new Error('Server bundle is not available') }
 
   return createRenderer(createSSRApp, {
-    clientManifest,
+    manifest,
     renderToString,
-    publicPath: buildAssetsURL()
+    buildAssetsURL
   })
 })
 
 // -- SPA Renderer --
 const getSPARenderer = lazyCachedFunction(async () => {
-  const clientManifest = await getClientManifest()
+  const manifest = await getClientManifest()
+
+  const options = {
+    manifest,
+    renderToString: () => '<div id="__nuxt"></div>',
+    buildAssetsURL
+  }
+  // Create SPA renderer and cache the result for all requests
+  const renderer = createRenderer(() => () => { }, options)
+  const result = await renderer.renderToString({})
+
   const renderToString = (ssrContext: NuxtSSRContext) => {
     const config = useRuntimeConfig()
-    ssrContext.nuxt = {
+    ssrContext.payload = {
       serverRendered: false,
       config: {
         public: config.public,
         app: config.app
       }
     }
-
-    let entryFiles = Object.values(clientManifest).filter((fileValue: any) => fileValue.isEntry)
-    if ('all' in clientManifest && 'initial' in clientManifest) {
-      // Upgrade legacy manifest (also see normalizeClientManifest in vue-bundle-renderer)
-      // https://github.com/nuxt-contrib/vue-bundle-renderer/issues/12
-      entryFiles = clientManifest.initial.map(file => ({ file }))
-    }
-
-    return Promise.resolve({
-      html: '<div id="__nuxt"></div>',
-      renderResourceHints: () => '',
-      renderStyles: () =>
-        entryFiles
-          .flatMap(({ css }) => css)
-          .filter(css => css != null)
-          .map(file => `<link rel="stylesheet" href="${buildAssetsURL(file)}">`)
-          .join(''),
-      renderScripts: () =>
-        entryFiles
-          .map(({ file }) => {
-            const isMJS = !file.endsWith('.js')
-            return `<script ${isMJS ? 'type="module"' : ''} src="${buildAssetsURL(file)}"></script>`
-          })
-          .join('')
-    })
+    ssrContext.renderMeta = ssrContext.renderMeta ?? (() => Promise.resolve({}))
+    return Promise.resolve(result)
   }
 
   return { renderToString }
@@ -110,7 +99,7 @@ const getSPARenderer = lazyCachedFunction(async () => {
 
 export default eventHandler(async (event) => {
   // Whether we're rendering an error page
-  const ssrError = event.req.url?.startsWith('/__nuxt_error') ? useQuery(event) : null
+  const ssrError = event.req.url?.startsWith('/__nuxt_error') ? getQuery(event) : null
   let url = ssrError?.url as string || event.req.url!
 
   // payload.json request detection
@@ -197,7 +186,7 @@ function renderPayload (payload, url) {
   return `__NUXT_JSONP__("${url}", ${devalue(payload)})`
 }
 
-function lazyCachedFunction <T> (fn: () => Promise<T>): () => Promise<T> {
+function lazyCachedFunction<T> (fn: () => Promise<T>): () => Promise<T> {
   let res: Promise<T> | null = null
   return () => {
     if (res === null) {
