@@ -143,7 +143,7 @@ export async function setupNitroBridge () {
   delete nitroConfig.alias['#build']
 
   if (nuxt.options.generate.routes instanceof Function) {
-    console.warn('It is recommended to migrate the `nuxt.generate.routes` function to the `nitro:config` hook instead.')
+    console.warn('It is recommended to migrate the `generate.routes` function to the `nitro:config` hook instead. See https://github.com/nuxt/bridge/pull/475.')
     nitroConfig.prerender.routes.push(...await nuxt.options.generate.routes() || [])
   }
 
@@ -174,7 +174,7 @@ export async function setupNitroBridge () {
       for (const file of publicFiles) {
         try {
           fsExtra.rmSync(join(clientDist, file))
-        } catch {}
+        } catch { }
       }
     }
 
@@ -320,7 +320,7 @@ export async function setupNitroBridge () {
       } else {
         const distDir = resolve(nuxt.options.rootDir, 'dist')
         if (!existsSync(distDir)) {
-          await fsp.symlink(nitro.options.output.publicDir, distDir, 'junction').catch(() => {})
+          await fsp.symlink(nitro.options.output.publicDir, distDir, 'junction').catch(() => { })
         }
       }
     }
