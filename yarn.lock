@@ -1584,10 +1584,10 @@
     "@types/webpack-hot-middleware" "2.25.4"
     sass-loader "10.1.1"
 
-"@nuxt/ui-templates@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@nuxt/ui-templates/-/ui-templates-0.3.1.tgz#10bec8d97d01b45020f4bab4eb0cd8975baf50c1"
-  integrity sha512-lsM/7CRx+75VACv1SGvPaZcOzkAwtCrTa+FjIA/2Nj8y9QAWOdfnf5MBJeE9lbmGvsRndRWHbs2kKIbCavYaNg==
+"@nuxt/ui-templates@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@nuxt/ui-templates/-/ui-templates-0.3.2.tgz#68bbc300a31cd14833f36fa69f6a6218cd8e1a16"
+  integrity sha512-o0KRB0Mna/M5QxqMe+XvlfKczFz3CQMlkEr6Ztyphp+00jq1Ti0AXdq1XAt9hXI3LoZRh4+2vVX331UaIZQQzQ==
 
 "@nuxt/utils@2.15.8":
   version "2.15.8"
