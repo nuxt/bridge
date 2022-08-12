@@ -74,7 +74,7 @@
     "unplugin": "^0.9.0",
     "untyped": "^0.4.5",
     "vite": "^2.9.14",
-    "vue-bundle-renderer": "^0.4.1"
+    "vue-bundle-renderer": "^0.4.2"
   },
   "devDependencies": {
     "@nuxt/bridge": "link:.",

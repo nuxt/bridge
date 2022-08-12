@@ -1258,6 +1258,7 @@
 
 "@nuxt/bridge@link:.":
   version "0.0.0"
+  uid ""
 
 "@nuxt/builder@2.15.8":
   version "2.15.8"
@@ -11129,10 +11130,10 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vue-bundle-renderer@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/vue-bundle-renderer/-/vue-bundle-renderer-0.4.1.tgz#7eae39e7da8e817dc1d0efb17c323e8f1cfce386"
-  integrity sha512-Cg7jkSL4si9uG9QnUWrexMUNHHfnj+0HWuMII1Fh8f3m3Okzm+gkwBjAEhKuxyLuJIV9vrLPF0KHW0fy+O4wnw==
+vue-bundle-renderer@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/vue-bundle-renderer/-/vue-bundle-renderer-0.4.2.tgz#0c84dd673fb0affad5f89fdfe6b1480ecdae5d43"
+  integrity sha512-HwWd/qw3QBQvZXlK7xQbOViCoDzSaodSueao0Yt3VUxReLDt90FAaufXjv2hfpHQKvYCo5Rez8z1zHOEo3fhAg==
   dependencies:
     ufo "^0.8.3"
 
