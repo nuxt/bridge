@@ -7344,10 +7344,10 @@ mkdist@^0.3.13:
     mri "^1.2.0"
     pathe "^0.2.0"
 
-mlly@^0.5.10, mlly@^0.5.2, mlly@^0.5.3, mlly@^0.5.4, mlly@^0.5.5, mlly@^0.5.7:
-  version "0.5.11"
-  resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.5.11.tgz#de560ffbb23e4687194d54ef8977b5578fc88c30"
-  integrity sha512-sfiyMZPbHG0y4I4t2Zj8FI5k89oNmwpEgKkbi9d4V2iNIvNAHQHgQxOeMyW3bS3c5hGEfovXHVbOAG5eVITzOQ==
+mlly@^0.5.10, mlly@^0.5.12, mlly@^0.5.2, mlly@^0.5.3, mlly@^0.5.4, mlly@^0.5.7:
+  version "0.5.12"
+  resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.5.12.tgz#e68de01b871edb488492da368693fd583e5b74ec"
+  integrity sha512-8moXGh6Hfy2Nmys3DDEm4CuxDBk5Y7Lk1jQ4JcwW0djO9b+SCKTpw0enIQeZIuEnPljdxHSGmcbXU9hpIIEYeQ==
   dependencies:
     acorn "^8.8.0"
     pathe "^0.3.4"
@@ -9175,7 +9175,7 @@ postcss@7.x.x, postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.14, postcss@^7.0.17,
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8, postcss@^8.1.10, postcss@^8.2.15, postcss@^8.4.13, postcss@^8.4.14, postcss@^8.4.16:
+postcss@^8, postcss@^8.1.10, postcss@^8.2.15, postcss@^8.4.13, postcss@^8.4.14:
   version "8.4.16"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.16.tgz#33a1d675fac39941f5f445db0de4db2b6e01d43c"
   integrity sha512-ipHE1XBvKzm5xI7hiHCZJCSugxvsdq2mPnsq5+UF+VHCjiBvtDrlxJfMBToWaP9D5XlgNmcFGqoHmUn0EYEaRQ==
@@ -9616,7 +9616,7 @@ resolve-url@^0.2.1:
   resolved "https://registry.yarnpkg.com/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
   integrity sha512-ZuF55hVUQaaczgOIwqWzkEcEidmlD/xl44x1UZnhOXcYuFN2S6+rcxpG+C1N3So0wvNI3DmJICUFfu2SxhBmvg==
 
-resolve@^1.1.7, resolve@^1.10.0, resolve@^1.10.1, resolve@^1.14.2, resolve@^1.17.0, resolve@^1.19.0, resolve@^1.20.0, resolve@^1.22.0, resolve@^1.22.1:
+resolve@^1.1.7, resolve@^1.10.0, resolve@^1.10.1, resolve@^1.14.2, resolve@^1.17.0, resolve@^1.19.0, resolve@^1.20.0, resolve@^1.22.0:
   version "1.22.1"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.22.1.tgz#27cb2ebb53f91abb49470a928bba7558066ac177"
   integrity sha512-nBpuuYuY5jFsli/JIs1oldw6fOQCBioohqWZg/2hiaOybXOft4lonv85uDOKXdf8rhyK159cxU5cDcK/NKk8zw==
@@ -9727,7 +9727,7 @@ rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-"rollup@>=2.75.6 <2.77.0 || ~2.77.0", rollup@^2.59.0, rollup@^2.77.0, rollup@^2.77.3:
+"rollup@>=2.59.0 <2.78.0", rollup@^2.77.0, rollup@^2.77.3:
   version "2.77.3"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.77.3.tgz#8f00418d3a2740036e15deb653bed1a90ee0cc12"
   integrity sha512-/qxNTG7FbmefJWoeeYJFbHehJ2HNWnjkAFRKzWN/45eNBBF/r8lo992CwcJXEzyVxs5FmfId+vTSTQDb+bxA+g==
@@ -11104,27 +11104,15 @@ vendors@^1.0.0:
   resolved "https://registry.yarnpkg.com/vendors/-/vendors-1.0.4.tgz#e2b800a53e7a29b93506c3cf41100d16c4c4ad8e"
   integrity sha512-/juG65kTL4Cy2su4P8HjtkTxk6VmJDiOPBufWniqQ6wknac6jNiXS9vU+hO3wgusiyqWlzTbVHi0dyJqRONg3w==
 
-"vite@^2.9.12 || ^3.0.0-0":
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.6.tgz#08e85ebaa34a3b647cb1365c87675b45f3511be0"
-  integrity sha512-pjfsWIzfUlQME/VAmU6SsjdHkTt6WAHysuqPkHDcjzNu6IGtxDSZ/VfRYOwHaCqX4M3Ivz0kxuSfAPM6gAIX+w==
-  dependencies:
-    esbuild "^0.14.47"
-    postcss "^8.4.16"
-    resolve "^1.22.1"
-    rollup ">=2.75.6 <2.77.0 || ~2.77.0"
-  optionalDependencies:
-    fsevents "~2.3.2"
-
-vite@^2.9.14:
-  version "2.9.14"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.14.tgz#c438324c6594afd1050df3777da981dee988bb1b"
-  integrity sha512-P/UCjSpSMcE54r4mPak55hWAZPlyfS369svib/gpmz8/01L822lMPOJ/RYW6tLCe1RPvMvOsJ17erf55bKp4Hw==
+"vite@^2.9.12 || ^3.0.0-0", vite@^2.9.14:
+  version "2.9.15"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-2.9.15.tgz#2858dd5b2be26aa394a283e62324281892546f0b"
+  integrity sha512-fzMt2jK4vQ3yK56te3Kqpkaeq9DkcZfBbzHwYpobasvgYmP2SoAr6Aic05CsB4CzCZbsDv4sujX3pkEGhLabVQ==
   dependencies:
     esbuild "^0.14.27"
     postcss "^8.4.13"
     resolve "^1.22.0"
-    rollup "^2.59.0"
+    rollup ">=2.59.0 <2.78.0"
   optionalDependencies:
     fsevents "~2.3.2"
 
