@@ -28,7 +28,7 @@ module.exports.defineNuxtConfig = (config = {}) => {
     const { nuxtCtx } = await import('@nuxt/kit')
 
     // Allow using kit composables in all modules
-    if (nuxtCtx.use()) {
+    if (nuxtCtx.tryUse()) {
       nuxtCtx.unset()
     }
     nuxtCtx.set(nuxt)
