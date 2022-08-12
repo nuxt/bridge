@@ -12,8 +12,5 @@ export async function generateWebpackBuildManifest () {
 
   const manifest = normalizeWebpackManifest(webpackManifest)
 
-  // Remove webpack manifest from public client dir
-  await fse.remove(rDist('server/client.manifest.json'))
-
   await writeClientManifest(manifest, nuxt.options.buildDir)
 }

@@ -65,7 +65,9 @@ export default defineNuxtModule({
       // with webpack, we need to transpile vue to handle the default/named exports in Vue 2.7
       nuxt.options.build.transpile.push('vue')
       nuxt.hook('build:done', async () => {
-        await generateWebpackBuildManifest()
+        if (!nuxt.options.dev) {
+          await generateWebpackBuildManifest()
+        }
       })
     }
     if (opts.postcss8) {
