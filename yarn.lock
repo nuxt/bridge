@@ -7442,10 +7442,10 @@ neo-async@^2.5.0, neo-async@^2.6.1, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nitropack@^0.4.22:
-  version "0.4.22"
-  resolved "https://registry.yarnpkg.com/nitropack/-/nitropack-0.4.22.tgz#0eb54fe4b8bda3ed2d7a74b959f44c1f3cedc603"
-  integrity sha512-FGOAsXPzJ//Q+wJuhCcz4OjU3Wx2m4O8Pgg8BBboed4fecizh4QNKcwi7vXLN0T1WqDxatnzEYT55xmaeeXySQ==
+nitropack@^0.4.24:
+  version "0.4.24"
+  resolved "https://registry.yarnpkg.com/nitropack/-/nitropack-0.4.24.tgz#f54d4cc7337a6ad997de2f2a1528cbdf062205c7"
+  integrity sha512-yL25hsQKU63IyEPxv3CFCtE2TPbIBP1YEpS79D6K2w1YhuKf3NEOkSWtSySnlW74jBG2unFq8u+1RXVlsrYNRg==
   dependencies:
     "@cloudflare/kv-asset-handler" "^0.2.0"
     "@netlify/functions" "^1.0.0"
@@ -7482,7 +7482,7 @@ nitropack@^0.4.22:
     klona "^2.0.5"
     listhen "^0.2.15"
     mime "^3.0.0"
-    mlly "^0.5.10"
+    mlly "^0.5.12"
     mri "^1.2.0"
     node-fetch-native "^0.1.4"
     ohash "^0.1.5"
@@ -7502,7 +7502,7 @@ nitropack@^0.4.22:
     source-map-support "^0.5.21"
     std-env "^3.1.1"
     ufo "^0.8.5"
-    unenv "^0.5.3"
+    unenv "^0.5.4"
     unimport "^0.6.7"
     unstorage "^0.5.6"
 
@@ -10820,7 +10820,7 @@ undici@^5.2.0:
   resolved "https://registry.yarnpkg.com/undici/-/undici-5.8.2.tgz#071fc8a6a5d24db0ad510ad442f607d9b09d5eec"
   integrity sha512-3KLq3pXMS0Y4IELV045fTxqz04Nk9Ms7yfBBHum3yxsTR4XNn+ZCaUbf/mWitgYDAhsplQ0B1G4S5D345lMO3A==
 
-unenv@^0.5.3:
+unenv@^0.5.4:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/unenv/-/unenv-0.5.4.tgz#2f6fa717e544dac1c14c3ed53773a072be08156b"
   integrity sha512-TsGsA7/kchJSrzGhnSXwm704qI5/yZ8gF1OnGtoHl778AfTYI/jRL6zQeQJn89VeMHZ+o9AvueSPpfrrSpv6Vg==
