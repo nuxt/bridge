@@ -4,7 +4,6 @@
     "@nuxtjs"
   ],
   "ignoreDeps": [
-    "vue-bundle-renderer",
     "vite"
   ],
   "packageRules": [
