@@ -1,4 +1,4 @@
-import { join, resolve } from 'pathe'
+import { resolve } from 'pathe'
 import fse from 'fs-extra'
 import { Manifest as ViteManifest } from 'vite'
 import { normalizeViteManifest, Manifest, ResourceMeta } from 'vue-bundle-renderer'
