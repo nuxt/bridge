@@ -66,9 +66,6 @@ jobs:
   test-fixtures:
     runs-on: ${{ matrix.os }}
 
-    needs:
-      - build
-
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -83,13 +80,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn --immutable
-
-      # TODO: address conflict between jiti + @vitejs/plugin-vue
-      - name: Restore dist cache
-        uses: actions/cache@v3
-        with:
-          path: packages/*/dist
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-${{ github.sha }}
 
       - name: Test (fixtures)
         run: yarn test:fixtures
@@ -102,9 +92,6 @@ jobs:
   test-fixtures-webpack:
     runs-on: ${{ matrix.os }}
 
-    needs:
-      - build
-
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -119,13 +106,6 @@ jobs:
 
       - name: Install dependencies
         run: yarn --immutable
-
-      # TODO: address conflict between jiti babel transform + @vitejs/plugin-vue
-      - name: Restore dist cache
-        uses: actions/cache@v3
-        with:
-          path: packages/*/dist
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-${{ github.sha }}
 
       - name: Test (fixtures)
         run: yarn test:fixtures:webpack
