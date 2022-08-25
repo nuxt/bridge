@@ -1277,7 +1277,6 @@
 
 "@nuxt/bridge@link:.":
   version "0.0.0"
-  uid ""
 
 "@nuxt/builder@2.15.8":
   version "2.15.8"
@@ -2417,6 +2416,15 @@
     "@babel/plugin-syntax-jsx" "^7.2.0"
     "@vue/babel-plugin-transform-vue-jsx" "^1.2.1"
     camelcase "^5.0.0"
+
+"@vue/compiler-sfc@2.7.10":
+  version "2.7.10"
+  resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-sfc-2.7.10.tgz#3fe08e780053a3bbf41328c65ae5dfdee0385206"
+  integrity sha512-55Shns6WPxlYsz4WX7q9ZJBL77sKE1ZAYNYStLs6GbhIOMrNtjMvzcob6gu3cGlfpCR4bT7NXgyJ3tly2+Hx8Q==
+  dependencies:
+    "@babel/parser" "^7.18.4"
+    postcss "^8.4.14"
+    source-map "^0.6.1"
 
 "@vue/compiler-sfc@2.7.9":
   version "2.7.9"
@@ -5995,6 +6003,16 @@ h3@^0.7.12, h3@^0.7.15:
     radix3 "^0.1.2"
     ufo "^0.8.5"
 
+h3@^0.7.16:
+  version "0.7.16"
+  resolved "https://registry.yarnpkg.com/h3/-/h3-0.7.16.tgz#eaebfdf748000feafb4db49a814240a8ce43a8bb"
+  integrity sha512-U8DasgLV1dIv/FjlePZB0oSGWk37Swnx3eYYGPxJ0pup/KAmEXHt733NXFlPdX42y0HEEx9QEvJhULJR546JMg==
+  dependencies:
+    cookie-es "^0.5.0"
+    destr "^1.1.1"
+    radix3 "^0.1.2"
+    ufo "^0.8.5"
+
 hable@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/hable/-/hable-3.0.0.tgz#6de089b2df946635cf8134b9e4859f1b62de255f"
@@ -6856,7 +6874,7 @@ json5@^2.1.2, json5@^2.2.1:
   resolved "https://registry.yarnpkg.com/json5/-/json5-2.2.1.tgz#655d50ed1e6f95ad1a3caababd2b0efda10b395c"
   integrity sha512-1hqLFMSrGHRHxav9q9gNjJ5EXznIxGVO09xQRrwplcS8qs28pZ8s8hupZAmqDwZUmVZ2Qb2jnyPOWcDH8m8dlA==
 
-jsonc-parser@^3.0.0:
+jsonc-parser@^3.0.0, jsonc-parser@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.1.0.tgz#73b8f0e5c940b83d03476bc2e51a20ef0932615d"
   integrity sha512-DRf0QjnNeCUds3xTjKlQQ3DpJD51GvDjJfnxUVWg6PZTo2otSm+slzNAxU/35hF8/oJIKoG9slq30JYOsF2azg==
@@ -7506,6 +7524,16 @@ mlly@^0.5.13:
     acorn "^8.8.0"
     pathe "^0.3.4"
     pkg-types "^0.3.3"
+    ufo "^0.8.5"
+
+mlly@^0.5.14:
+  version "0.5.14"
+  resolved "https://registry.yarnpkg.com/mlly/-/mlly-0.5.14.tgz#1aead555f8ffafd29f192676f4697805e25112c3"
+  integrity sha512-DgRgNUSX9NIxxCxygX4Xeg9C7GX7OUx1wuQ8cXx9o9LE0e9wrH+OZ9fcnrlEedsC/rtqry3ZhUddC759XD/L0w==
+  dependencies:
+    acorn "^8.8.0"
+    pathe "^0.3.5"
+    pkg-types "^0.3.4"
     ufo "^0.8.5"
 
 move-concurrently@^1.0.1:
@@ -8369,6 +8397,15 @@ pkg-types@^0.3.3:
     jsonc-parser "^3.0.0"
     mlly "^0.5.3"
     pathe "^0.3.0"
+
+pkg-types@^0.3.4:
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/pkg-types/-/pkg-types-0.3.4.tgz#bafb9ce824f78c93e50aaafb5accf41d8f2ef92f"
+  integrity sha512-s214f/xkRpwlwVBToWq9Mu0XlU3HhZMYCnr2var8+jjbavBHh/VCh4pBLsJW29rJ//B1jb4HlpMIaNIMH+W2/w==
+  dependencies:
+    jsonc-parser "^3.1.0"
+    mlly "^0.5.13"
+    pathe "^0.3.5"
 
 pluralize@^8.0.0:
   version "8.0.0"
@@ -11112,10 +11149,10 @@ unplugin@^0.9.0:
     webpack-sources "^3.2.3"
     webpack-virtual-modules "^0.4.4"
 
-unplugin@^0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.9.3.tgz#baeec1e3d70d18f693597ef3fcc441779e164e7f"
-  integrity sha512-GWXxizZG+tobNs8fuGTCeilerkkfZTZax2iivuE4pxLaF9wTnPJHOq8tbLKDb5ohVb+2BXNjrU9xx59yWTUnuw==
+unplugin@^0.9.4:
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/unplugin/-/unplugin-0.9.4.tgz#53e6f4fc92905122219af0e3f40af753563d38b6"
+  integrity sha512-lUe769wSsZiltVA1Ns9ZRx3K1ri/4yzOrLLI/ebSAj2f0PsXqIJeHIXhkhiayEe1pv+mHuZYyBS3B2RXG2Q2EQ==
   dependencies:
     acorn "^8.8.0"
     chokidar "^3.5.3"
@@ -11413,12 +11450,20 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.12, vue@^2.7.9:
+vue@^2.6.12:
   version "2.7.9"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.7.9.tgz#ac3ccb4a4ac5dd31a8eec4c68a094efe7f83dfbb"
   integrity sha512-GeWCvAUkjzD5q4A3vgi8ka5r9bM6g8fmNmx/9VnHDKCaEzBcoVw+7UcQktZHrJ2jhlI+Zv8L57pMCIwM4h4MWg==
   dependencies:
     "@vue/compiler-sfc" "2.7.9"
+    csstype "^3.1.0"
+
+vue@^2.7.10:
+  version "2.7.10"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.7.10.tgz#ae516cc6c88e1c424754468844218fdd5e280f40"
+  integrity sha512-HmFC70qarSHPXcKtW8U8fgIkF6JGvjEmDiVInTkKZP0gIlEPhlVlcJJLkdGIDiNkIeA2zJPQTWJUI4iWe+AVfg==
+  dependencies:
+    "@vue/compiler-sfc" "2.7.10"
     csstype "^3.1.0"
 
 vuex@^3.6.2:
