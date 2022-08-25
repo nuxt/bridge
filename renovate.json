@@ -4,6 +4,7 @@
     "@nuxtjs"
   ],
   "ignoreDeps": [
+    "vitest",
     "vite"
   ],
   "packageRules": [
