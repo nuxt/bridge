@@ -174,7 +174,7 @@ export async function setupNitroBridge () {
       for (const file of publicFiles) {
         try {
           fsExtra.rmSync(join(clientDist, file))
-        } catch { }
+        } catch {}
       }
     }
 
@@ -320,7 +320,7 @@ export async function setupNitroBridge () {
       } else {
         const distDir = resolve(nuxt.options.rootDir, 'dist')
         if (!existsSync(distDir)) {
-          await fsp.symlink(nitro.options.output.publicDir, distDir, 'junction').catch(() => { })
+          await fsp.symlink(nitro.options.output.publicDir, distDir, 'junction').catch(() => {})
         }
       }
     }
@@ -419,7 +419,7 @@ function createNuxt2DevServer (nitro: Nitro) {
     renderRoute,
     listen,
     serverMiddlewarePaths () { return [] },
-    ready () { }
+    ready () {}
   }
 }
 
