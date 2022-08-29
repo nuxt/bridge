@@ -11091,6 +11091,16 @@ unctx@^2.0.1:
     magic-string "^0.26.2"
     unplugin "^0.8.0"
 
+unctx@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/unctx/-/unctx-2.0.2.tgz#7d14d9290e0879aa7be697b7f35066cffec4ffc4"
+  integrity sha512-3lcXTlDoOaguRVC1GqG3mrawy17yoycSAQDDnUayQYZ17v9to+Gn6Zyssroc/GD2ppJ0wF5V8adOcKkrNKVWow==
+  dependencies:
+    acorn "^8.8.0"
+    estree-walker "^3.0.1"
+    magic-string "^0.26.2"
+    unplugin "^0.9.5"
+
 undici@^5.2.0:
   version "5.8.2"
   resolved "https://registry.yarnpkg.com/undici/-/undici-5.8.2.tgz#071fc8a6a5d24db0ad510ad442f607d9b09d5eec"
