@@ -6073,10 +6073,10 @@ h3@^0.7.12, h3@^0.7.15:
     radix3 "^0.1.2"
     ufo "^0.8.5"
 
-h3@^0.7.16:
-  version "0.7.16"
-  resolved "https://registry.yarnpkg.com/h3/-/h3-0.7.16.tgz#eaebfdf748000feafb4db49a814240a8ce43a8bb"
-  integrity sha512-U8DasgLV1dIv/FjlePZB0oSGWk37Swnx3eYYGPxJ0pup/KAmEXHt733NXFlPdX42y0HEEx9QEvJhULJR546JMg==
+h3@^0.7.17:
+  version "0.7.17"
+  resolved "https://registry.yarnpkg.com/h3/-/h3-0.7.17.tgz#a49d6f9fdc9d7eafb390e366d2584f8c993e0f8a"
+  integrity sha512-dX1JQOfu8MR0VV/j9/2ZB2IcdHTRc3dXZUBp0O82CVEtUysPjl8AdWx56uGVv/Pme9A6kGOjodFDk+9Wicft+Q==
   dependencies:
     cookie-es "^0.5.0"
     destr "^1.1.1"
@@ -7242,6 +7242,13 @@ magic-string@^0.26.1, magic-string@^0.26.2:
   version "0.26.2"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.26.2.tgz#5331700e4158cd6befda738bb6b0c7b93c0d4432"
   integrity sha512-NzzlXpclt5zAbmo6h6jNc8zl2gNRGHvmsZW4IvZhTC4W7k4OlLP+S5YLussa/r3ixNT66KOQfNORlXHSOy/X4A==
+  dependencies:
+    sourcemap-codec "^1.4.8"
+
+magic-string@^0.26.3:
+  version "0.26.3"
+  resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.26.3.tgz#25840b875140f7b4785ab06bddc384270b7dd452"
+  integrity sha512-u1Po0NDyFcwdg2nzHT88wSK0+Rih0N1M+Ph1Sp08k8yvFFU3KR72wryS7e1qMPJypt99WB7fIFVCA92mQrMjrg==
   dependencies:
     sourcemap-codec "^1.4.8"
 
