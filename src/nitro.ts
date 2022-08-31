@@ -10,6 +10,7 @@ import { dynamicEventHandler, toEventHandler } from 'h3'
 import type { Nitro, NitroEventHandler, NitroDevEventHandler, NitroConfig } from 'nitropack'
 import { Nuxt, NuxtPage } from '@nuxt/schema'
 import { defu } from 'defu'
+import { normalizeWebpackManifest } from 'vue-bundle-renderer'
 import { AsyncLoadingPlugin } from './async-loading'
 import { distDir } from './dirs'
 import { isDirectory, readDirRecursively } from './vite/utils/fs'
@@ -244,7 +245,7 @@ export async function setupNitroBridge () {
       await fsp.writeFile(jsServerEntry.replace(/.js$/, '.mjs'), 'export { default } from "./server.cjs"', 'utf8')
     } else if (name === 'client') {
       const manifest = await fsp.readFile(resolve(nuxt.options.buildDir, 'dist/server/client.manifest.json'), 'utf8')
-      await fsp.writeFile(resolve(nuxt.options.buildDir, 'dist/server/client.manifest.mjs'), 'export default ' + manifest, 'utf8')
+      await fsp.writeFile(resolve(nuxt.options.buildDir, 'dist/server/client.manifest.mjs'), 'export default ' + JSON.stringify(normalizeWebpackManifest(JSON.parse(manifest))), 'utf8')
     }
   })
 
