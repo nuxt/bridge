@@ -60,6 +60,7 @@ const globalProps = {
 
 // <script>
 export const Script = defineComponent({
+  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Script',
   props: {
     ...globalProps,
@@ -87,6 +88,7 @@ export const Script = defineComponent({
 
 // <link>
 export const Link = defineComponent({
+  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Link',
   props: {
     ...globalProps,
@@ -120,6 +122,7 @@ export const Link = defineComponent({
 
 // <base>
 export const Base = defineComponent({
+  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Base',
   props: {
     ...globalProps,
@@ -133,6 +136,7 @@ export const Base = defineComponent({
 
 // <title>
 export const Title = defineComponent({
+  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Title',
   setup: setupForUseMeta((_, { slots }) => {
     const title = slots.default()?.[0]?.children || null
@@ -147,6 +151,7 @@ export const Title = defineComponent({
 
 // <meta>
 export const Meta = defineComponent({
+  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Meta',
   props: {
     ...globalProps,
@@ -162,6 +167,7 @@ export const Meta = defineComponent({
 
 // <style>
 export const Style = defineComponent({
+  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Style',
   props: {
     ...globalProps,
@@ -192,12 +198,14 @@ export const Style = defineComponent({
 
 // <head>
 export const Head = defineComponent({
+  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Head',
   setup: (_props, ctx) => () => ctx.slots.default?.()
 })
 
 // <html>
 export const Html = defineComponent({
+  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Html',
   props: {
     ...globalProps,
@@ -210,6 +218,7 @@ export const Html = defineComponent({
 
 // <body>
 export const Body = defineComponent({
+  // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Body',
   props: globalProps,
   setup: setupForUseMeta(bodyAttrs => ({ bodyAttrs }), true)
