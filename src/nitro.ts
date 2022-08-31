@@ -306,7 +306,7 @@ export async function setupNitroBridge () {
 
       // Invokve classic generation behaviour with --classic CLI argument
 
-      const useClassicGeneration = process.argv.includes('--classic') || !(nuxt.options as any).bridge.nitroGenerator
+      const useClassicGeneration = process.argv.includes('--classic') || (nuxt.options as any).bridge.nitroGenerator === false
       if (useClassicGeneration && nuxt.options._generate) {
         const { Generator } = (await tryImportModule('@nuxt/generator-edge')) || (await tryImportModule('@nuxt/generator'))
         const generator = new Generator(nuxt)
@@ -328,12 +328,11 @@ export async function setupNitroBridge () {
   })
 
   // Prerender all non-dynamic page routes when generating app
-  nuxt.options.nitro = nuxt.options.nitro || {}
   if (!nuxt.options.dev && nuxt.options._generate) {
     const routes = new Set<string>()
     nuxt.hook('build:extendRoutes', (pages) => {
       routes.clear()
-      for (const path of nuxt.options.nitro.prerender?.routes || []) {
+      for (const path of nitro.options.prerender?.routes || []) {
         routes.add(path)
       }
       const processPages = (pages: NuxtPage[], currentPath = '/') => {
