@@ -2,7 +2,7 @@ import { isFunction } from '@vue/shared'
 import { computed } from 'vue'
 import type { ComputedGetter } from '@vue/reactivity'
 import type { MetaObject } from '@nuxt/schema'
-import { useNuxtApp } from '#app'
+import { useNuxtApp } from '../app'
 
 /**
  * You can pass in a meta object, which has keys corresponding to meta tags:

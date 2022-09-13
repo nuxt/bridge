@@ -3,14 +3,14 @@ import { parse, serialize, CookieParseOptions, CookieSerializeOptions } from 'co
 import { appendHeader } from 'h3'
 import type { CompatibilityEvent } from 'h3'
 import destr from 'destr'
+import { useNuxtApp } from './app'
 import { useRequestEvent } from './ssr'
-import { useNuxtApp } from '#app'
 
 type _CookieOptions = Omit<CookieSerializeOptions & CookieParseOptions, 'decode' | 'encode'>
 
-export interface CookieOptions<T=any> extends _CookieOptions {
+export interface CookieOptions<T = any> extends _CookieOptions {
   decode?(value: string): T
-  encode?(value: T): string;
+  encode?(value: T): string
   default?: () => T
 }
 
@@ -22,7 +22,7 @@ const CookieDefaults: CookieOptions<any> = {
   encode: val => encodeURIComponent(typeof val === 'string' ? val : JSON.stringify(val))
 }
 
-export function useCookie <T=string> (name: string, _opts?: CookieOptions<T>): CookieRef<T> {
+export function useCookie<T = string> (name: string, _opts?: CookieOptions<T>): CookieRef<T> {
   const opts = { ...CookieDefaults, ..._opts }
   const cookies = readRawCookies(opts)
 

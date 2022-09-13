@@ -1,6 +1,6 @@
 import { onBeforeMount, onServerPrefetch, onUnmounted, ref, getCurrentInstance, watch } from 'vue'
 import type { Ref, WatchSource } from 'vue'
-import { NuxtApp, useNuxtApp } from '#app'
+import { NuxtAppCompat, useNuxtApp } from './app'
 
 export type _Transform<Input = any, Output = any> = (input: Input) => Output
 
@@ -8,13 +8,13 @@ export type PickFrom<T, K extends Array<string>> = T extends Array<any> ? T : T 
 export type KeysOf<T> = Array<keyof T extends string ? keyof T : string>
 export type KeyOfRes<Transform extends _Transform> = KeysOf<ReturnType<Transform>>
 
-type MultiWatchSources = (WatchSource<unknown> | object)[];
+type MultiWatchSources = (WatchSource<unknown> | object)[]
 
 export interface AsyncDataOptions<
   DataT,
   Transform extends _Transform<DataT, any> = _Transform<DataT, DataT>,
   PickKeys extends KeyOfRes<_Transform> = KeyOfRes<Transform>
-  > {
+> {
   server?: boolean
   lazy?: boolean
   default?: () => DataT
@@ -46,7 +46,7 @@ export function useAsyncData<
   PickKeys extends KeyOfRes<Transform> = KeyOfRes<Transform>
 > (
   key: string,
-  handler: (ctx?: NuxtApp) => Promise<DataT>,
+  handler: (ctx?: NuxtAppCompat) => Promise<DataT>,
   options: AsyncDataOptions<DataT, Transform, PickKeys> = {}
 ): AsyncData<PickFrom<ReturnType<Transform>, PickKeys>, DataE> {
   // Validate arguments
@@ -178,7 +178,7 @@ export function useLazyAsyncData<
   PickKeys extends KeyOfRes<Transform> = KeyOfRes<Transform>
 > (
   key: string,
-  handler: (ctx?: NuxtApp) => Promise<DataT>,
+  handler: (ctx?: NuxtAppCompat) => Promise<DataT>,
   options: Omit<AsyncDataOptions<DataT, Transform, PickKeys>, 'lazy'> = {}
 ): AsyncData<PickFrom<ReturnType<Transform>, PickKeys>, DataE> {
   return useAsyncData(key, handler, { ...options, lazy: true })
