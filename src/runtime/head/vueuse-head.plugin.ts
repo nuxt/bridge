@@ -1,8 +1,8 @@
 import { createHead, renderHeadToString } from '@vueuse/head'
 import { computed, ref, watchEffect, onBeforeUnmount, getCurrentInstance, ComputedGetter } from 'vue'
 import { defu } from 'defu'
-import type { MetaObject } from '..'
-import { defineNuxtPlugin } from '#app'
+import type { MetaObject } from '@nuxt/schema'
+import { defineNuxtPlugin } from '../app'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const head = createHead()
@@ -25,7 +25,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     const headObj = computed(() => {
       const overrides: MetaObject = { meta: [] }
-      if (titleTemplate.value && 'title' in meta.value) {
+      if (titleTemplate.value && meta.value.title) {
         overrides.title = typeof titleTemplate.value === 'function' ? titleTemplate.value(meta.value.title) : titleTemplate.value.replace(/%s/g, meta.value.title)
       }
       if (meta.value.charset) {
@@ -48,12 +48,12 @@ export default defineNuxtPlugin((nuxtApp) => {
     if (!vm) { return }
 
     onBeforeUnmount(() => {
-      head.removeHeadObjs(headObj)
+      head.removeHeadObjs(headObj as any)
       head.updateDOM()
     })
   }
 
-  if (process.server) {
+  if (process.server && nuxtApp.ssrContext) {
     nuxtApp.ssrContext.renderMeta = () => renderHeadToString(head)
   }
 })
