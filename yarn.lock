@@ -2012,6 +2012,18 @@
     is-module "^1.0.0"
     resolve "^1.19.0"
 
+"@rollup/plugin-node-resolve@^14.1.0":
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-14.1.0.tgz#f2fa475405cd7fed6420bf438fe393f988a9bc96"
+  integrity sha512-5G2niJroNCz/1zqwXtk0t9+twOSDlG00k1Wfd7bkbbXmwg8H8dvgHdIWAun53Ps/rckfvOC7scDBjuGFg5OaWw==
+  dependencies:
+    "@rollup/pluginutils" "^3.1.0"
+    "@types/resolve" "1.17.1"
+    deepmerge "^4.2.2"
+    is-builtin-module "^3.1.0"
+    is-module "^1.0.0"
+    resolve "^1.19.0"
+
 "@rollup/plugin-replace@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-replace/-/plugin-replace-4.0.0.tgz#e34c457d6a285f0213359740b43f39d969b38a67"
@@ -3456,6 +3468,20 @@ c12@^0.2.10:
     pathe "^0.3.4"
     rc9 "^1.2.2"
 
+c12@^0.2.11:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/c12/-/c12-0.2.11.tgz#ffb9048fd4241e948c1793097f2550248ecb1789"
+  integrity sha512-DOy85AO8HN66IgqCDUmMrLb+r4/z8f8Cu8oUIfERbzi/vxZ/GS99SU7lIMz0EQgJktZp6FtcisuiyCdQ6VaTTQ==
+  dependencies:
+    defu "^6.1.0"
+    dotenv "^16.0.2"
+    gittar "^0.1.1"
+    jiti "^1.15.0"
+    mlly "^0.5.14"
+    pathe "^0.3.7"
+    pkg-types "^0.3.5"
+    rc9 "^1.2.2"
+
 c12@^0.2.9:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/c12/-/c12-0.2.9.tgz#697328714b04e0b54cec299b48c55eb5a69bf9ef"
@@ -4671,6 +4697,11 @@ dotenv@^16.0.1:
   version "16.0.1"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.1.tgz#8f8f9d94876c35dac989876a5d3a82a267fdce1d"
   integrity sha512-1K6hR6wtk2FviQ4kEiSjFiH5rpzEVi8WW0x96aztHVMhEspNpc4DVOUTEHtEva5VThQ8IaBX1Pe4gSzpVVUsKQ==
+
+dotenv@^16.0.2:
+  version "16.0.2"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.2.tgz#0b0f8652c016a3858ef795024508cddc4bffc5bf"
+  integrity sha512-JvpYKUmzQhYoIFgK2MOnF3bciIZoItIIoryihy0rIA+H4Jy0FmgyKYAHCTN98P5ybGSJcIFbh6QKeJdtZd1qhA==
 
 dotenv@^9.0.2:
   version "9.0.2"
@@ -7114,6 +7145,11 @@ jsonc-parser@^3.0.0, jsonc-parser@^3.1.0:
   resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.1.0.tgz#73b8f0e5c940b83d03476bc2e51a20ef0932615d"
   integrity sha512-DRf0QjnNeCUds3xTjKlQQ3DpJD51GvDjJfnxUVWg6PZTo2otSm+slzNAxU/35hF8/oJIKoG9slq30JYOsF2azg==
 
+jsonc-parser@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.2.0.tgz#31ff3f4c2b9793f89c67212627c51c6394f88e76"
+  integrity sha512-gfFQZrcTc8CnKXp6Y4/CBT3fTc0OVuDofpre4aEeEpSBPV5X5v4+Vmx+8snU7RLPrNHPKSgLxGo9YuQzz20o+w==
+
 jsonfile@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/jsonfile/-/jsonfile-4.0.0.tgz#8771aae0799b64076b76640fca058f9c10e33ecb"
@@ -7867,10 +7903,10 @@ neo-async@^2.5.0, neo-async@^2.6.1, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nitropack@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/nitropack/-/nitropack-0.5.1.tgz#7d0c8ff79af2d7be0e3dd15422b77355240e5588"
-  integrity sha512-mPDcj1lmbjZLtXJjE4EXkXsq2S+DnbBNHYOs1SNBeFiBIlOYqhyHipJR5zx/m/SuR9ELd9DyBIVm/ulQDipUhg==
+nitropack@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/nitropack/-/nitropack-0.5.2.tgz#56c0d9c7f1d1f423d79ed717b287596f2ed949f5"
+  integrity sha512-VXLxM5e6Fnkj8XPT9WHIPAKo1PRFr9zlLtE1Rhu8N1p9BCyTtFvXXQpOJeeTXrjYYUsFqlBlzQof+tCc0TfeTg==
   dependencies:
     "@cloudflare/kv-asset-handler" "^0.2.0"
     "@netlify/functions" "^1.2.0"
@@ -7878,13 +7914,13 @@ nitropack@^0.5.1:
     "@rollup/plugin-commonjs" "^22.0.2"
     "@rollup/plugin-inject" "^4.0.4"
     "@rollup/plugin-json" "^4.1.0"
-    "@rollup/plugin-node-resolve" "^13.3.0"
+    "@rollup/plugin-node-resolve" "^14.1.0"
     "@rollup/plugin-replace" "^4.0.0"
     "@rollup/plugin-wasm" "^5.2.0"
     "@rollup/pluginutils" "^4.2.1"
     "@vercel/nft" "^0.22.1"
     archiver "^5.3.1"
-    c12 "^0.2.10"
+    c12 "^0.2.11"
     chalk "^5.0.1"
     chokidar "^3.5.3"
     consola "^2.15.3"
@@ -7902,7 +7938,7 @@ nitropack@^0.5.1:
     hookable "^5.3.0"
     http-proxy "^1.18.1"
     is-primitive "^3.0.1"
-    jiti "^1.14.0"
+    jiti "^1.15.0"
     klona "^2.0.5"
     knitwork "^0.1.2"
     listhen "^0.2.15"
@@ -7912,9 +7948,9 @@ nitropack@^0.5.1:
     node-fetch-native "^0.1.4"
     ohash "^0.1.5"
     ohmyfetch "^0.4.18"
-    pathe "^0.3.5"
+    pathe "^0.3.7"
     perfect-debounce "^0.1.3"
-    pkg-types "^0.3.4"
+    pkg-types "^0.3.5"
     pretty-bytes "^6.0.0"
     radix3 "^0.1.2"
     rollup "^2.79.0"
@@ -8646,6 +8682,15 @@ pkg-types@^0.3.4:
     jsonc-parser "^3.1.0"
     mlly "^0.5.13"
     pathe "^0.3.5"
+
+pkg-types@^0.3.5:
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/pkg-types/-/pkg-types-0.3.5.tgz#ea01c7cf28da9e4c5b85de9b250de4b3dc2e9abc"
+  integrity sha512-VkxCBFVgQhNHYk9subx+HOhZ4jzynH11ah63LZsprTKwPCWG9pfWBlkElWFbvkP9BVR0dP1jS9xPdhaHQNK74Q==
+  dependencies:
+    jsonc-parser "^3.2.0"
+    mlly "^0.5.14"
+    pathe "^0.3.7"
 
 pluralize@^8.0.0:
   version "8.0.0"
