@@ -1,11 +1,11 @@
 import { getCurrentInstance, onBeforeUnmount, isRef, watch, reactive, toRef, isReactive, Ref, set } from 'vue'
 import type { CombinedVueInstance } from 'vue/types/vue'
 import type { MetaInfo } from 'vue-meta'
-import type VueRouter from 'vue-router'
-import type { Location, Route } from 'vue-router'
+import type { Location, RawLocation, Route } from 'vue-router'
 import type { RuntimeConfig } from '@nuxt/schema'
 import { sendRedirect } from 'h3'
 import { defu } from 'defu'
+import { useRouter } from 'vue-router/composables'
 import { useNuxtApp } from './app'
 
 export { useLazyAsyncData, refreshNuxtData } from './asyncData'
@@ -48,29 +48,8 @@ export const useRuntimeConfig = () => {
   return nuxtApp._config as RuntimeConfig
 }
 
-// Auto-import equivalents for `vue-router`
-export const useRouter = () => {
-  return useNuxtApp()?.nuxt2Context.app.router as VueRouter
-}
-
-// This provides an equivalent interface to `vue-router` (unlike legacy implementation)
-export const useRoute = () => {
-  const nuxtApp = useNuxtApp()
-
-  if (!nuxtApp._route) {
-    Object.defineProperty(nuxtApp, '__route', {
-      get: () => nuxtApp.nuxt2Context.app.context.route
-    })
-    nuxtApp._route = reactive(nuxtApp.__route)
-    const router = useRouter()
-    router.afterEach(route => Object.assign(nuxtApp._route, route))
-  }
-
-  return nuxtApp._route as Route
-}
-
 // payload.state is used for vuex by nuxt 2
-export const useState = <T>(key: string, init?: (() => T)): Ref<T> => {
+export const useState = <T> (key: string, init?: (() => T)): Ref<T> => {
   const nuxtApp = useNuxtApp()
   if (!nuxtApp.payload.useState) {
     nuxtApp.payload.useState = {}
@@ -195,7 +174,7 @@ export interface NavigateToOptions {
   replace?: boolean
 }
 
-export const navigateTo = (to: Route, options: NavigateToOptions = {}): Promise<Route | void> | Route => {
+export const navigateTo = (to: RawLocation, options: NavigateToOptions = {}): Promise<RawLocation | Route | void> | RawLocation | Route => {
   if (isProcessingMiddleware()) {
     return to
   }
