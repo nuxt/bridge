@@ -2,11 +2,11 @@ import { pathToFileURL } from 'url'
 import { createUnplugin } from 'unplugin'
 import { parseQuery, parseURL } from 'ufo'
 import { Unimport } from 'unimport'
-import { AutoImportsOptions } from '@nuxt/schema'
+import { ImportsOptions } from '@nuxt/schema'
 
-export const TransformPlugin = createUnplugin(({ ctx, options }: {ctx: Unimport, options: Partial<AutoImportsOptions> }) => {
+export const TransformPlugin = createUnplugin(({ ctx, options }: { ctx: Unimport, options: Partial<ImportsOptions> }) => {
   return {
-    name: 'nuxt:auto-imports-transform',
+    name: 'nuxt:imports-transform',
     enforce: 'post',
     transformInclude (id) {
       const { pathname, search } = parseURL(decodeURIComponent(pathToFileURL(id).href))

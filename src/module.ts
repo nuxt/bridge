@@ -7,7 +7,7 @@ import { setupNitroBridge } from './nitro'
 import { setupAppBridge } from './app'
 import { setupCAPIBridge } from './capi'
 import { setupBetterResolve } from './resolve'
-import autoImports from './auto-imports/module'
+import importsModule from './imports/module'
 import { setupTypescript } from './typescript'
 import { setupMeta } from './meta'
 import { setupTranspile } from './transpile'
@@ -25,7 +25,7 @@ export default defineNuxtModule({
     app: {},
     capi: {},
     transpile: true,
-    autoImports: true,
+    imports: true,
     compatibility: true,
     meta: null,
     // TODO: Remove from 2.16
@@ -55,8 +55,8 @@ export default defineNuxtModule({
       }
       await setupCAPIBridge(opts.capi === true ? {} : opts.capi)
     }
-    if (opts.autoImports) {
-      nuxt.hook('modules:done', () => installModule(autoImports))
+    if (opts.imports ?? opts.autoImports) {
+      nuxt.hook('modules:done', () => installModule(importsModule))
     }
     if (opts.vite) {
       const viteModule = await import('./vite/module').then(r => r.default || r) as NuxtModule
