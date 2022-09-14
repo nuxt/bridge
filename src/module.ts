@@ -41,6 +41,10 @@ export default defineNuxtModule({
       throw new Error('[bridge] Bridge must be enabled by using `defineNuxtConfig` to wrap your Nuxt configuration.')
     }
 
+    if (opts.vite && !opts.nitro && !nuxt.options.dev) {
+      throw new Error('[bridge] Vite build will not work unless Nitro is enabled.')
+    }
+
     if (opts.nitro) {
       nuxt.hook('modules:done', async () => {
         await setupNitroBridge()
@@ -65,7 +69,7 @@ export default defineNuxtModule({
       // with webpack, we need to transpile vue to handle the default/named exports in Vue 2.7
       nuxt.options.build.transpile.push('vue')
       nuxt.hook('build:done', async () => {
-        if (!nuxt.options.dev && !nuxt.options._prepare) {
+        if (opts.nitro && !nuxt.options.dev && !nuxt.options._prepare) {
           await generateWebpackBuildManifest()
         }
       })
