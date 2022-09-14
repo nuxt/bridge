@@ -264,7 +264,7 @@ export default defineNuxtConfig({
     // transpile: false,
 
     // Disable composables auto importing
-    // autoImports: false,
+    // imports: false,
 
     // Do not warn about module incompatibilities
     // constraints: false
