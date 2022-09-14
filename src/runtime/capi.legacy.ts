@@ -1,7 +1,8 @@
 import { defu } from 'defu'
 import { computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
+import { useRouter as _useRouter, useRoute as _useRoute } from 'vue-router/composables'
 import { useNuxtApp } from './app'
-import { useRouter as _useRouter, useState } from './composables'
+import { useState } from './composables'
 
 // Vue composition API export
 export {
@@ -254,8 +255,7 @@ export const useRouter = () => {
 
 export const useRoute = () => {
   warnOnce('useRoute', 'You are using `useRoute`, which has a Nuxt 3-compatible replacement.')
-  const vm = getCurrentInstance()
-  return computed(() => vm.$route)
+  return _useRoute()
 }
 
 export const useStore = () => {

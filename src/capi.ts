@@ -22,6 +22,9 @@ export function setupCAPIBridge (options: Exclude<BridgeConfig['capi'], boolean>
     nuxt.options.plugins.unshift(appPlugin)
   })
 
+  // Transpile vue-router to ensure single vue instance
+  nuxt.options.build.transpile.push('vue-router')
+
   if (options.legacy === false) {
     // Skip adding `@nuxtjs/composition-api` handlers if legacy support is disabled
     return
