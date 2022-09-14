@@ -4,7 +4,6 @@
     "@nuxtjs"
   ],
   "ignoreDeps": [
-    "nuxi",
     "vitest",
     "vite"
   ],
