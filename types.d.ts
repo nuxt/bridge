@@ -10,7 +10,9 @@ export interface BridgeConfig {
   capi: boolean | {
     legacy?: boolean
   }
-  autoImports: boolean
+  imports: boolean
+  /** @deprecated */
+  autoImports?: boolean
   transpile: boolean
   compatibility: boolean
   postcss8: boolean
@@ -29,4 +31,4 @@ declare module '@nuxt/schema' {
   }
 }
 
-export declare function defineNuxtConfig(config: NuxtConfig): NuxtConfig
+export declare function defineNuxtConfig (config: NuxtConfig): NuxtConfig
