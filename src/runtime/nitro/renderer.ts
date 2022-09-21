@@ -2,10 +2,10 @@ import { createRenderer } from 'vue-bundle-renderer/runtime'
 import type { SSRContext } from 'vue-bundle-renderer/runtime'
 import { CompatibilityEvent, getQuery } from 'h3'
 import devalue from '@nuxt/devalue'
-import { RuntimeConfig } from '@nuxt/schema'
+import type { RuntimeConfig } from '@nuxt/schema'
+import type { RenderResponse } from 'nitropack'
 // @ts-ignore
 import { useRuntimeConfig, useNitroApp, defineRenderHandler } from '#internal/nitro'
-import { RenderResponse } from 'nitropack'
 // @ts-ignore
 import { buildAssetsURL } from '#paths'
 // @ts-ignore
