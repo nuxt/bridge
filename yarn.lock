@@ -1020,7 +1020,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/standalone@^7.17.11", "@babel/standalone@^7.18.11":
+"@babel/standalone@^7.18.11":
   version "7.18.12"
   resolved "https://registry.yarnpkg.com/@babel/standalone/-/standalone-7.18.12.tgz#4c0abdf1b5213394e73a0ba5500dcc287194a20d"
   integrity sha512-wDh3K5IUJiSMAY0MLYBFoCaj2RCZwvDz5BHn2uHat9KOsGWEVDFgFQFIOO+81Js2phFKNppLC45iOCsZVfJniw==
@@ -2479,16 +2479,16 @@
     resolve-from "^5.0.0"
     rollup-pluginutils "^2.8.2"
 
-"@vitejs/plugin-legacy@^1.8.2":
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/@vitejs/plugin-legacy/-/plugin-legacy-1.8.2.tgz#2f315bcb6685b12719813fb9412851445cca636f"
-  integrity sha512-NCOKU+pU+cxLMR9P9RTolEuOK+h+zYBXlknj+zGcKSj/NXBZYgA1GAH1FnO4zijoWRiTaiOm2ha9LQrELE7XHg==
+"@vitejs/plugin-legacy@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@vitejs/plugin-legacy/-/plugin-legacy-2.2.0.tgz#eb76f43f51c1894cd7ae55ee2cc014b8acc00db0"
+  integrity sha512-xkSXZl2LNk0KKyo5CJknNW84mSlmHIClFzsBuFXkX3yBt+Lr8UO/n4QOg2X7+jvurgBRies9FRn3ZvMem+TmIg==
   dependencies:
-    "@babel/standalone" "^7.17.11"
-    core-js "^3.22.3"
-    magic-string "^0.26.1"
+    "@babel/standalone" "^7.19.0"
+    core-js "^3.25.1"
+    magic-string "^0.26.3"
     regenerator-runtime "^0.13.9"
-    systemjs "^6.12.1"
+    systemjs "^6.12.6"
 
 "@vitejs/plugin-vue2@^1.1.2":
   version "1.1.2"
@@ -4016,10 +4016,10 @@ core-js@^2.6.5:
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
   integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
-core-js@^3.22.3:
-  version "3.24.1"
-  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.24.1.tgz#cf7724d41724154010a6576b7b57d94c5d66e64f"
-  integrity sha512-0QTBSYSUZ6Gq21utGzkfITDylE8jWC9Ne1D2MrhvlsZBI1x39OdDIVbzSqtgMndIy6BlHxBXpMGqzZmnztg2rg==
+core-js@^3.25.1:
+  version "3.25.2"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.25.2.tgz#2d3670c1455432b53fa780300a6fc1bd8304932c"
+  integrity sha512-YB4IAT1bjEfxTJ1XYy11hJAKskO+qmhuDBM8/guIfMz4JvdsAQAqvyb97zXX7JgSrfPLG5mRGFWJwJD39ruq2A==
 
 core-util-is@~1.0.0:
   version "1.0.3"
@@ -10962,10 +10962,10 @@ synckit@^0.8.3:
     "@pkgr/utils" "^2.3.1"
     tslib "^2.4.0"
 
-systemjs@^6.12.1:
-  version "6.12.2"
-  resolved "https://registry.yarnpkg.com/systemjs/-/systemjs-6.12.2.tgz#b5be3591b8464c0f30d355e6d8838e38cfb70f63"
-  integrity sha512-m8E/zVRcfwPiCVtj7iAtL5JdfewnBVvq1HfnPlg30U3SIRCCj1sH2kDLl/PJJvgGB8rSZI65ZXmeZyQshK4aYg==
+systemjs@^6.12.6:
+  version "6.12.6"
+  resolved "https://registry.yarnpkg.com/systemjs/-/systemjs-6.12.6.tgz#147a2a9137b8f3fddaafac1d5060adf3d11212a6"
+  integrity sha512-SawLiWya8/uNR4p12OggSYZ35tP4U4QTpfV57DdZEOPr6+J6zlLSeeEpMmzYTEoBAsMhctdEE+SWJUDYX4EaKw==
 
 tapable@^1.0.0, tapable@^1.0.0-beta.5, tapable@^1.1.3:
   version "1.1.3"
