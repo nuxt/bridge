@@ -78,12 +78,12 @@ const getSPARenderer = lazyCachedFunction(async () => {
     buildAssetsURL
   }
   // Create SPA renderer and cache the result for all requests
-  const renderer = createRenderer(() => () => { }, options)
+  const renderer = createRenderer(() => () => {}, options)
   const result = await renderer.renderToString({})
 
   const renderToString = (ssrContext: NuxtSSRContext) => {
     const config = useRuntimeConfig()
-    ssrContext.payload = {
+    ssrContext.nuxt = {
       serverRendered: false,
       config: {
         public: config.public,

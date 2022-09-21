@@ -10,11 +10,13 @@ await setup({
 
 describe('pages', () => {
   it('render hello world', async () => {
-    expect(await $fetch('/')).to.contain('Hello Vue 2!')
+    const html = await $fetch('/')
+    expect(html).toContain('Hello Vue 2!')
+    expect(html).toContain('public:{myValue:123}')
     await expectNoClientErrors('/')
   })
   it('uses server Vue build', async () => {
-    expect(await $fetch('/')).to.contain('Rendered on server: true')
+    expect(await $fetch('/')).toContain('Rendered on server: true')
   })
 })
 
