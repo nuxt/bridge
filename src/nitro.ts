@@ -16,7 +16,7 @@ import { distDir } from './dirs'
 import { isDirectory, readDirRecursively } from './vite/utils/fs'
 
 export async function setupNitroBridge () {
-  const nuxt = useNuxt()
+  const nuxt = useNuxt() as Nuxt & { _nitro?: Nitro }
 
   // Ensure we're not just building with 'static' target
   if (!nuxt.options.dev && nuxt.options.target === 'static' && !nuxt.options._prepare && !nuxt.options._generate && !(nuxt.options as any)._export && !nuxt.options._legacyGenerate) {
@@ -154,7 +154,8 @@ export async function setupNitroBridge () {
   // Initiate nitro
   const nitro = await createNitro(nitroConfig)
 
-  // Expose nitro to modules
+  // Expose nitro to modules and kit
+  nuxt._nitro = nitro
   await nuxt.callHook('nitro:init', nitro)
 
   // Shared vfs storage
