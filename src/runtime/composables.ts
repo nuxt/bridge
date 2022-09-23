@@ -27,24 +27,8 @@ export const useRuntimeConfig = () => {
   if (nuxtApp._config) {
     return nuxtApp._config as RuntimeConfig
   }
-  const config = reactive(nuxtApp.$config)
-  nuxtApp._config = new Proxy(config, {
-    get (target, prop) {
-      if (prop === 'public') {
-        return target.public
-      }
-      return target[prop] ?? target.public[prop]
-    },
-    set (target, prop, value) {
-      if (prop === 'public' || prop === 'app') {
-        return false // Throws TypeError
-      }
-      target[prop] = value
-      target.public[prop] = value
-      return true
-    }
-  })
 
+  nuxtApp._config = reactive(nuxtApp.$config)
   return nuxtApp._config as RuntimeConfig
 }
 
