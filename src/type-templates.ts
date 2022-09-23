@@ -33,7 +33,7 @@ interface TemplateContext {
 const adHocModules = ['router', 'pages', 'auto-imports', 'meta', 'components']
 export const schemaTemplate = {
   filename: 'types/schema.d.ts',
-  getContents: ({ nuxt }: TemplateContext) => {
+  getContents: async ({ nuxt }: TemplateContext) => {
     const moduleInfo = nuxt.options._installedModules.map(m => ({
       ...m.meta || {},
       importName: m.entryPath || m.meta?.name
@@ -44,10 +44,10 @@ export const schemaTemplate = {
       "declare module '@nuxt/schema' {",
       '  interface NuxtConfig {',
       ...moduleInfo.filter(Boolean).map(meta =>
-      `    [${genString(meta.configKey)}]?: typeof ${genDynamicImport(meta.importName, { wrapper: false })}.default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>`
+        `    [${genString(meta.configKey)}]?: typeof ${genDynamicImport(meta.importName, { wrapper: false })}.default extends NuxtModule<infer O> ? Partial<O> : Record<string, any>`
       ),
       '  }',
-      generateTypes(resolveSchema(nuxt.options.runtimeConfig),
+      generateTypes(await resolveSchema(nuxt.options.runtimeConfig),
         {
           interfaceName: 'RuntimeConfig',
           addExport: false,
