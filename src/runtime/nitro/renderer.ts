@@ -1,10 +1,11 @@
 import { createRenderer } from 'vue-bundle-renderer/runtime'
 import type { SSRContext } from 'vue-bundle-renderer/runtime'
-import { CompatibilityEvent, eventHandler, getQuery } from 'h3'
+import { CompatibilityEvent, getQuery } from 'h3'
 import devalue from '@nuxt/devalue'
-import { RuntimeConfig } from '@nuxt/schema'
+import type { RuntimeConfig } from '@nuxt/schema'
+import type { RenderResponse } from 'nitropack'
 // @ts-ignore
-import { useRuntimeConfig } from '#internal/nitro'
+import { useRuntimeConfig, useNitroApp, defineRenderHandler } from '#internal/nitro'
 // @ts-ignore
 import { buildAssetsURL } from '#paths'
 // @ts-ignore
@@ -14,6 +15,23 @@ import { renderToString } from '#vue-renderer'
 
 const STATIC_ASSETS_BASE = process.env.NUXT_STATIC_BASE + '/' + process.env.NUXT_STATIC_VERSION
 const PAYLOAD_JS = '/payload.js'
+
+export interface NuxtRenderHTMLContext {
+  htmlAttrs: string[]
+  head: string[]
+  headAttrs: string[]
+  bodyAttrs: string[]
+  bodyPreprend: string[]
+  body: string[]
+  bodyAppend: string[]
+}
+
+export interface NuxtRenderResponse {
+  body: string,
+  statusCode: number,
+  statusMessage?: string,
+  headers: Record<string, string>
+}
 
 interface NuxtSSRContext extends SSRContext {
   url: string
@@ -97,9 +115,11 @@ const getSPARenderer = lazyCachedFunction(async () => {
   return { renderToString }
 })
 
-export default eventHandler(async (event) => {
+export default defineRenderHandler(async (event) => {
   // Whether we're rendering an error page
-  const ssrError = event.req.url?.startsWith('/__nuxt_error') ? getQuery(event) : null
+  const ssrError = event.req.url?.startsWith('/__nuxt_error')
+    ? getQuery(event)
+    : null
   let url = ssrError?.url as string || event.req.url!
 
   // payload.json request detection
@@ -120,18 +140,21 @@ export default eventHandler(async (event) => {
     noSSR: !!event.req.headers['x-nuxt-no-ssr'],
     error: ssrError,
     redirected: undefined,
-    nuxt: undefined as undefined | Record<string, any>, /* NuxtApp */
+    nuxt: undefined as undefined | Record<string, any>, /* Nuxt 2 payload */
     payload: undefined
   }
 
   // Render app
   const renderer = (process.env.NUXT_NO_SSR || ssrContext.noSSR) ? await getSPARenderer() : await getSSRRenderer()
-  const rendered = await renderer.renderToString(ssrContext).catch((e) => {
-    if (!ssrError) { throw e }
+  const _rendered = await renderer.renderToString(ssrContext).catch((err) => {
+    if (!ssrError) {
+      // Use explicitly thrown error in preference to subsequent rendering errors
+      throw ssrContext.error || err
+    }
   }) as RenderResult
 
   // If we error on rendering error page, we bail out and directly return to the error handler
-  if (!rendered) { return }
+  if (!_rendered) { return }
 
   if (ssrContext.redirected || event.res.writableEnded) {
     return
@@ -142,10 +165,6 @@ export default eventHandler(async (event) => {
     throw ssrContext.nuxt.error
   }
 
-  if (ssrContext.nuxt?.hooks) {
-    await ssrContext.nuxt.hooks.callHook('app:rendered')
-  }
-
   ssrContext.nuxt = ssrContext.nuxt || {}
 
   if (process.env.NUXT_FULL_STATIC) {
@@ -153,34 +172,75 @@ export default eventHandler(async (event) => {
   }
 
   if (isPayloadReq) {
-    const data = renderPayload(ssrContext.nuxt, url)
-    event.res.setHeader('Content-Type', 'text/javascript;charset=UTF-8')
-    return data
+    const response: RenderResponse = {
+      body: renderPayload(ssrContext.nuxt, url),
+      statusCode: ssrContext.event.res.statusCode,
+      statusMessage: ssrContext.event.res.statusMessage,
+      headers: {
+        'content-type': 'text/javascript;charset=UTF-8',
+        'x-powered-by': 'Nuxt'
+      }
+    }
+    return response
   } else {
-    const data = await renderHTML(ssrContext.nuxt, rendered, ssrContext)
-    event.res.setHeader('Content-Type', 'text/html;charset=UTF-8')
-    return data
+    const state = `<script>window.__NUXT__=${devalue(ssrContext.nuxt)}</script>`
+
+    _rendered.meta = _rendered.meta || {}
+    if (ssrContext.renderMeta) {
+      Object.assign(_rendered.meta, await ssrContext.renderMeta())
+    }
+
+    // Create render context
+    const htmlContext: NuxtRenderHTMLContext = {
+      htmlAttrs: normalizeChunks([_rendered.meta.htmlAttrs]),
+      headAttrs: normalizeChunks([_rendered.meta.headAttrs]),
+      head: normalizeChunks([
+        _rendered.meta.headTags,
+        _rendered.renderResourceHints(),
+        _rendered.renderStyles(),
+        ssrContext.styles
+      ]),
+      bodyAttrs: normalizeChunks([_rendered.meta.bodyAttrs]),
+      bodyPreprend: normalizeChunks([
+        ssrContext.teleports?.body,
+        _rendered.meta.bodyScriptsPrepend
+      ]),
+      body: [
+        // TODO: Rename to _rendered.body in next vue-bundle-renderer
+        _rendered.html
+      ],
+      bodyAppend: normalizeChunks([
+        state,
+        _rendered.renderScripts(),
+        _rendered.meta.bodyScripts
+      ])
+    }
+
+    // Allow hooking into the rendered result
+    const nitroApp = useNitroApp()
+    await nitroApp.hooks.callHook('render:html', htmlContext, { event })
+
+    // Construct HTML response
+    const response: RenderResponse = {
+      body: htmlTemplate({
+        HTML_ATTRS: joinAttrs(htmlContext.htmlAttrs),
+        HEAD_ATTRS: joinAttrs(htmlContext.headAttrs),
+        HEAD: joinTags(htmlContext.head),
+        BODY_ATTRS: joinAttrs(htmlContext.bodyAttrs),
+        BODY_PREPEND: joinTags(htmlContext.bodyPreprend),
+        APP: _rendered.html + joinTags(htmlContext.bodyAppend)
+      }),
+      statusCode: event.res.statusCode,
+      statusMessage: event.res.statusMessage,
+      headers: {
+        'content-type': 'text/html;charset=UTF-8',
+        'x-powered-by': 'Nuxt'
+      }
+    }
+
+    return response
   }
 })
-
-async function renderHTML (payload, rendered, ssrContext) {
-  const state = `<script>window.__NUXT__=${devalue(payload)}</script>`
-
-  rendered.meta = rendered.meta || {}
-  if (ssrContext.renderMeta) {
-    Object.assign(rendered.meta, await ssrContext.renderMeta())
-  }
-
-  return htmlTemplate({
-    HTML_ATTRS: (rendered.meta.htmlAttrs || ''),
-    HEAD_ATTRS: (rendered.meta.headAttrs || ''),
-    HEAD: (rendered.meta.headTags || '') +
-      rendered.renderResourceHints() + rendered.renderStyles() + (ssrContext.styles || ''),
-    BODY_ATTRS: (rendered.meta.bodyAttrs || ''),
-    BODY_PREPEND: (ssrContext.teleports?.body || ''),
-    APP: (rendered.meta.bodyScriptsPrepend || '') + rendered.html + state + rendered.renderScripts() + (rendered.meta.bodyScripts || '')
-  })
-}
 
 function renderPayload (payload, url) {
   return `__NUXT_JSONP__("${url}", ${devalue(payload)})`
@@ -194,4 +254,16 @@ function lazyCachedFunction<T> (fn: () => Promise<T>): () => Promise<T> {
     }
     return res
   }
+}
+
+function normalizeChunks (chunks: (string | undefined)[]) {
+  return chunks.filter(Boolean).map(i => i!.trim())
+}
+
+function joinTags (tags: string[]) {
+  return tags.join('')
+}
+
+function joinAttrs (chunks: string[]) {
+  return chunks.join(' ')
 }
