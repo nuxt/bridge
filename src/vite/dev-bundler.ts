@@ -2,9 +2,9 @@ import { pathToFileURL } from 'url'
 import { existsSync } from 'fs'
 import { builtinModules } from 'module'
 import { isAbsolute, resolve } from 'pathe'
-import * as vite from 'vite'
 import { ExternalsOptions, isExternal as _isExternal, ExternalsDefaults } from 'externality'
 import { genDynamicImport, genObjectFromRawEntries } from 'knitwork'
+import vite from './stub-vite.cjs'
 import { hashId, uniq } from './utils'
 
 export interface TransformChunk {
@@ -132,9 +132,8 @@ export async function bundleRequest (opts: TransformOptions, entryURL: string) {
 const ${hashId(chunk.id + '-' + chunk.code)} = ${chunk.code}
 `).join('\n')
 
-  const manifestCode = `const __modules__ = ${
-    genObjectFromRawEntries(chunks.map(chunk => [chunk.id, hashId(chunk.id + '-' + chunk.code)]))
-  }`
+  const manifestCode = `const __modules__ = ${genObjectFromRawEntries(chunks.map(chunk => [chunk.id, hashId(chunk.id + '-' + chunk.code)]))
+    }`
 
   // https://github.com/vitejs/vite/blob/main/packages/vite/src/node/ssr/ssrModuleLoader.ts
   const ssrModuleLoader = `

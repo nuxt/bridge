@@ -1,6 +1,6 @@
 import { resolve } from 'pathe'
 import fse from 'fs-extra'
-import { Manifest as ViteManifest } from 'vite'
+import type { Manifest as ViteManifest } from 'vite'
 import { normalizeViteManifest, Manifest, ResourceMeta } from 'vue-bundle-renderer'
 import { withoutLeadingSlash, withTrailingSlash } from 'ufo'
 import escapeRE from 'escape-string-regexp'
