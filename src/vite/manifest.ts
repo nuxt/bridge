@@ -78,7 +78,7 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
   }
 
   for (const entry in clientManifest) {
-    if (!clientManifest[entry].file.startsWith('polyfills-legacy')) {
+    if (!clientManifest[entry].file.startsWith('polyfills-legacy') && clientManifest[entry].file.includes('-legacy')) {
       clientImports.add(clientManifest[entry].file)
       for (const key of ['css', 'assets', 'dynamicImports']) {
         for (const file of clientManifest[entry][key] || []) {
@@ -94,8 +94,11 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
     polyfill,
     'var appConfig = window && window.__NUXT__ && window.__NUXT__.config.app || {}',
     'var publicBase = appConfig.cdnURL || appConfig.baseURL || "/"',
+    'function joinURL (a, b) { return a[a.length -1] !== "/" ? a + "/" + b : a + b }',
+    'globalThis.__publicAssetsURL = function(id) { return joinURL(publicBase, id) }',
+    'globalThis.__buildAssetsURL = function(id) { return joinURL(publicBase, joinURL(appConfig.buildAssetsDir, id)) }',
     `var imports = ${JSON.stringify([...clientImports])};`,
-    'imports.reduce(function(p, id){return p.then(function(){return System.import(publicBase + appConfig.buildAssetsDir.slice(1) + id)})}, Promise.resolve())'
+    'imports.reduce(function(p, id){return p.then(function(){return System.import(__buildAssetsURL(id).slice(1))})}, Promise.resolve())'
   ].join('\n')
   const clientEntryName = 'entry-legacy.' + hash(clientEntryCode) + '.js'
 
