@@ -4,7 +4,7 @@ import { builtinModules } from 'module'
 import { isAbsolute, resolve } from 'pathe'
 import { ExternalsOptions, isExternal as _isExternal, ExternalsDefaults } from 'externality'
 import { genDynamicImport, genObjectFromRawEntries } from 'knitwork'
-import vite from './stub-vite.cjs'
+import type { ViteDevServer } from 'vite'
 import { hashId, uniq } from './utils'
 
 export interface TransformChunk {
@@ -22,7 +22,7 @@ export interface SSRTransformResult {
 }
 
 export interface TransformOptions {
-  viteServer: vite.ViteDevServer
+  viteServer: ViteDevServer
 }
 
 function isExternal (opts: TransformOptions, id: string) {

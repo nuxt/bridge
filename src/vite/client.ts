@@ -7,7 +7,7 @@ import { getPort } from 'get-port-please'
 import type { ServerOptions, Connect, InlineConfig } from 'vite'
 import defu from 'defu'
 import PluginLegacy from './stub-legacy.cjs'
-import vite from './stub-vite.cjs'
+import { mergeConfig, createServer, build } from './stub-vite.cjs'
 import { devStyleSSRPlugin } from './plugins/dev-ssr-css'
 import { jsxPlugin } from './plugins/jsx'
 import { ViteBuildContext, ViteOptions } from './types'
@@ -23,7 +23,7 @@ export async function buildClient (ctx: ViteBuildContext) {
       : `defaultexport:${p.src}`
   }
 
-  const clientConfig: InlineConfig = vite.mergeConfig(ctx.config, {
+  const clientConfig: InlineConfig = await mergeConfig(ctx.config, {
     experimental: {
       renderBuiltUrl: (filename, { type, hostType }) => {
         if (hostType !== 'js' || type === 'asset') {
@@ -101,7 +101,7 @@ export async function buildClient (ctx: ViteBuildContext) {
 
   if (ctx.nuxt.options.dev) {
     // Dev
-    const viteServer = await vite.createServer(clientConfig)
+    const viteServer = await createServer(clientConfig)
     ctx.clientServer = viteServer
     await ctx.nuxt.callHook('vite:serverCreated', viteServer, { isClient: true, isServer: false })
     const baseURL = joinURL(ctx.nuxt.options.app.baseURL.replace(/^\./, '') || '/', ctx.nuxt.options.app.buildAssetsDir)
@@ -123,7 +123,7 @@ export async function buildClient (ctx: ViteBuildContext) {
   } else {
     // Build
     const start = Date.now()
-    await vite.build(clientConfig)
+    await build(clientConfig)
     logger.info(`Client built in ${Date.now() - start}ms`)
   }
 
