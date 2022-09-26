@@ -2,6 +2,7 @@ import { resolve } from 'pathe'
 import createVuePlugin from '@vitejs/plugin-vue2'
 import { logger } from '@nuxt/kit'
 import fse from 'fs-extra'
+import type { InlineConfig } from 'vite'
 import { debounce } from 'perfect-debounce'
 import { joinURL, withoutLeadingSlash, withTrailingSlash } from 'ufo'
 import vite from './stub-vite.cjs'
@@ -26,7 +27,7 @@ export async function buildServer (ctx: ViteBuildContext) {
       : `defaultexport:${p.src}`
   }
 
-  const serverConfig: vite.InlineConfig = vite.mergeConfig(ctx.config, {
+  const serverConfig: InlineConfig = vite.mergeConfig(ctx.config, {
     base: ctx.nuxt.options.dev
       ? joinURL(ctx.nuxt.options.app.baseURL, ctx.nuxt.options.app.buildAssetsDir)
       : undefined,

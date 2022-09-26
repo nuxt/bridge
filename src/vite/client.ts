@@ -4,6 +4,7 @@ import { logger } from '@nuxt/kit'
 import { joinURL, withLeadingSlash, withoutLeadingSlash, withTrailingSlash } from 'ufo'
 import escapeRE from 'escape-string-regexp'
 import { getPort } from 'get-port-please'
+import type { ServerOptions, Connect, InlineConfig } from 'vite'
 import defu from 'defu'
 import PluginLegacy from './stub-legacy.cjs'
 import vite from './stub-vite.cjs'
@@ -22,7 +23,7 @@ export async function buildClient (ctx: ViteBuildContext) {
       : `defaultexport:${p.src}`
   }
 
-  const clientConfig: vite.InlineConfig = vite.mergeConfig(ctx.config, {
+  const clientConfig: InlineConfig = vite.mergeConfig(ctx.config, {
     experimental: {
       renderBuiltUrl: (filename, { type, hostType }) => {
         if (hostType !== 'js' || type === 'asset') {
@@ -40,7 +41,8 @@ export async function buildClient (ctx: ViteBuildContext) {
     },
     cacheDir: resolve(ctx.nuxt.options.rootDir, 'node_modules/.cache/vite/client'),
     resolve: {
-      alias
+      alias,
+      dedupe: ['vue']
     },
     build: {
       rollupOptions: {
@@ -70,16 +72,18 @@ export async function buildClient (ctx: ViteBuildContext) {
     clientConfig.server.hmr = false
   }
 
-  if (clientConfig.server.hmr !== false) {
+  if (clientConfig.server && clientConfig.server.hmr !== false) {
     const hmrPortDefault = 24678 // Vite's default HMR port
     const hmrPort = await getPort({
       port: hmrPortDefault,
       ports: Array.from({ length: 20 }, (_, i) => hmrPortDefault + 1 + i)
     })
-    clientConfig.server.hmr = defu(clientConfig.server.hmr as vite.HmrOptions, {
-      // https://github.com/nuxt/framework/issues/4191
-      protocol: 'ws',
-      port: hmrPort
+    clientConfig.server = defu(clientConfig.server, <ServerOptions> {
+      https: ctx.nuxt.options.server.https,
+      hmr: {
+        protocol: ctx.nuxt.options.server.https ? 'wss' : 'ws',
+        port: hmrPort
+      }
     })
   }
 
@@ -102,11 +106,11 @@ export async function buildClient (ctx: ViteBuildContext) {
     await ctx.nuxt.callHook('vite:serverCreated', viteServer, { isClient: true, isServer: false })
     const baseURL = joinURL(ctx.nuxt.options.app.baseURL.replace(/^\./, '') || '/', ctx.nuxt.options.app.buildAssetsDir)
     const BASE_RE = new RegExp(`^${escapeRE(withTrailingSlash(withLeadingSlash(baseURL)))}`)
-    const viteMiddleware: vite.Connect.NextHandleFunction = (req, res, next) => {
+    const viteMiddleware: Connect.NextHandleFunction = (req, res, next) => {
       // Workaround: vite devmiddleware modifies req.url
       const originalURL = req.url
       req.url = req.url.replace(BASE_RE, '/')
-      viteServer.middlewares.handle(req, res, (err) => {
+      viteServer.middlewares.handle(req, res, (err: unknown) => {
         req.url = originalURL
         next(err)
       })

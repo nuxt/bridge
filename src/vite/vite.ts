@@ -2,6 +2,7 @@ import { resolve } from 'pathe'
 import { isIgnored, logger } from '@nuxt/kit'
 import { sanitizeFilePath } from 'mlly'
 import { withoutLeadingSlash } from 'ufo'
+import type { ViteDevServer } from 'vite'
 import { distDir } from '../dirs'
 import vite from './stub-vite.cjs'
 import { warmupViteServer } from './utils/warmup'
@@ -107,22 +108,14 @@ async function bundle (nuxt: Nuxt, builder: any) {
   // In build mode we explicitly override any vite options that vite is relying on
   // to detect whether to inject production or development code (such as HMR code)
   if (!nuxt.options.dev) {
-    ctx.config.server.watch = undefined
-
-    // TODO: Workaround for vite watching tsconfig changes
-    // https://github.com/nuxt/framework/pull/5875
-    ctx.config.plugins.push({
-      name: 'nuxt:close-vite-watcher',
-      configureServer (server) {
-        return server?.watcher?.close()
-      }
-    })
+    ctx.config.server!.watch = undefined
+    ctx.config.build!.watch = undefined
   }
 
   await ctx.nuxt.callHook('vite:extend', ctx)
 
   if (nuxt.options.dev) {
-    ctx.nuxt.hook('vite:serverCreated', (server: vite.ViteDevServer) => {
+    ctx.nuxt.hook('vite:serverCreated', (server: ViteDevServer) => {
       const start = Date.now()
       warmupViteServer(server, ['/.nuxt/entry.mjs']).then(() => {
         logger.info(`Vite warmed up in ${Date.now() - start}ms`)
