@@ -82,7 +82,8 @@ describe('dynamic paths', () => {
     await expectNoClientErrors('/assets')
   })
 
-  it('adds relative paths to CSS', async () => {
+  // Vite legacy build does not emit CSS files
+  it.skipIf(!process.env.TEST_WITH_WEBPACK)('adds relative paths to CSS', async () => {
     const html = await $fetch('/assets')
     const urls = Array.from(html.matchAll(/(href|src)="(.*?)"/g)).map(m => m[2])
     const cssURL = urls.find(u => /_nuxt\/assets.*\.css$/.test(u))

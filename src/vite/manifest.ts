@@ -95,8 +95,8 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
     'var appConfig = window && window.__NUXT__ && window.__NUXT__.config.app || {}',
     'var publicBase = appConfig.cdnURL || appConfig.baseURL || "/"',
     'function joinURL (a, b) { return a[a.length -1] !== "/" ? a + "/" + b : a + b }',
-    'globalThis.__publicAssetsURL = function(id) { return joinURL(publicBase, id) }',
-    'globalThis.__buildAssetsURL = function(id) { return joinURL(publicBase, joinURL(appConfig.buildAssetsDir, id)) }',
+    'globalThis.__publicAssetsURL = function(id) { return joinURL(publicBase, id || "") }',
+    'globalThis.__buildAssetsURL = function(id) { return joinURL(publicBase, joinURL(appConfig.buildAssetsDir, id || "")) }',
     `var imports = ${JSON.stringify([...clientImports])};`,
     'imports.reduce(function(p, id){return p.then(function(){return System.import(__buildAssetsURL(id).slice(1))})}, Promise.resolve())'
   ].join('\n')
