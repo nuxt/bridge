@@ -5,7 +5,7 @@ import fse from 'fs-extra'
 import type { InlineConfig } from 'vite'
 import { debounce } from 'perfect-debounce'
 import { joinURL, withoutLeadingSlash, withTrailingSlash } from 'ufo'
-import vite from './stub-vite.cjs'
+import { mergeConfig, createServer, build } from './stub-vite.cjs'
 import { bundleRequest } from './dev-bundler'
 import { isCSS } from './utils'
 import { wpfs } from './utils/wpfs'
@@ -27,7 +27,7 @@ export async function buildServer (ctx: ViteBuildContext) {
       : `defaultexport:${p.src}`
   }
 
-  const serverConfig: InlineConfig = vite.mergeConfig(ctx.config, {
+  const serverConfig: InlineConfig = await mergeConfig(ctx.config, {
     base: ctx.nuxt.options.dev
       ? joinURL(ctx.nuxt.options.app.baseURL, ctx.nuxt.options.app.buildAssetsDir)
       : undefined,
@@ -115,7 +115,7 @@ export async function buildServer (ctx: ViteBuildContext) {
   if (!ctx.nuxt.options.dev) {
     const start = Date.now()
     logger.info('Building server...')
-    await vite.build(serverConfig)
+    await build(serverConfig)
     await onBuild()
     logger.success(`Server built in ${Date.now() - start}ms`)
     return
@@ -127,7 +127,7 @@ export async function buildServer (ctx: ViteBuildContext) {
   }
 
   // Start development server
-  const viteServer = await vite.createServer(serverConfig)
+  const viteServer = await createServer(serverConfig)
   ctx.ssrServer = viteServer
 
   await ctx.nuxt.callHook('vite:serverCreated', viteServer, { isClient: false, isServer: true })

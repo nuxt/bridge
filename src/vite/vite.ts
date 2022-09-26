@@ -4,7 +4,7 @@ import { sanitizeFilePath } from 'mlly'
 import { withoutLeadingSlash } from 'ufo'
 import type { ViteDevServer } from 'vite'
 import { distDir } from '../dirs'
-import vite from './stub-vite.cjs'
+import { mergeConfig } from './stub-vite.cjs'
 import { warmupViteServer } from './utils/warmup'
 import { buildClient } from './client'
 import { buildServer } from './server'
@@ -21,7 +21,7 @@ async function bundle (nuxt: Nuxt, builder: any) {
   const ctx: ViteBuildContext = {
     nuxt,
     builder,
-    config: vite.mergeConfig(
+    config: await mergeConfig(
       {
         // defaults from packages/schema/src/config/vite
         root: nuxt.options.srcDir,
