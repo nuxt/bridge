@@ -1,10 +1,10 @@
 import { pathToFileURL } from 'url'
 import { existsSync } from 'fs'
 import { builtinModules } from 'module'
-import { resolve } from 'pathe'
-import * as vite from 'vite'
+import { isAbsolute, resolve } from 'pathe'
 import { ExternalsOptions, isExternal as _isExternal, ExternalsDefaults } from 'externality'
 import { genDynamicImport, genObjectFromRawEntries } from 'knitwork'
+import vite from './stub-vite.cjs'
 import { hashId, uniq } from './utils'
 
 export interface TransformChunk {
@@ -75,7 +75,7 @@ async function transformRequest (opts: TransformOptions, id: string) {
   // Remove for externals
   const withoutVersionQuery = id.replace(/\?v=\w+$/, '')
   if (await isExternal(opts, withoutVersionQuery)) {
-    const path = builtinModules.includes(withoutVersionQuery.split('node:').pop())
+    const path = builtinModules.includes(withoutVersionQuery.split('node:').pop()) || !isAbsolute(withoutVersionQuery)
       ? withoutVersionQuery
       : pathToFileURL(withoutVersionQuery).href
     return {
@@ -129,12 +129,11 @@ export async function bundleRequest (opts: TransformOptions, entryURL: string) {
 // Parents: \n${listIds(chunk.parents)}
 // Dependencies: \n${listIds(chunk.deps)}
 // --------------------
-const ${hashId(chunk.id)} = ${chunk.code}
+const ${hashId(chunk.id + '-' + chunk.code)} = ${chunk.code}
 `).join('\n')
 
-  const manifestCode = `const __modules__ = ${
-    genObjectFromRawEntries(chunks.map(chunk => [chunk.id, hashId(chunk.id)]))
-  }`
+  const manifestCode = `const __modules__ = ${genObjectFromRawEntries(chunks.map(chunk => [chunk.id, hashId(chunk.id + '-' + chunk.code)]))
+    }`
 
   // https://github.com/vitejs/vite/blob/main/packages/vite/src/node/ssr/ssrModuleLoader.ts
   const ssrModuleLoader = `

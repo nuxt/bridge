@@ -1,9 +1,11 @@
 import { resolve } from 'pathe'
-import * as vite from 'vite'
 import createVuePlugin from '@vitejs/plugin-vue2'
 import { logger } from '@nuxt/kit'
 import fse from 'fs-extra'
+import type { InlineConfig } from 'vite'
 import { debounce } from 'perfect-debounce'
+import { joinURL, withoutLeadingSlash, withTrailingSlash } from 'ufo'
+import vite from './stub-vite.cjs'
 import { bundleRequest } from './dev-bundler'
 import { isCSS } from './utils'
 import { wpfs } from './utils/wpfs'
@@ -25,7 +27,26 @@ export async function buildServer (ctx: ViteBuildContext) {
       : `defaultexport:${p.src}`
   }
 
-  const serverConfig: vite.InlineConfig = vite.mergeConfig(ctx.config, {
+  const serverConfig: InlineConfig = vite.mergeConfig(ctx.config, {
+    base: ctx.nuxt.options.dev
+      ? joinURL(ctx.nuxt.options.app.baseURL, ctx.nuxt.options.app.buildAssetsDir)
+      : undefined,
+    experimental: {
+      renderBuiltUrl: (filename, { type, hostType }) => {
+        if (hostType !== 'js') {
+          // In CSS we only use relative paths until we craft a clever runtime CSS hack
+          return { relative: true }
+        }
+        switch (type) {
+          case 'public':
+            return { runtime: `__publicAssetsURL(${JSON.stringify(filename)})` }
+          case 'asset': {
+            const relativeFilename = filename.replace(withTrailingSlash(withoutLeadingSlash(ctx.nuxt.options.app.buildAssetsDir)), '')
+            return { runtime: `__buildAssetsURL(${JSON.stringify(relativeFilename)})` }
+          }
+        }
+      }
+    },
     define: {
       'process.server': true,
       'process.client': false,
@@ -42,7 +63,9 @@ export async function buildServer (ctx: ViteBuildContext) {
     },
     ssr: {
       external: [
-        'axios'
+        'axios',
+        '#internal/nitro',
+        '#internal/nitro/utils'
       ],
       noExternal: [
         // TODO: Use externality for production (rollup) build
@@ -75,7 +98,8 @@ export async function buildServer (ctx: ViteBuildContext) {
     },
     server: {
       // https://github.com/vitest-dev/vitest/issues/229#issuecomment-1002685027
-      preTransformRequests: false
+      preTransformRequests: false,
+      hmr: false
     },
     plugins: [
       jsxPlugin(),
@@ -97,18 +121,19 @@ export async function buildServer (ctx: ViteBuildContext) {
     return
   }
 
+  if (!ctx.nuxt.options.ssr) {
+    await onBuild()
+    return
+  }
+
   // Start development server
   const viteServer = await vite.createServer(serverConfig)
-  ctx.nuxt.hook('close', () => viteServer.close())
+  ctx.ssrServer = viteServer
 
-  // Invalidate virtual modules when templates are re-generated
-  ctx.nuxt.hook('app:templatesGenerated', () => {
-    for (const [id, mod] of viteServer.moduleGraph.idToModuleMap) {
-      if (id.startsWith('\x00virtual:')) {
-        viteServer.moduleGraph.invalidateModule(mod)
-      }
-    }
-  })
+  await ctx.nuxt.callHook('vite:serverCreated', viteServer, { isClient: false, isServer: true })
+
+  // Close server on exit
+  ctx.nuxt.hook('close', () => viteServer.close())
 
   // Initialize plugins
   await viteServer.pluginContainer.buildStart({})
@@ -121,11 +146,11 @@ export async function buildServer (ctx: ViteBuildContext) {
   const _doBuild = async () => {
     const start = Date.now()
     const { code, ids } = await bundleRequest({ viteServer }, '/.nuxt/server.js')
+    await fse.writeFile(resolve(ctx.nuxt.options.buildDir, 'dist/server/server.mjs'), code, 'utf-8')
     // Have CSS in the manifest to prevent FOUC on dev SSR
     await generateDevSSRManifest(ctx, ids.filter(isCSS).map(i => '../' + i.slice(1)))
-    await fse.writeFile(resolve(ctx.nuxt.options.buildDir, 'dist/server/server.mjs'), code, 'utf-8')
     const time = (Date.now() - start)
-    consola.info(`Server built in ${time}ms`)
+    logger.info(`Vite server built in ${time}ms`)
     await onBuild()
   }
   const doBuild = debounce(_doBuild)

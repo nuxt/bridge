@@ -37,7 +37,7 @@
     "@nuxt/postcss8": "^1.1.3",
     "@nuxt/schema": "3.0.0-rc.11",
     "@nuxt/ui-templates": "^0.4.0",
-    "@vitejs/plugin-legacy": "^1.8.2",
+    "@vitejs/plugin-legacy": "^2.2.0",
     "@vitejs/plugin-vue2": "^1.1.2",
     "acorn": "^8.8.0",
     "cookie-es": "^0.5.0",
@@ -69,12 +69,13 @@
     "scule": "^0.3.2",
     "semver": "^7.3.7",
     "std-env": "^3.2.1",
+    "terser": "^5.15.0",
     "ufo": "^0.8.5",
     "unctx": "^2.0.2",
     "unimport": "^0.6.7",
     "unplugin": "^0.9.6",
     "untyped": "^0.5.0",
-    "vite": "^2.9.14",
+    "vite": "~3.1.3",
     "vue-bundle-renderer": "^0.4.3"
   },
   "devDependencies": {

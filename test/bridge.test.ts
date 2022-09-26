@@ -22,8 +22,8 @@ describe('pages', () => {
 
 describe('navigate', () => {
   it('should redirect to index with navigateTo', async () => {
-    const html = await $fetch('/navigate-to/')
-    expect(html).toContain('Hello Vue 2!')
+    const { headers } = await fetch('/navigate-to/', { redirect: 'manual' })
+    expect(headers.get('location')).toEqual('/')
     await expectNoClientErrors('/navigate-to/')
   })
 })
@@ -106,9 +106,37 @@ describe('dynamic paths', () => {
     const html = await $fetch('/foo/assets')
     for (const match of html.matchAll(/(href|src)="(.*?)"/g)) {
       const url = match[2]
-      expect(url.startsWith('/foo/_other/') || url === '/foo/public.svg').toBeTruthy()
+      expect(
+        url.startsWith('/foo/_other/') ||
+        url === '/foo/public.svg'
+      ).toBeTruthy()
     }
     await expectNoClientErrors('/foo/assets')
+  })
+
+  it('should allow setting relative baseURL', async () => {
+    delete process.env.NUXT_APP_BUILD_ASSETS_DIR
+    process.env.NUXT_APP_BASE_URL = './'
+    await startServer()
+
+    const html = await $fetch('/assets')
+    for (const match of html.matchAll(/(href|src)="(.*?)"/g)) {
+      const url = match[2]
+      expect(
+        url.startsWith('./_nuxt/') ||
+        url === './public.svg'
+      ).toBeTruthy()
+      expect(url.startsWith('./_nuxt/_nuxt')).toBeFalsy()
+    }
+  })
+
+  it('should use baseURL when redirecting', async () => {
+    process.env.NUXT_APP_BUILD_ASSETS_DIR = '/_other/'
+    process.env.NUXT_APP_BASE_URL = '/foo/'
+    await startServer()
+    const { headers } = await fetch('/foo/navigate-to/', { redirect: 'manual' })
+
+    expect(headers.get('location')).toEqual('/foo/')
   })
 
   it('should allow setting CDN URL', async () => {
@@ -121,7 +149,8 @@ describe('dynamic paths', () => {
     for (const match of html.matchAll(/(href|src)="(.*?)"/g)) {
       const url = match[2]
       expect(
-        url.startsWith('https://example.com/_cdn/') || url === 'https://example.com/public.svg'
+        url.startsWith('https://example.com/_cdn/') ||
+        url === 'https://example.com/public.svg'
       ).toBeTruthy()
     }
     await expectNoClientErrors('/foo/assets')

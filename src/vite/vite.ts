@@ -1,12 +1,11 @@
 import { resolve } from 'pathe'
-import * as vite from 'vite'
 import { isIgnored, logger } from '@nuxt/kit'
 import { sanitizeFilePath } from 'mlly'
-import { getPort } from 'get-port-please'
-import { joinURL, withoutLeadingSlash } from 'ufo'
+import { withoutLeadingSlash } from 'ufo'
+import type { ViteDevServer } from 'vite'
 import { distDir } from '../dirs'
+import vite from './stub-vite.cjs'
 import { warmupViteServer } from './utils/warmup'
-import { DynamicBasePlugin } from './plugins/dynamic-base'
 import { buildClient } from './client'
 import { buildServer } from './server'
 import { defaultExportPlugin } from './plugins/default-export'
@@ -14,19 +13,11 @@ import { jsxPlugin } from './plugins/jsx'
 import { replace } from './plugins/replace'
 import { resolveCSSOptions } from './css'
 import type { Nuxt, ViteBuildContext, ViteOptions } from './types'
-import { prepareManifests } from './manifest'
 
 async function bundle (nuxt: Nuxt, builder: any) {
   for (const p of builder.plugins) {
     p.src = nuxt.resolver.resolvePath(resolve(nuxt.options.buildDir, p.src))
   }
-
-  const hmrPortDefault = 24678 // Vite's default HMR port
-  const hmrPort = await getPort({
-    port: hmrPortDefault,
-    ports: Array.from({ length: 20 }, (_, i) => hmrPortDefault + 1 + i)
-  })
-
   const ctx: ViteBuildContext = {
     nuxt,
     builder,
@@ -36,9 +27,6 @@ async function bundle (nuxt: Nuxt, builder: any) {
         root: nuxt.options.srcDir,
         mode: nuxt.options.dev ? 'development' : 'production',
         logLevel: 'warn',
-        base: nuxt.options.dev
-          ? joinURL(nuxt.options.app.baseURL, nuxt.options.app.buildAssetsDir)
-          : '/__NUXT_BASE__/',
         publicDir: resolve(nuxt.options.rootDir, nuxt.options.srcDir, nuxt.options.dir.static),
         vue: {
           isProduction: !nuxt.options.dev,
@@ -85,7 +73,7 @@ async function bundle (nuxt: Nuxt, builder: any) {
         },
         css: resolveCSSOptions(nuxt),
         build: {
-          assetsDir: nuxt.options.dev ? withoutLeadingSlash(nuxt.options.app.buildAssetsDir) : '.',
+          assetsDir: withoutLeadingSlash(nuxt.options.app.buildAssetsDir),
           emptyOutDir: false,
           rollupOptions: {
             output: { sanitizeFileName: sanitizeFilePath }
@@ -96,18 +84,11 @@ async function bundle (nuxt: Nuxt, builder: any) {
             __webpack_public_path__: 'globalThis.__webpack_public_path__'
           }),
           jsxPlugin(),
-          DynamicBasePlugin.vite(),
           defaultExportPlugin()
         ],
         server: {
           watch: {
             ignored: isIgnored
-          },
-          hmr: {
-            // https://github.com/nuxt/framework/issues/4191
-            protocol: 'ws',
-            clientPort: hmrPort,
-            port: hmrPort
           },
           fs: {
             strict: false,
@@ -124,10 +105,17 @@ async function bundle (nuxt: Nuxt, builder: any) {
     )
   }
 
+  // In build mode we explicitly override any vite options that vite is relying on
+  // to detect whether to inject production or development code (such as HMR code)
+  if (!nuxt.options.dev) {
+    ctx.config.server!.watch = undefined
+    ctx.config.build!.watch = undefined
+  }
+
   await ctx.nuxt.callHook('vite:extend', ctx)
 
   if (nuxt.options.dev) {
-    ctx.nuxt.hook('vite:serverCreated', (server: vite.ViteDevServer) => {
+    ctx.nuxt.hook('vite:serverCreated', (server: ViteDevServer) => {
       const start = Date.now()
       warmupViteServer(server, ['/.nuxt/entry.mjs']).then(() => {
         logger.info(`Vite warmed up in ${Date.now() - start}ms`)
@@ -136,7 +124,6 @@ async function bundle (nuxt: Nuxt, builder: any) {
   }
 
   await buildClient(ctx)
-  await prepareManifests(ctx)
   await buildServer(ctx)
 }
 
