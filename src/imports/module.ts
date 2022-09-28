@@ -21,22 +21,6 @@ export default defineNuxtModule<Partial<ImportsOptions>>({
     }
   },
   async setup (options, nuxt) {
-    // Deprecate hooks
-    nuxt.hooks.deprecateHooks({
-      'autoImports:sources': {
-        to: 'imports:sources',
-        message: '`autoImports:sources` hook is deprecated. Use `addImportsSources()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
-      },
-      'autoImports:dirs': {
-        to: 'imports:dirs',
-        message: '`autoImports:dirs` hook is deprecated. Use `addImportsDir()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
-      },
-      'autoImports:extend': {
-        to: 'imports:extend',
-        message: '`autoImports:extend` hook is deprecated. Use `addImports()` from `@nuxt/kit` or `imports:extend` with latest Nuxt Bridge.'
-      }
-    })
-
     // Allow modules extending sources
     await nuxt.callHook('imports:sources', options.presets as ImportPresetWithDeprecation[])
 

@@ -59,6 +59,21 @@ export default defineNuxtModule({
       await setupCAPIBridge(opts.capi === true ? {} : opts.capi)
     }
     if (opts.imports ?? opts.autoImports) {
+      // Deprecate hooks
+      nuxt.hooks.deprecateHooks({
+        'autoImports:sources': {
+          to: 'imports:sources',
+          message: '`autoImports:sources` hook is deprecated. Use `addImportsSources()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
+        },
+        'autoImports:dirs': {
+          to: 'imports:dirs',
+          message: '`autoImports:dirs` hook is deprecated. Use `addImportsDir()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
+        },
+        'autoImports:extend': {
+          to: 'imports:extend',
+          message: '`autoImports:extend` hook is deprecated. Use `addImports()` from `@nuxt/kit` or `imports:extend` with latest Nuxt Bridge.'
+        }
+      })
       nuxt.hook('modules:done', () => installModule(importsModule))
     }
     if (opts.vite) {
