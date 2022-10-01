@@ -2466,11 +2466,12 @@
   optionalDependencies:
     prettier "^1.18.2 || ^2.0.0"
 
-"@vueuse/head@^0.7.13":
-  version "0.7.13"
-  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.7.13.tgz#a6defbe215a7f42bd65daea5b2f102588f883270"
-  integrity sha512-VHSla/0uOAUii/mz+NWLFKMrMbz/lQoYxEcpS/ri7drepYjdB5QdbTnD2KdOX8EmQM/b07qpjKanr7erGrd3XA==
+"@vueuse/head@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@vueuse/head/-/head-0.8.0.tgz#3b53cd8e574eb8824700daec74469e3ec7c8481a"
+  integrity sha512-e/1Zh3GAa1dkunHfxHkda/TBxxDgj2isQyND7wYazBhClyfrschXbNfPn1UbyrZRFFaXZjpt6RFukSgph3gG0A==
   dependencies:
+    "@vueuse/shared" "^9.2.0"
     "@zhead/schema-vue" "^0.7.3"
 
 "@vueuse/shared@^9.2.0":
