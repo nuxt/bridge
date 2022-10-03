@@ -131,6 +131,30 @@ describe('dynamic paths', () => {
     }
   })
 
+  it('should set runtime config', async () => {
+    const html = await $fetch('/runtime-config')
+    expect(html.match(/<pre>([\s\S]*)<\/pre>/)?.[0].replace(/&quot;/g, '"')).toMatchInlineSnapshot(`
+      "<pre>{
+        \\"app\\": {
+          \\"baseURL\\": \\"./\\",
+          \\"basePath\\": \\"/\\",
+          \\"assetsPath\\": \\"/_nuxt/\\",
+          \\"cdnURL\\": \\"\\",
+          \\"buildAssetsDir\\": \\"/_nuxt/\\"
+        },
+        \\"nitro\\": {
+          \\"routes\\": {},
+          \\"envPrefix\\": \\"NUXT_\\"
+        },
+        \\"public\\": {
+          \\"myValue\\": 123
+        },
+        \\"secretKey\\": \\"nuxt\\"
+      }</pre>"
+    `)
+    await expectNoClientErrors('/runtime-config')
+  })
+
   it('should use baseURL when redirecting', async () => {
     process.env.NUXT_APP_BUILD_ASSETS_DIR = '/_other/'
     process.env.NUXT_APP_BASE_URL = '/foo/'
