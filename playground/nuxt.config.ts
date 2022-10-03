@@ -13,6 +13,13 @@ export default defineNuxtConfig({
       }
     }
   ],
+  modules: [
+    function () {
+      this.nuxt.options.plugins.unshift({
+        src: '~/plugins/config'
+      })
+    }
+  ],
   buildDir: process.env.NITRO_BUILD_DIR,
   plugins: ['~/plugins/setup.js'],
   nitro: {

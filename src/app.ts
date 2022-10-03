@@ -102,7 +102,9 @@ export async function setupAppBridge (_options: any) {
   })
 
   // Normalize runtimeConfig with a proxy
-  addPlugin({ src: resolve(distDir, 'runtime/config.plugin.mjs') })
+  nuxt.hook('modules:done', () => {
+    nuxt.options.plugins.unshift({ src: resolve(distDir, 'runtime/config.plugin.mjs') })
+  })
 
   addPlugin({
     src: resolve(distDir, 'runtime/error.plugin.server.mjs'),
