@@ -89,7 +89,7 @@
     "@types/node-fetch": "^3.0.2",
     "@vueuse/head": "^0.9.7",
     "cross-env": "^7.0.3",
-    "eslint": "^8.24.0",
+    "eslint": "^8.25.0",
     "eslint-plugin-jsdoc": "^39.3.6",
     "jiti": "^1.16.0",
     "nuxt": "^2",
