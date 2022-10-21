@@ -1,7 +1,7 @@
 import { Ref, ref, watch } from 'vue'
 import { parse, serialize, CookieParseOptions, CookieSerializeOptions } from 'cookie-es'
 import { appendHeader } from 'h3'
-import type { CompatibilityEvent } from 'h3'
+import type { H3Event } from 'h3'
 import destr from 'destr'
 import { useNuxtApp } from './app'
 import { useRequestEvent } from './ssr'
@@ -64,7 +64,7 @@ function writeClientCookie (name: string, value: any, opts: CookieSerializeOptio
   }
 }
 
-function writeServerCookie (event: CompatibilityEvent, name: string, value: any, opts: CookieSerializeOptions = {}) {
+function writeServerCookie (event: H3Event, name: string, value: any, opts: CookieSerializeOptions = {}) {
   if (event) {
     // TODO: Try to smart join with existing Set-Cookie headers
     appendHeader(event, 'Set-Cookie', serializeCookie(name, value, opts))

@@ -1,5 +1,5 @@
 /* eslint-disable no-redeclare */
-import type { CompatibilityEvent } from 'h3'
+import type { H3Event } from 'h3'
 import { NuxtAppCompat, useNuxtApp } from './app'
 
 export function useRequestHeaders<K extends string = string> (include: K[]): Record<K, string>
@@ -11,6 +11,6 @@ export function useRequestHeaders (include?) {
   return Object.fromEntries(include.filter(key => headers[key]).map(key => [key, headers[key]]))
 }
 
-export function useRequestEvent (nuxtApp: NuxtAppCompat = useNuxtApp()): CompatibilityEvent {
-  return nuxtApp.ssrContext?.event as CompatibilityEvent
+export function useRequestEvent (nuxtApp: NuxtAppCompat = useNuxtApp()): H3Event {
+  return nuxtApp.ssrContext?.event as H3Event
 }
