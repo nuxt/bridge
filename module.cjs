@@ -12,6 +12,9 @@ module.exports.defineNuxtConfig = (config = {}) => {
   config.serverHandlers = config.serverHandlers || []
   config.devServerHandlers = config.devServerHandlers || []
 
+  // Initialize typescript config for nuxi typecheck + prepare support
+  config.typescript = config.typescript || {}
+
   // Nuxt kit depends on this flag to check bridge compatibility
   config.bridge = typeof config.bridge === 'object' ? config.bridge : {}
   config.bridge._version = pkg.version
