@@ -1,7 +1,11 @@
 <template>
-  <div />
+  <div>
+    {{ state.attr }}
+    {{ data.something }}
+  </div>
 </template>
 
 <script setup>
-throw new Error('This is a custom error')
+throw createError({ statusCode: 422, fatal: true, statusMessage: 'This is a custom error' })
+const state = ref({ attr: 'Hello World' })
 </script>

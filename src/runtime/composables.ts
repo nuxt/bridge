@@ -12,6 +12,7 @@ import { useNuxtApp } from './app'
 export { useLazyAsyncData, refreshNuxtData } from './asyncData'
 export { useLazyFetch } from './fetch'
 export { useCookie } from './cookie'
+export { clearError, createError, isNuxtError, throwError, showError, useError } from './error'
 export { useRequestHeaders, useRequestEvent } from './ssr'
 
 export * from 'vue'
