@@ -1,10 +1,10 @@
 import { join, resolve } from 'pathe'
 import createVuePlugin from '@vitejs/plugin-vue2'
 import { logger } from '@nuxt/kit'
-import { joinURL, withLeadingSlash, withoutLeadingSlash, withTrailingSlash } from 'ufo'
-import escapeRE from 'escape-string-regexp'
+import { joinURL, withoutLeadingSlash } from 'ufo'
 import { getPort } from 'get-port-please'
-import type { ServerOptions, Connect, InlineConfig } from 'vite'
+import type { ServerOptions, InlineConfig } from 'vite'
+import { defineEventHandler } from 'h3'
 import defu from 'defu'
 import PluginLegacy from './stub-legacy.cjs'
 import { mergeConfig, createServer, build } from './stub-vite.cjs'
@@ -24,6 +24,9 @@ export async function buildClient (ctx: ViteBuildContext) {
   }
 
   const clientConfig: InlineConfig = await mergeConfig(ctx.config, {
+    base: ctx.nuxt.options.dev
+      ? joinURL(ctx.nuxt.options.app.baseURL.replace(/^\.\//, '/') || '/', ctx.nuxt.options.app.buildAssetsDir)
+      : './',
     experimental: {
       renderBuiltUrl: (filename, { type, hostType }) => {
         if (hostType !== 'js' || type === 'asset') {
@@ -104,18 +107,20 @@ export async function buildClient (ctx: ViteBuildContext) {
     const viteServer = await createServer(clientConfig)
     ctx.clientServer = viteServer
     await ctx.nuxt.callHook('vite:serverCreated', viteServer, { isClient: true, isServer: false })
-    const baseURL = joinURL(ctx.nuxt.options.app.baseURL.replace(/^\./, '') || '/', ctx.nuxt.options.app.buildAssetsDir)
-    const BASE_RE = new RegExp(`^${escapeRE(withTrailingSlash(withLeadingSlash(baseURL)))}`)
-    const viteMiddleware: Connect.NextHandleFunction = (req, res, next) => {
+    const viteMiddleware = defineEventHandler(async (event) => {
       // Workaround: vite devmiddleware modifies req.url
-      const originalURL = req.url
-      req.url = req.url.replace(BASE_RE, '/')
-      viteServer.middlewares.handle(req, res, (err: unknown) => {
-        req.url = originalURL
-        next(err)
+      const originalURL = event.req.url
+      if (!originalURL.startsWith(clientConfig.base!)) {
+        event.req.url = joinURL('/__url', originalURL)
+      }
+      await new Promise((resolve, reject) => {
+        viteServer.middlewares.handle(event.req, event.res, (err: Error) => {
+          event.req.url = originalURL
+          return err ? reject(err) : resolve(null)
+        })
       })
-    }
-    await ctx.nuxt.callHook('server:devMiddleware', viteMiddleware)
+    })
+    await ctx.nuxt.callHook('server:devHandler', viteMiddleware)
 
     ctx.nuxt.hook('close', async () => {
       await viteServer.close()

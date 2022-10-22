@@ -166,9 +166,9 @@ export const navigateTo = (to: RawLocation, options: NavigateToOptions = {}): Pr
   const router = useRouter()
   if (process.server && useNuxtApp().ssrContext) {
     // Server-side redirection using h3 res from ssrContext
-    const res = useNuxtApp().ssrContext?.res
+    const event = useNuxtApp().ssrContext?.event
     const redirectLocation = joinURL(useRuntimeConfig().app.baseURL, router.resolve(to).fullPath || '/')
-    return sendRedirect(res, redirectLocation)
+    return sendRedirect(event, redirectLocation)
   }
   // Client-side redirection using vue-router
   return options.replace ? router.replace(to) : router.push(to)

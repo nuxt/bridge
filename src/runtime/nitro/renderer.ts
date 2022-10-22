@@ -38,7 +38,9 @@ interface NuxtSSRContext extends SSRContext {
   noSSR: boolean
   redirected?: boolean
   event: H3Event
+  /** @deprecated use `ssrContext.event` instead */
   req: H3Event['req']
+  /** @deprecated use `ssrContext.event` instead */
   res: H3Event['res']
   runtimeConfig: RuntimeConfig
   error?: any
