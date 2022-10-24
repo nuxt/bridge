@@ -6,7 +6,7 @@ import { addPluginTemplate, resolvePath, tryImportModule, useNuxt } from '@nuxt/
 import { joinURL, stringifyQuery, withBase, withoutTrailingSlash } from 'ufo'
 import { resolve, join, dirname, normalize } from 'pathe'
 import { createNitro, createDevServer, build, writeTypes, prepare, copyPublicAssets, prerender } from 'nitropack'
-import { dynamicEventHandler, toEventHandler } from 'h3'
+import { dynamicEventHandler } from 'h3'
 import type { Nitro, NitroEventHandler, NitroDevEventHandler, NitroConfig } from 'nitropack'
 import { Nuxt, NuxtPage } from '@nuxt/schema'
 import { defu } from 'defu'
@@ -65,7 +65,6 @@ export async function setupNitroBridge () {
     rootDir: resolve(nuxt.options.rootDir),
     srcDir: resolve(nuxt.options.srcDir, 'server'),
     dev: nuxt.options.dev,
-    preset: nuxt.options.dev ? 'nitro-dev' : undefined,
     buildDir: resolve(nuxt.options.buildDir),
     scanDirs: nuxt.options._layers.map(layer => join(layer.config.srcDir, 'server')),
     renderer: resolve(distDir, 'runtime/nitro/renderer'),
@@ -251,8 +250,8 @@ export async function setupNitroBridge () {
   })
 
   // Setup handlers
-  const devMidlewareHandler = dynamicEventHandler()
-  nitro.options.devHandlers.unshift({ handler: devMidlewareHandler })
+  const devMiddlewareHandler = dynamicEventHandler()
+  nitro.options.devHandlers.unshift({ handler: devMiddlewareHandler })
   const { handlers, devHandlers } = await resolveHandlers(nuxt)
   nitro.options.handlers.push(...handlers)
   nitro.options.devHandlers.push(...devHandlers)
@@ -359,7 +358,7 @@ export async function setupNitroBridge () {
     nuxt.hook('build:compile', ({ compiler }) => {
       compiler.outputFileSystem = { ...fsExtra, join } as any
     })
-    nuxt.hook('server:devMiddleware', (m) => { devMidlewareHandler.set(toEventHandler(m)) })
+    nuxt.hook('server:devHandler', (h) => { devMiddlewareHandler.set(h) })
   }
 
   // nuxt generate

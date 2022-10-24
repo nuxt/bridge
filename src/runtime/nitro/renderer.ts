@@ -1,6 +1,6 @@
 import { createRenderer } from 'vue-bundle-renderer/runtime'
 import type { SSRContext } from 'vue-bundle-renderer/runtime'
-import { CompatibilityEvent, getQuery } from 'h3'
+import { H3Event, getQuery } from 'h3'
 import devalue from '@nuxt/devalue'
 import type { RuntimeConfig } from '@nuxt/schema'
 import type { RenderResponse } from 'nitropack'
@@ -37,9 +37,11 @@ interface NuxtSSRContext extends SSRContext {
   url: string
   noSSR: boolean
   redirected?: boolean
-  event: CompatibilityEvent
-  req: CompatibilityEvent['req']
-  res: CompatibilityEvent['res']
+  event: H3Event
+  /** @deprecated use `ssrContext.event` instead */
+  req: H3Event['req']
+  /** @deprecated use `ssrContext.event` instead */
+  res: H3Event['res']
   runtimeConfig: RuntimeConfig
   error?: any
   nuxt?: any

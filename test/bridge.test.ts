@@ -50,7 +50,7 @@ describe('errors', () => {
       description: process.env.NUXT_TEST_DEV ? expect.stringContaining('<pre>') : '',
       message: 'This is a custom error',
       statusCode: 500,
-      statusMessage: 'Internal Server Error',
+      statusMessage: '',
       url: '/error'
     })
   })
@@ -143,7 +143,7 @@ describe('dynamic paths', () => {
           \\"buildAssetsDir\\": \\"/_nuxt/\\"
         },
         \\"nitro\\": {
-          \\"routes\\": {},
+          \\"routeRules\\": {},
           \\"envPrefix\\": \\"NUXT_\\"
         },
         \\"public\\": {

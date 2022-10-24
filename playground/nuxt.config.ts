@@ -1,3 +1,4 @@
+import { defineEventHandler } from 'h3'
 import { defineNuxtConfig } from '..'
 
 // @ts-ignore
@@ -7,10 +8,9 @@ export default defineNuxtConfig({
   components: true,
   serverMiddleware: [
     {
-      handle (req, _res, next) {
-        req.spa = req.url.includes('?spa')
-        next()
-      }
+      handle: defineEventHandler((event) => {
+        event.req.spa = event.req.url.includes('?spa')
+      })
     }
   ],
   modules: [
