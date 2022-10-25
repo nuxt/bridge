@@ -5,7 +5,7 @@ import devalue from '@nuxt/devalue'
 import type { RuntimeConfig } from '@nuxt/schema'
 import type { RenderResponse } from 'nitropack'
 // @ts-ignore
-import { useRuntimeConfig, useNitroApp, defineRenderHandler } from '#internal/nitro'
+import { useRuntimeConfig, useNitroApp, defineRenderHandler, getRouteRules } from '#internal/nitro'
 // @ts-ignore
 import { buildAssetsURL } from '#paths'
 // @ts-ignore
@@ -131,6 +131,9 @@ export default defineRenderHandler(async (event) => {
     url = url.slice(STATIC_ASSETS_BASE.length, url.length - PAYLOAD_JS.length) || '/'
   }
 
+  // Get route options (currently to apply `ssr: false`)
+  const routeOptions = getRouteRules(event)
+
   // Initialize ssr context
   const config = useRuntimeConfig()
   const ssrContext: NuxtSSRContext = {
@@ -139,7 +142,7 @@ export default defineRenderHandler(async (event) => {
     req: event.req,
     res: event.res,
     runtimeConfig: { private: config, public: { public: config.public, app: config.app } },
-    noSSR: !!event.req.headers['x-nuxt-no-ssr'],
+    noSSR: !!event.req.headers['x-nuxt-no-ssr'] || routeOptions.ssr === false,
     error: ssrError,
     redirected: undefined,
     nuxt: undefined as undefined | Record<string, any>, /* Nuxt 2 payload */
