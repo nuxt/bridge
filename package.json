@@ -90,7 +90,7 @@
     "@vueuse/head": "^0.9.7",
     "cross-env": "^7.0.3",
     "eslint": "^8.26.0",
-    "eslint-plugin-jsdoc": "^39.3.24",
+    "eslint-plugin-jsdoc": "^39.3.25",
     "jiti": "^1.16.0",
     "nuxt": "^2",
     "unbuild": "0.9.4",
