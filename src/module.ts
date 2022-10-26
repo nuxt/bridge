@@ -1,4 +1,4 @@
-import { createRequire } from 'module'
+import Module from 'module'
 import { defineNuxtModule, installModule, checkNuxtCompatibility } from '@nuxt/kit'
 import type { NuxtModule, NuxtCompatibility } from '@nuxt/schema'
 import type { BridgeConfig } from '../types'
@@ -89,7 +89,7 @@ export default defineNuxtModule({
       })
     }
     if (opts.postcss8) {
-      const _require = createRequire(import.meta.url)
+      const _require = Module.createRequire(import.meta.url)
       await installModule(_require.resolve('@nuxt/postcss8'))
     }
     if (opts.typescript) {

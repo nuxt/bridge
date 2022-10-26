@@ -16,17 +16,17 @@
     "nuxi": "./bin/nuxt.mjs"
   },
   "scripts": {
-    "build": "yarn prepack",
+    "build": "pnpm prepack",
     "prepack": "unbuild",
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:preview": "node ./playground/.output/server/index.mjs",
     "dev:prepare": "unbuild --stub && nuxi prepare playground",
     "lint": "eslint --ext .vue,.ts,.js,.mjs .",
-    "test:fixtures": "yarn dev:prepare && cross-env JITI_ESM_RESOLVE=1 vitest run --dir test",
-    "test:fixtures:dev": "cross-env NUXT_TEST_DEV=true yarn test:fixtures",
-    "test:fixtures:webpack": "cross-env TEST_WITH_WEBPACK=1 yarn test:fixtures",
-    "test:fixtures:webpack:dev": "cross-env TEST_WITH_WEBPACK=1 NUXT_TEST_DEV=true yarn test:fixtures"
+    "test:fixtures": "pnpm dev:prepare && JITI_ESM_RESOLVE=1 vitest run --dir test",
+    "test:fixtures:dev": "NUXT_TEST_DEV=true pnpm test:fixtures",
+    "test:fixtures:webpack": "TEST_WITH_WEBPACK=1 pnpm test:fixtures",
+    "test:fixtures:webpack:dev": "TEST_WITH_WEBPACK=1 NUXT_TEST_DEV=true pnpm test:fixtures"
   },
   "dependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
@@ -88,7 +88,6 @@
     "@types/hash-sum": "^1.0.0",
     "@types/node-fetch": "^3.0.2",
     "@vueuse/head": "^0.9.7",
-    "cross-env": "^7.0.3",
     "eslint": "^8.26.0",
     "eslint-plugin-jsdoc": "^39.3.25",
     "jiti": "^1.16.0",
@@ -99,6 +98,7 @@
     "vue-router": "^3.6.5"
   },
   "engines": {
-    "node": "^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0"
-  }
+    "node": "^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "packageManager": "pnpm@7.14.0"
 }
