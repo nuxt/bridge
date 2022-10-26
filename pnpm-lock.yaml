@@ -58,7 +58,7 @@ specifiers:
   ufo: ^0.8.6
   unbuild: 0.9.4
   unctx: ^2.0.2
-  unimport: ^0.6.8
+  unimport: ^0.7.0
   unplugin: ^0.10.2
   untyped: ^0.5.0
   vite: ~3.1.8
@@ -111,7 +111,7 @@ dependencies:
   terser: 5.15.1
   ufo: 0.8.6
   unctx: 2.0.2
-  unimport: 0.6.8
+  unimport: 0.7.0
   unplugin: 0.10.2
   untyped: 0.5.0
   vite: 3.1.8_terser@5.15.1
@@ -2627,7 +2627,6 @@ packages:
       '@types/estree': 1.0.0
       estree-walker: 2.0.2
       picomatch: 2.3.1
-    dev: true
 
   /@rollup/pluginutils/5.0.2_rollup@2.79.1:
     resolution: {integrity: sha512-pTd9rIsP92h+B6wWwFbW8RkZv4hiR/xKsqre4SIuAOaOEQRxi0lqLke9k2/7WegC85GgUs9pjmOjCUi3In4vwA==}
@@ -12003,7 +12002,6 @@ packages:
       unplugin: 0.10.2
     transitivePeerDependencies:
       - rollup
-    dev: true
 
   /union-value/1.0.1:
     resolution: {integrity: sha512-tJfXmxMeWYnczCVs7XAEvIV7ieppALdyepWMkHkwciRpZraG/xwT+s2JN8+pr1+8jCRf80FFzvr+MpQeeoF4Xg==}
