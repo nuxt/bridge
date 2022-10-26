@@ -19,19 +19,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - run: corepack enable
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          cache: "yarn"
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: yarn --immutable
+        run: pnpm install
 
       - name: Stub
-        run: yarn dev:prepare
+        run: pnpm dev:prepare
 
       - name: Build
-        run: yarn build
+        run: pnpm build
 
       - name: Cache dist
         uses: actions/cache@v3
@@ -49,19 +50,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - run: corepack enable
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          cache: "yarn"
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: yarn --immutable
+        run: pnpm install
 
       - name: Stub
-        run: yarn dev:prepare
+        run: pnpm dev:prepare
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
   test-fixtures:
     runs-on: ${{ matrix.os }}
@@ -73,19 +75,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - run: corepack enable
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          cache: "yarn"
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: yarn --immutable
+        run: pnpm install
 
       - name: Test (fixtures)
-        run: yarn test:fixtures
+        run: pnpm test:fixtures
 
       - name: Test (fixtures with dev)
-        run: yarn test:fixtures:dev
+        run: pnpm test:fixtures:dev
         env:
           NODE_OPTIONS: --max-old-space-size=8192
 
@@ -99,19 +102,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - run: corepack enable
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          cache: "yarn"
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: yarn --immutable
+        run: pnpm install
 
       - name: Test (fixtures)
-        run: yarn test:fixtures:webpack
+        run: pnpm test:fixtures:webpack
 
       - name: Test (fixtures with dev)
-        run: yarn test:fixtures:webpack:dev
+        run: pnpm test:fixtures:webpack:dev
 
   build-release:
     if: |
@@ -133,13 +137,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - run: corepack enable
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          cache: "yarn"
+          cache: "pnpm"
 
       - name: Install dependencies
-        run: yarn --immutable
+        run: pnpm install
 
       - name: Restore dist cache
         uses: actions/cache@v3
