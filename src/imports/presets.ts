@@ -1,6 +1,6 @@
-import { defineUnimportPreset, Preset } from 'unimport'
+import { defineUnimportPreset, InlinePreset } from 'unimport'
 
-export const commonPresets: Preset[] = [
+export const commonPresets: InlinePreset[] = [
   // #head
   defineUnimportPreset({
     from: '#head',
