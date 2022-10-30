@@ -27,7 +27,7 @@ specifiers:
   enhanced-resolve: ^5.10.0
   escape-string-regexp: ^5.0.0
   eslint: ^8.26.0
-  eslint-plugin-jsdoc: ^39.3.25
+  eslint-plugin-jsdoc: ^39.4.0
   estree-walker: ^2.0.2
   externality: ^0.2.2
   fs-extra: ^10.1.0
@@ -128,7 +128,7 @@ devDependencies:
   '@types/node-fetch': 3.0.2
   '@vueuse/head': 0.9.8_vue@2.7.13
   eslint: 8.26.0
-  eslint-plugin-jsdoc: 39.3.25_eslint@8.26.0
+  eslint-plugin-jsdoc: 39.4.0_eslint@8.26.0
   jiti: 1.16.0
   nuxt: 2.15.8_vue@2.7.13
   unbuild: 0.9.4
@@ -6163,8 +6163,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-jsdoc/39.3.25_eslint@8.26.0:
-    resolution: {integrity: sha512-7JiFOOaipz7Z7lNQ9sMJ6cdvclmVUwNYtFWGS3a0k0uEFcdZPPD64WOfENuyNHpl86C0AKIEPgOpZby5kd+pew==}
+  /eslint-plugin-jsdoc/39.4.0_eslint@8.26.0:
+    resolution: {integrity: sha512-2FXAmh8lpO22aqZgu6NLB6berVnYgwbZx95BmjIIQjbRNwLIAwY0dtvSJDUZVW5nflv58c1gSWQjIJ8yLZ/+fw==}
     engines: {node: ^14 || ^16 || ^17 || ^18 || ^19}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
