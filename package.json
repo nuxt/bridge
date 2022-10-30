@@ -89,7 +89,7 @@
     "@types/node-fetch": "^3.0.2",
     "@vueuse/head": "^0.9.7",
     "eslint": "^8.26.0",
-    "eslint-plugin-jsdoc": "^39.3.25",
+    "eslint-plugin-jsdoc": "^39.4.0",
     "jiti": "^1.16.0",
     "nuxt": "^2",
     "unbuild": "0.9.4",
