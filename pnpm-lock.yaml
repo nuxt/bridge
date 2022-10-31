@@ -61,7 +61,7 @@ specifiers:
   unimport: ^0.7.0
   unplugin: ^0.10.2
   untyped: ^0.5.0
-  vite: ~3.2.1
+  vite: ~3.2.2
   vitest: ^0.21.1
   vue: ^2.7.12
   vue-bundle-renderer: ^0.4.4
@@ -76,8 +76,8 @@ dependencies:
   '@nuxt/postcss8': 1.1.3
   '@nuxt/schema': 3.0.0-rc.12
   '@nuxt/ui-templates': 0.4.0
-  '@vitejs/plugin-legacy': 2.3.0_terser@5.15.1+vite@3.2.1
-  '@vitejs/plugin-vue2': 1.1.2_vite@3.2.1+vue@2.7.13
+  '@vitejs/plugin-legacy': 2.3.0_terser@5.15.1+vite@3.2.2
+  '@vitejs/plugin-vue2': 1.1.2_vite@3.2.2+vue@2.7.13
   acorn: 8.8.1
   cookie-es: 0.5.0
   defu: 6.1.0
@@ -114,7 +114,7 @@ dependencies:
   unimport: 0.7.0
   unplugin: 0.10.2
   untyped: 0.5.0
-  vite: 3.2.1_terser@5.15.1
+  vite: 3.2.2_terser@5.15.1
   vue-bundle-renderer: 0.4.4
 
 devDependencies:
@@ -3109,7 +3109,7 @@ packages:
       - supports-color
     dev: false
 
-  /@vitejs/plugin-legacy/2.3.0_terser@5.15.1+vite@3.2.1:
+  /@vitejs/plugin-legacy/2.3.0_terser@5.15.1+vite@3.2.2:
     resolution: {integrity: sha512-Bh62i0gzQvvT8AeAAb78nOnqSYXypkRmQmOTImdPZ39meHR9e2une3AIFmVo4s1SDmcmJ6qj18Sa/lRc/14KaA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -3122,17 +3122,17 @@ packages:
       regenerator-runtime: 0.13.10
       systemjs: 6.13.0
       terser: 5.15.1
-      vite: 3.2.1_terser@5.15.1
+      vite: 3.2.2_terser@5.15.1
     dev: false
 
-  /@vitejs/plugin-vue2/1.1.2_vite@3.2.1+vue@2.7.13:
+  /@vitejs/plugin-vue2/1.1.2_vite@3.2.2+vue@2.7.13:
     resolution: {integrity: sha512-y6OEA+2UdJ0xrEQHodq20v9r3SpS62IOHrgN92JPLvVpNkhcissu7yvD5PXMzMESyazj0XNWGsc8UQk8+mVrjQ==}
     engines: {node: '>=14.6.0'}
     peerDependencies:
       vite: '>=2.5.10'
       vue: ^2.7.0-0
     dependencies:
-      vite: 3.2.1_terser@5.15.1
+      vite: 3.2.2_terser@5.15.1
       vue: 2.7.13
     dev: false
 
@@ -12218,8 +12218,8 @@ packages:
     resolution: {integrity: sha512-/juG65kTL4Cy2su4P8HjtkTxk6VmJDiOPBufWniqQ6wknac6jNiXS9vU+hO3wgusiyqWlzTbVHi0dyJqRONg3w==}
     dev: true
 
-  /vite/3.2.1_terser@5.15.1:
-    resolution: {integrity: sha512-ADtMkfHuWq4tskJsri2n2FZkORO8ZyhI+zIz7zTrDAgDEtct1jdxOg3YsZBfHhKjmMoWLOSCr+64qrEDGo/DbQ==}
+  /vite/3.2.2_terser@5.15.1:
+    resolution: {integrity: sha512-pLrhatFFOWO9kS19bQ658CnRYzv0WLbsPih6R+iFeEEhDOuYgYCX2rztUViMz/uy/V8cLCJvLFeiOK7RJEzHcw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -12281,7 +12281,7 @@ packages:
       local-pkg: 0.4.2
       tinypool: 0.2.4
       tinyspy: 1.0.2
-      vite: 3.2.1_terser@5.15.1
+      vite: 3.2.2_terser@5.15.1
     transitivePeerDependencies:
       - less
       - sass
