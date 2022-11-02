@@ -89,7 +89,7 @@
     "@types/node-fetch": "^3.0.2",
     "@vueuse/head": "^0.9.7",
     "eslint": "^8.26.0",
-    "eslint-plugin-jsdoc": "^39.4.0",
+    "eslint-plugin-jsdoc": "^39.6.0",
     "jiti": "^1.16.0",
     "nuxt": "^2",
     "unbuild": "0.9.4",
@@ -100,5 +100,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
-  "packageManager": "pnpm@7.14.1"
+  "packageManager": "pnpm@7.14.2"
 }
