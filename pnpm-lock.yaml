@@ -36,7 +36,7 @@ specifiers:
   h3: ^0.8.6
   hash-sum: ^2.0.0
   jiti: ^1.16.0
-  knitwork: ^0.1.2
+  knitwork: ^1.0.0
   magic-string: ^0.26.7
   mlly: ^0.5.16
   nitropack: ^0.6.1
@@ -91,7 +91,7 @@ dependencies:
   globby: 13.1.2
   h3: 0.8.6
   hash-sum: 2.0.0
-  knitwork: 0.1.2
+  knitwork: 1.0.0
   magic-string: 0.26.7
   mlly: 0.5.16
   nitropack: 0.6.1
@@ -8147,6 +8147,10 @@ packages:
 
   /knitwork/0.1.2:
     resolution: {integrity: sha512-2ekmY2S/VB3YGVhrIFadyJQpkjMFSf48tsXCnA+kjs4FEQIT+5FLyOF0No/X58z/2E/VaMyeJfukRoVT4gMsfQ==}
+
+  /knitwork/1.0.0:
+    resolution: {integrity: sha512-dWl0Dbjm6Xm+kDxhPQJsCBTxrJzuGl0aP9rhr+TG8D3l+GL90N8O8lYUi7dTSAN2uuDqCtNgb6aEuQH5wsiV8Q==}
+    dev: false
 
   /last-call-webpack-plugin/3.0.0:
     resolution: {integrity: sha512-7KI2l2GIZa9p2spzPIVZBYyNKkN+e/SQPpnjlTiPhdbDW3F86tdKKELxKpzJ5sgU19wQWsACULZmpTPYHeWO5w==}
