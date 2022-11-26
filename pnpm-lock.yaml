@@ -43,7 +43,7 @@ specifiers:
   node-fetch: ^3.2.10
   nuxi: 3.0.0-rc.12
   nuxt: ^2
-  ohash: ^0.1.5
+  ohash: ^1.0.0
   pathe: ^0.3.9
   perfect-debounce: ^0.1.3
   postcss: ^8
@@ -97,7 +97,7 @@ dependencies:
   nitropack: 0.6.1
   node-fetch: 3.2.10
   nuxi: 3.0.0-rc.12
-  ohash: 0.1.5
+  ohash: 1.0.0
   pathe: 0.3.9
   perfect-debounce: 0.1.3
   postcss: 8.4.18
@@ -9194,6 +9194,10 @@ packages:
 
   /ohash/0.1.5:
     resolution: {integrity: sha512-qynly1AFIpGWEAW88p6DhMNqok/Swb52/KsiU+Toi7er058Ptvno3tkfTML6wYcEgFgp2GsUziW4Nqn62ciuyw==}
+    dev: false
+
+  /ohash/1.0.0:
+    resolution: {integrity: sha512-kxSyzq6tt+6EE/xCnD1XaFhCCjUNUaz3X30rJp6mnjGLXAAvuPFqohMdv0aScWzajR45C29HyBaXZ8jXBwnh9A==}
     dev: false
 
   /ohmyfetch/0.4.21:
