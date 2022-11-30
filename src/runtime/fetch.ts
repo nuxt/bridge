@@ -1,4 +1,4 @@
-import type { FetchOptions, FetchRequest } from 'ohmyfetch'
+import type { FetchOptions, FetchRequest } from 'ofetch'
 import type { TypedInternalResponse } from 'nitropack'
 import { hash } from 'ohash'
 import { computed, isRef, Ref } from 'vue'
@@ -12,11 +12,7 @@ export interface UseFetchOptions<
   Transform extends _Transform<DataT, any> = _Transform<DataT, DataT>,
   PickKeys extends KeyOfRes<Transform> = KeyOfRes<Transform>
 > extends
-  AsyncDataOptions<DataT, Transform, PickKeys>,
-  FetchOptions
-  {
-  key?: string
- }
+  AsyncDataOptions<DataT, Transform, PickKeys>, FetchOptions { key?: string }
 
 export function useFetch<
   ResT = void,
