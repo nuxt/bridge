@@ -74,11 +74,13 @@ export default defineNuxtModule({
           message: '`autoImports:extend` hook is deprecated. Use `addImports()` from `@nuxt/kit` or `imports:extend` with latest Nuxt Bridge.'
         }
       })
-      nuxt.hook('modules:done', () => installModule(importsModule))
+      // @ts-expect-error TODO: legacy module container usage
+      nuxt.hook('modules:done', (moduleContainer) => installModule(importsModule.bind(moduleContainer)))
     }
     if (opts.vite) {
       const viteModule = await import('./vite/module').then(r => r.default || r) as NuxtModule
-      nuxt.hook('modules:done', () => installModule(viteModule))
+      // @ts-expect-error TODO: legacy module container usage
+      nuxt.hook('modules:done', (moduleContainer) => installModule(viteModule.bind(moduleContainer)))
     } else {
       // with webpack, we need to transpile vue to handle the default/named exports in Vue 2.7
       nuxt.options.build.transpile.push('vue')
@@ -90,7 +92,8 @@ export default defineNuxtModule({
     }
     if (opts.postcss8) {
       const _require = Module.createRequire(import.meta.url)
-      await installModule(_require.resolve('@nuxt/postcss8'))
+      // @ts-expect-error TODO: legacy module container usage
+      nuxt.hook('modules:done', (moduleContainer) => installModule(_require('@nuxt/postcss8').bind(moduleContainer)))
     }
     if (opts.typescript) {
       await setupTypescript()
@@ -102,6 +105,7 @@ export default defineNuxtModule({
       setupTranspile()
     }
     if (opts.compatibility) {
+      // @ts-expect-error TODO: update legacy types
       nuxt.hook('modules:done', async (moduleContainer: any) => {
         for (const [name, m] of Object.entries(moduleContainer.requiredModules || {})) {
           const compat = ((m as any)?.handler?.meta?.compatibility || {}) as NuxtCompatibility
