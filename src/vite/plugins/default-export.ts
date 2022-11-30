@@ -4,8 +4,8 @@ import { findExports } from 'mlly'
 import MagicString from 'magic-string'
 
 const PREFIX = 'defaultexport:'
-const hasPrefix = (id: string = '') => id.startsWith(PREFIX)
-const removePrefix = (id: string = '') => hasPrefix(id) ? id.substr(PREFIX.length) : id
+const hasPrefix = (id = '') => id.startsWith(PREFIX)
+const removePrefix = (id = '') => hasPrefix(id) ? id.substr(PREFIX.length) : id
 
 export function defaultExportPlugin () {
   return <Plugin>{
