@@ -11,7 +11,7 @@ export default defineNuxtModule<ViteOptions>({
   defaults: {},
   setup (viteOptions, nuxt) {
     nuxt.options.cli.badgeMessages.push(`⚡  Vite Mode Enabled (v${version})`)
-    // eslint-disable-next-line no-console
+
     if (viteOptions.experimentWarning !== false && !nuxt.options.test) {
       logger.log(
         '🧪  Vite mode is experimental and some nuxt modules might be incompatible\n',

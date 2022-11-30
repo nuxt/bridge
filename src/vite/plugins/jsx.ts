@@ -1,6 +1,6 @@
 import type { Plugin } from 'vite'
 
-const needsJsxProcessing = (id: string = '') =>
+const needsJsxProcessing = (id = '') =>
   !id.includes('node_modules') && ['.vue', '.jsx', '.tsx'].some(extension => id.includes(extension))
 
 export function jsxPlugin () {
