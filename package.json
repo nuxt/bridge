@@ -50,7 +50,7 @@
     "fs-extra": "^10.1.0",
     "get-port-please": "^2.6.1",
     "globby": "^13.1.2",
-    "h3": "^0.8.6",
+    "h3": "^1.0.1",
     "hash-sum": "^2.0.0",
     "knitwork": "^1.0.0",
     "magic-string": "^0.26.7",

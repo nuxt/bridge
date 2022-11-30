@@ -33,7 +33,7 @@ specifiers:
   fs-extra: ^10.1.0
   get-port-please: ^2.6.1
   globby: ^13.1.2
-  h3: ^0.8.6
+  h3: ^1.0.1
   hash-sum: ^2.0.0
   jiti: ^1.16.0
   knitwork: ^1.0.0
@@ -89,7 +89,7 @@ dependencies:
   fs-extra: 10.1.0
   get-port-please: 2.6.1
   globby: 13.1.2
-  h3: 0.8.6
+  h3: 1.0.1
   hash-sum: 2.0.0
   knitwork: 1.0.0
   magic-string: 0.26.7
@@ -7217,6 +7217,15 @@ packages:
       ufo: 0.8.6
     dev: false
 
+  /h3/1.0.1:
+    resolution: {integrity: sha512-gDCGpRvjchZW2JBlTqbJ9IOs+mdkXXuwSQkSye+jubHAv/UhdamKqoQvd4RFgyBNjHSId8Y+b10UdTcPlP/V+w==}
+    dependencies:
+      cookie-es: 0.5.0
+      destr: 1.2.1
+      radix3: 1.0.0
+      ufo: 1.0.1
+    dev: false
+
   /hable/3.0.0:
     resolution: {integrity: sha512-7+G0/2/COR8pwteYFqHIVYfQpuEiO2HXwJrhCBJVgrNrl9O5eaUoJVDGXUJX+0RpGncNVTuestexjk1afj01wQ==}
     dev: true
@@ -10756,6 +10765,10 @@ packages:
 
   /radix3/0.2.1:
     resolution: {integrity: sha512-FnhArTl5Tq7dodiLeSPKrDUyCQuJqEncP8cKdyy399g8F/cz7GH6FmzA3Rkosu2IZMkpswFFwXfb2ERSiL06pg==}
+    dev: false
+
+  /radix3/1.0.0:
+    resolution: {integrity: sha512-6n3AEXth91ASapMVKiEh2wrbFJmI+NBilrWE0AbiGgfm0xet0QXC8+a3K19r1UVYjUjctUgB053c3V/J6V0kCQ==}
     dev: false
 
   /randombytes/2.1.0:
