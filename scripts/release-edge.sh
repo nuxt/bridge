@@ -5,7 +5,7 @@
 set -xe
 
 # Restore all git changes
-git restore -s@ -SW  -- .
+git restore -s@ -SW  -- packages
 
 # Bump versions to edge
 pnpm jiti ./scripts/bump-edge
@@ -19,6 +19,9 @@ if [[ ! -z ${NODE_AUTH_TOKEN} ]] ; then
 fi
 
 # Release packages
-echo "Publishing package..."
-pnpm publish --access public --no-git-checks
-
+for p in packages/* ; do
+  pushd $p
+  echo "Publishing $p"
+  pnpm publish --access public --no-git-checks
+  popd
+done

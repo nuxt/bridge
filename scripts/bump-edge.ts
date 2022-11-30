@@ -5,16 +5,22 @@ import { globby } from 'globby'
 
 // Temporary forked from nuxt/framework
 
+interface Dep {
+  name: string,
+  range: string,
+  type: string
+}
+
 async function loadPackage (dir: string) {
   const pkgPath = resolve(dir, 'package.json')
   const data = JSON.parse(await fsp.readFile(pkgPath, 'utf-8').catch(() => '{}'))
   const save = () => fsp.writeFile(pkgPath, JSON.stringify(data, null, 2) + '\n')
 
-  const updateDeps = (reviver: Function) => {
+  const updateDeps = (reviver: (dep: Dep) => Dep | void) => {
     for (const type of ['dependencies', 'devDependencies', 'optionalDependencies', 'peerDependencies']) {
       if (!data[type]) { continue }
       for (const e of Object.entries(data[type])) {
-        const dep = { name: e[0], range: e[1], type }
+        const dep: Dep = { name: e[0], range: e[1] as string, type }
         delete data[type][dep.name]
         const updated = reviver(dep) || dep
         data[updated.type] = data[updated.type] || {}
@@ -36,9 +42,9 @@ type Package = ThenArg<ReturnType<typeof loadPackage>>
 
 async function loadWorkspace (dir: string) {
   const workspacePkg = await loadPackage(dir)
-  const pkgDirs = await globby(workspacePkg.data.workspaces || [], { onlyDirectories: true })
+  const pkgDirs = (await globby(['packages/*'], { onlyDirectories: true })).sort()
 
-  const packages: Package[] = [workspacePkg]
+  const packages: Package[] = []
 
   for (const pkgDir of pkgDirs) {
     const pkg = await loadPackage(pkgDir)
@@ -55,6 +61,7 @@ async function loadWorkspace (dir: string) {
   }
 
   const rename = (from: string, to: string) => {
+    find(from).data._name = find(from).data.name
     find(from).data.name = to
     for (const pkg of packages) {
       pkg.updateDeps((dep) => {

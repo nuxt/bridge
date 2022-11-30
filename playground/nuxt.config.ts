@@ -1,5 +1,5 @@
 import { defineEventHandler } from 'h3'
-import { defineNuxtConfig } from '..'
+import { defineNuxtConfig } from '@nuxt/bridge'
 
 // @ts-ignore
 global.__NUXT_PREPATHS__ = (global.__NUXT_PREPATHS__ || []).concat(__dirname)
