@@ -1,6 +1,6 @@
 import { useNuxt, addPluginTemplate, addVitePlugin, addWebpackPlugin } from '@nuxt/kit'
 import { resolve } from 'pathe'
-import { BridgeConfig } from '../../../types'
+import { BridgeConfig } from '../types'
 import { distDir } from './dirs'
 import { KeyPlugin } from './capi-legacy-key-plugin'
 
