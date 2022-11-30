@@ -54,7 +54,7 @@
     "hash-sum": "^2.0.0",
     "knitwork": "^1.0.0",
     "magic-string": "^0.26.7",
-    "mlly": "^0.5.16",
+    "mlly": "^1.0.0",
     "nitropack": "^0.6.1",
     "node-fetch": "^3.2.10",
     "nuxi": "3.0.0-rc.12",
