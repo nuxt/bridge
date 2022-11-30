@@ -9,7 +9,7 @@ export default <NitroErrorHandler> async function errorhandler (_error, event) {
 
   // Create an error object
   const errorObject = {
-    url: event.req.url,
+    url: event.node.req.url,
     statusCode,
     statusMessage,
     message,
@@ -20,8 +20,8 @@ export default <NitroErrorHandler> async function errorhandler (_error, event) {
   }
 
   // Set response code and message
-  event.res.statusCode = errorObject.statusCode
-  event.res.statusMessage = errorObject.statusMessage
+  event.node.res.statusCode = errorObject.statusCode
+  event.node.res.statusMessage = errorObject.statusMessage
 
   // Console output
   if (errorObject.statusCode !== 404) {
@@ -30,8 +30,8 @@ export default <NitroErrorHandler> async function errorhandler (_error, event) {
 
   // JSON response
   if (isJsonRequest(event)) {
-    event.res.setHeader('Content-Type', 'application/json')
-    event.res.end(JSON.stringify(errorObject))
+    event.node.res.setHeader('Content-Type', 'application/json')
+    event.node.res.end(JSON.stringify(errorObject))
     return
   }
 
@@ -42,6 +42,6 @@ export default <NitroErrorHandler> async function errorhandler (_error, event) {
     return errorObject.statusMessage
   })
 
-  event.res.setHeader('Content-Type', 'text/html;charset=UTF-8')
-  event.res.end(html)
+  event.node.res.setHeader('Content-Type', 'text/html;charset=UTF-8')
+  event.node.res.end(html)
 }

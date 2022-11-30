@@ -119,10 +119,10 @@ const getSPARenderer = lazyCachedFunction(async () => {
 
 export default defineRenderHandler(async (event) => {
   // Whether we're rendering an error page
-  const ssrError = event.req.url?.startsWith('/__nuxt_error')
+  const ssrError = event.node.req.url?.startsWith('/__nuxt_error')
     ? getQuery(event)
     : null
-  let url = ssrError?.url as string || event.req.url!
+  let url = ssrError?.url as string || event.node.req.url!
 
   // payload.json request detection
   let isPayloadReq = false
@@ -139,10 +139,10 @@ export default defineRenderHandler(async (event) => {
   const ssrContext: NuxtSSRContext = {
     url,
     event,
-    req: event.req,
-    res: event.res,
+    req: event.node.req,
+    res: event.node.res,
     runtimeConfig: { private: config, public: { public: config.public, app: config.app } },
-    noSSR: !!event.req.headers['x-nuxt-no-ssr'] || routeOptions.ssr === false,
+    noSSR: !!event.node.req.headers['x-nuxt-no-ssr'] || routeOptions.ssr === false,
     error: ssrError,
     redirected: undefined,
     nuxt: undefined as undefined | Record<string, any>, /* Nuxt 2 payload */
@@ -161,7 +161,7 @@ export default defineRenderHandler(async (event) => {
   // If we error on rendering error page, we bail out and directly return to the error handler
   if (!_rendered) { return }
 
-  if (ssrContext.redirected || event.res.writableEnded) {
+  if (ssrContext.redirected || event.node.res.writableEnded) {
     return
   }
 
@@ -179,8 +179,8 @@ export default defineRenderHandler(async (event) => {
   if (isPayloadReq) {
     const response: RenderResponse = {
       body: renderPayload(ssrContext.nuxt, url),
-      statusCode: ssrContext.event.res.statusCode,
-      statusMessage: ssrContext.event.res.statusMessage,
+      statusCode: ssrContext.event.node.res.statusCode,
+      statusMessage: ssrContext.event.node.res.statusMessage,
       headers: {
         'content-type': 'text/javascript;charset=UTF-8',
         'x-powered-by': 'Nuxt'
@@ -235,8 +235,8 @@ export default defineRenderHandler(async (event) => {
         BODY_PREPEND: joinTags(htmlContext.bodyPreprend),
         APP: _rendered.html + joinTags(htmlContext.bodyAppend)
       }),
-      statusCode: event.res.statusCode,
-      statusMessage: event.res.statusMessage,
+      statusCode: event.node.res.statusCode,
+      statusMessage: event.node.res.statusMessage,
       headers: {
         'content-type': 'text/html;charset=UTF-8',
         'x-powered-by': 'Nuxt'

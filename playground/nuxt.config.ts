@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   serverMiddleware: [
     {
       handle: defineEventHandler((event) => {
-        event.req.spa = event.req.url.includes('?spa')
+        event.node.req.spa = event.node.req.url.includes('?spa')
       })
     }
   ],

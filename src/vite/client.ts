@@ -109,13 +109,13 @@ export async function buildClient (ctx: ViteBuildContext) {
     await ctx.nuxt.callHook('vite:serverCreated', viteServer, { isClient: true, isServer: false })
     const viteMiddleware = defineEventHandler(async (event) => {
       // Workaround: vite devmiddleware modifies req.url
-      const originalURL = event.req.url
+      const originalURL = event.node.req.url
       if (!originalURL.startsWith(clientConfig.base!)) {
-        event.req.url = joinURL('/__url', originalURL)
+        event.node.req.url = joinURL('/__url', originalURL)
       }
       await new Promise((resolve, reject) => {
-        viteServer.middlewares.handle(event.req, event.res, (err: Error) => {
-          event.req.url = originalURL
+        viteServer.middlewares.handle(event.node.req, event.node.res, (err: Error) => {
+          event.node.req.url = originalURL
           return err ? reject(err) : resolve(null)
         })
       })
