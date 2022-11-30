@@ -11,7 +11,8 @@
     "schema"
   ],
   "scripts": {
-    "build": "unbuild"
+    "build": "unbuild",
+    "prepack": "unbuild"
   },
   "devDependencies": {
     "@types/lodash.template": "^4",

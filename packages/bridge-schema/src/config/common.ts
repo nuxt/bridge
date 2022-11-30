@@ -124,7 +124,6 @@ export default defineUntypedSchema({
     createRequire: {
       $resolve: (val: any) => {
         val = process.env.NUXT_CREATE_REQUIRE || val ||
-          // @ts-expect-error global type
           (typeof globalThis.jest !== 'undefined' ? 'native' : 'jiti')
         if (val === 'jiti') {
           return (p: string | { filename: string }) => jiti(typeof p === 'string' ? p : p.filename, { esmResolve: true })

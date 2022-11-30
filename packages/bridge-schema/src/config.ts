@@ -4,7 +4,6 @@ type DeepPartial<T> = T extends Function ? T : T extends Record<string, any> ? {
 
 /** User configuration in `nuxt.config` file */
 export interface Nuxt2Config extends DeepPartial<Omit<ConfigSchema, 'vite'>> {
-  [key: string]: any
 }
 
 /** Normalized Nuxt options available as `nuxt.options.*` */
