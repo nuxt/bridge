@@ -20,7 +20,6 @@ export default defineUntypedSchema({
    * options, see chokidar documentation.
    *
    * @see [chokidar](https://github.com/paulmillr/chokidar#api)
-   *
    * @example
    * ```js
    * watch: ['~/custom/*.js']
@@ -37,8 +36,8 @@ export default defineUntypedSchema({
   },
 
   /**
-  * The style extensions that should be resolved by the Nuxt resolver (for example, in `css` property).
-  */
+   * The style extensions that should be resolved by the Nuxt resolver (for example, in `css` property).
+   */
   styleExtensions: ['.css', '.pcss', '.postcss', '.styl', '.stylus', '.scss', '.sass', '.less'],
 
   dir: {
@@ -61,30 +60,30 @@ export default defineUntypedSchema({
     },
 
     /**
-   * Whether to produce a separate modern build targeting browsers that support ES modules.
-   *
-   * Set to `'server'` to enable server mode, where the Nuxt server checks
-   * browser version based on the user agent and serves the correct bundle.
-   *
-   * Set to `'client'` to serve both the modern bundle with `<script type="module">`
-   * and the legacy bundle with `<script nomodule>`. It will also provide a
-   * `<link rel="modulepreload">` for the modern bundle. Every browser that understands
-   * the module type will load the modern bundle while older browsers fall back to the
-   * legacy (transpiled) bundle.
-   *
-   * If you have set `modern: true` and are generating your app or have `ssr: false`,
-   * modern will be set to `'client'`.
-   *
-   * If you have set `modern: true` and are serving your app, modern will be set to `'server'`.
-   *
-   * @see [concept of modern mode](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)
-   * @type {'server' | 'client' | boolean}
-   */
+     * Whether to produce a separate modern build targeting browsers that support ES modules.
+     *
+     * Set to `'server'` to enable server mode, where the Nuxt server checks
+     * browser version based on the user agent and serves the correct bundle.
+     *
+     * Set to `'client'` to serve both the modern bundle with `<script type="module">`
+     * and the legacy bundle with `<script nomodule>`. It will also provide a
+     * `<link rel="modulepreload">` for the modern bundle. Every browser that understands
+     * the module type will load the modern bundle while older browsers fall back to the
+     * legacy (transpiled) bundle.
+     *
+     * If you have set `modern: true` and are generating your app or have `ssr: false`,
+     * modern will be set to `'client'`.
+     *
+     * If you have set `modern: true` and are serving your app, modern will be set to `'server'`.
+     *
+     * @see [concept of modern mode](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)
+     * @type {'server' | 'client' | boolean}
+     */
     modern: undefined,
 
     /**
-    * @deprecated use `ssr` option
-    */
+     * @deprecated use `ssr` option
+     */
     mode: {
       $resolve: async (val, get) => val || ((await get('ssr')) ? 'spa' : 'universal'),
       $schema: { deprecated: '`mode` option is deprecated' }
@@ -99,10 +98,8 @@ export default defineUntypedSchema({
      * This means that the actual `process` or `process.env` from Node.js is neither
      * available nor defined. Each of the `env` properties defined here is individually
      * mapped to `process.env.xxxx` and converted during compilation.
-     *
      * @note Environment variables starting with `NUXT_ENV_` are automatically injected
      * into the process environment.
-     *
      */
     env: {
       $default: {},
@@ -139,12 +136,12 @@ export default defineUntypedSchema({
       }
     },
 
-
     /**
      * Whether your Nuxt app should be built to be served by the Nuxt server (`server`)
      * or as static HTML files suitable for a CDN or other static file server (`static`).
      *
      * This is unrelated to `ssr`.
+     *
      * @type {'server' | 'static'}
      */
     target: {
@@ -169,7 +166,6 @@ export default defineUntypedSchema({
       loadedCallback: (globalName: string) => `_on${pascalCase(globalName)}Loaded`
     },
 
-
     /**
      * The folder which will be used to auto-generate your Vuex store structure.
      */
@@ -177,75 +173,71 @@ export default defineUntypedSchema({
   },
 
   /**
-  * Server middleware are connect/express/h3-shaped functions that handle server-side requests. They
-  * run on the server and before the Vue renderer.
-  *
-  * By adding entries to `serverMiddleware` you can register additional routes without the need
-  * for an external server.
-  *
-  * You can pass a string, which can be the name of a node dependency or a path to a file. You
-  * can also pass an object with `path` and `handler` keys (`handler` can be a path or a
-  * function).
-  *
-  * @note If you pass a function directly, it will only run in development mode.
-  *
-  * @example
-  * ```js
-  * serverMiddleware: [
-  *   // Will register redirect-ssl npm package
-  *   'redirect-ssl',
-  *   // Will register file from project server-middleware directory to handle /server-middleware/* requires
-  *   { path: '/server-middleware', handler: '~/server-middleware/index.js' },
-  *   // We can create custom instances too, but only in development mode, they are ignored for the production bundle.
-  *   { path: '/static2', handler: serveStatic(fileURLToPath(new URL('./static2', import.meta.url))) }
-  * ]
-  * ```
-  *
-  * @note If you don't want middleware to run on all routes you should use the object
-  * form with a specific path.
-  *
-  * If you pass a string handler, Nuxt will expect that file to export a default function
-  * that handles `(req, res, next) => void`.
-  *
-  * @example
-  * ```js
-  * export default function (req, res, next) {
-  *   // req is the Node.js http request object
-  *   console.log(req.url)
-  *   // res is the Node.js http response object
-  *   // next is a function to call to invoke the next middleware
-  *   // Don't forget to call next at the end if your middleware is not an endpoint!
-  *   next()
-  * }
-  * ```
-  *
-  * Alternatively, it can export a connect/express/h3-type app instance.
-  * @example
-  * ```js
-  * import bodyParser from 'body-parser'
-  * import createApp from 'express'
-  * const app = createApp()
-  * app.use(bodyParser.json())
-  * app.all('/getJSON', (req, res) => {
-  *   res.json({ data: 'data' })
-  * })
-  * export default app
-  * ```
-  *
-  * Alternatively, instead of passing an array of `serverMiddleware`, you can pass an object
-  * whose keys are the paths and whose values are the handlers (string or function).
-  * @example
-  * ```js
-  * export default {
-  *   serverMiddleware: {
-  *     '/a': '~/server-middleware/a.js',
-  *     '/b': '~/server-middleware/b.js',
-  *     '/c': '~/server-middleware/c.js'
-  *   }
-  * }
-  * ```
-  *
-  */
+   * Server middleware are connect/express/h3-shaped functions that handle server-side requests. They
+   * run on the server and before the Vue renderer.
+   *
+   * By adding entries to `serverMiddleware` you can register additional routes without the need
+   * for an external server.
+   *
+   * You can pass a string, which can be the name of a node dependency or a path to a file. You
+   * can also pass an object with `path` and `handler` keys (`handler` can be a path or a
+   * function).
+   *
+   * @note If you pass a function directly, it will only run in development mode.
+   * @example
+   * ```js
+   * serverMiddleware: [
+   *   // Will register redirect-ssl npm package
+   *   'redirect-ssl',
+   *   // Will register file from project server-middleware directory to handle /server-middleware/* requires
+   *   { path: '/server-middleware', handler: '~/server-middleware/index.js' },
+   *   // We can create custom instances too, but only in development mode, they are ignored for the production bundle.
+   *   { path: '/static2', handler: serveStatic(fileURLToPath(new URL('./static2', import.meta.url))) }
+   * ]
+   * ```
+   * @note If you don't want middleware to run on all routes you should use the object
+   * form with a specific path.
+   *
+   * If you pass a string handler, Nuxt will expect that file to export a default function
+   * that handles `(req, res, next) => void`.
+   * @example
+   * ```js
+   * export default function (req, res, next) {
+   *   // req is the Node.js http request object
+   *   console.log(req.url)
+   *   // res is the Node.js http response object
+   *   // next is a function to call to invoke the next middleware
+   *   // Don't forget to call next at the end if your middleware is not an endpoint!
+   *   next()
+   * }
+   * ```
+   *
+   * Alternatively, it can export a connect/express/h3-type app instance.
+   * @example
+   * ```js
+   * import bodyParser from 'body-parser'
+   * import createApp from 'express'
+   * const app = createApp()
+   * app.use(bodyParser.json())
+   * app.all('/getJSON', (req, res) => {
+   *   res.json({ data: 'data' })
+   * })
+   * export default app
+   * ```
+   *
+   * Alternatively, instead of passing an array of `serverMiddleware`, you can pass an object
+   * whose keys are the paths and whose values are the handlers (string or function).
+   * @example
+   * ```js
+   * export default {
+   *   serverMiddleware: {
+   *     '/a': '~/server-middleware/a.js',
+   *     '/b': '~/server-middleware/b.js',
+   *     '/c': '~/server-middleware/c.js'
+   *   }
+   * }
+   * ```
+   */
   serverMiddleware: {
     $resolve: (val: any) => {
       if (!val) {
@@ -256,5 +248,5 @@ export default defineUntypedSchema({
       }
       return val
     }
-  },
+  }
 })

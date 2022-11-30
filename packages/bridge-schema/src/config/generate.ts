@@ -6,7 +6,7 @@ export default defineUntypedSchema({
   generate: {
     /**
      * Directory name that holds all the assets and generated pages for a `static` build.
-    */
+     */
     dir: {
       $resolve: async (val = 'dist', get) => resolve((await get('rootDir')), val)
     },
@@ -50,9 +50,9 @@ export default defineUntypedSchema({
      * Set this as the error page in your static server configuration, so that unknown
      * routes can be rendered (on the client-side) by Nuxt.
      *
-     * * If unset or set to a falsy value, the name of the fallback HTML file will be `200.html`.
-     * * If set to `true`, the filename will be `404.html`.
-     * * If you provide a string as a value, it will be used instead.
+     * If unset or set to a falsy value, the name of the fallback HTML file will be `200.html`.
+     * If set to `true`, the filename will be `404.html`.
+     * If you provide a string as a value, it will be used instead.
      *
      * @note Multiple services (e.g. Netlify) detect a `404.html` automatically. If
      * you configure your web server on your own, please consult its documentation

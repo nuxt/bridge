@@ -10,12 +10,12 @@ import { normalizeURL, withTrailingSlash } from 'ufo'
 export default defineUntypedSchema({
   build: {
     /**
-    * Suppresses most of the build output log.
-    *
-    * It is enabled by default when a CI or test environment is detected.
-    *
-    * @see [std-env](https://github.com/unjs/std-env)
-    */
+     * Suppresses most of the build output log.
+     *
+     * It is enabled by default when a CI or test environment is detected.
+     *
+     * @see [std-env](https://github.com/unjs/std-env)
+     */
     quiet: Boolean(isCI || isTest),
 
     /**
@@ -30,7 +30,6 @@ export default defineUntypedSchema({
      * }
      * ```
      * @type {boolean | typeof import('webpack-bundle-analyzer').BundleAnalyzerPlugin.Options | typeof import('rollup-plugin-visualizer').PluginVisualizerOptions}
-     *
      */
     analyze: {
       $resolve: async (val, get) => {
@@ -81,7 +80,6 @@ export default defineUntypedSchema({
      * Extracting into multiple CSS files is better for caching and preload isolation. It
      * can also improve page performance by downloading and resolving only those resources
      * that are needed.
-     *
      * @example
      * ```js
      * export default {
@@ -141,9 +139,7 @@ export default defineUntypedSchema({
      *
      * @warning Runtime dependencies (modules, `nuxt.config`, server middleware and the static directory) are not bundled.
      * This feature only disables use of [webpack-externals](https://webpack.js.org/configuration/externals/) for server-bundle.
-     *
      * @note You can enable standalone bundling by passing `--standalone` via the command line.
-     *
      * @see [context](https://github.com/nuxt/nuxt.js/pull/4661)
      */
     standalone: false,
@@ -155,7 +151,6 @@ export default defineUntypedSchema({
      *
      * The value of this property at runtime will override the configuration of an app that
      * has already been built.
-     *
      * @example
      * ```js
      * build: {
@@ -183,7 +178,6 @@ export default defineUntypedSchema({
      * as most browsers will cache the asset and not detect the changes on first load.
      *
      * This example changes fancy chunk names to numerical ids:
-     *
      * @example
      * ```js
      * filenames: {
@@ -230,7 +224,7 @@ export default defineUntypedSchema({
           object: 'src',
           embed: 'src'
         },
-        compilerOptions: { $resolve: async (val, get) => val ?? await get('vue.compilerOptions') },
+        compilerOptions: { $resolve: async (val, get) => val ?? await get('vue.compilerOptions') }
       },
       css: {
         importLoaders: 0,
@@ -282,7 +276,6 @@ export default defineUntypedSchema({
      * Set to false to disable this plugin, or pass an object of options.
      *
      * @see [terser-webpack-plugin documentation](https://github.com/webpack-contrib/terser-webpack-plugin)
-     *
      * @note Enabling sourcemap will leave `//# sourcemappingURL` linking comment at
      * the end of each output file if webpack `config.devtool` is set to `source-map`.
      */
@@ -371,9 +364,7 @@ export default defineUntypedSchema({
        * @note The presets configured here will be applied to both the client and the server
        * build. The target will be set by Nuxt accordingly (client/server). If you want to configure
        * the preset differently for the client or the server build, please use presets as a function.
-       *
        * @warning It is highly recommended to use the default preset instead customizing.
-       *
        * @example
        * ```js
        * export default {
@@ -389,7 +380,6 @@ export default defineUntypedSchema({
        *   }
        * }
        * ```
-       *
        * @example
        * ```js
        * export default {
@@ -446,7 +436,6 @@ export default defineUntypedSchema({
        * during the build process (will be applied for all modes).
        *
        * @warning If you make changes, they won't be merged with the defaults!
-       *
        * @example
        * ```js
        * export default {

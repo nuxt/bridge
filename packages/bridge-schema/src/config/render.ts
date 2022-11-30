@@ -3,11 +3,11 @@ import { defineUntypedSchema } from 'untyped'
 export default defineUntypedSchema({
   render: {
     /**
-   * Use this option to customize the Vue SSR bundle renderer.
-   * This option is skipped if `ssr: false`.
-   *
-   * Read [docs for Vue 2](https://ssr.vuejs.org/api/#renderer-options) here.
-   */
+     * Use this option to customize the Vue SSR bundle renderer.
+     * This option is skipped if `ssr: false`.
+     *
+     * Read [docs for Vue 2](https://ssr.vuejs.org/api/#renderer-options) here.
+     */
     bundleRenderer: {
       shouldPrefetch: () => false,
       shouldPreload: (_fileWithoutQuery: string, asType: string) => ['script', 'style'].includes(asType),
@@ -86,7 +86,6 @@ export default defineUntypedSchema({
        * Whether to add the router base to your static assets.
        *
        * @note some URL rewrites might not respect the prefix.
-       *
        * @example
        * Assets: favicon.ico
        * Router base: /t

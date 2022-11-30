@@ -3,25 +3,22 @@ import { defineUntypedSchema } from 'untyped'
 export default defineUntypedSchema({
   server: {
     /**
-    * Whether to enable HTTPS.
-    *
-    * @example
-    * ```
-    * import { fileURLToPath } from 'node:url'
-    * export default {
-    *   server: {
-    *     https: {
-    *       key: fs.readFileSync(fileURLToPath(new URL('./server.key', import.meta.url))),
-    *       cert: fs.readFileSync(fileURLToPath(new URL('./server.crt', import.meta.url)))
-    *     }
-    *   }
-    * }
-    * ```
-    *
-    *
-    * @type {false | { key: string; cert: string }}
-    *
-    */
+     * Whether to enable HTTPS.
+     *
+     * @example
+     * ```
+     * import { fileURLToPath } from 'node:url'
+     * export default {
+     *   server: {
+     *     https: {
+     *       key: fs.readFileSync(fileURLToPath(new URL('./server.key', import.meta.url))),
+     *       cert: fs.readFileSync(fileURLToPath(new URL('./server.crt', import.meta.url)))
+     *     }
+     *   }
+     * }
+     * ```
+     * @type {false | { key: string; cert: string }}
+     */
     https: false,
 
     port: process.env.NUXT_PORT || process.env.PORT || process.env.npm_package_config_nuxt_port || 3000,
@@ -38,6 +35,6 @@ export default defineUntypedSchema({
      * Currently, only `total` is supported (which directly tracks the whole
      * time spent on server-side rendering.
      */
-    timing: (val: any) => val ? ({ total: true, ...val }) : false,
+    timing: (val: any) => val ? ({ total: true, ...val }) : false
   }
 })

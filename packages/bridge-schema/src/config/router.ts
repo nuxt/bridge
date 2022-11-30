@@ -23,7 +23,7 @@ export default defineUntypedSchema({
 
     /**
      * @private
-    */
+     */
     _routerBaseSpecified: {
       $resolve: async (_val, get) => typeof (await get('router.base')) === 'string'
     },

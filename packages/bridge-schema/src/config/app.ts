@@ -1,6 +1,6 @@
+import { existsSync, readdirSync } from 'node:fs'
 import { defineUntypedSchema } from 'untyped'
 import { resolve, join } from 'pathe'
-import { existsSync, readdirSync } from 'node:fs'
 import defu from 'defu'
 
 export default defineUntypedSchema({
@@ -17,18 +17,19 @@ export default defineUntypedSchema({
       },
       performance: {
         $resolve: async (val, get) => val ?? await get('dev')
-      },
-    },
+      }
+    }
   },
 
   app: {
     /**
      * The folder name for the built site assets, relative to `baseURL` (or `cdnURL` if set).
+     *
      * @deprecated - use `buildAssetsDir` instead
-    */
+     */
     assetsPath: {
       $resolve: async (val, get) => val ?? (await get('buildAssetsDir'))
-    },
+    }
   },
 
   /**
@@ -122,6 +123,7 @@ export default defineUntypedSchema({
    * You may want to extend plugins or change their order. For this, you can pass
    * a function using `extendPlugins`. It accepts an array of plugin objects and
    * should return an array of plugin objects.
+   *
    * @type {(plugins: Array<{ src: string, mode?: 'client' | 'server' }>) => Array<{ src: string, mode?: 'client' | 'server' }>}
    */
   extendPlugins: null,
@@ -130,6 +132,7 @@ export default defineUntypedSchema({
    * An object where each key name maps to a path to a layout .vue file.
    *
    * Normally, there is no need to configure this directly.
+   *
    * @type {Record<string, string>}
    */
   layouts: {},
@@ -138,6 +141,7 @@ export default defineUntypedSchema({
    * Set a custom error page layout.
    *
    * Normally, there is no need to configure this directly.
+   *
    * @type {string}
    */
   ErrorPage: null,
@@ -229,7 +233,7 @@ export default defineUntypedSchema({
    * @see [vue@2 documentation](https://v2.vuejs.org/v2/guide/transitions.html)
    */
   layoutTransition: {
-    $resolve: val => {
+    $resolve: (val) => {
       val = typeof val === 'string' ? { name: val } : val
       return defu(val, {
         name: 'layout',

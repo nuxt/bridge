@@ -33,7 +33,7 @@ export default defineBuildConfig({
         }
       }
     },
-    'src/index',
+    'src/index'
   ],
   externals: [
     // Type imports
