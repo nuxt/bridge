@@ -43,14 +43,14 @@ describe('errors', () => {
         accept: 'application/json'
       }
     })
-    expect(res.status).toBe(500)
+    expect(res.status).toBe(422)
     const error = await res.json()
     delete error.stack
     expect(error).toMatchObject({
       description: process.env.NUXT_TEST_DEV ? expect.stringContaining('<pre>') : '',
       message: 'This is a custom error',
-      statusCode: 500,
-      statusMessage: '',
+      statusCode: 422,
+      statusMessage: 'This is a custom error',
       url: '/error'
     })
   })

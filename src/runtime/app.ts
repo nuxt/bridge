@@ -25,9 +25,11 @@ export interface VueAppCompat {
 }
 
 export interface RuntimeNuxtHooks {
-  'vue:setup': () => void
+  'app:error': (err: any) => void | Promise<void>
+  'app:error:cleared': (options: { redirect?: string }) => void | Promise<void>
   'app:mounted': (app: VueAppCompat) => void | Promise<void>
   'meta:register': (metaRenderers: any[]) => void | Promise<void>
+  'vue:setup': () => void
 }
 
 export interface NuxtAppCompat {
