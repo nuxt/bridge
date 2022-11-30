@@ -1,6 +1,6 @@
-import { defineUnimportPreset, Preset } from 'unimport'
+import { defineUnimportPreset, InlinePreset } from 'unimport'
 
-export const commonPresets: Preset[] = [
+export const commonPresets: InlinePreset[] = [
   // #head
   defineUnimportPreset({
     from: '#head',
@@ -33,6 +33,8 @@ export const appPreset = defineUnimportPreset({
     'useCookie',
     'useRequestHeaders',
     'useRequestEvent',
+    'useRouter',
+    'useRoute',
     'defineNuxtRouteMiddleware',
     'navigateTo',
     'abortNavigation',
@@ -116,11 +118,9 @@ export const vuePreset = defineUnimportPreset({
 const vueRouterPreset = defineUnimportPreset({
   from: 'vue-router/composables',
   imports: [
-    'useRoute',
     'onBeforeRouteLeave',
     'onBeforeRouteUpdate',
-    'useLink',
-    'useRouter'
+    'useLink'
   ]
 })
 

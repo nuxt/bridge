@@ -31,4 +31,13 @@ declare module '@nuxt/schema' {
   }
 }
 
+declare module 'nitropack' {
+  interface NitroRouteConfig {
+    ssr?: boolean
+  }
+  interface NitroRouteOptions {
+    ssr?: boolean
+  }
+}
+
 export declare function defineNuxtConfig (config: NuxtConfig): NuxtConfig

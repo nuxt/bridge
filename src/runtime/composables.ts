@@ -1,11 +1,12 @@
 import { getCurrentInstance, onBeforeUnmount, isRef, watch, reactive, toRef, isReactive, Ref, set } from 'vue'
 import type { CombinedVueInstance } from 'vue/types/vue'
 import type { MetaInfo } from 'vue-meta'
+import type VueRouter from 'vue-router'
 import type { Location, RawLocation, Route } from 'vue-router'
 import type { RuntimeConfig } from '@nuxt/schema'
 import { sendRedirect } from 'h3'
 import { defu } from 'defu'
-import { useRouter } from 'vue-router/composables'
+import { useRouter as useVueRouter, useRoute as useVueRoute } from 'vue-router/composables'
 import { joinURL } from 'ufo'
 import { useNuxtApp } from './app'
 
@@ -32,6 +33,36 @@ export const useRuntimeConfig = () => {
 
   nuxtApp._config = reactive(nuxtApp.$config)
   return nuxtApp._config as RuntimeConfig
+}
+
+// Auto-import equivalents for `vue-router`
+export const useRouter = () => {
+  if (getCurrentInstance()) {
+    return useVueRouter()
+  }
+
+  // @ts-expect-error nuxt2Context is not typed fully
+  return useNuxtApp()?.nuxt2Context.app.router as VueRouter
+}
+
+// This provides an equivalent interface to `vue-router` (unlike legacy implementation)
+export const useRoute = () => {
+  if (getCurrentInstance()) {
+    return useVueRoute()
+  }
+
+  const nuxtApp = useNuxtApp()
+
+  if (!nuxtApp._route) {
+    Object.defineProperty(nuxtApp, '__route', {
+      get: () => nuxtApp.nuxt2Context.app.context.route
+    })
+    nuxtApp._route = reactive(nuxtApp.__route)
+    const router = useRouter()
+    router.afterEach(route => Object.assign(nuxtApp._route, route))
+  }
+
+  return nuxtApp._route as Route
 }
 
 // payload.state is used for vuex by nuxt 2
@@ -167,9 +198,9 @@ export const navigateTo = (to: RawLocation, options: NavigateToOptions = {}): Pr
   const router = useRouter()
   if (process.server && useNuxtApp().ssrContext) {
     // Server-side redirection using h3 res from ssrContext
-    const res = useNuxtApp().ssrContext?.res
+    const event = useNuxtApp().ssrContext?.event
     const redirectLocation = joinURL(useRuntimeConfig().app.baseURL, router.resolve(to).fullPath || '/')
-    return sendRedirect(res, redirectLocation)
+    return sendRedirect(event, redirectLocation)
   }
   // Client-side redirection using vue-router
   return options.replace ? router.replace(to) : router.push(to)

@@ -28,6 +28,15 @@ export async function setupAppBridge (_options: any) {
     })
   }
 
+  nuxt.hook('builder:prepared', (builder) => {
+    nuxt.hook('build:done', () => {
+      for (const name of ['app', 'files', 'custom']) {
+        builder.watchers[name]?.on('all', (event, path) => nuxt.callHook('builder:watch', event, path))
+      }
+    })
+    nuxt.hook('builder:generateApp', () => builder.generateRoutesAndFiles())
+  })
+
   // Transpile core vue libraries
   // TODO: resolve in vercel/nft
   nuxt.options.build.transpile.push('vuex')

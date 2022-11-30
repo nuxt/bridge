@@ -62,6 +62,12 @@ describe('errors', () => {
   })
 })
 
+describe('route rules', () => {
+  it('should enable spa mode', async () => {
+    expect(await $fetch('/route-rules/spa')).toContain('serverRendered:false')
+  })
+})
+
 describe('dynamic paths', () => {
   if (process.env.NUXT_TEST_DEV) {
     // TODO:
@@ -143,7 +149,11 @@ describe('dynamic paths', () => {
           \\"buildAssetsDir\\": \\"/_nuxt/\\"
         },
         \\"nitro\\": {
-          \\"routes\\": {},
+          \\"routeRules\\": {
+            \\"/route-rules/spa\\": {
+              \\"ssr\\": false
+            }
+          },
           \\"envPrefix\\": \\"NUXT_\\"
         },
         \\"public\\": {
