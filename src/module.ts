@@ -61,6 +61,7 @@ export default defineNuxtModule({
     if (opts.imports ?? opts.autoImports) {
       // Deprecate hooks
       nuxt.hooks.deprecateHooks({
+        // @ts-expect-error
         'autoImports:sources': {
           to: 'imports:sources',
           message: '`autoImports:sources` hook is deprecated. Use `addImportsSources()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
