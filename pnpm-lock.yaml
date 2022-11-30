@@ -11,7 +11,7 @@ specifiers:
   '@nuxt/schema': 3.0.0-rc.12
   '@nuxt/test-utils': npm:@nuxt/test-utils-edge@latest
   '@nuxt/types': ^2.15.8
-  '@nuxt/ui-templates': ^0.4.0
+  '@nuxt/ui-templates': ^1.0.0
   '@nuxtjs/eslint-config': ^12.0.0
   '@nuxtjs/eslint-config-typescript': ^12.0.0
   '@types/fs-extra': ^9.0.13
@@ -75,7 +75,7 @@ dependencies:
   '@nuxt/kit': 3.0.0-rc.12
   '@nuxt/postcss8': 1.1.3
   '@nuxt/schema': 3.0.0-rc.12
-  '@nuxt/ui-templates': 0.4.0
+  '@nuxt/ui-templates': 1.0.0
   '@vitejs/plugin-legacy': 2.3.1_terser@5.16.0+vite@3.2.4
   '@vitejs/plugin-vue2': 1.1.2_vite@3.2.4+vue@2.7.13
   acorn: 8.8.1
@@ -2291,8 +2291,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/ui-templates/0.4.0:
-    resolution: {integrity: sha512-oFjUfn9r9U4vNljd5uU08+6M3mF6OSxZfCrfqJQaN5TtqVTcZmZFzOZ4H866Lq+Eaugv/Vte225kuaZCB3FR/g==}
+  /@nuxt/ui-templates/1.0.0:
+    resolution: {integrity: sha512-jfpVHxi1AHfNO3D6iD1RJE6fx/7cAzekvG90poIzVawp/L+I4DNdy8pCgqBScJW4bfWOpHeLYbtQQlL/hPmkjw==}
     dev: false
 
   /@nuxt/utils/2.15.8:
