@@ -5,8 +5,8 @@ import type { Nuxt, NuxtApp } from '@nuxt/schema'
 import { genImport, genObjectFromRawEntries } from 'knitwork'
 
 type TemplateContext = {
-  nuxt: Nuxt;
-  app: NuxtApp & { templateVars: Record<string, any> };
+  nuxt: Nuxt
+  app: NuxtApp & { templateVars: Record<string, any> }
 }
 
 // TODO: Use an alias

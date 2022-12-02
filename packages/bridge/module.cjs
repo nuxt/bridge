@@ -11,6 +11,7 @@ module.exports.defineNuxtConfig = (config = {}) => {
   // Add new handlers options
   config.serverHandlers = config.serverHandlers || []
   config.devServerHandlers = config.devServerHandlers || []
+  config.devServer = config.devServer || {}
 
   // Initialize typescript config for nuxi typecheck + prepare support
   config.typescript = config.typescript || {}

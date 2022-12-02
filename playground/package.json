@@ -1,3 +1,16 @@
 {
-  "private": true
+  "name": "playground",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "nuxi build",
+    "dev": "nuxi dev",
+    "generate": "nuxi generate",
+    "start": "node .output/server/index.mjs"
+  },
+  "devDependencies": {
+    "@nuxt/bridge": "latest",
+    "@vueuse/head": "^0.9.7",
+    "nuxt-edge": "latest"
+  }
 }

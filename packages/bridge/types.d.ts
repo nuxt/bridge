@@ -1,4 +1,5 @@
 /// <reference types="nitropack" />
+import type { Nuxt2Config } from '@nuxt/bridge-schema'
 import type { NuxtConfig as _NuxtConfig } from '@nuxt/schema'
 import type { MetaInfo } from 'vue-meta'
 
@@ -21,12 +22,12 @@ export interface BridgeConfig {
   meta: boolean | null
 }
 
-export interface NuxtConfig extends _NuxtConfig {
-  head?: _NuxtConfig['head'] | MetaInfo | (() => MetaInfo)
+export interface NuxtConfig extends Nuxt2Config, Omit<_NuxtConfig, keyof Nuxt2Config> {
+  head?: LegacyNuxtConfig['head'] | MetaInfo | (() => MetaInfo)
 }
 
-declare module '@nuxt/schema' {
-  interface NuxtConfig {
+declare module '@nuxt/bridge-schema' {
+  interface Nuxt2Config {
     bridge?: Partial<BridgeConfig> | false
   }
 }

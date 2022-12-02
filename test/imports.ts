@@ -1,6 +1,6 @@
 import { expect, describe, it } from 'vitest'
 import * as VueFunctions from 'vue'
-import { defaultPresets } from '../src/imports/presets'
+import { defaultPresets } from '../packages/bridge/src/imports/presets'
 
 const excludedVueHelpers = [
   // Already globally registered

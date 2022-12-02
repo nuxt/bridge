@@ -232,6 +232,7 @@ export async function setupNitroBridge () {
       // We use only object form of alias in base config
       if (Array.isArray(config.resolve.alias)) { return }
       config.resolve.alias.ufo = 'ufo/dist/index.mjs'
+      config.resolve.alias.ofetch = 'ofetch/dist/index.mjs'
       config.resolve.alias.ohmyfetch = 'ohmyfetch/dist/index.mjs'
     }
   })
