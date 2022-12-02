@@ -78,7 +78,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/hash-sum": "^1.0.0",
     "@types/node-fetch": "^3.0.2",
-    "@vueuse/head": "^0.9.7",
+    "@vueuse/head": "^0.9.8",
     "nuxt": "^2",
     "unbuild": "1.0.1",
     "vue": "^2.7.14",

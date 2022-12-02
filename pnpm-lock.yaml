@@ -43,7 +43,7 @@ importers:
       '@types/node-fetch': ^3.0.2
       '@vitejs/plugin-legacy': ^2.3.1
       '@vitejs/plugin-vue2': ^1.1.2
-      '@vueuse/head': ^0.9.7
+      '@vueuse/head': ^0.9.8
       acorn: ^8.8.1
       cookie-es: ^0.5.0
       defu: ^6.1.1
@@ -155,7 +155,7 @@ importers:
     specifiers:
       '@types/lodash.template': ^4
       '@types/semver': ^7
-      '@vueuse/head': ^0.9.7
+      '@vueuse/head': ^0.9.8
       c12: ^1.0.1
       create-require: ^1.1.1
       defu: ^6.1.1
@@ -195,7 +195,7 @@ importers:
   playground:
     specifiers:
       '@nuxt/bridge': workspace:*
-      '@vueuse/head': ^0.9.7
+      '@vueuse/head': ^0.9.8
       nuxt-edge: latest
     devDependencies:
       '@nuxt/bridge': link:../packages/bridge
