@@ -79,7 +79,7 @@
     "@types/hash-sum": "^1.0.0",
     "@types/node-fetch": "^3.0.2",
     "@vueuse/head": "^0.9.7",
-    "nuxt": "^2",
+    "nuxt": "^3",
     "unbuild": "1.0.1",
     "vue": "^2.7.14",
     "vue-router": "^3.6.5"
