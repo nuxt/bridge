@@ -17,7 +17,7 @@
   "devDependencies": {
     "@types/lodash.template": "^4",
     "@types/semver": "^7",
-    "@vitejs/plugin-vue": "^3.1.2",
+    "@vitejs/plugin-vue": "^3.2.0",
     "@vueuse/head": "^0.9.7",
     "nitropack": "^1.0.0",
     "unbuild": "latest",
@@ -26,16 +26,16 @@
   "dependencies": {
     "c12": "^1.0.1",
     "create-require": "^1.1.1",
-    "defu": "^6.1.0",
+    "defu": "^6.1.1",
     "jiti": "^1.16.0",
     "pathe": "^1.0.0",
     "pkg-types": "^1.0.1",
     "postcss-import-resolver": "^2.0.0",
     "scule": "^1.0.0",
-    "std-env": "^3.3.0",
+    "std-env": "^3.3.1",
     "ufo": "^1.0.1",
     "unbuild": "1.0.1",
-    "unimport": "^0.6.8",
+    "unimport": "^0.7.1",
     "untyped": "^1.0.0"
   },
   "engines": {
