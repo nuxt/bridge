@@ -3,18 +3,24 @@
   "extends": [
     "@nuxtjs"
   ],
-  "ignoreDeps": [
-    "vitest",
-    "@vueuse/head"
-  ],
   "packageRules": [
     {
-      "matchPackageNames": ["vue"],
+      "matchPackageNames": [
+        "vue"
+      ],
       "allowedVersions": "!/3$/"
     },
     {
-      "matchPackageNames": ["vue-router"],
+      "matchPackageNames": [
+        "vue-router"
+      ],
       "allowedVersions": "!/4$/"
+    },
+    {
+      "matchPackageNames": [
+        "nuxt"
+      ],
+      "allowedVersions": "!/3$/"
     }
   ]
 }
