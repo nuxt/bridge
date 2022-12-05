@@ -47,7 +47,7 @@ importers:
       acorn: ^8.8.1
       cookie-es: ^0.5.0
       defu: ^6.1.1
-      destr: ^1.2.1
+      destr: ^1.2.2
       enhanced-resolve: ^5.12.0
       escape-string-regexp: ^5.0.0
       estree-walker: ^2.0.2
@@ -102,7 +102,7 @@ importers:
       acorn: 8.8.1
       cookie-es: 0.5.0
       defu: 6.1.1
-      destr: 1.2.1
+      destr: 1.2.2
       enhanced-resolve: 5.12.0
       escape-string-regexp: 5.0.0
       estree-walker: 2.0.2
@@ -2020,7 +2020,7 @@ packages:
       consola: 2.15.3
       crc: 4.1.1
       defu: 6.1.1
-      destr: 1.2.1
+      destr: 1.2.2
       execa: 5.1.1
       exit: 0.1.2
       fs-extra: 10.1.0
@@ -2053,7 +2053,7 @@ packages:
       consola: 2.15.3
       crc: 3.8.0
       defu: 4.0.1
-      destr: 1.2.1
+      destr: 1.2.2
       execa: 5.1.1
       exit: 0.1.2
       fs-extra: 9.1.0
@@ -2093,7 +2093,7 @@ packages:
       '@nuxt/utils-edge': 2.16.0-27720022.54e852f
       consola: 2.15.3
       defu: 6.1.1
-      destr: 1.2.1
+      destr: 1.2.2
       dotenv: 10.0.0
       lodash: 4.17.21
       rc9: 1.2.4
@@ -2107,7 +2107,7 @@ packages:
       '@nuxt/utils': 2.15.8
       consola: 2.15.3
       defu: 4.0.1
-      destr: 1.2.1
+      destr: 1.2.2
       dotenv: 9.0.2
       lodash: 4.17.21
       rc9: 1.2.4
@@ -2338,7 +2338,7 @@ packages:
       consola: 2.15.3
       create-require: 1.1.1
       defu: 5.0.1
-      destr: 1.2.1
+      destr: 1.2.2
       dotenv: 9.0.2
       fs-extra: 8.1.0
       git-url-parse: 13.1.0
@@ -2364,7 +2364,7 @@ packages:
       consola: 2.15.3
       create-require: 1.1.1
       defu: 5.0.1
-      destr: 1.2.1
+      destr: 1.2.2
       dotenv: 9.0.2
       fs-extra: 8.1.0
       git-url-parse: 13.1.0
@@ -5917,8 +5917,8 @@ packages:
       minimalistic-assert: 1.0.1
     dev: true
 
-  /destr/1.2.1:
-    resolution: {integrity: sha512-ud8w0qMLlci6iFG7CNgeRr8OcbUWMsbfjtWft1eJ5Luqrz/M8Ebqk/KCzne8rKUlIQWWfLv0wD6QHrqOf4GshA==}
+  /destr/1.2.2:
+    resolution: {integrity: sha512-lrbCJwD9saUQrqUfXvl6qoM+QN3W7tLV5pAOs+OqOmopCCz/JkE05MHedJR1xfk4IAnZuJXPVuN5+7jNA2ZCiA==}
 
   /destroy/1.2.0:
     resolution: {integrity: sha512-2sJGJTaXIIaR1w4iJSNoN0hnMY7Gpc/n8D4qSCJw8QqFWXf7cuAgnEHxBpweaVcPevC2l3KpjYCx3NypQQgaJg==}
@@ -7720,7 +7720,7 @@ packages:
     resolution: {integrity: sha512-gDCGpRvjchZW2JBlTqbJ9IOs+mdkXXuwSQkSye+jubHAv/UhdamKqoQvd4RFgyBNjHSId8Y+b10UdTcPlP/V+w==}
     dependencies:
       cookie-es: 0.5.0
-      destr: 1.2.1
+      destr: 1.2.2
       radix3: 1.0.0
       ufo: 1.0.1
 
@@ -9237,7 +9237,7 @@ packages:
       consola: 2.15.3
       cookie-es: 0.5.0
       defu: 6.1.1
-      destr: 1.2.1
+      destr: 1.2.2
       dot-prop: 7.2.0
       esbuild: 0.15.16
       escape-string-regexp: 5.0.0
@@ -9728,7 +9728,7 @@ packages:
   /ofetch/1.0.0:
     resolution: {integrity: sha512-d40aof8czZFSQKJa4+F7Ch3UC5D631cK1TTUoK+iNEut9NoiCL+u0vykl/puYVUS2df4tIQl5upQcolIcEzQjQ==}
     dependencies:
-      destr: 1.2.1
+      destr: 1.2.2
       node-fetch-native: 1.0.1
       ufo: 1.0.1
 
@@ -11327,7 +11327,7 @@ packages:
     resolution: {integrity: sha512-YD1oJO9LUzMdmr2sAsVlwQVtEoDCmvuyDwmSWrg2GKFprl3BckP5cmw9rHPunei0lV6Xl4E5t2esT+0trY1xfQ==}
     dependencies:
       defu: 6.1.1
-      destr: 1.2.1
+      destr: 1.2.2
       flat: 5.0.2
     dev: true
 
@@ -11335,7 +11335,7 @@ packages:
     resolution: {integrity: sha512-yVeYJHOpJLOhs3V6RKwz7RPPwPurrx3JjwK264sPgvo/lFdhuUrLien7iSvAO6STVkN0gSMk/MehQNHQhflqZw==}
     dependencies:
       defu: 6.1.1
-      destr: 1.2.1
+      destr: 1.2.2
       flat: 5.0.2
 
   /read-cache/1.0.0:
@@ -12844,7 +12844,7 @@ packages:
     dependencies:
       anymatch: 3.1.3
       chokidar: 3.5.3
-      destr: 1.2.1
+      destr: 1.2.2
       h3: 1.0.1
       ioredis: 5.2.4
       listhen: 1.0.1
