@@ -80,12 +80,12 @@
     "@types/node-fetch": "^3.0.2",
     "@vueuse/head": "^0.9.8",
     "nuxt": "^2",
-    "unbuild": "1.0.1",
+    "unbuild": "1.0.2",
     "vue": "^2.7.14",
     "vue-router": "^3.6.5"
   },
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
-  "packageManager": "pnpm@7.18.0"
+  "packageManager": "pnpm@7.18.1"
 }
