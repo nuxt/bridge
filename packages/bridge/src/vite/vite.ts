@@ -91,7 +91,6 @@ async function bundle (nuxt: Nuxt, builder: any) {
             ignored: isIgnored
           },
           fs: {
-            strict: false,
             allow: [
               nuxt.options.buildDir,
               nuxt.options.srcDir,
