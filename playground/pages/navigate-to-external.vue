@@ -3,5 +3,5 @@
 </template>
 
 <script setup>
-navigateTo('/', { replace: true, redirectCode: 301 })
+navigateTo('https://example.com/', { external: true })
 </script>
