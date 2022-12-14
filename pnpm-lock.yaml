@@ -82,7 +82,7 @@ importers:
       unctx: ^2.1.1
       unimport: ^1.0.2
       unplugin: ^1.0.1
-      untyped: ^1.1.0
+      untyped: ^1.2.0
       vite: ~3.2.5
       vue: ^2.7.14
       vue-bundle-renderer: ^1.0.0
@@ -135,7 +135,7 @@ importers:
       unctx: 2.1.1
       unimport: 1.0.2
       unplugin: 1.0.1
-      untyped: 1.1.0
+      untyped: 1.2.0
       vite: 3.2.5_terser@5.16.1
       vue-bundle-renderer: 1.0.0
     devDependencies:
@@ -169,7 +169,7 @@ importers:
       ufo: ^1.0.1
       unbuild: 1.0.2
       unimport: ^1.0.2
-      untyped: ^1.1.0
+      untyped: ^1.2.0
       vite: ~3.2.5
     dependencies:
       c12: 1.1.0
@@ -184,7 +184,7 @@ importers:
       ufo: 1.0.1
       unbuild: 1.0.2
       unimport: 1.0.2
-      untyped: 1.1.0
+      untyped: 1.2.0
     devDependencies:
       '@types/lodash.template': 4.5.1
       '@types/semver': 7.3.13
@@ -2232,7 +2232,7 @@ packages:
       semver: 7.3.8
       unctx: 2.1.1
       unimport: 1.0.2
-      untyped: 1.1.0
+      untyped: 1.2.0
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -2291,7 +2291,7 @@ packages:
       std-env: 3.3.1
       ufo: 1.0.1
       unimport: 1.0.2
-      untyped: 1.1.0
+      untyped: 1.2.0
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -12899,7 +12899,7 @@ packages:
       rollup-plugin-dts: 5.0.0_b62htvnbshcybhtkm3m3gan63e
       scule: 1.0.0
       typescript: 4.9.3
-      untyped: 1.1.0
+      untyped: 1.2.0
     transitivePeerDependencies:
       - sass
       - supports-color
@@ -13064,8 +13064,8 @@ packages:
       - supports-color
       - utf-8-validate
 
-  /untyped/1.1.0:
-    resolution: {integrity: sha512-v4H7juRA2cWFr+V4L2HExXwlRCwZv2A6o2M33+9aN/DPUyzqtFFMCTpiKF7sdOV8EaLxm+LTpDb0BoeGv2NswQ==}
+  /untyped/1.2.0:
+    resolution: {integrity: sha512-nG0A55YEhUU5UCEM+nhIhCVkA8a4L1spIVtzO0937WDjEA6jrKpu184O2K9iv5UuJNHnwhu+Q3TXiSJh/JrjlQ==}
     dependencies:
       '@babel/core': 7.20.5
       '@babel/standalone': 7.20.6
