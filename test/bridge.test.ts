@@ -26,6 +26,19 @@ describe('navigate', () => {
     expect(headers.get('location')).toEqual('/')
     await expectNoClientErrors('/navigate-to/')
   })
+  it('should redirect to index with navigateTo and 301 code', async () => {
+    const res = await fetch('/navigate-to/', { redirect: 'manual' })
+    expect(res.status).toBe(301)
+    await expectNoClientErrors('/navigate-to/')
+  })
+})
+
+describe('navigate external', () => {
+  it('should redirect to example.com', async () => {
+    const { headers } = await fetch('/navigate-to-external/', { redirect: 'manual' })
+
+    expect(headers.get('location')).toEqual('https://example.com/')
+  })
 })
 
 describe('legacy capi', () => {
