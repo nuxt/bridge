@@ -81,7 +81,7 @@
     "@vueuse/head": "^0.9.8",
     "nuxt": "^2",
     "unbuild": "1.0.2",
-    "vue": "^2.7.14",
+    "vue": "^3.2.45",
     "vue-router": "^3.6.5"
   },
   "engines": {
