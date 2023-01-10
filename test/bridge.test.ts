@@ -23,7 +23,7 @@ describe('pages', () => {
 describe('navigate', () => {
   it('should redirect to index with navigateTo', async () => {
     const { headers } = await fetch('/navigate-to/', { redirect: 'manual' })
-    expect(headers.get('location')).toEqual('/')
+    expect(headers.get('location')).toEqual('/navigation-target')
     await expectNoClientErrors('/navigate-to/')
   })
   it('should redirect to index with navigateTo and 301 code', async () => {
@@ -184,7 +184,7 @@ describe('dynamic paths', () => {
     await startServer()
     const { headers } = await fetch('/foo/navigate-to/', { redirect: 'manual' })
 
-    expect(headers.get('location')).toEqual('/foo/')
+    expect(headers.get('location')).toEqual('/foo/navigation-target')
   })
 
   it('should allow setting CDN URL', async () => {
