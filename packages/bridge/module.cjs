@@ -26,6 +26,13 @@ module.exports.defineNuxtConfig = (config = {}) => {
     // Ensure other modules register their hooks before
     config.buildModules.push('@nuxt/bridge')
   }
+
+  // Turn on vue-router if pages is enabled. Backport of nuxt 3 behavior
+  if (config.pages && typeof config.build?.createRoutes !== 'function') {
+    config.build = config.build || {}
+    config.build.createRoutes = () => []
+  }
+
   config.buildModules.unshift(async function () {
     const nuxt = this.nuxt
 
