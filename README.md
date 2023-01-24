@@ -6,11 +6,11 @@ Bridge is a forward-compatibility layer that allows you to experience many of th
 
 Using Nuxt Bridge, you can make sure your project is (almost) ready for Nuxt 3 and have the best developer experience without needing a major rewrite or risk breaking changes.
 
-⚠️ **Note:** Nuxt Bridge provides identical features to Nuxt 3 ([Nuxt 3 docs](https://v3.nuxtjs.org/guide/features/views)) but there are some limitations, notably that `useAsyncData` and `useFetch` composables are not available. Please read the rest of this page for details. 
+⚠️ **Note:** Nuxt Bridge provides identical features to Nuxt 3 ([Nuxt 3 docs](https://nuxt.com/docs/getting-started/views#views)) but there are some limitations, notably that `useAsyncData` and `useFetch` composables are not available. Please read the rest of this page for details. 
 
 ⚠️ **Note:** Nuxt Bridge does not support Internet Explorer. Supported browsers are listed at https://caniuse.com/es6-module-dynamic-import.
 
-🌱 **Note:** If you're starting a fresh Nuxt project, please skip this module and directly go to the [Nuxt 3 Installation](https://v3.nuxtjs.org/getting-started/quick-start).
+🌱 **Note:** If you're starting a fresh Nuxt project, please skip this module and directly go to the [Nuxt 3 Installation](https://nuxt.com/docs/getting-started/introduction).
 
 ## 💻 Development
 
@@ -20,7 +20,7 @@ Using Nuxt Bridge, you can make sure your project is (almost) ready for Nuxt 3 a
 - Run `npx yarn dev:prepare` to activate passive development
 - Open playground with `npx yarn dev`
 
-Learn more about in our documentation on [how to contribute to Nuxt](https://v3.nuxtjs.org/community/contribution).
+Learn more about in our documentation on [how to contribute to Nuxt](https://nuxt.com/docs/community/contribution).
 
 
 ## Installation
@@ -65,7 +65,7 @@ You will also need to update your scripts within your `package.json` to reflect 
 
 ### Nuxi
 
-Nuxt 3 introduced the new Nuxt CLI command [`nuxi`](https://v3.nuxtjs.org/api/commands/add). Update your scripts as follows to leverage the better support from Nuxt Bridge:
+Nuxt 3 introduced the new Nuxt CLI command [`nuxi`](https://nuxt.com/docs/api/commands/add). Update your scripts as follows to leverage the better support from Nuxt Bridge:
 
 ```diff
 {
@@ -140,11 +140,11 @@ In case you need to extend options provided by `./.nuxt/tsconfig.json` further, 
 
 ## Migrate Composition API
 
-If you were using `@vue/composition-api` or `@nuxtjs/composition-api`, please read the [composition api migration guide](https://v3.nuxtjs.org/bridge/bridge-composition-api).
+If you were using `@vue/composition-api` or `@nuxtjs/composition-api`, please read the [composition api migration guide](https://nuxt.com/docs/bridge/bridge-composition-api).
 
 ### Migrate from CommonJS to ESM
 
-Nuxt 3 natively supports TypeScript and ECMAScript Modules. Please check [Native ES Modules](https://v3.nuxtjs.org/guide/going-further/esm) for more info and upgrading.
+Nuxt 3 natively supports TypeScript and ECMAScript Modules. Please check [Native ES Modules](https://nuxt.com/docs/guide/concepts/esm) for more info and upgrading.
 
 ## Remove incompatible and obsolete modules
 
@@ -153,8 +153,8 @@ Nuxt 3 natively supports TypeScript and ECMAScript Modules. Please check [Native
 - Remove `@nuxt/typescript-build`: Bridge enables same functionality
 - Remove `@nuxt/typescript-runtime` and `nuxt-ts`: Nuxt 2 has built-in runtime support
 - Remove `@nuxt/nitro`: Bridge injects same functionality
-- Remove `@vue/composition-api` from your dependencies ([migration guide](https://v3.nuxtjs.org/bridge/bridge-composition-api)).
-- Remove `@nuxtjs/composition-api` from your dependencies (and from your modules in `nuxt.config`) ([migration guide](https://v3.nuxtjs.org/bridge/bridge-composition-api)).
+- Remove `@vue/composition-api` from your dependencies ([migration guide](https://nuxt.com/docs/bridge/bridge-composition-api)).
+- Remove `@nuxtjs/composition-api` from your dependencies (and from your modules in `nuxt.config`) ([migration guide](https://nuxt.com/docs/bridge/bridge-composition-api)).
 
 ## Exclude built Nitro folder from git
 
@@ -178,7 +178,7 @@ export default defineNuxtConfig({
 
 You can now migrate to the Nuxt 3 plugins API, which is slightly different in format from Nuxt 2.
 
-Plugins now take only one argument (`nuxtApp`). You can find out more in [the docs](https://v3.nuxtjs.org/guide/directory-structure/plugins).
+Plugins now take only one argument (`nuxtApp`). You can find out more in [the docs](https://nuxt.com/docs/guide/directory-structure/plugins).
 
 ```js
 export default defineNuxtPlugin(nuxtApp => {
@@ -218,7 +218,7 @@ export default defineNuxtConfig({
 This `useHead` composable uses `@vueuse/head` under the hood (rather than `vue-meta`) to manipulate your `<head>`.
 Accordingly, we recommend not to use both the native Nuxt 2 `head()` properties as well as `useHead`, as they may conflict.
 
-For more information on how to use this composable, see [the docs](https://v3.nuxtjs.org/guide/features/head-management).
+For more information on how to use this composable, see [the docs](https://nuxt.com/docs/getting-started/seo-meta#seo-and-meta).
 
 ## Feature Flags
 

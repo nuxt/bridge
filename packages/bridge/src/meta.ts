@@ -3,7 +3,7 @@ import { addTemplate, useNuxt, installModule } from '@nuxt/kit'
 import metaModule from './head'
 import { distDir } from './dirs'
 
-const checkDocsMsg = 'Please see https://v3.nuxtjs.org for more information.'
+const checkDocsMsg = 'Please see https://nuxt.com/docs for more information.'
 const msgPrefix = '[bridge] [meta]'
 
 interface SetupMetaOptions {
