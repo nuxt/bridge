@@ -80,7 +80,7 @@ importers:
       ufo: ^1.0.1
       unbuild: 1.1.1
       unctx: ^2.1.1
-      unimport: ^1.3.0
+      unimport: ^2.1.0
       unplugin: ^1.0.1
       untyped: ^1.2.2
       vite: ~3.2.5
@@ -133,7 +133,7 @@ importers:
       terser: 5.16.2
       ufo: 1.0.1
       unctx: 2.1.1
-      unimport: 1.3.0
+      unimport: 2.1.0
       unplugin: 1.0.1
       untyped: 1.2.2
       vite: 3.2.5_terser@5.16.2
@@ -168,7 +168,7 @@ importers:
       std-env: ^3.3.1
       ufo: ^1.0.1
       unbuild: 1.1.1
-      unimport: ^1.3.0
+      unimport: ^2.1.0
       untyped: ^1.2.2
       vite: ~3.2.5
     dependencies:
@@ -183,7 +183,7 @@ importers:
       std-env: 3.3.1
       ufo: 1.0.1
       unbuild: 1.1.1
-      unimport: 1.3.0
+      unimport: 2.1.0
       untyped: 1.2.2
     devDependencies:
       '@types/lodash.template': 4.5.1
@@ -13118,24 +13118,6 @@ packages:
     resolution: {integrity: sha512-6t3foTQI9qne+OZoVQB/8x8rk2k1eVy1gRXhV3oFQ5T6R1dqQ1xtin3XqSlx3+ATBkliTaR/hHyJBm+LVPNM8w==}
     engines: {node: '>=4'}
     dev: true
-
-  /unimport/1.3.0:
-    resolution: {integrity: sha512-fOkrdxglsHd428yegH0wPH/6IfaSdDeMXtdRGn6en/ccyzc2aaoxiUTMrJyc6Bu+xoa18RJRPMfLUHEzjz8atw==}
-    dependencies:
-      '@rollup/pluginutils': 5.0.2
-      escape-string-regexp: 5.0.0
-      fast-glob: 3.2.12
-      local-pkg: 0.4.3
-      magic-string: 0.27.0
-      mlly: 1.1.0
-      pathe: 1.1.0
-      pkg-types: 1.0.1
-      scule: 1.0.0
-      strip-literal: 1.0.0
-      unplugin: 1.0.1
-    transitivePeerDependencies:
-      - rollup
-    dev: false
 
   /unimport/1.3.0_rollup@2.79.1:
     resolution: {integrity: sha512-fOkrdxglsHd428yegH0wPH/6IfaSdDeMXtdRGn6en/ccyzc2aaoxiUTMrJyc6Bu+xoa18RJRPMfLUHEzjz8atw==}
