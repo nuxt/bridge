@@ -41,7 +41,7 @@ importers:
       '@types/fs-extra': ^9.0.13
       '@types/hash-sum': ^1.0.0
       '@types/node-fetch': ^3.0.2
-      '@vitejs/plugin-legacy': ^2.3.1
+      '@vitejs/plugin-legacy': ^3.0.2
       '@vitejs/plugin-vue2': ^1.1.2
       '@vueuse/head': ^0.9.8
       acorn: ^8.8.2
@@ -97,7 +97,7 @@ importers:
       '@nuxt/postcss8': 1.1.3
       '@nuxt/schema': 3.1.1
       '@nuxt/ui-templates': 1.1.1
-      '@vitejs/plugin-legacy': 2.3.1_terser@5.16.2+vite@3.2.5
+      '@vitejs/plugin-legacy': 3.0.2_terser@5.16.2+vite@3.2.5
       '@vitejs/plugin-vue2': 1.1.2_vite@3.2.5+vue@2.7.14
       acorn: 8.8.2
       cookie-es: 0.5.0
@@ -1443,11 +1443,6 @@ packages:
     resolution: {integrity: sha512-zxdQD6+eMQumJFPOLpOZE34JAAGrZPMXCKvHR7Mtat/l+nHDOxlit5u85HDk5WkBXmvN5PhUMeimiC95KXD9+A==}
     engines: {node: '>=6.9.0'}
 
-  /@babel/standalone/7.20.6:
-    resolution: {integrity: sha512-u5at/CbBLETf7kx2LOY4XdhseD79Y099WZKAOMXeT8qvd9OSR515my2UNBBLY4qIht/Qi9KySeQHQwQwxJN4Sw==}
-    engines: {node: '>=6.9.0'}
-    dev: false
-
   /@babel/template/7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==}
     engines: {node: '>=6.9.0'}
@@ -2002,7 +1997,7 @@ packages:
       '@babel/preset-env': 7.20.2_@babel+core@7.20.12
       '@babel/runtime': 7.20.6
       '@vue/babel-preset-jsx': 1.4.0_@babel+core@7.20.12
-      core-js: 3.26.1
+      core-js: 3.27.2
       core-js-compat: 3.26.1
       regenerator-runtime: 0.13.11
     transitivePeerDependencies:
@@ -3842,16 +3837,16 @@ packages:
       - encoding
       - supports-color
 
-  /@vitejs/plugin-legacy/2.3.1_terser@5.16.2+vite@3.2.5:
-    resolution: {integrity: sha512-J5KaGBlSt2tEYPVjM/C8dA6DkRzkFkbPe+Xb4IX5G+XOV5OGbVAfkMjKywdrkO3gGynO8S98i71Lmsff4cWkCQ==}
+  /@vitejs/plugin-legacy/3.0.2_terser@5.16.2+vite@3.2.5:
+    resolution: {integrity: sha512-9BT2mXunC7kQGKHP70BIbNZ/85P/KUMGKBS9CiV+XKNDZGNBjUnyrh3ofgtqgObmxKaEP2xJsEIRNIFJ+hjI8w==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       terser: ^5.4.0
-      vite: ^3.0.0
+      vite: ^4.0.0
     dependencies:
-      '@babel/standalone': 7.20.6
-      core-js: 3.26.1
-      magic-string: 0.26.7
+      '@babel/standalone': 7.20.14
+      core-js: 3.27.2
+      magic-string: 0.27.0
       regenerator-runtime: 0.13.11
       systemjs: 6.13.0
       terser: 5.16.2
@@ -5684,8 +5679,8 @@ packages:
     requiresBuild: true
     dev: true
 
-  /core-js/3.26.1:
-    resolution: {integrity: sha512-21491RRQVzUn0GGM9Z1Jrpr6PNPxPi+Za8OM9q4tksTSnlbXXGKK1nXNg/QvwFYettXvSX6zWKCtHHfjN4puyA==}
+  /core-js/3.27.2:
+    resolution: {integrity: sha512-9ashVQskuh5AZEZ1JdQWp1GqSoC1e1G87MzRqg2gIfVAQ7Qn9K+uFj8EcniUFA4P2NLZfV+TOlX1SzoKfo+s7w==}
     requiresBuild: true
 
   /core-util-is/1.0.3:
