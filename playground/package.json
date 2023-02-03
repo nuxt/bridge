@@ -11,6 +11,6 @@
   "devDependencies": {
     "@nuxt/bridge": "latest",
     "@vueuse/head": "^0.9.8",
-    "nuxt-edge": "latest"
+    "nuxt": "^2.16.0"
   }
 }
