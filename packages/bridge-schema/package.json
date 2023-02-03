@@ -31,7 +31,7 @@
     "pkg-types": "^1.0.1",
     "postcss-import-resolver": "^2.0.0",
     "scule": "^1.0.0",
-    "std-env": "^3.3.1",
+    "std-env": "^3.3.2",
     "ufo": "^1.0.1",
     "unbuild": "1.1.1",
     "unimport": "^2.1.0",
