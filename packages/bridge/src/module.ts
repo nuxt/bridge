@@ -1,4 +1,3 @@
-import Module from 'module'
 import { defineNuxtModule, installModule, checkNuxtCompatibility } from '@nuxt/kit'
 import type { NuxtModule, NuxtCompatibility } from '@nuxt/schema'
 import type { BridgeConfig } from '../types'
