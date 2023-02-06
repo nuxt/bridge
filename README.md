@@ -27,11 +27,11 @@ Learn more about in our documentation on [how to contribute to Nuxt](https://nux
 
 ### Upgrade to the latest Nuxt 2
 
-Make sure your dev server (`nuxt dev`) isn't running, remove any package lock files (`package-lock.json` and `yarn.lock`), and install the latest `nuxt-edge`:
+Make sure your dev server (`nuxt dev`) isn't running, remove any package lock files (`package-lock.json` and `yarn.lock`), and install the latest `nuxt` version:
 
 ```diff [package.json]
 - "nuxt": "^2.15.0"
-+ "nuxt-edge": "latest"
++ "nuxt": "^2.16.0"
 ```
 
 Then, reinstall your dependencies:
