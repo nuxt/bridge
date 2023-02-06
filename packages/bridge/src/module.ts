@@ -1,4 +1,3 @@
-import Module from 'module'
 import { defineNuxtModule, installModule, checkNuxtCompatibility } from '@nuxt/kit'
 import type { NuxtModule, NuxtCompatibility } from '@nuxt/schema'
 import type { BridgeConfig } from '../types'
@@ -27,8 +26,6 @@ export default defineNuxtModule({
     imports: true,
     compatibility: true,
     meta: null,
-    // TODO: Remove from 2.16
-    postcss8: true,
     typescript: true,
     resolve: true
   } as BridgeConfig,
@@ -90,11 +87,6 @@ export default defineNuxtModule({
           await generateWebpackBuildManifest()
         }
       })
-    }
-    if (opts.postcss8) {
-      const _require = Module.createRequire(import.meta.url)
-      // @ts-expect-error TODO: legacy module container usage
-      nuxt.hook('modules:done', moduleContainer => installModule(_require('@nuxt/postcss8').bind(moduleContainer)))
     }
     if (opts.typescript) {
       await setupTypescript()
