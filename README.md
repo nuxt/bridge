@@ -224,7 +224,7 @@ For more information on how to use this composable, see [the docs](https://nuxt.
 
 You can optionally disable some features from bridge or opt-in to less stable ones. In normal circumstances, it is always best to stick with defaults!
 
-You can check [bridge/src/module.ts](https://github.com/nuxt/framework/blob/main/packages/bridge/src/module.ts) for latest defaults.
+You can check [packages/bridge/src/module.ts](https://github.com/nuxt/bridge/blob/main/packages/bridge/src/module.ts) for latest defaults.
 
 ```ts [nuxt.config.js|ts]
 import { defineNuxtConfig } from '@nuxt/bridge'
