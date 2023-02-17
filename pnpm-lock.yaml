@@ -12,7 +12,7 @@ importers:
       '@nuxtjs/eslint-config': ^12.0.0
       '@nuxtjs/eslint-config-typescript': ^12.0.0
       eslint: ^8.33.0
-      eslint-plugin-jsdoc: ^39.8.0
+      eslint-plugin-jsdoc: ^40.0.0
       jiti: ^1.16.2
       vitest: ^0.28.4
     devDependencies:
@@ -20,7 +20,7 @@ importers:
       '@nuxtjs/eslint-config': 12.0.0_eslint@8.33.0
       '@nuxtjs/eslint-config-typescript': 12.0.0_eslint@8.33.0
       eslint: 8.33.0
-      eslint-plugin-jsdoc: 39.8.0_eslint@8.33.0
+      eslint-plugin-jsdoc: 40.0.0_eslint@8.33.0
       jiti: 1.16.2
       vitest: 0.28.4
 
@@ -7346,8 +7346,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-jsdoc/39.8.0_eslint@8.33.0:
-    resolution: {integrity: sha512-ZwGmk0jJoJD/NILeDRBKrpq/PCgddUdATjeU5JGTqTzKsOWfeaHOnaAwZjuOh7T8EB4hSoZ/9pR4+Qns2ldQVg==}
+  /eslint-plugin-jsdoc/40.0.0_eslint@8.33.0:
+    resolution: {integrity: sha512-LOPyIu1vAVvGPkye3ci0moj0iNf3f8bmin6do2DYDj+77NRXWnkmhKRy8swWsatUs3mB5jYPWPUsFg9pyfEiyA==}
     engines: {node: ^14 || ^16 || ^17 || ^18 || ^19}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
