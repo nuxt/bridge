@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@nuxt/bridge": "latest",
-    "@vueuse/head": "^0.9.8",
+    "@vueuse/head": "^1.0.26",
     "nuxt": "^2.16.2"
   }
 }
