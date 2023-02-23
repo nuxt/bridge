@@ -17,6 +17,7 @@ export default defineNuxtModule({
 
     // Transpile @nuxt/meta and @vueuse/head
     nuxt.options.build.transpile.push('@vueuse/head')
+    nuxt.options.build.transpile.push('unhead')
 
     // Add #head alias
     nuxt.options.alias['#head'] = runtimeDir
