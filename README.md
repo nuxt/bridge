@@ -28,7 +28,7 @@ Learn more about in our documentation on [how to contribute to Nuxt](https://nux
 
 ### Upgrade to the latest Nuxt 2
 
-Make sure your dev server (`nuxt dev`) isn't running, remove any package lock files (`package-lock.json` and `pnpm-lock.yaml`), and install the latest `nuxt` version:
+Make sure your dev server (`nuxt dev`) isn't running, remove any package lock files (`package-lock.json`, `yarn.lock` or `pnpm-lock.yaml`), and install the latest `nuxt` version:
 
 ```diff [package.json]
 - "nuxt": "^2.15.0"
