@@ -16,9 +16,10 @@ Using Nuxt Bridge, you can make sure your project is (almost) ready for Nuxt 3 a
 
 - Clone repository
 - Ensure you have the latest LTS version of Node.js installed
-- Install dependencies with `npx pnpm install`
-- Run `npx pnpm dev:prepare` to activate passive development
-- Open playground with `npx pnpm dev`
+- Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable` to enable `pnpm` and `yarn`
+- Install dependencies with `pnpm install`
+- Run `pnpm dev:prepare` to activate passive development
+- Open playground with `pnpm dev`
 
 Learn more about in our documentation on [how to contribute to Nuxt](https://nuxt.com/docs/community/contribution).
 
@@ -27,7 +28,7 @@ Learn more about in our documentation on [how to contribute to Nuxt](https://nux
 
 ### Upgrade to the latest Nuxt 2
 
-Make sure your dev server (`nuxt dev`) isn't running, remove any package lock files (`package-lock.json`, `yarn.lock` and `pnpm-lock`), and install the latest `nuxt` version:
+Make sure your dev server (`nuxt dev`) isn't running, remove any package lock files (`package-lock.json` and `pnpm-lock.yaml`), and install the latest `nuxt` version:
 
 ```diff [package.json]
 - "nuxt": "^2.15.0"
