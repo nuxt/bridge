@@ -162,12 +162,12 @@ describe('dynamic paths', () => {
           \\"buildAssetsDir\\": \\"/_nuxt/\\"
         },
         \\"nitro\\": {
+          \\"envPrefix\\": \\"NUXT_\\",
           \\"routeRules\\": {
             \\"/route-rules/spa\\": {
               \\"ssr\\": false
             }
-          },
-          \\"envPrefix\\": \\"NUXT_\\"
+          }
         },
         \\"public\\": {
           \\"myValue\\": 123
