@@ -18,7 +18,7 @@
     "test:fixtures:webpack:dev": "TEST_WITH_WEBPACK=1 NUXT_TEST_DEV=true pnpm test:fixtures"
   },
   "devDependencies": {
-    "@nuxt/test-utils": "^3.1.2",
+    "@nuxt/test-utils": "^3.2.3",
     "@nuxtjs/eslint-config": "^12.0.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "eslint": "^8.36.0",
