@@ -21,6 +21,16 @@
         "nuxt"
       ],
       "allowedVersions": "!/3$/"
+    },
+    {
+      "groupName": "nuxt core",
+      "groupSlug": "nuxt",
+      "matchPackageNames": [
+        "nuxi"
+      ],
+      "matchPackagePatterns": [
+        "^@nuxt/"
+      ]
     }
   ]
 }
