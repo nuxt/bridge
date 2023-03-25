@@ -42,7 +42,7 @@ importers:
       '@types/hash-sum': ^1.0.0
       '@types/node-fetch': ^3.0.2
       '@vitejs/plugin-legacy': ^2.3.1
-      '@vitejs/plugin-vue2': ^1.1.2
+      '@vitejs/plugin-vue2': ^2.2.0
       '@vueuse/head': ^1.1.23
       acorn: ^8.8.2
       cookie-es: ^0.5.0
@@ -98,7 +98,7 @@ importers:
       '@nuxt/schema': 3.3.2
       '@nuxt/ui-templates': 1.1.1
       '@vitejs/plugin-legacy': 2.3.1_terser@5.16.8+vite@4.2.1
-      '@vitejs/plugin-vue2': 1.1.2_vite@4.2.1+vue@2.7.14
+      '@vitejs/plugin-vue2': 2.2.0_vite@4.2.1+vue@2.7.14
       acorn: 8.8.2
       cookie-es: 0.5.0
       defu: 6.1.2
@@ -1522,11 +1522,6 @@ packages:
   /@babel/standalone/7.20.14:
     resolution: {integrity: sha512-zxdQD6+eMQumJFPOLpOZE34JAAGrZPMXCKvHR7Mtat/l+nHDOxlit5u85HDk5WkBXmvN5PhUMeimiC95KXD9+A==}
     engines: {node: '>=6.9.0'}
-
-  /@babel/standalone/7.20.6:
-    resolution: {integrity: sha512-u5at/CbBLETf7kx2LOY4XdhseD79Y099WZKAOMXeT8qvd9OSR515my2UNBBLY4qIht/Qi9KySeQHQwQwxJN4Sw==}
-    engines: {node: '>=6.9.0'}
-    dev: false
 
   /@babel/template/7.20.7:
     resolution: {integrity: sha512-8SegXApWe6VoNw0r9JHpSteLKTpTiLZ4rMlGIm9JQ18KiCtyQiAMEazujAHrUS5flrcqYZa75ukev3P6QmUwUw==}
@@ -4124,7 +4119,7 @@ packages:
       terser: ^5.4.0
       vite: ^3.0.0
     dependencies:
-      '@babel/standalone': 7.20.6
+      '@babel/standalone': 7.20.14
       core-js: 3.26.1
       magic-string: 0.26.7
       regenerator-runtime: 0.13.11
@@ -4133,11 +4128,11 @@ packages:
       vite: 4.2.1_terser@5.16.8
     dev: false
 
-  /@vitejs/plugin-vue2/1.1.2_vite@4.2.1+vue@2.7.14:
-    resolution: {integrity: sha512-y6OEA+2UdJ0xrEQHodq20v9r3SpS62IOHrgN92JPLvVpNkhcissu7yvD5PXMzMESyazj0XNWGsc8UQk8+mVrjQ==}
-    engines: {node: '>=14.6.0'}
+  /@vitejs/plugin-vue2/2.2.0_vite@4.2.1+vue@2.7.14:
+    resolution: {integrity: sha512-1km7zEuZ/9QRPvzXSjikbTYGQPG86Mq1baktpC4sXqsXlb02HQKfi+fl8qVS703JM7cgm24Ga9j+RwKmvFn90A==}
+    engines: {node: ^14.18.0 || >= 16.0.0}
     peerDependencies:
-      vite: '>=2.5.10'
+      vite: ^3.0.0 || ^4.0.0
       vue: ^2.7.0-0
     dependencies:
       vite: 4.2.1_terser@5.16.8
@@ -11758,6 +11753,7 @@ packages:
 
   /sourcemap-codec/1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
+    deprecated: Please use @jridgewell/sourcemap-codec instead
     dev: false
 
   /spdx-correct/3.1.1:
