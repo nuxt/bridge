@@ -10,6 +10,7 @@ import PluginLegacy from './stub-legacy.cjs'
 import { mergeConfig, createServer, build } from './stub-vite.cjs'
 import { devStyleSSRPlugin } from './plugins/dev-ssr-css'
 import { jsxPlugin } from './plugins/jsx'
+import { devVueDefaultPlugin } from './plugins/dev-vue-default'
 import { ViteBuildContext, ViteOptions } from './types'
 import { prepareManifests } from './manifest'
 
@@ -58,6 +59,7 @@ export async function buildClient (ctx: ViteBuildContext) {
       jsxPlugin(),
       createVuePlugin(ctx.config.vue),
       PluginLegacy(),
+      devVueDefaultPlugin(),
       devStyleSSRPlugin({
         srcDir: ctx.nuxt.options.srcDir,
         buildAssetsURL: joinURL(ctx.nuxt.options.app.baseURL, ctx.nuxt.options.app.buildAssetsDir)
