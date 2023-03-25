@@ -42,7 +42,7 @@ importers:
       '@types/hash-sum': ^1.0.0
       '@types/node-fetch': ^3.0.2
       '@vitejs/plugin-legacy': ^2.3.1
-      '@vitejs/plugin-vue2': ^1.1.2
+      '@vitejs/plugin-vue2': ^2.2.0
       '@vueuse/head': ^1.1.23
       acorn: ^8.8.2
       cookie-es: ^0.5.0
@@ -98,7 +98,7 @@ importers:
       '@nuxt/schema': 3.3.2
       '@nuxt/ui-templates': 1.1.1
       '@vitejs/plugin-legacy': 2.3.1_terser@5.16.8+vite@3.2.5
-      '@vitejs/plugin-vue2': 1.1.2_vite@3.2.5+vue@2.7.14
+      '@vitejs/plugin-vue2': 2.2.0_vite@3.2.5+vue@2.7.14
       acorn: 8.8.2
       cookie-es: 0.5.0
       defu: 6.1.2
@@ -4214,11 +4214,11 @@ packages:
       vite: 3.2.5_terser@5.16.8
     dev: false
 
-  /@vitejs/plugin-vue2/1.1.2_vite@3.2.5+vue@2.7.14:
-    resolution: {integrity: sha512-y6OEA+2UdJ0xrEQHodq20v9r3SpS62IOHrgN92JPLvVpNkhcissu7yvD5PXMzMESyazj0XNWGsc8UQk8+mVrjQ==}
-    engines: {node: '>=14.6.0'}
+  /@vitejs/plugin-vue2/2.2.0_vite@3.2.5+vue@2.7.14:
+    resolution: {integrity: sha512-1km7zEuZ/9QRPvzXSjikbTYGQPG86Mq1baktpC4sXqsXlb02HQKfi+fl8qVS703JM7cgm24Ga9j+RwKmvFn90A==}
+    engines: {node: ^14.18.0 || >= 16.0.0}
     peerDependencies:
-      vite: '>=2.5.10'
+      vite: ^3.0.0 || ^4.0.0
       vue: ^2.7.0-0
     dependencies:
       vite: 3.2.5_terser@5.16.8
