@@ -3,9 +3,18 @@ import { describe, expect, it } from 'vitest'
 import { setup, $fetch, fetch, startServer } from '@nuxt/test-utils'
 import { expectNoClientErrors } from './utils'
 
+const isWebpack = process.env.TEST_WITH_WEBPACK
+
 await setup({
   rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
-  server: true
+  server: true,
+  dev: !!process.env.NUXT_TEST_DEV,
+  nuxtConfig: {
+    // @ts-expect-error No types yet.
+    bridge: { vite: !isWebpack },
+    buildDir: process.env.NITRO_BUILD_DIR,
+    nitro: { output: { dir: process.env.NITRO_OUTPUT_DIR } }
+  }
 })
 
 describe('pages', () => {

@@ -3,7 +3,7 @@ import { isIgnored, logger } from '@nuxt/kit'
 import { sanitizeFilePath } from 'mlly'
 import { withoutLeadingSlash } from 'ufo'
 import type { ViteDevServer } from 'vite'
-import { distDir } from '../dirs'
+import { distDir, pkgDir } from '../dirs'
 import { mergeConfig } from './stub-vite.cjs'
 import { warmupViteServer } from './utils/warmup'
 import { buildClient } from './client'
@@ -91,7 +91,9 @@ async function bundle (nuxt: Nuxt, builder: any) {
             ignored: isIgnored
           },
           fs: {
+            strict: true,
             allow: [
+              pkgDir,
               nuxt.options.buildDir,
               nuxt.options.srcDir,
               nuxt.options.rootDir,

@@ -86,7 +86,7 @@ export async function buildServer (ctx: ViteBuildContext) {
         output: {
           entryFileNames: 'server.mjs',
           chunkFileNames: 'chunks/[name].mjs',
-          preferConst: true,
+          generatedCode: { constBindings: true },
           format: 'module'
         },
         onwarn (warning, rollupWarn) {
