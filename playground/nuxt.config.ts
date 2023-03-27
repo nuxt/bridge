@@ -20,13 +20,11 @@ export default defineNuxtConfig({
       })
     }
   ],
-  buildDir: process.env.NITRO_BUILD_DIR,
   plugins: ['~/plugins/setup.js'],
   nitro: {
     routeRules: {
       '/route-rules/spa': { ssr: false }
-    },
-    output: { dir: process.env.NITRO_OUTPUT_DIR }
+    }
   },
   bridge: {
     meta: true,

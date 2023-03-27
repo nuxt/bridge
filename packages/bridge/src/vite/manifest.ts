@@ -67,7 +67,7 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
   }
 
   // Search for polyfill file, we don't include it in the client entry
-  const polyfillName = Object.values(clientManifest).find(entry => entry.file.startsWith('polyfills-legacy.'))?.file
+  const polyfillName = Object.values(clientManifest).find(entry => entry.file.startsWith('polyfills-legacy'))?.file
   const polyfill = await fse.readFile(rDist('client', buildAssetsDir, polyfillName), 'utf-8')
 
   const clientImports = new Set<string>()

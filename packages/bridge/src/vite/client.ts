@@ -1,3 +1,4 @@
+import type { IncomingMessage, ServerResponse } from 'node:http'
 import { join, resolve } from 'pathe'
 import createVuePlugin from '@vitejs/plugin-vue2'
 import { logger } from '@nuxt/kit'
@@ -107,9 +108,26 @@ export async function buildClient (ctx: ViteBuildContext) {
     const viteServer = await createServer(clientConfig)
     ctx.clientServer = viteServer
     await ctx.nuxt.callHook('vite:serverCreated', viteServer, { isClient: true, isServer: false })
+
+    const transformHandler = viteServer.middlewares.stack.findIndex(m => m.handle instanceof Function && m.handle.name === 'viteTransformMiddleware')
+    viteServer.middlewares.stack.splice(transformHandler, 0, {
+      route: '',
+      handle: (req: IncomingMessage & { _skip_transform?: boolean }, res: ServerResponse, next: (err?: any) => void) => {
+        // 'Skip' the transform middleware
+        if (req._skip_transform) { req.url = joinURL('/__skip_vite', req.url!) }
+        next()
+      }
+    })
+
     const viteMiddleware = defineEventHandler(async (event) => {
       // Workaround: vite devmiddleware modifies req.url
       const originalURL = event.node.req.url!
+
+      const viteRoutes = viteServer.middlewares.stack.map(m => m.route).filter(r => r.length > 1)
+      if (!originalURL.startsWith(clientConfig.base!) && !viteRoutes.some(route => originalURL.startsWith(route))) {
+        // @ts-expect-error _skip_transform is a private property
+        event.node.req._skip_transform = true
+      }
       await new Promise((resolve, reject) => {
         viteServer.middlewares.handle(event.node.req, event.node.res, (err: Error) => {
           event.node.req.url = originalURL
