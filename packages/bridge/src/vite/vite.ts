@@ -91,6 +91,7 @@ async function bundle (nuxt: Nuxt, builder: any) {
             ignored: isIgnored
           },
           fs: {
+            strict: true,
             allow: [
               pkgDir,
               nuxt.options.buildDir,
