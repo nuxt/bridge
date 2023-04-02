@@ -2,6 +2,7 @@ import { defu } from 'defu'
 import { computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
 import { useNuxtApp } from './app'
 import { useRouter as _useRouter, useRoute as _useRoute, useState } from './composables'
+import { isFullStatic } from '@nuxt/bridge/dist/runtime/globals'
 
 // Vue composition API export
 export {
@@ -526,7 +527,7 @@ export const useFetch = (callback) => {
   onBeforeMount(() => !vm._hydrated && callFetches.call(vm))
 
   if (process.server || !isSsrHydration(vm)) {
-    if (process.client && !process.dev && process.static) { loadFullStatic(vm) }
+    if (process.client && isFullStatic) { loadFullStatic(vm) }
     return result()
   }
 
