@@ -84,8 +84,8 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       estree-walker:
-        specifier: ^2.0.2
-        version: 2.0.2
+        specifier: ^3.0.3
+        version: 3.0.3
       externality:
         specifier: ^1.0.0
         version: 1.0.0
