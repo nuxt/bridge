@@ -1,6 +1,6 @@
 import { useNuxt, addTemplate, resolveAlias, addWebpackPlugin, addVitePlugin, addPlugin } from '@nuxt/kit'
 import { NuxtModule } from '@nuxt/schema'
-import { normalize, resolve, join } from 'pathe'
+import { normalize, resolve } from 'pathe'
 import { resolveImports } from 'mlly'
 import { componentsTypeTemplate, schemaTemplate } from './type-templates'
 import { distDir } from './dirs'
@@ -70,8 +70,7 @@ export async function setupAppBridge (_options: any) {
     })))
     addTemplate(schemaTemplate)
     const { dst } = addTemplate(globalsTemplate)
-    const globalsFile = join(nuxt.options.buildDir, dst)
-    nuxt.options.alias['@nuxt/bridge/dist/runtime/globals'] = globalsFile
+    nuxt.options.alias['@nuxt/bridge/dist/runtime/globals'] = dst
   })
   nuxt.hook('prepare:types', ({ references }) => {
     // Add module augmentations directly to NuxtConfig
