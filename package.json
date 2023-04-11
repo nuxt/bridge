@@ -22,7 +22,7 @@
     "@nuxtjs/eslint-config": "^12.0.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "eslint": "^8.38.0",
-    "eslint-plugin-jsdoc": "^40.3.0",
+    "eslint-plugin-jsdoc": "^41.1.1",
     "jiti": "^1.18.2",
     "vitest": "^0.30.1"
   },
