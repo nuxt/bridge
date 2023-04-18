@@ -90,7 +90,7 @@ export async function setupNitroBridge () {
         dir: resolve(nuxt.options.buildDir, 'dist/client')
       },
       ...nuxt.options._layers
-        .map(layer => join(layer.config.srcDir, layer.config.dir.static))
+        .map(layer => join(layer.config.srcDir, layer.config.dir?.static || 'static'))
         .filter(dir => existsSync(dir))
         .map(dir => ({ dir }))
     ],
