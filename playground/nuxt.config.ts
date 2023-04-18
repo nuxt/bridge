@@ -26,9 +26,11 @@ export default defineNuxtConfig({
       '/route-rules/spa': { ssr: false }
     }
   },
+  extends: ['./layer'],
   bridge: {
     meta: true,
-    vite: !process.env.TEST_WITH_WEBPACK
+    vite: !process.env.TEST_WITH_WEBPACK,
+    config: true
   },
   runtimeConfig: {
     secretKey: 'nuxt',
