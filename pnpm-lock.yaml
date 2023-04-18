@@ -68,6 +68,9 @@ importers:
       acorn:
         specifier: ^8.8.2
         version: 8.8.2
+      c12:
+        specifier: ^1.3.0
+        version: 1.3.0
       cookie-es:
         specifier: ^0.5.0
         version: 0.5.0
@@ -1753,7 +1756,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/android-arm64@0.17.16:
@@ -1770,7 +1772,6 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/android-arm@0.17.16:
@@ -1787,7 +1788,6 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/android-x64@0.17.16:
@@ -1804,7 +1804,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/darwin-arm64@0.17.16:
@@ -1821,7 +1820,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/darwin-x64@0.17.16:
@@ -1838,7 +1836,6 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/freebsd-arm64@0.17.16:
@@ -1855,7 +1852,6 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/freebsd-x64@0.17.16:
@@ -1872,7 +1868,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-arm64@0.17.16:
@@ -1889,7 +1884,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-arm@0.17.16:
@@ -1906,7 +1900,6 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-ia32@0.17.16:
@@ -1923,7 +1916,6 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-loong64@0.17.16:
@@ -1940,7 +1932,6 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-mips64el@0.17.16:
@@ -1957,7 +1948,6 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-ppc64@0.17.16:
@@ -1974,7 +1964,6 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-riscv64@0.17.16:
@@ -1991,7 +1980,6 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-s390x@0.17.16:
@@ -2008,7 +1996,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-x64@0.17.16:
@@ -2025,7 +2012,6 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/netbsd-x64@0.17.16:
@@ -2042,7 +2028,6 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/openbsd-x64@0.17.16:
@@ -2059,7 +2044,6 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/sunos-x64@0.17.16:
@@ -2076,7 +2060,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/win32-arm64@0.17.16:
@@ -2093,7 +2076,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/win32-ia32@0.17.16:
@@ -2110,7 +2092,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/win32-x64@0.17.16:
@@ -2448,7 +2429,7 @@ packages:
       destr: 1.2.2
       dotenv: 16.0.3
       lodash: 4.17.21
-      rc9: 2.0.1
+      rc9: 2.1.0
       std-env: 3.3.2
       ufo: 1.1.1
     dev: true
@@ -2505,7 +2486,7 @@ packages:
     engines: {node: ^14.18.0 || ^16.10.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
     dependencies:
       '@nuxt/schema': 3.4.0(rollup@3.20.2)
-      c12: 1.2.0
+      c12: 1.3.0
       consola: 3.0.1
       defu: 6.1.2
       globby: 13.1.4
@@ -2569,7 +2550,7 @@ packages:
     resolution: {integrity: sha512-i04UuprxtMaBK1qCaAupJEIkUUJDt6vyMpBTJ0aajAxehL6O6xV3xqHB5iqDBmtOWlsRL8vGM+M/E/5E+lKuPg==}
     engines: {node: ^14.18.0 || ^16.10.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
     dependencies:
-      c12: 1.2.0
+      c12: 1.3.0
       create-require: 1.1.1
       defu: 6.1.2
       hookable: 5.5.3
@@ -2630,7 +2611,7 @@ packages:
       nanoid: 3.3.6
       node-fetch: 2.6.7
       parse-git-config: 3.0.0
-      rc9: 2.0.1
+      rc9: 2.1.0
       std-env: 3.3.2
     transitivePeerDependencies:
       - encoding
@@ -4580,6 +4561,21 @@ packages:
       rc9: 2.0.1
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /c12@1.3.0:
+    resolution: {integrity: sha512-cYdnZn0y803ByEYHK7+gKmcQK9cqLuGciL3lOwOJnOMAEd9y4604OYAEVK385NkMcgGYltZhLW7eddJrWsFrkg==}
+    dependencies:
+      defu: 6.1.2
+      dotenv: 16.0.3
+      giget: 1.1.2
+      jiti: 1.18.2
+      mlly: 1.2.0
+      pathe: 1.1.0
+      pkg-types: 1.0.2
+      rc9: 2.1.0
+    transitivePeerDependencies:
+      - supports-color
 
   /cac@6.7.14:
     resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
@@ -5901,7 +5897,6 @@ packages:
       '@esbuild/win32-arm64': 0.17.13
       '@esbuild/win32-ia32': 0.17.13
       '@esbuild/win32-x64': 0.17.13
-    dev: false
 
   /esbuild@0.17.16:
     resolution: {integrity: sha512-aeSuUKr9aFVY9Dc8ETVELGgkj4urg5isYx8pLf4wlGgB0vTFjxJQdHnNH6Shmx4vYYrOTLCHtRI5i1XZ9l2Zcg==}
@@ -8315,7 +8310,7 @@ packages:
       '@rollup/pluginutils': 5.0.2(rollup@3.20.2)
       '@vercel/nft': 0.22.6
       archiver: 5.3.1
-      c12: 1.2.0
+      c12: 1.3.0
       chalk: 5.2.0
       chokidar: 3.5.3
       consola: 3.0.1
@@ -9926,6 +9921,14 @@ packages:
       defu: 6.1.2
       destr: 1.2.2
       flat: 5.0.2
+    dev: false
+
+  /rc9@2.1.0:
+    resolution: {integrity: sha512-ROO9bv8PPqngWKoiUZU3JDQ4sugpdRs9DfwHnzDSxK25XtQn6BEHL6EOd/OtKuDT2qodrtNR+0WkPT6l0jxH5Q==}
+    dependencies:
+      defu: 6.1.2
+      destr: 1.2.2
+      flat: 5.0.2
 
   /react-is@17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}
@@ -11457,7 +11460,7 @@ packages:
         optional: true
     dependencies:
       '@types/node': 18.11.18
-      esbuild: 0.17.16
+      esbuild: 0.17.13
       postcss: 8.4.22
       resolve: 1.22.1
       rollup: 3.20.2
