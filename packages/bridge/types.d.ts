@@ -1,6 +1,7 @@
 /// <reference types="nitropack" />
 import type { Nuxt2Config } from '@nuxt/bridge-schema'
 import type { NuxtConfig as _NuxtConfig } from '@nuxt/schema'
+import type { DefineConfig, InputConfig, UserInputConfig, ConfigLayerMeta } from 'c12'
 import type { MetaInfo } from 'vue-meta'
 
 export interface BridgeConfig {
@@ -20,6 +21,7 @@ export interface BridgeConfig {
   resolve: boolean
   typescript: boolean
   meta: boolean | null
+  config: boolean
 }
 
 export interface NuxtConfig extends Nuxt2Config, Omit<_NuxtConfig, keyof Nuxt2Config> {
@@ -41,4 +43,4 @@ declare module 'nitropack' {
   }
 }
 
-export declare function defineNuxtConfig (config: NuxtConfig): NuxtConfig
+export declare const defineNuxtConfig: DefineConfig<NuxtConfig, ConfigLayerMeta>
