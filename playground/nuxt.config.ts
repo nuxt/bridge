@@ -32,7 +32,6 @@ export default defineNuxtConfig({
     vite: !process.env.TEST_WITH_WEBPACK,
     config: true
   },
-  rootDir: __dirname,
   runtimeConfig: {
     secretKey: 'nuxt',
     public: {

@@ -3,31 +3,13 @@ module.exports = function (...args) {
   return import('./dist/module.mjs').then(m => m.default.call(this, ...args))
 }
 
-const { resolve } = require('path')
 const { loadConfig } = require('c12')
 const pkg = require('./package.json')
 
 const getRootDir = () => {
-  const cliArgv = JSON.parse(process.env.__CLI_ARGV__ || '[]')
-  const processArgv = process.argv
   const cwd = process.cwd()
-  // check if process.argv has 3rd argument which doesn't start with `-`
-  if (processArgv[3] && !processArgv[3].startsWith('-')) {
-    return resolve(cwd, processArgv[3])
-  }
-  // check if process.env.__CLI_ARGV__ has 3rd argument which doesn't start with `-`
-  if (cliArgv[3] && !cliArgv[3].startsWith('-')) {
-    return resolve(cwd, cliArgv[3])
-  }
-  // check, may be root is valid path
-  if ((!processArgv[3] && processArgv[2]) || (!cliArgv[3] && cliArgv[2])) {
-    return resolve(cwd)
-  }
-
-  // display warning if rootDir is not provided, it can happens in test environment
-  console.warn('🧪 Nuxt3 compatible config loading is enabled, but no rootDir is provided. Please add `rootDir` option to your config or provide it as 3rd argument to `nuxi` command.')
-
-  return cwd
+  const parentModulePath = module.parent?.path
+  return parentModulePath ?? cwd
 }
 
 const getNuxiMode = () => {
@@ -44,7 +26,6 @@ const getNuxiMode = () => {
 }
 
 const nuxiMode = getNuxiMode()
-// in dev mode initial config loaded twice, so we triggers only on 2nd loading
 const isDev = nuxiMode === 'dev'
 
 const loadC12Config = async (rootDir) => {
@@ -59,6 +40,7 @@ const loadC12Config = async (rootDir) => {
   })
 }
 
+// in dev mode initial config loaded twice, so we triggers only on 2nd loading
 const stopCount = isDev ? 1 : 0
 let processingCounter = 0
 
