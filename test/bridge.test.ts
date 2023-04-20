@@ -17,6 +17,18 @@ await setup({
   }
 })
 
+describe('layers', () => {
+  it('should have meta from layer', async () => {
+    const html = await $fetch('/layer/composables')
+    expect(html).toContain('layer activated')
+  })
+  // check composables
+  it('should have composables autoimported', async () => {
+    const html = await $fetch('/layer/composables')
+    expect(html).toContain('layered composable activated!')
+  })
+})
+
 describe('pages', () => {
   it('render hello world', async () => {
     const html = await $fetch('/')

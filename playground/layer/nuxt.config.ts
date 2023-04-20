@@ -1,7 +1,12 @@
 import { defineNuxtConfig } from '@nuxt/bridge'
 
 export default defineNuxtConfig({
-  head: {
-    title: 'Nuxt Bridge Playground'
+  app: {
+    head: {
+      title: 'Nuxt Bridge Playground',
+      meta: [
+        { hid: 'layer', name: 'layer', content: 'layer activated' }
+      ]
+    }
   }
 })
