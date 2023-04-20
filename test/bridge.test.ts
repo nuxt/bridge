@@ -180,6 +180,16 @@ describe('dynamic paths', () => {
           \\"basePath\\": \\"/\\",
           \\"assetsPath\\": \\"/_nuxt/\\",
           \\"cdnURL\\": \\"\\",
+          \\"head\\": {
+            \\"title\\": \\"Nuxt Bridge Playground\\",
+            \\"meta\\": [
+              {
+                \\"hid\\": \\"layer\\",
+                \\"name\\": \\"layer\\",
+                \\"content\\": \\"layer activated\\"
+              }
+            ]
+          },
           \\"buildAssetsDir\\": \\"/_nuxt/\\"
         },
         \\"nitro\\": {
