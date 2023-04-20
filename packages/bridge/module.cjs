@@ -3,6 +3,7 @@ module.exports = function (...args) {
   return import('./dist/module.mjs').then(m => m.default.call(this, ...args))
 }
 
+const { resolve } = require('pathe')
 const { loadConfig } = require('c12')
 const pkg = require('./package.json')
 
@@ -51,9 +52,41 @@ module.exports.defineNuxtConfig = (config = {}) => {
     if (config.bridge?.config) {
       if (processingCounter === stopCount) {
         processingCounter += 1
-        const c12Config = await loadC12Config(config.rootDir)
-        c12Config.config._layers = c12Config.layers || []
-        return c12Config.config
+        const result = await loadC12Config(config.rootDir)
+        const { configFile, layers = [], cwd } = result
+        const nuxtConfig = result.config
+
+        if (!nuxtConfig) {
+          throw new Error('No nuxt config found')
+        }
+
+        // Fill config
+        nuxtConfig.rootDir = nuxtConfig.rootDir || cwd
+        nuxtConfig._nuxtConfigFile = configFile
+        nuxtConfig._nuxtConfigFiles = [configFile]
+
+        // Resolve `rootDir` & `srcDir` of layers
+        for (const layer of layers) {
+          layer.config = layer.config || {}
+          layer.config.rootDir = layer.config.rootDir ?? layer.cwd
+          layer.config.srcDir = resolve(layer.config.rootDir, layer.config.srcDir)
+        }
+
+        // Filter layers
+        const _layers = layers.filter(layer => layer.configFile && !layer.configFile.endsWith('.nuxtrc'))
+        nuxtConfig._layers = _layers
+
+        // Ensure at least one layer remains (without nuxt.config)
+        if (!_layers.length) {
+          _layers.push({
+            cwd,
+            config: {
+              rootDir: cwd,
+              srcDir: cwd
+            }
+          })
+        }
+        return nuxtConfig
       } else {
         processingCounter += 1
       }
