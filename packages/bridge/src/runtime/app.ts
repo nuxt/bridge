@@ -1,7 +1,9 @@
+import { Context as NuxtContext } from '@nuxt/types'
 import type { Hookable } from 'hookable'
 // @ts-ignore
 import type { Vue } from 'vue/types/vue'
 import type { ComponentOptions } from 'vue'
+import { Route } from 'vue-router'
 import { defineComponent, getCurrentInstance } from './composables'
 
 export const isVue2 = true
@@ -32,8 +34,12 @@ export interface RuntimeNuxtHooks {
   'vue:setup': () => void
 }
 
+export interface Nuxt2Context extends Omit<NuxtContext, 'from'> {
+  from: Route;
+}
+
 export interface NuxtAppCompat {
-  nuxt2Context: Vue
+  nuxt2Context: Nuxt2Context
   vue2App: ComponentOptions<Vue>
 
   vueApp: VueAppCompat
