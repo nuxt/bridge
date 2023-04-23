@@ -155,9 +155,9 @@ export const useContext = () => {
   return {
     ...nuxt.nuxt2Context,
     route: computed(() => route),
-    query: computed(() => route.value.query),
+    query: computed(() => route.query),
     from: computed(() => nuxt.nuxt2Context.from),
-    params: computed(() => route.value.params)
+    params: computed(() => route.params)
   }
 }
 
