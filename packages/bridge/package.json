@@ -84,6 +84,14 @@
     "vue": "^2.7.14",
     "vue-router": "^3.6.5"
   },
+  "peerDependencies": {
+    "@nuxt/types": "^2.16.3"
+  },
+  "peerDependenciesMeta": {
+    "@nuxt/types": {
+      "optional": true
+    }
+  },
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
