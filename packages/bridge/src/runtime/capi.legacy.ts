@@ -1,6 +1,6 @@
 import { defu } from 'defu'
 import { ComputedRef, computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
-import { Route } from 'vue-router'
+import type { Route } from 'vue-router'
 import { useNuxtApp } from './app'
 import type { Nuxt2Context } from './app'
 import { useRouter as _useRouter, useRoute as _useRoute, useState } from './composables'

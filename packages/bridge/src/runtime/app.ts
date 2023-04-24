@@ -1,9 +1,9 @@
-import { Context as NuxtContext } from '@nuxt/types'
+import type { Context as NuxtContext } from '@nuxt/types'
 import type { Hookable } from 'hookable'
 // @ts-ignore
 import type { Vue } from 'vue/types/vue'
 import type { ComponentOptions } from 'vue'
-import { Route } from 'vue-router'
+import type { Route } from 'vue-router'
 import { defineComponent, getCurrentInstance } from './composables'
 
 export const isVue2 = true
