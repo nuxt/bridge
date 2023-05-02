@@ -5,7 +5,6 @@ import { resolveImports } from 'mlly'
 import { componentsTypeTemplate, schemaTemplate } from './type-templates'
 import { distDir } from './dirs'
 import { VueCompat } from './vue-compat'
-import { globalsTemplate } from './globals-template'
 
 export async function setupAppBridge (_options: any) {
   const nuxt = useNuxt()
