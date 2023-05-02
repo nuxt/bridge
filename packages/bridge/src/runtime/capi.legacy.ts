@@ -2,7 +2,8 @@ import { defu } from 'defu'
 import { computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
 import { useNuxtApp } from './app'
 import { useRouter as _useRouter, useRoute as _useRoute, useState } from './composables'
-import { isFullStatic } from '@nuxt/bridge/dist/runtime/globals'
+// @ts-expect-error virtual file
+import { isFullStatic } from '#build/composition-globals.mjs'
 
 // Vue composition API export
 export {

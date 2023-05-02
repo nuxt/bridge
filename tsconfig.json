@@ -13,12 +13,7 @@
     "types": [
       "node"
     ],
-    "baseUrl": ".",
-    "paths": {
-      "@nuxt/bridge/dist/runtime/globals": [
-        "packages/bridge/src/runtime/globals.ts"
-      ],
-    }
+    "paths": {}
   },
   "exclude": [
     "**/*/dist/*",
