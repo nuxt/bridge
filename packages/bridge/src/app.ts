@@ -69,29 +69,31 @@ export async function setupAppBridge (_options: any) {
       entryPath: resolveAlias(m.src, nuxt.options.alias)
     })))
     addTemplate(schemaTemplate)
-    addTemplate({
-      filename: 'composition-globals.mjs',
-      getContents: () => {
-        const globals = {
-          // useFetch
-          isFullStatic:
-            !nuxt.options.dev &&
-            !nuxt.options._legacyGenerate &&
-            nuxt.options.target === 'static' &&
-            nuxt.options.render?.ssr
-        }
-
-        const contents = Object.entries(globals)
-          .map(([key, value]) => `export const ${key} = ${JSON.stringify(value)}`)
-          .join('\n')
-
-        return contents
-      }
-    })
   })
   nuxt.hook('prepare:types', ({ references }) => {
     // Add module augmentations directly to NuxtConfig
     references.push({ path: resolve(nuxt.options.buildDir, 'types/schema.d.ts') })
+  })
+
+  // Add helper for composition API utilities
+  addTemplate({
+    filename: 'composition-globals.mjs',
+    getContents: () => {
+      const globals = {
+        // useFetch
+        isFullStatic:
+          !nuxt.options.dev &&
+          !nuxt.options._legacyGenerate &&
+          nuxt.options.target === 'static' &&
+          nuxt.options.render?.ssr
+      }
+
+      const contents = Object.entries(globals)
+        .map(([key, value]) => `export const ${key} = ${JSON.stringify(value)}`)
+        .join('\n')
+
+      return contents
+    }
   })
 
   // Alias vue3 utilities to vue2
