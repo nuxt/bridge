@@ -1,7 +1,53 @@
 import type { ServerResponse, IncomingMessage as HttpIncomingMessage } from 'node:http'
-import type { ComponentOptions } from 'vue'
+import type { ComponentOptions, VueConstructor } from 'vue'
 import type { Route } from 'vue-router'
-import type { NuxtAppCompat } from './app'
+import type { Hookable } from 'hookable'
+
+export interface VueAppCompat {
+  component: VueConstructor['component']
+  config: {
+    globalProperties: any
+    [key: string]: any
+  }
+  directive: VueConstructor['directive']
+  mixin: VueConstructor['mixin']
+  mount: () => void
+  provide: (name: string, value: any) => void
+  unmount: () => void
+  use: VueConstructor['use']
+  version: string
+}
+
+export interface RuntimeNuxtHooks {
+  'app:error': (err: any) => void | Promise<void>
+  'app:error:cleared': (options: { redirect?: string }) => void | Promise<void>
+  'app:mounted': (app: VueAppCompat) => void | Promise<void>
+  'meta:register': (metaRenderers: any[]) => void | Promise<void>
+  'vue:setup': () => void
+}
+
+export interface NuxtAppCompat {
+  // eslint-disable-next-line no-use-before-define
+  nuxt2Context: Nuxt2Context
+  vue2App: ComponentOptions<Vue>
+
+  vueApp: VueAppCompat
+
+  globalName: string
+
+  hooks: Hookable<RuntimeNuxtHooks>
+  hook: NuxtAppCompat['hooks']['hook']
+  callHook: NuxtAppCompat['hooks']['callHook']
+
+  [key: string]: any
+
+  ssrContext?: Record<string, any>
+  payload: {
+    [key: string]: any
+  }
+
+  provide: (name: string, value: any) => void
+}
 
 export interface IncomingMessage extends HttpIncomingMessage {
   originalUrl?: HttpIncomingMessage['url'] | undefined
@@ -11,7 +57,6 @@ export interface NuxtRuntimeConfig {
   [key: string]: any
   /**
    * This is used internally by Nuxt for dynamic configuration and should not be used.
-   *
    * @internal
    */
   _app?: never
@@ -24,10 +69,11 @@ export interface NuxtAppOptions extends ComponentOptions<Vue> {
     error: any
     defaultTransition?: any
     transitions?: any[]
-    setTransitions?: (transitions: Transition | Transition[]) => void
+    setTransitions?: (transitions: any | any[]) => void
   }
   head?: any
   router: import('vue-router').default
+  // eslint-disable-next-line no-use-before-define
   context: Nuxt2Context
   $_nuxtApp: NuxtAppCompat
 }
