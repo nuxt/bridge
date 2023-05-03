@@ -1,9 +1,8 @@
-import type { Context as NuxtContext } from '@nuxt/types'
 import type { Hookable } from 'hookable'
 // @ts-ignore
 import type { Vue } from 'vue/types/vue'
 import type { ComponentOptions } from 'vue'
-import type { Route } from 'vue-router'
+import type { Nuxt2Context } from './nuxt2context'
 import { defineComponent, getCurrentInstance } from './composables'
 
 export const isVue2 = true
@@ -32,10 +31,6 @@ export interface RuntimeNuxtHooks {
   'app:mounted': (app: VueAppCompat) => void | Promise<void>
   'meta:register': (metaRenderers: any[]) => void | Promise<void>
   'vue:setup': () => void
-}
-
-export interface Nuxt2Context extends Omit<NuxtContext, 'from'> {
-  from: Route;
 }
 
 export interface NuxtAppCompat {

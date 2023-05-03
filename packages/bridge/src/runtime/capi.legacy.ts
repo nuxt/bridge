@@ -2,7 +2,7 @@ import { defu } from 'defu'
 import { ComputedRef, computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
 import type { Route } from 'vue-router'
 import { useNuxtApp } from './app'
-import type { Nuxt2Context } from './app'
+import type { Nuxt2Context } from './nuxt2context'
 import { useRouter as _useRouter, useRoute as _useRoute, useState } from './composables'
 
 // Vue composition API export
