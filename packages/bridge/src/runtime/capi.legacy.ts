@@ -4,6 +4,8 @@ import type { Route } from 'vue-router'
 import { useNuxtApp } from './app'
 import type { Nuxt2Context } from './nuxt2context'
 import { useRouter as _useRouter, useRoute as _useRoute, useState } from './composables'
+// @ts-expect-error virtual file
+import { isFullStatic } from '#build/composition-globals.mjs'
 
 // Vue composition API export
 export {
@@ -535,7 +537,7 @@ export const useFetch = (callback) => {
   onBeforeMount(() => !vm._hydrated && callFetches.call(vm))
 
   if (process.server || !isSsrHydration(vm)) {
-    if (process.client && !process.dev && process.static) { loadFullStatic(vm) }
+    if (process.client && isFullStatic) { loadFullStatic(vm) }
     return result()
   }
 

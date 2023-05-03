@@ -16,6 +16,9 @@ module.exports.defineNuxtConfig = (config = {}) => {
   // Initialize typescript config for nuxi typecheck + prepare support
   config.typescript = config.typescript || {}
 
+  // Initialize nitro options
+  config.nitro = config.nitro || {}
+
   // Nuxt kit depends on this flag to check bridge compatibility
   config.bridge = typeof config.bridge === 'object' ? config.bridge : {}
   config.bridge._version = pkg.version
