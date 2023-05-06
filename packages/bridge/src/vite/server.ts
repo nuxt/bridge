@@ -148,7 +148,7 @@ export async function buildServer (ctx: ViteBuildContext) {
     const { code, ids } = await bundleRequest({ viteServer }, '/.nuxt/server.js')
     await fse.writeFile(resolve(ctx.nuxt.options.buildDir, 'dist/server/server.mjs'), code, 'utf-8')
     // Have CSS in the manifest to prevent FOUC on dev SSR
-    await generateDevSSRManifest(ctx, ids.filter(isCSS).map(i => '../' + i.slice(1)))
+    await generateDevSSRManifest(ctx, ids.filter(isCSS).map(i => i.slice(1)))
     const time = (Date.now() - start)
     logger.info(`Vite server built in ${time}ms`)
     await onBuild()
