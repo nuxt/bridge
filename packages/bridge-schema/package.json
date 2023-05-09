@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@types/lodash.template": "^4.5.1",
-    "@types/semver": "^7.3.13",
+    "@types/semver": "^7.5.0",
     "@vueuse/head": "^1.1.26",
     "nitropack": "^2.4.0",
     "unbuild": "latest",
