@@ -21,8 +21,8 @@ importers:
         specifier: ^8.40.0
         version: 8.40.0
       eslint-plugin-jsdoc:
-        specifier: ^43.2.0
-        version: 43.2.0(eslint@8.40.0)
+        specifier: ^44.2.3
+        version: 44.2.3(eslint@8.40.0)
       jiti:
         specifier: ^1.18.2
         version: 1.18.2
@@ -1719,8 +1719,8 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: true
 
-  /@es-joy/jsdoccomment@0.38.0:
-    resolution: {integrity: sha512-TFac4Bnv0ZYNkEeDnOWHQhaS1elWlvOCQxH06iHeu5iffs+hCaLVIZJwF+FqksQi68R4i66Pu+4DfFGvble+Uw==}
+  /@es-joy/jsdoccomment@0.39.1:
+    resolution: {integrity: sha512-jTgq0ZTLIvVGdgm1KfzX/kd1XgrcbnVJ0zAuk7vTrzIo/byntdtG6fj9KwV6wuN1+jIONMbsiFnx9RYa6N5nLQ==}
     engines: {node: '>=16'}
     dependencies:
       comment-parser: 1.3.1
@@ -5808,13 +5808,13 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-jsdoc@43.2.0(eslint@8.40.0):
-    resolution: {integrity: sha512-Hst7XUfqh28UmPD52oTXmjaRN3d0KrmOZdgtp4h9/VHUJD3Evoo82ZGXi1TtRDWgWhvqDIRI63O49H0eH7NrZQ==}
+  /eslint-plugin-jsdoc@44.2.3(eslint@8.40.0):
+    resolution: {integrity: sha512-Ut9jL/170sMKRRFX7P7Ecmdc9XkPcANZs00QWG+VeMN/mcs0kzE6mXCmbhB4EUsLtRASLRAasOwVq0GN5r0oKw==}
     engines: {node: '>=16'}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
     dependencies:
-      '@es-joy/jsdoccomment': 0.38.0
+      '@es-joy/jsdoccomment': 0.39.1
       are-docs-informative: 0.0.2
       comment-parser: 1.3.1
       debug: 4.3.4
