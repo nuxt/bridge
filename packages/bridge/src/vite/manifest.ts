@@ -122,18 +122,6 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
   await fse.remove(rDist('client/manifest.json'))
 }
 
-// stub manifest on dev
-export async function stubManifest (ctx: ViteBuildContext) {
-  const clientManifest: Manifest = {
-    'empty.js': {
-      isEntry: true,
-      file: 'empty.js'
-    }
-  }
-
-  await writeClientManifest(normalizeViteManifest(clientManifest), ctx.nuxt.options.buildDir)
-}
-
 export async function generateDevSSRManifest (ctx: ViteBuildContext, css: string[] = []) {
   const devClientManifest: Manifest = {
     '@vite/client': {
