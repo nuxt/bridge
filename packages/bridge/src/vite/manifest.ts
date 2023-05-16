@@ -40,7 +40,7 @@ export async function prepareManifests (ctx: ViteBuildContext) {
   await fse.writeFile(rDist('server/index.spa.html'), SPA_TEMPLATE)
 
   if (ctx.nuxt.options.dev) {
-    await stubManifest(ctx)
+    await generateDevSSRManifest(ctx)
   } else {
     await generateBuildManifest(ctx)
   }
