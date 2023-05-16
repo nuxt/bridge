@@ -118,6 +118,8 @@ jobs:
         run: pnpm test:fixtures:webpack:dev
 
   build-release:
+    permissions:
+      id-token: write
     if: |
       github.event_name == 'push' &&
       !contains(github.event.head_commit.message, '[skip-release]') &&
@@ -133,7 +135,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [16]
+        node: [18]
 
     steps:
       - uses: actions/checkout@v3
@@ -156,3 +158,4 @@ jobs:
         run: ./scripts/release-edge.sh
         env:
           NODE_AUTH_TOKEN: ${{secrets.NODE_AUTH_TOKEN}}
+          NPM_CONFIG_PROVENANCE: true

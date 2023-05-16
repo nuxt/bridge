@@ -41,7 +41,6 @@ export const useRouter = () => {
     return useVueRouter()
   }
 
-  // @ts-expect-error nuxt2Context is not typed fully
   return useNuxtApp()?.nuxt2Context.app.router as VueRouter
 }
 

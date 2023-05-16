@@ -42,7 +42,7 @@ export async function setupAppBridge (_options: any) {
   nuxt.options.build.transpile.push('vuex')
 
   // Transpile libs with modern syntax
-  nuxt.options.build.transpile.push('h3', 'iron-webcrypto')
+  nuxt.options.build.transpile.push('h3', 'iron-webcrypto', 'ohash')
 
   // Disable legacy fetch polyfills
   nuxt.options.fetch.server = false
@@ -72,6 +72,27 @@ export async function setupAppBridge (_options: any) {
   nuxt.hook('prepare:types', ({ references }) => {
     // Add module augmentations directly to NuxtConfig
     references.push({ path: resolve(nuxt.options.buildDir, 'types/schema.d.ts') })
+  })
+
+  // Add helper for composition API utilities
+  addTemplate({
+    filename: 'composition-globals.mjs',
+    getContents: () => {
+      const globals = {
+        // useFetch
+        isFullStatic:
+          !nuxt.options.dev &&
+          !nuxt.options._legacyGenerate &&
+          nuxt.options.target === 'static' &&
+          nuxt.options.render?.ssr
+      }
+
+      const contents = Object.entries(globals)
+        .map(([key, value]) => `export const ${key} = ${JSON.stringify(value)}`)
+        .join('\n')
+
+      return contents
+    }
   })
 
   // Alias vue3 utilities to vue2

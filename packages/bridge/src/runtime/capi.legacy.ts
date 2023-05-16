@@ -1,7 +1,11 @@
 import { defu } from 'defu'
-import { computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
+import { ComputedRef, computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
+import type { Route } from 'vue-router'
 import { useNuxtApp } from './app'
+import type { Nuxt2Context } from './app'
 import { useRouter as _useRouter, useRoute as _useRoute, useState } from './composables'
+// @ts-expect-error virtual file
+import { isFullStatic } from '#build/composition-globals.mjs'
 
 // Vue composition API export
 export {
@@ -146,7 +150,14 @@ export const useAsync = (cb, key) => {
   return _ref
 }
 
-export const useContext = () => {
+interface UseContextReturn extends Omit<Nuxt2Context, 'from' | 'route' | 'query' | 'params'> {
+  route: ComputedRef<Route>
+  query: ComputedRef<Route['query']>
+  from: ComputedRef<Route>
+  params: ComputedRef<Route['params']>
+}
+
+export const useContext = (): UseContextReturn => {
   warnOnce('useContext', 'You are using `useContext`, which has a Nuxt 3-compatible replacement.')
 
   const route = useRoute()
@@ -155,9 +166,9 @@ export const useContext = () => {
   return {
     ...nuxt.nuxt2Context,
     route: computed(() => route),
-    query: computed(() => route.value.query),
+    query: computed(() => route.query),
     from: computed(() => nuxt.nuxt2Context.from),
-    params: computed(() => route.value.params)
+    params: computed(() => route.params)
   }
 }
 
@@ -526,7 +537,7 @@ export const useFetch = (callback) => {
   onBeforeMount(() => !vm._hydrated && callFetches.call(vm))
 
   if (process.server || !isSsrHydration(vm)) {
-    if (process.client && !process.dev && process.static) { loadFullStatic(vm) }
+    if (process.client && isFullStatic) { loadFullStatic(vm) }
     return result()
   }
 
