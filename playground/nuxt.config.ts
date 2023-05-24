@@ -20,7 +20,7 @@ export default defineNuxtConfig({
       })
     }
   ],
-  plugins: ['~/plugins/setup.js', '~/plugins/vue-error-handler.js'],
+  plugins: ['~/plugins/setup.js'],
   nitro: {
     routeRules: {
       '/route-rules/spa': { ssr: false }
