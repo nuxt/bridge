@@ -16,6 +16,7 @@ export interface VueAppCompat {
   config: {
     globalProperties: any
     [key: string]: any
+    errorHandler: any
   },
   directive: Vue['directive'],
   mixin: Vue['mixin'],
@@ -72,7 +73,6 @@ export const setNuxtAppInstance = (nuxt: NuxtAppCompat | null) => {
 
 /**
  * Ensures that the setup function passed in has access to the Nuxt instance via `useNuxt`.
- *
  * @param nuxt A Nuxt instance
  * @param setup The function to call
  */
