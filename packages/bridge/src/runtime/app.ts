@@ -1,8 +1,6 @@
 import type { Context as NuxtContext } from '@nuxt/types'
 import type { Hookable } from 'hookable'
-// @ts-ignore
-import type { Vue } from 'vue/types/vue'
-import type { ComponentOptions } from 'vue'
+import type { ComponentOptions, VueConstructor } from 'vue'
 import type { Route } from 'vue-router'
 import { defineComponent, getCurrentInstance } from './composables'
 
@@ -12,18 +10,18 @@ export const isVue3 = false
 export const defineNuxtComponent = defineComponent
 
 export interface VueAppCompat {
-  component: Vue['component'],
+  component: VueConstructor['component'],
   config: {
     globalProperties: any
     [key: string]: any
-    errorHandler: any
+    errorHandler: VueConstructor['config']['errorHandler']
   },
-  directive: Vue['directive'],
-  mixin: Vue['mixin'],
-  mount: Vue['mount'],
+  directive: VueConstructor['directive'],
+  mixin: VueConstructor['mixin'],
+  mount: () => void,
   provide: (name: string, value: any) => void,
-  unmount: Vue['unmount'],
-  use: Vue['use']
+  unmount: () => void,
+  use: VueConstructor['use']
   version: string
 }
 
