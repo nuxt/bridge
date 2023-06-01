@@ -15,9 +15,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     headReady = true
   })
 
-  const titleTemplate = ref<MetaObject['titleTemplate']>()
-
   nuxtApp._useHead = (_meta: MetaObject | ComputedGetter<MetaObject>) => {
+    const titleTemplate = ref<MetaObject['titleTemplate']>()
+
     const meta = ref<MetaObject>(_meta)
     if ('titleTemplate' in meta.value) {
       titleTemplate.value = meta.value.titleTemplate

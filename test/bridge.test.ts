@@ -29,6 +29,15 @@ describe('pages', () => {
   })
 })
 
+describe('head tags', () => {
+  it('SSR script setup should render tags', async () => {
+    const headHtml = await $fetch('/head')
+
+    // useHead - title & titleTemplate are working
+    expect(headHtml).toContain('<title>Head Page - Nuxt Bridge Playground</title>')
+  })
+})
+
 describe('navigate', () => {
   it('should redirect to index with navigateTo', async () => {
     const { headers } = await fetch('/navigate-to/', { redirect: 'manual' })
