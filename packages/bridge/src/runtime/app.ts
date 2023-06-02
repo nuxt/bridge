@@ -1,63 +1,10 @@
-import type { Context as NuxtContext } from '@nuxt/types'
-import type { Hookable } from 'hookable'
-import type { ComponentOptions, VueConstructor } from 'vue'
-import type { Route } from 'vue-router'
-import { defineComponent, getCurrentInstance } from './composables'
 
+import type { NuxtAppCompat } from '@nuxt/bridge-schema'
+import { defineComponent, getCurrentInstance } from './composables'
 export const isVue2 = true
 export const isVue3 = false
 
 export const defineNuxtComponent = defineComponent
-
-export interface VueAppCompat {
-  component: VueConstructor['component'],
-  config: {
-    globalProperties: any
-    [key: string]: any
-    errorHandler: VueConstructor['config']['errorHandler']
-  },
-  directive: VueConstructor['directive'],
-  mixin: VueConstructor['mixin'],
-  mount: () => void,
-  provide: (name: string, value: any) => void,
-  unmount: () => void,
-  use: VueConstructor['use']
-  version: string
-}
-
-export interface RuntimeNuxtHooks {
-  'app:error': (err: any) => void | Promise<void>
-  'app:error:cleared': (options: { redirect?: string }) => void | Promise<void>
-  'app:mounted': (app: VueAppCompat) => void | Promise<void>
-  'meta:register': (metaRenderers: any[]) => void | Promise<void>
-  'vue:setup': () => void
-}
-
-export interface Nuxt2Context extends Omit<NuxtContext, 'from'> {
-  from: Route;
-}
-
-export interface NuxtAppCompat {
-  nuxt2Context: Nuxt2Context
-  vue2App: ComponentOptions<Vue>
-
-  vueApp: VueAppCompat
-
-  globalName: string
-
-  hooks: Hookable<RuntimeNuxtHooks>
-  hook: NuxtAppCompat['hooks']['hook']
-  callHook: NuxtAppCompat['hooks']['callHook']
-
-  [key: string]: any
-
-  ssrContext?: Record<string, any>
-  payload: {
-    [key: string]: any
-  }
-
-  provide: (name: string, value: any) => void
-}
 
 export interface Context {
   $_nuxtApp: NuxtAppCompat
