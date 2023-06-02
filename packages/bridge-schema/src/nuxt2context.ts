@@ -8,6 +8,7 @@ export interface VueAppCompat {
   config: {
     globalProperties: any
     [key: string]: any
+    errorHandler: VueConstructor['config']['errorHandler']
   }
   directive: VueConstructor['directive']
   mixin: VueConstructor['mixin']
