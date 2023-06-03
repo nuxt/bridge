@@ -28,9 +28,27 @@ export const componentNames: string[]
   }
 }
 
+export const middlewareTypeTemplate = {
+  filename: 'types/middleware.d.ts',
+  getContents: ({ app }: TemplateContext) => {
+    const middleware = app.templateVars.middleware
+    
+    return [
+      'import type { NavigationGuard } from \'vue-router\'',
+      `export type MiddlewareKey = ${middleware.map(mw => genString(mw.name)).join(' | ') || 'string'}`,
+      `declare module \'vue/types/options\' {`,
+      '  export type Middleware = MiddlewareKey | NavigationGuard | Array<MiddlewareKey | NavigationGuard>',
+      '  interface ComponentOptions<V extends Vue> {',
+      '    middleware?: Middleware | Middleware[]',
+      '  }',
+      '}'
+    ].join('\n')
+  }
+}
+
 interface TemplateContext {
   nuxt: Nuxt
-  app: NuxtApp
+  app: NuxtApp & { templateVars: Record<string, any> }
 }
 
 const adHocModules = ['router', 'pages', 'auto-imports', 'meta', 'components']

@@ -2,7 +2,7 @@ import { useNuxt, addTemplate, resolveAlias, addWebpackPlugin, addVitePlugin, ad
 import { NuxtModule } from '@nuxt/schema'
 import { normalize, resolve } from 'pathe'
 import { resolveImports } from 'mlly'
-import { componentsTypeTemplate, schemaTemplate } from './type-templates'
+import { componentsTypeTemplate, schemaTemplate, middlewareTypeTemplate } from './type-templates'
 import { distDir } from './dirs'
 import { VueCompat } from './vue-compat'
 
@@ -57,8 +57,12 @@ export async function setupAppBridge (_options: any) {
     ...componentsTypeTemplate,
     options: { components, buildDir: nuxt.options.buildDir }
   })
+  
+  addTemplate(middlewareTypeTemplate)
+  
   nuxt.hook('prepare:types', ({ references }) => {
     references.push({ path: resolve(nuxt.options.buildDir, 'types/components.d.ts') })
+    references.push({ path: resolve(nuxt.options.buildDir, 'types/middleware.d.ts') })
   })
 
   // Augment schema with module types
