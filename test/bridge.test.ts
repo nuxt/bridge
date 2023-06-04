@@ -89,6 +89,15 @@ describe('route rules', () => {
   })
 })
 
+describe('middleware', () => {
+  it('should navigate to auth', async () => {
+    const html = await $fetch('/secret')
+
+    expect(html).toContain('auth.vue')
+    expect(html).not.toContain('navigate to auth')
+  })
+})
+
 describe('dynamic paths', () => {
   if (process.env.NUXT_TEST_DEV) {
     // TODO:
