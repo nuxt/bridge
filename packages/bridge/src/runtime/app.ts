@@ -1,64 +1,10 @@
-import type { Context as NuxtContext } from '@nuxt/types'
-import type { Hookable } from 'hookable'
-// @ts-ignore
-import type { Vue } from 'vue/types/vue'
-import type { ComponentOptions } from 'vue'
-import type { Route } from 'vue-router'
-import { defineComponent, getCurrentInstance } from './composables'
 
+import type { NuxtAppCompat } from '@nuxt/bridge-schema'
+import { defineComponent, getCurrentInstance } from './composables'
 export const isVue2 = true
 export const isVue3 = false
 
 export const defineNuxtComponent = defineComponent
-
-export interface VueAppCompat {
-  component: Vue['component'],
-  config: {
-    globalProperties: any
-    [key: string]: any
-  },
-  directive: Vue['directive'],
-  mixin: Vue['mixin'],
-  mount: Vue['mount'],
-  provide: (name: string, value: any) => void,
-  unmount: Vue['unmount'],
-  use: Vue['use']
-  version: string
-}
-
-export interface RuntimeNuxtHooks {
-  'app:error': (err: any) => void | Promise<void>
-  'app:error:cleared': (options: { redirect?: string }) => void | Promise<void>
-  'app:mounted': (app: VueAppCompat) => void | Promise<void>
-  'meta:register': (metaRenderers: any[]) => void | Promise<void>
-  'vue:setup': () => void
-}
-
-export interface Nuxt2Context extends Omit<NuxtContext, 'from'> {
-  from: Route;
-}
-
-export interface NuxtAppCompat {
-  nuxt2Context: Nuxt2Context
-  vue2App: ComponentOptions<Vue>
-
-  vueApp: VueAppCompat
-
-  globalName: string
-
-  hooks: Hookable<RuntimeNuxtHooks>
-  hook: NuxtAppCompat['hooks']['hook']
-  callHook: NuxtAppCompat['hooks']['callHook']
-
-  [key: string]: any
-
-  ssrContext?: Record<string, any>
-  payload: {
-    [key: string]: any
-  }
-
-  provide: (name: string, value: any) => void
-}
 
 export interface Context {
   $_nuxtApp: NuxtAppCompat
@@ -72,7 +18,6 @@ export const setNuxtAppInstance = (nuxt: NuxtAppCompat | null) => {
 
 /**
  * Ensures that the setup function passed in has access to the Nuxt instance via `useNuxt`.
- *
  * @param nuxt A Nuxt instance
  * @param setup The function to call
  */

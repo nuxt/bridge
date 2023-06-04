@@ -56,7 +56,7 @@ export default defineUntypedSchema({
 
     /**
      * Enables Common CSS Extraction using
-     * [Vue Server Renderer guidelines](https://ssr.vuejs.org/guide/css.html).
+     * [Vue Server Renderer guidelines](https://v2.ssr.vuejs.org/guide/css.html).
      *
      * Using [extract-css-chunks-webpack-plugin](https://github.com/faceyspacey/extract-css-chunks-webpack-plugin/) under the hood, your CSS will be extracted
      * into separate files, usually one per component. This allows caching your CSS and
@@ -100,6 +100,7 @@ export default defineUntypedSchema({
      *   }
      * }
      * ```
+     * @type {boolean | typeof import('extract-css-chunks-webpack-plugin').PluginOptions}
      */
     extractCSS: false,
 
