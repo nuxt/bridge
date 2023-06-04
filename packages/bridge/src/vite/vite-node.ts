@@ -110,7 +110,7 @@ function getManifest (ctx: ViteBuildContext) {
       isEntry: true
     },
     'entry.mjs': {
-      file: 'server-entry.mjs',
+      file: 'entry.mjs',
       isEntry: true,
       module: true,
       resourceType: 'script'

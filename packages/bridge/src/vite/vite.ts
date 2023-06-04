@@ -54,7 +54,6 @@ async function bundle (nuxt: Nuxt, builder: any) {
             '#build': nuxt.options.buildDir,
             '.nuxt': nuxt.options.buildDir,
             '/entry.mjs': resolve(nuxt.options.buildDir, 'client.js'),
-            '/server-entry.mjs': resolve(nuxt.options.buildDir, 'server.js'),
             'web-streams-polyfill/ponyfill/es2018': resolve(distDir, 'runtime/vite/mock/web-streams-polyfill.mjs'),
             'whatwg-url': resolve(distDir, 'runtime/vite/mock/whatwg-url.mjs'),
             // Cannot destructure property 'AbortController' of ..
@@ -117,11 +116,26 @@ async function bundle (nuxt: Nuxt, builder: any) {
   await ctx.nuxt.callHook('vite:extend', ctx)
 
   if (nuxt.options.dev) {
-    ctx.nuxt.hook('vite:serverCreated', (server: ViteDevServer) => {
-      const start = Date.now()
-      warmupViteServer(server, ['/.nuxt/entry.mjs']).then(() => {
-        logger.info(`Vite warmed up in ${Date.now() - start}ms`)
-      }).catch(logger.error)
+    ctx.nuxt.hook('vite:serverCreated', (server: ViteDevServer, env) => {
+      // Invalidate virtual modules when templates are re-generated
+      ctx.nuxt.hook('app:templatesGenerated', () => {
+        for (const [id, mod] of server.moduleGraph.idToModuleMap) {
+          if (id.startsWith('virtual:')) {
+            server.moduleGraph.invalidateModule(mod)
+          }
+        }
+      })
+
+      if (
+        ctx.nuxt.options.vite.warmupEntry !== false &&
+        // https://github.com/nuxt/nuxt/issues/14898
+        !(env.isServer && ctx.nuxt.options.vite.devBundler !== 'legacy')
+      ) {
+        const start = Date.now()
+        warmupViteServer(server, ['/.nuxt/entry.mjs'], env.isServer).then(() => {
+          logger.info(`Vite warmed up in ${Date.now() - start}ms`)
+        }).catch(logger.error)
+      }
     })
   }
 
