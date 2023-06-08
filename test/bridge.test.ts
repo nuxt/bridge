@@ -90,8 +90,7 @@ describe('route rules', () => {
 })
 
 describe('middleware', () => {
-  // TODO: middleware does not work with vite
-  it.skipIf(!isWebpack)('should navigate to auth', async () => {
+  it('should navigate to auth', async () => {
     const html = await $fetch('/secret')
 
     expect(html).toContain('auth.vue')

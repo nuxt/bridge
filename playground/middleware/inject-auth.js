@@ -1,5 +1,3 @@
-import { defineNuxtRouteMiddleware } from '#app'
-
-export default defineNuxtRouteMiddleware(({ redirect }) => {
+export default function ({ redirect }) {
   redirect('/auth')
-})
+}

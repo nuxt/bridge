@@ -92,6 +92,7 @@ export default async (ctx, inject) => {
 
   ctx.app.created.push(function () {
     nuxtApp.vue2App = this
+    Vue.config.errorHandler = nuxtApp.vueApp.config.errorHandler
   })
 
   ctx.app.mounted.push(() => { nuxtApp.isHydrating = false })
