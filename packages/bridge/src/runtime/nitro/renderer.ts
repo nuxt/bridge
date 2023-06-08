@@ -5,7 +5,9 @@ import devalue from '@nuxt/devalue'
 import type { RuntimeConfig } from '@nuxt/schema'
 import type { RenderResponse } from 'nitropack'
 // @ts-ignore
-import { useRuntimeConfig, useNitroApp, defineRenderHandler, getRouteRules } from '#internal/nitro'
+import { useRuntimeConfig, defineRenderHandler, getRouteRules } from '#internal/nitro'
+// @ts-ignore
+import { useNitroApp } from '#internal/nitro/app'
 // @ts-ignore
 import { buildAssetsURL } from '#paths'
 // @ts-ignore
