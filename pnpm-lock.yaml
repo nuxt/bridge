@@ -188,8 +188,8 @@ importers:
         version: 1.0.3
     devDependencies:
       '@nuxt/types':
-        specifier: ^2.16.3
-        version: 2.16.3
+        specifier: ^2.17.0
+        version: 2.17.0
       '@nuxtjs/eslint-config':
         specifier: ^12.0.0
         version: 12.0.0(@typescript-eslint/parser@5.45.0)(eslint-import-resolver-typescript@3.5.2)(eslint@8.42.0)
@@ -2848,11 +2848,11 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/types@2.16.3:
-    resolution: {integrity: sha512-55c5zU4JaAvyOqFxKGRNhPhBXfxptTLH0ypBXiALUojN15ZAhSjo3AqhtunZUqufBSuCEJtKD+fsBM/Fwvz+0A==}
-    engines: {node: ^14.18.0 || ^16.10.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
+  /@nuxt/types@2.17.0:
+    resolution: {integrity: sha512-McgjOTBpnbicjo830MYiCtI1zzkkq0W23GlxcWfLAsi5vjqjfcBn9w9emVhOCDfNNbhMPsvfp3B5MyPZEaqo9A==}
+    engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
-      '@types/babel__core': 7.20.0
+      '@types/babel__core': 7.20.1
       '@types/compression': 1.7.2
       '@types/connect': 3.4.35
       '@types/etag': 1.8.1
@@ -3323,8 +3323,8 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: true
 
-  /@types/babel__core@7.20.0:
-    resolution: {integrity: sha512-+n8dL/9GWblDO0iU6eZAwEIJVr5DWigtle+Q6HLOrh/pdbXOhOtqzq8VPPE2zvNJzSKY4vH/z3iT3tn0A3ypiQ==}
+  /@types/babel__core@7.20.1:
+    resolution: {integrity: sha512-aACu/U/omhdk15O4Nfb+fHgH/z3QsfQzpnvRZhYhThms83ZnAOZz7zZAWO7mn2yyNQaA4xTO8GLK3uqFU4bYYw==}
     dependencies:
       '@babel/parser': 7.22.3
       '@babel/types': 7.22.3
@@ -11618,7 +11618,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.1
       '@babel/standalone': 7.21.4
-      '@babel/types': 7.21.3
+      '@babel/types': 7.22.3
       defu: 6.1.2
       jiti: 1.18.2
       mri: 1.2.0
