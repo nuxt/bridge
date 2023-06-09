@@ -239,7 +239,7 @@ export async function initViteDevBundler (ctx: ViteBuildContext, onBuild: () => 
   // Build and watch
   const _doBuild = async () => {
     const start = Date.now()
-    const { code, ids } = await bundleRequest(options, '/.nuxt/entry.mjs')
+    const { code, ids } = await bundleRequest(options, '/.nuxt/server.js')
     await fse.writeFile(resolve(ctx.nuxt.options.buildDir, 'dist/server/server.mjs'), code, 'utf-8')
     // Have CSS in the manifest to prevent FOUC on dev SSR
     await generateDevSSRManifest(ctx, ids.filter(isCSS).map(i => i.slice(1)))
