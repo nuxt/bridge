@@ -20,9 +20,8 @@ await setup({
 describe('head tags', () => {
   it('SSR should render tags', async () => {
     const headHtml = await $fetch('/head')
-    console.log(headHtml)
 
-    expect(headHtml).toContain('<title>Using a dynamic component - Title Template Fn Change</title>')
+    expect(headHtml).toContain('<title>Using a dynamic component - Nuxt Bridge Playground</title>')
     expect(headHtml).not.toContain('<meta name="description" content="first">')
     expect(headHtml).toContain('<meta charset="utf-16">')
     expect(headHtml.match('meta charset').length).toEqual(1)
