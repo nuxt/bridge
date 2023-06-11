@@ -1,5 +1,13 @@
 <script>
+import { Title, Meta } from '#build/components'
+
 export default defineComponent({
+  components: {
+    // eslint-disable-next-line vue/no-reserved-component-names
+    Title,
+    // eslint-disable-next-line vue/no-reserved-component-names
+    Meta
+  },
   setup () {
     const a = ref('')
     useHead({
