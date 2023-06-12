@@ -6,7 +6,6 @@ global.__NUXT_PREPATHS__ = (global.__NUXT_PREPATHS__ || []).concat(__dirname)
 
 export default defineNuxtConfig({
   app: {
-    // @ts-ignore TODO: add types
     head: {
       meta: [
         { name: 'viewport', content: 'width=1024, initial-scale=1' },
