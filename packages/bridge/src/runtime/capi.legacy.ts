@@ -65,6 +65,7 @@ const msgPrefix = '[bridge] [legacy capi]'
 const unsupported = message => () => { throw new Error(`${msgPrefix} ${message} ${checkDocsMsg}`) }
 const _warned = {}
 const warnOnce = (id, message) => {
+  if (!process.dev) { return }
   if (!_warned[id]) {
     console.warn(msgPrefix, message, checkDocsMsg)
     _warned[id] = true
