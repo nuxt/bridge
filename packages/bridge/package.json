@@ -35,7 +35,7 @@
     "cookie-es": "^1.0.0",
     "defu": "^6.1.2",
     "destr": "^1.2.2",
-    "enhanced-resolve": "^5.14.1",
+    "enhanced-resolve": "^5.15.0",
     "escape-string-regexp": "^5.0.0",
     "estree-walker": "^3.0.3",
     "externality": "^1.0.2",
