@@ -1,5 +1,7 @@
 import { defineNuxtModule, installModule, checkNuxtCompatibility } from '@nuxt/kit'
 import type { NuxtModule, NuxtCompatibility } from '@nuxt/schema'
+import type { NodeMiddleware } from 'h3'
+import { fromNodeMiddleware } from 'h3'
 import type { BridgeConfig } from '../types'
 import { setupNitroBridge } from './nitro'
 import { setupAppBridge } from './app'
@@ -45,6 +47,14 @@ export default defineNuxtModule({
       nuxt.hook('modules:done', async () => {
         await setupNitroBridge()
       })
+
+      if (!opts.vite) {
+        nuxt.hook('build:compile' as any, () => {
+          nuxt.hook('server:devMiddleware' as any, async (devMiddleware: NodeMiddleware) => {
+            await nuxt.callHook('server:devHandler', fromNodeMiddleware(devMiddleware))
+          })
+        })
+      }
     }
     if (opts.app) {
       await setupAppBridge(opts.app)

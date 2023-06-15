@@ -12,8 +12,9 @@ type TemplateContext = {
 // TODO: Use an alias
 export const middlewareTemplate = {
   filename: 'middleware.js',
-  getContents (ctx: TemplateContext) {
-    const { dir, router: { middleware }, srcDir } = ctx.nuxt.options
+  getContents ({ app, nuxt }: TemplateContext) {
+    const middleware = app.templateVars.middleware
+    const { dir, srcDir } = nuxt.options
     const _middleware = ((typeof middleware !== 'undefined' && middleware) || []).map((m) => {
       // Normalize string middleware
       if (typeof m === 'string') {

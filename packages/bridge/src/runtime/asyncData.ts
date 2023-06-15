@@ -1,6 +1,7 @@
 import { onBeforeMount, onServerPrefetch, onUnmounted, ref, getCurrentInstance, watch } from 'vue'
 import type { Ref, WatchSource } from 'vue'
-import { NuxtAppCompat, useNuxtApp } from './app'
+import type { NuxtAppCompat } from '@nuxt/bridge-schema'
+import { useNuxtApp } from './app'
 
 export type _Transform<Input = any, Output = any> = (input: Input) => Output
 

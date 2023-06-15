@@ -48,7 +48,7 @@ export default defineBuildConfig({
     'webpack-bundle-analyzer',
     'rollup-plugin-visualizer',
     'vite',
-    'mini-css-extract-plugin',
+    'extract-css-chunks-webpack-plugin',
     'terser-webpack-plugin',
     'css-minimizer-webpack-plugin',
     'webpack-dev-middleware',

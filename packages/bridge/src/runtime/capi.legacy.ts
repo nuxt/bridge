@@ -1,8 +1,8 @@
 import { defu } from 'defu'
 import { ComputedRef, computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
 import type { Route } from 'vue-router'
+import type { Nuxt2Context } from '@nuxt/bridge-schema'
 import { useNuxtApp } from './app'
-import type { Nuxt2Context } from './app'
 import { useRouter as _useRouter, useRoute as _useRoute, useState } from './composables'
 // @ts-expect-error virtual file
 import { isFullStatic } from '#build/composition-globals.mjs'
@@ -65,6 +65,7 @@ const msgPrefix = '[bridge] [legacy capi]'
 const unsupported = message => () => { throw new Error(`${msgPrefix} ${message} ${checkDocsMsg}`) }
 const _warned = {}
 const warnOnce = (id, message) => {
+  if (!process.dev) { return }
   if (!_warned[id]) {
     console.warn(msgPrefix, message, checkDocsMsg)
     _warned[id] = true
