@@ -9,6 +9,8 @@ import { defu } from 'defu'
 import { useRouter as useVueRouter, useRoute as useVueRoute } from 'vue-router/composables'
 import { hasProtocol, joinURL, parseURL } from 'ufo'
 import { useNuxtApp, callWithNuxt } from './app'
+import { createError, showError } from './error'
+import type { NuxtError } from './error'
 
 export { useLazyAsyncData, refreshNuxtData } from './asyncData'
 export { useLazyFetch } from './fetch'
@@ -163,7 +165,10 @@ export interface AddRouteMiddlewareOptions {
 /** internal */
 function convertToLegacyMiddleware (middleware) {
   return async (ctx: any) => {
+    // because the middleware is executed before the plugin
+    ctx.$_nuxtApp._processingMiddleware = true
     const result = await callWithNuxt(ctx.$_nuxtApp, middleware, [ctx.route, ctx.from])
+    delete ctx.$_nuxtApp._processingMiddleware
     if (result instanceof Error) {
       return ctx.error(result)
     }
@@ -229,14 +234,20 @@ export const navigateTo = (to: RawLocation | undefined | null, options?: Navigat
 }
 
 /** This will abort navigation within a Nuxt route middleware handler. */
-export const abortNavigation = (err?: Error | string) => {
+export const abortNavigation = (err?: string | Partial<NuxtError>) => {
   if (process.dev && !isProcessingMiddleware()) {
     throw new Error('abortNavigation() is only usable inside a route middleware handler.')
   }
-  if (err) {
-    throw err instanceof Error ? err : new Error(err)
+  if (!err) { return false }
+
+  err = createError(err)
+
+  if (err.fatal) {
+    const nuxtApp = useNuxtApp()
+    callWithNuxt(nuxtApp, showError, [err as NuxtError])
   }
-  return false
+
+  throw err
 }
 
 type RouteMiddlewareReturn = void | Error | string | Location | boolean

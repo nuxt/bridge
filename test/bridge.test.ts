@@ -109,6 +109,15 @@ describe('middleware', () => {
     expect(headers.get('location')).toEqual('/')
     expect(status).toEqual(302)
   })
+
+  it('should allow aborting navigation on server-side', async () => {
+    const res = await fetch('/redirect?abort', {
+      headers: {
+        accept: 'application/json'
+      }
+    })
+    expect(res.status).toEqual(401)
+  })
 })
 
 describe('dynamic paths', () => {
