@@ -41,7 +41,7 @@
     "externality": "^1.0.2",
     "fs-extra": "^10.1.0",
     "get-port-please": "^3.0.1",
-    "globby": "^13.1.4",
+    "globby": "^13.2.0",
     "h3": "^1.6.6",
     "hash-sum": "^2.0.0",
     "knitwork": "^1.0.0",
