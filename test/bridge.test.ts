@@ -96,6 +96,19 @@ describe('middleware', () => {
     expect(html).toContain('auth.vue')
     expect(html).not.toContain('navigate to auth')
   })
+
+  it('should redirect to navigation-target', async () => {
+    const html = await $fetch('/redirect')
+
+    expect(html).toContain('Navigated successfully')
+  })
+
+  it('should not overwrite headers', async () => {
+    const { headers, status } = await fetch('/navigate-to-external', { redirect: 'manual' })
+
+    expect(headers.get('location')).toEqual('/')
+    expect(status).toEqual(302)
+  })
 })
 
 describe('dynamic paths', () => {

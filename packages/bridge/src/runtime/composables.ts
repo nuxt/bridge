@@ -8,7 +8,7 @@ import { sendRedirect } from 'h3'
 import { defu } from 'defu'
 import { useRouter as useVueRouter, useRoute as useVueRoute } from 'vue-router/composables'
 import { hasProtocol, joinURL, parseURL } from 'ufo'
-import { useNuxtApp } from './app'
+import { useNuxtApp, callWithNuxt } from './app'
 
 export { useLazyAsyncData, refreshNuxtData } from './asyncData'
 export { useLazyFetch } from './fetch'
@@ -163,7 +163,7 @@ export interface AddRouteMiddlewareOptions {
 /** internal */
 function convertToLegacyMiddleware (middleware) {
   return async (ctx: any) => {
-    const result = await middleware(ctx.route, ctx.from)
+    const result = await callWithNuxt(ctx.$_nuxtApp, middleware, [ctx.route, ctx.from])
     if (result instanceof Error) {
       return ctx.error(result)
     }
@@ -245,7 +245,7 @@ export interface RouteMiddleware {
   (to: Route, from: Route): RouteMiddlewareReturn | Promise<RouteMiddlewareReturn>
 }
 
-export const defineNuxtRouteMiddleware = (middleware: RouteMiddleware) => middleware
+export const defineNuxtRouteMiddleware = (middleware: RouteMiddleware) => convertToLegacyMiddleware(middleware)
 
 interface AddRouteMiddleware {
   (name: string, middleware: RouteMiddleware, options?: AddRouteMiddlewareOptions): void
