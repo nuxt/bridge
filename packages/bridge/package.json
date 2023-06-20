@@ -28,7 +28,7 @@
     "@nuxt/kit": "3.5.3",
     "@nuxt/postcss8": "^1.1.3",
     "@nuxt/schema": "3.5.3",
-    "@nuxt/ui-templates": "^1.1.1",
+    "@nuxt/ui-templates": "^1.2.0",
     "@vitejs/plugin-legacy": "^4.0.4",
     "@vitejs/plugin-vue2": "^2.2.0",
     "acorn": "^8.9.0",
