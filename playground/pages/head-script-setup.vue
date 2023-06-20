@@ -18,8 +18,14 @@ useServerHead({
   ]
 })
 
+const data = new Promise<string>((resolve) => {
+  setTimeout(() => {
+    resolve('head script setup')
+  }, 500)
+})
+
 useHead({
-  title: 'head script setup',
+  title: data,
   titleTemplate: '%s %separator %site.name',
   templateParams: {
     separator: () => '-',
