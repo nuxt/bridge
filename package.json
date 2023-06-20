@@ -1,6 +1,5 @@
 {
   "private": true,
-  "version": "3.0.0",
   "repository": "nuxt/bridge",
   "license": "MIT",
   "scripts": {
