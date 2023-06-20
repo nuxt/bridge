@@ -1,11 +1,17 @@
 import { pathToFileURL } from 'url'
 import { existsSync } from 'fs'
 import { builtinModules } from 'module'
-import { isAbsolute, resolve } from 'pathe'
+import { isAbsolute, resolve, normalize } from 'pathe'
 import { ExternalsOptions, isExternal as _isExternal, ExternalsDefaults } from 'externality'
 import { genDynamicImport, genObjectFromRawEntries } from 'knitwork'
 import type { ViteDevServer } from 'vite'
-import { hashId, uniq } from './utils'
+import fse from 'fs-extra'
+import { debounce } from 'perfect-debounce'
+import { logger, isIgnored } from '@nuxt/kit'
+import { hashId, isCSS, uniq } from './utils'
+import { ViteBuildContext } from './types'
+import { createIsExternal } from './utils/external'
+import { generateDevSSRManifest } from './manifest'
 
 export interface TransformChunk {
   id: string,
@@ -23,6 +29,7 @@ export interface SSRTransformResult {
 
 export interface TransformOptions {
   viteServer: ViteDevServer
+  isExternal(id: string): ReturnType<typeof isExternal>
 }
 
 function isExternal (opts: TransformOptions, id: string) {
@@ -220,4 +227,37 @@ async function __instantiateModule__(url, urlStack) {
     code,
     ids: chunks.map(i => i.id)
   }
+}
+
+export async function initViteDevBundler (ctx: ViteBuildContext, onBuild: () => Promise<any>) {
+  const viteServer = ctx.ssrServer!
+  const options: TransformOptions = {
+    viteServer,
+    isExternal: createIsExternal(viteServer, ctx.nuxt.options.rootDir)
+  }
+
+  // Build and watch
+  const _doBuild = async () => {
+    const start = Date.now()
+    const { code, ids } = await bundleRequest(options, '/.nuxt/server.js')
+    await fse.writeFile(resolve(ctx.nuxt.options.buildDir, 'dist/server/server.mjs'), code, 'utf-8')
+    // Have CSS in the manifest to prevent FOUC on dev SSR
+    await generateDevSSRManifest(ctx, ids.filter(isCSS).map(i => i.slice(1)))
+    const time = (Date.now() - start)
+    logger.success(`Vite server built in ${time}ms`)
+    await onBuild()
+  }
+  const doBuild = debounce(_doBuild)
+
+  // Initial build
+  await _doBuild()
+
+  // Watch
+  viteServer.watcher.on('all', (_event, file) => {
+    file = normalize(file) // Fix windows paths
+    if (file.indexOf(ctx.nuxt.options.buildDir) === 0 || isIgnored(file)) { return }
+    doBuild()
+  })
+  // ctx.nuxt.hook('builder:watch', () => doBuild())
+  ctx.nuxt.hook('app:templatesGenerated', () => doBuild())
 }

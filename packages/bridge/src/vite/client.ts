@@ -13,6 +13,7 @@ import { devStyleSSRPlugin } from './plugins/dev-ssr-css'
 import { jsxPlugin } from './plugins/jsx'
 import { ViteBuildContext, ViteOptions } from './types'
 import { prepareManifests } from './manifest'
+import { viteNodePlugin } from './vite-node'
 
 export async function buildClient (ctx: ViteBuildContext) {
   const alias = {
@@ -62,7 +63,8 @@ export async function buildClient (ctx: ViteBuildContext) {
       devStyleSSRPlugin({
         srcDir: ctx.nuxt.options.srcDir,
         buildAssetsURL: joinURL(ctx.nuxt.options.app.baseURL, ctx.nuxt.options.app.buildAssetsDir)
-      })
+      }),
+      viteNodePlugin(ctx)
     ],
     appType: 'custom',
     server: {
