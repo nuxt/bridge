@@ -1,4 +1,4 @@
-
+import adhoc from './adhoc'
 import app from './app'
 import build from './build'
 import cli from './cli'
@@ -28,6 +28,7 @@ Schema differences from Nuxt2:
 */
 
 export default {
+  ...adhoc,
   ...app,
   ...build,
   ...cli,
