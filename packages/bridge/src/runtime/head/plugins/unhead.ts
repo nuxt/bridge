@@ -13,22 +13,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(Vue2ProvideUnheadPlugin, head)
   nuxtApp.vueApp.use(head)
 
-  if (process.client) {
-    // pause dom updates until page is ready and between page transitions
-    let pauseDOMUpdates = true
-    const unpauseDom = () => {
-      pauseDOMUpdates = false
-      // trigger the debounced DOM update
-      head.hooks.callHook('entries:updated', head)
-    }
-
-    head.hooks.hook('dom:beforeRender', (context) => { context.shouldRender = !pauseDOMUpdates })
-
-    nuxtApp.hooks.hook('render:before', () => { pauseDOMUpdates = true })
-    // wait for new page before unpausing dom updates
-    nuxtApp.hooks.hook('render:done', unpauseDom)
-  }
-
   if (process.server) {
       nuxtApp.ssrContext!.renderMeta = async () => {
         const meta = await renderSSRHead(head)
