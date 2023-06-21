@@ -1,4 +1,3 @@
-
 import { isAbsolute, relative, join } from 'pathe'
 import type { Component, Nuxt, NuxtApp } from '@nuxt/schema'
 import { genDynamicImport, genString } from 'knitwork'
@@ -8,6 +7,11 @@ import { resolveSchema, generateTypes } from 'untyped'
 type ComponentsTemplateOptions = {
   buildDir: string
   components: Component[]
+}
+
+interface TemplateContext {
+  nuxt: Nuxt
+  app: NuxtApp & { templateVars: Record<string, any> }
 }
 
 export const componentsTypeTemplate = {
@@ -28,9 +32,22 @@ export const componentNames: string[]
   }
 }
 
-interface TemplateContext {
-  nuxt: Nuxt
-  app: NuxtApp
+export const middlewareTypeTemplate = {
+  filename: 'types/middleware.d.ts',
+  getContents: ({ app }: TemplateContext) => {
+    const middleware = app.templateVars.middleware
+
+    return [
+      'import type { NuxtAppCompat } from \'@nuxt/bridge-schema\'',
+      `export type MiddlewareKey = ${middleware.map(mw => genString(mw.name)).join(' | ') || 'string'}`,
+      'declare module \'vue/types/options\' {',
+      '  export type Middleware = MiddlewareKey | ((ctx: NuxtAppCompat, cb: Function) => Promise<void> | void)',
+      '  interface ComponentOptions<V extends Vue> {',
+      '    middleware?: Middleware | Middleware[]',
+      '  }',
+      '}'
+    ].join('\n')
+  }
 }
 
 const adHocModules = ['router', 'pages', 'auto-imports', 'meta', 'components']
