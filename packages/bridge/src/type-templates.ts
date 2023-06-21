@@ -38,10 +38,10 @@ export const middlewareTypeTemplate = {
     const middleware = app.templateVars.middleware
 
     return [
-      'import type { NavigationGuard } from \'vue-router\'',
+      'import type { NuxtAppCompat } from \'@nuxt/bridge-schema\'',
       `export type MiddlewareKey = ${middleware.map(mw => genString(mw.name)).join(' | ') || 'string'}`,
       'declare module \'vue/types/options\' {',
-      '  export type Middleware = MiddlewareKey | NavigationGuard | Array<MiddlewareKey | NavigationGuard>',
+      '  export type Middleware = MiddlewareKey | ((ctx: NuxtAppCompat, cb: Function) => Promise<void> | void)',
       '  interface ComponentOptions<V extends Vue> {',
       '    middleware?: Middleware | Middleware[]',
       '  }',
