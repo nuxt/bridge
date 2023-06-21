@@ -223,7 +223,7 @@ export default defineNuxtConfig({
 })
 ```
 
-This `useHead` composable uses `@vueuse/head` under the hood (rather than `vue-meta`) to manipulate your `<head>`.
+This `useHead` composable uses `@unhead/vue` under the hood (rather than `vue-meta`) to manipulate your `<head>`.
 Accordingly, we recommend not to use both the native Nuxt 2 `head()` properties as well as `useHead`, as they may conflict.
 
 For more information on how to use this composable, see [the docs](https://nuxt.com/docs/getting-started/seo-meta#seo-and-meta).

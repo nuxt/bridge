@@ -41,7 +41,7 @@ export default async (ctx, inject) => {
       provide: inject,
       unmount: () => { },
       use (vuePlugin) {
-        runOnceWith(vuePlugin, () => vuePlugin.install(this))
+        runOnceWith(vuePlugin, () => Vue.use(vuePlugin))
       },
       version
     },

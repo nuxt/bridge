@@ -10,6 +10,7 @@ export default defineBuildConfig({
     'webpack',
     'vite',
     'vue',
-    'vue-meta'
+    'vue-meta',
+    '@unhead/vue'
   ]
 })
