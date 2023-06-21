@@ -31,7 +31,7 @@
     "@nuxt/ui-templates": "^1.2.0",
     "@unhead/ssr": "^1.1.27",
     "@unhead/vue": "^1.1.27",
-    "@vitejs/plugin-legacy": "^4.0.4",
+    "@vitejs/plugin-legacy": "^4.0.5",
     "@vitejs/plugin-vue2": "^2.2.0",
     "acorn": "^8.9.0",
     "cookie-es": "^1.0.0",
