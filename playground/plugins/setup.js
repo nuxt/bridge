@@ -1,12 +1,19 @@
 import { onGlobalSetup, ref } from '@nuxtjs/composition-api'
 
-import { defineNuxtPlugin } from '#app'
+import { defineNuxtPlugin, addRouteMiddleware, navigateTo } from '#app'
 
 export default defineNuxtPlugin(() => {
   const globalsetup = ref('🚧')
   onGlobalSetup(() => {
     globalsetup.value = '✅'
   })
+
+  addRouteMiddleware('local-middleware', (to) => {
+    if (to.path === '/add-route-middleware') {
+      return navigateTo('/navigation-target')
+    }
+  })
+
   return {
     provide: {
       globalsetup

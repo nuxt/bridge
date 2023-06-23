@@ -162,6 +162,12 @@ describe('middleware', () => {
     })
     expect(res.status).toEqual(401)
   })
+
+  it('should redirect to navigation-target', async () => {
+    const html = await $fetch('/add-route-middleware')
+
+    expect(html).toContain('Navigated successfully')
+  })
 })
 
 describe('dynamic paths', () => {
