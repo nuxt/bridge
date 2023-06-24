@@ -44,6 +44,9 @@ export default defineNuxtModule({
     }
 
     if (opts.nitro) {
+      // @ts-ignore router.base is legacy
+      nuxt.options.router.base = nuxt.options.app.baseURL || '/'
+
       nuxt.hook('modules:done', async () => {
         await setupNitroBridge()
       })
