@@ -109,7 +109,8 @@ const getSPARenderer = lazyCachedFunction(async () => {
       serverRendered: false,
       config: {
         public: config.public,
-        app: config.app
+        app: config.app,
+        _app: config._app
       }
     }
     ssrContext.renderMeta = ssrContext.renderMeta ?? (() => Promise.resolve({}))
@@ -143,7 +144,7 @@ export default defineRenderHandler(async (event) => {
     event,
     req: event.node.req,
     res: event.node.res,
-    runtimeConfig: { private: config, public: { public: config.public, app: config.app } },
+    runtimeConfig: { private: config, public: { public: config.public, app: config.app, _app: config._app } },
     noSSR: !!event.node.req.headers['x-nuxt-no-ssr'] || routeOptions.ssr === false,
     error: ssrError,
     redirected: undefined,
