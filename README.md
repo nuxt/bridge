@@ -251,7 +251,8 @@ export default defineNuxtConfig({
 
     // -- Default features --
 
-    // Use legacy server instead of Nitro
+    // Use legacy server (nuxt dev) instead of Nitro (nuxi dev)
+    // If opting out of Nitro server, restore the original script tasks to use nuxt, not nuxi.
     // nitro: false,
 
     // Use legacy generator rather than new nitro prerenderer
