@@ -276,10 +276,7 @@ describe('dynamic paths', () => {
         \\"public\\": {
           \\"myValue\\": 123
         },
-        \\"secretKey\\": \\"nuxt\\",
-        \\"_app\\": {
-          \\"basePath\\": \\"/\\"
-        }
+        \\"secretKey\\": \\"nuxt\\"
       }</pre>"
     `)
     await expectNoClientErrors('/runtime-config')
