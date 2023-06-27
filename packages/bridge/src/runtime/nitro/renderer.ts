@@ -23,7 +23,7 @@ export interface NuxtRenderHTMLContext {
   head: string[]
   headAttrs: string[]
   bodyAttrs: string[]
-  bodyPreprend: string[]
+  bodyPrepend: string[]
   body: string[]
   bodyAppend: string[]
 }
@@ -208,7 +208,7 @@ export default defineRenderHandler(async (event) => {
         ssrContext.styles
       ]),
       bodyAttrs: normalizeChunks([_rendered.meta.bodyAttrs]),
-      bodyPreprend: normalizeChunks([
+      bodyPrepend: normalizeChunks([
         ssrContext.teleports?.body,
         _rendered.meta.bodyScriptsPrepend
       ]),
@@ -234,8 +234,8 @@ export default defineRenderHandler(async (event) => {
         HEAD_ATTRS: joinAttrs(htmlContext.headAttrs),
         HEAD: joinTags(htmlContext.head),
         BODY_ATTRS: joinAttrs(htmlContext.bodyAttrs),
-        BODY_PREPEND: joinTags(htmlContext.bodyPreprend),
-        APP: _rendered.html + joinTags(htmlContext.bodyAppend)
+        BODY_PREPEND: joinTags(htmlContext.bodyPrepend),
+        APP: joinTags(htmlContext.bodyPrepend) + _rendered.html + joinTags(htmlContext.bodyAppend)
       }),
       statusCode: event.node.res.statusCode,
       statusMessage: event.node.res.statusMessage,
