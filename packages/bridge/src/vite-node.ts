@@ -16,10 +16,10 @@ import type { ModuleNode, Plugin as VitePlugin } from 'vite'
 import { normalizeViteManifest } from 'vue-bundle-renderer'
 import { resolve as resolveModule } from 'mlly'
 import { distDir } from './dirs'
-import { isCSS } from './utils'
-import { createIsExternal } from './utils/external'
-import { transpile } from './utils/transpile'
-import type { ViteBuildContext } from './types'
+import { isCSS } from './vite/utils'
+import { createIsExternal } from './vite/utils/external'
+import { transpile } from './vite/utils/transpile'
+import type { ViteBuildContext } from './vite/types'
 
 // TODO: Remove this in favor of registerViteNodeMiddleware
 // after Nitropack or h3 fixed for adding middlewares after setup
@@ -207,8 +207,8 @@ export async function initViteNodeServer (ctx: ViteBuildContext) {
   }
   process.env.NUXT_VITE_NODE_OPTIONS = JSON.stringify(viteNodeServerOptions)
 
-  const serverResolvedPath = resolve(distDir, 'runtime/vite-node.mjs')
-  const manifestResolvedPath = resolve(distDir, 'runtime/client.manifest.mjs')
+  const serverResolvedPath = resolve(distDir, 'runtime/vite/vite-node.mjs')
+  const manifestResolvedPath = resolve(distDir, 'runtime/vite/client.manifest.mjs')
 
   await fse.writeFile(
     resolve(ctx.nuxt.options.buildDir, 'dist/server/server.mjs'),
