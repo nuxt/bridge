@@ -3,11 +3,11 @@ import createVuePlugin from '@vitejs/plugin-vue2'
 import { logger } from '@nuxt/kit'
 import type { InlineConfig } from 'vite'
 import { joinURL, withoutLeadingSlash, withTrailingSlash } from 'ufo'
+import { initViteNodeServer } from '../vite-node'
 import { mergeConfig, createServer, build } from './stub-vite.cjs'
 import { wpfs } from './utils/wpfs'
 import { ViteBuildContext, ViteOptions } from './types'
 import { jsxPlugin } from './plugins/jsx'
-import { initViteNodeServer } from './vite-node'
 
 export async function buildServer (ctx: ViteBuildContext) {
   // Workaround to disable HMR
