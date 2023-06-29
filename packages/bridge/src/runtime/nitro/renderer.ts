@@ -234,7 +234,6 @@ export default defineRenderHandler(async (event) => {
         HEAD_ATTRS: joinAttrs(htmlContext.headAttrs),
         HEAD: joinTags(htmlContext.head),
         BODY_ATTRS: joinAttrs(htmlContext.bodyAttrs),
-        BODY_PREPEND: joinTags(htmlContext.bodyPrepend),
         APP: joinTags(htmlContext.bodyPrepend) + _rendered.html + joinTags(htmlContext.bodyAppend)
       }),
       statusCode: event.node.res.statusCode,
