@@ -21,10 +21,10 @@
     "@nuxt/test-utils": "^3.6.0",
     "@nuxtjs/eslint-config": "^12.0.0",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "eslint": "^8.43.0",
-    "eslint-plugin-jsdoc": "^46.4.0",
-    "jiti": "^1.18.2",
-    "vitest": "^0.32.2"
+    "eslint": "^8.44.0",
+    "eslint-plugin-jsdoc": "^46.4.3",
+    "jiti": "^1.19.1",
+    "vitest": "^0.32.4"
   },
   "resolutions": {
     "@nuxt/bridge": "workspace:*",
@@ -33,5 +33,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@8.6.5"
+  "packageManager": "pnpm@8.6.6"
 }
