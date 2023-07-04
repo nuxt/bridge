@@ -13,8 +13,8 @@ importers:
   .:
     devDependencies:
       '@nuxt/test-utils':
-        specifier: ^3.6.0
-        version: 3.6.0(vitest@0.32.4)(vue@3.3.4)
+        specifier: ^3.6.1
+        version: 3.6.1(vitest@0.32.4)(vue@3.3.4)
       '@nuxtjs/eslint-config':
         specifier: ^12.0.0
         version: 12.0.0(@typescript-eslint/parser@5.59.9)(eslint-import-resolver-typescript@3.5.5)(eslint@8.44.0)
@@ -52,14 +52,14 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2
       '@nuxt/kit':
-        specifier: 3.6.0
-        version: 3.6.0(rollup@3.25.1)
+        specifier: 3.6.1
+        version: 3.6.1(rollup@3.25.1)
       '@nuxt/postcss8':
         specifier: ^1.1.3
         version: 1.1.3(webpack@5.87.0)
       '@nuxt/schema':
-        specifier: 3.6.0
-        version: 3.6.0(rollup@3.25.1)
+        specifier: 3.6.1
+        version: 3.6.1(rollup@3.25.1)
       '@nuxt/ui-templates':
         specifier: ^1.2.0
         version: 1.2.0
@@ -130,8 +130,8 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1
       nuxi:
-        specifier: 3.6.0
-        version: 3.6.0
+        specifier: 3.6.1
+        version: 3.6.1
       ofetch:
         specifier: ^1.1.1
         version: 1.1.1
@@ -216,7 +216,7 @@ importers:
         version: 3.0.2
       nuxt:
         specifier: ^2.17.0
-        version: 2.17.0(consola@3.1.0)(typescript@5.1.3)(vue@2.7.14)
+        version: 2.17.0(consola@3.2.2)(typescript@5.1.3)(vue@2.7.14)
       unbuild:
         specifier: 1.2.1
         version: 1.2.1
@@ -292,7 +292,7 @@ importers:
         version: link:../packages/bridge
       nuxt:
         specifier: ^2.17.0
-        version: 2.17.0(consola@3.1.0)(typescript@5.1.3)(vue@2.7.14)
+        version: 2.17.0(consola@3.2.2)(typescript@5.1.3)(vue@2.7.14)
 
 packages:
 
@@ -2810,14 +2810,14 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/components@2.2.1(consola@3.1.0):
+  /@nuxt/components@2.2.1(consola@3.2.2):
     resolution: {integrity: sha512-r1LHUzifvheTnJtYrMuA+apgsrEJbxcgFKIimeXKb+jl8TnPWdV3egmrxBCaDJchrtY/wmHyP47tunsft7AWwg==}
     peerDependencies:
       consola: '*'
     dependencies:
       chalk: 4.1.2
       chokidar: 3.5.3
-      consola: 3.1.0
+      consola: 3.2.2
       glob: 7.2.3
       globby: 11.1.0
       scule: 0.2.1
@@ -2888,13 +2888,13 @@ packages:
       ufo: 1.1.2
     dev: true
 
-  /@nuxt/kit@3.6.0:
-    resolution: {integrity: sha512-rqQYyWlhE42oWRQNR58KU1JYhoWryN78x8eYzFTHgalfpMjtPqZv2j9K4+hFRk0XLRUKnut4tE/3+UYyZ7ybVw==}
+  /@nuxt/kit@3.6.1:
+    resolution: {integrity: sha512-7AoiKV0zAtyT3ZvjMfGislMcB+JMbBZxYw68/oWtkEPXCfGQMYuiMI9Ue246/0JT2Yp2KZclEgrJEJ6NLkqFcw==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
-      '@nuxt/schema': 3.6.0
+      '@nuxt/schema': 3.6.1
       c12: 1.4.2
-      consola: 3.1.0
+      consola: 3.2.2
       defu: 6.1.2
       globby: 13.2.1
       hash-sum: 2.0.0
@@ -2914,18 +2914,18 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/kit@3.6.0(rollup@3.25.1):
-    resolution: {integrity: sha512-rqQYyWlhE42oWRQNR58KU1JYhoWryN78x8eYzFTHgalfpMjtPqZv2j9K4+hFRk0XLRUKnut4tE/3+UYyZ7ybVw==}
+  /@nuxt/kit@3.6.1(rollup@3.25.1):
+    resolution: {integrity: sha512-7AoiKV0zAtyT3ZvjMfGislMcB+JMbBZxYw68/oWtkEPXCfGQMYuiMI9Ue246/0JT2Yp2KZclEgrJEJ6NLkqFcw==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
-      '@nuxt/schema': 3.6.0(rollup@3.25.1)
+      '@nuxt/schema': 3.6.1(rollup@3.25.1)
       c12: 1.4.2
-      consola: 3.1.0
+      consola: 3.2.2
       defu: 6.1.2
       globby: 13.2.1
       hash-sum: 2.0.0
       ignore: 5.2.4
-      jiti: 1.18.2
+      jiti: 1.19.1
       knitwork: 1.0.0
       mlly: 1.4.0
       pathe: 1.1.1
@@ -2979,8 +2979,8 @@ packages:
       - webpack
     dev: false
 
-  /@nuxt/schema@3.6.0:
-    resolution: {integrity: sha512-6/nq+W77JODDfhMBZTi7HCD3hT5oHegsasAzUnDmvwWuY1io7BXX9x2mDhL8E3LhVzQuN5vhi3GBgwHwCfdKEA==}
+  /@nuxt/schema@3.6.1:
+    resolution: {integrity: sha512-+4pr0lkcPP5QqprYV+/ujmBkt2JHmi/v5vaxCrMhElUFgifvJAfT89BkGFn6W7pz0b8Vd3GcByFUWI7/wX/Pcw==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
       defu: 6.1.2
@@ -2997,8 +2997,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/schema@3.6.0(rollup@3.25.1):
-    resolution: {integrity: sha512-6/nq+W77JODDfhMBZTi7HCD3hT5oHegsasAzUnDmvwWuY1io7BXX9x2mDhL8E3LhVzQuN5vhi3GBgwHwCfdKEA==}
+  /@nuxt/schema@3.6.1(rollup@3.25.1):
+    resolution: {integrity: sha512-+4pr0lkcPP5QqprYV+/ujmBkt2JHmi/v5vaxCrMhElUFgifvJAfT89BkGFn6W7pz0b8Vd3GcByFUWI7/wX/Pcw==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
       defu: 6.1.2
@@ -3065,8 +3065,8 @@ packages:
       - encoding
     dev: true
 
-  /@nuxt/test-utils@3.6.0(vitest@0.32.4)(vue@3.3.4):
-    resolution: {integrity: sha512-Znu0t6eiigdLGKqQDNF2UcIDCr+TIm0KKX8Bhy35ZWh5OcnYGdba6GOz/W+zFOG15rQ4R09q3Kk7I6LAeK0T7g==}
+  /@nuxt/test-utils@3.6.1(vitest@0.32.4)(vue@3.3.4):
+    resolution: {integrity: sha512-pTyRwUseXXL+BAX7p3mHNDm6hSkK56GkiSYEoHfIN7C0rLOvsHbpjPp5FsRiCrr5Kk09TKFvjUNtk2UDhzFcvQ==}
     engines: {node: ^14.18.0 || >=16.10.0}
     peerDependencies:
       '@jest/globals': ^29.5.0
@@ -3081,9 +3081,9 @@ packages:
       vitest:
         optional: true
     dependencies:
-      '@nuxt/kit': 3.6.0
-      '@nuxt/schema': 3.6.0
-      consola: 3.1.0
+      '@nuxt/kit': 3.6.1
+      '@nuxt/schema': 3.6.1
+      consola: 3.2.2
       defu: 6.1.2
       execa: 7.1.1
       get-port-please: 3.0.1
@@ -7854,7 +7854,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.12
+      fast-glob: 3.3.0
       ignore: 5.2.4
       merge2: 1.4.1
       slash: 3.0.0
@@ -9590,15 +9590,15 @@ packages:
       boolbase: 1.0.0
     dev: true
 
-  /nuxi@3.6.0:
-    resolution: {integrity: sha512-gLmSE8NqNIz7HRPxBmO+Y+fgz95kMM25MzEoeuWLU/ZMWYqUOcvhsQEmv4ZZBfCe5/zv7+mO3G0UK1+Gi3QUoQ==}
+  /nuxi@3.6.1:
+    resolution: {integrity: sha512-8kyDHfyiq0oLywon8UlucQWyYj3toE5AU96COjbuQy8ZzyRT6KJlAmMXmFkO/VuIhaMC8qdlcZPYg/NnHTVjaQ==}
     engines: {node: ^14.18.0 || >=16.10.0}
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
 
-  /nuxt@2.17.0(consola@3.1.0)(typescript@5.1.3)(vue@2.7.14):
+  /nuxt@2.17.0(consola@3.2.2)(typescript@5.1.3)(vue@2.7.14):
     resolution: {integrity: sha512-+xEB8VReXqvSVvizBQ2mpV4nW8U3o2r4fctJ1XIzxgvYszrUSXeQf2mfF/1kKpJJTdReNMspaF6UCB7qz2bkYw==}
     hasBin: true
     requiresBuild: true
@@ -9606,7 +9606,7 @@ packages:
       '@nuxt/babel-preset-app': 2.17.0(vue@2.7.14)
       '@nuxt/builder': 2.17.0(typescript@5.1.3)(vue@2.7.14)
       '@nuxt/cli': 2.17.0
-      '@nuxt/components': 2.2.1(consola@3.1.0)
+      '@nuxt/components': 2.2.1(consola@3.2.2)
       '@nuxt/config': 2.17.0
       '@nuxt/core': 2.17.0
       '@nuxt/generator': 2.17.0
@@ -9820,7 +9820,7 @@ packages:
     hasBin: true
     dependencies:
       ansi-colors: 4.1.3
-      fast-glob: 3.2.12
+      fast-glob: 3.3.0
       js-yaml: 4.1.0
       supports-color: 9.3.1
       undici: 5.22.1
