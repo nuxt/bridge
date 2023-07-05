@@ -57,6 +57,7 @@ const storeModules = ${genObjectFromRawEntries(_storeModules.map(m => [m.id, `$$
 export function createStore() {
   let store = normalizeRoot(storeModules.root || {})
   for (const id in storeModules) {
+    if (id === 'root') { continue }
     resolveStoreModules(store, storeModules[id], id)
   }
   if (typeof store === 'function') {
