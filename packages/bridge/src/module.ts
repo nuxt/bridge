@@ -68,26 +68,26 @@ export default defineNuxtModule({
       }
       await setupCAPIBridge(opts.capi === true ? {} : opts.capi)
     }
-    if (opts.imports ?? opts.autoImports) {
-      // Deprecate hooks
-      nuxt.hooks.deprecateHooks({
-        // @ts-expect-error
-        'autoImports:sources': {
-          to: 'imports:sources',
-          message: '`autoImports:sources` hook is deprecated. Use `addImportsSources()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
-        },
-        'autoImports:dirs': {
-          to: 'imports:dirs',
-          message: '`autoImports:dirs` hook is deprecated. Use `addImportsDir()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
-        },
-        'autoImports:extend': {
-          to: 'imports:extend',
-          message: '`autoImports:extend` hook is deprecated. Use `addImports()` from `@nuxt/kit` or `imports:extend` with latest Nuxt Bridge.'
-        }
-      })
-      // @ts-expect-error TODO: legacy module container usage
-      nuxt.hook('modules:done', moduleContainer => installModule(importsModule.bind(moduleContainer)))
-    }
+
+    // Deprecate hooks
+    nuxt.hooks.deprecateHooks({
+      // @ts-expect-error
+      'autoImports:sources': {
+        to: 'imports:sources',
+        message: '`autoImports:sources` hook is deprecated. Use `addImportsSources()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
+      },
+      'autoImports:dirs': {
+        to: 'imports:dirs',
+        message: '`autoImports:dirs` hook is deprecated. Use `addImportsDir()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
+      },
+      'autoImports:extend': {
+        to: 'imports:extend',
+        message: '`autoImports:extend` hook is deprecated. Use `addImports()` from `@nuxt/kit` or `imports:extend` with latest Nuxt Bridge.'
+      }
+    })
+    // @ts-expect-error TODO: legacy module container usage
+    nuxt.hook('modules:done', moduleContainer => installModule(importsModule.bind(moduleContainer, { autoImport: opts.imports })))
+
     if (opts.vite) {
       const viteModule = await import('./vite/module').then(r => r.default || r) as NuxtModule
       // @ts-expect-error TODO: legacy module container usage
