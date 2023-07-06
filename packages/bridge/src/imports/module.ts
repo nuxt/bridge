@@ -115,7 +115,7 @@ export default defineNuxtModule<Partial<ImportsOptions>>({
   }
 })
 
-function addDeclarationTemplates (ctx: Unimport, options: ImportsOptions) {
+function addDeclarationTemplates (ctx: Unimport, options: Partial<ImportsOptions>) {
   const nuxt = useNuxt()
 
   // Remove file extension for benefit of TypeScript
