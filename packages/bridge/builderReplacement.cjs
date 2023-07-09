@@ -1,4 +1,4 @@
-const glob = require('node:glob')
+const glob = require('glob')
 const utils = require('@nuxt/utils')
 const ignore = require('ignore');
 const fsExtra = require('fs-extra');
