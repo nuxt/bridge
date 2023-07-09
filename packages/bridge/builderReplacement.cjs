@@ -63,7 +63,7 @@ class Ignore {
     }))
 
     // keep defaults if config.router is not defined, otherwise use config.router values
-    const { routeNameSplitter = '-', trailingSlash = undefined } = config.router
+    const { routeNameSplitter = '-', trailingSlash = undefined } = config.router || {}
 
     const createRoutes = () => {
       const pages = []
