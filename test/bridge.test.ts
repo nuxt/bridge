@@ -261,6 +261,7 @@ describe('dynamic paths', () => {
           \\"assetsPath\\": \\"/_nuxt/\\",
           \\"cdnURL\\": \\"\\",
           \\"head\\": {
+            \\"title\\": \\"Nuxt Bridge Playground\\",
             \\"meta\\": [
               {
                 \\"name\\": \\"viewport\\",
@@ -272,6 +273,11 @@ describe('dynamic paths', () => {
               {
                 \\"name\\": \\"description\\",
                 \\"content\\": \\"Nuxt Fixture\\"
+              },
+              {
+                \\"hid\\": \\"layer\\",
+                \\"name\\": \\"layer\\",
+                \\"content\\": \\"layer activated\\"
               }
             ]
           },
