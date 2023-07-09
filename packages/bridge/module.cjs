@@ -6,6 +6,7 @@ module.exports = function (...args) {
 const { resolve } = require('pathe')
 const { loadConfig } = require('c12')
 const pkg = require('./package.json')
+const { processPages } = require('./builderReplacement.cjs')
 
 const getRootDir = () => {
   const cwd = process.cwd()
@@ -86,6 +87,7 @@ module.exports.defineNuxtConfig = (config = {}) => {
             }
           })
         }
+        processPages(nuxtConfig)
         return nuxtConfig
       } else {
         processingCounter += 1

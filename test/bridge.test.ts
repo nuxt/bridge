@@ -37,6 +37,17 @@ describe('layers', () => {
     const html = await $fetch('/api/layered-hello')
     expect(html).toContain('Layered hello API')
   })
+  // check extending pages
+  it('should have extended pages', async () => {
+    const html = await $fetch('/layer-extended')
+    expect(html).toContain('extended page')
+  })
+  // check ignoring pages
+  it('should respect ignored pages', async () => {
+    const res = await fetch('/layer-ignored')
+    console.log(res.status)
+    expect(res.status).toEqual(404)
+  })
 })
 
 describe('head tags', () => {
