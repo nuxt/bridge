@@ -2,12 +2,12 @@ import { existsSync, readdirSync } from 'node:fs'
 import { defineUntypedSchema } from 'untyped'
 import { resolve, join } from 'pathe'
 import defu from 'defu'
+import { AppHeadMetaObject } from '../types/head'
 
 export default defineUntypedSchema({
   vue: {
     /**
      * Properties that will be set directly on `Vue.config` for vue@2.
-     *
      * @see [vue@2 Documentation](https://v2.vuejs.org/v2/api/#Global-Config)
      * @type {typeof import('vue/types/vue').VueConfiguration}
      */
@@ -23,19 +23,92 @@ export default defineUntypedSchema({
 
   app: {
     /**
-     * The folder name for the built site assets, relative to `baseURL` (or `cdnURL` if set).
+     * The base path of your Nuxt application.
      *
+     * This can be set at runtime by setting the NUXT_APP_BASE_URL environment variable.
+     * @example
+     * ```bash
+     * NUXT_APP_BASE_URL=/prefix/ node .output/server/index.mjs
+     * ```
+     */
+    baseURL: {
+      $resolve: val => val || process.env.NUXT_APP_BASE_URL || '/'
+    },
+    /** The folder name for the built site assets, relative to `baseURL` (or `cdnURL` if set). This is set at build time and should not be customized at runtime. */
+    buildAssetsDir: {
+      $resolve: val => val || process.env.NUXT_APP_BUILD_ASSETS_DIR || '/_nuxt/'
+    },
+    /**
+     * The folder name for the built site assets, relative to `baseURL` (or `cdnURL` if set).
      * @deprecated - use `buildAssetsDir` instead
      */
     assetsPath: {
       $resolve: async (val, get) => val ?? (await get('buildAssetsDir'))
+    },
+    /**
+     * Set default configuration for `<head>` on every page.
+     * @example
+     * ```js
+     * app: {
+     *   head: {
+     *     meta: [
+     *       // <meta name="viewport" content="width=device-width, initial-scale=1">
+     *       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+     *     ],
+     *     script: [
+     *       // <script src="https://myawesome-lib.js"></script>
+     *       { src: 'https://awesome-lib.js' }
+     *     ],
+     *     link: [
+     *       // <link rel="stylesheet" href="https://myawesome-lib.css">
+     *       { rel: 'stylesheet', href: 'https://awesome-lib.css' }
+     *     ],
+     *     // please note that this is an area that is likely to change
+     *     style: [
+     *       // <style type="text/css">:root { color: red }</style>
+     *       { children: ':root { color: red }', type: 'text/css' }
+     *     ],
+     *     noscript: [
+     *       // <noscript>JavaScript is required</noscript>
+     *       { children: 'JavaScript is required' }
+     *     ]
+     *   }
+     * }
+     * ```
+     * @type {typeof import('../src/types/head').AppHeadMetaObject}
+     */
+    head: {
+      $resolve: async (val, get) => {
+        const resolved: Required<AppHeadMetaObject> = defu(val, await get('meta'), {
+          meta: [],
+          link: [],
+          style: [],
+          script: [],
+          noscript: []
+        })
+
+        // provides default charset and viewport if not set
+        if (!resolved.meta.find(m => m.charset)?.charset) {
+          resolved.meta.unshift({ charset: resolved.charset || 'utf-8' })
+        }
+        if (!resolved.meta.find(m => m.name === 'viewport')?.content) {
+          resolved.meta.unshift({ name: 'viewport', content: resolved.viewport || 'width=device-width, initial-scale=1' })
+        }
+
+        resolved.meta = resolved.meta.filter(Boolean)
+        resolved.link = resolved.link.filter(Boolean)
+        resolved.style = resolved.style.filter(Boolean)
+        resolved.script = resolved.script.filter(Boolean)
+        resolved.noscript = resolved.noscript.filter(Boolean)
+
+        return resolved
+      }
     }
   },
 
   /**
    * The path to an HTML template file for rendering Nuxt responses.
    * Uses `<srcDir>/app.html` if it exists, or the Nuxt's default template if not.
-   *
    * @example
    * ```html
    * <!DOCTYPE html>
@@ -75,7 +148,6 @@ export default defineUntypedSchema({
 
   /**
    * Options to pass directly to `vue-meta`.
-   *
    * @see [documentation](https://vue-meta.nuxtjs.org/api/#plugin-options).
    * @type {typeof import('vue-meta').VueMetaOptions}
    */
@@ -83,7 +155,6 @@ export default defineUntypedSchema({
 
   /**
    * Set default configuration for `<head>` on every page.
-   *
    * @see [documentation](https://vue-meta.nuxtjs.org/api/#metainfo-properties) for specifics.
    * @type {typeof import('vue-meta').MetaInfo}
    */
@@ -123,7 +194,6 @@ export default defineUntypedSchema({
    * You may want to extend plugins or change their order. For this, you can pass
    * a function using `extendPlugins`. It accepts an array of plugin objects and
    * should return an array of plugin objects.
-   *
    * @type {(plugins: Array<{ src: string, mode?: 'client' | 'server' }>) => Array<{ src: string, mode?: 'client' | 'server' }>}
    */
   extendPlugins: null,
@@ -132,7 +202,6 @@ export default defineUntypedSchema({
    * An object where each key name maps to a path to a layout .vue file.
    *
    * Normally, there is no need to configure this directly.
-   *
    * @type {Record<string, string>}
    */
   layouts: {},
@@ -141,7 +210,6 @@ export default defineUntypedSchema({
    * Set a custom error page layout.
    *
    * Normally, there is no need to configure this directly.
-   *
    * @type {string}
    */
   ErrorPage: null,
@@ -206,7 +274,6 @@ export default defineUntypedSchema({
    *
    * You can either pass a string (the transition name) or an object with properties to bind
    * to the `<Transition>` component that will wrap your pages.
-   *
    * @see [vue@2 documentation](https://v2.vuejs.org/v2/guide/transitions.html)
    * @see [vue@3 documentation](https://vuejs.org/guide/built-ins/transition-group.html#enter-leave-transitions)
    */
@@ -229,7 +296,6 @@ export default defineUntypedSchema({
    *
    * You can either pass a string (the transition name) or an object with properties to bind
    * to the `<Transition>` component that will wrap your layouts.
-   *
    * @see [vue@2 documentation](https://v2.vuejs.org/v2/guide/transitions.html)
    */
   layoutTransition: {

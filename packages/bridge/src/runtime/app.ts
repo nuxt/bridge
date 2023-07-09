@@ -1,4 +1,3 @@
-
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import { defineComponent, getCurrentInstance } from './composables'
 export const isVue2 = true

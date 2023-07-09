@@ -1,17 +1,13 @@
 import { resolve } from 'pathe'
 import createVuePlugin from '@vitejs/plugin-vue2'
 import { logger } from '@nuxt/kit'
-import fse from 'fs-extra'
 import type { InlineConfig } from 'vite'
-import { debounce } from 'perfect-debounce'
 import { joinURL, withoutLeadingSlash, withTrailingSlash } from 'ufo'
+import { initViteNodeServer } from '../vite-node'
 import { mergeConfig, createServer, build } from './stub-vite.cjs'
-import { bundleRequest } from './dev-bundler'
-import { isCSS } from './utils'
 import { wpfs } from './utils/wpfs'
 import { ViteBuildContext, ViteOptions } from './types'
 import { jsxPlugin } from './plugins/jsx'
-import { generateDevSSRManifest } from './manifest'
 
 export async function buildServer (ctx: ViteBuildContext) {
   // Workaround to disable HMR
@@ -51,6 +47,8 @@ export async function buildServer (ctx: ViteBuildContext) {
       'process.server': true,
       'process.client': false,
       'process.static': false,
+      // use `process.client` instead. `process.browser` is deprecated
+      'process.browser': false,
       'typeof window': '"undefined"',
       'typeof document': '"undefined"',
       'typeof navigator': '"undefined"',
@@ -138,29 +136,10 @@ export async function buildServer (ctx: ViteBuildContext) {
   // Initialize plugins
   await viteServer.pluginContainer.buildStart({})
 
-  // Generate manifest files
-  await fse.writeFile(resolve(ctx.nuxt.options.buildDir, 'dist/server/ssr-manifest.json'), JSON.stringify({}, null, 2), 'utf-8')
-  await generateDevSSRManifest(ctx)
-
-  // Build and watch
-  const _doBuild = async () => {
-    const start = Date.now()
-    const { code, ids } = await bundleRequest({ viteServer }, '/.nuxt/server.js')
-    await fse.writeFile(resolve(ctx.nuxt.options.buildDir, 'dist/server/server.mjs'), code, 'utf-8')
-    // Have CSS in the manifest to prevent FOUC on dev SSR
-    await generateDevSSRManifest(ctx, ids.filter(isCSS).map(i => i.slice(1)))
-    const time = (Date.now() - start)
-    logger.info(`Vite server built in ${time}ms`)
-    await onBuild()
+  if (ctx.config.devBundler !== 'legacy') {
+    await initViteNodeServer(ctx)
+  } else {
+    logger.info('Vite server using legacy server bundler...')
+    await import('./dev-bundler').then(r => r.initViteDevBundler(ctx, onBuild))
   }
-  const doBuild = debounce(_doBuild)
-
-  // Initial build
-  await _doBuild()
-
-  // Watch
-  viteServer.watcher.on('all', (_event, file) => {
-    if (file.indexOf(ctx.nuxt.options.buildDir) === 0) { return }
-    doBuild()
-  })
 }

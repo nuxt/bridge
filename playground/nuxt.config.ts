@@ -5,6 +5,15 @@ import { defineNuxtConfig } from '@nuxt/bridge'
 global.__NUXT_PREPATHS__ = (global.__NUXT_PREPATHS__ || []).concat(__dirname)
 
 export default defineNuxtConfig({
+  app: {
+    head: {
+      meta: [
+        { name: 'viewport', content: 'width=1024, initial-scale=1' },
+        { charset: 'utf-8' },
+        { name: 'description', content: 'Nuxt Fixture' }
+      ]
+    }
+  },
   components: true,
   serverMiddleware: [
     {

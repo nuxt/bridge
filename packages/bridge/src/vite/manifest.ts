@@ -147,3 +147,55 @@ export async function writeClientManifest (clientManifest: any, buildDir: string
   await fse.writeFile(resolve(buildDir, 'dist/server/client.manifest.json'), clientManifestJSON, 'utf-8')
   await fse.writeFile(resolve(buildDir, 'dist/server/client.manifest.mjs'), `export default ${clientManifestJSON}`, 'utf-8')
 }
+
+export async function writeManifest (ctx: ViteBuildContext, css: string[] = []) {
+  // Write client manifest for use in vue-bundle-renderer
+  const clientDist = resolve(ctx.nuxt.options.buildDir, 'dist/client')
+  const serverDist = resolve(ctx.nuxt.options.buildDir, 'dist/server')
+
+  const devClientManifest: Manifest = {
+    '@vite/client': {
+      isEntry: true,
+      file: '@vite/client',
+      css,
+      module: true,
+      resourceType: 'script'
+    },
+    'entry.mjs': {
+      isEntry: true,
+      file: 'entry.mjs',
+      module: true,
+      resourceType: 'script'
+    }
+  }
+
+  const clientManifest = ctx.nuxt.options.dev
+    ? devClientManifest
+    : await fse.readJSON(resolve(clientDist, 'manifest.json'))
+
+  const buildAssetsDir = withTrailingSlash(withoutLeadingSlash(ctx.nuxt.options.app.buildAssetsDir))
+  const BASE_RE = new RegExp(`^${escapeRE(buildAssetsDir)}`)
+
+  for (const key in clientManifest) {
+    if (clientManifest[key].file) {
+      clientManifest[key].file = clientManifest[key].file.replace(BASE_RE, '')
+    }
+    for (const item of ['css', 'assets']) {
+      if (clientManifest[key][item]) {
+        clientManifest[key][item] = clientManifest[key][item].map((i: string) => i.replace(BASE_RE, ''))
+      }
+    }
+  }
+
+  await fse.mkdirp(serverDist)
+
+  const manifest = normalizeViteManifest(clientManifest)
+  await ctx.nuxt.callHook('build:manifest', manifest)
+
+  await fse.writeFile(resolve(serverDist, 'client.manifest.json'), JSON.stringify(manifest, null, 2), 'utf8')
+  await fse.writeFile(resolve(serverDist, 'client.manifest.mjs'), 'export default ' + JSON.stringify(manifest, null, 2), 'utf8')
+
+  if (!ctx.nuxt.options.dev) {
+    await fse.rm(resolve(clientDist, 'manifest.json'), { force: true })
+  }
+}

@@ -7,6 +7,7 @@ import { getPort } from 'get-port-please'
 import type { ServerOptions, InlineConfig } from 'vite'
 import { defineEventHandler } from 'h3'
 import defu from 'defu'
+import { viteNodePlugin } from '../vite-node'
 import PluginLegacy from './stub-legacy.cjs'
 import { mergeConfig, createServer, build } from './stub-vite.cjs'
 import { devStyleSSRPlugin } from './plugins/dev-ssr-css'
@@ -41,6 +42,8 @@ export async function buildClient (ctx: ViteBuildContext) {
       'process.client': true,
       'process.server': false,
       'process.static': false,
+      // use `process.client` instead. `process.browser` is deprecated
+      'process.browser': true,
       'module.hot': false
     },
     cacheDir: resolve(ctx.nuxt.options.rootDir, 'node_modules/.cache/vite/client'),
@@ -62,7 +65,8 @@ export async function buildClient (ctx: ViteBuildContext) {
       devStyleSSRPlugin({
         srcDir: ctx.nuxt.options.srcDir,
         buildAssetsURL: joinURL(ctx.nuxt.options.app.baseURL, ctx.nuxt.options.app.buildAssetsDir)
-      })
+      }),
+      viteNodePlugin(ctx)
     ],
     appType: 'custom',
     server: {

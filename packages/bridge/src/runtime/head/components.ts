@@ -1,6 +1,6 @@
 import { defineComponent } from 'vue'
 import type { SetupContext } from 'vue'
-import { useHead } from './composables'
+import { useHead } from '@unhead/vue'
 
 type Props = Readonly<Record<string, any>>
 
@@ -58,10 +58,36 @@ const globalProps = {
   translate: String
 }
 
+// <noscript>
+export const NoScript = defineComponent({
+  name: 'NoScript',
+  inheritAttrs: false,
+  props: {
+    ...globalProps,
+    title: String,
+    body: Boolean,
+    renderPriority: [String, Number]
+  },
+  setup: setupForUseMeta((props, { slots }) => {
+    const noscript = { ...props }
+    const textContent = (slots.default?.() || [])
+      .filter(({ children }) => children)
+      .map(({ children }) => children)
+      .join('')
+    if (textContent) {
+      noscript.children = textContent
+    }
+    return {
+      noscript: [noscript]
+    }
+  })
+})
+
 // <script>
 export const Script = defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Script',
+  inheritAttrs: false,
   props: {
     ...globalProps,
     async: Boolean,
@@ -90,6 +116,7 @@ export const Script = defineComponent({
 export const Link = defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Link',
+  inheritAttrs: false,
   props: {
     ...globalProps,
     as: String,
@@ -124,6 +151,7 @@ export const Link = defineComponent({
 export const Base = defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Base',
+  inheritAttrs: false,
   props: {
     ...globalProps,
     href: String,
@@ -139,7 +167,7 @@ export const Title = defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Title',
   setup: setupForUseMeta((_, { slots }) => {
-    const title = slots.default()?.[0]?.children || null
+    const title = slots.default()?.[0]?.text || null
     if (process.dev && title && typeof title !== 'string') {
       console.error('<Title> can only take a string in its default slot.')
     }
@@ -153,22 +181,34 @@ export const Title = defineComponent({
 export const Meta = defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Meta',
+  inheritAttrs: false,
   props: {
     ...globalProps,
     charset: String,
     content: String,
     httpEquiv: String,
-    name: String
+    name: String,
+    body: Boolean,
+    renderPriority: [String, Number]
   },
-  setup: setupForUseMeta(meta => ({
-    meta: [meta]
-  }))
+  setup: setupForUseMeta((props) => {
+    const meta = { ...props }
+    // fix casing for http-equiv
+    if (meta.httpEquiv) {
+      meta['http-equiv'] = meta.httpEquiv
+      delete meta.httpEquiv
+    }
+    return {
+      meta: [meta]
+    }
+  })
 })
 
 // <style>
 export const Style = defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Style',
+  inheritAttrs: false,
   props: {
     ...globalProps,
     type: String,
@@ -200,6 +240,7 @@ export const Style = defineComponent({
 export const Head = defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Head',
+  inheritAttrs: false,
   setup: (_props, ctx) => () => ctx.slots.default?.()
 })
 
@@ -207,6 +248,7 @@ export const Head = defineComponent({
 export const Html = defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Html',
+  inheritAttrs: false,
   props: {
     ...globalProps,
     manifest: String,
@@ -220,6 +262,7 @@ export const Html = defineComponent({
 export const Body = defineComponent({
   // eslint-disable-next-line vue/no-reserved-component-names
   name: 'Body',
+  inheritAttrs: false,
   props: globalProps,
   setup: setupForUseMeta(bodyAttrs => ({ bodyAttrs }), true)
 })

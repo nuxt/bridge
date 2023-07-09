@@ -11,12 +11,17 @@ export interface Nuxt {
 export interface ViteOptions extends InlineConfig {
   /**
    * Options for @vitejs/plugin-vue2
-   *
    * @see https://github.com/vitejs/vite-plugin-vue2
    */
   vue?: VueViteOptions
 
   experimentWarning?: boolean
+
+  /**
+   * Bundler for dev time server-side rendering.
+   * @default 'vite-node'
+   */
+  devBundler?: 'vite-node' | 'legacy'
 }
 
 export interface ViteBuildContext {

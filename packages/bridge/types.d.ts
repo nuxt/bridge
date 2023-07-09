@@ -4,6 +4,23 @@ import type { NuxtConfig as _NuxtConfig } from '@nuxt/schema'
 import type { DefineConfig, InputConfig, UserInputConfig, ConfigLayerMeta } from 'c12'
 import type { MetaInfo } from 'vue-meta'
 
+export interface NuxtSSRContext extends SSRContext {
+  url: string
+  noSSR: boolean
+  redirected?: boolean
+  event: H3Event
+  /** @deprecated use `ssrContext.event` instead */
+  req: H3Event['req']
+  /** @deprecated use `ssrContext.event` instead */
+  res: H3Event['res']
+  runtimeConfig: RuntimeConfig
+  error?: any
+  nuxt?: any
+  payload?: any
+  renderMeta?: () => Promise<any>
+}
+
+
 export interface BridgeConfig {
   nitro: boolean
   nitroGenerator: boolean

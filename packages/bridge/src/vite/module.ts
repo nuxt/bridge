@@ -8,8 +8,10 @@ export default defineNuxtModule<ViteOptions>({
     name: 'nuxt-bridge:vite',
     configKey: 'vite'
   },
-  defaults: {},
+  defaults: {
+  },
   setup (viteOptions, nuxt) {
+    nuxt.options.vite = viteOptions
     nuxt.options.cli.badgeMessages.push(`⚡  Vite Mode Enabled (v${version})`)
 
     if (viteOptions.experimentWarning !== false && !nuxt.options.test) {
