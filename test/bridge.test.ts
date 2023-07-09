@@ -27,6 +27,16 @@ describe('layers', () => {
     const html = await $fetch('/layer/composables')
     expect(html).toContain('layered composable activated!')
   })
+  // check server/ directory
+  it('should have server middleware', async () => {
+    // check headers for x-layer flag
+    const { headers } = await fetch('/layer/composables')
+    expect(headers.get('x-layer')).toEqual('active')
+  })
+  it('should have layers apis', async () => {
+    const html = await $fetch('/api/layered-hello')
+    expect(html).toContain('Layered hello API')
+  })
 })
 
 describe('head tags', () => {
