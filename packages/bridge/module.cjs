@@ -45,13 +45,26 @@ const loadC12Config = async (rootDir) => {
 // in dev mode initial config loaded twice, so we triggers only on 2nd loading
 const stopCount = isDev ? 1 : 0
 let processingCounter = 0
+let isVite = false
+
+const shouldEnterC12 = () => {
+  if (isVite) {
+    return processingCounter === stopCount
+  } else {
+    return !new Error('_').stack.includes(loadC12Config.name)
+  }
+}
 
 module.exports.defineNuxtConfig = (config = {}) => {
   return async () => {
     if (config.bridge === false) { return config }
+    if (config.bridge?.vite) {
+      isVite = true
+    }
     // I suppose we'll have only one bridge config in a project
     if (config.bridge?.config) {
-      if (processingCounter === stopCount) {
+      // try to check if we are not in a c12
+      if (shouldEnterC12()) {
         processingCounter += 1
         const result = await loadC12Config(config.rootDir)
         const { configFile, layers = [], cwd } = result
