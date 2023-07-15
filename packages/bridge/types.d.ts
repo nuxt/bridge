@@ -28,6 +28,10 @@ export interface BridgeConfig {
   capi: boolean | {
     legacy?: boolean
   }
+  /**
+   * @deprecated use `imports.autoImports` instead.
+   * @see {@link https://nuxt.com/docs/guide/concepts/auto-imports#disabling-auto-imports}
+   */
   imports: boolean
   /** @deprecated */
   autoImports?: boolean

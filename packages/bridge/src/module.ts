@@ -1,4 +1,4 @@
-import { defineNuxtModule, installModule, checkNuxtCompatibility } from '@nuxt/kit'
+import { defineNuxtModule, installModule, checkNuxtCompatibility, logger } from '@nuxt/kit'
 import type { NuxtModule, NuxtCompatibility } from '@nuxt/schema'
 import type { NodeMiddleware } from 'h3'
 import { fromNodeMiddleware } from 'h3'
@@ -25,7 +25,6 @@ export default defineNuxtModule({
     app: {},
     capi: {},
     transpile: true,
-    imports: true,
     compatibility: true,
     meta: null,
     typescript: true,
@@ -85,8 +84,21 @@ export default defineNuxtModule({
         message: '`autoImports:extend` hook is deprecated. Use `addImports()` from `@nuxt/kit` or `imports:extend` with latest Nuxt Bridge.'
       }
     })
+
+    if (opts.imports === false || opts.autoImports === false) {
+      logger.warn(
+        '`bridge.imports` and `bridge.autoImports` are deprecated. Use `imports.autoImport` instead.',
+        'Please see https://nuxt.com/docs/guide/concepts/auto-imports#disabling-auto-imports for more information.')
+    }
+
     // @ts-expect-error TODO: legacy module container usage
-    nuxt.hook('modules:done', moduleContainer => installModule(importsModule.bind(moduleContainer, { autoImport: opts.imports })))
+    nuxt.hook('modules:done', moduleContainer =>
+      installModule(
+        importsModule.bind(moduleContainer, {
+          autoImport: nuxt.options.imports?.autoImport ?? opts.imports ?? opts.autoImports
+        })
+      )
+    )
 
     if (opts.vite) {
       const viteModule = await import('./vite/module').then(r => r.default || r) as NuxtModule

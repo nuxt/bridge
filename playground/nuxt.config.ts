@@ -37,7 +37,8 @@ export default defineNuxtConfig({
   },
   bridge: {
     meta: true,
-    vite: !process.env.TEST_WITH_WEBPACK
+    vite: !process.env.TEST_WITH_WEBPACK,
+    imports: false
   },
   runtimeConfig: {
     secretKey: 'nuxt',
