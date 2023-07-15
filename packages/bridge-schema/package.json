@@ -20,7 +20,7 @@
     "@unhead/schema": "^1.1.30",
     "nitropack": "^2.5.2",
     "unbuild": "latest",
-    "vite": "~4.4.3"
+    "vite": "~4.4.4"
   },
   "dependencies": {
     "c12": "^1.4.2",
