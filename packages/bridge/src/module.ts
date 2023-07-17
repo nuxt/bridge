@@ -25,6 +25,7 @@ export default defineNuxtModule({
     app: {},
     capi: {},
     transpile: true,
+    imports: true,
     compatibility: true,
     meta: null,
     typescript: true,
