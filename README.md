@@ -273,11 +273,17 @@ export default defineNuxtConfig({
     // transpile: false,
 
     // Disable composables auto importing
+    // It is recommended not to change `imports` but instead to set `imports.autoImport` to false (see below)
     // imports: false,
 
     // Do not warn about module incompatibilities
     // constraints: false
   },
+
+  // Disabling auto-imports this way allows you to import nuxt composables explicitly from `#imports`
+  // imports: {
+  //   autoImport: false
+  // },
 
   vite: {
     // Config for Vite
