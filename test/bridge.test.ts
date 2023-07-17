@@ -170,6 +170,13 @@ describe('middleware', () => {
   })
 })
 
+describe('nitro plugins', () => {
+  it('should prepend a node to the rendered template', async () => {
+    const html = await $fetch('/nitro/template-plugin')
+    expect(html).toMatch(/<body\s?>[\n\s]+<p>Prepended HTML<\/p>/)
+  })
+})
+
 describe('dynamic paths', () => {
   if (process.env.NUXT_TEST_DEV) {
     // TODO:

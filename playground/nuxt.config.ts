@@ -33,7 +33,8 @@ export default defineNuxtConfig({
   nitro: {
     routeRules: {
       '/route-rules/spa': { ssr: false }
-    }
+    },
+    plugins: ['plugins/template.ts']
   },
   bridge: {
     meta: true,
