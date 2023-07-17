@@ -29,7 +29,7 @@ export interface BridgeConfig {
     legacy?: boolean
   }
   /**
-   * @deprecated use `imports.autoImports` instead.
+   * @deprecated use `imports.autoImport` instead to disable auto-importing.
    * @see {@link https://nuxt.com/docs/guide/concepts/auto-imports#disabling-auto-imports}
    */
   imports: boolean
