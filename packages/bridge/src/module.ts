@@ -91,14 +91,16 @@ export default defineNuxtModule({
         'Please see https://nuxt.com/docs/guide/concepts/auto-imports#disabling-auto-imports for more information.')
     }
 
-    // @ts-expect-error TODO: legacy module container usage
-    nuxt.hook('modules:done', moduleContainer =>
-      installModule(
-        importsModule.bind(moduleContainer, {
-          autoImport: nuxt.options.imports?.autoImport ?? opts.imports ?? opts.autoImports
-        })
+    if (opts.imports ?? opts.autoImports) {
+      // @ts-expect-error TODO: legacy module container usage
+      nuxt.hook('modules:done', moduleContainer =>
+        installModule(
+          importsModule.bind(moduleContainer, {
+            autoImport: nuxt.options.imports?.autoImport ?? opts.imports ?? opts.autoImports
+          })
+        )
       )
-    )
+    }
 
     if (opts.vite) {
       const viteModule = await import('./vite/module').then(r => r.default || r) as NuxtModule
