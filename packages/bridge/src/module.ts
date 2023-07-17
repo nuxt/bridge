@@ -1,4 +1,4 @@
-import { defineNuxtModule, installModule, checkNuxtCompatibility } from '@nuxt/kit'
+import { defineNuxtModule, installModule, checkNuxtCompatibility, logger } from '@nuxt/kit'
 import type { NuxtModule, NuxtCompatibility } from '@nuxt/schema'
 import type { NodeMiddleware } from 'h3'
 import { fromNodeMiddleware } from 'h3'
@@ -44,6 +44,9 @@ export default defineNuxtModule({
     }
 
     if (opts.nitro) {
+      // @ts-ignore router.base is legacy
+      nuxt.options.router.base = nuxt.options.app.baseURL || '/'
+
       nuxt.hook('modules:done', async () => {
         await setupNitroBridge()
       })
@@ -65,26 +68,41 @@ export default defineNuxtModule({
       }
       await setupCAPIBridge(opts.capi === true ? {} : opts.capi)
     }
-    if (opts.imports ?? opts.autoImports) {
-      // Deprecate hooks
-      nuxt.hooks.deprecateHooks({
-        // @ts-expect-error
-        'autoImports:sources': {
-          to: 'imports:sources',
-          message: '`autoImports:sources` hook is deprecated. Use `addImportsSources()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
-        },
-        'autoImports:dirs': {
-          to: 'imports:dirs',
-          message: '`autoImports:dirs` hook is deprecated. Use `addImportsDir()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
-        },
-        'autoImports:extend': {
-          to: 'imports:extend',
-          message: '`autoImports:extend` hook is deprecated. Use `addImports()` from `@nuxt/kit` or `imports:extend` with latest Nuxt Bridge.'
-        }
-      })
-      // @ts-expect-error TODO: legacy module container usage
-      nuxt.hook('modules:done', moduleContainer => installModule(importsModule.bind(moduleContainer)))
+
+    // Deprecate hooks
+    nuxt.hooks.deprecateHooks({
+      // @ts-expect-error
+      'autoImports:sources': {
+        to: 'imports:sources',
+        message: '`autoImports:sources` hook is deprecated. Use `addImportsSources()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
+      },
+      'autoImports:dirs': {
+        to: 'imports:dirs',
+        message: '`autoImports:dirs` hook is deprecated. Use `addImportsDir()` from `@nuxt/kit` or `imports:dirs` with latest Nuxt Bridge.'
+      },
+      'autoImports:extend': {
+        to: 'imports:extend',
+        message: '`autoImports:extend` hook is deprecated. Use `addImports()` from `@nuxt/kit` or `imports:extend` with latest Nuxt Bridge.'
+      }
+    })
+
+    if (opts.imports === false || opts.autoImports === false) {
+      logger.warn(
+        '`bridge.imports` and `bridge.autoImports` are deprecated. Use `imports.autoImport` instead.',
+        'Please see https://nuxt.com/docs/guide/concepts/auto-imports#disabling-auto-imports for more information.')
     }
+
+    if (opts.imports ?? opts.autoImports) {
+      // @ts-expect-error TODO: legacy module container usage
+      nuxt.hook('modules:done', moduleContainer =>
+        installModule(
+          importsModule.bind(moduleContainer, {
+            autoImport: nuxt.options.imports?.autoImport ?? opts.imports ?? opts.autoImports
+          })
+        )
+      )
+    }
+
     if (opts.vite) {
       const viteModule = await import('./vite/module').then(r => r.default || r) as NuxtModule
       // @ts-expect-error TODO: legacy module container usage

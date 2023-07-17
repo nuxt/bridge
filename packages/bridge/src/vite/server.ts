@@ -3,11 +3,11 @@ import createVuePlugin from '@vitejs/plugin-vue2'
 import { logger } from '@nuxt/kit'
 import type { InlineConfig } from 'vite'
 import { joinURL, withoutLeadingSlash, withTrailingSlash } from 'ufo'
+import { initViteNodeServer } from '../vite-node'
 import { mergeConfig, createServer, build } from './stub-vite.cjs'
 import { wpfs } from './utils/wpfs'
 import { ViteBuildContext, ViteOptions } from './types'
 import { jsxPlugin } from './plugins/jsx'
-import { initViteNodeServer } from './vite-node'
 
 export async function buildServer (ctx: ViteBuildContext) {
   // Workaround to disable HMR
@@ -47,6 +47,8 @@ export async function buildServer (ctx: ViteBuildContext) {
       'process.server': true,
       'process.client': false,
       'process.static': false,
+      // use `process.client` instead. `process.browser` is deprecated
+      'process.browser': false,
       'typeof window': '"undefined"',
       'typeof document': '"undefined"',
       'typeof navigator': '"undefined"',
