@@ -17,10 +17,10 @@
   "devDependencies": {
     "@types/lodash.template": "^4.5.1",
     "@types/semver": "^7.5.0",
-    "@unhead/schema": "^1.1.29",
+    "@unhead/schema": "^1.1.30",
     "nitropack": "^2.5.2",
     "unbuild": "latest",
-    "vite": "~4.3.9"
+    "vite": "~4.4.4"
   },
   "dependencies": {
     "c12": "^1.4.2",
