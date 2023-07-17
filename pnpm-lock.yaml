@@ -71,7 +71,7 @@ importers:
         version: 1.1.30(vue@2.7.14)
       '@vitejs/plugin-legacy':
         specifier: ^4.1.0
-        version: 4.1.0(terser@5.19.0)(vite@4.4.4)
+        version: 4.1.0(terser@5.19.1)(vite@4.4.4)
       '@vitejs/plugin-vue2':
         specifier: ^2.2.0
         version: 2.2.0(vite@4.4.4)(vue@2.7.14)
@@ -169,8 +169,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       terser:
-        specifier: ^5.19.0
-        version: 5.19.0
+        specifier: ^5.19.1
+        version: 5.19.1
       ufo:
         specifier: ^1.1.2
         version: 1.1.2
@@ -188,10 +188,10 @@ importers:
         version: 1.3.2
       vite:
         specifier: ~4.4.4
-        version: 4.4.4(terser@5.19.0)
+        version: 4.4.4(terser@5.19.1)
       vite-node:
         specifier: ^0.33.0
-        version: 0.33.0(terser@5.19.0)
+        version: 0.33.0(terser@5.19.1)
       vue-bundle-renderer:
         specifier: ^1.0.3
         version: 1.0.3
@@ -4416,7 +4416,7 @@ packages:
       rollup: 3.26.0
       serialize-javascript: 6.0.1
       smob: 1.1.1
-      terser: 5.19.0
+      terser: 5.19.1
 
   /@rollup/plugin-wasm@6.1.3(rollup@3.26.0):
     resolution: {integrity: sha512-7ItTTeyauE6lwdDtQWceEHZ9+txbi4RRy0mYPFn9BW7rD7YdgBDu7HTHsLtHrRzJc313RM/1m6GKgV3np/aEaw==}
@@ -4950,7 +4950,7 @@ packages:
       - encoding
       - supports-color
 
-  /@vitejs/plugin-legacy@4.1.0(terser@5.19.0)(vite@4.4.4):
+  /@vitejs/plugin-legacy@4.1.0(terser@5.19.1)(vite@4.4.4):
     resolution: {integrity: sha512-bLPHaKAKtPq40Cx2Hauz/VE39kStx7gUC21RM+0/OvBgiOlqrK3b1mIMUc4Cak1xLOrK99j174/7xczfu4OLHA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -4964,8 +4964,8 @@ packages:
       magic-string: 0.30.1
       regenerator-runtime: 0.13.11
       systemjs: 6.14.1
-      terser: 5.19.0
-      vite: 4.4.4(terser@5.19.0)
+      terser: 5.19.1
+      vite: 4.4.4(terser@5.19.1)
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -4977,7 +4977,7 @@ packages:
       vite: ^3.0.0 || ^4.0.0
       vue: ^2.7.0-0
     dependencies:
-      vite: 4.4.4(terser@5.19.0)
+      vite: 4.4.4(terser@5.19.1)
       vue: 2.7.14
     dev: false
 
@@ -13247,7 +13247,7 @@ packages:
       schema-utils: 3.3.0
       serialize-javascript: 5.0.1
       source-map: 0.6.1
-      terser: 5.19.0
+      terser: 5.19.1
       webpack: 4.46.0
       webpack-sources: 1.4.3
     transitivePeerDependencies:
@@ -13274,7 +13274,7 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.1
-      terser: 5.19.0
+      terser: 5.19.1
       webpack: 5.87.0
     dev: false
 
@@ -13289,8 +13289,8 @@ packages:
       source-map-support: 0.5.21
     dev: true
 
-  /terser@5.19.0:
-    resolution: {integrity: sha512-JpcpGOQLOXm2jsomozdMDpd5f8ZHh1rR48OFgWUH3QsyZcfPgv2qDCYbcDEAYNd4OZRj2bWYKpwdll/udZCk/Q==}
+  /terser@5.19.1:
+    resolution: {integrity: sha512-27hxBUVdV6GoNg1pKQ7Z5cbR6V9txPVyBA+FQw3BaZ1Wuzvztce5p156DaP0NVZNrMZZ+6iG9Syf7WgMNKDg2Q==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -13910,7 +13910,7 @@ packages:
       - terser
     dev: true
 
-  /vite-node@0.33.0(terser@5.19.0):
+  /vite-node@0.33.0(terser@5.19.1):
     resolution: {integrity: sha512-19FpHYbwWWxDr73ruNahC+vtEdza52kA90Qb3La98yZ0xULqV8A5JLNPUff0f5zID4984tW7l3DH2przTJUZSw==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -13920,7 +13920,7 @@ packages:
       mlly: 1.4.0
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.4(terser@5.19.0)
+      vite: 4.4.4(terser@5.19.1)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -13968,7 +13968,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite@4.4.4(terser@5.19.0):
+  /vite@4.4.4(terser@5.19.1):
     resolution: {integrity: sha512-4mvsTxjkveWrKDJI70QmelfVqTm+ihFAb6+xf4sjEU2TmUCTlVX87tmg/QooPEMQb/lM9qGHT99ebqPziEd3wg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -13999,7 +13999,7 @@ packages:
       esbuild: 0.18.11
       postcss: 8.4.26
       rollup: 3.26.0
-      terser: 5.19.0
+      terser: 5.19.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
