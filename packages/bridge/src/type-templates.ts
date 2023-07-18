@@ -38,10 +38,11 @@ export const middlewareTypeTemplate = {
     const middleware = app.templateVars.middleware
 
     return [
-      'import type { NuxtAppCompat } from \'@nuxt/bridge-schema\'',
+      'import type { Nuxt2Context } from \'@nuxt/bridge-schema\'',
+      'import type { ComponentOptions } from \'vue\'',
       `export type MiddlewareKey = ${middleware.map(mw => genString(mw.name)).join(' | ') || 'string'}`,
       'declare module \'vue/types/options\' {',
-      '  export type Middleware = MiddlewareKey | ((ctx: NuxtAppCompat, cb: Function) => Promise<void> | void)',
+      '  export type Middleware = MiddlewareKey | ((ctx: Nuxt2Context, cb: Function) => Promise<void> | void)',
       '  interface ComponentOptions<V extends Vue> {',
       '    middleware?: Middleware | Middleware[]',
       '  }',
