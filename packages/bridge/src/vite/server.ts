@@ -47,6 +47,8 @@ export async function buildServer (ctx: ViteBuildContext) {
       'process.server': true,
       'process.client': false,
       'process.static': false,
+      // use `process.client` instead. `process.browser` is deprecated
+      'process.browser': false,
       'typeof window': '"undefined"',
       'typeof document': '"undefined"',
       'typeof navigator': '"undefined"',
