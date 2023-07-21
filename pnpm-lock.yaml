@@ -21,6 +21,9 @@ importers:
       '@nuxtjs/eslint-config-typescript':
         specifier: ^12.0.0
         version: 12.0.0(eslint@8.45.0)(typescript@5.1.3)
+      devalue:
+        specifier: ^4.3.2
+        version: 4.3.2
       eslint:
         specifier: ^8.45.0
         version: 8.45.0
@@ -283,7 +286,7 @@ importers:
         version: 2.5.2
       vite:
         specifier: ~4.4.6
-        version: 4.4.6(@types/node@20.3.1)
+        version: 4.4.6(terser@5.19.1)
 
   playground:
     devDependencies:
@@ -6233,6 +6236,10 @@ packages:
 
   /devalue@2.0.1:
     resolution: {integrity: sha512-I2TiqT5iWBEyB8GRfTDP0hiLZ0YeDJZ+upDxjBfOC2lebO5LezQMv7QvIUTzdb64jQyAKLf1AHADtGN+jw6v8Q==}
+    dev: true
+
+  /devalue@4.3.2:
+    resolution: {integrity: sha512-KqFl6pOgOW+Y6wJgu80rHpo2/3H07vr8ntR9rkkFIRETewbf5GaYYcakYfiKz89K+sLsuPkQIZaXDMjUObZwWg==}
     dev: true
 
   /diff-sequences@29.4.3:
@@ -12808,7 +12815,6 @@ packages:
       terser: 5.19.1
     optionalDependencies:
       fsevents: 2.3.2
-    dev: false
 
   /vitest@0.33.0:
     resolution: {integrity: sha512-1CxaugJ50xskkQ0e969R/hW47za4YXDUfWJDxip1hwbnhUjYolpfUn2AMOulqG/Dtd9WYAtkHmM/m3yKVrEejQ==}
