@@ -1,33 +1,10 @@
 import type { DefineComponent } from 'vue'
 import { useHead } from '@unhead/vue'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
-import { defineComponent, getCurrentInstance, useRoute, createError, toRefs, reactive } from './composables'
-import { useAsyncData } from './asyncData'
+import { defineComponent, getCurrentInstance } from './composables'
 
 export const isVue2 = true
 export const isVue3 = false
-
-async function runLegacyAsyncData (res: Record<string, any> | Promise<Record<string, any>>, fn: (nuxtApp: NuxtAppCompat) => Promise<Record<string, any>>) {
-  const nuxtApp = useNuxtApp()
-  const route = useRoute()
-  const vm = getCurrentInstance()!
-  // @ts-ignore type mismatch
-  const { fetchKey, _fetchKeyBase } = vm.proxy!.$options
-  // @ts-ignore type mismatch
-  const key = (typeof fetchKey === 'function' ? fetchKey(() => '') : fetchKey) ||
-  // TODO vm.type is not available in Vue 3
-    ([_fetchKeyBase, route.fullPath, route.matched.findIndex(r => Object.values(r.components || {}).includes(vm.type))].join(':'))
-
-  const { data, error } = await useAsyncData(`options:asyncdata:${key}`, () => callWithNuxt(nuxtApp, fn, [nuxtApp]))
-  if (error.value) {
-    throw createError(error.value)
-  }
-  if (data.value && typeof data.value === 'object') {
-    Object.assign(await res, toRefs(reactive(data.value)))
-  } else if (process.dev) {
-    console.warn('[nuxt] asyncData should return an object', data)
-  }
-}
 
 export const defineNuxtComponent: typeof defineComponent =
 function defineNuxtComponent (...args: any[]): any {
@@ -46,24 +23,14 @@ function defineNuxtComponent (...args: any[]): any {
     ...options,
     setup (props, ctx) {
       const nuxtApp = useNuxtApp()
-      const res = setup ? Promise.resolve(callWithNuxt(nuxtApp, () => setup(props, ctx))).then(r => r || {}) : {}
-
-      const promises: Promise<any>[] = []
-      if (options.asyncData) {
-        promises.push(runLegacyAsyncData(res, options.asyncData))
-      }
+      const res = setup ? callWithNuxt(nuxtApp, setup, [props, ctx]) : {}
 
       if (options.head) {
         const nuxtApp = useNuxtApp()
         useHead(typeof options.head === 'function' ? () => options.head(nuxtApp) : options.head)
       }
 
-      return Promise.resolve(res)
-        .then(() => Promise.all(promises))
-        .then(() => res)
-        .finally(() => {
-          promises.length = 0
-        })
+      return res
     }
   } as DefineComponent
 }

@@ -78,11 +78,16 @@ describe('legacy async data', () => {
     const html = await $fetch('/legacy/async-data')
     expect(html).toContain('<div>Hello API</div>')
     const { script } = parseData(html)
-    expect(script._asyncData['options:asyncdata:hello'].hello).toBe('Hello API')
     expect(Object.values(script.data)).toMatchInlineSnapshot(`
       [
         {
           "hello": "Hello API",
+        },
+        {
+          "fooParent": "fooParent",
+        },
+        {
+          "fooChild": "fooChild",
         },
       ]
     `)

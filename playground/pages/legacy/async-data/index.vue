@@ -1,17 +1,15 @@
 <template>
   <div>
-    <div>{{ hello }}</div>
+    <div>{{ fooParent }}</div>
     <NuxtChild />
   </div>
 </template>
 
 <script>
 export default defineNuxtComponent({
-  fetchKey: () => 'hello',
-  async asyncData () {
-    await nextTick()
+  asyncData () {
     return {
-      hello: await $fetch('/api/hello')
+      fooParent: 'fooParent'
     }
   }
 })
