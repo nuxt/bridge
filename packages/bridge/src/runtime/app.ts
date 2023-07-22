@@ -9,7 +9,7 @@ export const isVue3 = false
 export const defineNuxtComponent: typeof defineComponent =
 function defineNuxtComponent (...args: any[]): any {
   const [options, key] = args
-  const { setup } = options
+  const { setup, head, ...opts } = options
 
   // Avoid wrapping if no options api is used
   if (!setup && !options.asyncData && !options.head) {
@@ -20,7 +20,7 @@ function defineNuxtComponent (...args: any[]): any {
 
   return {
     _fetchKeyBase: key,
-    ...options,
+    ...opts,
     setup (props, ctx) {
       const nuxtApp = useNuxtApp()
       const res = setup ? callWithNuxt(nuxtApp, setup, [props, ctx]) : {}
