@@ -1,9 +1,39 @@
+import type { DefineComponent } from 'vue'
+import { useHead } from '@unhead/vue'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import { defineComponent, getCurrentInstance } from './composables'
+
 export const isVue2 = true
 export const isVue3 = false
 
-export const defineNuxtComponent = defineComponent
+export const defineNuxtComponent: typeof defineComponent =
+function defineNuxtComponent (...args: any[]): any {
+  const [options, key] = args
+  const { setup, head, ...opts } = options
+
+  // Avoid wrapping if no options api is used
+  if (!setup && !options.asyncData && !options.head) {
+    return {
+      ...options
+    }
+  }
+
+  return {
+    _fetchKeyBase: key,
+    ...opts,
+    setup (props, ctx) {
+      const nuxtApp = useNuxtApp()
+      const res = setup ? callWithNuxt(nuxtApp, setup, [props, ctx]) : {}
+
+      if (options.head) {
+        const nuxtApp = useNuxtApp()
+        useHead(typeof options.head === 'function' ? () => options.head(nuxtApp) : options.head)
+      }
+
+      return res
+    }
+  } as DefineComponent
+}
 
 export interface Context {
   $_nuxtApp: NuxtAppCompat

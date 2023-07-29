@@ -1,21 +1,25 @@
 <script>
 import { Title, Meta } from '#build/components'
 
-export default defineComponent({
+export default defineNuxtComponent({
   components: {
     // eslint-disable-next-line vue/no-reserved-component-names
     Title,
     // eslint-disable-next-line vue/no-reserved-component-names
     Meta
   },
+  head () {
+    return {
+      htmlAttrs: {
+        class: 'html-attrs-test'
+      }
+    }
+  },
   setup () {
     const a = ref('')
     useHead({
       bodyAttrs: {
         class: 'body-attrs-test'
-      },
-      htmlAttrs: {
-        class: 'html-attrs-test'
       },
       script: [
         {

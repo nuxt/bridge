@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
 import { setup, $fetch, fetch, startServer } from '@nuxt/test-utils'
-import { expectNoClientErrors } from './utils'
+import { expectNoClientErrors, parseData } from './utils'
 
 const isWebpack = process.env.TEST_WITH_WEBPACK
 
@@ -70,6 +70,27 @@ describe('pages', () => {
   })
   it('uses server Vue build', async () => {
     expect(await $fetch('/')).toContain('Rendered on server: true')
+  })
+})
+
+describe('legacy async data', () => {
+  it('should work with defineNuxtComponent', async () => {
+    const html = await $fetch('/legacy/async-data')
+    expect(html).toContain('<div>Hello API</div>')
+    const { script } = parseData(html)
+    expect(Object.values(script.data)).toMatchInlineSnapshot(`
+      [
+        {
+          "hello": "Hello API",
+        },
+        {
+          "fooParent": "fooParent",
+        },
+        {
+          "fooChild": "fooChild",
+        },
+      ]
+    `)
   })
 })
 
