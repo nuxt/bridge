@@ -3,6 +3,10 @@ import { createUnplugin } from 'unplugin'
 import { parseQuery, parseURL } from 'ufo'
 import { Unimport } from 'unimport'
 import { ImportsOptions } from '@nuxt/schema'
+import { normalize } from 'pathe'
+
+const NODE_MODULES_RE = /[\\/]node_modules[\\/]/
+const IMPORTS_RE = /(['"])#imports\1/
 
 export const TransformPlugin = createUnplugin(({ ctx, options }: { ctx: Unimport, options: Partial<ImportsOptions> }) => {
   return {
@@ -12,10 +16,12 @@ export const TransformPlugin = createUnplugin(({ ctx, options }: { ctx: Unimport
       const { pathname, search } = parseURL(decodeURIComponent(pathToFileURL(id).href))
       const { type, macro } = parseQuery(search)
 
-      const exclude = options.transform?.exclude || [/[\\/]node_modules[\\/]/]
-
-      // Exclude node_modules by default
-      if (exclude.some(pattern => id.match(pattern))) {
+      // Included
+      if (options.transform?.include?.some(pattern => pattern.test(id))) {
+        return true
+      }
+      // Excluded
+      if (options.transform?.exclude?.some(pattern => pattern.test(id))) {
         return false
       }
 
@@ -33,7 +39,13 @@ export const TransformPlugin = createUnplugin(({ ctx, options }: { ctx: Unimport
       }
     },
     async transform (_code, id) {
-      const { code, s } = await ctx.injectImports(_code)
+      id = normalize(id)
+      const isNodeModule = NODE_MODULES_RE.test(id) && !options.transform?.include?.some(pattern => pattern.test(id))
+      // For modules in node_modules, we only transform `#imports` but not doing imports
+      if (isNodeModule && !IMPORTS_RE.test(_code)) {
+        return
+      }
+      const { code, s } = await ctx.injectImports(_code, id, { autoImport: options.autoImport && !isNodeModule })
       if (code === _code) {
         return
       }

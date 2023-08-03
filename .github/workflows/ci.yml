@@ -117,6 +117,28 @@ jobs:
       - name: Test (fixtures with dev)
         run: pnpm test:fixtures:webpack:dev
 
+  test-unit:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: [16]
+
+    steps:
+      - uses: actions/checkout@v3
+      - run: corepack enable
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Test (Unit)
+        run: pnpm test:unit
+
   build-release:
     permissions:
       id-token: write
@@ -130,6 +152,7 @@ jobs:
       - build
       - test-fixtures
       - test-fixtures-webpack
+      - test-unit
     runs-on: ${{ matrix.os }}
 
     strategy:
