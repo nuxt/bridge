@@ -17,9 +17,6 @@ export default defineNuxtModule({
   setup (options, nuxt) {
     const runtimeDir = nuxt.options.alias['#head'] || resolve(distDir, 'head/runtime')
 
-    // Transpile @unhead/vue and @unhead/ssr
-    nuxt.options.build.transpile.push('unhead')
-
     // Add #head alias
     nuxt.options.alias['#head'] = runtimeDir
 

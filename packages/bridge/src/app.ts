@@ -44,6 +44,9 @@ export async function setupAppBridge (_options: any) {
   // Transpile libs with modern syntax
   nuxt.options.build.transpile.push('h3', 'iron-webcrypto', 'ohash', 'ofetch')
 
+  // Transpile @unhead/vue and @unhead/ssr
+  nuxt.options.build.transpile.push('unhead')
+
   // Disable legacy fetch polyfills
   nuxt.options.fetch.server = false
   nuxt.options.fetch.client = false
