@@ -17,8 +17,8 @@ If `needs reproduction` labeled issues don't receive any substantial activity (e
 
 We have a couple of templates for starting with a minimal reproduction:
 
-👉 https://stackblitz.com/github/nuxt/starter/tree/v3-stackblitz
-👉 https://codesandbox.io/s/github/nuxt/starter/v3-codesandbox
+👉 https://stackblitz.com/github/nuxt/starter/tree/v2-bridge
+👉 https://codesandbox.io/p/github/nuxt/starter/v2-bridge-codesandbox
 
 A public GitHub repository is also perfect. 👌
 
