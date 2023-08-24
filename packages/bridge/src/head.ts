@@ -61,9 +61,6 @@ export default defineNuxtModule({
       ]
     })
 
-    // Add generic plugin
-    addPlugin({ src: resolve(runtimeDir, 'plugin') })
-
     // Add library-specific plugin
     addPlugin({ src: resolve(runtimeDir, 'plugins/unhead') })
   }
