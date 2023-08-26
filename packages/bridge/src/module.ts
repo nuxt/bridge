@@ -1,4 +1,4 @@
-import { defineNuxtModule, installModule, checkNuxtCompatibility, logger } from '@nuxt/kit'
+import { defineNuxtModule, installModule, checkNuxtCompatibility, logger, writeTypes } from '@nuxt/kit'
 import type { NuxtModule, NuxtCompatibility } from '@nuxt/schema'
 import type { NodeMiddleware } from 'h3'
 import { fromNodeMiddleware } from 'h3'
@@ -118,6 +118,13 @@ export default defineNuxtModule({
     }
     if (opts.typescript) {
       await setupTypescript()
+
+      // support generating tsconfig by `nuxt dev` (for nuxt 2)
+      if (!opts.nitro) {
+        nuxt.hook('modules:done', async () => {
+          await writeTypes(nuxt)
+        })
+      }
     }
     if (opts.resolve) {
       setupBetterResolve()
