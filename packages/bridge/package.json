@@ -13,7 +13,8 @@
     "dist"
   ],
   "bin": {
-    "nuxi": "./bin/nuxt.mjs"
+    "nuxi": "./bin/nuxt.mjs",
+    "nuxt2": "./bin/nuxt2.cjs"
   },
   "scripts": {
     "build": "pnpm prepack",
