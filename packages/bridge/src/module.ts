@@ -44,6 +44,9 @@ export default defineNuxtModule({
     }
 
     if (opts.nitro) {
+      if (!await import('./features').then(r => r.ensurePackageInstalled(nuxt.options.rootDir, 'nuxi', nuxt.options.modulesDir))) {
+        logger.warn('Failed to install `nuxi`, please install it manually, or change the `nitro` option to false in `nuxt.config`')
+      }
       // @ts-ignore router.base is legacy
       nuxt.options.router.base = nuxt.options.app.baseURL || '/'
 
