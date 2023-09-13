@@ -303,8 +303,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/bridge
       nuxi:
-        specifier: ^3.7.3
-        version: 3.8.3
+        specifier: 3.7.3
+        version: 3.7.3
       nuxt:
         specifier: ^2.17.1
         version: 2.17.1(consola@3.2.3)(typescript@5.1.3)(vue@2.7.14)
@@ -9820,8 +9820,8 @@ packages:
       boolbase: 1.0.0
     dev: true
 
-  /nuxi@3.8.3:
-    resolution: {integrity: sha512-LS1KlxQhQDt+WREENAG44zfO91uiPYDcorQ7xlcaV0ejV65v7Eub94FTmJ6JNXL2boHhc+raODtJBClW2uYyJw==}
+  /nuxi@3.7.3:
+    resolution: {integrity: sha512-Cg+ygRmhonE6PwAtDeKvKU/0VRqEyzmSSoJYfr0MzwIxQYrBSnLvw0z3UgJl/8MgFKjiZ5Y4wBUEiRsUw8O6uw==}
     engines: {node: ^14.18.0 || >=16.10.0}
     hasBin: true
     optionalDependencies:
