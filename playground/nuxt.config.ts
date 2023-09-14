@@ -4,6 +4,19 @@ import { defineNuxtConfig } from '@nuxt/bridge'
 // @ts-ignore
 global.__NUXT_PREPATHS__ = (global.__NUXT_PREPATHS__ || []).concat(__dirname)
 
+const bridgeConfig = {
+  vite: process.env.TEST_BUILDER !== 'webpack',
+  // Not yet tested in matrix
+  nitro: process.env.TEST_NITRO !== 'false',
+  nitroGenerator: process.env.TEST_NITRO_GENERATOR !== 'false',
+  transpile: process.env.TEST_TRANSPILE !== 'false',
+  imports: process.env.TEST_IMPORTS !== 'false',
+  compatibility: process.env.TEST_COMPATIBILITY !== 'false',
+  meta: process.env.TEST_META !== 'false',
+  typescript: process.env.TEST_TYPESCRIPT !== 'false',
+  resolve: process.env.TEST_RESOLVE !== 'false'
+}
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -36,10 +49,7 @@ export default defineNuxtConfig({
     },
     plugins: ['plugins/template.ts']
   },
-  bridge: {
-    meta: true,
-    vite: !process.env.TEST_WITH_WEBPACK
-  },
+  bridge: bridgeConfig,
   runtimeConfig: {
     secretKey: 'nuxt',
     public: {

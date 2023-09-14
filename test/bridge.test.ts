@@ -3,15 +3,14 @@ import { describe, expect, it } from 'vitest'
 import { setup, $fetch, fetch, startServer } from '@nuxt/test-utils'
 import { expectNoClientErrors, parseData } from './utils'
 
-const isWebpack = process.env.TEST_WITH_WEBPACK
+const isWebpack = process.env.TEST_BUILDER === 'webpack'
+const isDev = process.env.TEST_ENV === 'dev'
 
 await setup({
   rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
   server: true,
-  dev: !!process.env.NUXT_TEST_DEV,
+  dev: isDev,
   nuxtConfig: {
-    // @ts-expect-error No types yet.
-    bridge: { vite: !isWebpack },
     buildDir: process.env.NITRO_BUILD_DIR,
     nitro: { output: { dir: process.env.NITRO_OUTPUT_DIR } }
   }
@@ -199,12 +198,12 @@ describe('nitro plugins', () => {
 })
 
 describe('dynamic paths', () => {
-  if (process.env.NUXT_TEST_DEV) {
+  if (isDev) {
     // TODO:
     it.todo('dynamic paths in dev')
     return
   }
-  if (process.env.TEST_WITH_WEBPACK) {
+  if (isWebpack) {
     // TODO:
     it.todo('work with webpack')
     return
@@ -219,7 +218,7 @@ describe('dynamic paths', () => {
   })
 
   // Vite legacy build does not emit CSS files
-  it.skipIf(!process.env.TEST_WITH_WEBPACK)('adds relative paths to CSS', async () => {
+  it.skipIf(!isWebpack)('adds relative paths to CSS', async () => {
     const html = await $fetch('/assets')
     const urls = Array.from(html.matchAll(/(href|src)="(.*?)"/g)).map(m => m[2])
     const cssURL = urls.find(u => /_nuxt\/assets.*\.css$/.test(u))

@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [16]
+        node: [18]
 
     steps:
       - uses: actions/checkout@v4
@@ -72,6 +72,8 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         node: [16]
+        env: ['dev', 'built']
+        builder: ['vite', 'webpack']
 
     steps:
       - uses: actions/checkout@v4
@@ -86,36 +88,10 @@ jobs:
 
       - name: Test (fixtures)
         run: pnpm test:fixtures
-
-      - name: Test (fixtures with dev)
-        run: pnpm test:fixtures:dev
         env:
           NODE_OPTIONS: --max-old-space-size=8192
-
-  test-fixtures-webpack:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-        node: [16]
-
-    steps:
-      - uses: actions/checkout@v4
-      - run: corepack enable
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node }}
-          cache: "pnpm"
-
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Test (fixtures)
-        run: pnpm test:fixtures:webpack
-
-      - name: Test (fixtures with dev)
-        run: pnpm test:fixtures:webpack:dev
+          TEST_ENV: ${{ matrix.env }}
+          TEST_BUILDER: ${{ matrix.builder }}
 
   test-unit:
     runs-on: ${{ matrix.os }}
@@ -151,7 +127,6 @@ jobs:
       - lint
       - build
       - test-fixtures
-      - test-fixtures-webpack
       - test-unit
     runs-on: ${{ matrix.os }}
 
