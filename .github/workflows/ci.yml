@@ -75,7 +75,6 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [18]
         env: ['dev', 'built']
         builder: ['vite', 'webpack']
         transpile: ['transpile']
@@ -89,7 +88,7 @@ jobs:
       - run: corepack enable
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 18
           cache: "pnpm"
 
       - name: Install dependencies
