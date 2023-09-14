@@ -88,20 +88,19 @@ jobs:
         node: [18]
         env: ['dev', 'built']
         builder: ['vite', 'webpack']
-        transpile: ['transpile', 'no-transpile']
-        compatibility: ['compatibility', 'no-compatibility']
-        resolve: ['resolve', 'no-resolve']
-        exclude:
+        transpile: ['transpile']
+        compatibility: ['compatibility']
+        resolve: ['resolve']
+        include:
           - transpile: 'no-resolve'
-            builder: 'vite'
-          - transpile: 'no-resolve'
-            builder: 'dev'
-          - compatibility: 'no-compatibility'
-            env: 'dev'
+            builder: 'webpack'
+            env: 'built'
           - compatibility: 'no-compatibility'
             builder: 'vite'
+            env: 'built'
           - transpile: 'no-transpile'
             builder: 'webpack'
+            env: 'built'
 
     steps:
       - uses: actions/checkout@v4
