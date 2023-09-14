@@ -12,6 +12,9 @@
     "types.d.ts",
     "dist"
   ],
+  "bin": {
+    "nuxt2": "./bin/nuxt2.cjs"
+  },
   "scripts": {
     "build": "pnpm prepack",
     "prepack": "unbuild"
