@@ -74,6 +74,9 @@ jobs:
         node: [16]
         env: ['dev', 'built']
         builder: ['vite', 'webpack']
+        transpile: [true, false]
+        compatibility: [true, false]
+        resolve: [true, false]
 
     steps:
       - uses: actions/checkout@v4
@@ -92,6 +95,9 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=8192
           TEST_ENV: ${{ matrix.env }}
           TEST_BUILDER: ${{ matrix.builder }}
+          TEST_TRANSPILE: ${{ matrix.transpile }}
+          TEST_COMPATIBILITY: ${{ matrix.compatibility }}
+          TEST_RESOLVE: ${{ matrix.resolve }}
 
   test-unit:
     runs-on: ${{ matrix.os }}
