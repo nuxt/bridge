@@ -8,6 +8,20 @@ on:
     branches:
       - main
 
+# https://github.com/vitejs/vite/blob/main/.github/workflows/ci.yml
+env:
+  # 7 GiB by default on GitHub, setting to 6 GiB
+  # https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners#supported-runners-and-hardware-resources
+  NODE_OPTIONS: --max-old-space-size=6144
+
+# Remove default permissions of GITHUB_TOKEN for security
+# https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.sha }}
+  cancel-in-progress: ${{ github.event_name != 'push' }}
+
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -80,12 +94,14 @@ jobs:
         exclude:
           - transpile: 'no-resolve'
             builder: 'vite'
+          - transpile: 'no-resolve'
+            builder: 'dev'
           - compatibility: 'no-compatibility'
             env: 'dev'
           - compatibility: 'no-compatibility'
             builder: 'vite'
-          - resolve: 'no-resolve'
-            builder: 'vite'
+          - transpile: 'no-transpile'
+            builder: 'webpack'
 
     steps:
       - uses: actions/checkout@v4
@@ -101,7 +117,6 @@ jobs:
       - name: Test (fixtures)
         run: pnpm test:fixtures
         env:
-          NODE_OPTIONS: --max-old-space-size=8192
           TEST_ENV: ${{ matrix.env }}
           TEST_BUILDER: ${{ matrix.builder }}
           TEST_TRANSPILE: ${{ matrix.transpile }}
