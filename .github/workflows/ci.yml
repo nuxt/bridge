@@ -78,11 +78,17 @@ jobs:
         env: ['dev', 'built']
         builder: ['vite', 'webpack']
         transpile: ['transpile', 'no-transpile']
-        compatibility: ['compatibility']
-        resolve: ['resolve']
+        compatibility: ['compatibility', 'no-compatibility']
+        resolve: ['resolve', 'no-resolve']
         exclude:
           - transpile: 'no-transpile'
             builder: 'vite'
+          - transpile: 'no-compatibility'
+            builder: 'vite'
+          - transpile: 'no-resolve'
+            builder: 'vite'
+          - transpile: 'no-compatibility'
+            env: 'dev'
 
     steps:
       - uses: actions/checkout@v4
