@@ -77,16 +77,12 @@ jobs:
         os: [ubuntu-latest, windows-latest]
         env: ['dev', 'built']
         builder: ['vite', 'webpack']
-        # transpile: ['transpile']
+        transpile: ['transpile', 'no-transpile']
         compatibility: ['compatibility']
         resolve: ['resolve']
-        include:
+        exclude:
           - transpile: 'no-transpile'
-            builder: 'webpack'
-            env: 'built'
-          - transpile: 'transpile'
-            builder: 'webpack'
-            env: 'built'
+            builder: 'vite'
 
     steps:
       - uses: actions/checkout@v4
@@ -105,8 +101,8 @@ jobs:
           TEST_ENV: ${{ matrix.env }}
           TEST_BUILDER: ${{ matrix.builder }}
           TEST_TRANSPILE: ${{ matrix.transpile || 'transpile' }}
-          TEST_COMPATIBILITY: ${{ matrix.compatibility }}
-          TEST_RESOLVE: ${{ matrix.resolve }}
+          TEST_COMPATIBILITY: ${{ matrix.compatibility || 'compatibility' }}
+          TEST_RESOLVE: ${{ matrix.resolve || 'resolve' }}
 
   test-unit:
     runs-on: ${{ matrix.os }}
