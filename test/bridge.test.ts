@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
 import { setup, $fetch, fetch, startServer } from '@nuxt/test-utils'
-import { expectNoClientErrors } from './utils'
+import { expectNoClientErrors, parseData } from './utils'
 
 const isWebpack = process.env.TEST_WITH_WEBPACK
 
@@ -17,6 +17,50 @@ await setup({
   }
 })
 
+describe('head tags', () => {
+  it('SSR should render tags', async () => {
+    const headHtml = await $fetch('/head')
+
+    expect(headHtml).toContain('<title>Using a dynamic component - Nuxt Bridge Playground</title>')
+    expect(headHtml).not.toContain('<meta name="description" content="first">')
+    expect(headHtml).toContain('<meta charset="utf-16">')
+    expect(headHtml.match('meta charset').length).toEqual(1)
+    expect(headHtml).toContain('<meta name="viewport" content="width=1024, initial-scale=1">')
+    expect(headHtml.match('meta name="viewport"').length).toEqual(1)
+    expect(headHtml).not.toContain('<meta charset="utf-8">')
+    expect(headHtml).toContain('<meta name="description" content="overriding with an inline useHead call">')
+    expect(headHtml).toMatch(/<html[^>]*class="html-attrs-test"/)
+    expect(headHtml).toMatch(/<body[^>]*class="body-attrs-test"/)
+    expect(headHtml).toContain('<script src="https://a-body-appended-script.com"></script>')
+
+    const indexHtml = await $fetch('/')
+    // should render charset by default
+    expect(indexHtml).toContain('<meta charset="utf-8">')
+  })
+
+  it('SSR script setup should render tags', async () => {
+    const headHtml = await $fetch('/head-script-setup')
+
+    // useHead - title & titleTemplate are working
+    expect(headHtml).toContain('<title>head script setup - Nuxt Playground</title>')
+    // useSeoMeta - template params
+    expect(headHtml).toContain('<meta property="og:title" content="head script setup - Nuxt Playground">')
+    // useSeoMeta - refs
+    expect(headHtml).toContain('<meta name="description" content="head script setup description for Nuxt Playground">')
+    // useServerHead - shorthands
+    expect(headHtml).toContain('>/* Custom styles */</style>')
+    // useHeadSafe - removes dangerous content
+    expect(headHtml).toContain('<script id="xss-script"></script>')
+    expect(headHtml).toContain('<meta content="0;javascript:alert(1)">')
+  })
+
+  it('should render http-equiv correctly', async () => {
+    const html = await $fetch('/head')
+    // http-equiv should be rendered kebab case
+    expect(html).toContain('<meta content="default-src https" http-equiv="content-security-policy">')
+  })
+})
+
 describe('pages', () => {
   it('render hello world', async () => {
     const html = await $fetch('/')
@@ -26,6 +70,27 @@ describe('pages', () => {
   })
   it('uses server Vue build', async () => {
     expect(await $fetch('/')).toContain('Rendered on server: true')
+  })
+})
+
+describe('legacy async data', () => {
+  it('should work with defineNuxtComponent', async () => {
+    const html = await $fetch('/legacy/async-data')
+    expect(html).toContain('<div>Hello API</div>')
+    const { script } = parseData(html)
+    expect(Object.values(script.data)).toMatchInlineSnapshot(`
+      [
+        {
+          "hello": "Hello API",
+        },
+        {
+          "fooParent": "fooParent",
+        },
+        {
+          "fooChild": "fooChild",
+        },
+      ]
+    `)
   })
 })
 
@@ -118,6 +183,19 @@ describe('middleware', () => {
     })
     expect(res.status).toEqual(401)
   })
+
+  it('should redirect to navigation-target', async () => {
+    const html = await $fetch('/add-route-middleware')
+
+    expect(html).toContain('Navigated successfully')
+  })
+})
+
+describe('nitro plugins', () => {
+  it('should prepend a node to the rendered template', async () => {
+    const html = await $fetch('/nitro/template-plugin')
+    expect(html).toMatch(/<body\s?>[\n\s]+<p>Prepended HTML<\/p>/)
+  })
 })
 
 describe('dynamic paths', () => {
@@ -198,6 +276,21 @@ describe('dynamic paths', () => {
           \\"basePath\\": \\"/\\",
           \\"assetsPath\\": \\"/_nuxt/\\",
           \\"cdnURL\\": \\"\\",
+          \\"head\\": {
+            \\"meta\\": [
+              {
+                \\"name\\": \\"viewport\\",
+                \\"content\\": \\"width=1024, initial-scale=1\\"
+              },
+              {
+                \\"charset\\": \\"utf-8\\"
+              },
+              {
+                \\"name\\": \\"description\\",
+                \\"content\\": \\"Nuxt Fixture\\"
+              }
+            ]
+          },
           \\"buildAssetsDir\\": \\"/_nuxt/\\"
         },
         \\"nitro\\": {

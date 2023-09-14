@@ -40,7 +40,6 @@ export default defineBuildConfig({
     'vue-meta',
     'vue-router',
     'vue-bundle-renderer',
-    '@vueuse/head',
     'vue',
     'hookable',
     'nitropack',
@@ -57,6 +56,7 @@ export default defineBuildConfig({
     'postcss',
     'consola',
     'ignore',
+    '@unhead/schema',
     // Implicit
     '@vue/compiler-core',
     '@vue/shared',

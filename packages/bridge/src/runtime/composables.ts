@@ -250,7 +250,7 @@ export const abortNavigation = (err?: string | Partial<NuxtError>) => {
   throw err
 }
 
-type RouteMiddlewareReturn = void | Error | string | Location | boolean
+type RouteMiddlewareReturn = void | Error | string | Location | boolean | Route
 
 export interface RouteMiddleware {
   (to: Route, from: Route): RouteMiddlewareReturn | Promise<RouteMiddlewareReturn>
