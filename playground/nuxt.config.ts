@@ -6,9 +6,9 @@ global.__NUXT_PREPATHS__ = (global.__NUXT_PREPATHS__ || []).concat(__dirname)
 
 const bridgeConfig = {
   vite: process.env.TEST_BUILDER !== 'webpack',
-  transpile: process.env.TEST_TRANSPILE !== 'false',
-  compatibility: process.env.TEST_COMPATIBILITY !== 'false',
-  resolve: process.env.TEST_RESOLVE !== 'false',
+  transpile: process.env.TEST_TRANSPILE !== 'no-transpile',
+  compatibility: process.env.TEST_COMPATIBILITY !== 'no-compatibility',
+  resolve: process.env.TEST_RESOLVE !== 'no-resolve',
   // Not yet tested in matrix
   nitro: process.env.TEST_NITRO !== 'false',
   nitroGenerator: process.env.TEST_NITRO_GENERATOR !== 'false',
