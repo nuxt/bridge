@@ -24,7 +24,7 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "devalue": "^4.3.2",
     "eslint": "^8.49.0",
-    "eslint-plugin-jsdoc": "^46.6.0",
+    "eslint-plugin-jsdoc": "^46.7.0",
     "jiti": "^1.20.0",
     "vitest": "^0.34.4"
   },
