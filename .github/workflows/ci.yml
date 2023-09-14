@@ -72,20 +72,20 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest]
         node: [18]
-        env: [dev, built]
-        transpile: [transpile]
-        compatibility: [compatibility]
-        resolve: [resolve]
-        builder: [vite, webpack]
+        env: ['dev', 'built']
+        transpile: ['transpile']
+        compatibility: ['compatibility']
+        resolve: ['resolve']
+        builder: ['vite', 'webpack']
         include:
-          - transpile: no-transpile
-            builder: vite
-            env: built
-          - compatibility: no-compatibility
-            builder: vite
-            env: built
-          - resolve: no-resolve
-            builder: webpack
+          - transpile: 'no-transpile'
+            builder: 'vite'
+            env: 'built'
+          - compatibility: 'no-compatibility'
+            builder: 'vite'
+            env: 'built'
+          - resolve: 'no-resolve'
+            builder: 'webpack'
 
     steps:
       - uses: actions/checkout@v4
