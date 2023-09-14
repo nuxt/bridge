@@ -88,6 +88,9 @@ jobs:
         node: [18]
         env: ['dev', 'built']
         builder: ['vite', 'webpack']
+        transpile: ['transpile']
+        compatibility: ['compatibility']
+        resolve: ['resolve']
         include:
           - transpile: 'resolve'
             builder: 'webpack'
