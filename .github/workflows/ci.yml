@@ -46,7 +46,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [16]
+        node: [20]
 
     steps:
       - uses: actions/checkout@v4
@@ -71,7 +71,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [16]
+        node: [18]
         env: [dev, built]
         transpile: [transpile]
         compatibility: [compatibility]
@@ -114,7 +114,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [16]
+        node: [18]
 
     steps:
       - uses: actions/checkout@v4
