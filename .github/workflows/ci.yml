@@ -24,19 +24,14 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [18]
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 18
           cache: "pnpm"
 
       - name: Install dependencies
@@ -52,22 +47,17 @@ jobs:
         uses: actions/cache@v3
         with:
           path: packages/*/dist
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-${{ github.sha }}
+          key: ubuntu-latest-node-v18-${{ github.sha }}
 
   lint:
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [20]
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 20
           cache: "pnpm"
 
       - name: Install dependencies
@@ -120,14 +110,13 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        node: [18]
 
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 18
           cache: "pnpm"
 
       - name: Install dependencies
@@ -149,19 +138,14 @@ jobs:
       - build
       - test-fixtures
       - test-unit
-    runs-on: ${{ matrix.os }}
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node: [18]
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable
       - uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: 18
           cache: "pnpm"
 
       - name: Install dependencies
@@ -171,7 +155,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: packages/*/dist
-          key: ${{ matrix.os }}-node-v${{ matrix.node }}-${{ github.sha }}
+          key: ubuntu-latest-node-v18-${{ github.sha }}
 
       - name: Release Edge
         run: ./scripts/release-edge.sh
