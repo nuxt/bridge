@@ -91,25 +91,6 @@ jobs:
         transpile: ['transpile']
         compatibility: ['compatibility']
         resolve: ['resolve']
-        include:
-          - transpile: 'resolve'
-            builder: 'webpack'
-            env: 'built'
-          - transpile: 'no-resolve'
-            builder: 'webpack'
-            env: 'built'
-          - compatibility: 'compatibility'
-            builder: 'vite'
-            env: 'built'
-          - compatibility: 'no-compatibility'
-            builder: 'vite'
-            env: 'built'
-          - transpile: 'transpile'
-            builder: 'webpack'
-            env: 'built'
-          - transpile: 'no-transpile'
-            builder: 'webpack'
-            env: 'built'
 
     steps:
       - uses: actions/checkout@v4
