@@ -93,8 +93,6 @@ jobs:
         resolve: ['resolve']
         include:
           - transpile: 'no-transpile'
-            builder: 'webpack'
-            env: 'built'
 
     steps:
       - uses: actions/checkout@v4
