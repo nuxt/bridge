@@ -83,11 +83,11 @@ jobs:
         exclude:
           - transpile: 'no-transpile'
             builder: 'vite'
-          - transpile: 'no-compatibility'
+          - compatibility: 'no-compatibility'
             builder: 'vite'
-          - transpile: 'no-resolve'
+          - resolve: 'no-resolve'
             builder: 'vite'
-          - transpile: 'no-compatibility'
+          - compatibility: 'no-compatibility'
             env: 'dev'
 
     steps:
