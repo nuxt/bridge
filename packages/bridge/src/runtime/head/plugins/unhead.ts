@@ -1,7 +1,8 @@
-import { createHead as createClientHead, createServerHead, Vue2ProvideUnheadPlugin } from '@unhead/vue'
+import { createHead as createClientHead, createServerHead } from '@unhead/vue'
 import { markRaw } from 'vue'
 import { renderSSRHead } from '@unhead/ssr'
 import { defineNuxtPlugin } from '../../app'
+import { UnheadPlugin } from './vue2-plugin'
 // @ts-ignore
 import metaConfig from '#build/meta.config.mjs'
 
@@ -10,8 +11,9 @@ export default defineNuxtPlugin((nuxtApp) => {
   const head = createHead()
   head.push(markRaw(metaConfig.globalMeta))
 
-  nuxtApp.vueApp.use(Vue2ProvideUnheadPlugin, head)
-  nuxtApp.vueApp.use(head)
+  // instead of $options.unhead
+  nuxtApp.provide('unhead', head)
+  nuxtApp.vueApp.use(UnheadPlugin)
 
   if (process.server) {
       nuxtApp.ssrContext!.renderMeta = async () => {
