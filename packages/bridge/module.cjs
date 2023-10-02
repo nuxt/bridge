@@ -41,13 +41,13 @@ module.exports.defineNuxtConfig = (config = {}) => {
     nuxtCtx.set(nuxt)
 
     // Mock new hookable methods
-    nuxt.removeHook = nuxt.clearHook.bind(nuxt)
-    nuxt.removeAllHooks = nuxt.clearHooks.bind(nuxt)
-    nuxt.hookOnce = (name, fn) => {
+    nuxt.removeHook ||= nuxt.clearHook.bind(nuxt)
+    nuxt.removeAllHooks ||= nuxt.clearHooks.bind(nuxt)
+    nuxt.hookOnce ||= (name, fn, ...hookArgs) => {
       const unsub = nuxt.hook(name, (...args) => {
         unsub()
         return fn(...args)
-      })
+      }, ...hookArgs)
       return unsub
     }
 
