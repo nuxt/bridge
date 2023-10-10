@@ -170,7 +170,7 @@ export default defineUntypedSchema({
   },
 
   /**
-   * @typeTODO {typeof import('../src/types/meta').AppHeadMetaObject}
+   * @type {typeof import('../src/types/head').AppHeadMetaObject}
    * @deprecated - use `head` instead
    */
   meta: {

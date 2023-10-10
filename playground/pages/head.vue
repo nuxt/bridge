@@ -3,9 +3,7 @@ import { Title, Meta } from '#build/components'
 
 export default defineNuxtComponent({
   components: {
-    // eslint-disable-next-line vue/no-reserved-component-names
     Title,
-    // eslint-disable-next-line vue/no-reserved-component-names
     Meta
   },
   head () {
