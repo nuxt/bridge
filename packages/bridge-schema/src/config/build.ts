@@ -13,7 +13,6 @@ export default defineUntypedSchema({
      * Suppresses most of the build output log.
      *
      * It is enabled by default when a CI or test environment is detected.
-     *
      * @see [std-env](https://github.com/unjs/std-env)
      */
     quiet: Boolean(isCI || isTest),
@@ -22,7 +21,6 @@ export default defineUntypedSchema({
      * Nuxt uses `webpack-bundle-analyzer` to visualize your bundles and how to optimize them.
      *
      * Set to `true` to enable bundle analysis, or pass an object with options: [for webpack](https://github.com/webpack-contrib/webpack-bundle-analyzer#options-for-plugin) or [for vite](https://github.com/btd/rollup-plugin-visualizer#options).
-     *
      * @example
      * ```js
      * analyze: {
@@ -49,7 +47,6 @@ export default defineUntypedSchema({
      * Enable the profiler in webpackbar.
      *
      * It is normally enabled by CLI argument `--profile`.
-     *
      * @see [webpackbar](https://github.com/unjs/webpackbar#profile)
      */
     profile: process.argv.includes('--profile'),
@@ -61,7 +58,6 @@ export default defineUntypedSchema({
      * Using [extract-css-chunks-webpack-plugin](https://github.com/faceyspacey/extract-css-chunks-webpack-plugin/) under the hood, your CSS will be extracted
      * into separate files, usually one per component. This allows caching your CSS and
      * JavaScript separately and is worth trying if you have a lot of global or shared CSS.
-     *
      * @example
      * ```js
      * export default {
@@ -118,7 +114,6 @@ export default defineUntypedSchema({
 
     /**
      * Enable [thread-loader](https://github.com/webpack-contrib/thread-loader#thread-loader) when building app with webpack.
-     *
      * @warning This is an unstable feature.
      */
     parallel: {
@@ -128,7 +123,6 @@ export default defineUntypedSchema({
     /**
      * Enable caching for [`terser-webpack-plugin`](https://github.com/webpack-contrib/terser-webpack-plugin#options)
      * and [`cache-loader`](https://github.com/webpack-contrib/cache-loader#cache-loader).
-     *
      * @warning This is an unstable feature.
      */
     cache: false,
@@ -137,7 +131,6 @@ export default defineUntypedSchema({
      * Inline server bundle dependencies.
      *
      * This mode bundles `node_modules` that are normally preserved as externals in the server build.
-     *
      * @warning Runtime dependencies (modules, `nuxt.config`, server middleware and the static directory) are not bundled.
      * This feature only disables use of [webpack-externals](https://webpack.js.org/configuration/externals/) for server-bundle.
      * @note You can enable standalone bundling by passing `--standalone` via the command line.
@@ -147,7 +140,6 @@ export default defineUntypedSchema({
 
     /**
      * If you are uploading your dist files to a CDN, you can set the publicPath to your CDN.
-     *
      * @note This is only applied in production.
      *
      * The value of this property at runtime will override the configuration of an app that
@@ -174,7 +166,6 @@ export default defineUntypedSchema({
      * Customize bundle filenames.
      *
      * To understand a bit more about the use of manifests, take a look at [this webpack documentation](https://webpack.js.org/guides/code-splitting/).
-     *
      * @note Be careful when using non-hashed based filenames in production
      * as most browsers will cache the asset and not detect the changes on first load.
      *
@@ -256,7 +247,6 @@ export default defineUntypedSchema({
 
     /**
      * Add webpack plugins.
-     *
      * @example
      * ```js
      * import webpack from 'webpack'
@@ -275,7 +265,6 @@ export default defineUntypedSchema({
      * Terser plugin options.
      *
      * Set to false to disable this plugin, or pass an object of options.
-     *
      * @see [terser-webpack-plugin documentation](https://github.com/webpack-contrib/terser-webpack-plugin)
      * @note Enabling sourcemap will leave `//# sourcemappingURL` linking comment at
      * the end of each output file if webpack `config.devtool` is set to `source-map`.
@@ -284,7 +273,6 @@ export default defineUntypedSchema({
 
     /**
      * Enables the [HardSourceWebpackPlugin](https://github.com/mzgoddard/hard-source-webpack-plugin) for improved caching.
-     *
      * @warning unstable
      */
     hardSource: false,
@@ -298,7 +286,6 @@ export default defineUntypedSchema({
      * OptimizeCSSAssets plugin options.
      *
      * Defaults to true when `extractCSS` is enabled.
-     *
      * @see [optimize-css-assets-webpack-plugin documentation](https://github.com/NMFR/optimize-css-assets-webpack-plugin).
      */
     optimizeCSS: {
@@ -345,7 +332,6 @@ export default defineUntypedSchema({
      *
      * See [babel-loader options](https://github.com/babel/babel-loader#options) and
      * [babel options](https://babeljs.io/docs/en/options).
-     *
      * @note `.babelrc` is ignored by default.
      */
     babel: {
@@ -361,7 +347,6 @@ export default defineUntypedSchema({
       plugins: [],
       /**
        * The Babel presets to be applied.
-       *
        * @note The presets configured here will be applied to both the client and the server
        * build. The target will be set by Nuxt accordingly (client/server). If you want to configure
        * the preset differently for the client or the server build, please use presets as a function.
@@ -435,7 +420,6 @@ export default defineUntypedSchema({
       /**
        * Configuration for the html-minifier plugin used to minify HTML files created
        * during the build process (will be applied for all modes).
-       *
        * @warning If you make changes, they won't be merged with the defaults!
        * @example
        * ```js
@@ -478,7 +462,6 @@ export default defineUntypedSchema({
      * You can provide your custom files to watch and regenerate after changes.
      *
      * This feature is especially useful for using with modules.
-     *
      * @example
      * ```js
       watch: ['~/.nuxt/support.js']

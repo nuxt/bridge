@@ -4,7 +4,6 @@ export default defineUntypedSchema({
   cli: {
     /**
      * Add a message to the CLI banner by adding a string to this array.
-     *
      * @type {string[]}
      */
     badgeMessages: [],

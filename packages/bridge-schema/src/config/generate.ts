@@ -22,7 +22,6 @@ export default defineUntypedSchema({
 
     /**
      * Set to `false` to disable creating a directory + `index.html` for each route.
-     *
      * @example
      * ```bash
      * # subFolders: true
@@ -53,7 +52,6 @@ export default defineUntypedSchema({
      * If unset or set to a falsy value, the name of the fallback HTML file will be `200.html`.
      * If set to `true`, the filename will be `404.html`.
      * If you provide a string as a value, it will be used instead.
-     *
      * @note Multiple services (e.g. Netlify) detect a `404.html` automatically. If
      * you configure your web server on your own, please consult its documentation
      * to find out how to set up an error page (and set it to the `404.html` file).

@@ -64,7 +64,6 @@ export default defineUntypedSchema({
        * using the cookie with application version.
        *
        * Assets will be joined together with `,` and passed as a single `Link` header.
-       *
        * @example
        * ```js
        * pushAssets: (req, res, publicPath, preloadFiles) =>
@@ -84,7 +83,6 @@ export default defineUntypedSchema({
     static: {
       /**
        * Whether to add the router base to your static assets.
-       *
        * @note some URL rewrites might not respect the prefix.
        * @example
        * Assets: favicon.ico
@@ -102,7 +100,6 @@ export default defineUntypedSchema({
      * for [compression middleware](https://www.npmjs.com/package/compression), or
      * use your own middleware by passing it in directly - for example,
      * `otherComp({ myOptions: 'example' })`.
-     *
      * @type {boolean | object | Function}
      */
     compressor: {
@@ -113,7 +110,6 @@ export default defineUntypedSchema({
      * To disable etag for pages set `etag: false`. See
      * [etag docs](https://github.com/jshttp/etag) for possible options.
      * You can use your own hash function by specifying etag.hash:
-     *
      * @example
      * ```js
      * import { murmurHash128 } from 'murmurhash-native'
@@ -148,7 +144,6 @@ export default defineUntypedSchema({
      * These settings are read by the Nuxt server directly from `nuxt.config`.
      * This means changes to these settings take effect when the server is restarted.
      * There is no need to rebuild the application to update CSP settings.
-     *
      * @example
      * ```js
      * export default {
@@ -221,7 +216,6 @@ export default defineUntypedSchema({
            * Whether to add `<meta http-equiv="Content-Security-Policy"/>` to the `<head>`.
            * This is independent of the `csp.policies` configuration and the complete set
            * of the defined policies will still be added to the HTTP response header.
-           *
            * @note CSP hashes will not be added as `<meta>` if `script-src` policy
            * contains 'unsafe-inline'. This is due to browsers ignoring 'unsafe-inline'
            * if hashes are present. (Set option `unsafeInlineCompatibility` to true to
@@ -256,7 +250,6 @@ export default defineUntypedSchema({
      * Configure fallback behavior for [`serve-placeholder` middleware](https://github.com/nuxt/serve-placeholder).
      *
      * Example of allowing `.js` extension for routing (for example, `/repos/nuxt.js`):
-     *
      * @example
      * ```js
      * export default {

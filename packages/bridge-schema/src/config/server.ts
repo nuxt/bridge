@@ -4,7 +4,6 @@ export default defineUntypedSchema({
   server: {
     /**
      * Whether to enable HTTPS.
-     *
      * @example
      * ```
      * import { fileURLToPath } from 'node:url'

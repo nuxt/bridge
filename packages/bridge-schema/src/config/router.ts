@@ -63,7 +63,6 @@ export default defineUntypedSchema({
 
     /**
      * You can pass a function to extend the routes created by Nuxt.
-     *
      * @example
      * ```js
      * import { fileURLToPath } from 'url'
@@ -86,7 +85,6 @@ export default defineUntypedSchema({
      * The `scrollBehavior` option lets you define a custom behavior for the scroll
      * position between the routes. This method is called every time a page is
      * rendered. To learn more about it, see the `vue-router` documentation.
-     *
      * @see [vue-router `scrollBehavior` documentation](https://router.vuejs.org/guide/advanced/scroll-behavior.html).
      */
     scrollBehavior: {
@@ -133,7 +131,6 @@ export default defineUntypedSchema({
     /**
      * If this option is set to `true`, trailing slashes will be appended to every
      * route. If set to `false`, they'll be removed.
-     *
      * @warning This option should not be set without preparation and has to
      * be tested thoroughly. When setting `trailingSlash` to something else than
      * `undefined`, the opposite route will stop working. Thus, 301 redirects should
