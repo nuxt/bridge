@@ -99,6 +99,9 @@ export default async (ctx, inject) => {
 
   const proxiedApp = new Proxy(nuxtApp, {
     get (target, prop) {
+      if (prop === '$store') {
+        return target.nuxt2Context.store
+      }
       if (prop[0] === '$') {
         return target.nuxt2Context[prop] || target.vue2App?.[prop]
       }

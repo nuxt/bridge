@@ -121,6 +121,11 @@ describe('legacy capi', () => {
     expect(html).toMatch(/([\s\S]*✅){11}/)
     await expectNoClientErrors('/legacy-capi')
   })
+
+  it('should be changed store.state', async () => {
+    const html = await $fetch('/legacy-capi')
+    expect(html).toContain('<tr><td><b>useStore</b></td><td> ✅</td></tr>')
+  })
 })
 
 describe('errors', () => {
@@ -188,6 +193,13 @@ describe('middleware', () => {
     const html = await $fetch('/add-route-middleware')
 
     expect(html).toContain('Navigated successfully')
+  })
+})
+
+describe('store', () => {
+  it('should be able to access $store in plugins', async () => {
+    const html = await $fetch('/store')
+    expect(html).toContain('state is: ✅')
   })
 })
 
