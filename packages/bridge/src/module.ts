@@ -12,6 +12,7 @@ import { setupTypescript } from './typescript'
 import { setupMeta } from './meta'
 import { setupTranspile } from './transpile'
 import { generateWebpackBuildManifest } from './webpack/manifest'
+import pageMetaModule from './page-meta/module'
 
 export default defineNuxtModule({
   meta: {
@@ -29,7 +30,8 @@ export default defineNuxtModule({
     compatibility: true,
     meta: null,
     typescript: true,
-    resolve: true
+    resolve: true,
+    macros: false
   } as BridgeConfig,
   async setup (opts, nuxt) {
     // Disable if users explicitly set to false
@@ -70,6 +72,15 @@ export default defineNuxtModule({
         throw new Error('[bridge] Cannot enable composition-api with app disabled!')
       }
       await setupCAPIBridge(opts.capi === true ? {} : opts.capi)
+    }
+
+    if (opts.macros && opts.macros.pageMeta) {
+      // @ts-expect-error TODO: legacy module container usage
+      nuxt.hook('modules:done', moduleContainer =>
+        installModule(
+          pageMetaModule.bind(moduleContainer)
+        )
+      )
     }
 
     // Deprecate hooks
