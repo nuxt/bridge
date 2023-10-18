@@ -203,6 +203,15 @@ describe('store', () => {
   })
 })
 
+describe('layouts', () => {
+  it('should apply custom layout', async () => {
+    const html = await $fetch('/with-layout')
+
+    expect(html).toContain('with-layout.vue')
+    expect(html).toContain('Custom Layout:')
+  })
+})
+
 describe('nitro plugins', () => {
   it('should prepend a node to the rendered template', async () => {
     const html = await $fetch('/nitro/template-plugin')
