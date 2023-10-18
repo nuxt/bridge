@@ -88,34 +88,30 @@ export const PageMetaPlugin = createUnplugin(
                 return
               }
 
-              const declaration = _node as ExportDefaultDeclaration & {
+              const exportDeclaration = _node as (
+                | ExportDefaultDeclaration
+                | VariableDeclaration
+              ) & {
                 start: number;
                 end: number;
               }
 
-              const callexprettison = getCallExpression(declaration)
-              if (
-                callexprettison.type !== 'CallExpression' ||
-                (callexprettison as CallExpression).callee.type !== 'Identifier'
-              ) {
+              const declaration = getDeclaration(exportDeclaration)
+
+              const objectExpression = getObjectExpression(declaration)
+
+              if (!objectExpression) {
                 return
               }
 
-              const node = callexprettison as CallExpression & {
-                start: number;
-                end: number;
-              }
-              const name = 'name' in node.callee && node.callee.name
-
-              if (!name.includes('defineComponent')) {
-                return
-              }
-
-              const properties = (node.arguments[0] as ObjectExpression)
-                .properties as (Property & {
+              const properties = objectExpression.properties as (Property & {
                 start: number;
                 end: number;
               })[]
+
+              if (!properties) {
+                return
+              }
 
               const setupNode = properties.find(
                 node =>
@@ -159,7 +155,7 @@ export const PageMetaPlugin = createUnplugin(
                 }
               })
 
-              s.prependLeft(declaration.start, contents)
+              s.prependLeft(exportDeclaration.start, contents)
 
               if (code.includes('__nuxt_page_meta')) {
                 return
@@ -176,13 +172,35 @@ export const PageMetaPlugin = createUnplugin(
   }
 )
 
-function getCallExpression (
-  node: ExportDefaultDeclaration | VariableDeclaration
-) {
+function getDeclaration (node: ExportDefaultDeclaration | VariableDeclaration) {
   if (node.type === 'ExportDefaultDeclaration') {
     return node.declaration
   }
   return node.declarations[0].init
+}
+
+function getObjectExpression (node: Node) {
+  // js and webpack
+  if (node.type === 'ObjectExpression') {
+    return node
+  }
+
+  // ts and webpack
+  if (node.type === 'CallExpression') {
+    return node.arguments[0] as ObjectExpression
+  }
+
+  if (node.type === 'VariableDeclarator') {
+    // js and vite
+    if (node.init.type === 'ObjectExpression') {
+      return node.init
+    }
+
+    // ts and vite
+    if (node.init.type === 'CallExpression') {
+      return node.init.arguments[0] as ObjectExpression
+    }
+  }
 }
 
 function parseMacroQuery (id: string) {
