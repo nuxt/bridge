@@ -15,12 +15,12 @@
     "prepack": "unbuild"
   },
   "devDependencies": {
-    "@types/lodash.template": "^4.5.1",
+    "@types/lodash.template": "^4.5.2",
     "@types/semver": "^7.5.3",
     "@unhead/schema": "^1.7.5",
     "nitropack": "^2.6.3",
     "unbuild": "latest",
-    "vite": "~4.4.11"
+    "vite": "~4.5.0"
   },
   "dependencies": {
     "c12": "^1.4.2",
