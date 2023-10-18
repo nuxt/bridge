@@ -74,10 +74,10 @@ importers:
         version: 1.7.4(vue@2.7.14)
       '@vitejs/plugin-legacy':
         specifier: ^4.1.1
-        version: 4.1.1(terser@5.21.0)(vite@4.4.11)
+        version: 4.1.1(terser@5.22.0)(vite@4.5.0)
       '@vitejs/plugin-vue2':
         specifier: ^2.2.0
-        version: 2.2.0(vite@4.4.11)(vue@2.7.14)
+        version: 2.2.0(vite@4.5.0)(vue@2.7.14)
       acorn:
         specifier: ^8.10.0
         version: 8.10.0
@@ -175,8 +175,8 @@ importers:
         specifier: ^3.4.3
         version: 3.4.3
       terser:
-        specifier: ^5.21.0
-        version: 5.21.0
+        specifier: ^5.22.0
+        version: 5.22.0
       ufo:
         specifier: ^1.3.1
         version: 1.3.1
@@ -193,11 +193,11 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       vite:
-        specifier: ~4.4.11
-        version: 4.4.11(terser@5.21.0)
+        specifier: ~4.5.0
+        version: 4.5.0(terser@5.22.0)
       vite-node:
         specifier: ^0.34.6
-        version: 0.34.6(terser@5.21.0)
+        version: 0.34.6(terser@5.22.0)
       vue-bundle-renderer:
         specifier: ^2.0.0
         version: 2.0.0
@@ -215,8 +215,8 @@ importers:
         specifier: ^9.0.13
         version: 9.0.13
       '@types/hash-sum':
-        specifier: ^1.0.0
-        version: 1.0.0
+        specifier: ^1.0.1
+        version: 1.0.1
       '@types/node-fetch':
         specifier: ^3.0.2
         version: 3.0.2
@@ -276,8 +276,8 @@ importers:
         version: 1.4.0
     devDependencies:
       '@types/lodash.template':
-        specifier: ^4.5.1
-        version: 4.5.1
+        specifier: ^4.5.2
+        version: 4.5.2
       '@types/semver':
         specifier: ^7.5.3
         version: 7.5.3
@@ -288,8 +288,8 @@ importers:
         specifier: ^2.6.3
         version: 2.6.3
       vite:
-        specifier: ~4.4.11
-        version: 4.4.11(@types/node@20.3.1)
+        specifier: ~4.5.0
+        version: 4.5.0(@types/node@20.3.1)
 
   playground:
     devDependencies:
@@ -3423,7 +3423,7 @@ packages:
       rollup: 3.29.0
       serialize-javascript: 6.0.1
       smob: 1.1.1
-      terser: 5.21.0
+      terser: 5.22.0
 
   /@rollup/plugin-wasm@6.1.3(rollup@3.29.0):
     resolution: {integrity: sha512-7ItTTeyauE6lwdDtQWceEHZ9+txbi4RRy0mYPFn9BW7rD7YdgBDu7HTHsLtHrRzJc313RM/1m6GKgV3np/aEaw==}
@@ -3612,8 +3612,8 @@ packages:
       '@types/node': 20.3.1
     dev: true
 
-  /@types/hash-sum@1.0.0:
-    resolution: {integrity: sha512-FdLBT93h3kcZ586Aee66HPCVJ6qvxVjBlDWNmxSGSbCZe9hTsjRKdSsl4y1T+3zfujxo9auykQMnFsfyHWD7wg==}
+  /@types/hash-sum@1.0.1:
+    resolution: {integrity: sha512-5JLywbPgWZVgxhAV//qTU6LPurKfQeiyw20GKZMi9V7AjHnAP4t1eNCJ1mC2L4TAicuS71MVoFYVcEM+EiR4lg==}
     dev: true
 
   /@types/html-minifier-terser@5.1.2:
@@ -3651,8 +3651,8 @@ packages:
     resolution: {integrity: sha512-1YXyYH83h6We1djyoUEqTlVyQtCfJAFXELSKW2ZRtjHD4hQ82CC4lvrv5D0l0FLcKBaiPbXyi3MpMsI9ZRgKsw==}
     dev: true
 
-  /@types/lodash.template@4.5.1:
-    resolution: {integrity: sha512-0y71S2dGgmwdkSsyW95JBp8HSZchgKCsjr6F0lsT3eSMtaT3Nn9rcMHU1U4UKu6XjQT3YC6/PNwgFI7k9f+ltw==}
+  /@types/lodash.template@4.5.2:
+    resolution: {integrity: sha512-9V69JSviqXywQC9O/vZ5WjO4kmcol55t+pZDcsrKXkO4D5rGdF2/J0Ke2iChq689xIRoVGWXTQ8DGh9Lbg/UVg==}
     dependencies:
       '@types/lodash': 4.14.194
     dev: true
@@ -3983,7 +3983,7 @@ packages:
       - encoding
       - supports-color
 
-  /@vitejs/plugin-legacy@4.1.1(terser@5.21.0)(vite@4.4.11):
+  /@vitejs/plugin-legacy@4.1.1(terser@5.22.0)(vite@4.5.0):
     resolution: {integrity: sha512-um3gbVouD2Q/g19C0qpDfHwveXDCAHzs8OC3e9g6aXpKoD1H14himgs7wkMnhAynBJy7QqUoZNAXDuqN8zLR2g==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
@@ -3997,20 +3997,20 @@ packages:
       magic-string: 0.30.5
       regenerator-runtime: 0.13.11
       systemjs: 6.14.1
-      terser: 5.21.0
-      vite: 4.4.11(terser@5.21.0)
+      terser: 5.22.0
+      vite: 4.5.0(terser@5.22.0)
     transitivePeerDependencies:
       - supports-color
     dev: false
 
-  /@vitejs/plugin-vue2@2.2.0(vite@4.4.11)(vue@2.7.14):
+  /@vitejs/plugin-vue2@2.2.0(vite@4.5.0)(vue@2.7.14):
     resolution: {integrity: sha512-1km7zEuZ/9QRPvzXSjikbTYGQPG86Mq1baktpC4sXqsXlb02HQKfi+fl8qVS703JM7cgm24Ga9j+RwKmvFn90A==}
     engines: {node: ^14.18.0 || >= 16.0.0}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0
       vue: ^2.7.0-0
     dependencies:
-      vite: 4.4.11(terser@5.21.0)
+      vite: 4.5.0(terser@5.22.0)
       vue: 2.7.14
     dev: false
 
@@ -12370,7 +12370,7 @@ packages:
       schema-utils: 3.3.0
       serialize-javascript: 5.0.1
       source-map: 0.6.1
-      terser: 5.21.0
+      terser: 5.22.0
       webpack: 4.46.0
       webpack-sources: 1.4.3
     transitivePeerDependencies:
@@ -12397,7 +12397,7 @@ packages:
       jest-worker: 27.5.1
       schema-utils: 3.3.0
       serialize-javascript: 6.0.1
-      terser: 5.21.0
+      terser: 5.22.0
       webpack: 5.87.0
     dev: false
 
@@ -12412,8 +12412,8 @@ packages:
       source-map-support: 0.5.21
     dev: true
 
-  /terser@5.21.0:
-    resolution: {integrity: sha512-WtnFKrxu9kaoXuiZFSGrcAvvBqAdmKx0SFNmVNYdJamMu9yyN3I/QF0FbH4QcqJQ+y1CJnzxGIKH0cSj+FGYRw==}
+  /terser@5.22.0:
+    resolution: {integrity: sha512-hHZVLgRA2z4NWcN6aS5rQDc+7Dcy58HOf2zbYwmFcQ+ua3h6eEFf5lIDKTzbWwlazPyOZsFQO8V80/IjVNExEw==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
@@ -13087,7 +13087,7 @@ packages:
       mlly: 1.4.2
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.11(@types/node@20.3.1)
+      vite: 4.5.0(@types/node@20.3.1)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -13099,7 +13099,7 @@ packages:
       - terser
     dev: true
 
-  /vite-node@0.34.6(terser@5.21.0):
+  /vite-node@0.34.6(terser@5.22.0):
     resolution: {integrity: sha512-nlBMJ9x6n7/Amaz6F3zJ97EBwR2FkzhBRxF5e+jE6LA3yi6Wtc2lyTij1OnDMIr34v5g/tVQtsVAzhT0jc5ygA==}
     engines: {node: '>=v14.18.0'}
     hasBin: true
@@ -13109,7 +13109,7 @@ packages:
       mlly: 1.4.2
       pathe: 1.1.1
       picocolors: 1.0.0
-      vite: 4.4.11(terser@5.21.0)
+      vite: 4.5.0(terser@5.22.0)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -13121,8 +13121,8 @@ packages:
       - terser
     dev: false
 
-  /vite@4.4.11(@types/node@20.3.1):
-    resolution: {integrity: sha512-ksNZJlkcU9b0lBwAGZGGaZHCMqHsc8OpgtoYhsQ4/I2v5cnpmmmqe5pM4nv/4Hn6G/2GhTdj0DhZh2e+Er1q5A==}
+  /vite@4.5.0(@types/node@20.3.1):
+    resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -13157,8 +13157,8 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite@4.4.11(terser@5.21.0):
-    resolution: {integrity: sha512-ksNZJlkcU9b0lBwAGZGGaZHCMqHsc8OpgtoYhsQ4/I2v5cnpmmmqe5pM4nv/4Hn6G/2GhTdj0DhZh2e+Er1q5A==}
+  /vite@4.5.0(terser@5.22.0):
+    resolution: {integrity: sha512-ulr8rNLA6rkyFAlVWw2q5YJ91v098AFQ2R0PRFwPzREXOUJQPtFUG0t+/ZikhaOCDqFoDhN6/v8Sq0o4araFAw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -13188,7 +13188,7 @@ packages:
       esbuild: 0.18.20
       postcss: 8.4.31
       rollup: 3.29.0
-      terser: 5.21.0
+      terser: 5.22.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: false
@@ -13245,7 +13245,7 @@ packages:
       strip-literal: 1.3.0
       tinybench: 2.5.0
       tinypool: 0.7.0
-      vite: 4.4.11(@types/node@20.3.1)
+      vite: 4.5.0(@types/node@20.3.1)
       vite-node: 0.34.6(@types/node@20.3.1)
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
