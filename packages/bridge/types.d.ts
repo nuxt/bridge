@@ -41,6 +41,9 @@ export interface BridgeConfig {
   resolve: boolean
   typescript: boolean
   meta: boolean | null
+  macros: false | {
+    pageMeta: boolean
+  }
 }
 
 export interface NuxtConfig extends Nuxt2Config, Omit<_NuxtConfig, keyof Nuxt2Config> {
