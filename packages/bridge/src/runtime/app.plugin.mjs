@@ -1,6 +1,7 @@
 import Vue, { version } from 'vue'
 import { createHooks } from 'hookable'
 import { callWithNuxt, setNuxtAppInstance } from '#app'
+import { globalMiddleware } from '#build/global-middleware'
 
 // Reshape payload to match key `useLazyAsyncData` expects
 function proxiedState (state) {
@@ -58,8 +59,9 @@ export default async (ctx, inject) => {
   nuxtApp.callHook = nuxtApp.hooks.callHook
 
   const middleware = await import('#build/middleware').then(r => r.default)
+
   nuxtApp._middleware = nuxtApp._middleware || {
-    global: [],
+    global: globalMiddleware,
     named: middleware
   }
 
@@ -67,7 +69,7 @@ export default async (ctx, inject) => {
     nuxtApp._processingMiddleware = true
 
     for (const middleware of nuxtApp._middleware.global) {
-      const result = await callWithNuxt(nuxtApp, middleware, [to, from])
+      const result = await middleware(ctx)
       if (result || result === false) { return next(result) }
     }
 
