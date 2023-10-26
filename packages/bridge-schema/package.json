@@ -1,6 +1,6 @@
 {
   "name": "@nuxt/bridge-schema",
-  "version": "3.0.0-rc.1",
+  "version": "3.0.0-rc.2",
   "repository": "nuxt/bridge",
   "license": "MIT",
   "type": "module",
