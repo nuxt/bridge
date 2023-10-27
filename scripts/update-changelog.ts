@@ -35,7 +35,7 @@ async function main () {
   }
 
   // Get the current PR for this release, if it exists
-  const [currentPR] = await $fetch(`https://api.github.com/repos/nuxt/bridge/pulls?head=main:v${newVersion}`)
+  const [currentPR] = await $fetch(`https://api.github.com/repos/nuxt/bridge/pulls?head=bridge:v${newVersion}`)
 
   const releaseNotes = [
     currentPR?.body.replace(/## 👉 Changelog[\s\S]*$/, '') || `> ${newVersion} is the next ${bumpType} release.\n>\n> **Timetable**: to be announced.`,
