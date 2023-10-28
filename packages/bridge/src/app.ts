@@ -5,6 +5,7 @@ import { resolveImports } from 'mlly'
 import { componentsTypeTemplate, schemaTemplate, middlewareTypeTemplate } from './type-templates'
 import { distDir } from './dirs'
 import { VueCompat } from './vue-compat'
+import { globalMiddlewareTemplate } from './global-middleware-template'
 
 export async function setupAppBridge (_options: any) {
   const nuxt = useNuxt()
@@ -101,6 +102,8 @@ export async function setupAppBridge (_options: any) {
       return contents
     }
   })
+
+  addTemplate(globalMiddlewareTemplate)
 
   // Alias vue3 utilities to vue2
   const { dst: vueCompat } = addTemplate({ src: resolve(distDir, 'runtime/vue2-bridge.mjs') })

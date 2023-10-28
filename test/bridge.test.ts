@@ -168,11 +168,19 @@ describe('middleware', () => {
   })
 
   it('should redirect to navigation-target', async () => {
-    const html = await $fetch('/redirect')
+    const html = await $fetch('/redirect/')
 
     expect(html).toContain('Navigated successfully')
   })
 
+  it('should redirect to navigation-target', async () => {
+    const html = await $fetch('/add-route-middleware')
+
+    expect(html).toContain('Navigated successfully')
+  })
+})
+
+describe('navigate', () => {
   it('should not overwrite headers', async () => {
     const { headers, status } = await fetch('/navigate-to-external', { redirect: 'manual' })
 
@@ -189,10 +197,17 @@ describe('middleware', () => {
     expect(res.status).toEqual(401)
   })
 
-  it('should redirect to navigation-target', async () => {
-    const html = await $fetch('/add-route-middleware')
+  it('respects redirects + headers in middleware', async () => {
+    const res = await fetch('/navigate-some-path/', { redirect: 'manual', headers: { 'trailing-slash': 'true' } })
+    expect(res.headers.get('location')).toEqual('/navigate-some-path')
+    expect(res.status).toEqual(307)
+    expect(await res.text()).toMatchInlineSnapshot('"<!DOCTYPE html><html><head><meta http-equiv=\\"refresh\\" content=\\"0; url=/navigate-some-path\\"></head></html>"')
+  })
 
-    expect(html).toContain('Navigated successfully')
+  it('supports directly aborting navigation on SSR', async () => {
+    const { status } = await fetch('/navigate-to-false', { redirect: 'manual' })
+
+    expect(status).toEqual(404)
   })
 })
 
