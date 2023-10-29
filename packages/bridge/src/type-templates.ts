@@ -1,5 +1,5 @@
 import { isAbsolute, relative, join, resolve } from 'pathe'
-import type { Component, Nuxt, NuxtApp } from '@nuxt/schema'
+import type { Component, Nuxt, NuxtApp, NuxtTemplate } from '@nuxt/schema'
 import { genDynamicImport, genString } from 'knitwork'
 
 import { resolveSchema, generateTypes } from 'untyped'
@@ -54,7 +54,7 @@ export const middlewareTypeTemplate = {
 }
 
 const adHocModules = ['router', 'pages', 'auto-imports', 'meta', 'components']
-export const schemaTemplate = {
+export const schemaTemplate: NuxtTemplate<TemplateContext> = {
   filename: 'types/schema.d.ts',
   getContents: async ({ nuxt }) => {
     const moduleInfo = nuxt.options._installedModules.map(m => ({
