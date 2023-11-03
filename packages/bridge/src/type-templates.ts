@@ -1,6 +1,7 @@
 import { isAbsolute, relative, join, resolve } from 'pathe'
 import type { Component, Nuxt, NuxtApp, NuxtTemplate } from '@nuxt/schema'
 import { genDynamicImport, genString } from 'knitwork'
+import { defu } from 'defu'
 
 import { resolveSchema, generateTypes } from 'untyped'
 
@@ -66,6 +67,60 @@ export const schemaTemplate: NuxtTemplate<TemplateContext> = {
     const getImportName = (name: string) => (name.startsWith('.') ? './' + join(relativeRoot, name) : name).replace(/\.\w+$/, '')
     const modules = moduleInfo.map(meta => [genString(meta.configKey), getImportName(meta.importName)])
 
+    // @ts-ignore
+    const nitroEnabled = nuxt.options.bridge?.nitro !== false
+    // For nitro-less build we mirror the runtime config generation to the schema
+    // https://github.com/nuxt/nuxt/blob/5eb1b32f62a0ad92bfa6f37641489c35caa4b791/packages/vue-renderer/src/renderer.js#L300
+
+    // @ts-ignore
+    const runtimeConfigs = nitroEnabled
+      ? {
+          private: Object.fromEntries(Object.entries(nuxt.options.runtimeConfig).filter(([key]) => key !== 'public')),
+          public: nuxt.options.runtimeConfig.public
+        }
+
+      : {
+          // @ts-ignore
+          private: defu(nuxt.options.privateRuntimeConfig, nuxt.options.publicRuntimeConfig),
+          // @ts-ignore
+          public: nuxt.options.publicRuntimeConfig
+        }
+
+    const generatedPrivateTypes = generateTypes(await resolveSchema(runtimeConfigs.private as Record<string, JSValue>),
+      {
+        interfaceName: 'RuntimeConfig',
+        addExport: false,
+        addDefaults: false,
+        allowExtraKeys: false,
+        indentation: 2
+      })
+    const generatedPublicTypes = generateTypes(await resolveSchema(runtimeConfigs.public as Record<string, JSValue>),
+      {
+        interfaceName: 'PublicRuntimeConfig',
+        addExport: false,
+        addDefaults: false,
+        allowExtraKeys: false,
+        indentation: 2
+      })
+
+    const vueTypesConfig = nitroEnabled
+      ? ['declare module \'vue/types/vue\' {',
+          generatedPrivateTypes,
+          '  interface Vue {',
+          '    $config: Omit<RuntimeConfig & { public: PublicRuntimeConfig }, \'_app\'>',
+          '  }',
+          '}'
+        ].join('\n')
+      : [
+          'declare module \'vue/types/vue\' {',
+          generatedPrivateTypes,
+          generatedPublicTypes,
+          '  interface Vue {',
+          '    $config: Omit<RuntimeConfig, \'public\'>',
+          '  }',
+          '}'
+        ].join('\n')
+
     return [
       "import { NuxtModule, RuntimeConfig } from '@nuxt/schema'",
       "declare module '@nuxt/schema' {",
@@ -75,28 +130,10 @@ export const schemaTemplate: NuxtTemplate<TemplateContext> = {
       ),
       modules.length > 0 ? `    modules?: (undefined | null | false | NuxtModule | string | [NuxtModule | string, Record<string, any>] | ${modules.map(([configKey, importName]) => `[${genString(importName)}, Exclude<NuxtConfig[${configKey}], boolean>]`).join(' | ')})[],` : '',
       '  }',
-      generateTypes(await resolveSchema(Object.fromEntries(Object.entries(nuxt.options.runtimeConfig).filter(([key]) => key !== 'public')) as Record<string, JSValue>),
-        {
-          interfaceName: 'RuntimeConfig',
-          addExport: false,
-          addDefaults: false,
-          allowExtraKeys: false,
-          indentation: 2
-        }),
-      generateTypes(await resolveSchema(nuxt.options.runtimeConfig.public as Record<string, JSValue>),
-        {
-          interfaceName: 'PublicRuntimeConfig',
-          addExport: false,
-          addDefaults: false,
-          allowExtraKeys: false,
-          indentation: 2
-        }),
+      generatedPrivateTypes,
+      generatedPublicTypes,
       '}',
-      `declare module 'vue' {
-        interface ComponentCustomProperties {
-          $config: RuntimeConfig
-        }
-      }`
+      vueTypesConfig
     ].join('\n')
   }
 }
