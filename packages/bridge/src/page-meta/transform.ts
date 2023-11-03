@@ -114,7 +114,7 @@ export const PageMetaPlugin = createUnplugin(
               }
 
               const setupNode = properties.find(
-                node =>
+                node => node.key &&
                   node.key.type === 'Identifier' && node.key.name === 'setup'
               )
 
