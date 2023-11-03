@@ -121,6 +121,18 @@ export const schemaTemplate: NuxtTemplate<TemplateContext> = {
           '}'
         ].join('\n')
 
+    const bridgeSchemaConfig = [
+      'declare module \'@nuxt/bridge-schema\' {',
+      '  interface NuxtApp {',
+      '    $config: RuntimeConfig',
+      '  }',
+      '  interface NuxtAppCompat {',
+      '    $config: RuntimeConfig',
+      '  }',
+      '  interface NuxtRuntimeConfig extends RuntimeConfig {}',
+      '}'
+    ].join('\n')
+
     return [
       "import { NuxtModule, RuntimeConfig } from '@nuxt/schema'",
       "declare module '@nuxt/schema' {",
@@ -133,7 +145,8 @@ export const schemaTemplate: NuxtTemplate<TemplateContext> = {
       generatedPrivateTypes,
       generatedPublicTypes,
       '}',
-      vueTypesConfig
+      vueTypesConfig,
+      bridgeSchemaConfig
     ].join('\n')
   }
 }
