@@ -107,7 +107,7 @@ export const schemaTemplate: NuxtTemplate<TemplateContext> = {
       ? ['declare module \'vue/types/vue\' {',
           generatedPrivateTypes,
           '  interface Vue {',
-          '    $config: Omit<RuntimeConfig & { public: PublicRuntimeConfig }, \'_app\'>',
+          '    $config: RuntimeConfig & { public: PublicRuntimeConfig }',
           '  }',
           '}'
         ].join('\n')
