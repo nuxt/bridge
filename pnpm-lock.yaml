@@ -218,8 +218,8 @@ importers:
         specifier: ^9.0.13
         version: 9.0.13
       '@types/hash-sum':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
       '@types/node-fetch':
         specifier: ^3.0.2
         version: 3.0.2
@@ -279,8 +279,8 @@ importers:
         version: 1.4.0
     devDependencies:
       '@types/lodash.template':
-        specifier: ^4.5.2
-        version: 4.5.2
+        specifier: ^4.5.3
+        version: 4.5.3
       '@types/semver':
         specifier: ^7.5.4
         version: 7.5.4
@@ -3413,8 +3413,8 @@ packages:
       '@types/node': 20.8.9
     dev: true
 
-  /@types/hash-sum@1.0.1:
-    resolution: {integrity: sha512-5JLywbPgWZVgxhAV//qTU6LPurKfQeiyw20GKZMi9V7AjHnAP4t1eNCJ1mC2L4TAicuS71MVoFYVcEM+EiR4lg==}
+  /@types/hash-sum@1.0.2:
+    resolution: {integrity: sha512-UP28RddqY8xcU0SCEp9YKutQICXpaAq9N8U2klqF5hegGha7KzTOL8EdhIIV3bOSGBzjEpN9bU/d+nNZBdJYVw==}
     dev: true
 
   /@types/html-minifier-terser@5.1.2:
@@ -3449,8 +3449,8 @@ packages:
     resolution: {integrity: sha512-OdhItUN0/Cx9+sWumdb3dxASoA0yStnZahvKcaSQmSR5qd7hZ6zhSriSQGUU3F8GkzFpIILKzut4xn9/GvhusA==}
     dev: true
 
-  /@types/lodash.template@4.5.2:
-    resolution: {integrity: sha512-9V69JSviqXywQC9O/vZ5WjO4kmcol55t+pZDcsrKXkO4D5rGdF2/J0Ke2iChq689xIRoVGWXTQ8DGh9Lbg/UVg==}
+  /@types/lodash.template@4.5.3:
+    resolution: {integrity: sha512-Mo0UYKLu1oXgkV9TVoXZLlXXjyIXlW7ZQRxi/4gQJmzJr63dmicE8gG0OkPjYTKBrBic852q0JzqrtNUWLBIyA==}
     dependencies:
       '@types/lodash': 4.14.194
     dev: true
