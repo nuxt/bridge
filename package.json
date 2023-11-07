@@ -1,7 +1,9 @@
 {
   "private": true,
-  "version": "3.0.0-rc.1",
-  "repository": "nuxt/bridge",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxt/bridge.git"
+  },
   "license": "MIT",
   "scripts": {
     "build": "FORCE_COLOR=1 pnpm --filter './packages/**' prepack",

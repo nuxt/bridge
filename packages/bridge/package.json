@@ -1,7 +1,10 @@
 {
   "name": "@nuxt/bridge",
   "version": "3.0.0-rc.3",
-  "repository": "nuxt/bridge",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxt/bridge.git"
+  },
   "license": "MIT",
   "type": "module",
   "main": "./module.cjs",
@@ -13,7 +16,7 @@
     "dist"
   ],
   "bin": {
-    "nuxt2": "./bin/nuxt2.cjs"
+    "nuxt2": "bin/nuxt2.cjs"
   },
   "scripts": {
     "build": "pnpm prepack",
