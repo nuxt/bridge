@@ -1,6 +1,6 @@
 import { onGlobalSetup, ref } from '@nuxtjs/composition-api'
 
-import { defineNuxtPlugin, addRouteMiddleware, navigateTo } from '#app'
+import { defineNuxtPlugin, addRouteMiddleware, navigateTo } from '#imports'
 
 export default defineNuxtPlugin(() => {
   const globalsetup = ref('🚧')
