@@ -98,6 +98,10 @@ export const PageMetaPlugin = createUnplugin(
 
               const declaration = getDeclaration(exportDeclaration)
 
+              if (!declaration) {
+                return
+              }
+
               const objectExpression = getObjectExpression(declaration)
 
               if (!objectExpression) {
