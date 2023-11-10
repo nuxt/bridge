@@ -10,7 +10,7 @@ export const commonPresets: InlinePreset[] = [
   }),
   // vue-demi (mocked)
   defineUnimportPreset({
-    from: '#app',
+    from: '#app/app',
     imports: [
       'isVue2',
       'isVue3'
@@ -18,35 +18,36 @@ export const commonPresets: InlinePreset[] = [
   })
 ]
 
-export const appPreset = defineUnimportPreset({
-  from: '#app',
-  imports: [
-    'useLazyAsyncData',
-    'refreshNuxtData',
-    'defineNuxtComponent',
-    'useNuxtApp',
-    'defineNuxtPlugin',
-    'useRuntimeConfig',
-    'useState',
-    'useLazyFetch',
-    'useCookie',
-    'useRequestHeaders',
-    'useRequestEvent',
-    'useRouter',
-    'useRoute',
-    'defineNuxtRouteMiddleware',
-    'navigateTo',
-    'abortNavigation',
-    'addRouteMiddleware',
-    'useNuxt2Meta',
-    'clearError',
-    'createError',
-    'isNuxtError',
-    'throwError',
-    'showError',
-    'useError'
-  ]
-})
+const granularAppPresets: InlinePreset[] = [
+  {
+    imports: ['defineNuxtComponent', 'setNuxtAppInstance', 'useNuxtApp', 'defineNuxtPlugin'],
+    from: '#app/app'
+  },
+  {
+    imports: ['useRuntimeConfig', 'useNuxt2Meta', 'useRoute', 'useRouter', 'useState', 'abortNavigation', 'addRouteMiddleware', 'defineNuxtRouteMiddleware', 'navigateTo'],
+    from: '#app/composables'
+  },
+  {
+    imports: ['useLazyAsyncData', 'refreshNuxtData'],
+    from: '#app/asyncData'
+  },
+  {
+    imports: ['clearError', 'createError', 'isNuxtError', 'showError', 'useError', 'throwError'],
+    from: '#app/error'
+  },
+  {
+    imports: ['useLazyFetch'],
+    from: '#app/fetch'
+  },
+  {
+    imports: ['useCookie'],
+    from: '#app/cookie'
+  },
+  {
+    imports: ['useRequestHeaders', 'useRequestEvent'],
+    from: '#app/ssr'
+  }
+]
 
 export const vueKeys: Array<keyof typeof import('vue')> = [
   // Lifecycle
@@ -125,7 +126,7 @@ const vueRouterPreset = defineUnimportPreset({
 
 export const defaultPresets = [
   ...commonPresets,
-  appPreset,
+  ...granularAppPresets,
   vueRouterPreset,
   vuePreset
 ]
