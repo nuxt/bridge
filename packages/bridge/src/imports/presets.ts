@@ -28,8 +28,12 @@ const granularAppPresets: InlinePreset[] = [
     from: '#app/composables/component'
   },
   {
-    imports: ['useRoute', 'useRouter', 'useState', 'abortNavigation', 'addRouteMiddleware', 'defineNuxtRouteMiddleware', 'navigateTo'],
-    from: '#app/composables'
+    imports: ['useRoute', 'useRouter', 'abortNavigation', 'addRouteMiddleware', 'defineNuxtRouteMiddleware', 'navigateTo'],
+    from: '#app/composables/router'
+  },
+  {
+    imports: ['useState'],
+    from: '#app/composables/state'
   },
   {
     imports: ['useLazyAsyncData', 'refreshNuxtData'],

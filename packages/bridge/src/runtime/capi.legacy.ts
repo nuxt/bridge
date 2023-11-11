@@ -3,7 +3,8 @@ import { ComputedRef, computed, getCurrentInstance as getVM, isReactive, isRef, 
 import type { Route } from 'vue-router'
 import type { Nuxt2Context } from '@nuxt/bridge-schema'
 import { useNuxtApp } from './nuxt'
-import { useRouter as _useRouter, useRoute as _useRoute, useState } from './composables'
+import { useRouter as _useRouter, useRoute as _useRoute } from './composables/router'
+import { useState } from './composables/state'
 // @ts-expect-error virtual file
 import { isFullStatic } from '#build/composition-globals.mjs'
 
