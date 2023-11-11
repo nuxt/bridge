@@ -12,7 +12,7 @@ import { useNuxtApp, callWithNuxt } from './nuxt'
 import { createError, showError } from './error'
 import type { NuxtError } from './error'
 
-export { useLazyAsyncData, refreshNuxtData } from './asyncData'
+export { useLazyAsyncData, refreshNuxtData } from './composables/asyncData'
 export { useLazyFetch } from './fetch'
 export { useCookie } from './cookie'
 export { clearError, createError, isNuxtError, throwError, showError, useError } from './error'
