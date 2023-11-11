@@ -2,8 +2,8 @@ import type { FetchOptions, FetchRequest } from 'ofetch'
 import type { TypedInternalResponse } from 'nitropack'
 import { hash } from 'ohash'
 import { computed, isRef, Ref } from 'vue'
-import type { AsyncDataOptions, _Transform, KeyOfRes } from './composables/asyncData'
-import { useAsyncData } from './composables/asyncData'
+import type { AsyncDataOptions, _Transform, KeyOfRes } from './asyncData'
+import { useAsyncData } from './asyncData'
 
 export type FetchResult<ReqT extends FetchRequest> = TypedInternalResponse<ReqT, unknown>
 

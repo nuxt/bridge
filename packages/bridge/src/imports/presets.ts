@@ -41,7 +41,7 @@ const granularAppPresets: InlinePreset[] = [
   },
   {
     imports: ['useLazyFetch'],
-    from: '#app/fetch'
+    from: '#app/composables/fetch'
   },
   {
     imports: ['useCookie'],

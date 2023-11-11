@@ -13,7 +13,7 @@ import { createError, showError } from './error'
 import type { NuxtError } from './error'
 
 export { useLazyAsyncData, refreshNuxtData } from './composables/asyncData'
-export { useLazyFetch } from './fetch'
+export { useLazyFetch } from './composables/fetch'
 export { useCookie } from './cookie'
 export { clearError, createError, isNuxtError, throwError, showError, useError } from './error'
 export { useRequestHeaders, useRequestEvent } from './ssr'
