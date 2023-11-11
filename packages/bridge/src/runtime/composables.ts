@@ -8,7 +8,7 @@ import { sendRedirect } from 'h3'
 import { defu } from 'defu'
 import { useRouter as useVueRouter, useRoute as useVueRoute } from 'vue-router/composables'
 import { hasProtocol, joinURL, parseURL } from 'ufo'
-import { useNuxtApp, callWithNuxt } from './app'
+import { useNuxtApp, callWithNuxt } from './nuxt'
 import { createError, showError } from './error'
 import type { NuxtError } from './error'
 
