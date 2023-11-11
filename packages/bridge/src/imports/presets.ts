@@ -37,7 +37,7 @@ const granularAppPresets: InlinePreset[] = [
   },
   {
     imports: ['clearError', 'createError', 'isNuxtError', 'showError', 'useError', 'throwError'],
-    from: '#app/error'
+    from: '#app/composables/error'
   },
   {
     imports: ['useLazyFetch'],
