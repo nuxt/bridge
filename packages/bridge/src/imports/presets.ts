@@ -49,11 +49,11 @@ const granularAppPresets: InlinePreset[] = [
   },
   {
     imports: ['useCookie'],
-    from: '#app/cookie'
+    from: '#app/composables/cookie'
   },
   {
     imports: ['useRequestHeaders', 'useRequestEvent'],
-    from: '#app/ssr'
+    from: '#app/composables/ssr'
   }
 ]
 

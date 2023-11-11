@@ -1,6 +1,6 @@
 import type { H3Event } from 'h3'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
-import { useNuxtApp } from './nuxt'
+import { useNuxtApp } from '../nuxt'
 
 export function useRequestHeaders<K extends string = string> (include: K[]): Record<K, string>
 export function useRequestHeaders (): Readonly<Record<string, string>>
