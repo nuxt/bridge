@@ -1,3 +1,4 @@
+export * from './composables/index'
 export * from './app'
 export * from './nuxt'
-export * from './composables'
+export * from './mocks'
