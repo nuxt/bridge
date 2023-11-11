@@ -1,7 +1,8 @@
 import type { FetchOptions, FetchRequest } from 'ofetch'
 import type { TypedInternalResponse } from 'nitropack'
 import { hash } from 'ohash'
-import { computed, isRef, Ref } from 'vue'
+import { computed, isRef } from 'vue'
+import type { Ref } from 'vue'
 import type { AsyncDataOptions, _Transform, KeyOfRes } from './asyncData'
 import { useAsyncData } from './asyncData'
 

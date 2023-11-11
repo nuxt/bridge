@@ -1,14 +1,10 @@
-import { getCurrentInstance, onBeforeUnmount, isRef, watch, reactive, toRef, isReactive, Ref, set } from 'vue'
-import type { CombinedVueInstance } from 'vue/types/vue'
-import type { MetaInfo } from 'vue-meta'
+import { getCurrentInstance, reactive, toRef, isReactive, Ref, set } from 'vue'
 import type VueRouter from 'vue-router'
 import type { Location, RawLocation, Route, NavigationFailure } from 'vue-router'
-import type { RuntimeConfig } from '@nuxt/schema'
 import { sendRedirect } from 'h3'
-import { defu } from 'defu'
 import { useRouter as useVueRouter, useRoute as useVueRoute } from 'vue-router/composables'
 import { hasProtocol, joinURL, parseURL } from 'ufo'
-import { useNuxtApp, callWithNuxt } from './nuxt'
+import { useNuxtApp, callWithNuxt, useRuntimeConfig } from './nuxt'
 import { createError, showError } from './composables/error'
 import type { NuxtError } from './composables/error'
 
@@ -25,17 +21,6 @@ const mock = () => () => { throw new Error('not implemented') }
 export const useAsyncData = mock()
 export const useFetch = mock()
 export const useHydration = mock()
-
-// Runtime config helper
-export const useRuntimeConfig = () => {
-  const nuxtApp = useNuxtApp()
-  if (nuxtApp._config) {
-    return nuxtApp._config as RuntimeConfig
-  }
-
-  nuxtApp._config = reactive(nuxtApp.$config)
-  return nuxtApp._config as RuntimeConfig
-}
 
 // Auto-import equivalents for `vue-router`
 export const useRouter = () => {
@@ -86,76 +71,6 @@ export const useState = <T> (key: string, init?: (() => T)): Ref<T> => {
     state.value = init()
   }
   return state
-}
-
-type Reffed<T extends Record<string, any>> = {
-  [P in keyof T]: T[P] extends Array<infer A> ? Ref<Array<Reffed<A>>> | Array<Reffed<A>> : T[P] extends Record<string, any> ? Reffed<T[P]> | Ref<Reffed<T[P]>> : T[P] | Ref<T[P]>
-}
-
-function unwrap (value: any): Record<string, any> {
-  if (!value || typeof value === 'string' || typeof value === 'boolean' || typeof value === 'number') { return value }
-  if (Array.isArray(value)) { return value.map(i => unwrap(i)) }
-  if (isRef(value)) { return unwrap(value.value) }
-  if (typeof value === 'object') {
-    return Object.fromEntries(Object.entries(value).map(([key, value]) => [key, unwrap(value)]))
-  }
-  return value
-}
-
-type AugmentedComponent = CombinedVueInstance<Vue, object, object, object, Record<never, any>> & {
-  _vueMeta?: boolean
-  $metaInfo?: MetaInfo
-}
-
-/** internal */
-function metaInfoFromOptions (metaOptions: Reffed<MetaInfo> | (() => Reffed<MetaInfo>)) {
-  return metaOptions instanceof Function ? metaOptions : () => metaOptions
-}
-
-export const useNuxt2Meta = (metaOptions: Reffed<MetaInfo> | (() => Reffed<MetaInfo>)) => {
-  let vm: AugmentedComponent | null = null
-  try {
-    vm = getCurrentInstance()!.proxy as AugmentedComponent
-    const meta = vm.$meta()
-    const $root = vm.$root
-
-    if (!vm._vueMeta) {
-      vm._vueMeta = true
-
-      let parent = vm.$parent as AugmentedComponent
-      while (parent && parent !== $root) {
-        if (parent._vueMeta === undefined) {
-          parent._vueMeta = false
-        }
-        parent = parent.$parent
-      }
-    }
-    // @ts-ignore
-    vm.$options.head = vm.$options.head || {}
-
-    const unwatch = watch(metaInfoFromOptions(metaOptions), (metaInfo: MetaInfo) => {
-      vm.$metaInfo = {
-        ...vm.$metaInfo || {},
-        ...unwrap(metaInfo)
-      }
-      if (process.client) {
-        meta.refresh()
-      }
-    }, { immediate: true, deep: true })
-
-    onBeforeUnmount(unwatch)
-  } catch {
-    const app = (useNuxtApp().nuxt2Context as any).app
-    if (typeof app.head === 'function') {
-      const originalHead = app.head
-      app.head = function () {
-        const head = originalHead.call(this) || {}
-        return defu(unwrap(metaInfoFromOptions(metaOptions)()), head)
-      }
-    } else {
-      app.head = defu(unwrap(metaInfoFromOptions(metaOptions)()), app.head)
-    }
-  }
 }
 
 export interface AddRouteMiddlewareOptions {

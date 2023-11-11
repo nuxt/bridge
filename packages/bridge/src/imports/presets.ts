@@ -20,7 +20,7 @@ export const commonPresets: InlinePreset[] = [
 
 const granularAppPresets: InlinePreset[] = [
   {
-    imports: ['setNuxtAppInstance', 'useNuxtApp', 'defineNuxtPlugin'],
+    imports: ['setNuxtAppInstance', 'useNuxtApp', 'defineNuxtPlugin', 'useRuntimeConfig', 'useNuxt2Meta'],
     from: '#app/nuxt'
   },
   {
@@ -28,7 +28,7 @@ const granularAppPresets: InlinePreset[] = [
     from: '#app/composables/component'
   },
   {
-    imports: ['useRuntimeConfig', 'useNuxt2Meta', 'useRoute', 'useRouter', 'useState', 'abortNavigation', 'addRouteMiddleware', 'defineNuxtRouteMiddleware', 'navigateTo'],
+    imports: ['useRoute', 'useRouter', 'useState', 'abortNavigation', 'addRouteMiddleware', 'defineNuxtRouteMiddleware', 'navigateTo'],
     from: '#app/composables'
   },
   {
