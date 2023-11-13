@@ -6,7 +6,7 @@ import {
 } from '@unhead/vue'
 import { markRaw } from 'vue'
 import { renderSSRHead } from '@unhead/ssr'
-import { defineNuxtPlugin, useNuxtApp } from '../../app'
+import { defineNuxtPlugin, useNuxtApp } from '../../nuxt'
 // @ts-ignore
 import metaConfig from '#build/meta.config.mjs'
 

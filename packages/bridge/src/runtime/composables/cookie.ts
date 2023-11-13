@@ -3,7 +3,7 @@ import { parse, serialize, CookieParseOptions, CookieSerializeOptions } from 'co
 import { appendHeader } from 'h3'
 import type { H3Event } from 'h3'
 import destr from 'destr'
-import { useNuxtApp } from './app'
+import { useNuxtApp } from '../nuxt'
 import { useRequestEvent } from './ssr'
 
 type _CookieOptions = Omit<CookieSerializeOptions & CookieParseOptions, 'decode' | 'encode'>

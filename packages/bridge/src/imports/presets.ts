@@ -20,32 +20,44 @@ export const commonPresets: InlinePreset[] = [
 
 const granularAppPresets: InlinePreset[] = [
   {
-    imports: ['defineNuxtComponent', 'setNuxtAppInstance', 'useNuxtApp', 'defineNuxtPlugin'],
-    from: '#app/app'
+    imports: ['setNuxtAppInstance', 'useNuxtApp', 'defineNuxtPlugin', 'useRuntimeConfig', 'useNuxt2Meta'],
+    from: '#app/nuxt'
   },
   {
-    imports: ['useRuntimeConfig', 'useNuxt2Meta', 'useRoute', 'useRouter', 'useState', 'abortNavigation', 'addRouteMiddleware', 'defineNuxtRouteMiddleware', 'navigateTo'],
-    from: '#app/composables'
+    imports: ['defineNuxtComponent'],
+    from: '#app/composables/component'
+  },
+  {
+    imports: ['useRoute', 'useRouter', 'abortNavigation', 'addRouteMiddleware', 'defineNuxtRouteMiddleware', 'navigateTo'],
+    from: '#app/composables/router'
+  },
+  {
+    imports: ['useState'],
+    from: '#app/composables/state'
   },
   {
     imports: ['useLazyAsyncData', 'refreshNuxtData'],
-    from: '#app/asyncData'
+    from: '#app/composables/asyncData'
   },
   {
     imports: ['clearError', 'createError', 'isNuxtError', 'showError', 'useError', 'throwError'],
-    from: '#app/error'
+    from: '#app/composables/error'
   },
   {
     imports: ['useLazyFetch'],
-    from: '#app/fetch'
+    from: '#app/composables/fetch'
   },
   {
     imports: ['useCookie'],
-    from: '#app/cookie'
+    from: '#app/composables/cookie'
   },
   {
     imports: ['useRequestHeaders', 'useRequestEvent'],
-    from: '#app/ssr'
+    from: '#app/composables/ssr'
+  },
+  {
+    imports: ['useAsyncData', 'useFetch', 'useHydration'],
+    from: '#app/mocks'
   }
 ]
 

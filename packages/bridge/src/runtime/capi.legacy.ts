@@ -2,8 +2,9 @@ import { defu } from 'defu'
 import { ComputedRef, computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
 import type { Route } from 'vue-router'
 import type { Nuxt2Context } from '@nuxt/bridge-schema'
-import { useNuxtApp } from './app'
-import { useRouter as _useRouter, useRoute as _useRoute, useState } from './composables'
+import { useNuxtApp } from './nuxt'
+import { useRouter as _useRouter, useRoute as _useRoute } from './composables/router'
+import { useState } from './composables/state'
 // @ts-expect-error virtual file
 import { isFullStatic } from '#build/composition-globals.mjs'
 

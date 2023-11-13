@@ -1,6 +1,6 @@
 import Vue, { version } from 'vue'
 import { createHooks } from 'hookable'
-import { setNuxtAppInstance } from '#app/app'
+import { setNuxtAppInstance } from '#app/nuxt'
 import { globalMiddleware } from '#build/global-middleware'
 
 // Reshape payload to match key `useLazyAsyncData` expects
