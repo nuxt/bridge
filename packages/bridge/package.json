@@ -35,7 +35,7 @@
     "@unhead/ssr": "^1.8.4",
     "@unhead/vue": "^1.8.4",
     "@vitejs/plugin-legacy": "^4.1.1",
-    "@vitejs/plugin-vue2": "^2.2.0",
+    "@vitejs/plugin-vue2": "^2.3.0",
     "acorn": "^8.11.2",
     "cookie-es": "^1.0.0",
     "defu": "^6.1.3",
