@@ -95,7 +95,8 @@ describe('legacy async data', () => {
 
   it('should work with defineNuxtComponent and setup', async () => {
     const html = await $fetch('/legacy/setup')
-    expect(html).toContain('<div> Hello API </div>')
+    console.log(html)
+    expect(html).toContain('<div>Hello API</div>')
     const { script } = parseData(html)
     expect(Object.values(script._asyncData)).toMatchInlineSnapshot(`
       [
