@@ -135,7 +135,7 @@ export function useAsyncData<
 
   // Create or use a shared asyncData entity
   if (!nuxt._asyncData[key] || !options.immediate) {
-    nuxt.payload._errors[key] ??= null
+    nuxt.payload._errors[key] = nuxt.payload._errors[key] ?? null
 
     const _ref = options.deep ? ref : shallowRef
 
