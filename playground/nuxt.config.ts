@@ -36,6 +36,11 @@ export default defineNuxtConfig({
     },
     plugins: ['plugins/template.ts']
   },
+  vite: {
+    build: {
+      assetsInlineLimit: 100 // keep SVG as assets URL
+    }
+  },
   bridge: {
     meta: true,
     vite: !process.env.TEST_WITH_WEBPACK,
