@@ -55,7 +55,7 @@ export async function buildClient (ctx: ViteBuildContext) {
       rollupOptions: {
         input: resolve(ctx.nuxt.options.buildDir, 'client.js')
       },
-      manifest: true,
+      manifest: 'manifest.json',
       outDir: resolve(ctx.nuxt.options.buildDir, 'dist/client')
     },
     plugins: [
