@@ -2,6 +2,9 @@
   <div>
     <div>{{ hello }}</div>
     <NuxtChild />
+    <NuxtLink to="/legacy/setup">
+      to legacy setup
+    </NuxtLink>
   </div>
 </template>
 

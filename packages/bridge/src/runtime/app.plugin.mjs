@@ -49,7 +49,11 @@ export default async (ctx, inject) => {
     provide: inject,
     globalName: 'nuxt',
     payload: proxiedState(process.client ? ctx.nuxtState : ctx.ssrContext.nuxt),
-    _asyncDataPromises: [],
+    _asyncDataPromises: {},
+    _asyncData: {},
+    static: {
+      data: {}
+    },
     isHydrating: true,
     nuxt2Context: ctx
   }
