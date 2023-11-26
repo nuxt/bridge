@@ -1,6 +1,7 @@
 import type { Ref } from 'vue'
 import { ref, watch, getCurrentScope, onScopeDispose, customRef, nextTick } from 'vue'
-import { parse, serialize, CookieParseOptions, CookieSerializeOptions } from 'cookie-es'
+import { parse, serialize } from 'cookie-es'
+import type { CookieParseOptions, CookieSerializeOptions } from 'cookie-es'
 import { deleteCookie, getCookie, getRequestHeader, setCookie } from 'h3'
 import type { H3Event } from 'h3'
 import destr from 'destr'
