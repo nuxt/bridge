@@ -146,7 +146,7 @@ function writeServerCookie (event: H3Event, name: string, value: any, opts: Cook
  *
  * Reference: https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#maximum_delay_value
  */
-const MAX_TIMEOUT_DELAY = 2_147_483_647
+const MAX_TIMEOUT_DELAY = 2147483647
 
 // custom ref that will update the value to undefined if the cookie expires
 function cookieRef<T> (value: T | undefined, delay: number) {
