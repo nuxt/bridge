@@ -3,6 +3,7 @@ import type { SSRContext } from 'vue-bundle-renderer/runtime'
 import { H3Event, getQuery } from 'h3'
 import devalue from '@nuxt/devalue'
 import type { RuntimeConfig } from '@nuxt/schema'
+import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import type { RenderResponse } from 'nitropack'
 // @ts-ignore
 import { useRuntimeConfig, defineRenderHandler, getRouteRules } from '#internal/nitro'
@@ -49,6 +50,7 @@ interface NuxtSSRContext extends SSRContext {
   nuxt?: any
   payload?: any
   renderMeta?: () => Promise<any>
+  nuxtApp?: NuxtAppCompat
 }
 
 interface RenderResult {
@@ -148,7 +150,8 @@ export default defineRenderHandler(async (event) => {
     error: ssrError,
     redirected: undefined,
     nuxt: undefined as undefined | Record<string, any>, /* Nuxt 2 payload */
-    payload: undefined
+    payload: undefined,
+    nuxtApp: undefined
   }
 
   // Render app
@@ -171,6 +174,8 @@ export default defineRenderHandler(async (event) => {
   if (ssrContext.nuxt?.error && !ssrError) {
     throw ssrContext.nuxt.error
   }
+
+  ssrContext.nuxtApp?.hooks.callHook('app:rendered', { ssrContext, renderResult: _rendered })
 
   ssrContext.nuxt = ssrContext.nuxt || {}
 

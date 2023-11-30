@@ -94,6 +94,7 @@ export default async (ctx, inject) => {
 
   if (process.server) {
     nuxtApp.ssrContext = ctx.ssrContext
+    nuxtApp.ssrContext.nuxtApp = nuxtApp
   }
 
   ctx.app.created.push(function () {

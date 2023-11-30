@@ -29,7 +29,7 @@ export default defineNuxtConfig({
       })
     }
   ],
-  plugins: ['~/plugins/setup.js', '~/plugins/store.js'],
+  plugins: ['~/plugins/setup.js', '~/plugins/store.js', '~/plugins/cookie'],
   nitro: {
     routeRules: {
       '/route-rules/spa': { ssr: false }
