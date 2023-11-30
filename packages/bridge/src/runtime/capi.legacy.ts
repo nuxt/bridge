@@ -1,5 +1,6 @@
 import { defu } from 'defu'
-import { type ComputedRef, computed, defineComponent as defineComponentVue, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
+import type { ComputedRef } from 'vue'
+import { computed, defineComponent as defineComponentVue, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
 import type { Route } from 'vue-router'
 import type { Nuxt2Context } from '@nuxt/bridge-schema'
 import { useNuxtApp } from './nuxt'
