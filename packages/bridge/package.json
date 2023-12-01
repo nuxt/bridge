@@ -1,6 +1,6 @@
 {
   "name": "@nuxt/bridge",
-  "version": "3.0.0-rc.4",
+  "version": "3.0.0-rc.5",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nuxt/bridge.git"
