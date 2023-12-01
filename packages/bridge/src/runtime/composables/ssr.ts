@@ -1,6 +1,6 @@
 import type { H3Event } from 'h3'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
-import { getRequestHeaders } from 'h3'
+import { getRequestHeaders, createEvent } from 'h3'
 import { useNuxtApp } from '../nuxt'
 
 export function useRequestHeaders<K extends string = string> (include: K[]): { [key in Lowercase<K>]?: string }
@@ -14,5 +14,6 @@ export function useRequestHeaders (include?: any[]) {
 }
 
 export function useRequestEvent (nuxtApp: NuxtAppCompat = useNuxtApp()): H3Event {
-  return nuxtApp.ssrContext?.event as H3Event
+  if (nuxtApp.ssrContext?.event) { return nuxtApp.ssrContext.event }
+  return createEvent(nuxtApp.ssrContext.req, nuxtApp.ssrContext.res)
 }
