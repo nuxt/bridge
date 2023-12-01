@@ -1,5 +1,6 @@
 import { defu } from 'defu'
-import { ComputedRef, computed, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
+import type { ComputedRef } from 'vue'
+import { computed, defineComponent as defineComponentVue, getCurrentInstance as getVM, isReactive, isRef, onBeforeMount, onServerPrefetch, reactive, ref, set, shallowRef, toRaw, toRefs, watch } from 'vue'
 import type { Route } from 'vue-router'
 import type { Nuxt2Context } from '@nuxt/bridge-schema'
 import { useNuxtApp } from './nuxt'
@@ -217,7 +218,7 @@ const getHeadOptions = (options) => {
   return { head }
 }
 
-export const defineComponent = (options) => {
+export const defineComponent: typeof defineComponentVue = (options) => {
   if (!('head' in options)) { return options }
 
   return {
