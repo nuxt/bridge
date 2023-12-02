@@ -15,5 +15,6 @@ export function useRequestHeaders (include?: any[]) {
 
 export function useRequestEvent (nuxtApp: NuxtAppCompat = useNuxtApp()): H3Event {
   if (nuxtApp.ssrContext?.event) { return nuxtApp.ssrContext.event }
-  return createEvent(nuxtApp.ssrContext?.req, nuxtApp.ssrContext?.res)
+  nuxtApp.ssrContext.event = createEvent(nuxtApp.ssrContext?.req, nuxtApp.ssrContext?.res)
+  return nuxtApp.ssrContext.event
 }
