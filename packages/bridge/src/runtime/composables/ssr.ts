@@ -14,7 +14,11 @@ export function useRequestHeaders (include?: any[]) {
 }
 
 export function useRequestEvent (nuxtApp: NuxtAppCompat = useNuxtApp()): H3Event {
+  // check if H3 event is available
   if (nuxtApp.ssrContext?.event) { return nuxtApp.ssrContext.event }
-  nuxtApp.ssrContext.event = createEvent(nuxtApp.ssrContext?.req, nuxtApp.ssrContext?.res)
-  return nuxtApp.ssrContext.event
+  // Check if we created H3 event manually before
+  if (nuxtApp.ssrContext?._event) { return nuxtApp.ssrContext._event }
+  // Create H3 event https://github.com/nuxt/bridge/pull/999#discussion_r1413049422
+  nuxtApp.ssrContext._event = createEvent(nuxtApp.ssrContext?.req, nuxtApp.ssrContext?.res)
+  return nuxtApp.ssrContext._event
 }
