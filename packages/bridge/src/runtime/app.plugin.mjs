@@ -1,4 +1,4 @@
-import Vue, { version } from 'vue'
+import Vue, { version, reactive } from 'vue'
 import { createHooks } from 'hookable'
 import { setNuxtAppInstance } from '#app/nuxt'
 import { globalMiddleware } from '#build/global-middleware'
@@ -6,7 +6,7 @@ import { globalMiddleware } from '#build/global-middleware'
 // Reshape payload to match key `useLazyAsyncData` expects
 function proxiedState (state) {
   state._asyncData = state._asyncData || {}
-  state._errors = state._errors || {}
+  state._errors = state._errors || reactive({})
   return new Proxy(state, {
     get (target, prop) {
       if (prop === 'data') {
