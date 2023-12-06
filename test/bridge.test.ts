@@ -232,7 +232,7 @@ describe('navigate', () => {
     const res = await fetch('/navigate-some-path/', { redirect: 'manual', headers: { 'trailing-slash': 'true' } })
     expect(res.headers.get('location')).toEqual('/navigate-some-path')
     expect(res.status).toEqual(307)
-    expect(await res.text()).toMatchInlineSnapshot('"<!DOCTYPE html><html><head><meta http-equiv=\\"refresh\\" content=\\"0; url=/navigate-some-path\\"></head></html>"')
+    expect(await res.text()).toMatchInlineSnapshot('"<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/navigate-some-path"></head></html>"')
   })
 
   it('supports directly aborting navigation on SSR', async () => {
@@ -338,40 +338,40 @@ describe('dynamic paths', () => {
     const html = await $fetch('/runtime-config')
     expect(html.match(/<pre>([\s\S]*)<\/pre>/)?.[0].replace(/&quot;/g, '"')).toMatchInlineSnapshot(`
       "<pre>{
-        \\"app\\": {
-          \\"baseURL\\": \\"./\\",
-          \\"basePath\\": \\"/\\",
-          \\"assetsPath\\": \\"/_nuxt/\\",
-          \\"cdnURL\\": \\"\\",
-          \\"head\\": {
-            \\"meta\\": [
+        "app": {
+          "baseURL": "./",
+          "basePath": "/",
+          "assetsPath": "/_nuxt/",
+          "cdnURL": "",
+          "head": {
+            "meta": [
               {
-                \\"name\\": \\"viewport\\",
-                \\"content\\": \\"width=1024, initial-scale=1\\"
+                "name": "viewport",
+                "content": "width=1024, initial-scale=1"
               },
               {
-                \\"charset\\": \\"utf-8\\"
+                "charset": "utf-8"
               },
               {
-                \\"name\\": \\"description\\",
-                \\"content\\": \\"Nuxt Fixture\\"
+                "name": "description",
+                "content": "Nuxt Fixture"
               }
             ]
           },
-          \\"buildAssetsDir\\": \\"/_nuxt/\\"
+          "buildAssetsDir": "/_nuxt/"
         },
-        \\"nitro\\": {
-          \\"envPrefix\\": \\"NUXT_\\",
-          \\"routeRules\\": {
-            \\"/route-rules/spa\\": {
-              \\"ssr\\": false
+        "nitro": {
+          "envPrefix": "NUXT_",
+          "routeRules": {
+            "/route-rules/spa": {
+              "ssr": false
             }
           }
         },
-        \\"public\\": {
-          \\"myValue\\": 123
+        "public": {
+          "myValue": 123
         },
-        \\"secretKey\\": \\"nuxt\\"
+        "secretKey": "nuxt"
       }</pre>"
     `)
     await expectNoClientErrors('/runtime-config')
