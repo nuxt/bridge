@@ -12,5 +12,7 @@ export async function generateWebpackBuildManifest () {
 
   const manifest = normalizeWebpackManifest(webpackManifest)
 
+  await nuxt.callHook('build:manifest', manifest)
+
   await writeClientManifest(manifest, nuxt.options.buildDir)
 }
