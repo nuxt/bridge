@@ -33,6 +33,12 @@ describe('nuxt composables', () => {
     const cookies = res.headers.get('set-cookie')
     expect(cookies).toMatchInlineSnapshot('"set-in-plugin=true; Path=/, set=set; Path=/, browser-set=set; Path=/, browser-set-to-null=; Max-Age=0; Path=/, browser-set-to-null-with-default=; Max-Age=0; Path=/"')
   })
+  it('error should be render', async () => {
+    const html = await $fetch('/async-data')
+
+    expect(html).toContain('error2: Error: fetch-2 error')
+    expect(html).toContain('error3: Error: fetch-3 error')
+  })
 })
 
 describe('head tags', () => {
