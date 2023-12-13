@@ -10,17 +10,6 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
-      - name: get upstream pull request
-        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
-        id: set-result
-        with:
-          script: |
-            const { data } = await github.request('GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls', {
-              owner: 'nuxt',
-              repo: 'nuxt',
-              commit_sha: '${{ github.event.client_payload.sha }}',
-            })
-            return data[0].html_url
       - name: create issue
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
@@ -34,5 +23,5 @@ jobs:
               Please check the changes and port them.
 
               ## Pull Request
-              - ${{steps.set-result.outputs.result}}`,
+              - ${{github.event.client_payload.html_url}}`,
             })
