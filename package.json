@@ -27,7 +27,7 @@
     "changelogen": "^0.5.5",
     "devalue": "^4.3.2",
     "eslint": "^8.55.0",
-    "eslint-plugin-jsdoc": "^46.9.0",
+    "eslint-plugin-jsdoc": "^46.9.1",
     "jiti": "^1.21.0",
     "vitest": "^1.0.4"
   },
