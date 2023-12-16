@@ -23,5 +23,5 @@ jobs:
               Please check the changes and port them.
 
               ## Pull Request
-              - ${{github.event.client_payload.html_url}}`,
+              - ${{github.event.client_payload.url}}`,
             })
