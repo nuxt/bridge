@@ -517,6 +517,21 @@ export default defineUntypedSchema({
     /**
      * Set to true to scan files within symlinks in the build (such as within `pages/`).
      */
-    followSymlinks: false
+    followSymlinks: false,
+    /**
+     * If you want to transpile specific dependencies with Babel, you can add them here.
+     * Each item in transpile can be a package name, a function, a string or regex object matching the
+     * dependency's file name.
+     *
+     * You can also use a function to conditionally transpile. The function will receive an object ({ isDev, isServer, isClient, isModern, isLegacy }).
+     * @example
+     * ```js
+     transpile: [({ isLegacy }) => isLegacy && 'ky']
+     * ```
+     * @type {Array<string | RegExp | ((ctx: { isClient?: boolean; isServer?: boolean; isDev: boolean }) => string | RegExp | false)>}
+     */
+    transpile: {
+      $resolve: val => [].concat(val).filter(Boolean)
+    }
   }
 })
