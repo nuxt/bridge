@@ -13,8 +13,8 @@ importers:
   .:
     devDependencies:
       '@nuxt/test-utils':
-        specifier: ^3.8.1
-        version: 3.8.1(vitest@1.0.4)(vue@3.3.7)
+        specifier: ^3.9.0
+        version: 3.9.0(h3@1.9.0)(vite@5.0.10)(vitest@1.0.4)(vue-router@4.2.5)(vue@3.3.7)
       '@nuxtjs/eslint-config':
         specifier: ^12.0.0
         version: 12.0.0(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.56.0)
@@ -2906,15 +2906,15 @@ packages:
       ufo: 1.3.2
     dev: true
 
-  /@nuxt/kit@3.8.1:
-    resolution: {integrity: sha512-DrhG1Z85iH68QOTkgfb0HVfM2g7+CfcMWrFWMDwck9ofyM2RXQUZyfmvMedwBnui1AjjpgpLO9078yZM+RqNUg==}
+  /@nuxt/kit@3.8.2:
+    resolution: {integrity: sha512-LrXCm8hAkw+zpX8teUSD/LqXRarlXjbRiYxDkaqw739JSHFReWzBFgJbojsJqL4h1XIEScDGGOWiEgO4QO1sMg==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
-      '@nuxt/schema': 3.8.1
+      '@nuxt/schema': 3.8.2
       c12: 1.5.1
       consola: 3.2.3
       defu: 6.1.3
-      globby: 13.2.2
+      globby: 14.0.0
       hash-sum: 2.0.0
       ignore: 5.3.0
       jiti: 1.21.0
@@ -2999,8 +2999,8 @@ packages:
       - webpack
     dev: false
 
-  /@nuxt/schema@3.8.1:
-    resolution: {integrity: sha512-fSaWRcI/2mUskfTZTGSnH6Ny0x05CRzylbVn6WFV0d6UEKIVy42Qd6n+h7yoFfp4cq4nji6u16PT4SqS1DEhsw==}
+  /@nuxt/schema@3.8.2:
+    resolution: {integrity: sha512-AMpysQ/wHK2sOujLShqYdC4OSj/S3fFJGjhYXqA2g6dgmz+FNQWJRG/ie5sI9r2EX9Ela1wt0GN1jZR3wYNE8Q==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
       '@nuxt/ui-templates': 1.3.1
@@ -3009,6 +3009,7 @@ packages:
       hookable: 5.5.3
       pathe: 1.1.1
       pkg-types: 1.0.3
+      scule: 1.1.1
       std-env: 3.6.0
       ufo: 1.3.2
       unimport: 3.6.1(rollup@4.6.0)
@@ -3088,33 +3089,68 @@ packages:
       - encoding
     dev: true
 
-  /@nuxt/test-utils@3.8.1(vitest@1.0.4)(vue@3.3.7):
-    resolution: {integrity: sha512-8ZQ+OZ7z5Sc5KG2aCvk0piheYSpGb2UQJMCWr8ORwEyZIw4awrkkwGzUY06e344E4StvJB8zxN122MEcFNOkow==}
+  /@nuxt/test-utils@3.9.0(h3@1.9.0)(vite@5.0.10)(vitest@1.0.4)(vue-router@4.2.5)(vue@3.3.7):
+    resolution: {integrity: sha512-17qaU4vfFJWIaT4BJ/R6C2rIuvxaF5HaiRusXHhA/34SyiduNEhezIvIVqhWVkn33y5CNueduE0AykBEj1IgEA==}
     engines: {node: ^14.18.0 || >=16.10.0}
     peerDependencies:
       '@jest/globals': ^29.5.0
+      '@testing-library/vue': ^7.0.0 || ^8.0.1
+      '@vitest/ui': ^0.34.6 || ^1.0.0
+      '@vue/test-utils': ^2.4.2
+      h3: '*'
+      happy-dom: ^9.10.9 || ^10.0.0 || ^11.0.0 || ^12.0.0
+      jsdom: ^22.0.0 || ^23.0.0
       playwright-core: ^1.34.3
-      vitest: ^0.30.0 || ^0.31.0 || ^0.32.0 || ^0.33.0
+      vite: '*'
+      vitest: ^0.34.6 || ^1.0.0
       vue: ^3.3.4
+      vue-router: ^4.0.0
     peerDependenciesMeta:
       '@jest/globals':
+        optional: true
+      '@testing-library/vue':
+        optional: true
+      '@vitest/ui':
+        optional: true
+      '@vue/test-utils':
+        optional: true
+      happy-dom:
+        optional: true
+      jsdom:
         optional: true
       playwright-core:
         optional: true
       vitest:
         optional: true
     dependencies:
-      '@nuxt/kit': 3.8.1
-      '@nuxt/schema': 3.8.1
+      '@nuxt/kit': 3.8.2
+      '@nuxt/schema': 3.8.2
+      c12: 1.5.1
       consola: 3.2.3
       defu: 6.1.3
+      destr: 2.0.2
+      estree-walker: 3.0.3
       execa: 8.0.1
+      fake-indexeddb: 5.0.1
       get-port-please: 3.1.1
+      h3: 1.9.0
+      local-pkg: 0.5.0
+      magic-string: 0.30.5
+      node-fetch-native: 1.4.1
       ofetch: 1.3.3
       pathe: 1.1.1
+      perfect-debounce: 1.0.0
+      radix3: 1.1.0
+      scule: 1.1.1
+      std-env: 3.6.0
       ufo: 1.3.2
+      unenv: 1.8.0
+      unplugin: 1.5.1
+      vite: 5.0.10(terser@5.26.0)
       vitest: 1.0.4
+      vitest-environment-nuxt: 1.0.0(h3@1.9.0)(vite@5.0.10)(vitest@1.0.4)(vue-router@4.2.5)(vue@3.3.7)
       vue: 3.3.7(typescript@5.2.2)
+      vue-router: 4.2.5(vue@3.3.7)
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -4589,6 +4625,10 @@ packages:
       - velocityjs
       - walrus
       - whiskers
+    dev: true
+
+  /@vue/devtools-api@6.5.1:
+    resolution: {integrity: sha512-+KpckaAQyfbvshdDW5xQylLni1asvNSGme1JFs8I1+/H5pHEhqUKMEQD/qn3Nx5+/nycBq11qAEi8lk+LXI2dA==}
     dev: true
 
   /@vue/reactivity-transform@3.3.7:
@@ -7706,6 +7746,11 @@ packages:
       schema-utils: 1.0.0
       webpack: 4.47.0
       webpack-sources: 1.4.3
+    dev: true
+
+  /fake-indexeddb@5.0.1:
+    resolution: {integrity: sha512-vxybH29Owtc6khV/Usy47B1g+eKwyhFiX8nwpCC4td320jvwrKQDH6vNtcJZgUzVxmfsSIlHzLKQzT76JMCO7A==}
+    engines: {node: '>=18'}
     dev: true
 
   /fast-deep-equal@3.1.3:
@@ -13524,6 +13569,27 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
 
+  /vitest-environment-nuxt@1.0.0(h3@1.9.0)(vite@5.0.10)(vitest@1.0.4)(vue-router@4.2.5)(vue@3.3.7):
+    resolution: {integrity: sha512-AWMO9h4HdbaFdPWZw34gALFI8gbBiOpvfbyeZwHIPfh4kWg/TwElYHvYMQ61WPUlCGaS5LebfHkaI0WPyb//Iw==}
+    dependencies:
+      '@nuxt/test-utils': 3.9.0(h3@1.9.0)(vite@5.0.10)(vitest@1.0.4)(vue-router@4.2.5)(vue@3.3.7)
+    transitivePeerDependencies:
+      - '@jest/globals'
+      - '@testing-library/vue'
+      - '@vitest/ui'
+      - '@vue/test-utils'
+      - h3
+      - happy-dom
+      - jsdom
+      - playwright-core
+      - rollup
+      - supports-color
+      - vite
+      - vitest
+      - vue
+      - vue-router
+    dev: true
+
   /vitest@1.0.4:
     resolution: {integrity: sha512-s1GQHp/UOeWEo4+aXDOeFBJwFzL6mjycbQwwKWX2QcYfh/7tIerS59hWQ20mxzupTJluA2SdwiBuWwQHH67ckg==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -13716,6 +13782,15 @@ packages:
       vue: ^2
     dependencies:
       vue: 2.7.15
+    dev: true
+
+  /vue-router@4.2.5(vue@3.3.7):
+    resolution: {integrity: sha512-DIUpKcyg4+PTQKfFPX88UWhlagBEBEfJ5A8XDXRJLUnZOvcpMF8o/dnL90vpVkGaPbjvXazV/rC1qBKrZlFugw==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      '@vue/devtools-api': 6.5.1
+      vue: 3.3.7(typescript@5.2.2)
     dev: true
 
   /vue-server-renderer@2.7.15:
