@@ -45,7 +45,13 @@ module.exports.defineNuxtConfig = (config = {}) => {
     nuxt.removeAllHooks ||= nuxt.clearHooks.bind(nuxt)
     nuxt.hookOnce ||= (name, fn, ...hookArgs) => {
       const unsub = nuxt.hook(name, (...args) => {
-        unsub()
+        if (typeof unsub === 'function') {
+          unsub()
+        } else {
+          // In hable@^3.0.0, the hook does not return a function.
+          nuxt.removeHook(name, fn)
+        }
+
         return fn(...args)
       }, ...hookArgs)
       return unsub
