@@ -178,8 +178,8 @@ importers:
         specifier: ^7.5.4
         version: 7.5.4
       std-env:
-        specifier: ^3.6.0
-        version: 3.6.0
+        specifier: ^3.7.0
+        version: 3.7.0
       terser:
         specifier: ^5.26.0
         version: 5.26.0
@@ -190,8 +190,8 @@ importers:
         specifier: ^2.3.1
         version: 2.3.1
       unimport:
-        specifier: ^3.6.1
-        version: 3.6.1(rollup@3.29.4)
+        specifier: ^3.7.0
+        version: 3.7.0(rollup@3.29.4)
       unplugin:
         specifier: ^1.5.1
         version: 1.5.1
@@ -266,8 +266,8 @@ importers:
         specifier: ^1.1.1
         version: 1.1.1
       std-env:
-        specifier: ^3.6.0
-        version: 3.6.0
+        specifier: ^3.7.0
+        version: 3.7.0
       ufo:
         specifier: ^1.3.2
         version: 1.3.2
@@ -275,8 +275,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0(typescript@5.2.2)
       unimport:
-        specifier: ^3.6.1
-        version: 3.6.1(rollup@3.29.4)
+        specifier: ^3.7.0
+        version: 3.7.0(rollup@3.29.4)
       untyped:
         specifier: ^1.4.0
         version: 1.4.0
@@ -2820,7 +2820,7 @@ packages:
       pretty-bytes: 5.6.0
       semver: 7.5.4
       serve-static: 1.15.0
-      std-env: 3.6.0
+      std-env: 3.7.0
       upath: 2.0.1
       wrap-ansi: 7.0.0
     transitivePeerDependencies:
@@ -2855,7 +2855,7 @@ packages:
       dotenv: 16.3.1
       lodash: 4.17.21
       rc9: 2.1.1
-      std-env: 3.6.0
+      std-env: 3.7.0
       ufo: 1.3.2
     dev: true
 
@@ -2926,7 +2926,7 @@ packages:
       semver: 7.5.4
       ufo: 1.3.2
       unctx: 2.3.1
-      unimport: 3.6.1(rollup@4.6.0)
+      unimport: 3.7.0(rollup@4.6.0)
       untyped: 1.4.0
     transitivePeerDependencies:
       - rollup
@@ -2953,7 +2953,7 @@ packages:
       semver: 7.5.4
       ufo: 1.3.2
       unctx: 2.3.1
-      unimport: 3.6.1(rollup@3.29.4)
+      unimport: 3.7.0(rollup@3.29.4)
       untyped: 1.4.0
     transitivePeerDependencies:
       - rollup
@@ -3010,9 +3010,9 @@ packages:
       pathe: 1.1.1
       pkg-types: 1.0.3
       scule: 1.1.1
-      std-env: 3.6.0
+      std-env: 3.7.0
       ufo: 1.3.2
-      unimport: 3.6.1(rollup@4.6.0)
+      unimport: 3.7.0(rollup@4.6.0)
       untyped: 1.4.0
     transitivePeerDependencies:
       - rollup
@@ -3030,9 +3030,9 @@ packages:
       pathe: 1.1.1
       pkg-types: 1.0.3
       scule: 1.1.1
-      std-env: 3.6.0
+      std-env: 3.7.0
       ufo: 1.3.2
-      unimport: 3.6.1(rollup@3.29.4)
+      unimport: 3.7.0(rollup@3.29.4)
       untyped: 1.4.0
     transitivePeerDependencies:
       - rollup
@@ -3084,7 +3084,7 @@ packages:
       node-fetch: 2.6.11
       parse-git-config: 3.0.0
       rc9: 2.1.1
-      std-env: 3.6.0
+      std-env: 3.7.0
     transitivePeerDependencies:
       - encoding
     dev: true
@@ -3142,7 +3142,7 @@ packages:
       perfect-debounce: 1.0.0
       radix3: 1.1.0
       scule: 1.1.1
-      std-env: 3.6.0
+      std-env: 3.7.0
       ufo: 1.3.2
       unenv: 1.8.0
       unplugin: 1.5.1
@@ -3264,7 +3264,7 @@ packages:
       postcss-preset-env: 9.3.0(postcss@8.4.32)
       postcss-url: 10.1.3(postcss@8.4.32)
       semver: 7.5.4
-      std-env: 3.6.0
+      std-env: 3.7.0
       style-resources-loader: 1.5.0(webpack@4.47.0)
       terser-webpack-plugin: 4.2.3(webpack@4.47.0)
       thread-loader: 3.0.4(webpack@4.47.0)
@@ -3560,7 +3560,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.5(rollup@3.29.4)
+      '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
       commondir: 1.0.1
       estree-walker: 2.0.2
       glob: 8.1.0
@@ -3577,7 +3577,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.5(rollup@4.6.0)
+      '@rollup/pluginutils': 5.1.0(rollup@4.6.0)
       commondir: 1.0.1
       estree-walker: 2.0.2
       glob: 8.1.0
@@ -3594,7 +3594,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.5(rollup@4.6.0)
+      '@rollup/pluginutils': 5.1.0(rollup@4.6.0)
       estree-walker: 2.0.2
       magic-string: 0.30.5
       rollup: 4.6.0
@@ -3608,7 +3608,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.5(rollup@3.29.4)
+      '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
       rollup: 3.29.4
 
   /@rollup/plugin-json@6.0.1(rollup@4.6.0):
@@ -3620,7 +3620,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.5(rollup@4.6.0)
+      '@rollup/pluginutils': 5.1.0(rollup@4.6.0)
       rollup: 4.6.0
 
   /@rollup/plugin-node-resolve@15.2.3(rollup@3.29.4):
@@ -3632,7 +3632,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.5(rollup@3.29.4)
+      '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
       '@types/resolve': 1.20.2
       deepmerge: 4.3.1
       is-builtin-module: 3.2.1
@@ -3649,7 +3649,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.5(rollup@4.6.0)
+      '@rollup/pluginutils': 5.1.0(rollup@4.6.0)
       '@types/resolve': 1.20.2
       deepmerge: 4.3.1
       is-builtin-module: 3.2.1
@@ -3666,7 +3666,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.5(rollup@3.29.4)
+      '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
       magic-string: 0.30.5
       rollup: 3.29.4
 
@@ -3679,7 +3679,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.5(rollup@4.6.0)
+      '@rollup/pluginutils': 5.1.0(rollup@4.6.0)
       magic-string: 0.30.5
       rollup: 4.6.0
 
@@ -3706,7 +3706,7 @@ packages:
       rollup:
         optional: true
     dependencies:
-      '@rollup/pluginutils': 5.0.5(rollup@4.6.0)
+      '@rollup/pluginutils': 5.1.0(rollup@4.6.0)
       rollup: 4.6.0
 
   /@rollup/pluginutils@4.2.1:
@@ -3757,7 +3757,6 @@ packages:
       estree-walker: 2.0.2
       picomatch: 2.3.1
       rollup: 3.29.4
-    dev: false
 
   /@rollup/pluginutils@5.1.0(rollup@4.6.0):
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
@@ -5792,7 +5791,7 @@ packages:
       pkg-types: 1.0.3
       scule: 1.1.1
       semver: 7.5.4
-      std-env: 3.6.0
+      std-env: 3.7.0
       yaml: 2.3.3
     transitivePeerDependencies:
       - supports-color
@@ -9179,7 +9178,7 @@ packages:
       mlly: 1.4.2
       node-forge: 1.3.1
       pathe: 1.1.1
-      std-env: 3.6.0
+      std-env: 3.7.0
       ufo: 1.3.2
       untun: 0.1.2
       uqr: 0.1.2
@@ -9798,12 +9797,12 @@ packages:
       semver: 7.5.4
       serve-placeholder: 2.0.1
       serve-static: 1.15.0
-      std-env: 3.6.0
+      std-env: 3.7.0
       ufo: 1.3.2
       uncrypto: 0.1.3
       unctx: 2.3.1
       unenv: 1.8.0
-      unimport: 3.6.1(rollup@4.6.0)
+      unimport: 3.7.0(rollup@4.6.0)
       unstorage: 1.10.1
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -12515,8 +12514,8 @@ packages:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
 
-  /std-env@3.6.0:
-    resolution: {integrity: sha512-aFZ19IgVmhdB2uX599ve2kE6BIE3YMnQ6Gp6BURhW/oIzpXGKr878TQfAQZn1+i0Flcc/UKUy1gOlcfaUBCryg==}
+  /std-env@3.7.0:
+    resolution: {integrity: sha512-JPbdCEQLj1w5GilpiHAx3qJvFndqybBysA3qUOnznweH4QbNYUsW/ea8QzSrnh0vNsezMMw5bcVool8lM0gwzg==}
 
   /stream-browserify@2.0.2:
     resolution: {integrity: sha512-nX6hmklHs/gr2FuxYDltq8fJA1GDlxKQCz8O/IM4atRqBH8OORmBNgfvW5gG10GT/qQ9u0CzIvr2X5Pkt6ntqg==}
@@ -13231,11 +13230,13 @@ packages:
     resolution: {integrity: sha512-lRfVq8fE8gz6QMBuDM6a+LO3IAzTi05H6gCVaUpir2E1Rwpo4ZUog45KpNXKC/Mn3Yb9UDuHumeFTo9iV/D9FQ==}
     engines: {node: '>=18'}
 
-  /unimport@3.6.1(rollup@3.29.4):
-    resolution: {integrity: sha512-zKzbp8AQ+l8QK3XrONtUBdgBbMI8TkGh8hBYF77ZkVqMLLIAHwGSwJRFolPQMBx/5pezeRKvmu2gzlqnxRZeqQ==}
+  /unimport@3.7.0(rollup@3.29.4):
+    resolution: {integrity: sha512-vesCVjU3CYk41UZNY10kwii7l77vcP4IxPbBMgpve+vean7g7zJWrcCqSoG7u0eB9LZ5bM5BP+3vr3W2uYk0Yg==}
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
+      acorn: 8.11.2
       escape-string-regexp: 5.0.0
+      estree-walker: 3.0.3
       fast-glob: 3.3.2
       local-pkg: 0.5.0
       magic-string: 0.30.5
@@ -13249,11 +13250,13 @@ packages:
       - rollup
     dev: false
 
-  /unimport@3.6.1(rollup@4.6.0):
-    resolution: {integrity: sha512-zKzbp8AQ+l8QK3XrONtUBdgBbMI8TkGh8hBYF77ZkVqMLLIAHwGSwJRFolPQMBx/5pezeRKvmu2gzlqnxRZeqQ==}
+  /unimport@3.7.0(rollup@4.6.0):
+    resolution: {integrity: sha512-vesCVjU3CYk41UZNY10kwii7l77vcP4IxPbBMgpve+vean7g7zJWrcCqSoG7u0eB9LZ5bM5BP+3vr3W2uYk0Yg==}
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.6.0)
+      acorn: 8.11.2
       escape-string-regexp: 5.0.0
+      estree-walker: 3.0.3
       fast-glob: 3.3.2
       local-pkg: 0.5.0
       magic-string: 0.30.5
@@ -13629,7 +13632,7 @@ packages:
       magic-string: 0.30.5
       pathe: 1.1.1
       picocolors: 1.0.0
-      std-env: 3.6.0
+      std-env: 3.7.0
       strip-literal: 1.3.0
       tinybench: 2.5.1
       tinypool: 0.8.1
@@ -14047,7 +14050,7 @@ packages:
       chalk: 4.1.2
       consola: 2.15.3
       pretty-time: 1.1.0
-      std-env: 3.6.0
+      std-env: 3.7.0
       webpack: 4.47.0
     dev: true
 
