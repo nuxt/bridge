@@ -27,9 +27,9 @@
     "changelogen": "^0.5.5",
     "devalue": "^4.3.2",
     "eslint": "^8.56.0",
-    "eslint-plugin-jsdoc": "^46.9.1",
+    "eslint-plugin-jsdoc": "^46.10.1",
     "jiti": "^1.21.0",
-    "vitest": "^1.1.0"
+    "vitest": "^1.1.1"
   },
   "resolutions": {
     "@nuxt/bridge": "workspace:*",
