@@ -62,7 +62,7 @@
     "perfect-debounce": "^1.0.0",
     "pkg-types": "^1.0.3",
     "postcss": "^8.4.32",
-    "postcss-import": "^15.1.0",
+    "postcss-import": "^16.0.0",
     "postcss-import-resolver": "^2.0.0",
     "postcss-preset-env": "^9.3.0",
     "postcss-url": "^10.1.3",
