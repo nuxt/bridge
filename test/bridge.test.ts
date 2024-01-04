@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
 import { setup, $fetch, fetch, startServer } from '@nuxt/test-utils'
-import { expectNoClientErrors, parseData } from './utils'
+import { expectNoClientErrors, parseData, renderPage } from './utils'
 
 const isWebpack = process.env.TEST_WITH_WEBPACK
 
@@ -31,7 +31,21 @@ describe('nuxt composables', () => {
       }
     })
     const cookies = res.headers.get('set-cookie')
-    expect(cookies).toMatchInlineSnapshot('"set-in-plugin=true; Path=/, set=set; Path=/, browser-set=set; Path=/, browser-set-to-null=; Max-Age=0; Path=/, browser-set-to-null-with-default=; Max-Age=0; Path=/"')
+    expect(cookies).toMatchInlineSnapshot('"set-in-plugin=true; Path=/, set=set; Path=/, browser-set=set; Path=/, browser-set-to-null=; Max-Age=0; Path=/, browser-set-to-null-with-default=; Max-Age=0; Path=/, browser-object-default=%7B%22foo%22%3A%22bar%22%7D; Path=/"')
+  })
+
+  // remove skip after enabling browser option
+  it.skip('updates cookies when they are changed', async () => {
+    const { page } = await renderPage('/cookies')
+    async function extractCookie () {
+      const cookie = await page.evaluate(() => document.cookie)
+      const raw = cookie.match(/browser-object-default=([^;]*)/)![1] ?? 'null'
+      return JSON.parse(decodeURIComponent(raw))
+    }
+    expect(await extractCookie()).toEqual({ foo: 'bar' })
+    await page.getByRole('button').click()
+    expect(await extractCookie()).toEqual({ foo: 'baz' })
+    await page.close()
   })
   it('error should be render', async () => {
     const html = await $fetch('/async-data')
