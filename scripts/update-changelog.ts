@@ -15,7 +15,7 @@ async function main () {
   ))
   const bumpType = await determineBumpType()
 
-  const newVersion = inc(workspace.find('@nuxt/bridge').data.version, 'prerelease', 'rc')
+  const newVersion = inc(workspace.find('@nuxt/bridge').data.version, bumpType || 'patch')
   const changelog = await generateMarkDown(commits, config)
 
   // Create and push a branch with bumped versions if it has not already been created
