@@ -95,6 +95,12 @@ describe('pages', () => {
   it('uses server Vue build', async () => {
     expect(await $fetch('/')).toContain('Rendered on server: true')
   })
+  it('supports jsx', async () => {
+    const html = await $fetch('/jsx')
+
+    expect(html).toContain('JSX component')
+    expect(html).toContain('JSX component with jsx extention')
+  })
 })
 
 describe('legacy async data', () => {

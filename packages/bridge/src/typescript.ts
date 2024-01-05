@@ -21,7 +21,7 @@ export function setupTypescript () {
   nuxt.options.build.babel.plugins.unshift(
     _require.resolve('@babel/plugin-proposal-optional-chaining'),
     _require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'),
-    _require.resolve('@babel/plugin-transform-typescript')
+    [_require.resolve('@babel/plugin-transform-typescript'), { isTSX: true }]
   )
 
   extendWebpackConfig((config) => {
