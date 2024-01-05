@@ -29,7 +29,7 @@
     "eslint": "^8.56.0",
     "eslint-plugin-jsdoc": "^48.0.2",
     "jiti": "^1.21.0",
-    "vitest": "^1.1.1"
+    "vitest": "^1.1.2"
   },
   "resolutions": {
     "@nuxt/bridge": "workspace:*",
