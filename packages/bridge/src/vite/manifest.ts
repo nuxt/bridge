@@ -80,11 +80,14 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
   for (const entry in clientManifest) {
     if (!clientManifest[entry].file.startsWith('polyfills-legacy') && clientManifest[entry].file.includes('-legacy')) {
       clientImports.add(clientManifest[entry].file)
-      for (const key of ['css', 'assets', 'dynamicImports']) {
+      for (const key of ['assets', 'dynamicImports']) {
         for (const file of clientManifest[entry][key] || []) {
           clientEntry[key].add(file)
         }
       }
+    }
+    for (const file of clientManifest[entry].css || []) {
+      clientEntry.css.add(file)
     }
     delete clientManifest[entry].isEntry
   }
