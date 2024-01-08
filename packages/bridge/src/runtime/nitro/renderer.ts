@@ -1,3 +1,5 @@
+import { createServerHead } from '@unhead/vue'
+import { renderSSRHead } from '@unhead/ssr'
 import { createRenderer } from 'vue-bundle-renderer/runtime'
 import type { SSRContext } from 'vue-bundle-renderer/runtime'
 import { H3Event, getQuery } from 'h3'
@@ -5,6 +7,7 @@ import devalue from '@nuxt/devalue'
 import type { RuntimeConfig } from '@nuxt/schema'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import type { RenderResponse } from 'nitropack'
+import { markRaw } from 'vue'
 // @ts-ignore
 import { useRuntimeConfig, defineRenderHandler, getRouteRules } from '#internal/nitro'
 // @ts-ignore
@@ -15,6 +18,8 @@ import { buildAssetsURL } from '#paths'
 import htmlTemplate from '#build/views/document.template.mjs'
 // @ts-ignore
 import { renderToString } from '#vue-renderer'
+// @ts-ignore
+import metaConfig from '#build/meta.config.mjs'
 
 const STATIC_ASSETS_BASE = process.env.NUXT_STATIC_BASE + '/' + process.env.NUXT_STATIC_VERSION
 const PAYLOAD_JS = '/payload.js'
@@ -138,6 +143,9 @@ export default defineRenderHandler(async (event) => {
   // Get route options (currently to apply `ssr: false`)
   const routeOptions = getRouteRules(event)
 
+  const head = createServerHead()
+  head.push(markRaw(metaConfig.globalMeta))
+
   // Initialize ssr context
   const config = useRuntimeConfig()
   const ssrContext: NuxtSSRContext = {
@@ -151,7 +159,8 @@ export default defineRenderHandler(async (event) => {
     redirected: undefined,
     nuxt: undefined as undefined | Record<string, any>, /* Nuxt 2 payload */
     payload: undefined,
-    nuxtApp: undefined
+    nuxtApp: undefined,
+    head
   }
 
   // Render app
@@ -198,9 +207,14 @@ export default defineRenderHandler(async (event) => {
     const state = `<script>window.__NUXT__=${devalue(ssrContext.nuxt)}</script>`
 
     _rendered.meta = _rendered.meta || {}
-    if (ssrContext.renderMeta) {
-      Object.assign(_rendered.meta, await ssrContext.renderMeta())
-    }
+    const meta = await renderSSRHead(head)
+
+    Object.assign(_rendered.meta, {
+      ...meta,
+      bodyScriptsPrepend: meta.bodyTagsOpen,
+      // resolves naming difference with NuxtMeta and Unhead
+      bodyScripts: meta.bodyTags
+    })
 
     // Create render context
     const htmlContext: NuxtRenderHTMLContext = {
