@@ -40,6 +40,23 @@ module.exports.defineNuxtConfig = (config = {}) => {
     }
     nuxtCtx.set(nuxt)
 
+    // Mock new hookable methods
+    nuxt.removeHook ||= nuxt.clearHook.bind(nuxt)
+    nuxt.removeAllHooks ||= nuxt.clearHooks.bind(nuxt)
+    nuxt.hookOnce ||= (name, fn, ...hookArgs) => {
+      const unsub = nuxt.hook(name, (...args) => {
+        if (typeof unsub === 'function') {
+          unsub()
+        } else {
+          // In hable@^3.0.0, the hook does not return a function.
+          nuxt.removeHook(name, fn)
+        }
+
+        return fn(...args)
+      }, ...hookArgs)
+      return unsub
+    }
+
     // Mock _layers for nitro and auto-imports
     nuxt.options._layers = nuxt.options._layers || [{
       config: nuxt.options,

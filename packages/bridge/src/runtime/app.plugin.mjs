@@ -1,11 +1,12 @@
-import Vue, { version } from 'vue'
+import Vue, { version, reactive } from 'vue'
 import { createHooks } from 'hookable'
-import { callWithNuxt, setNuxtAppInstance } from '#app'
+import { setNuxtAppInstance } from '#app/nuxt'
+import { globalMiddleware } from '#build/global-middleware'
 
 // Reshape payload to match key `useLazyAsyncData` expects
 function proxiedState (state) {
   state._asyncData = state._asyncData || {}
-  state._errors = state._errors || {}
+  state._errors = state._errors || reactive({})
   return new Proxy(state, {
     get (target, prop) {
       if (prop === 'data') {
@@ -40,15 +41,19 @@ export default async (ctx, inject) => {
       mount: () => { },
       provide: inject,
       unmount: () => { },
-      use (vuePlugin) {
-        runOnceWith(vuePlugin, () => Vue.use(vuePlugin))
+      use (vuePlugin, options) {
+        runOnceWith(vuePlugin, () => Vue.use(vuePlugin, options))
       },
       version
     },
     provide: inject,
     globalName: 'nuxt',
     payload: proxiedState(process.client ? ctx.nuxtState : ctx.ssrContext.nuxt),
-    _asyncDataPromises: [],
+    _asyncDataPromises: {},
+    _asyncData: {},
+    static: {
+      data: {}
+    },
     isHydrating: true,
     nuxt2Context: ctx
   }
@@ -58,8 +63,9 @@ export default async (ctx, inject) => {
   nuxtApp.callHook = nuxtApp.hooks.callHook
 
   const middleware = await import('#build/middleware').then(r => r.default)
+
   nuxtApp._middleware = nuxtApp._middleware || {
-    global: [],
+    global: globalMiddleware,
     named: middleware
   }
 
@@ -67,7 +73,7 @@ export default async (ctx, inject) => {
     nuxtApp._processingMiddleware = true
 
     for (const middleware of nuxtApp._middleware.global) {
-      const result = await callWithNuxt(nuxtApp, middleware, [to, from])
+      const result = await middleware(ctx)
       if (result || result === false) { return next(result) }
     }
 
@@ -88,6 +94,7 @@ export default async (ctx, inject) => {
 
   if (process.server) {
     nuxtApp.ssrContext = ctx.ssrContext
+    nuxtApp.ssrContext.nuxtApp = nuxtApp
   }
 
   ctx.app.created.push(function () {
@@ -99,6 +106,9 @@ export default async (ctx, inject) => {
 
   const proxiedApp = new Proxy(nuxtApp, {
     get (target, prop) {
+      if (prop === '$store') {
+        return target.nuxt2Context.store
+      }
       if (prop[0] === '$') {
         return target.nuxt2Context[prop] || target.vue2App?.[prop]
       }

@@ -1,9 +1,11 @@
 <template>
   <div>
-    <div v-if="!pending">
-      {{ hello }}
-    </div>
+    <!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->
+    <div v-if="!pending">{{ hello }}</div>
     <NuxtChild />
+    <NuxtLink to="/legacy/async-data">
+      to legacy async-data
+    </NuxtLink>
   </div>
 </template>
 
@@ -17,8 +19,10 @@ export default defineNuxtComponent({
       }
     })
 
+    const hello = computed(() => data.value?.hello)
+
     return {
-      hello: data.value?.hello,
+      hello,
       pending
     }
   }

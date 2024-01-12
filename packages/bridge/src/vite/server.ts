@@ -3,6 +3,7 @@ import createVuePlugin from '@vitejs/plugin-vue2'
 import { logger } from '@nuxt/kit'
 import type { InlineConfig } from 'vite'
 import { joinURL, withoutLeadingSlash, withTrailingSlash } from 'ufo'
+import replace from '@rollup/plugin-replace'
 import { initViteNodeServer } from '../vite-node'
 import { mergeConfig, createServer, build } from './stub-vite.cjs'
 import { wpfs } from './utils/wpfs'
@@ -48,12 +49,7 @@ export async function buildServer (ctx: ViteBuildContext) {
       'process.client': false,
       'process.static': false,
       // use `process.client` instead. `process.browser` is deprecated
-      'process.browser': false,
-      'typeof window': '"undefined"',
-      'typeof document': '"undefined"',
-      'typeof navigator': '"undefined"',
-      'typeof location': '"undefined"',
-      'typeof XMLHttpRequest': '"undefined"'
+      'process.browser': false
     },
     cacheDir: resolve(ctx.nuxt.options.rootDir, 'node_modules/.cache/vite/server'),
     resolve: {
@@ -101,7 +97,14 @@ export async function buildServer (ctx: ViteBuildContext) {
     },
     plugins: [
       jsxPlugin(),
-      vuePlugin
+      vuePlugin,
+      replace({
+        'typeof window': '"undefined"',
+        'typeof document': '"undefined"',
+        'typeof navigator': '"undefined"',
+        'typeof location': '"undefined"',
+        'typeof XMLHttpRequest': '"undefined"'
+      })
     ]
   } as ViteOptions)
 

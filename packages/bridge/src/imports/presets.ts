@@ -1,16 +1,9 @@
 import { defineUnimportPreset, InlinePreset } from 'unimport'
 
 export const commonPresets: InlinePreset[] = [
-  // #head
-  defineUnimportPreset({
-    from: '#head',
-    imports: [
-      'useMeta'
-    ]
-  }),
   // vue-demi (mocked)
   defineUnimportPreset({
-    from: '#app',
+    from: '#app/app',
     imports: [
       'isVue2',
       'isVue3'
@@ -18,35 +11,48 @@ export const commonPresets: InlinePreset[] = [
   })
 ]
 
-export const appPreset = defineUnimportPreset({
-  from: '#app',
-  imports: [
-    'useLazyAsyncData',
-    'refreshNuxtData',
-    'defineNuxtComponent',
-    'useNuxtApp',
-    'defineNuxtPlugin',
-    'useRuntimeConfig',
-    'useState',
-    'useLazyFetch',
-    'useCookie',
-    'useRequestHeaders',
-    'useRequestEvent',
-    'useRouter',
-    'useRoute',
-    'defineNuxtRouteMiddleware',
-    'navigateTo',
-    'abortNavigation',
-    'addRouteMiddleware',
-    'useNuxt2Meta',
-    'clearError',
-    'createError',
-    'isNuxtError',
-    'throwError',
-    'showError',
-    'useError'
-  ]
-})
+const granularAppPresets: InlinePreset[] = [
+  {
+    imports: ['setNuxtAppInstance', 'useNuxtApp', 'defineNuxtPlugin', 'useRuntimeConfig', 'useNuxt2Meta'],
+    from: '#app/nuxt'
+  },
+  {
+    imports: ['defineNuxtComponent'],
+    from: '#app/composables/component'
+  },
+  {
+    imports: ['useRoute', 'useRouter', 'abortNavigation', 'addRouteMiddleware', 'defineNuxtRouteMiddleware', 'navigateTo'],
+    from: '#app/composables/router'
+  },
+  {
+    imports: ['useState'],
+    from: '#app/composables/state'
+  },
+  {
+    imports: ['useLazyAsyncData', 'refreshNuxtData'],
+    from: '#app/composables/asyncData'
+  },
+  {
+    imports: ['clearError', 'createError', 'isNuxtError', 'showError', 'useError', 'throwError'],
+    from: '#app/composables/error'
+  },
+  {
+    imports: ['useLazyFetch'],
+    from: '#app/composables/fetch'
+  },
+  {
+    imports: ['useCookie'],
+    from: '#app/composables/cookie'
+  },
+  {
+    imports: ['useRequestHeaders', 'useRequestEvent'],
+    from: '#app/composables/ssr'
+  },
+  {
+    imports: ['useAsyncData', 'useFetch', 'useHydration'],
+    from: '#app/mocks'
+  }
+]
 
 export const vueKeys: Array<keyof typeof import('vue')> = [
   // Lifecycle
@@ -125,7 +131,7 @@ const vueRouterPreset = defineUnimportPreset({
 
 export const defaultPresets = [
   ...commonPresets,
-  appPreset,
+  ...granularAppPresets,
   vueRouterPreset,
   vuePreset
 ]

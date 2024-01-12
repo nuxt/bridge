@@ -61,6 +61,13 @@ export default defineNuxtModule({
       ]
     })
 
+    addImportsSources({
+      from: '#head',
+      imports: [
+        'useMeta'
+      ]
+    })
+
     // Add library-specific plugin
     addPlugin({ src: resolve(runtimeDir, 'plugins/unhead') })
   }

@@ -2,7 +2,7 @@ import { existsSync, readdirSync } from 'node:fs'
 import { defineUntypedSchema } from 'untyped'
 import { resolve, join } from 'pathe'
 import defu from 'defu'
-import { AppHeadMetaObject } from '../types/head'
+import type { AppHeadMetaObject } from '../types/head'
 
 export default defineUntypedSchema({
   vue: {
@@ -170,7 +170,7 @@ export default defineUntypedSchema({
   },
 
   /**
-   * @typeTODO {typeof import('../src/types/meta').AppHeadMetaObject}
+   * @type {typeof import('../src/types/head').AppHeadMetaObject}
    * @deprecated - use `head` instead
    */
   meta: {
@@ -218,33 +218,25 @@ export default defineUntypedSchema({
    * Configure the Nuxt loading progress bar component that's shown between
    * routes. Set to `false` to disable. You can also customize it or create
    * your own component.
+   * @type {typeof import('../src/types/loading').NuxtOptionsLoading | false}
    */
   loading: {
-    /** CSS color of the progress bar. */
-    color: 'black',
-    /**
-     * CSS color of the progress bar when an error appended while rendering
-     * the route (if data or fetch sent back an error, for example).
-     */
-    failedColor: 'red',
-    /** Height of the progress bar (used in the style property of the progress bar). */
-    height: '2px',
-    /**
-     * In ms, wait for the specified time before displaying the progress bar.
-     * Useful for preventing the bar from flashing.
-     */
-    throttle: 200,
-    /**
-     * In ms, the maximum duration of the progress bar, Nuxt assumes that the
-     * route will be rendered before 5 seconds.
-     */
-    duration: 5000,
-    /** Keep animating progress bar when loading takes longer than duration. */
-    continuous: false,
-    /** Set the direction of the progress bar from right to left. */
-    rtl: false,
-    /** Set to `false` to remove default progress bar styles (and add your own). */
-    css: true
+    $resolve: (val) => {
+      if (val === false) {
+        return false
+      }
+
+      return defu(val, {
+        color: 'black',
+        failedColor: 'red',
+        height: '2px',
+        throttle: 200,
+        duration: 5000,
+        continuous: false,
+        rtl: false,
+        css: true
+      })
+    }
   },
 
   /**
@@ -254,6 +246,7 @@ export default defineUntypedSchema({
    * configuration. The name can refer to an indicator from [SpinKit](https://tobiasahlin.com/spinkit/)
    * or a path to an HTML template of the indicator source code (in this case, all the
    * other options will be passed to the template).
+   * @type {typeof import('../src/types/loading').NuxtOptionsLoadingIndicator | false}
    */
   loadingIndicator: {
     $resolve: async (val, get) => {

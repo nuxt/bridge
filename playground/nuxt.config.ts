@@ -14,7 +14,10 @@ const bridgeConfig = {
   nitroGenerator: process.env.TEST_NITRO_GENERATOR !== 'false',
   imports: process.env.TEST_IMPORTS !== 'false',
   meta: process.env.TEST_META !== 'false',
-  typescript: process.env.TEST_TYPESCRIPT !== 'false'
+  typescript: process.env.TEST_TYPESCRIPT !== 'false',
+  macros: {
+    pageMeta: true
+  }
 }
 
 console.log('Bridge config:', bridgeConfig)
@@ -44,7 +47,7 @@ export default defineNuxtConfig({
       })
     }
   ],
-  plugins: ['~/plugins/setup.js'],
+  plugins: ['~/plugins/setup.js', '~/plugins/store.js', '~/plugins/cookie'],
   nitro: {
     routeRules: {
       '/route-rules/spa': { ssr: false }
@@ -52,6 +55,11 @@ export default defineNuxtConfig({
     plugins: ['plugins/template.ts']
   },
   bridge: bridgeConfig,
+  vite: {
+    build: {
+      assetsInlineLimit: 100 // keep SVG as assets URL
+    }
+  },
   runtimeConfig: {
     secretKey: 'nuxt',
     public: {

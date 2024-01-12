@@ -7,3 +7,9 @@ export const actions = {
     state.test = '✅'
   }
 }
+
+export const mutations = {
+  setTest (state, value) {
+    state.test = value
+  }
+}

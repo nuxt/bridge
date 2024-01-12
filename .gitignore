@@ -4,3 +4,5 @@ dist
 .output
 .nuxt
 coverage
+packages/*/LICENSE
+packages/*/README.md

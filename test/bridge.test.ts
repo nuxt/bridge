@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
 import { setup, $fetch, fetch, startServer } from '@nuxt/test-utils'
-import { expectNoClientErrors, parseData } from './utils'
+import { expectNoClientErrors, parseData, renderPage } from './utils'
 
 const isWebpack = process.env.TEST_BUILDER === 'webpack'
 const isDev = process.env.TEST_ENV === 'dev'
@@ -14,6 +14,44 @@ await setup({
     buildDir: process.env.NITRO_BUILD_DIR,
     nitro: { output: { dir: process.env.NITRO_OUTPUT_DIR } }
   }
+})
+
+describe('nuxt composables', () => {
+  it('sets cookies correctly', async () => {
+    const res = await fetch('/cookies', {
+      headers: {
+        cookie: Object.entries({
+          'browser-accessed-but-not-used': 'provided-by-browser',
+          'browser-accessed-with-default-value': 'provided-by-browser',
+          'browser-set': 'provided-by-browser',
+          'browser-set-to-null': 'provided-by-browser',
+          'browser-set-to-null-with-default': 'provided-by-browser'
+        }).map(([key, value]) => `${key}=${value}`).join('; ')
+      }
+    })
+    const cookies = res.headers.get('set-cookie')
+    expect(cookies).toMatchInlineSnapshot('"set-in-plugin=true; Path=/, set=set; Path=/, browser-set=set; Path=/, browser-set-to-null=; Max-Age=0; Path=/, browser-set-to-null-with-default=; Max-Age=0; Path=/, browser-object-default=%7B%22foo%22%3A%22bar%22%7D; Path=/"')
+  })
+
+  // remove skip after enabling browser option
+  it.skip('updates cookies when they are changed', async () => {
+    const { page } = await renderPage('/cookies')
+    async function extractCookie () {
+      const cookie = await page.evaluate(() => document.cookie)
+      const raw = cookie.match(/browser-object-default=([^;]*)/)![1] ?? 'null'
+      return JSON.parse(decodeURIComponent(raw))
+    }
+    expect(await extractCookie()).toEqual({ foo: 'bar' })
+    await page.getByRole('button').click()
+    expect(await extractCookie()).toEqual({ foo: 'baz' })
+    await page.close()
+  })
+  it('error should be render', async () => {
+    const html = await $fetch('/async-data')
+
+    expect(html).toContain('error2: Error: fetch-2 error')
+    expect(html).toContain('error3: Error: fetch-3 error')
+  })
 })
 
 describe('head tags', () => {
@@ -70,6 +108,12 @@ describe('pages', () => {
   it('uses server Vue build', async () => {
     expect(await $fetch('/')).toContain('Rendered on server: true')
   })
+  it('supports jsx', async () => {
+    const html = await $fetch('/jsx')
+
+    expect(html).toContain('JSX component')
+    expect(html).toContain('JSX component with jsx extention')
+  })
 })
 
 describe('legacy async data', () => {
@@ -87,6 +131,19 @@ describe('legacy async data', () => {
         },
         {
           "fooChild": "fooChild",
+        },
+      ]
+    `)
+  })
+
+  it('should work with defineNuxtComponent and setup', async () => {
+    const html = await $fetch('/legacy/setup')
+    expect(html).toContain('<div>Hello API</div>')
+    const { script } = parseData(html)
+    expect(Object.values(script._asyncData)).toMatchInlineSnapshot(`
+      [
+        {
+          "hello": "Hello API",
         },
       ]
     `)
@@ -119,6 +176,11 @@ describe('legacy capi', () => {
     const html = await $fetch('/legacy-capi')
     expect(html).toMatch(/([\s\S]*✅){11}/)
     await expectNoClientErrors('/legacy-capi')
+  })
+
+  it('should be changed store.state', async () => {
+    const html = await $fetch('/legacy-capi')
+    expect(html).toContain('<tr><td><b>useStore</b></td><td> ✅</td></tr>')
   })
 })
 
@@ -162,11 +224,19 @@ describe('middleware', () => {
   })
 
   it('should redirect to navigation-target', async () => {
-    const html = await $fetch('/redirect')
+    const html = await $fetch('/redirect/')
 
     expect(html).toContain('Navigated successfully')
   })
 
+  it('should redirect to navigation-target', async () => {
+    const html = await $fetch('/add-route-middleware')
+
+    expect(html).toContain('Navigated successfully')
+  })
+})
+
+describe('navigate', () => {
   it('should not overwrite headers', async () => {
     const { headers, status } = await fetch('/navigate-to-external', { redirect: 'manual' })
 
@@ -183,10 +253,33 @@ describe('middleware', () => {
     expect(res.status).toEqual(401)
   })
 
-  it('should redirect to navigation-target', async () => {
-    const html = await $fetch('/add-route-middleware')
+  it('respects redirects + headers in middleware', async () => {
+    const res = await fetch('/navigate-some-path/', { redirect: 'manual', headers: { 'trailing-slash': 'true' } })
+    expect(res.headers.get('location')).toEqual('/navigate-some-path')
+    expect(res.status).toEqual(307)
+    expect(await res.text()).toMatchInlineSnapshot('"<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/navigate-some-path"></head></html>"')
+  })
 
-    expect(html).toContain('Navigated successfully')
+  it('supports directly aborting navigation on SSR', async () => {
+    const { status } = await fetch('/navigate-to-false', { redirect: 'manual' })
+
+    expect(status).toEqual(404)
+  })
+})
+
+describe('store', () => {
+  it('should be able to access $store in plugins', async () => {
+    const html = await $fetch('/store')
+    expect(html).toContain('state is: ✅')
+  })
+})
+
+describe('layouts', () => {
+  it('should apply custom layout', async () => {
+    const html = await $fetch('/with-layout')
+
+    expect(html).toContain('with-layout.vue')
+    expect(html).toContain('Custom Layout:')
   })
 })
 
@@ -270,40 +363,40 @@ describe('dynamic paths', () => {
     const html = await $fetch('/runtime-config')
     expect(html.match(/<pre>([\s\S]*)<\/pre>/)?.[0].replace(/&quot;/g, '"')).toMatchInlineSnapshot(`
       "<pre>{
-        \\"app\\": {
-          \\"baseURL\\": \\"./\\",
-          \\"basePath\\": \\"/\\",
-          \\"assetsPath\\": \\"/_nuxt/\\",
-          \\"cdnURL\\": \\"\\",
-          \\"head\\": {
-            \\"meta\\": [
+        "app": {
+          "baseURL": "./",
+          "basePath": "/",
+          "assetsPath": "/_nuxt/",
+          "cdnURL": "",
+          "head": {
+            "meta": [
               {
-                \\"name\\": \\"viewport\\",
-                \\"content\\": \\"width=1024, initial-scale=1\\"
+                "name": "viewport",
+                "content": "width=1024, initial-scale=1"
               },
               {
-                \\"charset\\": \\"utf-8\\"
+                "charset": "utf-8"
               },
               {
-                \\"name\\": \\"description\\",
-                \\"content\\": \\"Nuxt Fixture\\"
+                "name": "description",
+                "content": "Nuxt Fixture"
               }
             ]
           },
-          \\"buildAssetsDir\\": \\"/_nuxt/\\"
+          "buildAssetsDir": "/_nuxt/"
         },
-        \\"nitro\\": {
-          \\"envPrefix\\": \\"NUXT_\\",
-          \\"routeRules\\": {
-            \\"/route-rules/spa\\": {
-              \\"ssr\\": false
+        "nitro": {
+          "envPrefix": "NUXT_",
+          "routeRules": {
+            "/route-rules/spa": {
+              "ssr": false
             }
           }
         },
-        \\"public\\": {
-          \\"myValue\\": 123
+        "public": {
+          "myValue": 123
         },
-        \\"secretKey\\": \\"nuxt\\"
+        "secretKey": "nuxt"
       }</pre>"
     `)
     await expectNoClientErrors('/runtime-config')

@@ -7,7 +7,6 @@ import jiti from 'jiti'
 export default defineUntypedSchema({
   /**
    * Your preferred code editor to launch when debugging.
-   *
    * @see [documentation](https://github.com/yyx990803/launch-editor#supported-editors)
    * @type {string}
    */
@@ -18,7 +17,6 @@ export default defineUntypedSchema({
    *
    * `chokidar` is used to set up the watchers. To learn more about its pattern
    * options, see chokidar documentation.
-   *
    * @see [chokidar](https://github.com/paulmillr/chokidar#api)
    * @example
    * ```js
@@ -75,7 +73,6 @@ export default defineUntypedSchema({
      * modern will be set to `'client'`.
      *
      * If you have set `modern: true` and are serving your app, modern will be set to `'server'`.
-     *
      * @see [concept of modern mode](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)
      * @type {'server' | 'client' | boolean}
      */
@@ -93,7 +90,6 @@ export default defineUntypedSchema({
      * The `env` property defines environment variables that should be available
      * throughout your app (server- and client-side). They can be assigned using
      * server-side environment variables.
-     *
      * @note Nuxt uses webpack's `definePlugin` to define these environment variables.
      * This means that the actual `process` or `process.env` from Node.js is neither
      * available nor defined. Each of the `env` properties defined here is individually
@@ -117,7 +113,6 @@ export default defineUntypedSchema({
     /**
      * Set the method Nuxt uses to require modules, such as loading `nuxt.config`, server
      * middleware, and so on - defaulting to `jiti` (which has support for TypeScript and ESM syntax).
-     *
      * @see [jiti](https://github.com/unjs/jiti)
      * @type {'jiti' | 'native' | ((p: string | { filename: string }) => NodeRequire)}
      */
@@ -140,7 +135,6 @@ export default defineUntypedSchema({
      * or as static HTML files suitable for a CDN or other static file server (`static`).
      *
      * This is unrelated to `ssr`.
-     *
      * @type {'server' | 'static'}
      */
     target: {
@@ -181,7 +175,6 @@ export default defineUntypedSchema({
    * You can pass a string, which can be the name of a node dependency or a path to a file. You
    * can also pass an object with `path` and `handler` keys (`handler` can be a path or a
    * function).
-   *
    * @note If you pass a function directly, it will only run in development mode.
    * @example
    * ```js
