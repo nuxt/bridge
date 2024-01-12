@@ -164,7 +164,7 @@ export default defineNuxtModule({
       await setupMeta({ needsExplicitEnable: opts.meta === null })
     }
     if (!opts.meta) {
-      // Add global meta configuration
+      // Add stub to allow tree-shaking out unhead utils in renderer
       addTemplate({
         filename: 'meta.config.mjs',
         getContents: () => 'export default false'
