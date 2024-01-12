@@ -1,3 +1,5 @@
+import { createServerHead } from '@unhead/vue'
+import { renderSSRHead } from '@unhead/ssr'
 import { createRenderer } from 'vue-bundle-renderer/runtime'
 import type { SSRContext } from 'vue-bundle-renderer/runtime'
 import { H3Event, getQuery } from 'h3'
@@ -5,16 +7,19 @@ import devalue from '@nuxt/devalue'
 import type { RuntimeConfig } from '@nuxt/schema'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import type { RenderResponse } from 'nitropack'
+import { markRaw } from 'vue'
 // @ts-ignore
 import { useRuntimeConfig, defineRenderHandler, getRouteRules } from '#internal/nitro'
 // @ts-ignore
 import { useNitroApp } from '#internal/nitro/app'
 // @ts-ignore
 import { buildAssetsURL } from '#paths'
-// @ts-ignore
+// @ts-expect-error virtual file
 import htmlTemplate from '#build/views/document.template.mjs'
 // @ts-ignore
 import { renderToString } from '#vue-renderer'
+// @ts-expect-error virtual file
+import metaConfig from '#build/meta.config.mjs'
 
 const STATIC_ASSETS_BASE = process.env.NUXT_STATIC_BASE + '/' + process.env.NUXT_STATIC_VERSION
 const PAYLOAD_JS = '/payload.js'
@@ -114,7 +119,20 @@ const getSPARenderer = lazyCachedFunction(async () => {
         app: config.app
       }
     }
-    ssrContext.renderMeta = ssrContext.renderMeta ?? (() => Promise.resolve({}))
+    ssrContext.renderMeta = ssrContext.renderMeta ?? (async () => {
+      if (!metaConfig) { return {} }
+
+      // Replicate unhead plugin behaviour on in SPA render
+      const head = createServerHead()
+      head.push(markRaw(metaConfig.globalMeta))
+      const meta = await renderSSRHead(head)
+      return {
+        ...meta,
+        bodyScriptsPrepend: meta.bodyTagsOpen,
+        // resolves naming difference with NuxtMeta and Unhead
+        bodyScripts: meta.bodyTags
+      }
+    })
     return Promise.resolve(result)
   }
 

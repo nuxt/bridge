@@ -1,4 +1,4 @@
-import { defineNuxtModule, installModule, checkNuxtCompatibility, logger, writeTypes } from '@nuxt/kit'
+import { defineNuxtModule, installModule, checkNuxtCompatibility, logger, writeTypes, addTemplate } from '@nuxt/kit'
 import type { NuxtModule, NuxtCompatibility } from '@nuxt/schema'
 import type { NodeMiddleware } from 'h3'
 import { fromNodeMiddleware } from 'h3'
@@ -162,6 +162,13 @@ export default defineNuxtModule({
     }
     if (opts.meta !== false && opts.capi) {
       await setupMeta({ needsExplicitEnable: opts.meta === null })
+    }
+    if (!opts.meta) {
+      // Add stub to allow tree-shaking out unhead utils in renderer
+      addTemplate({
+        filename: 'meta.config.mjs',
+        getContents: () => 'export default false'
+      })
     }
   }
 })

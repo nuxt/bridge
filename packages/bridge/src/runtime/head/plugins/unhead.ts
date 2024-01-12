@@ -25,14 +25,14 @@ export default defineNuxtPlugin((nuxtApp) => {
   )
 
   if (process.server) {
-      nuxtApp.ssrContext!.renderMeta = async () => {
-        const meta = await renderSSRHead(head)
-        return {
-          ...meta,
-          bodyScriptsPrepend: meta.bodyTagsOpen,
-          // resolves naming difference with NuxtMeta and Unhead
-          bodyScripts: meta.bodyTags
-        }
+    nuxtApp.ssrContext!.renderMeta = async () => {
+      const meta = await renderSSRHead(head)
+      return {
+        ...meta,
+        bodyScriptsPrepend: meta.bodyTagsOpen,
+        // resolves naming difference with NuxtMeta and Unhead
+        bodyScripts: meta.bodyTags
       }
+    }
   }
 })
