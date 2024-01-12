@@ -81,7 +81,7 @@
     "vue-bundle-renderer": "^2.0.0"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.17.2",
+    "@nuxt/types": "^2.17.3",
     "@nuxtjs/eslint-config": "^12.0.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/fs-extra": "^9.0.13",
