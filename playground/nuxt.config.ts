@@ -4,6 +4,24 @@ import { defineNuxtConfig } from '@nuxt/bridge'
 // @ts-ignore
 global.__NUXT_PREPATHS__ = (global.__NUXT_PREPATHS__ || []).concat(__dirname)
 
+const bridgeConfig = {
+  vite: process.env.TEST_BUILDER !== 'webpack',
+  transpile: process.env.TEST_TRANSPILE !== 'no-transpile',
+  compatibility: process.env.TEST_COMPATIBILITY !== 'no-compatibility',
+  resolve: process.env.TEST_RESOLVE !== 'no-resolve',
+  // Not yet tested in matrix
+  nitro: process.env.TEST_NITRO !== 'false',
+  nitroGenerator: process.env.TEST_NITRO_GENERATOR !== 'false',
+  imports: process.env.TEST_IMPORTS !== 'false',
+  meta: process.env.TEST_META !== 'false',
+  typescript: process.env.TEST_TYPESCRIPT !== 'false',
+  macros: {
+    pageMeta: true
+  }
+}
+
+console.log('Bridge config:', bridgeConfig)
+
 export default defineNuxtConfig({
   app: {
     head: {
@@ -36,16 +54,10 @@ export default defineNuxtConfig({
     },
     plugins: ['plugins/template.ts']
   },
+  bridge: bridgeConfig,
   vite: {
     build: {
       assetsInlineLimit: 100 // keep SVG as assets URL
-    }
-  },
-  bridge: {
-    meta: true,
-    vite: !process.env.TEST_WITH_WEBPACK,
-    macros: {
-      pageMeta: true
     }
   },
   runtimeConfig: {
