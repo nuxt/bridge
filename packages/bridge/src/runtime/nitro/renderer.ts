@@ -14,11 +14,11 @@ import { useRuntimeConfig, defineRenderHandler, getRouteRules } from '#internal/
 import { useNitroApp } from '#internal/nitro/app'
 // @ts-ignore
 import { buildAssetsURL } from '#paths'
-// @ts-ignore
+// @ts-expect-error virtual file
 import htmlTemplate from '#build/views/document.template.mjs'
 // @ts-ignore
 import { renderToString } from '#vue-renderer'
-// @ts-ignore
+// @ts-expect-error virtual file
 import metaConfig from '#build/meta.config.mjs'
 
 const STATIC_ASSETS_BASE = process.env.NUXT_STATIC_BASE + '/' + process.env.NUXT_STATIC_VERSION
@@ -119,7 +119,20 @@ const getSPARenderer = lazyCachedFunction(async () => {
         app: config.app
       }
     }
-    ssrContext.renderMeta = ssrContext.renderMeta ?? (() => Promise.resolve({}))
+    ssrContext.renderMeta = ssrContext.renderMeta ?? (async () => {
+      if (!metaConfig) { return {} }
+
+      // Replicate unhead plugin behaviour on in SPA render
+      const head = createServerHead()
+      head.push(markRaw(metaConfig.globalMeta))
+      const meta = await renderSSRHead(head)
+      return {
+        ...meta,
+        bodyScriptsPrepend: meta.bodyTagsOpen,
+        // resolves naming difference with NuxtMeta and Unhead
+        bodyScripts: meta.bodyTags
+      }
+    })
     return Promise.resolve(result)
   }
 
@@ -143,9 +156,6 @@ export default defineRenderHandler(async (event) => {
   // Get route options (currently to apply `ssr: false`)
   const routeOptions = getRouteRules(event)
 
-  const head = createServerHead()
-  head.push(markRaw(metaConfig.globalMeta))
-
   // Initialize ssr context
   const config = useRuntimeConfig()
   const ssrContext: NuxtSSRContext = {
@@ -159,8 +169,7 @@ export default defineRenderHandler(async (event) => {
     redirected: undefined,
     nuxt: undefined as undefined | Record<string, any>, /* Nuxt 2 payload */
     payload: undefined,
-    nuxtApp: undefined,
-    head
+    nuxtApp: undefined
   }
 
   // Render app
@@ -207,14 +216,9 @@ export default defineRenderHandler(async (event) => {
     const state = `<script>window.__NUXT__=${devalue(ssrContext.nuxt)}</script>`
 
     _rendered.meta = _rendered.meta || {}
-    const meta = await renderSSRHead(head)
-
-    Object.assign(_rendered.meta, {
-      ...meta,
-      bodyScriptsPrepend: meta.bodyTagsOpen,
-      // resolves naming difference with NuxtMeta and Unhead
-      bodyScripts: meta.bodyTags
-    })
+    if (ssrContext.renderMeta) {
+      Object.assign(_rendered.meta, await ssrContext.renderMeta())
+    }
 
     // Create render context
     const htmlContext: NuxtRenderHTMLContext = {
