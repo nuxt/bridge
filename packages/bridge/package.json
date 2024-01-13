@@ -25,7 +25,6 @@
   "dependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
-    "@babel/plugin-transform-typescript": "^7.23.6",
     "@nuxt/bridge-schema": "workspace:*",
     "@nuxt/devalue": "^2.0.2",
     "@nuxt/kit": "3.10.1",
@@ -42,6 +41,7 @@
     "defu": "^6.1.4",
     "destr": "^2.0.2",
     "enhanced-resolve": "^5.15.0",
+    "esbuild-loader": "^4.0.2",
     "escape-string-regexp": "^5.0.0",
     "estree-walker": "^3.0.3",
     "externality": "^1.0.2",

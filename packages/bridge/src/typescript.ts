@@ -1,5 +1,7 @@
 import { createRequire } from 'module'
 import { extendWebpackConfig, useNuxt } from '@nuxt/kit'
+import { transpile } from './vite/utils/transpile'
+import { esbuild } from './webpack/esbuild'
 
 const extensions = ['ts', 'tsx', 'cts', 'mts']
 const typescriptRE = /\.[cm]?tsx?$/
@@ -24,8 +26,7 @@ export function setupTypescript ({ isTSX }: SetupTypescriptOptions) {
   const _require = createRequire(import.meta.url)
   nuxt.options.build.babel.plugins.unshift(
     _require.resolve('@babel/plugin-proposal-optional-chaining'),
-    _require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'),
-    [_require.resolve('@babel/plugin-transform-typescript'), { isTSX }]
+    _require.resolve('@babel/plugin-proposal-nullish-coalescing-operator')
   )
 
   extendWebpackConfig((config) => {
@@ -35,5 +36,7 @@ export function setupTypescript ({ isTSX }: SetupTypescriptOptions) {
       ...babelRule,
       test: typescriptRE
     })
+
+    esbuild({ isServer: nuxt.options.ssr, nuxt, config, transpile: transpile({ isDev: nuxt.options.dev }) })
   })
 }

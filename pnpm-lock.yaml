@@ -48,9 +48,6 @@ importers:
       '@babel/plugin-proposal-optional-chaining':
         specifier: ^7.21.0
         version: 7.21.0(@babel/core@7.23.7)
-      '@babel/plugin-transform-typescript':
-        specifier: ^7.23.6
-        version: 7.23.6(@babel/core@7.23.7)
       '@nuxt/bridge-schema':
         specifier: workspace:*
         version: link:../bridge-schema
@@ -99,6 +96,9 @@ importers:
       enhanced-resolve:
         specifier: ^5.15.0
         version: 5.15.0
+      esbuild-loader:
+        specifier: ^4.0.2
+        version: 4.0.3(webpack@5.89.0)
       escape-string-regexp:
         specifier: ^5.0.0
         version: 5.0.0
@@ -861,16 +861,6 @@ packages:
       '@babel/core': 7.23.7
       '@babel/helper-plugin-utils': 7.22.5
 
-  /@babel/plugin-syntax-typescript@7.23.3(@babel/core@7.23.7):
-    resolution: {integrity: sha512-9EiNjVJOMwCO+43TqoTrgQ8jMwcAd0sWyXi9RPfIsLTj4R2MADDDQXELhffaUx/uJv2AYcxBgPwH6j4TIA4ytQ==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.23.7
-      '@babel/helper-plugin-utils': 7.22.5
-    dev: false
-
   /@babel/plugin-syntax-unicode-sets-regex@7.18.6(@babel/core@7.23.7):
     resolution: {integrity: sha512-727YkEAPwSIQTv5im8QHz3upqp92JTWhidIC81Tdx4VJYIte/VndKf1qKrfnnhPLiPghStWfvC/iFaMCQu7Nqg==}
     engines: {node: '>=6.9.0'}
@@ -1342,19 +1332,6 @@ packages:
     dependencies:
       '@babel/core': 7.23.7
       '@babel/helper-plugin-utils': 7.22.5
-
-  /@babel/plugin-transform-typescript@7.23.6(@babel/core@7.23.7):
-    resolution: {integrity: sha512-6cBG5mBvUu4VUD04OHKnYzbuHNP8huDsD3EDqqpIpsswTDoqHCjLoHb6+QgsV1WsT2nipRqCPgxD3LXnEO7XfA==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.23.7
-      '@babel/helper-annotate-as-pure': 7.22.5
-      '@babel/helper-create-class-features-plugin': 7.23.7(@babel/core@7.23.7)
-      '@babel/helper-plugin-utils': 7.22.5
-      '@babel/plugin-syntax-typescript': 7.23.3(@babel/core@7.23.7)
-    dev: false
 
   /@babel/plugin-transform-unicode-escapes@7.23.3(@babel/core@7.23.7):
     resolution: {integrity: sha512-OMCUx/bU6ChE3r4+ZdylEqAjaQgHAgipgW8nsCfu5pGqDcFytVd91AwRvUJSBZDz0exPGgnjoqhgRYLRjFZc9Q==}
@@ -6909,6 +6886,18 @@ packages:
       is-symbol: 1.0.4
     dev: true
 
+  /esbuild-loader@4.0.3(webpack@5.89.0):
+    resolution: {integrity: sha512-YpaSRisj7TSg6maKKKG9OJGGm0BZ7EXeov8J8cXEYdugjlAJ0wL7aj2JactoQvPJ113v2Ar204pdJWrZsAQc8Q==}
+    peerDependencies:
+      webpack: ^4.40.0 || ^5.0.0
+    dependencies:
+      esbuild: 0.19.8
+      get-tsconfig: 4.7.2
+      loader-utils: 2.0.4
+      webpack: 5.89.0(esbuild@0.19.8)
+      webpack-sources: 1.4.3
+    dev: false
+
   /esbuild-plugin-browserslist@0.10.0(browserslist@4.22.2)(esbuild@0.19.8):
     resolution: {integrity: sha512-rZWFcp3l+73xDiJB+Vl9UqP1VVs+L4E0lygbwJl6UTmW2qQago7DLT56hBu0vocH/TtZsAcRHj0+qHqkkB5Gww==}
     engines: {node: '>=18'}
@@ -7883,6 +7872,12 @@ packages:
   /get-tsconfig@4.5.0:
     resolution: {integrity: sha512-MjhiaIWCJ1sAU4pIQ5i5OfOuHHxVo1oYeNsWTON7jxYkod8pHocXeh+SSbmu5OZZZK73B6cbJ2XADzXehLyovQ==}
     dev: true
+
+  /get-tsconfig@4.7.2:
+    resolution: {integrity: sha512-wuMsz4leaj5hbGgg4IvDU0bqJagpftG5l5cXIAvo8uZrqn0NJqwtfupTN00VnkQJPcIRrxYrm1Ue24btpCha2A==}
+    dependencies:
+      resolve-pkg-maps: 1.0.0
+    dev: false
 
   /get-value@2.0.6:
     resolution: {integrity: sha512-Ln0UQDlxH1BapMu3GPtf7CuYNwRZf2gwCuPqbyG6pB8WfmFpzqcy4xtAaAMUhnNqjMKTiCPZG2oMT3YSx8U2NA==}
@@ -11718,6 +11713,10 @@ packages:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}
     engines: {node: '>=8'}
 
+  /resolve-pkg-maps@1.0.0:
+    resolution: {integrity: sha512-seS2Tj26TBVOC2NIc2rOe2y2ZO7efxITtLZcGSOnHHNOQ7CkiUBfw0Iw2ck6xkIhPwLhKNLS8BO+hEpngQlqzw==}
+    dev: false
+
   /resolve-url@0.2.1:
     resolution: {integrity: sha512-ZuF55hVUQaaczgOIwqWzkEcEidmlD/xl44x1UZnhOXcYuFN2S6+rcxpG+C1N3So0wvNI3DmJICUFfu2SxhBmvg==}
     deprecated: https://github.com/lydell/resolve-url#deprecated
@@ -12171,7 +12170,6 @@ packages:
 
   /source-list-map@2.0.1:
     resolution: {integrity: sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==}
-    dev: true
 
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
@@ -13790,7 +13788,6 @@ packages:
     dependencies:
       source-list-map: 2.0.1
       source-map: 0.6.1
-    dev: true
 
   /webpack-sources@3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
