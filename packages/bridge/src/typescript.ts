@@ -4,7 +4,11 @@ import { extendWebpackConfig, useNuxt } from '@nuxt/kit'
 const extensions = ['ts', 'tsx', 'cts', 'mts']
 const typescriptRE = /\.[cm]?tsx?$/
 
-export function setupTypescript () {
+type SetupTypescriptOptions = {
+  isTSX: boolean;
+}
+
+export function setupTypescript ({ isTSX }: SetupTypescriptOptions) {
   const nuxt = useNuxt()
 
   nuxt.options.extensions.push(...extensions)
@@ -21,7 +25,7 @@ export function setupTypescript () {
   nuxt.options.build.babel.plugins.unshift(
     _require.resolve('@babel/plugin-proposal-optional-chaining'),
     _require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'),
-    [_require.resolve('@babel/plugin-transform-typescript'), { isTSX: true }]
+    [_require.resolve('@babel/plugin-transform-typescript'), { isTSX }]
   )
 
   extendWebpackConfig((config) => {
