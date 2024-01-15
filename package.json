@@ -14,6 +14,7 @@
     "dev:preview": "node ./playground/.output/server/index.mjs",
     "dev:prepare": "pnpm build:stub && nuxi prepare playground",
     "lint": "eslint --ext .vue,.ts,.js,.mjs .",
+    "release": "./scripts/release.sh && pnpm dev:prepare",
     "test:fixtures": "pnpm dev:prepare && JITI_ESM_RESOLVE=1 vitest run --dir test",
     "test:fixtures:dev": "TEST_ENV=dev pnpm test:fixtures",
     "test:fixtures:webpack": "TEST_BUILDER=webpack pnpm test:fixtures",
