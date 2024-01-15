@@ -39,7 +39,9 @@ export interface BridgeConfig {
   compatibility: boolean
   postcss8: boolean
   resolve: boolean
-  typescript: boolean
+  typescript: boolean | {
+    isTSX?: boolean
+  }
   meta: boolean | null
   macros: false | {
     pageMeta: boolean

@@ -14,7 +14,9 @@ const bridgeConfig = {
   nitroGenerator: process.env.TEST_NITRO_GENERATOR !== 'false',
   imports: process.env.TEST_IMPORTS !== 'false',
   meta: process.env.TEST_META !== 'false',
-  typescript: process.env.TEST_TYPESCRIPT !== 'false',
+  typescript: {
+    isTSX: true
+  },
   macros: {
     pageMeta: true
   }
