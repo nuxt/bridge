@@ -131,7 +131,7 @@ export default defineNuxtModule({
       })
     }
     if (opts.typescript) {
-      await setupTypescript({ isTSX: typeof opts.typescript === 'object' && opts.typescript.isTSX })
+      await setupTypescript()
 
       // support generating tsconfig by `nuxt dev` (for nuxt 2)
       if (!opts.nitro) {

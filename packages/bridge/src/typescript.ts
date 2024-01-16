@@ -6,11 +6,7 @@ import { esbuild } from './webpack/esbuild'
 const extensions = ['ts', 'tsx', 'cts', 'mts']
 const typescriptRE = /\.[cm]?tsx?$/
 
-type SetupTypescriptOptions = {
-  isTSX: boolean;
-}
-
-export function setupTypescript ({ isTSX }: SetupTypescriptOptions) {
+export function setupTypescript () {
   const nuxt = useNuxt()
 
   nuxt.options.extensions.push(...extensions)

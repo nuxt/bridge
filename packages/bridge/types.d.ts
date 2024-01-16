@@ -40,6 +40,9 @@ export interface BridgeConfig {
   postcss8: boolean
   resolve: boolean
   typescript: boolean | {
+    /**
+     * @deprecated it will be removed.
+     */
     isTSX?: boolean
   }
   meta: boolean | null
