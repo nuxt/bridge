@@ -44,7 +44,7 @@ jobs:
         run: pnpm build
 
       - name: Cache dist
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: packages/*/dist
           key: ubuntu-latest-node-v18-${{ github.sha }}
@@ -159,7 +159,7 @@ jobs:
         run: pnpm install
 
       - name: Restore dist cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: packages/*/dist
           key: ubuntu-latest-node-v18-${{ github.sha }}
