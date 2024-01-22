@@ -20,25 +20,66 @@ export interface AsyncDataOptions<
   PickKeys extends KeysOf<DataT> = KeysOf<DataT>,
   DefaultT = null,
 > {
+  /**
+   * Whether to fetch on the server side.
+   * @default true
+   */
   server?: boolean
+  /**
+   * Whether to resolve the async function after loading the route, instead of blocking client-side navigation
+   * @default false
+   */
   lazy?: boolean
+  /**
+   * a factory function to set the default value of the data, before the async function resolves - useful with the `lazy: true` or `immediate: false` options
+   */
   default?: () => DefaultT | Ref<DefaultT>
+  /**
+   * Provide a function which returns cached data.
+   * A `null` or `undefined` return value will trigger a fetch.
+   * Default is `key => nuxt.isHydrating ? nuxt.payload.data[key] : nuxt.static.data[key]` which only caches data when payloadExtraction is enabled.
+   */
   getCachedData?: (key: string) => DataT
+  /**
+   * A function that can be used to alter handler function result after resolving
+   */
   transform?: _Transform<ResT, DataT>
+  /**
+   * Only pick specified keys in this array from the handler function result
+   */
   pick?: PickKeys
+  /**
+   * Watch reactive sources to auto-refresh when changed
+   */
   watch?: MultiWatchSources
+  /**
+   * When set to false, will prevent the request from firing immediately
+   * @default true
+   */
   immediate?: boolean
+  /**
+   * Return data in a deep ref object (it is true by default). It can be set to false to return data in a shallow ref object, which can improve performance if your data does not need to be deeply reactive.
+   */
   deep?: boolean
+  /**
+   * Avoid fetching the same key more than once at a time
+   * @default 'cancel'
+   */
+  dedupe?: 'cancel' | 'defer'
 }
 
 export interface AsyncDataExecuteOptions {
-  _initial?: boolean
+  _initial?: boolean;
+  // TODO: remove boolean option in Nuxt 4
   /**
    * Force a refresh, even if there is already a pending request. Previous requests will
    * not be cancelled, but their result will not affect the data/pending state - and any
    * previously awaited promises will not resolve until this new request resolves.
+   *
+   * Instead of using `boolean` values, use `cancel` for `true` and `defer` for `false`.
+   * Boolean values will be removed in a future release.
    */
-  dedupe?: boolean
+  dedupe?: boolean | 'cancel' | 'defer'
 }
 
 export interface _AsyncData<DataT, ErrorT> {
@@ -51,6 +92,9 @@ export interface _AsyncData<DataT, ErrorT> {
 }
 
 export type AsyncData<Data, Error> = _AsyncData<Data, Error> & Promise<_AsyncData<Data, Error>>
+
+// TODO: remove boolean option in Nuxt 4
+const isDefer = (dedupe?: boolean | 'cancel' | 'defer') => dedupe === 'defer' || dedupe === false
 
 export function useAsyncData<
   ResT,
@@ -132,6 +176,11 @@ export function useAsyncData<
   options.lazy = options.lazy ?? false
   options.immediate = options.immediate ?? true
   options.deep = options.deep ?? false
+  options.dedupe = options.dedupe ?? 'cancel'
+
+  if (process.dev && typeof options.dedupe === 'boolean') {
+    console.warn('[nuxt] `boolean` values are deprecated for the `dedupe` option of `useAsyncData` and will be removed in the future. Use \'cancel\' or \'defer\' instead.')
+  }
 
   // Create or use a shared asyncData entity
   if (!nuxt._asyncData[key] || !options.immediate) {
@@ -152,7 +201,7 @@ export function useAsyncData<
 
   asyncData.refresh = asyncData.execute = (opts = {}) => {
     if (nuxt._asyncDataPromises[key]) {
-      if (opts.dedupe === false) {
+      if (isDefer(opts.dedupe ?? options.dedupe)) {
         // Avoid fetching same key more than once at a time
         return nuxt._asyncDataPromises[key]!
       }
