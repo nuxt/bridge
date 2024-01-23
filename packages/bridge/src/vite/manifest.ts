@@ -144,8 +144,8 @@ export async function generateDevSSRManifest (ctx: ViteBuildContext, css: string
 
 export async function writeClientManifest (clientManifest: any, buildDir: string) {
   const clientManifestJSON = JSON.stringify(clientManifest, null, 2)
-  await fse.writeFile(resolve(buildDir, 'dist/server/client.manifest.json'), clientManifestJSON, 'utf-8')
-  await fse.writeFile(resolve(buildDir, 'dist/server/client.manifest.mjs'), `export default ${clientManifestJSON}`, 'utf-8')
+  await fse.writeFile(resolve(buildDir, 'dist/server/client.manifest.json'), clientManifestJSON, 'utf8')
+  await fse.writeFile(resolve(buildDir, 'dist/server/client.manifest.mjs'), `export default ${clientManifestJSON}`, 'utf8')
 }
 
 export async function writeManifest (ctx: ViteBuildContext, css: string[] = []) {
