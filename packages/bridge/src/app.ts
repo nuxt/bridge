@@ -1,4 +1,4 @@
-import { useNuxt, addTemplate, resolveAlias, addWebpackPlugin, addVitePlugin, addPlugin } from '@nuxt/kit'
+import { useNuxt, addTemplate, resolveAlias, addWebpackPlugin, addVitePlugin, addPlugin, tryResolveModule } from '@nuxt/kit'
 import { NuxtModule } from '@nuxt/schema'
 import { normalize, resolve } from 'pathe'
 import { resolveImports } from 'mlly'
@@ -125,6 +125,10 @@ export async function setupAppBridge (_options: any) {
 
   // Alias defu to compat version - we deliberately want the local (v6) version of defu
   nuxt.options.alias.defu = await resolveImports('defu', { conditions: ['import'] })
+
+  // Alias hookable - need to use v5 for compatibility with upstream
+  const hookableUrl = await tryResolveModule('hookable', nuxt.options.modulesDir) || 'hookable'
+  nuxt.options.alias.hookable = hookableUrl
 
   // Fix wp4 esm
   nuxt.hook('webpack:config', (configs) => {
