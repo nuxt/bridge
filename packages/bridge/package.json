@@ -50,6 +50,7 @@
     "globby": "^14.0.0",
     "h3": "^1.10.0",
     "hash-sum": "^2.0.0",
+    "hookable": "5.5.3",
     "klona": "^2.0.6",
     "knitwork": "^1.0.0",
     "magic-string": "^0.30.5",
