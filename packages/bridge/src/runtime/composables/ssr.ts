@@ -13,7 +13,10 @@ export function useRequestHeaders (include?: any[]) {
   return Object.fromEntries(include.map(key => key.toLowerCase()).filter(key => headers[key]).map(key => [key, headers[key]]))
 }
 
-export function useRequestEvent (nuxtApp: NuxtAppCompat = useNuxtApp()): H3Event {
+export function useRequestEvent (nuxtApp: NuxtAppCompat = useNuxtApp()): H3Event | undefined {
+  if (!nuxtApp.ssrContext) {
+    return undefined
+  }
   // check if H3 event is available
   if (nuxtApp.ssrContext?.event) { return nuxtApp.ssrContext.event }
   // Check if we created H3 event manually before
