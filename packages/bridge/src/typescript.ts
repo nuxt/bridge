@@ -6,7 +6,12 @@ import { esbuild } from './webpack/esbuild'
 const extensions = ['ts', 'tsx', 'cts', 'mts']
 const typescriptRE = /\.[cm]?tsx?$/
 
-export function setupTypescript () {
+type SetupTypescriptOptions = {
+  isTSX: boolean;
+  esbuild: boolean
+}
+
+export function setupTypescript (options: SetupTypescriptOptions) {
   const nuxt = useNuxt()
 
   nuxt.options.extensions.push(...extensions)
@@ -25,6 +30,12 @@ export function setupTypescript () {
     _require.resolve('@babel/plugin-proposal-nullish-coalescing-operator')
   )
 
+  if (!options.esbuild) {
+    nuxt.options.build.babel.plugins.unshift(
+      [_require.resolve('@babel/plugin-transform-typescript'), { isTSX: options.isTSX }]
+    )
+  }
+
   extendWebpackConfig((config) => {
     config.resolve.extensions!.push(...extensions.map(e => `.${e}`))
     const babelRule: any = config.module.rules.find((rule: any) => rule.test?.test('test.js'))
@@ -33,6 +44,8 @@ export function setupTypescript () {
       test: typescriptRE
     })
 
-    esbuild({ isServer: nuxt.options.ssr, nuxt, config, transpile: transpile({ isDev: nuxt.options.dev }) })
+    if (options.esbuild) {
+      esbuild({ isServer: nuxt.options.ssr, nuxt, config, transpile: transpile({ isDev: nuxt.options.dev }) })
+    }
   })
 }
