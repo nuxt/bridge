@@ -41,7 +41,7 @@ export interface BridgeConfig {
   resolve: boolean
   typescript: boolean | {
     /**
-     * @deprecated it will be removed.
+     * @deprecated tsx is available even if not specified.
      */
     isTSX?: boolean
   }
