@@ -14,7 +14,7 @@ export function useRequestHeaders (include?: any[]) {
 }
 
 export function useRequestEvent (nuxtApp: NuxtAppCompat = useNuxtApp()): H3Event | undefined {
-  if (!nuxtApp.ssrContext) {
+  if (process.client || !nuxtApp.ssrContext) {
     return undefined
   }
   // check if H3 event is available
