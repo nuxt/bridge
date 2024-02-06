@@ -80,6 +80,7 @@ jobs:
         transpile: ['transpile', 'no-transpile']
         compatibility: ['compatibility', 'no-compatibility']
         resolve: ['resolve', 'no-resolve']
+        typescript: ['isTSX', 'esbuild']
         exclude:
           - transpile: 'no-transpile'
             builder: 'vite'
@@ -109,6 +110,7 @@ jobs:
           TEST_TRANSPILE: ${{ matrix.transpile || 'transpile' }}
           TEST_COMPATIBILITY: ${{ matrix.compatibility || 'compatibility' }}
           TEST_RESOLVE: ${{ matrix.resolve || 'resolve' }}
+          TEST_TYPESCRIPT: ${{ matrix.typescript.isTSX || 'isTSX' }}
           NODE_OPTIONS: --max-old-space-size=8192
 
   test-unit:
