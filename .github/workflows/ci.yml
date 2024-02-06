@@ -110,7 +110,7 @@ jobs:
           TEST_TRANSPILE: ${{ matrix.transpile || 'transpile' }}
           TEST_COMPATIBILITY: ${{ matrix.compatibility || 'compatibility' }}
           TEST_RESOLVE: ${{ matrix.resolve || 'resolve' }}
-          TEST_TYPESCRIPT: ${{ matrix.typescript.isTSX || 'isTSX' }}
+          TEST_TYPESCRIPT: ${{ matrix.typescript || 'isTSX' }}
           NODE_OPTIONS: --max-old-space-size=8192
 
   test-unit:
