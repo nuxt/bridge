@@ -5,7 +5,7 @@ import { expectNoClientErrors, parseData, renderPage } from './utils'
 
 const isWebpack = process.env.TEST_BUILDER === 'webpack'
 const isDev = process.env.TEST_ENV === 'dev'
-const isTSX = process.env.TEST_TYPESCRIPT === 'isTSX' || process.env.TEST_TYPESCRIPT !== 'esbuild'
+const isTSX = process.env.TEST_TYPESCRIPT === 'isTSX' || process.env.TEST_TYPESCRIPT === 'esbuild'
 
 await setup({
   rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
