@@ -1,9 +1,9 @@
 import { getCurrentInstance, reactive } from 'vue'
 import type VueRouter from 'vue-router'
 import type { Location, RawLocation, Route, NavigationFailure } from 'vue-router'
-import { sendRedirect } from 'h3'
+import { sanitizeStatusCode, sendRedirect } from 'h3'
 import { useRouter as useVueRouter, useRoute as useVueRoute } from 'vue-router/composables'
-import { hasProtocol, joinURL, parseURL } from 'ufo'
+import { hasProtocol, joinURL, parseURL, withQuery } from 'ufo'
 import { useNuxtApp, callWithNuxt, useRuntimeConfig } from '../nuxt'
 import { createError, showError } from './error'
 import type { NuxtError } from './error'
@@ -80,26 +80,40 @@ export const navigateTo = (to: RawLocation | undefined | null, options?: Navigat
   if (!to) {
     to = '/'
   }
-  const toPath = typeof to === 'string' ? to : (to.path || '/')
-  const isExternal = hasProtocol(toPath, true)
+  const toPath = typeof to === 'string' ? to : (withQuery((to as Route).path || '/', to.query || {}) + (to.hash || ''))
+
+  const isExternal = options?.external || hasProtocol(toPath, { acceptRelative: true })
   if (isExternal && !options?.external) {
     throw new Error('Navigating to external URL is not allowed by default. Use `nagivateTo (url, { external: true })`.')
   }
   if (isExternal && parseURL(toPath).protocol === 'script:') {
     throw new Error('Cannot navigate to an URL with script protocol.')
   }
+
+  const inMiddleware = isProcessingMiddleware()
+
   // Early redirect on client-side
-  if (process.client && !isExternal && isProcessingMiddleware()) {
+  if (process.client && !isExternal && inMiddleware) {
     return to
   }
+
   const router = useRouter()
+
   if (process.server) {
     const nuxtApp = useNuxtApp()
     if (nuxtApp.ssrContext && nuxtApp.ssrContext.event) {
-      const redirectLocation = isExternal ? toPath : joinURL(useRuntimeConfig().app.baseURL, router.resolve(to).resolved.fullPath || '/')
+      const fullPath = typeof to === 'string' || isExternal ? toPath : router.resolve(to).resolved.fullPath || '/'
+      const location = isExternal ? toPath : joinURL(useRuntimeConfig().app.baseURL, fullPath)
 
-      // @ts-expect-error
-      return nuxtApp.callHook('app:redirected').then(() => sendRedirect(nuxtApp.ssrContext!.event, redirectLocation, options?.redirectCode || 302))
+      const redirect = async function (response: any) {
+        // @ts-expect-error
+        await nuxtApp.callHook('app:redirected')
+
+        await sendRedirect(nuxtApp.ssrContext!.event, location, options?.redirectCode || 302)
+        return response
+      }
+
+      return redirect(!inMiddleware ? undefined : /* abort route navigation */ false)
     }
   }
   // Client-side redirection using vue-router
