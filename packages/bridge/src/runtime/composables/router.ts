@@ -1,7 +1,7 @@
 import { getCurrentInstance, reactive } from 'vue'
 import type VueRouter from 'vue-router'
 import type { Location, RawLocation, Route, NavigationFailure } from 'vue-router'
-import { sanitizeStatusCode, sendRedirect } from 'h3'
+import { sendRedirect } from 'h3'
 import { useRouter as useVueRouter, useRoute as useVueRoute } from 'vue-router/composables'
 import { hasProtocol, joinURL, parseURL, withQuery } from 'ufo'
 import { useNuxtApp, callWithNuxt, useRuntimeConfig } from '../nuxt'
