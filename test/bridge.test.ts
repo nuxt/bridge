@@ -307,7 +307,8 @@ describe('navigate', () => {
     const res = await fetch('/navigate-some-path/', { redirect: 'manual', headers: { 'trailing-slash': 'true' } })
     expect(res.headers.get('location')).toEqual('/navigate-some-path')
     expect(res.status).toEqual(307)
-    expect(await res.text()).toMatchInlineSnapshot('"<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/navigate-some-path"></head></html>"')
+    // nuxt bridge not supported
+    // expect(await res.text()).toMatchInlineSnapshot('"<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/navigate-some-path"></head></html>"')
   })
 
   it('supports directly aborting navigation on SSR', async () => {

@@ -52,7 +52,7 @@ function convertToLegacyMiddleware (middleware) {
       return ctx.error(result)
     }
     if (result) {
-      return ctx.redirect(result)
+      return ctx.redirect(ctx.ssrContext?.redirectCode || 302, result)
     }
     return result
   }
@@ -111,6 +111,12 @@ export const navigateTo = (to: RawLocation | undefined | null, options?: Navigat
 
         await sendRedirect(nuxtApp.ssrContext!.event, location, options?.redirectCode || 302)
         return response
+      }
+
+      if (!isExternal && inMiddleware) {
+        router.afterEach(final => final.fullPath === fullPath ? redirect(false) : undefined)
+        nuxtApp.ssrContext.redirectCode = options?.redirectCode || 302
+        return to
       }
 
       return redirect(!inMiddleware ? undefined : /* abort route navigation */ false)
