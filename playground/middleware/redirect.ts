@@ -7,4 +7,5 @@ export default defineNuxtRouteMiddleware((to) => {
       fatal: true
     })
   }
+  return navigateTo('/navigation-target')
 })

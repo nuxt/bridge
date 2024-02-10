@@ -316,6 +316,13 @@ describe('navigate', () => {
 
     expect(status).toEqual(404)
   })
+
+  it('Should not be called child-redirect after being redirected', async () => {
+    const res = await fetch('/redirect', { redirect: 'manual' })
+
+    expect(res.headers.get('location')).toEqual('/navigation-target')
+    expect(res.status).toEqual(302)
+  })
 })
 
 describe('store', () => {

@@ -5,8 +5,3 @@
 <script setup>
 navigateTo('https://example.com/', { external: true })
 </script>
-<script>
-export default {
-  middleware: ['redirect']
-}
-</script>
