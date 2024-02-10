@@ -150,9 +150,16 @@ export const PageMetaPlugin = createUnplugin(
                     end: number;
                   }
 
-                  contents = `const __nuxt_page_meta = 
-                    ${code.slice(meta.start, meta.end) || {}}
-                  `
+                  const metaProperties =
+                    meta.properties.map(
+                      (prop: Property & { start: number; end: number; }) => code.slice(prop.start, prop.end) || {}
+                    ).join(',')
+
+                  contents = [
+                    'const __nuxt_page_meta = {',
+                    `  ${metaProperties}`,
+                    '}\n'
+                  ].join('\n')
 
                   // remove macro
                   s.overwrite(node.start, node.end, '')
