@@ -19,14 +19,14 @@
   },
   "devDependencies": {
     "@types/lodash.template": "^4.5.3",
-    "@types/semver": "^7.5.6",
+    "@types/semver": "^7.5.7",
     "@unhead/schema": "^1.8.10",
     "nitropack": "^2.8.1",
     "unbuild": "latest",
     "vite": "~5.0.11"
   },
   "dependencies": {
-    "c12": "^1.6.1",
+    "c12": "^1.7.0",
     "create-require": "^1.1.1",
     "defu": "^6.1.4",
     "jiti": "^1.21.0",
