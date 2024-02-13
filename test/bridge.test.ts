@@ -17,6 +17,10 @@ await setup({
 })
 
 describe('nuxt composables', () => {
+  it('has useRequestURL()', async () => {
+    const html = await $fetch('/url')
+    expect(html).toContain('path: /url')
+  })
   it('sets cookies correctly', async () => {
     const res = await fetch('/cookies', {
       headers: {

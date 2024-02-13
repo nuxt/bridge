@@ -49,6 +49,10 @@ const granularAppPresets: InlinePreset[] = [
     from: '#app/composables/ssr'
   },
   {
+    imports: ['useRequestURL'],
+    from: '#app/composables/url'
+  },
+  {
     imports: ['useAsyncData', 'useFetch', 'useHydration'],
     from: '#app/mocks'
   }
