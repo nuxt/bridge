@@ -36,6 +36,7 @@ import { defineComponent as _defineComponent } from 'vue';
 export default /*#__PURE__*/_defineComponent({
   __name: 'redirect',
   setup: function setup(__props) {
+    const route = useRoute()
     definePageMeta({
       middleware: ['redirect'],
       layout: 'custom'
@@ -53,6 +54,7 @@ export default /*#__PURE__*/_defineComponent({
   export default /*#__PURE__*/_defineComponent({
     ...__nuxt_page_meta,__name: 'redirect',
     setup: function setup(__props) {
+      const route = useRoute()
       ;
       return {
         __sfc: true

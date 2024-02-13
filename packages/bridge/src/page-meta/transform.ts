@@ -198,6 +198,9 @@ function getObjectExpression (node: Node) {
 
   // ts and webpack
   if (node.type === 'CallExpression') {
+    if (node.callee.type === 'Identifier' && !node.callee.name.includes('defineComponent')) {
+      return
+    }
     if (node.arguments[0].type === 'CallExpression') {
       const callexpression = node.arguments[0]
       return callexpression.arguments.find(arg => arg.type === 'ObjectExpression' && arg.properties.length > 0) as ObjectExpression
