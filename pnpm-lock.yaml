@@ -100,7 +100,7 @@ importers:
         specifier: ^5.15.0
         version: 5.15.0
       esbuild-loader:
-        specifier: ^4.0.2
+        specifier: ^4.0.3
         version: 4.0.3(webpack@5.89.0)
       escape-string-regexp:
         specifier: ^5.0.0
@@ -297,8 +297,8 @@ importers:
         specifier: ^4.5.3
         version: 4.5.3
       '@types/semver':
-        specifier: ^7.5.7
-        version: 7.5.7
+        specifier: ^7.5.8
+        version: 7.5.8
       '@unhead/schema':
         specifier: ^1.8.10
         version: 1.8.10
@@ -5110,8 +5110,8 @@ packages:
   /@types/resolve@1.20.2:
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
 
-  /@types/semver@7.5.7:
-    resolution: {integrity: sha512-/wdoPq1QqkSj9/QOeKkFquEuPzQbHTWAMPH/PaUMB+JuR31lXhlWXRZ52IpfDYVlDOUBvX09uBrPwxGT1hjNBg==}
+  /@types/semver@7.5.8:
+    resolution: {integrity: sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==}
     dev: true
 
   /@types/send@0.17.1:
@@ -5294,7 +5294,7 @@ packages:
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.57.0)
       '@types/json-schema': 7.0.14
-      '@types/semver': 7.5.7
+      '@types/semver': 7.5.8
       '@typescript-eslint/scope-manager': 6.6.0
       '@typescript-eslint/types': 6.6.0
       '@typescript-eslint/typescript-estree': 6.6.0(typescript@5.2.2)
