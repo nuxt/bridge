@@ -44,6 +44,10 @@ export interface BridgeConfig {
      * @deprecated please use `esbuild` instead
      */
     isTSX?: boolean
+    /**
+     * If `vite: false`, setting `esbuild: true` will use `esbuild-loader`
+     * to process `.ts`/`.tsx` files within your project.
+     */
     esbuild?: boolean
   }
   meta: boolean | null
