@@ -84,6 +84,8 @@ jobs:
         exclude:
           - transpile: 'no-transpile'
             builder: 'vite'
+          - typescript: 'isTSX'
+            builder: 'vite'
           - compatibility: 'no-compatibility'
             builder: 'vite'
           - resolve: 'no-resolve'
