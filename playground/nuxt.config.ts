@@ -9,14 +9,15 @@ const bridgeConfig = {
   transpile: process.env.TEST_TRANSPILE !== 'no-transpile',
   compatibility: process.env.TEST_COMPATIBILITY !== 'no-compatibility',
   resolve: process.env.TEST_RESOLVE !== 'no-resolve',
+  typescript: {
+    isTSX: process.env.TEST_TYPESCRIPT === 'isTSX',
+    esbuild: process.env.TEST_TYPESCRIPT === 'esbuild'
+  },
   // Not yet tested in matrix
   nitro: process.env.TEST_NITRO !== 'false',
   nitroGenerator: process.env.TEST_NITRO_GENERATOR !== 'false',
   imports: process.env.TEST_IMPORTS !== 'false',
   meta: process.env.TEST_META !== 'false',
-  typescript: {
-    isTSX: true
-  },
   macros: {
     pageMeta: true
   }

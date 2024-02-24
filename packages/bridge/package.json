@@ -42,6 +42,7 @@
     "defu": "^6.1.4",
     "destr": "^2.0.3",
     "enhanced-resolve": "^5.15.0",
+    "esbuild-loader": "^4.0.2",
     "escape-string-regexp": "^5.0.0",
     "estree-walker": "^3.0.3",
     "externality": "^1.0.2",
