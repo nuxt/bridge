@@ -78,7 +78,7 @@
     "unimport": "^3.7.1",
     "unplugin": "^1.7.1",
     "untyped": "^1.4.2",
-    "vite": "~5.0.11",
+    "vite": "~5.1.4",
     "vite-node": "^1.3.1",
     "vue-bundle-renderer": "^2.0.0"
   },
