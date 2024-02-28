@@ -201,6 +201,8 @@ function getObjectExpression (node: Node) {
     if (node.callee.type === 'Identifier' && !node.callee.name.includes('defineComponent')) {
       return
     }
+    if (node.arguments.length === 0) { return }
+
     if (node.arguments[0].type === 'CallExpression') {
       const callexpression = node.arguments[0]
       return callexpression.arguments.find(arg => arg.type === 'ObjectExpression' && arg.properties.length > 0) as ObjectExpression
