@@ -4,9 +4,14 @@ import { useNuxtApp } from '../nuxt'
 
 export const useError = () => toRef(useNuxtApp().payload, 'error')
 
-export interface NuxtError extends H3Error {}
+export interface NuxtError<DataT = unknown> extends H3Error<DataT> {}
 
-export const showError = (_err: string | Error | Partial<NuxtError>) => {
+export const showError = <DataT = unknown>(
+  _err: string | Error | (Partial<NuxtError<DataT>> & {
+    status?: number;
+    statusText?: string;
+  })
+) => {
   const err = createError(_err)
 
   try {
@@ -36,7 +41,12 @@ export const clearError = async (options: { redirect?: string } = {}) => {
 
 export const isNuxtError = (err?: string | object): err is NuxtError => !!(err && typeof err === 'object' && ('__nuxt_error' in err))
 
-export const createError = (err: string | Partial<NuxtError>): NuxtError => {
+export const createError = <DataT = unknown>(
+  err: string | Error | (Partial<NuxtError<DataT>> & {
+    status?: number;
+    statusText?: string;
+  })
+): NuxtError => {
   const _err: NuxtError = _createError(err)
     ; (_err as any).__nuxt_error = true
   return _err
