@@ -21,7 +21,7 @@
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.5.8",
     "@unhead/schema": "^1.8.10",
-    "nitropack": "^2.8.1",
+    "nitropack": "^2.9.1",
     "unbuild": "latest",
     "vite": "~5.1.4"
   },
