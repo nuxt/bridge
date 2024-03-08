@@ -25,3 +25,10 @@ export function useRequestEvent (nuxtApp: NuxtAppCompat = useNuxtApp()): H3Event
   nuxtApp.ssrContext._event = createEvent(nuxtApp.ssrContext?.req, nuxtApp.ssrContext?.res)
   return nuxtApp.ssrContext._event
 }
+
+export function useRequestFetch (): typeof global.$fetch {
+  if (process.client) {
+    return globalThis.$fetch
+  }
+  return useRequestEvent()?.$fetch as typeof globalThis.$fetch || globalThis.$fetch
+}
