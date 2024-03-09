@@ -10,7 +10,7 @@ const bridgeConfig = {
   compatibility: process.env.TEST_COMPATIBILITY !== 'no-compatibility',
   resolve: process.env.TEST_RESOLVE !== 'no-resolve',
   typescript: {
-    isTSX: process.env.TEST_TYPESCRIPT === 'isTSX',
+    isTSX: !process.env.TEST_TYPESCRIPT || process.env.TEST_TYPESCRIPT === 'isTSX',
     esbuild: process.env.TEST_TYPESCRIPT === 'esbuild'
   },
   // Not yet tested in matrix
