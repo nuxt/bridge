@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
 import { setup, $fetch, fetch, startServer } from '@nuxt/test-utils'
+import { isWindows } from 'std-env'
 import { expectNoClientErrors, parseData, renderPage } from './utils'
 
 const isWebpack = process.env.TEST_BUILDER === 'webpack'
@@ -11,6 +12,7 @@ await setup({
   server: true,
   browser: true,
   dev: isDev,
+  setupTimeout: (isWindows ? 360 : 120) * 1000,
   nuxtConfig: {
     buildDir: process.env.NITRO_BUILD_DIR,
     nitro: { output: { dir: process.env.NITRO_OUTPUT_DIR } }
