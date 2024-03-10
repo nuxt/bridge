@@ -5,6 +5,8 @@ import { parse } from 'devalue'
 import { reactive, ref, shallowReactive, shallowRef } from 'vue'
 import { createError } from 'h3'
 
+const isWebpack = process.env.TEST_BUILDER === 'webpack'
+
 export async function renderPage (path = '/') {
   const ctx = useTestContext()
   if (!ctx.options.browser) {
@@ -34,7 +36,7 @@ export async function renderPage (path = '/') {
   })
 
   if (path) {
-    await page.goto(url(path), { waitUntil: 'load' })
+    await page.goto(url(path), { waitUntil: isWebpack ? 'load' : 'networkidle' })
   }
 
   return {
