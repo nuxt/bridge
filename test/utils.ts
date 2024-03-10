@@ -30,7 +30,6 @@ export async function renderPage (path = '/') {
     try {
       requests.push(req.url().replace(url('/'), '/'))
     } catch (err) {
-      // TODO
     }
   })
 
