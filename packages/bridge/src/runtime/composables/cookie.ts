@@ -61,9 +61,7 @@ export function useCookie<T = string | null | undefined> (name: string, _opts?: 
     const callback = () => {
       if (opts.readonly || isEqual(cookie.value, cookies[name])) { return }
       writeClientCookie(name, cookie.value, opts as CookieSerializeOptions)
-
-      cookies[name] = klona(cookie.value)
-      channel?.postMessage({ value: opts.encode(cookie.value as T) })
+      channel?.postMessage(opts.encode(cookie.value as T))
     }
 
     let watchPaused = false
@@ -111,7 +109,7 @@ export function useCookie<T = string | null | undefined> (name: string, _opts?: 
   return cookie as CookieRef<T>
 }
 
-function readRawCookies (opts: CookieOptions = {}): Record<string, unknown> | undefined {
+function readRawCookies (opts: CookieOptions = {}): Record<string, string> {
   if (process.server) {
     return parse(getRequestHeader(useRequestEvent()!, 'cookie') || '', opts)
   } else if (process.client) {
