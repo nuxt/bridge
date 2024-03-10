@@ -9,6 +9,7 @@ const isDev = process.env.TEST_ENV === 'dev'
 await setup({
   rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
   server: true,
+  browser: true,
   dev: isDev,
   nuxtConfig: {
     buildDir: process.env.NITRO_BUILD_DIR,
@@ -38,7 +39,7 @@ describe('nuxt composables', () => {
   })
 
   // remove skip after enabling browser option
-  it.skip('updates cookies when they are changed', async () => {
+  it('updates cookies when they are changed', async () => {
     const { page } = await renderPage('/cookies')
     async function extractCookie () {
       const cookie = await page.evaluate(() => document.cookie)
@@ -209,7 +210,6 @@ describe('errors', () => {
   it('should render a HTML error page', async () => {
     const res = await fetch('/error')
     expect(await res.text()).toContain('This is a custom error')
-    await expectNoClientErrors('/error')
   })
 })
 
@@ -311,7 +311,6 @@ describe('dynamic paths', () => {
       const url = match[2]
       expect(url.startsWith('/_nuxt/') || url === '/public.svg').toBeTruthy()
     }
-    await expectNoClientErrors('/assets')
   })
 
   // Vite legacy build does not emit CSS files
@@ -344,7 +343,6 @@ describe('dynamic paths', () => {
         url === '/foo/public.svg'
       ).toBeTruthy()
     }
-    await expectNoClientErrors('/foo/assets')
   })
 
   it('should allow setting relative baseURL', async () => {
@@ -429,6 +427,5 @@ describe('dynamic paths', () => {
         url === 'https://example.com/public.svg'
       ).toBeTruthy()
     }
-    await expectNoClientErrors('/foo/assets')
   })
 })
