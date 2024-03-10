@@ -112,11 +112,18 @@ describe('pages', () => {
     expect(html).toContain('Hello Vue 2!')
     expect(html).toContain('public:{myValue:123}')
 
+    const { page, consoleLogs } = await renderPage('/')
+
     if (isWebpack && isNoResolve) {
-      // throw client error in webpack no-resolve
+      expect(consoleLogs.some(i => i.type === 'error')).toBeTruthy()
+    } else if (isDev) {
+      // output [legacy capi] warning
+      expect(consoleLogs.some(i => i.type === 'warning')).toBeTruthy()
     } else {
-      await expectNoClientErrors('/')
+      expect(consoleLogs.some(i => i.type === 'error' || i.type === 'warning')).toBeFalsy()
     }
+
+    await page.close()
   })
   it('uses server Vue build', async () => {
     expect(await $fetch('/')).toContain('Rendered on server: true')
@@ -168,21 +175,22 @@ describe('navigate', () => {
     const { headers } = await fetch('/navigate-to/', { redirect: 'manual' })
     expect(headers.get('location')).toEqual('/navigation-target')
 
+    const { page, consoleLogs } = await renderPage('/navigate-to/')
+
     if (isWebpack && isNoResolve) {
-      // throw client error in webpack no-resolve
+      expect(consoleLogs.some(i => i.type === 'error')).toBeTruthy()
+    } else if (isDev) {
+      // output [legacy capi] warning
+      expect(consoleLogs.some(i => i.type === 'warning')).toBeTruthy()
     } else {
-      await expectNoClientErrors('/navigate-to/')
+      expect(consoleLogs.some(i => i.type === 'error' || i.type === 'warning')).toBeFalsy()
     }
+
+    await page.close()
   })
   it('should redirect to index with navigateTo and 301 code', async () => {
     const res = await fetch('/navigate-to/', { redirect: 'manual' })
     expect(res.status).toBe(301)
-
-    if (isWebpack && isNoResolve) {
-      // throw client error in webpack no-resolve
-    } else {
-      await expectNoClientErrors('/navigate-to/')
-    }
   })
 })
 
@@ -199,11 +207,18 @@ describe('legacy capi', () => {
     const html = await $fetch('/legacy-capi')
     expect(html).toMatch(/([\s\S]*✅){11}/)
 
+    const { page, consoleLogs } = await renderPage('/legacy-capi')
+
     if (isWebpack && isNoResolve) {
-      // throw client error in webpack no-resolve
+      expect(consoleLogs.some(i => i.type === 'error')).toBeTruthy()
+    } else if (isDev) {
+      // output [legacy capi] warning
+      expect(consoleLogs.some(i => i.type === 'warning')).toBeTruthy()
     } else {
-      await expectNoClientErrors('/legacy-capi')
+      expect(consoleLogs.some(i => i.type === 'error' || i.type === 'warning')).toBeFalsy()
     }
+
+    await page.close()
   })
 
   it('should be changed store.state', async () => {
