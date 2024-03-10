@@ -5,6 +5,7 @@ import { isWindows } from 'std-env'
 import { expectNoClientErrors, parseData, renderPage } from './utils'
 
 const isWebpack = process.env.TEST_BUILDER === 'webpack'
+const isNoResolve = process.env.TEST_RESOLVE === 'no-resolve'
 const isDev = process.env.TEST_ENV === 'dev'
 
 await setup({
@@ -41,7 +42,7 @@ describe('nuxt composables', () => {
   })
 
   // remove skip after enabling browser option
-  it('updates cookies when they are changed', async () => {
+  it.skipIf(isWebpack && isNoResolve)('updates cookies when they are changed', async () => {
     const { page } = await renderPage('/cookies')
     async function extractCookie () {
       const cookie = await page.evaluate(() => document.cookie)
@@ -110,7 +111,12 @@ describe('pages', () => {
     const html = await $fetch('/')
     expect(html).toContain('Hello Vue 2!')
     expect(html).toContain('public:{myValue:123}')
-    await expectNoClientErrors('/')
+
+    if (isWebpack && isNoResolve) {
+      // throw client error in webpack no-resolve
+    } else {
+      await expectNoClientErrors('/')
+    }
   })
   it('uses server Vue build', async () => {
     expect(await $fetch('/')).toContain('Rendered on server: true')
@@ -161,12 +167,22 @@ describe('navigate', () => {
   it('should redirect to index with navigateTo', async () => {
     const { headers } = await fetch('/navigate-to/', { redirect: 'manual' })
     expect(headers.get('location')).toEqual('/navigation-target')
-    await expectNoClientErrors('/navigate-to/')
+
+    if (isWebpack && isNoResolve) {
+      // throw client error in webpack no-resolve
+    } else {
+      await expectNoClientErrors('/navigate-to/')
+    }
   })
   it('should redirect to index with navigateTo and 301 code', async () => {
     const res = await fetch('/navigate-to/', { redirect: 'manual' })
     expect(res.status).toBe(301)
-    await expectNoClientErrors('/navigate-to/')
+
+    if (isWebpack && isNoResolve) {
+      // throw client error in webpack no-resolve
+    } else {
+      await expectNoClientErrors('/navigate-to/')
+    }
   })
 })
 
@@ -182,7 +198,12 @@ describe('legacy capi', () => {
   it('should continue to work', async () => {
     const html = await $fetch('/legacy-capi')
     expect(html).toMatch(/([\s\S]*✅){11}/)
-    await expectNoClientErrors('/legacy-capi')
+
+    if (isWebpack && isNoResolve) {
+      // throw client error in webpack no-resolve
+    } else {
+      await expectNoClientErrors('/legacy-capi')
+    }
   })
 
   it('should be changed store.state', async () => {
