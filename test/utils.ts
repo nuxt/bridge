@@ -35,7 +35,7 @@ export async function renderPage (path = '/') {
   })
 
   if (path) {
-    await page.goto(url(path), { waitUntil: 'networkidle' })
+    await page.goto(url(path), { waitUntil: 'load' })
   }
 
   return {
