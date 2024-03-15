@@ -381,6 +381,8 @@ describe('dynamic paths', () => {
         url === '/foo/public.svg'
       ).toBeTruthy()
     }
+    // TODO: src="~/assets/logo.svg" will result in a 404 error
+    // await expectNoClientErrors('/foo/assets')
   })
 
   it('should allow setting relative baseURL', async () => {
@@ -465,5 +467,7 @@ describe('dynamic paths', () => {
         url === 'https://example.com/public.svg'
       ).toBeTruthy()
     }
+    // TODO: src="~/assets/logo.svg" will result in a 404 error
+    // await expectNoClientErrors('/foo/assets')
   })
 })
