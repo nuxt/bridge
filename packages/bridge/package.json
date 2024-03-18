@@ -64,7 +64,7 @@
     "pathe": "^1.1.2",
     "perfect-debounce": "^1.0.0",
     "pkg-types": "^1.0.3",
-    "postcss": "^8.4.35",
+    "postcss": "^8.4.36",
     "postcss-import": "^16.0.1",
     "postcss-import-resolver": "^2.0.0",
     "postcss-preset-env": "^9.5.2",
@@ -73,7 +73,7 @@
     "semver": "^7.6.0",
     "std-env": "^3.7.0",
     "terser": "^5.29.2",
-    "ufo": "^1.5.1",
+    "ufo": "^1.5.2",
     "unctx": "^2.3.1",
     "unimport": "^3.7.1",
     "unplugin": "^1.10.0",
@@ -98,5 +98,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@8.15.4"
+  "packageManager": "pnpm@8.15.5"
 }
