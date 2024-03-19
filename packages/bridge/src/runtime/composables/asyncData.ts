@@ -39,7 +39,7 @@ export interface AsyncDataOptions<
    * A `null` or `undefined` return value will trigger a fetch.
    * Default is `key => nuxt.isHydrating ? nuxt.payload.data[key] : nuxt.static.data[key]` which only caches data when payloadExtraction is enabled.
    */
-  getCachedData?: (key: string) => DataT
+  getCachedData?: (key: string, nuxtApp: NuxtAppCompat) => DataT
   /**
    * A function that can be used to alter handler function result after resolving
    */
@@ -171,7 +171,7 @@ export function useAsyncData<
   options.default = options.default ?? (getDefault as () => DefaultT)
   options.getCachedData = options.getCachedData ?? getDefaultCachedData
 
-  const hasCachedData = () => ![null, undefined].includes(options.getCachedData!(key) as any)
+  const hasCachedData = () => options.getCachedData!(key, nuxt) != null
 
   options.lazy = options.lazy ?? false
   options.immediate = options.immediate ?? true
@@ -189,7 +189,7 @@ export function useAsyncData<
     const _ref = options.deep ? ref : shallowRef
 
     nuxt._asyncData[key] = {
-      data: _ref(options.getCachedData!(key) ?? options.default!()),
+      data: _ref(options.getCachedData!(key, nuxt) ?? options.default!()),
       pending: ref(!hasCachedData()),
       error: toRef(nuxt.payload._errors, key),
       status: ref('idle')
@@ -209,7 +209,7 @@ export function useAsyncData<
     }
     // Avoid fetching same key that is already fetched
     if ((opts._initial || (nuxt.isHydrating && opts._initial !== false)) && hasCachedData()) {
-      return Promise.resolve(options.getCachedData!(key))
+      return Promise.resolve(options.getCachedData!(key, nuxt))
     }
     asyncData.pending.value = true
     asyncData.status.value = 'pending'
