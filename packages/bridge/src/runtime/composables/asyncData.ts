@@ -10,7 +10,7 @@ export type PickFrom<T, K extends Array<string>> = T extends Array<any> ? T : T 
 export type KeysOf<T> = Array<keyof T extends string ? keyof T : string>
 export type KeyOfRes<Transform extends _Transform> = KeysOf<ReturnType<Transform>>
 
-type MultiWatchSources = (WatchSource<unknown> | object)[]
+export type MultiWatchSources = (WatchSource<unknown> | object)[]
 
 export type AsyncDataRequestStatus = 'idle' | 'pending' | 'success' | 'error'
 
