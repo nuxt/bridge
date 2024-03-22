@@ -49,7 +49,7 @@ export function useCookie<T = string | null | undefined> (name: string, _opts?: 
 
   // use a custom ref to expire the cookie on client side otherwise use basic ref
   const cookie = process.client && delay && !hasExpired
-    ? cookieRef<T | undefined>(cookieValue, delay)
+    ? cookieRef<T | undefined>(cookieValue, delay, opts.watch && opts.watch !== 'shallow')
     : ref<T | undefined>(cookieValue)
 
   if (process.dev && hasExpired) {
@@ -162,14 +162,21 @@ function writeServerCookie (event: H3Event, name: string, value: any, opts: Cook
 const MAX_TIMEOUT_DELAY = 2147483647
 
 // custom ref that will update the value to undefined if the cookie expires
-function cookieRef<T> (value: T | undefined, delay: number) {
+function cookieRef<T> (value: T | undefined, delay: number, shouldWatch: boolean) {
   let timeout: NodeJS.Timeout
+  let unsubscribe: (() => void) | undefined
   let elapsed = 0
+  const internalRef = shouldWatch ? ref(value) : { value }
   if (getCurrentScope()) {
-    onScopeDispose(() => { clearTimeout(timeout) })
+    onScopeDispose(() => {
+      unsubscribe?.()
+      clearTimeout(timeout)
+    })
   }
 
   return customRef((track, trigger) => {
+    if (shouldWatch) { unsubscribe = watch(internalRef, trigger) }
+
     function createExpirationTimeout () {
       clearTimeout(timeout)
       const timeRemaining = delay - elapsed
@@ -178,7 +185,7 @@ function cookieRef<T> (value: T | undefined, delay: number) {
         elapsed += timeoutLength
         if (elapsed < delay) { return createExpirationTimeout() }
 
-        value = undefined
+        internalRef.value = undefined
         trigger()
       }, timeoutLength)
     }
@@ -186,12 +193,12 @@ function cookieRef<T> (value: T | undefined, delay: number) {
     return {
       get () {
         track()
-        return value
+        return internalRef.value
       },
       set (newValue) {
         createExpirationTimeout()
 
-        value = newValue
+        internalRef.value = newValue
         trigger()
       }
     }
