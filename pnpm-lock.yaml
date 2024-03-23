@@ -14,7 +14,7 @@ importers:
     devDependencies:
       '@nuxt/test-utils':
         specifier: ^3.12.0
-        version: 3.12.0(h3@1.11.1)(vite@5.2.3)(vitest@1.4.0)(vue-router@4.3.0)(vue@3.4.20)
+        version: 3.12.0(h3@1.11.1)(playwright-core@1.42.1)(vite@5.2.3)(vitest@1.4.0)(vue-router@4.3.0)(vue@3.4.20)
       '@nuxtjs/eslint-config':
         specifier: ^12.0.0
         version: 12.0.0(@typescript-eslint/parser@6.6.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.57.0)
@@ -36,6 +36,12 @@ importers:
       jiti:
         specifier: ^1.21.0
         version: 1.21.0
+      playwright-core:
+        specifier: ^1.42.1
+        version: 1.42.1
+      std-env:
+        specifier: ^3.7.0
+        version: 3.7.0
       vitest:
         specifier: ^1.4.0
         version: 1.4.0
@@ -661,7 +667,7 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
     dependencies:
-      '@babel/types': 7.23.6
+      '@babel/types': 7.23.9
 
   /@babel/parser@7.23.9:
     resolution: {integrity: sha512-9tcKgqKbs3xGJ+NtKF2ndOBBLVwPjl1SHxPQkd36r3Dlirw3xWUeGaTbqr7uGZcTaxkVNwc+03SVP7aCdWrTlA==}
@@ -1613,14 +1619,6 @@ packages:
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
-
-  /@babel/types@7.23.6:
-    resolution: {integrity: sha512-+uarb83brBzPKN38NX1MkB6vb6+mwvR6amUulqAE7ccQw1pEl+bCia9TbdG1lsnFP7lZySvUn37CHyXQdfTwzg==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-string-parser': 7.23.4
-      '@babel/helper-validator-identifier': 7.22.20
-      to-fast-properties: 2.0.0
 
   /@babel/types@7.23.9:
     resolution: {integrity: sha512-dQjSq/7HaSjRM43FFGnv5keM2HsxpmyV1PfaSVm0nzzjwwTmjOe6J4bC8e3+pTEIgHaHj+1ZlLThRJ2auc/w1Q==}
@@ -3317,7 +3315,7 @@ packages:
       - encoding
     dev: true
 
-  /@nuxt/test-utils@3.12.0(h3@1.11.1)(vite@5.2.3)(vitest@1.4.0)(vue-router@4.3.0)(vue@3.4.20):
+  /@nuxt/test-utils@3.12.0(h3@1.11.1)(playwright-core@1.42.1)(vite@5.2.3)(vitest@1.4.0)(vue-router@4.3.0)(vue@3.4.20):
     resolution: {integrity: sha512-Q3HP53TDIYeqHT65r31HZhK/gRwVBmchSdVj1tfiYECyqstckvsQ4Cyt/GX/XmD7cLdD3d5aHow8LaMfP+BSqQ==}
     engines: {node: ^14.18.0 || >=16.10.0}
     peerDependencies:
@@ -3374,6 +3372,7 @@ packages:
       ofetch: 1.3.4
       pathe: 1.1.2
       perfect-debounce: 1.0.0
+      playwright-core: 1.42.1
       radix3: 1.1.1
       scule: 1.3.0
       std-env: 3.7.0
@@ -3382,7 +3381,7 @@ packages:
       unplugin: 1.10.0
       vite: 5.2.3(terser@5.29.2)
       vitest: 1.4.0
-      vitest-environment-nuxt: 1.0.0(h3@1.11.1)(vite@5.2.3)(vitest@1.4.0)(vue-router@4.3.0)(vue@3.4.20)
+      vitest-environment-nuxt: 1.0.0(h3@1.11.1)(playwright-core@1.42.1)(vite@5.2.3)(vitest@1.4.0)(vue-router@4.3.0)(vue@3.4.20)
       vue: 3.4.20(typescript@5.3.3)
       vue-router: 4.3.0(vue@3.4.20)
     transitivePeerDependencies:
@@ -11022,6 +11021,12 @@ packages:
       mlly: 1.6.1
       pathe: 1.1.2
 
+  /playwright-core@1.42.1:
+    resolution: {integrity: sha512-mxz6zclokgrke9p1vtdy/COWBH+eOZgYUVVU34C73M+4j4HLlQJHtfcqiqqxpP0o8HhMkflvfbquLX5dg6wlfA==}
+    engines: {node: '>=16'}
+    hasBin: true
+    dev: true
+
   /pluralize@8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
@@ -13921,7 +13926,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.7
       '@babel/standalone': 7.23.8
-      '@babel/types': 7.23.6
+      '@babel/types': 7.23.9
       defu: 6.1.4
       jiti: 1.21.0
       mri: 1.2.0
@@ -14119,10 +14124,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.3
 
-  /vitest-environment-nuxt@1.0.0(h3@1.11.1)(vite@5.2.3)(vitest@1.4.0)(vue-router@4.3.0)(vue@3.4.20):
+  /vitest-environment-nuxt@1.0.0(h3@1.11.1)(playwright-core@1.42.1)(vite@5.2.3)(vitest@1.4.0)(vue-router@4.3.0)(vue@3.4.20):
     resolution: {integrity: sha512-AWMO9h4HdbaFdPWZw34gALFI8gbBiOpvfbyeZwHIPfh4kWg/TwElYHvYMQ61WPUlCGaS5LebfHkaI0WPyb//Iw==}
     dependencies:
-      '@nuxt/test-utils': 3.12.0(h3@1.11.1)(vite@5.2.3)(vitest@1.4.0)(vue-router@4.3.0)(vue@3.4.20)
+      '@nuxt/test-utils': 3.12.0(h3@1.11.1)(playwright-core@1.42.1)(vite@5.2.3)(vitest@1.4.0)(vue-router@4.3.0)(vue@3.4.20)
     transitivePeerDependencies:
       - '@cucumber/cucumber'
       - '@jest/globals'
