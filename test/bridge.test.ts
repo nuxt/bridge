@@ -197,6 +197,8 @@ describe('navigate', () => {
   it('should redirect to index with navigateTo and 301 code', async () => {
     const res = await fetch('/navigate-to/', { redirect: 'manual' })
     expect(res.status).toBe(301)
+    // TODO: re-enable client side error test
+    // await expectNoClientErrors('/navigate-to/')
   })
 })
 
@@ -254,6 +256,8 @@ describe('errors', () => {
   it('should render a HTML error page', async () => {
     const res = await fetch('/error')
     expect(await res.text()).toContain('This is a custom error')
+    // TODO: re-enable client side error test
+    // await expectNoClientErrors('/error')
   })
 })
 
@@ -355,6 +359,8 @@ describe('dynamic paths', () => {
       const url = match[2]
       expect(url.startsWith('/_nuxt/') || url === '/public.svg').toBeTruthy()
     }
+    // TODO: re-enable client side error test
+    // await expectNoClientErrors('/assets')
   })
 
   // Vite legacy build does not emit CSS files
