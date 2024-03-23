@@ -60,6 +60,12 @@ describe('nuxt composables', () => {
     expect(html).toContain('error2: Error: fetch-2 error')
     expect(html).toContain('error3: Error: fetch-3 error')
   })
+
+  it('should render api response', async () => {
+    const html = await $fetch('/lazy-fetch')
+
+    expect(html).toContain('<div>Hello API</div>')
+  })
 })
 
 describe('head tags', () => {
