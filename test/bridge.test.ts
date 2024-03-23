@@ -197,8 +197,6 @@ describe('navigate', () => {
   it('should redirect to index with navigateTo and 301 code', async () => {
     const res = await fetch('/navigate-to/', { redirect: 'manual' })
     expect(res.status).toBe(301)
-    // TODO: re-enable client side error test
-    // await expectNoClientErrors('/navigate-to/')
   })
 })
 
