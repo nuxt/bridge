@@ -81,6 +81,7 @@ jobs:
         compatibility: ['compatibility', 'no-compatibility']
         resolve: ['resolve', 'no-resolve']
         typescript: ['isTSX', 'esbuild']
+        vite-legacy: ['legacy', 'no-legacy']
         exclude:
           - transpile: 'no-transpile'
             builder: 'vite'
@@ -92,6 +93,8 @@ jobs:
             builder: 'vite'
           - compatibility: 'no-compatibility'
             env: 'dev'
+          - vite-legacy: 'no-legacy'
+            builder: 'webpack'
 
     steps:
       - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
@@ -135,6 +138,7 @@ jobs:
         env:
           TEST_ENV: ${{ matrix.env }}
           TEST_BUILDER: ${{ matrix.builder }}
+          TEST_VITE_LEGACY: ${{ matrix.vite-legacy || 'legacy' }}
           TEST_TRANSPILE: ${{ matrix.transpile || 'transpile' }}
           TEST_COMPATIBILITY: ${{ matrix.compatibility || 'compatibility' }}
           TEST_RESOLVE: ${{ matrix.resolve || 'resolve' }}
