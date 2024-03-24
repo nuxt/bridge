@@ -1,6 +1,10 @@
 import { withoutTrailingSlash } from 'ufo'
 
-export default defineNuxtRouteMiddleware((to) => {
+export default defineNuxtRouteMiddleware((to, from) => {
+  if (process.client) {
+    console.info('[middleware] to', to)
+    console.info('[middleware] from', from)
+  }
   if (useRequestHeaders(['trailing-slash'])['trailing-slash'] && to.fullPath.endsWith('/')) {
     return navigateTo(withoutTrailingSlash(to.fullPath), { redirectCode: 307 })
   }

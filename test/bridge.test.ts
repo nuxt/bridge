@@ -284,6 +284,34 @@ describe('middleware', () => {
 
     expect(html).toContain('Navigated successfully')
   })
+
+  // if `no-resolve`, an error occurs at `useRoute`.
+  it.skipIf(isWebpack && isNoResolve)('should be output with target as to and origin as from', async () => {
+    const { page, consoleLogs } = await renderPage('/')
+    await page.getByRole('link').click()
+
+    const logs = consoleLogs.filter(i => i.type === 'info' && i.text.includes('[middleware]'))
+    expect(logs).toMatchInlineSnapshot(`
+      [
+        {
+          "text": "[middleware] to {name: index, meta: Object, path: /, hash: , query: Object}",
+          "type": "info",
+        },
+        {
+          "text": "[middleware] from {name: null, meta: Object, path: /, hash: , query: Object}",
+          "type": "info",
+        },
+        {
+          "text": "[middleware] to {name: legacy-capi, meta: Object, path: /legacy-capi, hash: , query: Object}",
+          "type": "info",
+        },
+        {
+          "text": "[middleware] from {name: index, meta: Object, path: /, hash: , query: Object}",
+          "type": "info",
+        },
+      ]
+    `)
+  })
 })
 
 describe('navigate', () => {
