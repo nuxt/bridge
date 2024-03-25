@@ -66,55 +66,63 @@ export async function generateBuildManifest (ctx: ViteBuildContext) {
     }
   }
 
-  // Search for polyfill file, we don't include it in the client entry
-  const polyfillName = Object.values(clientManifest).find(entry => entry.file.startsWith('polyfills-legacy'))?.file
-  const polyfill = await fse.readFile(rDist('client', buildAssetsDir, polyfillName), 'utf-8')
+  const disabledLegacy = typeof ctx.nuxt.options.bridge.vite === 'object' && ctx.nuxt.options.bridge.vite.legacy === false
 
-  const clientImports = new Set<string>()
-  const clientEntry: Partial<Record<keyof ResourceMeta, Set<string>>> = {
-    assets: new Set(),
-    css: new Set(),
-    dynamicImports: new Set()
-  }
+  let manifest
 
-  for (const entry in clientManifest) {
-    if (!clientManifest[entry].file.startsWith('polyfills-legacy') && clientManifest[entry].file.includes('-legacy')) {
-      clientImports.add(clientManifest[entry].file)
-      for (const key of ['css', 'assets', 'dynamicImports']) {
-        for (const file of clientManifest[entry][key] || []) {
-          clientEntry[key].add(file)
+  if (disabledLegacy) {
+    manifest = normalizeViteManifest(clientManifest)
+  } else {
+    // Search for polyfill file, we don't include it in the client entry
+    const polyfillName = Object.values(clientManifest).find(entry => entry.file.startsWith('polyfills-legacy'))?.file
+    const polyfill = await fse.readFile(rDist('client', buildAssetsDir, polyfillName), 'utf-8')
+
+    const clientImports = new Set<string>()
+    const clientEntry: Partial<Record<keyof ResourceMeta, Set<string>>> = {
+      assets: new Set(),
+      css: new Set(),
+      dynamicImports: new Set()
+    }
+
+    for (const entry in clientManifest) {
+      if (!clientManifest[entry].file.startsWith('polyfills-legacy') && clientManifest[entry].file.includes('-legacy')) {
+        clientImports.add(clientManifest[entry].file)
+        for (const key of ['css', 'assets', 'dynamicImports']) {
+          for (const file of clientManifest[entry][key] || []) {
+            clientEntry[key].add(file)
+          }
         }
       }
+      delete clientManifest[entry].isEntry
     }
-    delete clientManifest[entry].isEntry
-  }
 
-  // @vitejs/plugin-legacy uses SystemJS which need to call `System.import` to load modules
-  const clientEntryCode = [
-    polyfill,
-    'var appConfig = window && window.__NUXT__ && window.__NUXT__.config.app || {}',
-    'var publicBase = appConfig.cdnURL || appConfig.baseURL || "/"',
-    'function joinURL (a, b) { return a.replace(/\\/+$/, "") + "/" + b.replace(/^\\/+/, "") }',
-    'globalThis.__publicAssetsURL = function(id) { return joinURL(publicBase, id || "") }',
-    'globalThis.__buildAssetsURL = function(id) { return joinURL(publicBase, joinURL(appConfig.buildAssetsDir, id || "")) }',
+    // @vitejs/plugin-legacy uses SystemJS which need to call `System.import` to load modules
+    const clientEntryCode = [
+      polyfill,
+      'var appConfig = window && window.__NUXT__ && window.__NUXT__.config.app || {}',
+      'var publicBase = appConfig.cdnURL || appConfig.baseURL || "/"',
+      'function joinURL (a, b) { return a.replace(/\\/+$/, "") + "/" + b.replace(/^\\/+/, "") }',
+      'globalThis.__publicAssetsURL = function(id) { return joinURL(publicBase, id || "") }',
+      'globalThis.__buildAssetsURL = function(id) { return joinURL(publicBase, joinURL(appConfig.buildAssetsDir, id || "")) }',
     `var imports = ${JSON.stringify([...clientImports])};`,
     'imports.reduce(function(p, id){return p.then(function(){return System.import(__buildAssetsURL(id))})}, Promise.resolve())'
-  ].join('\n')
-  const clientEntryName = 'entry-legacy.' + hash(clientEntryCode) + '.js'
+    ].join('\n')
+    const clientEntryName = 'entry-legacy.' + hash(clientEntryCode) + '.js'
 
-  await fse.writeFile(rDist('client', buildAssetsDir, clientEntryName), clientEntryCode, 'utf-8')
+    await fse.writeFile(rDist('client', buildAssetsDir, clientEntryName), clientEntryCode, 'utf-8')
 
-  const manifest = normalizeViteManifest({
-    [clientEntryName]: {
-      file: clientEntryName,
-      module: true,
-      isEntry: true,
-      css: [...clientEntry.css],
-      assets: [...clientEntry.assets],
-      dynamicImports: [...clientEntry.dynamicImports]
-    },
-    ...clientManifest
-  })
+    manifest = normalizeViteManifest({
+      [clientEntryName]: {
+        file: clientEntryName,
+        module: true,
+        isEntry: true,
+        css: [...clientEntry.css],
+        assets: [...clientEntry.assets],
+        dynamicImports: [...clientEntry.dynamicImports]
+      },
+      ...clientManifest
+    })
+  }
 
   await writeClientManifest(manifest, ctx.nuxt.options.buildDir)
 

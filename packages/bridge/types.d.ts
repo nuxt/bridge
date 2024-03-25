@@ -23,7 +23,12 @@ export interface NuxtSSRContext extends SSRContext {
 export interface BridgeConfig {
   nitro: boolean
   nitroGenerator: boolean
-  vite: boolean
+  vite: boolean | {
+    /**
+     * If set to false, `@vitejs/plugin-legacy` not used.
+     */
+    legacy?: boolean
+  }
   app: boolean | {}
   capi: boolean | {
     legacy?: boolean

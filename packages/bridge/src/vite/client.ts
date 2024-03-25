@@ -8,7 +8,6 @@ import type { ServerOptions, InlineConfig } from 'vite'
 import { defineEventHandler } from 'h3'
 import defu from 'defu'
 import { viteNodePlugin } from '../vite-node'
-import PluginLegacy from './stub-legacy.cjs'
 import { mergeConfig, createServer, build } from './stub-vite.cjs'
 import { devStyleSSRPlugin } from './plugins/dev-ssr-css'
 import { jsxPlugin } from './plugins/jsx'
@@ -61,7 +60,6 @@ export async function buildClient (ctx: ViteBuildContext) {
     plugins: [
       jsxPlugin(),
       createVuePlugin(ctx.config.vue),
-      PluginLegacy(),
       devStyleSSRPlugin({
         srcDir: ctx.nuxt.options.srcDir,
         buildAssetsURL: joinURL(ctx.nuxt.options.app.baseURL, ctx.nuxt.options.app.buildAssetsDir)
@@ -73,6 +71,14 @@ export async function buildClient (ctx: ViteBuildContext) {
       middlewareMode: true
     }
   } as ViteOptions)
+
+  const disabledLegacy = typeof ctx.nuxt.options.bridge.vite === 'object' && ctx.nuxt.options.bridge.vite.legacy === false
+
+  if (!disabledLegacy) {
+    const legacyPlugin = await import('@vitejs/plugin-legacy').then(r => r.default || r)
+    // @ts-expect-error
+    clientConfig.plugins.push(legacyPlugin())
+  }
 
   // In build mode we explicitly override any vite options that vite is relying on
   // to detect whether to inject production or development code (such as HMR code)
