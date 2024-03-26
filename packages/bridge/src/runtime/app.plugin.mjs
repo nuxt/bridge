@@ -73,7 +73,7 @@ export default async (ctx, inject) => {
     nuxtApp._processingMiddleware = true
 
     for (const middleware of nuxtApp._middleware.global) {
-      const result = await middleware(ctx)
+      const result = await middleware({ ...ctx, route: to, from })
       if (result || result === false) { return next(result) }
     }
 
