@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  middleware: ['redirect']
+  middleware: ['redirect', 'child-redirect']
 })
 </script>
 

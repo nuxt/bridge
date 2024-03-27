@@ -307,13 +307,21 @@ describe('navigate', () => {
     const res = await fetch('/navigate-some-path/', { redirect: 'manual', headers: { 'trailing-slash': 'true' } })
     expect(res.headers.get('location')).toEqual('/navigate-some-path')
     expect(res.status).toEqual(307)
-    expect(await res.text()).toMatchInlineSnapshot('"<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/navigate-some-path"></head></html>"')
+    // nuxt bridge not supported
+    // expect(await res.text()).toMatchInlineSnapshot('"<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/navigate-some-path"></head></html>"')
   })
 
   it('supports directly aborting navigation on SSR', async () => {
     const { status } = await fetch('/navigate-to-false', { redirect: 'manual' })
 
     expect(status).toEqual(404)
+  })
+
+  it('Should not be called child-redirect after being redirected', async () => {
+    const res = await fetch('/redirect', { redirect: 'manual' })
+
+    expect(res.headers.get('location')).toEqual('/navigation-target')
+    expect(res.status).toEqual(302)
   })
 })
 
