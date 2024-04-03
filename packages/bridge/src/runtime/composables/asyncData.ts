@@ -1,4 +1,4 @@
-import { onBeforeMount, onServerPrefetch, onUnmounted, ref, shallowRef, getCurrentInstance, watch, toRef, unref } from 'vue'
+import { onBeforeMount, onServerPrefetch, onUnmounted, ref, shallowRef, getCurrentInstance, watch, toRef, unref, getCurrentScope, onScopeDispose } from 'vue'
 import type { Ref, WatchSource } from 'vue'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import { useNuxtApp } from '../nuxt'
@@ -295,16 +295,21 @@ export function useAsyncData<
       // 4. Navigation (lazy: false) - or plugin usage: await fetch
       initialFetch()
     }
+
+    const hasScope = getCurrentScope()
     if (options.watch) {
-      watch(options.watch, () => asyncData.refresh())
+      const unsub = watch(options.watch, () => asyncData.refresh())
+      if (hasScope) {
+        onScopeDispose(unsub)
+      }
     }
     const off = nuxt.hook('app:data:refresh', (keys) => {
       if (!keys || keys.includes(key)) {
         return asyncData.refresh()
       }
     })
-    if (instance) {
-      onUnmounted(off)
+    if (hasScope) {
+      onScopeDispose(off)
     }
   }
 
