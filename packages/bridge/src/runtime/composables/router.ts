@@ -115,6 +115,8 @@ export const navigateTo = (to: RawLocation | undefined | null, options?: Navigat
 
       if (!isExternal && inMiddleware) {
         router.afterEach(final => final.fullPath === fullPath ? redirect(false) : undefined)
+
+        // handling of nuxt bridge only
         nuxtApp.ssrContext._redirectCode = options?.redirectCode || 302
         return to
       }
