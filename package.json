@@ -27,11 +27,11 @@
     "changelogen": "^0.5.5",
     "devalue": "^4.3.2",
     "eslint": "^8.57.0",
-    "eslint-plugin-jsdoc": "^48.2.2",
+    "eslint-plugin-jsdoc": "^48.2.3",
     "jiti": "^1.21.0",
-    "playwright-core": "^1.42.1",
+    "playwright-core": "^1.43.1",
     "std-env": "^3.7.0",
-    "vitest": "^1.4.0"
+    "vitest": "^1.5.0"
   },
   "resolutions": {
     "@nuxt/bridge": "workspace:*",
