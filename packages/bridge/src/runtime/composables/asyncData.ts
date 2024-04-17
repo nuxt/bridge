@@ -308,6 +308,9 @@ export function useAsyncData<
         return asyncData.refresh()
       }
     })
+    if (instance) {
+      onUnmounted(off)
+    }
     if (hasScope) {
       onScopeDispose(off)
     }
