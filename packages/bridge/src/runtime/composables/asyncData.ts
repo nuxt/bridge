@@ -84,6 +84,9 @@ export interface AsyncDataExecuteOptions {
 
 export interface _AsyncData<DataT, ErrorT> {
   data: Ref<DataT>
+  /**
+   * @deprecated Use `status` instead. This may be removed in a future major version.
+   */
   pending: Ref<boolean>
   refresh: (opts?: AsyncDataExecuteOptions) => Promise<DataT>
   execute: (opts?: AsyncDataExecuteOptions) => Promise<DataT>
