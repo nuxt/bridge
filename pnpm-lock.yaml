@@ -25,8 +25,8 @@ importers:
         specifier: ^0.5.5
         version: 0.5.5
       devalue:
-        specifier: ^4.3.3
-        version: 4.3.3
+        specifier: ^5.0.0
+        version: 5.0.0
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -3884,8 +3884,8 @@ packages:
   devalue@2.0.1:
     resolution: {integrity: sha512-I2TiqT5iWBEyB8GRfTDP0hiLZ0YeDJZ+upDxjBfOC2lebO5LezQMv7QvIUTzdb64jQyAKLf1AHADtGN+jw6v8Q==}
 
-  devalue@4.3.3:
-    resolution: {integrity: sha512-UH8EL6H2ifcY8TbD2QsxwCC/pr5xSwPvv85LrLXVihmHVC3T3YqTCIwnR5ak0yO1KYqlxrPVOA/JVZJYPy2ATg==}
+  devalue@5.0.0:
+    resolution: {integrity: sha512-gO+/OMXF7488D+u3ue+G7Y4AA3ZmUnB3eHJXmBTgNHvr4ZNzl36A0ZtG+XCRNYCkYx/bFmw4qtkoFLa+wSrwAA==}
 
   diff-sequences@29.6.3:
     resolution: {integrity: sha512-EjePK1srD3P08o2j4f0ExnylqRs5B9tJjcp9t1krH2qRi8CCdsYfwe9JgSLurFBWwq4uOlipzfk5fHNvwFKr8Q==}
@@ -12057,7 +12057,7 @@ snapshots:
 
   devalue@2.0.1: {}
 
-  devalue@4.3.3: {}
+  devalue@5.0.0: {}
 
   diff-sequences@29.6.3: {}
 
