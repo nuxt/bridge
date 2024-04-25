@@ -1,10 +1,10 @@
-import { onBeforeMount, onServerPrefetch, onUnmounted, ref, shallowRef, getCurrentInstance, watch, toRef, unref } from 'vue'
+import { onBeforeMount, onServerPrefetch, onUnmounted, ref, shallowRef, getCurrentInstance, watch, toRef, unref, getCurrentScope, onScopeDispose } from 'vue'
 import type { Ref, WatchSource } from 'vue'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import { useNuxtApp } from '../nuxt'
 import { createError } from './error'
 
-export type _Transform<Input = any, Output = any> = (input: Input) => Output
+export type _Transform<Input = any, Output = any> = (input: Input) => Output | Promise<Output>
 
 export type PickFrom<T, K extends Array<string>> = T extends Array<any> ? T : T extends Record<string, any> ? Pick<T, K[number]> : T
 export type KeysOf<T> = Array<keyof T extends string ? keyof T : string>
@@ -84,6 +84,9 @@ export interface AsyncDataExecuteOptions {
 
 export interface _AsyncData<DataT, ErrorT> {
   data: Ref<DataT>
+  /**
+   * @deprecated Use `status` instead. This may be removed in a future major version.
+   */
   pending: Ref<boolean>
   refresh: (opts?: AsyncDataExecuteOptions) => Promise<DataT>
   execute: (opts?: AsyncDataExecuteOptions) => Promise<DataT>
@@ -222,13 +225,13 @@ export function useAsyncData<
           reject(err)
         }
       })
-      .then((_result) => {
+      .then(async (_result) => {
         // If this request is cancelled, resolve to the latest request.
         if ((promise as any).cancelled) { return nuxt._asyncDataPromises[key] }
 
         let result = _result as unknown as DataT
         if (options.transform) {
-          result = options.transform(_result)
+          result = await options.transform(_result)
         }
         if (options.pick) {
           result = pick(result as any, options.pick) as DataT
@@ -295,8 +298,15 @@ export function useAsyncData<
       // 4. Navigation (lazy: false) - or plugin usage: await fetch
       initialFetch()
     }
+
+    const hasScope = getCurrentScope()
     if (options.watch) {
-      watch(options.watch, () => asyncData.refresh())
+      const unsub = watch(options.watch, () => asyncData.refresh())
+      if (instance) {
+        onUnmounted(unsub)
+      } else if (hasScope) {
+        onScopeDispose(unsub)
+      }
     }
     const off = nuxt.hook('app:data:refresh', (keys) => {
       if (!keys || keys.includes(key)) {
@@ -305,6 +315,8 @@ export function useAsyncData<
     })
     if (instance) {
       onUnmounted(off)
+    } else if (hasScope) {
+      onScopeDispose(off)
     }
   }
 

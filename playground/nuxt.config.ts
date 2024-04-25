@@ -5,7 +5,7 @@ import { defineNuxtConfig } from '@nuxt/bridge'
 global.__NUXT_PREPATHS__ = (global.__NUXT_PREPATHS__ || []).concat(__dirname)
 
 const bridgeConfig = {
-  vite: process.env.TEST_BUILDER !== 'webpack',
+  vite: process.env.TEST_BUILDER !== 'webpack' ? { legacy: process.env.TEST_VITE_LEGACY !== 'no-legacy' } : false,
   transpile: process.env.TEST_TRANSPILE !== 'no-transpile',
   compatibility: process.env.TEST_COMPATIBILITY !== 'no-compatibility',
   resolve: process.env.TEST_RESOLVE !== 'no-resolve',
