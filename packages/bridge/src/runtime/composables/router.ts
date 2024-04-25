@@ -52,7 +52,7 @@ function convertToLegacyMiddleware (middleware) {
       return ctx.error(result)
     }
     if (result) {
-      return ctx.redirect(ctx.ssrContext?._redirectCode || 302, result)
+      return ctx.redirect(result)
     }
     return result
   }
@@ -101,7 +101,7 @@ export const navigateTo = (to: RawLocation | undefined | null, options?: Navigat
 
   if (process.server) {
     const nuxtApp = useNuxtApp()
-    if (nuxtApp.ssrContext && nuxtApp.ssrContext.event) {
+    if (nuxtApp.ssrContext) {
       const fullPath = typeof to === 'string' || isExternal ? toPath : router.resolve(to).resolved.fullPath || '/'
       const location = isExternal ? toPath : joinURL(useRuntimeConfig().app.baseURL, fullPath)
 
@@ -114,10 +114,10 @@ export const navigateTo = (to: RawLocation | undefined | null, options?: Navigat
       }
 
       if (!isExternal && inMiddleware) {
+        // We wait to perform the redirect last in case any other middleware will intercept the redirect
+        // and redirect somewhere else instead.
         router.afterEach(final => final.fullPath === fullPath ? redirect(false) : undefined)
 
-        // handling of nuxt bridge only
-        nuxtApp.ssrContext._redirectCode = options?.redirectCode || 302
         return to
       }
 
