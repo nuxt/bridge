@@ -337,7 +337,7 @@ describe('navigate', () => {
     expect(res.status).toEqual(307)
     expect(await res.text()).toMatchInlineSnapshot(
       '"<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/navigate-some-path"></head></html>"'
-    );
+    )
   })
 
   it('supports directly aborting navigation on SSR', async () => {
