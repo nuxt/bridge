@@ -66,6 +66,12 @@ describe('nuxt composables', () => {
 
     expect(html).toContain('<div>Hello API</div>')
   })
+
+  it('should not render clearable', async () => {
+    const html = await $fetch('/async-data')
+
+    expect(html).not.toContain('clearData: clear data')
+  })
 })
 
 describe('head tags', () => {

@@ -3,6 +3,7 @@ import type { Ref, WatchSource } from 'vue'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import { useNuxtApp } from '../nuxt'
 import { createError } from './error'
+import { toArray } from '../../utils/toArray'
 
 export type _Transform<Input = any, Output = any> = (input: Input) => Output | Promise<Output>
 
@@ -90,6 +91,7 @@ export interface _AsyncData<DataT, ErrorT> {
   pending: Ref<boolean>
   refresh: (opts?: AsyncDataExecuteOptions) => Promise<DataT>
   execute: (opts?: AsyncDataExecuteOptions) => Promise<DataT>
+  clear: () => void
   error: Ref<ErrorT | null>
   status: Ref<AsyncDataRequestStatus>
 }
@@ -391,6 +393,43 @@ export function refreshNuxtData (keys?: string | string[]): Promise<void> {
   const _keys = keys ? Array.isArray(keys) ? keys : [keys] : undefined
   return useNuxtApp().callHook('app:data:refresh', _keys)
 }
+
+export function clearNuxtData (keys?: string | string[] | ((key: string) => boolean)): void {
+  const nuxtApp = useNuxtApp()
+  const _allKeys = Object.keys(nuxtApp.payload.data)
+  const _keys: string[] = !keys
+    ? _allKeys
+    : typeof keys === 'function'
+      ? _allKeys.filter(keys)
+      : toArray(keys)
+
+  for (const key of _keys) {
+    clearNuxtDataByKey(nuxtApp, key)
+  }
+}
+
+function clearNuxtDataByKey (nuxtApp: NuxtAppCompat, key: string): void {
+  if (key in nuxtApp.payload.data) {
+    nuxtApp.payload.data[key] = undefined
+  }
+
+  if (key in nuxtApp.payload._errors) {
+    nuxtApp.payload._errors[key] = null
+  }
+
+  if (nuxtApp._asyncData[key]) {
+    nuxtApp._asyncData[key]!.data.value = undefined
+    nuxtApp._asyncData[key]!.error.value = null
+    nuxtApp._asyncData[key]!.pending.value = false
+    nuxtApp._asyncData[key]!.status.value = 'idle'
+  }
+
+  if (key in nuxtApp._asyncDataPromises) {
+    (nuxtApp._asyncDataPromises[key] as any).cancelled = true
+    nuxtApp._asyncDataPromises[key] = undefined
+  }
+}
+
 
 function pick (obj: Record<string, any>, keys: string[]) {
   const newObj = {}
