@@ -264,6 +264,8 @@ export function useAsyncData<
     return nuxt._asyncDataPromises[key]!
   }
 
+  asyncData.clear = () => clearNuxtDataByKey(nuxt, key)
+
   const initialFetch = () => asyncData.refresh({ _initial: true })
 
   const fetchOnServer = options.server !== false && nuxt.payload.serverRendered
