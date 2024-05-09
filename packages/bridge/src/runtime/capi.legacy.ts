@@ -55,7 +55,8 @@ export {
   watch,
   watchEffect,
   watchPostEffect,
-  watchSyncEffect
+  watchSyncEffect,
+  defineAsyncComponent,
 } from 'vue'
 
 export { ref }
@@ -76,7 +77,6 @@ const warnOnce = (id, message) => {
 
 export const createApp = () => unsupported('`createApp` is not provided by Vue 2.7.')
 export const createRef = () => unsupported('`createRef` is not provided by Vue 2.7.')
-export const defineAsyncComponent = () => unsupported('`defineAsyncComponent` is not provided by Vue 2.7.')
 export const isRaw = () => unsupported('`isRaw` is not provided by Vue 2.7.')
 export const proxyRefs = () => unsupported('`proxyRefs` is not provided by Vue 2.7.')
 export const warn = () => unsupported('`warn` is not provided by Vue 2.7.')
