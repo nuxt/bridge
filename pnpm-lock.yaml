@@ -220,8 +220,8 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@20.11.20)(terser@5.31.0)
       vue-bundle-renderer:
-        specifier: ^2.0.0
-        version: 2.0.0
+        specifier: ^2.1.0
+        version: 2.1.0
     devDependencies:
       '@nuxt/types':
         specifier: ^2.17.3
@@ -7857,8 +7857,8 @@ packages:
   vm-browserify@1.1.2:
     resolution: {integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==}
 
-  vue-bundle-renderer@2.0.0:
-    resolution: {integrity: sha512-oYATTQyh8XVkUWe2kaKxhxKVuuzK2Qcehe+yr3bGiaQAhK3ry2kYE4FWOfL+KO3hVFwCdLmzDQTzYhTi9C+R2A==}
+  vue-bundle-renderer@2.1.0:
+    resolution: {integrity: sha512-uZ+5ZJdZ/b43gMblWtcpikY6spJd0nERaM/1RtgioXNfWFbjKlUwrS8HlrddN6T2xtptmOouWclxLUkpgcVX3Q==}
 
   vue-client-only@2.1.0:
     resolution: {integrity: sha512-vKl1skEKn8EK9f8P2ZzhRnuaRHLHrlt1sbRmazlvsx6EiC3A8oWF8YCBrMJzoN+W3OnElwIGbVjsx6/xelY1AA==}
@@ -11410,7 +11410,7 @@ snapshots:
 
   '@vue/compiler-core@3.4.20':
     dependencies:
-      '@babel/parser': 7.23.9
+      '@babel/parser': 7.24.5
       '@vue/shared': 3.4.20
       entities: 4.5.0
       estree-walker: 2.0.2
@@ -11431,7 +11431,7 @@ snapshots:
 
   '@vue/compiler-sfc@3.4.20':
     dependencies:
-      '@babel/parser': 7.23.9
+      '@babel/parser': 7.24.5
       '@vue/compiler-core': 3.4.20
       '@vue/compiler-dom': 3.4.20
       '@vue/compiler-ssr': 3.4.20
@@ -17224,7 +17224,7 @@ snapshots:
 
   vm-browserify@1.1.2: {}
 
-  vue-bundle-renderer@2.0.0:
+  vue-bundle-renderer@2.1.0:
     dependencies:
       ufo: 1.5.3
 
