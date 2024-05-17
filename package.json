@@ -26,7 +26,7 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "changelogen": "^0.5.5",
     "devalue": "^5.0.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.3.0",
     "eslint-plugin-jsdoc": "^48.2.4",
     "jiti": "^1.21.0",
     "playwright-core": "^1.44.0",
