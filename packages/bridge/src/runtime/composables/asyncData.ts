@@ -2,8 +2,8 @@ import { onBeforeMount, onServerPrefetch, onUnmounted, ref, shallowRef, getCurre
 import type { Ref, WatchSource } from 'vue'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import { useNuxtApp } from '../nuxt'
-import { createError } from './error'
 import { toArray } from '../../utils/toArray'
+import { createError } from './error'
 
 export type _Transform<Input = any, Output = any> = (input: Input) => Output | Promise<Output>
 
@@ -431,7 +431,6 @@ function clearNuxtDataByKey (nuxtApp: NuxtAppCompat, key: string): void {
     nuxtApp._asyncDataPromises[key] = undefined
   }
 }
-
 
 function pick (obj: Record<string, any>, keys: string[]) {
   const newObj = {}
