@@ -70,7 +70,8 @@ describe('nuxt composables', () => {
   it('should not render clearable', async () => {
     const html = await $fetch('/async-data')
 
-    expect(html).not.toContain('clearData: clear data')
+    expect(html).not.toContain('clearableData-1: clearableData')
+    expect(html).not.toContain('clearableData-2: clearableData')
   })
 })
 

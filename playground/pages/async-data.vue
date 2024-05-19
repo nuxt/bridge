@@ -14,17 +14,27 @@ const { error: error3 } = useLazyAsyncData('fetch-3', () => {
   throw new Error('fetch-3 error')
 })
 
-const { data: clearableData } = useLazyAsyncData('clearableData', async () => {
+const { data: clearableData1 } = useLazyAsyncData('clearableData-1', async () => {
+  const text = await $fetch('/api/hello?clear=true')
   return {
-    text: 'clear data'
+    text
+  }
+})
+
+const { data: clearableData2, clear } = useLazyAsyncData('clearableData-2', async () => {
+  const text = await $fetch('/api/hello?clear=true')
+  return {
+    text
   }
 })
 
 if (process.server) {
-  clearNuxtData('clearableData')
+  clearNuxtData('clearableData-1')
+  clear()
 } else {
   nextTick(() => {
-    clearNuxtData('clearableData')
+    clearNuxtData('clearableData-1')
+    clear()
   })
 }
 
@@ -36,6 +46,7 @@ if (process.server) {
     <div>error1: {{ error1 }}</div>
     <div>error2: {{ error2 }}</div>
     <div>error3: {{ error3 }}</div>
-    <div>clearData: {{ clearableData?.text }}</div>
+    <div>clearableData-1: {{ clearableData1?.text }}</div>
+    <div>clearableData-2: {{ clearableData2?.text }}</div>
   </div>
 </template>
