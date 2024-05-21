@@ -1,4 +1,4 @@
-export { useLazyAsyncData, refreshNuxtData } from './asyncData'
+export { useLazyAsyncData, refreshNuxtData, clearNuxtData } from './asyncData'
 export * from './component'
 export { useCookie } from './cookie'
 export { clearError, createError, isNuxtError, throwError, showError, useError } from './error'
