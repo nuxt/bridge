@@ -13,8 +13,8 @@ importers:
   .:
     devDependencies:
       '@nuxt/test-utils':
-        specifier: ^3.12.1
-        version: 3.12.1(h3@1.11.1)(playwright-core@1.44.0)(rollup@4.17.2)(vite@5.2.11(@types/node@20.11.20)(terser@5.31.0))(vitest@1.6.0(@types/node@20.11.20)(terser@5.31.0))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))
+        specifier: ^3.13.1
+        version: 3.13.1(h3@1.11.1)(nitropack@2.9.6)(playwright-core@1.44.0)(rollup@4.17.2)(vite@5.2.11(@types/node@20.11.20)(terser@5.31.0))(vitest@1.6.0(@types/node@20.11.20)(terser@5.31.0))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))
       '@nuxtjs/eslint-config':
         specifier: ^12.0.0
         version: 12.0.0(@typescript-eslint/parser@6.6.0(eslint@8.57.0)(typescript@5.3.3))(eslint-import-resolver-typescript@3.6.0(@typescript-eslint/parser@6.6.0(eslint@8.57.0)(typescript@5.3.3))(eslint-plugin-import@2.28.1)(eslint@8.57.0))(eslint@8.57.0)
@@ -73,8 +73,8 @@ importers:
         specifier: 3.11.2
         version: 3.11.2(rollup@4.17.2)
       '@nuxt/ui-templates':
-        specifier: ^1.3.3
-        version: 1.3.3
+        specifier: ^1.3.4
+        version: 1.3.4
       '@rollup/plugin-replace':
         specifier: ^5.0.5
         version: 5.0.5(rollup@4.17.2)
@@ -2225,20 +2225,21 @@ packages:
     resolution: {integrity: sha512-MhxiiYCFe0MayN2TvmpcsCV66zBePtrSVkFLJHwTFuneQ5Qma5x0NmCwdov7O4NSuTfgSZels9qPJh0zy0Kc4g==}
     hasBin: true
 
-  '@nuxt/test-utils@3.12.1':
-    resolution: {integrity: sha512-VRLNcDz9Ad/4pjHdNRVLPs5DVIO5IJ0ij81PLmsE/lt+5oeeIQld+AgHgcqM4BM1YKsXTBuavbk1mEBqj7h/+A==}
-    engines: {node: ^14.18.0 || >=16.10.0}
+  '@nuxt/test-utils@3.13.1':
+    resolution: {integrity: sha512-rqNnjArhFUU8qMHtpEZzjfF6fGTzeXxZsreNLUy9X5AoUuS37HgnobNJIirTrA0xzlzitKVm/mB9r4gXZGzWdQ==}
+    engines: {node: '>=18.20.2'}
     peerDependencies:
       '@cucumber/cucumber': ^10.3.1
       '@jest/globals': ^29.5.0
-      '@playwright/test': ^1.42.1
+      '@playwright/test': ^1.43.1
       '@testing-library/vue': ^7.0.0 || ^8.0.1
       '@vitest/ui': ^0.34.6 || ^1.0.0
       '@vue/test-utils': ^2.4.2
       h3: '*'
       happy-dom: ^9.10.9 || ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0
       jsdom: ^22.0.0 || ^23.0.0 || ^24.0.0
-      playwright-core: ^1.34.3
+      nitropack: '*'
+      playwright-core: ^1.43.1
       vite: '*'
       vitest: ^0.34.6 || ^1.0.0
       vue: ^3.3.4
@@ -2269,8 +2270,8 @@ packages:
     resolution: {integrity: sha512-IXM+DwDrBj96v2O+oQrqA1vhQMVnBBcU7lTb+Xhnl6StL2PU6hxcx2czUWS8p2K6B6xvOHu+Sda7rCOKP60j2g==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
-  '@nuxt/ui-templates@1.3.3':
-    resolution: {integrity: sha512-3BG5doAREcD50dbKyXgmjD4b1GzY8CUy3T41jMhHZXNDdaNwOd31IBq+D6dV00OSrDVhzrTVj0IxsUsnMyHvIQ==}
+  '@nuxt/ui-templates@1.3.4':
+    resolution: {integrity: sha512-zjuslnkj5zboZGis5QpmR5gvRTx5N8Ha/Rll+RRT8YZhXVNBincifhZ9apUQ9f6T0xJE8IHPyVyPx6WokomdYw==}
 
   '@nuxt/utils@2.17.3':
     resolution: {integrity: sha512-/ZdjQY+U3I6X+IiRaHX2zA9l/cgN9GD8YIYuvf2obo5u1cLHin0MNj2dwb4P2iYvygAppb8nmcEsVzG4bppoEA==}
@@ -3109,6 +3110,7 @@ packages:
   are-we-there-yet@2.0.0:
     resolution: {integrity: sha512-Ci/qENmwHnsYo9xKIcUJN5LeDKdJ6R1Z1j9V/J5wyq8nh/mYPEpIKJbBZXtZjG04HiK7zV/p6Vs9952MrMeUIw==}
     engines: {node: '>=10'}
+    deprecated: This package is no longer supported.
 
   arg@5.0.2:
     resolution: {integrity: sha512-PYjyFOLKQ9y57JvQ6QLo8dAgNqswh8M1RMJYdQduT6xbWSgK36P/Z/v+p888pM69jMMfS8Xd8F6I1kQ/I9HUGg==}
@@ -3792,6 +3794,7 @@ packages:
 
   copy-concurrently@1.0.5:
     resolution: {integrity: sha512-f2domd9fsVDFtaFcbaRZuYXwtdmnzqbADSwhSWYxYB/Q8zsdUUFMXVRwXGDMWmbEzAn1kdRrtI1T/KTFOL4X2A==}
+    deprecated: This package is no longer supported.
 
   copy-descriptor@0.1.1:
     resolution: {integrity: sha512-XgZ0pFcakEUlbwQEVNg3+QAis1FyTL3Qel9FYy8pSkQqoG3PNoT0bOCQtOXcOkur21r2Eq2kI+IE+gsmAEVlYw==}
@@ -4682,6 +4685,7 @@ packages:
 
   fs-write-stream-atomic@1.0.10:
     resolution: {integrity: sha512-gehEzmPn2nAwr39eay+x3X34Ra+M2QlVUTLhkXPjWdeO8RF9kszk116avgBJM3ZyNHgHXBNx+VmPaFC36k0PzA==}
+    deprecated: This package is no longer supported.
 
   fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
@@ -4710,6 +4714,7 @@ packages:
   gauge@3.0.2:
     resolution: {integrity: sha512-+5J6MS/5XksCuXq++uFRsnUd7Ovu1XenbeuIuNRJxYWjgQbPuFhT14lAvsWfqfAmnwluf1OwMjz39HjfLPci0Q==}
     engines: {node: '>=10'}
+    deprecated: This package is no longer supported.
 
   gensync@1.0.0-beta.2:
     resolution: {integrity: sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==}
@@ -5671,6 +5676,7 @@ packages:
 
   move-concurrently@1.0.1:
     resolution: {integrity: sha512-hdrFxZOycD/g6A6SoI2bB5NA/5NEqD0569+S47WZhPvm46sD50ZHdYaFmnua5lndde9rCHGjmfK7Z8BuCt/PcQ==}
+    deprecated: This package is no longer supported.
 
   mri@1.2.0:
     resolution: {integrity: sha512-tzzskb3bG8LvYGFF/mDTpq3jpI6Q9wc3LEmBaghu+DdCssd1FakN7Bc0hVNmEyGq1bq3RgfkCb3cmQLpNPOroA==}
@@ -5820,6 +5826,7 @@ packages:
 
   npmlog@5.0.1:
     resolution: {integrity: sha512-AqZtDUWOMKs1G/8lwylVjrdYgqA4d9nu8hc+0gzRxlDb1I10+FHBGMXs6aiQHFdCUUlqH99MUMuLfzWDNDtfxw==}
+    deprecated: This package is no longer supported.
 
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
@@ -8326,11 +8333,11 @@ snapshots:
 
   '@babel/helper-hoist-variables@7.22.5':
     dependencies:
-      '@babel/types': 7.23.9
+      '@babel/types': 7.24.5
 
   '@babel/helper-member-expression-to-functions@7.23.0':
     dependencies:
-      '@babel/types': 7.23.9
+      '@babel/types': 7.24.5
 
   '@babel/helper-member-expression-to-functions@7.24.5':
     dependencies:
@@ -8421,7 +8428,7 @@ snapshots:
 
   '@babel/helper-split-export-declaration@7.22.6':
     dependencies:
-      '@babel/types': 7.23.9
+      '@babel/types': 7.24.5
 
   '@babel/helper-split-export-declaration@7.24.5':
     dependencies:
@@ -8441,7 +8448,7 @@ snapshots:
     dependencies:
       '@babel/helper-function-name': 7.23.0
       '@babel/template': 7.23.9
-      '@babel/types': 7.23.9
+      '@babel/types': 7.24.5
 
   '@babel/helpers@7.23.9':
     dependencies:
@@ -10450,7 +10457,7 @@ snapshots:
 
   '@nuxt/schema@3.11.2(rollup@4.17.2)':
     dependencies:
-      '@nuxt/ui-templates': 1.3.3
+      '@nuxt/ui-templates': 1.3.4
       consola: 3.2.3
       defu: 6.1.4
       hookable: 5.5.3
@@ -10509,7 +10516,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@nuxt/test-utils@3.12.1(h3@1.11.1)(playwright-core@1.44.0)(rollup@4.17.2)(vite@5.2.11(@types/node@20.11.20)(terser@5.31.0))(vitest@1.6.0(@types/node@20.11.20)(terser@5.31.0))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))':
+  '@nuxt/test-utils@3.13.1(h3@1.11.1)(nitropack@2.9.6)(playwright-core@1.44.0)(rollup@4.17.2)(vite@5.2.11(@types/node@20.11.20)(terser@5.31.0))(vitest@1.6.0(@types/node@20.11.20)(terser@5.31.0))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))':
     dependencies:
       '@nuxt/kit': 3.11.2(rollup@4.17.2)
       '@nuxt/schema': 3.11.2(rollup@4.17.2)
@@ -10524,6 +10531,7 @@ snapshots:
       h3: 1.11.1
       local-pkg: 0.5.0
       magic-string: 0.30.10
+      nitropack: 2.9.6
       node-fetch-native: 1.6.4
       ofetch: 1.3.4
       pathe: 1.1.2
@@ -10535,7 +10543,7 @@ snapshots:
       unenv: 1.9.0
       unplugin: 1.10.1
       vite: 5.2.11(@types/node@20.11.20)(terser@5.31.0)
-      vitest-environment-nuxt: 1.0.0(h3@1.11.1)(playwright-core@1.44.0)(rollup@4.17.2)(vite@5.2.11(@types/node@20.11.20)(terser@5.31.0))(vitest@1.6.0(@types/node@20.11.20)(terser@5.31.0))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))
+      vitest-environment-nuxt: 1.0.0(h3@1.11.1)(nitropack@2.9.6)(playwright-core@1.44.0)(rollup@4.17.2)(vite@5.2.11(@types/node@20.11.20)(terser@5.31.0))(vitest@1.6.0(@types/node@20.11.20)(terser@5.31.0))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))
       vue: 3.4.20(typescript@5.3.3)
       vue-router: 4.3.0(vue@3.4.20(typescript@5.3.3))
     optionalDependencies:
@@ -10563,7 +10571,7 @@ snapshots:
       '@types/webpack-bundle-analyzer': 3.9.5
       '@types/webpack-hot-middleware': 2.25.5
 
-  '@nuxt/ui-templates@1.3.3': {}
+  '@nuxt/ui-templates@1.3.4': {}
 
   '@nuxt/utils@2.17.3':
     dependencies:
@@ -17185,9 +17193,9 @@ snapshots:
       fsevents: 2.3.3
       terser: 5.31.0
 
-  vitest-environment-nuxt@1.0.0(h3@1.11.1)(playwright-core@1.44.0)(rollup@4.17.2)(vite@5.2.11(@types/node@20.11.20)(terser@5.31.0))(vitest@1.6.0(@types/node@20.11.20)(terser@5.31.0))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3)):
+  vitest-environment-nuxt@1.0.0(h3@1.11.1)(nitropack@2.9.6)(playwright-core@1.44.0)(rollup@4.17.2)(vite@5.2.11(@types/node@20.11.20)(terser@5.31.0))(vitest@1.6.0(@types/node@20.11.20)(terser@5.31.0))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3)):
     dependencies:
-      '@nuxt/test-utils': 3.12.1(h3@1.11.1)(playwright-core@1.44.0)(rollup@4.17.2)(vite@5.2.11(@types/node@20.11.20)(terser@5.31.0))(vitest@1.6.0(@types/node@20.11.20)(terser@5.31.0))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))
+      '@nuxt/test-utils': 3.13.1(h3@1.11.1)(nitropack@2.9.6)(playwright-core@1.44.0)(rollup@4.17.2)(vite@5.2.11(@types/node@20.11.20)(terser@5.31.0))(vitest@1.6.0(@types/node@20.11.20)(terser@5.31.0))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))
     transitivePeerDependencies:
       - '@cucumber/cucumber'
       - '@jest/globals'
@@ -17198,6 +17206,7 @@ snapshots:
       - h3
       - happy-dom
       - jsdom
+      - nitropack
       - playwright-core
       - rollup
       - supports-color
