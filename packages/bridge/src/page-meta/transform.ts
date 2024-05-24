@@ -166,6 +166,10 @@ export const PageMetaPlugin = createUnplugin(
                 }
               })
 
+              if (!contents) {
+                return
+              }
+
               s.prependLeft(exportDeclaration.start, contents)
 
               if (code.includes('__nuxt_page_meta')) {

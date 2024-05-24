@@ -36,11 +36,17 @@ import { defineComponent as _defineComponent } from 'vue';
 export default /*#__PURE__*/_defineComponent({
   __name: 'redirect',
   setup: function setup(__props) {
-    const route = useRoute()
+    var route = useRoute()
     definePageMeta({
       middleware: ['redirect'],
       layout: 'custom'
     });
+
+    var obj = {
+      setup: {
+        test: 'test'
+      }
+    }
     return {
       __sfc: true
       };
@@ -54,8 +60,14 @@ export default /*#__PURE__*/_defineComponent({
   export default /*#__PURE__*/_defineComponent({
     ...__nuxt_page_meta,__name: 'redirect',
     setup: function setup(__props) {
-      const route = useRoute()
+      var route = useRoute()
       ;
+
+      var obj = {
+        setup: {
+          test: 'test'
+        }
+      }
       return {
         __sfc: true
         };
@@ -73,6 +85,12 @@ export default {
     definePageMeta({
       layout: 'custom'
     });
+
+    var obj = {
+      setup: {
+        test: 'test'
+      }
+    }
       return {
         __sfc: true,
         message: message
@@ -88,6 +106,12 @@ export default {
     setup: function setup(__props) {
       var message;
       ;
+
+      var obj = {
+        setup: {
+          test: 'test'
+        }
+      }
         return {
           __sfc: true,
           message: message
@@ -141,6 +165,11 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
     definePageMeta({
       middleware: ["redirect"]
     });
+    const obj = {
+      setup: {
+        test: "test"
+      }
+    }
     return { __sfc: true };
   }
 });`)).toMatchInlineSnapshot(`
@@ -153,6 +182,11 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
     ...__nuxt_page_meta,__name: "redirect",
     setup(__props) {
       ;
+      const obj = {
+        setup: {
+          test: "test"
+        }
+      }
       return { __sfc: true };
     }
   });"
@@ -169,6 +203,12 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
           definePageMeta({
             layout: 'custom'
           })
+
+          const obj = {
+            setup: {
+              test: 'test'
+            }
+          }
         
           return { __sfc: true,message }
         }
@@ -183,6 +223,12 @@ const _sfc_main = /* @__PURE__ */ _defineComponent({
                   let message
                 
                   
+
+                  const obj = {
+                    setup: {
+                      test: 'test'
+                    }
+                  }
                 
                   return { __sfc: true,message }
                 }
