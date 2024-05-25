@@ -118,36 +118,45 @@ const obj = {
     })
 
     it('script and script setup', async () => {
-      expect(await getResult(`
-  var __default__ = {
-    name: 'RedirectPage'
-  };
-  export default /*#__PURE__*/_defineComponent(_objectSpread(_objectSpread({}, __default__), {}, {
-    setup: function setup(__props) {
-      definePageMeta({
-        middleware: ['redirect']
-      });
-      return {
-        __sfc: true
-      };
-    }
-  }));`)).toMatchInlineSnapshot(`
-    "
-      var __default__ = {
-        name: 'RedirectPage'
-      };
-      const __nuxt_page_meta = {
-      middleware: ['redirect']
-    }
-    export default /*#__PURE__*/_defineComponent(_objectSpread(_objectSpread({}, __default__), {}, {
-        ...__nuxt_page_meta,setup: function setup(__props) {
-          ;
-          return {
-            __sfc: true
-          };
+      const input = `<script setup lang="ts">
+definePageMeta({
+  middleware: ['redirect'],
+})
+</script>
+<script lang="ts">
+export default {
+  name: 'RedirectPage'
+}
+</script>
+`
+      expect(await getResult(babelTransform(input))).toMatchInlineSnapshot(`
+        "import "core-js/modules/es6.object.keys.js";
+        import "core-js/modules/es6.symbol.js";
+        import "core-js/modules/es6.array.filter.js";
+        import "core-js/modules/es6.object.get-own-property-descriptor.js";
+        import "core-js/modules/es6.array.for-each.js";
+        import "core-js/modules/es7.object.get-own-property-descriptors.js";
+        import "core-js/modules/es6.object.define-properties.js";
+        import "core-js/modules/es6.object.define-property.js";
+        import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
+        function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+        function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+        import { defineComponent as _defineComponent } from 'vue';
+        var __default__ = {
+          name: 'RedirectPage'
+        };
+        const __nuxt_page_meta = {
+          middleware: ['redirect']
         }
-      }));"
-  `)
+        export default /*#__PURE__*/_defineComponent(_objectSpread(_objectSpread({}, __default__), {}, {
+          ...__nuxt_page_meta,setup: function setup(__props) {
+            ;
+            return {
+              __sfc: true
+            };
+          }
+        }));"
+      `)
     })
   })
 
