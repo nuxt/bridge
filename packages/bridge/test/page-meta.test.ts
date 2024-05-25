@@ -1,79 +1,82 @@
 import { describe, expect, it } from 'vitest'
 import { rollup } from 'rollup'
 import { PageMetaPlugin as plugin } from '../src/page-meta/transform'
+import { transform } from "@babel/core";
+import { parse, compileScript } from '@vue/compiler-sfc'
 
-describe('page-meta', () => {
-  const getResult = (code: string) => new Promise<string>((resolve) => {
-    const input = '/some/file.vue?type=script'
-    rollup({
-      input,
-      plugins: [
-        {
-          name: 'virtual',
-          resolveId: id => id === input ? input : { id, external: true },
-          load: () => code
-        },
-        plugin.vite({ sourcemap: false }),
-        {
-          name: 'resolve',
-          transform: {
-            order: 'post',
-            handler: (code) => {
-              resolve(code)
-              // suppress any errors from rollup itself
-              return 'export default 42'
-            }
+const babelTransform = (code: string) => {
+  const descriptor = parse({ source: code, filename: 'test.vue' })
+  const script = compileScript(descriptor).content
+  const result = transform(script, { presets: ['@nuxt/babel-preset-app'] })
+
+  return result.code
+}
+
+const getResult = (code: string) => new Promise<string>((resolve) => {
+  const input = '/some/file.vue?type=script'
+  rollup({
+    input,
+    plugins: [
+      {
+        name: 'virtual',
+        resolveId: id => id === input ? input : { id, external: true },
+        load: () => code
+      },
+      plugin.vite({ sourcemap: false }),
+      {
+        name: 'resolve',
+        transform: {
+          order: 'post',
+          handler: (code) => {
+            resolve(code)
+            // suppress any errors from rollup itself
+            return 'export default 42'
           }
         }
-      ]
-    })
+      }
+    ]
   })
+})
 
+describe('page-meta', () => {
   describe('webpack', () => {
     it('typescript', async () => {
-      expect(await getResult(`
-import { defineComponent as _defineComponent } from 'vue';
-export default /*#__PURE__*/_defineComponent({
-  __name: 'redirect',
-  setup: function setup(__props) {
-    var route = useRoute()
-    definePageMeta({
-      middleware: ['redirect'],
-      layout: 'custom'
-    });
-
-    var obj = {
-      setup: {
-        test: 'test'
-      }
-    }
-    return {
-      __sfc: true
-      };
-    }
-});`)).toMatchInlineSnapshot(`
-  "
-  import { defineComponent as _defineComponent } from 'vue';
-  const __nuxt_page_meta = {
-    middleware: ['redirect'],layout: 'custom'
+      const input = `<script setup lang="ts">
+const route = useRoute()
+definePageMeta({
+  middleware: ['redirect'],
+  layout: 'custom'
+})
+const obj = {
+  setup: {
+    test: 'test'
   }
-  export default /*#__PURE__*/_defineComponent({
-    ...__nuxt_page_meta,__name: 'redirect',
-    setup: function setup(__props) {
-      var route = useRoute()
-      ;
-
-      var obj = {
-        setup: {
-          test: 'test'
+}
+</script>
+`
+      expect(await getResult(babelTransform(input))).toMatchInlineSnapshot(`
+        "import { defineComponent as _defineComponent } from 'vue';
+        const __nuxt_page_meta = {
+          middleware: ['redirect'],layout: 'custom'
         }
-      }
-      return {
-        __sfc: true
-        };
-      }
-  });"
-`)
+        export default /*#__PURE__*/_defineComponent({
+          ...__nuxt_page_meta,__name: 'test',
+          setup: function setup(__props) {
+            var route = useRoute();
+            ;
+            var obj = {
+              setup: {
+                test: 'test'
+              }
+            };
+            return {
+              __sfc: true,
+              route: route,
+              obj: obj
+            };
+          }
+        });"
+      `)
     })
 
     it('javascript', async () => {
