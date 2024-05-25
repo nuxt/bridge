@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 import { rollup } from 'rollup'
-import { PageMetaPlugin as plugin } from '../src/page-meta/transform'
-import { transform } from "@babel/core";
+import { transform } from '@babel/core'
 import { parse, compileScript, rewriteDefault } from '@vue/compiler-sfc'
+import { PageMetaPlugin as plugin } from '../src/page-meta/transform'
 
 const babelTransform = (code: string) => {
   const descriptor = parse({ source: code, filename: 'test.vue' })
