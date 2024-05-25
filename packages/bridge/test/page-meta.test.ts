@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 import { rollup } from 'rollup'
 import { PageMetaPlugin as plugin } from '../src/page-meta/transform'
 import { transform } from "@babel/core";
-import { parse, compileScript } from '@vue/compiler-sfc'
+import { parse, compileScript, rewriteDefault } from '@vue/compiler-sfc'
 
 const babelTransform = (code: string) => {
   const descriptor = parse({ source: code, filename: 'test.vue' })
@@ -10,6 +10,14 @@ const babelTransform = (code: string) => {
   const result = transform(script, { presets: ['@nuxt/babel-preset-app'] })
 
   return result.code
+}
+
+const viteTransform = (code: string) => {
+  const descriptor = parse({ source: code, filename: 'test.vue' })
+  const script = compileScript(descriptor).content
+
+  // https://github.com/vitejs/vite-plugin-vue2/blob/main/src/main.ts#L251-L254
+  return rewriteDefault(script, '_sfc_main')
 }
 
 const getResult = (code: string) => new Promise<string>((resolve) => {
@@ -162,114 +170,115 @@ export default {
 
   describe('vite', () => {
     it('vite and typescript', async () => {
-      expect(await getResult(`
-import { defineComponent as _defineComponent } from "vue";
-const _sfc_main = /* @__PURE__ */ _defineComponent({
-  __name: "redirect",
-  setup(__props) {
-    definePageMeta({
-      middleware: ["redirect"]
-    });
-    const obj = {
-      setup: {
-        test: "test"
-      }
-    }
-    return { __sfc: true };
+      const input = `<script setup lang="ts">
+const route = useRoute()
+definePageMeta({
+  middleware: ['redirect'],
+  layout: 'custom'
+})
+const obj = {
+  setup: {
+    test: 'test'
   }
-});`)).toMatchInlineSnapshot(`
-  "
-  import { defineComponent as _defineComponent } from "vue";
-  const __nuxt_page_meta = {
-    middleware: ["redirect"]
-  }
-  const _sfc_main = /* @__PURE__ */ _defineComponent({
-    ...__nuxt_page_meta,__name: "redirect",
-    setup(__props) {
-      ;
-      const obj = {
-        setup: {
-          test: "test"
+}
+</script>
+`
+      expect(await getResult((viteTransform(input)))).toMatchInlineSnapshot(`
+        "import { defineComponent as _defineComponent } from 'vue'
+
+        const __nuxt_page_meta = {
+          middleware: ['redirect'],layout: 'custom'
         }
-      }
-      return { __sfc: true };
-    }
-  });"
-`)
+        const _sfc_main = /*#__PURE__*/_defineComponent({
+          ...__nuxt_page_meta,__name: 'test',
+          setup(__props) {
+
+        const route = useRoute()
+
+        const obj = {
+          setup: {
+            test: 'test'
+          }
+        }
+
+        return { __sfc: true,route, obj }
+        }
+
+        })"
+      `)
     })
 
     it('vite and javascript', async () => {
-      expect(await getResult(`
-      const _sfc_main = {
-        __name: 'with-layout',
-        setup(__props) {
-          let message
-        
-          definePageMeta({
-            layout: 'custom'
-          })
-
-          const obj = {
-            setup: {
-              test: 'test'
-            }
-          }
-        
-          return { __sfc: true,message }
-        }
-      }`)).toMatchInlineSnapshot(`
-        "
-              const __nuxt_page_meta = {
-          layout: 'custom'
+      const input = `<script setup>
+const route = useRoute()
+definePageMeta({
+  middleware: ['redirect'],
+  layout: 'custom'
+})
+const obj = {
+  setup: {
+    test: 'test'
+  }
+}
+</script>
+`
+      expect(await getResult(viteTransform(input))).toMatchInlineSnapshot(`
+        "const __nuxt_page_meta = {
+          middleware: ['redirect'],layout: 'custom'
         }
         const _sfc_main = {
-                ...__nuxt_page_meta,__name: 'with-layout',
-                setup(__props) {
-                  let message
-                
-                  
+          ...__nuxt_page_meta,__name: 'test',
+          setup(__props) {
 
-                  const obj = {
-                    setup: {
-                      test: 'test'
-                    }
-                  }
-                
-                  return { __sfc: true,message }
-                }
-              }"
+        const route = useRoute()
+
+        const obj = {
+          setup: {
+            test: 'test'
+          }
+        }
+
+        return { __sfc: true,route, obj }
+        }
+
+        }"
       `)
     })
 
     it('script and script setup', async () => {
-      expect(await getResult(`
-const __default__ = {
-  name: "RedirectPage"
-};
-const _sfc_main = /* @__PURE__ */ _defineComponent({
-  ...__default__,
-  setup(__props) {
-    definePageMeta({
-      middleware: ["redirect"]
-    })
-    return { __sfc: true };
-  }
-});`)).toMatchInlineSnapshot(`
-  "
-  const __default__ = {
-    name: "RedirectPage"
-  };
-  const __nuxt_page_meta = {
-    middleware: ["redirect"]
-  }
-  const _sfc_main = /* @__PURE__ */ _defineComponent({
-    ...__nuxt_page_meta,...__default__,
-    setup(__props) {
-      
-      return { __sfc: true };
-    }
-  });"
-`)
+      const input = `<script setup lang="ts">
+definePageMeta({
+  middleware: ['redirect'],
+})
+</script>
+<script lang="ts">
+export default {
+  name: 'RedirectPage'
+}
+</script>
+`
+      expect(await getResult(viteTransform(input))).toMatchInlineSnapshot(`
+        "import { defineComponent as _defineComponent } from 'vue'
+
+        const __default__ = {
+          name: 'RedirectPage'
+        }
+
+
+        const __nuxt_page_meta = {
+          middleware: ['redirect']
+        }
+        const _sfc_main = /*#__PURE__*/_defineComponent({
+          ...__nuxt_page_meta,...__default__,
+          setup(__props) {
+
+
+
+        return { __sfc: true, }
+        }
+
+        })"
+      `)
     })
   })
 })
