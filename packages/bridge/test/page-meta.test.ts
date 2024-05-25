@@ -80,48 +80,41 @@ const obj = {
     })
 
     it('javascript', async () => {
-      expect(await getResult(`
-export default {
-  __name: 'with-layout',
-  setup: function setup(__props) {
-    var message;
-    definePageMeta({
-      layout: 'custom'
-    });
-
-    var obj = {
-      setup: {
-        test: 'test'
-      }
-    }
-      return {
-        __sfc: true,
-        message: message
-      };
-    }
-};`)).toMatchInlineSnapshot(`
-  "
-  const __nuxt_page_meta = {
-    layout: 'custom'
+      const input = `<script setup>
+const route = useRoute()
+definePageMeta({
+  middleware: ['redirect'],
+  layout: 'custom'
+})
+const obj = {
+  setup: {
+    test: 'test'
   }
-  export default {
-    ...__nuxt_page_meta,__name: 'with-layout',
-    setup: function setup(__props) {
-      var message;
-      ;
-
-      var obj = {
-        setup: {
-          test: 'test'
+}
+</script>
+`
+      expect(await getResult(babelTransform(input))).toMatchInlineSnapshot(`
+        "const __nuxt_page_meta = {
+          middleware: ['redirect'],layout: 'custom'
         }
-      }
-        return {
-          __sfc: true,
-          message: message
-        };
-      }
-  };"
-`)
+        export default {
+          ...__nuxt_page_meta,__name: 'test',
+          setup: function setup(__props) {
+            var route = useRoute();
+            ;
+            var obj = {
+              setup: {
+                test: 'test'
+              }
+            };
+            return {
+              __sfc: true,
+              route: route,
+              obj: obj
+            };
+          }
+        };"
+      `)
     })
 
     it('script and script setup', async () => {
