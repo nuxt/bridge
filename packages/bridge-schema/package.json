@@ -20,10 +20,10 @@
   "devDependencies": {
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.5.8",
-    "@unhead/schema": "^1.9.10",
+    "@unhead/schema": "^1.9.11",
     "nitropack": "^2.9.6",
     "unbuild": "latest",
-    "vite": "~5.2.11"
+    "vite": "~5.2.12"
   },
   "dependencies": {
     "c12": "^1.10.0",
@@ -37,7 +37,7 @@
     "std-env": "^3.7.0",
     "ufo": "^1.5.3",
     "unbuild": "2.0.0",
-    "unimport": "^3.7.1",
+    "unimport": "^3.7.2",
     "untyped": "^1.4.2"
   },
   "engines": {
