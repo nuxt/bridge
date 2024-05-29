@@ -99,6 +99,7 @@ export async function buildServer (ctx: ViteBuildContext) {
       jsxPlugin(),
       vuePlugin,
       replace({
+        preventAssignment: true,
         'typeof window': '"undefined"',
         'typeof document': '"undefined"',
         'typeof navigator': '"undefined"',
