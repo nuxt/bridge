@@ -7,6 +7,7 @@ import { getPort } from 'get-port-please'
 import type { ServerOptions, InlineConfig } from 'vite'
 import { defineEventHandler } from 'h3'
 import defu from 'defu'
+import type { ViteConfig } from '@nuxt/schema'
 import { viteNodePlugin } from '../vite-node'
 import { mergeConfig, createServer, build } from './stub-vite.cjs'
 import { devStyleSSRPlugin } from './plugins/dev-ssr-css'
@@ -87,18 +88,22 @@ export async function buildClient (ctx: ViteBuildContext) {
   }
 
   if (clientConfig.server && clientConfig.server.hmr !== false) {
-    const hmrPortDefault = 24678 // Vite's default HMR port
-    const hmrPort = await getPort({
-      port: hmrPortDefault,
-      ports: Array.from({ length: 20 }, (_, i) => hmrPortDefault + 1 + i)
-    })
-    clientConfig.server = defu(clientConfig.server, <ServerOptions> {
-      https: ctx.nuxt.options.server.https,
+    const serverDefaults: Omit<ServerOptions, 'hmr'> & { hmr: Exclude<ServerOptions['hmr'], boolean> } = {
       hmr: {
-        protocol: ctx.nuxt.options.server.https ? 'wss' : 'ws',
-        port: hmrPort
+        protocol: ctx.nuxt.options.devServer.https ? 'wss' : 'ws'
       }
-    })
+    }
+    if (typeof clientConfig.server.hmr !== 'object' || !clientConfig.server.hmr.server) {
+      const hmrPortDefault = 24678 // Vite's default HMR port
+      serverDefaults.hmr!.port = await getPort({
+        port: hmrPortDefault,
+        ports: Array.from({ length: 20 }, (_, i) => hmrPortDefault + 1 + i)
+      })
+    }
+    if (ctx.nuxt.options.devServer.https) {
+      serverDefaults.https = ctx.nuxt.options.devServer.https === true ? {} : ctx.nuxt.options.devServer.https
+    }
+    clientConfig.server = defu(clientConfig.server, serverDefaults as ViteConfig['server'])
   }
 
   // We want to respect users' own rollup output options
