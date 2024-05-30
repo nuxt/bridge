@@ -20,8 +20,9 @@ export function setupTypescript (options: SetupTypescriptOptions) {
   nuxt.options.build.babel.plugins = nuxt.options.build.babel.plugins || []
 
   // Error if `@nuxt/typescript-build` is added
-  if (nuxt.options.buildModules.includes('@nuxt/typescript-build')) {
-    throw new Error('Please remove `@nuxt/typescript-build` from `buildModules` or set `bridge.typescript: false` to avoid conflict with bridge.')
+  const modules = [...nuxt.options.buildModules, nuxt.options.modules]
+  if (modules.includes('@nuxt/typescript-build')) {
+    throw new Error('Please remove `@nuxt/typescript-build` from `buildModules` and `modules`, or set `bridge.typescript: false` to avoid conflict with bridge.')
   }
 
   const _require = createRequire(import.meta.url)
