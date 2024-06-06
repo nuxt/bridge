@@ -4,6 +4,7 @@ import { getCurrentInstance, reactive, onBeforeUnmount, watch, isRef } from 'vue
 import type { Ref } from 'vue'
 import type { CombinedVueInstance } from 'vue/types/vue'
 import type { MetaInfo } from 'vue-meta'
+import type { EventHandlerRequest, H3Event } from 'h3'
 import { defu } from 'defu'
 
 export interface Context {
@@ -132,7 +133,7 @@ export const useNuxtApp = (): NuxtAppCompat => {
 }
 
 // Runtime config helper
-export const useRuntimeConfig = () => {
+export const useRuntimeConfig = (_event?: H3Event<EventHandlerRequest>) => {
   const nuxtApp = useNuxtApp()
   if (nuxtApp._config) {
     return nuxtApp._config as RuntimeConfig
