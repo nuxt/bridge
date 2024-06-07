@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.5.8",
-    "@unhead/schema": "^1.9.11",
+    "@unhead/schema": "^1.9.12",
     "nitropack": "^2.9.6",
     "unbuild": "latest",
     "vite": "~5.2.12"
@@ -29,7 +29,7 @@
     "c12": "^1.10.0",
     "create-require": "^1.1.1",
     "defu": "^6.1.4",
-    "jiti": "^1.21.0",
+    "jiti": "^1.21.3",
     "pathe": "^1.1.2",
     "pkg-types": "^1.1.1",
     "postcss-import-resolver": "^2.0.0",
