@@ -78,7 +78,7 @@
     "unimport": "^3.7.2",
     "unplugin": "^1.10.1",
     "untyped": "^1.4.2",
-    "vite": "~5.2.12",
+    "vite": "~5.2.13",
     "vite-node": "^1.6.0",
     "vue-bundle-renderer": "^2.1.0"
   },
@@ -98,5 +98,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@9.2.0"
+  "packageManager": "pnpm@9.3.0"
 }
