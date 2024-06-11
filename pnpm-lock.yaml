@@ -64,14 +64,14 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2
       '@nuxt/kit':
-        specifier: 3.12.0
-        version: 3.12.0(rollup@4.18.0)
+        specifier: 3.12.1
+        version: 3.12.1(rollup@4.18.0)
       '@nuxt/postcss8':
         specifier: ^1.1.3
         version: 1.1.3(webpack@4.47.0)
       '@nuxt/schema':
-        specifier: 3.12.0
-        version: 3.12.0(rollup@4.18.0)
+        specifier: 3.12.1
+        version: 3.12.1(rollup@4.18.0)
       '@nuxt/ui-templates':
         specifier: ^1.3.4
         version: 1.3.4
@@ -321,8 +321,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/bridge
       nuxi:
-        specifier: 3.11.1
-        version: 3.11.1
+        specifier: 3.12.0
+        version: 3.12.0
       nuxt:
         specifier: ^2.17.3
         version: 2.17.3(@vue/compiler-sfc@3.4.20)(buffer@6.0.3)(consola@3.2.3)(typescript@5.3.3)(vue@3.4.20(typescript@5.3.3))
@@ -2340,8 +2340,8 @@ packages:
     resolution: {integrity: sha512-m/fnzH+1RvdpDdQODUxjXlMkJzLVuOwk9AOGYZz2YaAP34nxwjxClvgIAT6IQqvq6uBZHex0Zr07N3mwEE06NA==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
-  '@nuxt/kit@3.12.0':
-    resolution: {integrity: sha512-apR4MZWrjUtLEEyDLKoqlXoMNe9Ps7EmEaeEPl2lnxMH9s4W72OdbzCEQXaR85y8bH370ZQ3b9jVn6lQM2p1uQ==}
+  '@nuxt/kit@3.12.1':
+    resolution: {integrity: sha512-PHONuNCMqi3FYp0abgkhF3iH1j6CznJLMLpa8qxDGH532ALDcR1ThxbxytTA3fPiYulG2KenK8jloDfNdXOfCA==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
   '@nuxt/loading-screen@2.0.4':
@@ -2355,8 +2355,8 @@ packages:
   '@nuxt/postcss8@1.1.3':
     resolution: {integrity: sha512-CdHtErhvQwueNZPBOmlAAKrNCK7aIpZDYhtS7TzXlSgPHHox1g3cSlf+Ke9oB/8t4mNNjdB+prclme2ibuCOEA==}
 
-  '@nuxt/schema@3.12.0':
-    resolution: {integrity: sha512-akHtDUse564CF+d5HADDdqD2awect621wIsMJhU3p876FaDb1bL7YjdhVgEaWp20BoXfBD+pVdZSbC/4zXmCcg==}
+  '@nuxt/schema@3.12.1':
+    resolution: {integrity: sha512-yPgZVczd0vKhG73E7N61+EZHZTjtCvh2LKVhvT7c69zLBnPPqJNK1oJfqsKUCOOHSm1o1rTG8Xaibp91q2I49w==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
   '@nuxt/server@2.17.3':
@@ -5986,8 +5986,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  nuxi@3.11.1:
-    resolution: {integrity: sha512-AW71TpxRHNg8MplQVju9tEFvXPvX42e0wPYknutSStDuAjV99vWTWYed4jxr/grk2FtKAuv2KvdJxcn2W59qyg==}
+  nuxi@3.12.0:
+    resolution: {integrity: sha512-6vRdiXTw9SajEQOUi6Ze/XaIXzy1q/sD5UqHQSv3yqTu7Pot5S7fEihNXV8LpcgLz+9HzjVt70r7jYe7R99c2w==}
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
 
@@ -10859,9 +10859,9 @@ snapshots:
       node-html-parser: 6.1.12
       ufo: 1.5.3
 
-  '@nuxt/kit@3.12.0':
+  '@nuxt/kit@3.12.1':
     dependencies:
-      '@nuxt/schema': 3.12.0
+      '@nuxt/schema': 3.12.1
       c12: 1.10.0
       consola: 3.2.3
       defu: 6.1.4
@@ -10885,9 +10885,9 @@ snapshots:
       - rollup
       - supports-color
 
-  '@nuxt/kit@3.12.0(rollup@4.18.0)':
+  '@nuxt/kit@3.12.1(rollup@4.18.0)':
     dependencies:
-      '@nuxt/schema': 3.12.0(rollup@4.18.0)
+      '@nuxt/schema': 3.12.1(rollup@4.18.0)
       c12: 1.10.0
       consola: 3.2.3
       defu: 6.1.4
@@ -10940,7 +10940,7 @@ snapshots:
     transitivePeerDependencies:
       - webpack
 
-  '@nuxt/schema@3.12.0':
+  '@nuxt/schema@3.12.1':
     dependencies:
       compatx: 0.1.3
       consola: 3.2.3
@@ -10958,7 +10958,7 @@ snapshots:
       - rollup
       - supports-color
 
-  '@nuxt/schema@3.12.0(rollup@4.18.0)':
+  '@nuxt/schema@3.12.1(rollup@4.18.0)':
     dependencies:
       compatx: 0.1.3
       consola: 3.2.3
@@ -11022,8 +11022,8 @@ snapshots:
 
   '@nuxt/test-utils@3.13.1(h3@1.11.1)(nitropack@2.9.6)(playwright-core@1.44.1)(vite@5.2.13(@types/node@20.11.20)(terser@5.31.1))(vitest@1.6.0(@types/node@20.11.20)(terser@5.31.1))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))':
     dependencies:
-      '@nuxt/kit': 3.12.0
-      '@nuxt/schema': 3.12.0
+      '@nuxt/kit': 3.12.1
+      '@nuxt/schema': 3.12.1
       c12: 1.10.0
       consola: 3.2.3
       defu: 6.1.4
@@ -15668,7 +15668,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuxi@3.11.1:
+  nuxi@3.12.0:
     optionalDependencies:
       fsevents: 2.3.3
 
