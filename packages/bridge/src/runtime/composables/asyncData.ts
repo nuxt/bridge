@@ -2,7 +2,7 @@ import { onBeforeMount, onServerPrefetch, onUnmounted, ref, shallowRef, getCurre
 import type { Ref, WatchSource } from 'vue'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import { useNuxtApp } from '../nuxt'
-import { toArray } from '../../utils/toArray'
+import { toArray } from '../utils/toArray'
 import { createError } from './error'
 
 export type _Transform<Input = any, Output = any> = (input: Input) => Output | Promise<Output>
