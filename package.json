@@ -27,7 +27,7 @@
     "changelogen": "^0.5.5",
     "devalue": "^5.0.0",
     "eslint": "^8.57.0",
-    "eslint-plugin-jsdoc": "^48.2.11",
+    "eslint-plugin-jsdoc": "^48.2.12",
     "jiti": "^1.21.6",
     "playwright-core": "^1.44.1",
     "std-env": "^3.7.0",
