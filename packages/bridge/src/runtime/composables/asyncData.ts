@@ -427,7 +427,10 @@ function clearNuxtDataByKey (nuxtApp: NuxtAppCompat, key: string): void {
   }
 
   if (key in nuxtApp._asyncDataPromises) {
-    (nuxtApp._asyncDataPromises[key] as any).cancelled = true
+    if (nuxtApp._asyncDataPromises[key]) {
+      (nuxtApp._asyncDataPromises[key] as any).cancelled = true
+    }
+
     nuxtApp._asyncDataPromises[key] = undefined
   }
 }
