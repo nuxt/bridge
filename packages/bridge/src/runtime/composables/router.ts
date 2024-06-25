@@ -80,7 +80,7 @@ export const navigateTo = (to: RawLocation | undefined | null, options?: Navigat
   if (!to) {
     to = '/'
   }
-  const toPath = typeof to === 'string' ? to : (withQuery((to as Route).path || '/', to.query || {}) + (to.hash || ''))
+  const toPath = typeof to === 'string' ? to : 'path' in to ? resolveRouteObject(to) : useRouter().resolve(to).href
 
   const isExternal = options?.external || hasProtocol(toPath, { acceptRelative: true })
   if (isExternal && !options?.external) {
@@ -178,4 +178,11 @@ export const addRouteMiddleware: AddRouteMiddleware = (name: string | RouteMiddl
   } else {
     nuxtApp._middleware.named[name] = convertToLegacyMiddleware(middleware)
   }
+}
+
+/**
+ * @internal
+ */
+export function resolveRouteObject (to: Exclude<RawLocation, string>) {
+  return withQuery(to.path || '', to.query || {}) + (to.hash || '')
 }
