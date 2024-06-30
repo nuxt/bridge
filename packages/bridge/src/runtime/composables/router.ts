@@ -70,17 +70,49 @@ const isProcessingMiddleware = () => {
   return false
 }
 
+// Conditional types, either one or other
+type Without<T, U> = { [P in Exclude<keyof T, keyof U>]?: never }
+type XOR<T, U> = (T | U) extends Object ? (Without<T, U> & U) | (Without<U, T> & T) : T | U
+
+export type OpenWindowFeatures = {
+  popup?: boolean
+  noopener?: boolean
+  noreferrer?: boolean
+} & XOR<{ width?: number }, { innerWidth?: number }>
+  & XOR<{ height?: number }, { innerHeight?: number }>
+  & XOR<{ left?: number }, { screenX?: number }>
+  & XOR<{ top?: number }, { screenY?: number }>
+
+export type OpenOptions = {
+  target: '_blank' | '_parent' | '_self' | '_top' | (string & {})
+  windowFeatures?: OpenWindowFeatures
+}
+
 export interface NavigateToOptions {
   replace?: boolean
-  redirectCode?: number,
+  redirectCode?: number
   external?: boolean
+  open?: OpenOptions
 }
 
 export const navigateTo = (to: RawLocation | undefined | null, options?: NavigateToOptions): Promise<void | Route | NavigationFailure | false> | false | void | RawLocation | Route => {
   if (!to) {
     to = '/'
   }
-  const toPath = typeof to === 'string' ? to : (withQuery((to as Route).path || '/', to.query || {}) + (to.hash || ''))
+  const toPath = typeof to === 'string' ? to : 'path' in to ? resolveRouteObject(to) : useRouter().resolve(to).href
+
+  // Early open handler
+  if (process.client && options?.open) {
+    const { target = '_blank', windowFeatures = {} } = options.open
+
+    const features = Object.entries(windowFeatures)
+      .filter(([_, value]) => value !== undefined)
+      .map(([feature, value]) => `${feature.toLowerCase()}=${value}`)
+      .join(', ')
+
+    open(toPath, target, features)
+    return Promise.resolve()
+  }
 
   const isExternal = options?.external || hasProtocol(toPath, { acceptRelative: true })
   if (isExternal && !options?.external) {
@@ -178,4 +210,11 @@ export const addRouteMiddleware: AddRouteMiddleware = (name: string | RouteMiddl
   } else {
     nuxtApp._middleware.named[name] = convertToLegacyMiddleware(middleware)
   }
+}
+
+/**
+ * @internal
+ */
+export function resolveRouteObject (to: Exclude<RawLocation, string>) {
+  return withQuery(to.path || '', to.query || {}) + (to.hash || '')
 }

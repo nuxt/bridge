@@ -18,6 +18,10 @@
         </li>
       </ul>
     </section>
+
+    <button @click="handleClick">
+      open
+    </button>
   </div>
 </template>
 
@@ -28,6 +32,18 @@ const state = useState('test-state')
 state.value = '123'
 const updateState = () => { state.value = '456' }
 const serverBuild = useState('server-build', () => getCurrentInstance().proxy.$isServer)
+
+const handleClick = () => {
+  navigateTo('https://nuxt.com', {
+    open: {
+      target: '_blank',
+      windowFeatures: {
+        width: 500,
+        height: 500
+      }
+    }
+  })
+}
 </script>
 
 <style scoped>
