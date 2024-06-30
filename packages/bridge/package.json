@@ -83,13 +83,13 @@
     "vue-bundle-renderer": "^2.1.0"
   },
   "devDependencies": {
-    "@nuxt/types": "^2.17.4",
+    "@nuxt/types": "^2.18.1",
     "@nuxtjs/eslint-config": "^12.0.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/fs-extra": "^9.0.13",
     "@types/hash-sum": "^1.0.2",
     "@types/node-fetch": "^3.0.2",
-    "nuxt": "^2.17.4",
+    "nuxt": "^2.18.1",
     "rollup": "^4.18.0",
     "unbuild": "2.0.0",
     "vue": "^2.7.15",
