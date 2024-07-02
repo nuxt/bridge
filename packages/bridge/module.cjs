@@ -19,6 +19,9 @@ module.exports.defineNuxtConfig = (config = {}) => {
   // Initialize nitro options
   config.nitro = config.nitro || {}
 
+  config.future = config.future || {}
+  config.experimental = config.experimental || {}
+
   // Nuxt kit depends on this flag to check bridge compatibility
   config.bridge = typeof config.bridge === 'object' ? config.bridge : {}
   config.bridge._version = pkg.version
