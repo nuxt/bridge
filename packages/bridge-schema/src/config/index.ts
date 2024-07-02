@@ -2,6 +2,7 @@ import app from './app'
 import build from './build'
 import cli from './cli'
 import common from './common'
+import experimental from './experimental'
 import generate from './generate'
 import messages from './messages'
 import render from './render'
@@ -31,6 +32,7 @@ export default {
   ...build,
   ...cli,
   ...common,
+  ...experimental,
   ...generate,
   ...messages,
   ...render,
