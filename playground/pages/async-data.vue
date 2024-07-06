@@ -50,7 +50,10 @@ if (process.server) {
 <template>
   <div>
     <div>data1: {{ data1 }}</div>
+
+    <!-- eslint-disable-next-line vue/singleline-html-element-content-newline -->
     <div id="immediate-data">{{ immediateFalseData === null ? "null" : (immediateFalseData === undefined ? 'undefined' : immediateFalseData) }}</div>
+
     <div>error1: {{ error1 }}</div>
     <div>error2: {{ error2 }}</div>
     <div>error3: {{ error3 }}</div>

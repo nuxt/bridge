@@ -114,7 +114,7 @@ export async function setupAppBridge (_options: any) {
       { future: NuxtConfigSchema.future, experimental: NuxtConfigSchema.experimental },
       { future: nuxt.options.future, experimental: nuxt.options.experimental }
     )
-  ).experimental;
+  ).experimental
 
   addTemplate({
     filename: 'nuxt.config.mjs',

@@ -78,7 +78,7 @@ describe('nuxt composables', () => {
   it('should render default value', async () => {
     const defaultValue = isV4 ? 'undefined' : 'null'
 
-    const { page } = await renderPage('/async-data');
+    const { page } = await renderPage('/async-data')
     expect(await page.locator('#immediate-data').getByText(defaultValue).textContent()).toBe(defaultValue)
 
     await page.close()

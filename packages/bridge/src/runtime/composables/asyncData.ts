@@ -205,7 +205,7 @@ export function useAsyncData<
       pending: ref(!hasCachedData()),
       error: toRef(nuxt.payload._errors, key),
       status: ref('idle'),
-      _default: options.default!,
+      _default: options.default!
     }
   }
 
