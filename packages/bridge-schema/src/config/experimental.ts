@@ -10,9 +10,9 @@ export default defineUntypedSchema({
      * Enable early access to future features or flags.
      *
      * It is currently not configurable but may be in future.
-     * @type {4}
+     * @type {3 | 4}
      */
-    compatibilityVersion: 4,
+    compatibilityVersion: 3
   },
   experimental: {
     defaults: {
@@ -24,15 +24,15 @@ export default defineUntypedSchema({
         value: {
           async $resolve (val, get) {
             return val ?? ((await get('future') as Record<string, unknown>).compatibilityVersion === 4 ? 'undefined' : 'null')
-          },
+          }
         },
         /** @type {'undefined' | 'null'} */
         errorValue: {
           async $resolve (val, get) {
             return val ?? ((await get('future') as Record<string, unknown>).compatibilityVersion === 4 ? 'undefined' : 'null')
-          },
-        },
-      },
+          }
+        }
+      }
     }
   }
 })

@@ -7,6 +7,7 @@ import { expectNoClientErrors, parseData, renderPage } from './utils'
 const isWebpack = process.env.TEST_BUILDER === 'webpack'
 const isNoResolve = process.env.TEST_RESOLVE === 'no-resolve'
 const isDev = process.env.TEST_ENV === 'dev'
+const isV4 = process.env.TEST_V4 === 'true'
 
 await setup({
   rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
@@ -72,6 +73,15 @@ describe('nuxt composables', () => {
 
     expect(html).not.toContain('clearableData-1: clearableData')
     expect(html).not.toContain('clearableData-2: clearableData')
+  })
+
+  it('should render default value', async () => {
+    const defaultValue = isV4 ? 'undefined' : 'null'
+
+    const { page } = await renderPage('/async-data');
+    expect(await page.locator('#immediate-data').getByText(defaultValue).textContent()).toBe(defaultValue)
+
+    await page.close()
   })
 })
 

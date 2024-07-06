@@ -28,6 +28,13 @@ const { data: clearableData2, clear } = useLazyAsyncData('clearableData-2', asyn
   }
 })
 
+const { data: immediateFalseData } = useLazyAsyncData('immediateFalse', async () => {
+  const text = await $fetch('/api/hello')
+  return {
+    text
+  }
+}, { immediate: false })
+
 if (process.server) {
   clearNuxtData('clearableData-1')
   clear()
@@ -43,6 +50,7 @@ if (process.server) {
 <template>
   <div>
     <div>data1: {{ data1 }}</div>
+    <div id="immediate-data">{{ immediateFalseData === null ? "null" : (immediateFalseData === undefined ? 'undefined' : immediateFalseData) }}</div>
     <div>error1: {{ error1 }}</div>
     <div>error2: {{ error2 }}</div>
     <div>error3: {{ error3 }}</div>

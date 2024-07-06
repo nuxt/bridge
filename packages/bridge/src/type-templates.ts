@@ -1,5 +1,5 @@
 import { isAbsolute, relative, join, resolve } from 'pathe'
-import type { Component, Nuxt, NuxtApp, NuxtTemplate } from '@nuxt/schema'
+import type { Component, Nuxt, NuxtApp, NuxtTemplate, NuxtTypeTemplate } from '@nuxt/schema'
 import { genDynamicImport, genString } from 'knitwork'
 import { defu } from 'defu'
 
@@ -148,5 +148,19 @@ export const schemaTemplate: NuxtTemplate<TemplateContext> = {
       vueTypesConfig,
       bridgeSchemaConfig
     ].join('\n')
+  }
+}
+
+export const appDefaults: NuxtTypeTemplate = {
+  filename: 'types/app-defaults.d.ts',
+  getContents: (ctx) => {
+    const isV4 = ctx.nuxt.options.future.compatibilityVersion === 4
+    return `
+declare module '#app/defaults' {
+  type DefaultAsyncDataErrorValue = ${isV4 ? 'undefined' : 'null'}
+  type DefaultAsyncDataValue = ${isV4 ? 'undefined' : 'null'}
+  type DefaultErrorValue = ${isV4 ? 'undefined' : 'null'}
+  type DedupeOption = ${isV4 ? '\'cancel\' | \'defer\'' : 'boolean | \'cancel\' | \'defer\''}
+}`
   }
 }
