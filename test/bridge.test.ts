@@ -43,7 +43,7 @@ describe('nuxt composables', () => {
   })
 
   // remove after port upstream.
-  it.skipIf((isWebpack && isNoResolve) || isDev)('updates cookies when they are changed', async () => {
+  it.skipIf(isDev)('updates cookies when they are changed', async () => {
     const { page } = await renderPage('/cookies')
     async function extractCookie () {
       const cookie = await page.evaluate(() => document.cookie)
@@ -137,9 +137,7 @@ describe('pages', () => {
 
     const { page, consoleLogs } = await renderPage('/')
 
-    if (isWebpack && isNoResolve) {
-      expect(consoleLogs.some(i => i.type === 'error')).toBeTruthy()
-    } else if (isDev) {
+    if (isDev) {
       // output [legacy capi] warning
       expect(consoleLogs.some(i => i.type === 'warning')).toBeTruthy()
     } else {
@@ -200,9 +198,7 @@ describe('navigate', () => {
 
     const { page, consoleLogs } = await renderPage('/navigate-to/')
 
-    if (isWebpack && isNoResolve) {
-      expect(consoleLogs.some(i => i.type === 'error')).toBeTruthy()
-    } else if (isDev) {
+    if (isDev) {
       // output [legacy capi] warning
       expect(consoleLogs.some(i => i.type === 'warning')).toBeTruthy()
     } else {
@@ -302,8 +298,7 @@ describe('middleware', () => {
     expect(html).toContain('Navigated successfully')
   })
 
-  // if `no-resolve`, an error occurs at `useRoute`.
-  it.skipIf(isWebpack && isNoResolve)('should be output with target as to and origin as from', async () => {
+  it('should be output with target as to and origin as from', async () => {
     const { page, consoleLogs } = await renderPage('/')
     await page.getByRole('link').click()
 
