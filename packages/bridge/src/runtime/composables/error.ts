@@ -1,6 +1,8 @@
 import { createError as _createError, H3Error } from 'h3'
 import { toRef } from 'vue'
 import { useNuxtApp } from '../nuxt'
+// @ts-expect-error virtual file
+import { nuxtDefaultErrorValue } from '#build/nuxt.config.mjs'
 
 export const useError = () => toRef(useNuxtApp().payload, 'error')
 
@@ -36,7 +38,7 @@ export const clearError = async (options: { redirect?: string } = {}) => {
   if (options.redirect) {
     await nuxtApp.$router.replace(options.redirect)
   }
-  error.value = null
+  error.value = nuxtDefaultErrorValue
 }
 
 export const isNuxtError = (err?: string | object): err is NuxtError => !!(err && typeof err === 'object' && ('__nuxt_error' in err))
