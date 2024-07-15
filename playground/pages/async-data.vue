@@ -45,6 +45,8 @@ if (process.server) {
   })
 }
 
+const { data: usedNuxtData } = useLazyAsyncData('nuxtData', () => Promise.resolve('helloNuxtData'))
+const { data: accessNuxtData } = useNuxtData('nuxtData')
 </script>
 
 <template>
@@ -59,5 +61,6 @@ if (process.server) {
     <div>error3: {{ error3 }}</div>
     <div>clearableData-1: {{ clearableData1?.text }}</div>
     <div>clearableData-2: {{ clearableData2?.text }}</div>
+    <div>usedNuxtData: {{ usedNuxtData }}, nuxtData: {{ accessNuxtData }}</div>
   </div>
 </template>

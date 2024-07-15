@@ -1,4 +1,4 @@
-import { onBeforeMount, onServerPrefetch, onUnmounted, ref, shallowRef, getCurrentInstance, watch, toRef, unref, getCurrentScope, onScopeDispose } from 'vue'
+import { computed, onBeforeMount, onServerPrefetch, onUnmounted, ref, shallowRef, getCurrentInstance, watch, toRef, unref, getCurrentScope, onScopeDispose } from 'vue'
 import type { Ref, WatchSource } from 'vue'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import { useNuxtApp } from '../nuxt'
@@ -394,6 +394,30 @@ export function useLazyAsyncData<
   const [key, handler, options] = args as [string, (ctx?: NuxtAppCompat) => Promise<ResT>, AsyncDataOptions<ResT, DataT, PickKeys, DefaultT>]
   // @ts-expect-error we pass an extra argument to prevent a key being injected
   return useAsyncData(key, handler, { ...options, lazy: true }, null)
+}
+
+export function useNuxtData<DataT = any> (key: string): { data: Ref<DataT | DefaultAsyncDataErrorValue> } {
+  const nuxtApp = useNuxtApp()
+
+  // Initialize value when key is not already set
+  if (!(key in nuxtApp.payload.data)) {
+    nuxtApp.payload.data[key] = undefined
+  }
+
+  return {
+    data: computed({
+      get () {
+        return nuxtApp._asyncData[key]?.data.value ?? nuxtApp.payload.data[key]
+      },
+      set (value) {
+        if (nuxtApp._asyncData[key]) {
+          nuxtApp._asyncData[key]!.data.value = value
+        } else {
+          nuxtApp.payload.data[key] = value
+        }
+      }
+    })
+  }
 }
 
 export function refreshNuxtData (keys?: string | string[]): Promise<void> {

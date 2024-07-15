@@ -75,6 +75,13 @@ describe('nuxt composables', () => {
     expect(html).not.toContain('clearableData-2: clearableData')
   })
 
+  it('should render text synced with useNuxtData', async () => {
+    const html = await $fetch('/async-data')
+    const expectedText = 'helloNuxtData'
+
+    expect(html).toContain(`usedNuxtData: ${expectedText}, nuxtData: ${expectedText}`)
+  })
+
   it('should render default value', async () => {
     const defaultValue = isV4 ? 'undefined' : 'null'
 
