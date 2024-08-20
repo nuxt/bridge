@@ -166,6 +166,31 @@ export default {
         }));"
       `)
     })
+
+    it('defineNuxtComponent', async () => {
+      const input = `<script lang="ts">
+export default defineNuxtComponent({
+  setup() {
+    definePageMeta({
+      middleware: ['redirect'],
+    })
+
+    const route = useRoute()
+  }
+})
+</script>`
+      expect(await getResult(babelTransform(input))).toMatchInlineSnapshot(`
+        "const __nuxt_page_meta = {
+          middleware: ['redirect']
+        }
+        export default defineNuxtComponent({
+          ...__nuxt_page_meta,setup: function setup() {
+            ;
+            var route = useRoute();
+          }
+        });"
+      `)
+    })
   })
 
   describe('vite', () => {
@@ -278,6 +303,33 @@ export default {
         }
 
         })"
+      `)
+    })
+    it('defineNuxtComponent', async () => {
+      const input = `<script lang="ts">
+export default defineNuxtComponent({
+  setup() {
+    definePageMeta({
+      middleware: ['redirect'],
+    })
+
+    const route = useRoute()
+  }
+})
+</script>`
+      expect(await getResult(viteTransform(input))).toMatchInlineSnapshot(`
+        "
+        const __nuxt_page_meta = {
+          middleware: ['redirect']
+        }
+        const _sfc_main = defineNuxtComponent({
+          ...__nuxt_page_meta,setup() {
+            
+
+            const route = useRoute()
+          }
+        })
+        "
       `)
     })
   })
