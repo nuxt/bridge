@@ -44,6 +44,11 @@ export async function buildClient (ctx: ViteBuildContext) {
       'process.static': false,
       // use `process.client` instead. `process.browser` is deprecated
       'process.browser': true,
+      'import.meta.client': true,
+      'import.meta.server': false,
+      'import.meta.browser': true,
+      'import.meta.nitro': false,
+      'import.meta.prerender': false,
       'module.hot': false
     },
     cacheDir: resolve(ctx.nuxt.options.rootDir, 'node_modules/.cache/vite/client'),
