@@ -1,7 +1,7 @@
 import { withoutTrailingSlash } from 'ufo'
 
 export default defineNuxtRouteMiddleware((to, from) => {
-  if (process.client) {
+  if (import.meta.client) {
     console.info('[middleware] to', to)
     console.info('[middleware] from', from)
   }

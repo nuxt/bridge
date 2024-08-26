@@ -15,7 +15,8 @@ export const ImportMetaPlugin = createUnplugin(() => {
       const { pathname } = parseURL(
         decodeURIComponent(pathToFileURL(id).href)
       )
-      if (pathname.endsWith('.js') || pathname.endsWith('.vue')) {
+      const extensions = ['.js', '.vue', '.ts', '.jsx', '.tsx', '.mjs']
+      if (extensions.some(ext => pathname.endsWith(ext))) {
         return true
       }
     },
