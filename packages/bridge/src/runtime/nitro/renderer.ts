@@ -17,7 +17,7 @@ import { buildAssetsURL } from '#paths'
 // @ts-expect-error virtual file
 import htmlTemplate from '#build/views/document.template.mjs'
 // @ts-ignore
-import { renderToString } from '#vue-renderer'
+import { renderToString as _renderToString } from '#vue-renderer'
 // @ts-expect-error virtual file
 import metaConfig from '#build/meta.config.mjs'
 
@@ -90,11 +90,25 @@ const getSSRRenderer = lazyCachedFunction(async () => {
   const createSSRApp = await getServerEntry()
   if (!createSSRApp) { throw new Error('Server bundle is not available') }
 
-  return createRenderer(createSSRApp, {
+  const options = {
     manifest,
     renderToString,
     buildAssetsURL
-  })
+  }
+  // Create renderer
+  const renderer = createRenderer(createSSRApp, options)
+
+  type RenderToStringParams = Parameters<typeof _renderToString>
+  async function renderToString (input: RenderToStringParams[0], context: RenderToStringParams[1]) {
+    const html = await _renderToString(input, context)
+    // In development with vite-node, the manifest is on-demand and will be available after rendering
+    if (process.dev && process.env.NUXT_VITE_NODE_OPTIONS) {
+      renderer.rendererContext.updateManifest(await getClientManifest())
+    }
+    return html
+  }
+
+  return renderer
 })
 
 // -- SPA Renderer --
