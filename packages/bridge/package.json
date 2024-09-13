@@ -79,7 +79,7 @@
     "unplugin": "^1.14.1",
     "untyped": "^1.4.2",
     "vite": "~5.4.5",
-    "vite-node": "^2.1.0",
+    "vite-node": "^2.1.1",
     "vue-bundle-renderer": "^2.1.0"
   },
   "devDependencies": {
