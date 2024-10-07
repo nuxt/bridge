@@ -24,10 +24,14 @@ export async function setupNitroBridge () {
   }
 
   // Handle legacy property name `assetsPath`
+  // @ts-expect-error `assetsPath` is legacy options
   nuxt.options.app.buildAssetsDir = nuxt.options.app.buildAssetsDir || nuxt.options.app.assetsPath
+  // @ts-expect-error `assetsPath` is legacy options
   nuxt.options.app.assetsPath = nuxt.options.app.buildAssetsDir
   nuxt.options.app.baseURL = nuxt.options.app.baseURL || (nuxt.options.app as any).basePath
   nuxt.options.app.cdnURL = nuxt.options.app.cdnURL || ''
+  // @ts-expect-error `publicPath` is legacy options
+  nuxt.options.build.publicPath = nuxt.options.app.cdnURL || nuxt.options.build.publicPath
 
   // Extract publicConfig and app
   const publicConfig = nuxt.options.publicRuntimeConfig
