@@ -260,8 +260,8 @@ importers:
   packages/bridge-schema:
     dependencies:
       c12:
-        specifier: ^1.11.2
-        version: 1.11.2
+        specifier: ^2.0.1
+        version: 2.0.1
       create-require:
         specifier: ^1.1.1
         version: 1.1.1
