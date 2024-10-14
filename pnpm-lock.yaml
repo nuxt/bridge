@@ -34,8 +34,8 @@ importers:
         specifier: ^50.3.1
         version: 50.3.1(eslint@8.57.1)
       jiti:
-        specifier: ^1.21.6
-        version: 1.21.6
+        specifier: ^2.3.3
+        version: 2.3.3
       playwright-core:
         specifier: ^1.47.2
         version: 1.47.2
@@ -269,8 +269,8 @@ importers:
         specifier: ^6.1.4
         version: 6.1.4
       jiti:
-        specifier: ^1.21.6
-        version: 1.21.6
+        specifier: ^2.3.3
+        version: 2.3.3
       pathe:
         specifier: ^1.1.2
         version: 1.1.2
@@ -5734,6 +5734,10 @@ packages:
 
   jiti@2.3.1:
     resolution: {integrity: sha512-xPZ6pPzUifI8XDBBxIL4OB1w1ZKmBpmNEeKwNt2d0Spn8XisAIZhWrlOHq5seBrFGTxVx9PbrWvEMyrk4IO5bA==}
+    hasBin: true
+
+  jiti@2.3.3:
+    resolution: {integrity: sha512-EX4oNDwcXSivPrw2qKH2LB5PoFxEvgtv2JgwW0bU858HoLQ+kutSvjLMUqBd0PeJYEinLWhoI9Ol0eYMqj/wNQ==}
     hasBin: true
 
   js-tokens@4.0.0:
@@ -13847,7 +13851,7 @@ snapshots:
       defu: 6.1.4
       dotenv: 16.4.5
       giget: 1.2.3
-      jiti: 2.3.1
+      jiti: 2.3.3
       mlly: 1.7.1
       ohash: 1.1.4
       pathe: 1.1.2
@@ -16086,6 +16090,8 @@ snapshots:
   jiti@1.21.6: {}
 
   jiti@2.3.1: {}
+
+  jiti@2.3.3: {}
 
   js-tokens@4.0.0: {}
 
