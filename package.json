@@ -21,17 +21,17 @@
     "test:unit": "vitest run --dir packages"
   },
   "devDependencies": {
-    "@nuxt/test-utils": "^3.14.1",
+    "@nuxt/test-utils": "^3.14.3",
     "@nuxtjs/eslint-config": "^12.0.0",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
-    "changelogen": "^0.5.5",
-    "devalue": "^5.0.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-jsdoc": "^50.2.2",
-    "jiti": "^1.21.6",
-    "playwright-core": "^1.46.1",
+    "changelogen": "^0.5.7",
+    "devalue": "^5.1.1",
+    "eslint": "^8.57.1",
+    "eslint-plugin-jsdoc": "^50.4.1",
+    "jiti": "^2.3.3",
+    "playwright-core": "^1.48.0",
     "std-env": "^3.7.0",
-    "vitest": "^2.0.5"
+    "vitest": "^2.1.3"
   },
   "resolutions": {
     "@nuxt/bridge": "workspace:*",
@@ -40,5 +40,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@9.8.0"
+  "packageManager": "pnpm@9.12.1"
 }
