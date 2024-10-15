@@ -39,6 +39,22 @@ export default defineUntypedSchema({
       $resolve: val => val || process.env.NUXT_APP_BUILD_ASSETS_DIR || '/_nuxt/'
     },
     /**
+     * An absolute URL to serve the public folder from (production-only).
+     *
+     * For example:
+     * @example
+     * ```ts
+     * export default defineNuxtConfig({
+     *   app: {
+     *     cdnURL: 'https://mycdn.org/'
+     *   }
+     * })
+     * ```
+     */
+    cdnURL: {
+      $resolve: async (val, get) => (await get('dev')) ? '' : (process.env.NUXT_APP_CDN_URL ?? val) || ''
+    },
+    /**
      * The folder name for the built site assets, relative to `baseURL` (or `cdnURL` if set).
      * @deprecated - use `buildAssetsDir` instead
      */
