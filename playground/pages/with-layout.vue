@@ -1,8 +1,8 @@
 <script setup>
 let message
-if (process.client) {
+if (import.meta.client) {
   message = 'Client'
-} else if (process.server) {
+} else if (import.meta.server) {
   message = 'Server'
 }
 

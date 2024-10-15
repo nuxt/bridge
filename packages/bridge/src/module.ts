@@ -1,4 +1,4 @@
-import { defineNuxtModule, installModule, checkNuxtCompatibility, logger, writeTypes, addTemplate } from '@nuxt/kit'
+import { defineNuxtModule, installModule, checkNuxtCompatibility, logger, writeTypes, addTemplate, addWebpackPlugin } from '@nuxt/kit'
 import type { NuxtModule, NuxtCompatibility } from '@nuxt/schema'
 import type { NodeMiddleware } from 'h3'
 import { fromNodeMiddleware } from 'h3'
@@ -13,6 +13,7 @@ import { setupMeta } from './meta'
 import { setupTranspile } from './transpile'
 import { generateWebpackBuildManifest } from './webpack/manifest'
 import pageMetaModule from './page-meta/module'
+import { ImportMetaPlugin } from './webpack/import-meta'
 
 export default defineNuxtModule({
   meta: {
@@ -173,5 +174,7 @@ export default defineNuxtModule({
         getContents: () => 'export default false'
       })
     }
+
+    addWebpackPlugin(ImportMetaPlugin.webpack)
   }
 })

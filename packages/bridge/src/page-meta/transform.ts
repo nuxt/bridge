@@ -202,7 +202,7 @@ function getObjectExpression (node: Node) {
 
   // ts and webpack
   if (node.type === 'CallExpression') {
-    if (node.callee.type === 'Identifier' && !node.callee.name.includes('defineComponent')) {
+    if (node.callee.type === 'Identifier' && !/define(Component|NuxtComponent)/.test(node.callee.name)) {
       return
     }
     if (node.arguments.length === 0) { return }

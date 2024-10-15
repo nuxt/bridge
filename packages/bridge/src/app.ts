@@ -43,7 +43,7 @@ export async function setupAppBridge (_options: any) {
   nuxt.options.build.transpile.push('vuex')
 
   // Transpile libs with modern syntax
-  nuxt.options.build.transpile.push('h3', 'iron-webcrypto', 'ohash', 'ofetch', 'unenv')
+  nuxt.options.build.transpile.push('h3', 'iron-webcrypto', 'ohash', 'ofetch', 'unenv', 'cookie-es')
 
   // Transpile @unhead/vue and @unhead/ssr
   nuxt.options.build.transpile.push('unhead')
