@@ -20,7 +20,7 @@
   "devDependencies": {
     "@types/lodash.template": "^4.5.3",
     "@types/semver": "^7.5.8",
-    "@unhead/schema": "^1.11.9",
+    "@unhead/schema": "^1.11.10",
     "nitropack": "^2.9.7",
     "unbuild": "latest",
     "vite": "~5.4.9"
