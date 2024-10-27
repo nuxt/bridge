@@ -37,7 +37,7 @@
     "@unhead/vue": "^1.11.10",
     "@vitejs/plugin-legacy": "^5.4.3",
     "@vitejs/plugin-vue2": "^2.3.1",
-    "acorn": "^8.13.0",
+    "acorn": "^8.14.0",
     "cookie-es": "^1.2.2",
     "defu": "^6.1.4",
     "destr": "^2.0.3",
@@ -90,7 +90,7 @@
     "@types/hash-sum": "^1.0.2",
     "@types/node-fetch": "^3.0.2",
     "nuxt": "^2.18.1",
-    "rollup": "^4.24.0",
+    "rollup": "^4.24.1",
     "unbuild": "2.0.0",
     "vue": "^2.7.15",
     "vue-router": "^3.6.5"
