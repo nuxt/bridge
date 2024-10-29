@@ -90,7 +90,7 @@
     "@types/hash-sum": "^1.0.2",
     "@types/node-fetch": "^3.0.2",
     "nuxt": "^2.18.1",
-    "rollup": "^4.24.2",
+    "rollup": "^4.24.3",
     "unbuild": "2.0.0",
     "vue": "^2.7.15",
     "vue-router": "^3.6.5"
