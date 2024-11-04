@@ -64,14 +64,14 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2
       '@nuxt/kit':
-        specifier: 3.13.2
-        version: 3.13.2(magicast@0.3.5)(rollup@4.24.4)(webpack-sources@3.2.3)
+        specifier: 3.14.0
+        version: 3.14.0(magicast@0.3.5)(rollup@4.24.4)(webpack-sources@3.2.3)
       '@nuxt/postcss8':
         specifier: ^1.1.3
         version: 1.1.3(webpack@4.47.0)
       '@nuxt/schema':
-        specifier: 3.13.2
-        version: 3.13.2(rollup@4.24.4)(webpack-sources@3.2.3)
+        specifier: 3.14.0
+        version: 3.14.0(magicast@0.3.5)(rollup@4.24.4)(webpack-sources@3.2.3)
       '@nuxt/ui-templates':
         specifier: ^1.3.4
         version: 1.3.4
@@ -2754,8 +2754,8 @@ packages:
     resolution: {integrity: sha512-kZMfB5Ymvd/5ek+xfk2svQiMJWEAjZf5XNFTG+2WiNsitHb01Bo3W2QGidy+dwfuLtHoiOJkMovRlyAKWxTohg==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
-  '@nuxt/kit@3.13.2':
-    resolution: {integrity: sha512-KvRw21zU//wdz25IeE1E5m/aFSzhJloBRAQtv+evcFeZvuroIxpIQuUqhbzuwznaUwpiWbmwlcsp5uOWmi4vwA==}
+  '@nuxt/kit@3.14.0':
+    resolution: {integrity: sha512-Gl30WrzX7YSJqkTyOJlG4LkErShkGoHigWF/htFt9Q27Lx9JNCkOpXlEf+rA/vsDlXJeo8mVNRoMhS4Q+0d1Kg==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
   '@nuxt/loading-screen@2.0.4':
@@ -2769,8 +2769,8 @@ packages:
   '@nuxt/postcss8@1.1.3':
     resolution: {integrity: sha512-CdHtErhvQwueNZPBOmlAAKrNCK7aIpZDYhtS7TzXlSgPHHox1g3cSlf+Ke9oB/8t4mNNjdB+prclme2ibuCOEA==}
 
-  '@nuxt/schema@3.13.2':
-    resolution: {integrity: sha512-CCZgpm+MkqtOMDEgF9SWgGPBXlQ01hV/6+2reDEpJuqFPGzV8HYKPBcIFvn7/z5ahtgutHLzjP71Na+hYcqSpw==}
+  '@nuxt/schema@3.14.0':
+    resolution: {integrity: sha512-uLAAS7Za7+JXJg6phAjUecqBUfON/WZN/NbYic7uCM+4LUT8B4M/5WM9zFCZJi1g9Krns5Wr5GmJJPIfaYt0eQ==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
   '@nuxt/server@2.18.1':
@@ -5731,6 +5731,10 @@ packages:
 
   ignore@5.3.2:
     resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
+    engines: {node: '>= 4'}
+
+  ignore@6.0.2:
+    resolution: {integrity: sha512-InwqeHHN2XpumIkMvpl/DCJVrAHgCsG5+cn1XlnLWGwtZBm8QJfSusItfrwx81CTp5agNZqpKU2J/ccC5nGT4A==}
     engines: {node: '>= 4'}
 
   import-fresh@3.3.0:
@@ -12004,17 +12008,17 @@ snapshots:
       node-html-parser: 6.1.13
       ufo: 1.5.4
 
-  '@nuxt/kit@3.13.2(magicast@0.3.5)(rollup@4.24.4)(webpack-sources@3.2.3)':
+  '@nuxt/kit@3.14.0(magicast@0.3.5)(rollup@4.24.4)(webpack-sources@3.2.3)':
     dependencies:
-      '@nuxt/schema': 3.13.2(rollup@4.24.4)(webpack-sources@3.2.3)
-      c12: 1.11.2(magicast@0.3.5)
+      '@nuxt/schema': 3.14.0(magicast@0.3.5)(rollup@4.24.4)(webpack-sources@3.2.3)
+      c12: 2.0.1(magicast@0.3.5)
       consola: 3.2.3
       defu: 6.1.4
       destr: 2.0.3
       globby: 14.0.2
       hash-sum: 2.0.0
-      ignore: 5.3.2
-      jiti: 1.21.6
+      ignore: 6.0.2
+      jiti: 2.4.0
       klona: 2.0.6
       knitwork: 1.1.0
       mlly: 1.7.2
@@ -12061,8 +12065,9 @@ snapshots:
     transitivePeerDependencies:
       - webpack
 
-  '@nuxt/schema@3.13.2(rollup@4.24.4)(webpack-sources@3.2.3)':
+  '@nuxt/schema@3.14.0(magicast@0.3.5)(rollup@4.24.4)(webpack-sources@3.2.3)':
     dependencies:
+      c12: 2.0.1(magicast@0.3.5)
       compatx: 0.1.8
       consola: 3.2.3
       defu: 6.1.4
@@ -12076,6 +12081,7 @@ snapshots:
       unimport: 3.13.1(rollup@4.24.4)(webpack-sources@3.2.3)
       untyped: 1.5.1
     transitivePeerDependencies:
+      - magicast
       - rollup
       - supports-color
       - webpack-sources
@@ -12126,8 +12132,8 @@ snapshots:
 
   '@nuxt/test-utils@3.14.4(h3@1.13.0)(magicast@0.3.5)(nitropack@2.10.2(typescript@5.3.3)(webpack-sources@3.2.3))(playwright-core@1.48.2)(vite@5.4.10(@types/node@20.11.20)(terser@5.36.0))(vitest@2.1.4(@types/node@20.11.20)(terser@5.36.0))(vue-router@4.3.0(vue@3.4.20(typescript@5.3.3)))(vue@3.4.20(typescript@5.3.3))(webpack-sources@3.2.3)':
     dependencies:
-      '@nuxt/kit': 3.13.2(magicast@0.3.5)(rollup@4.24.4)(webpack-sources@3.2.3)
-      '@nuxt/schema': 3.13.2(rollup@4.24.4)(webpack-sources@3.2.3)
+      '@nuxt/kit': 3.14.0(magicast@0.3.5)(rollup@4.24.4)(webpack-sources@3.2.3)
+      '@nuxt/schema': 3.14.0(magicast@0.3.5)(rollup@4.24.4)(webpack-sources@3.2.3)
       c12: 2.0.1(magicast@0.3.5)
       consola: 3.2.3
       defu: 6.1.4
@@ -15968,6 +15974,8 @@ snapshots:
   ignore@5.3.1: {}
 
   ignore@5.3.2: {}
+
+  ignore@6.0.2: {}
 
   import-fresh@3.3.0:
     dependencies:
