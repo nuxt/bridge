@@ -64,7 +64,7 @@
     "pathe": "^1.1.2",
     "perfect-debounce": "^1.0.0",
     "pkg-types": "^1.2.1",
-    "postcss": "^8.4.48",
+    "postcss": "^8.4.49",
     "postcss-import": "^16.1.0",
     "postcss-import-resolver": "^2.0.0",
     "postcss-preset-env": "^10.1.0",
