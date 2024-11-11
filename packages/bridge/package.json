@@ -64,7 +64,7 @@
     "pathe": "^1.1.2",
     "perfect-debounce": "^1.0.0",
     "pkg-types": "^1.2.1",
-    "postcss": "^8.4.47",
+    "postcss": "^8.4.48",
     "postcss-import": "^16.1.0",
     "postcss-import-resolver": "^2.0.0",
     "postcss-preset-env": "^10.0.9",
@@ -78,7 +78,7 @@
     "unimport": "^3.13.1",
     "unplugin": "^1.15.0",
     "untyped": "^1.5.1",
-    "vite": "~5.4.10",
+    "vite": "~5.4.11",
     "vite-node": "^2.1.4",
     "vue-bundle-renderer": "^2.1.1"
   },
