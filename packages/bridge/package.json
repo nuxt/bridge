@@ -75,7 +75,7 @@
     "terser": "^5.36.0",
     "ufo": "^1.5.4",
     "unctx": "^2.3.1",
-    "unimport": "^3.13.2",
+    "unimport": "^3.13.3",
     "unplugin": "^1.16.0",
     "untyped": "^1.5.1",
     "vite": "~5.4.11",
@@ -90,7 +90,7 @@
     "@types/hash-sum": "^1.0.2",
     "@types/node-fetch": "^3.0.2",
     "nuxt": "^2.18.1",
-    "rollup": "^4.27.3",
+    "rollup": "^4.27.4",
     "unbuild": "2.0.0",
     "vue": "^2.7.15",
     "vue-router": "^3.6.5"
