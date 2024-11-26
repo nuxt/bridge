@@ -54,7 +54,7 @@
     "hookable": "5.5.3",
     "klona": "^2.0.6",
     "knitwork": "^1.1.0",
-    "magic-string": "^0.30.13",
+    "magic-string": "^0.30.14",
     "mlly": "^1.7.3",
     "nitropack": "^2.10.4",
     "node-fetch": "^3.3.2",

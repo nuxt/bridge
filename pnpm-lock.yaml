@@ -142,8 +142,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       magic-string:
-        specifier: ^0.30.13
-        version: 0.30.13
+        specifier: ^0.30.14
+        version: 0.30.14
       mlly:
         specifier: ^1.7.3
         version: 1.7.3
@@ -6241,8 +6241,8 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
-  magic-string@0.30.13:
-    resolution: {integrity: sha512-8rYBO+MsWkgjDSOvLomYnzhdwEG51olQ4zL5KXnNJWV5MNmrb4rTZdrtkhxjnD/QyZUqR/Z/XDsUs/4ej2nx0g==}
+  magic-string@0.30.14:
+    resolution: {integrity: sha512-5c99P1WKTed11ZC0HMJOj6CDIue6F8ySu+bJL+85q1zBEIY8IklrJ1eiKC2NDRh3Ct3FcvmJPyQHb9erXMTJNw==}
 
   magicast@0.3.5:
     resolution: {integrity: sha512-L0WhttDl+2BOsybvEOLK7fW3UA0OQ0IQ2d6Zl2x/a6vVRs3bAY0ECOSHHeL5jD+SbOpOCUEi0y1DgHEn9Qn1AQ==}
@@ -12156,7 +12156,7 @@ snapshots:
       get-port-please: 3.1.2
       h3: 1.13.0
       local-pkg: 0.5.0
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       nitropack: 2.10.4(typescript@5.3.3)
       node-fetch-native: 1.6.4
       ofetch: 1.4.1
@@ -12637,7 +12637,7 @@ snapshots:
       estree-walker: 2.0.2
       glob: 8.1.0
       is-reference: 1.2.1
-      magic-string: 0.30.13
+      magic-string: 0.30.14
     optionalDependencies:
       rollup: 3.29.4
 
@@ -12648,7 +12648,7 @@ snapshots:
       estree-walker: 2.0.2
       fdir: 6.4.2(picomatch@4.0.2)
       is-reference: 1.2.1
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       picomatch: 4.0.2
     optionalDependencies:
       rollup: 4.27.4
@@ -12657,7 +12657,7 @@ snapshots:
     dependencies:
       '@rollup/pluginutils': 5.1.3(rollup@4.27.4)
       estree-walker: 2.0.2
-      magic-string: 0.30.13
+      magic-string: 0.30.14
     optionalDependencies:
       rollup: 4.27.4
 
@@ -12697,14 +12697,14 @@ snapshots:
   '@rollup/plugin-replace@5.0.7(rollup@3.29.4)':
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
-      magic-string: 0.30.13
+      magic-string: 0.30.14
     optionalDependencies:
       rollup: 3.29.4
 
   '@rollup/plugin-replace@6.0.1(rollup@4.27.4)':
     dependencies:
       '@rollup/pluginutils': 5.1.2(rollup@4.27.4)
-      magic-string: 0.30.13
+      magic-string: 0.30.14
     optionalDependencies:
       rollup: 4.27.4
 
@@ -13117,7 +13117,7 @@ snapshots:
       browserslist: 4.24.0
       browserslist-to-esbuild: 2.1.1(browserslist@4.24.0)
       core-js: 3.38.1
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       regenerator-runtime: 0.14.1
       systemjs: 6.15.1
       terser: 5.36.0
@@ -13141,7 +13141,7 @@ snapshots:
     dependencies:
       '@vitest/spy': 2.1.5
       estree-walker: 3.0.3
-      magic-string: 0.30.13
+      magic-string: 0.30.14
     optionalDependencies:
       vite: 5.4.11(@types/node@20.11.20)(terser@5.36.0)
 
@@ -13157,7 +13157,7 @@ snapshots:
   '@vitest/snapshot@2.1.5':
     dependencies:
       '@vitest/pretty-format': 2.1.5
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       pathe: 1.1.2
 
   '@vitest/spy@2.1.5':
@@ -13286,7 +13286,7 @@ snapshots:
       '@vue/compiler-ssr': 3.4.20
       '@vue/shared': 3.4.20
       estree-walker: 2.0.2
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       postcss: 8.4.49
       source-map-js: 1.2.1
 
@@ -16462,7 +16462,7 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  magic-string@0.30.13:
+  magic-string@0.30.14:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
@@ -16773,7 +16773,7 @@ snapshots:
       klona: 2.0.6
       knitwork: 1.1.0
       listhen: 1.9.0
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       magicast: 0.3.5
       mime: 4.0.4
       mlly: 1.7.3
@@ -18506,7 +18506,7 @@ snapshots:
 
   rollup-plugin-dts@6.0.0(rollup@3.29.4)(typescript@5.3.3):
     dependencies:
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       rollup: 3.29.4
       typescript: 5.3.3
     optionalDependencies:
@@ -19251,7 +19251,7 @@ snapshots:
       globby: 13.2.2
       hookable: 5.5.3
       jiti: 1.21.6
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       mkdist: 1.3.0(typescript@5.3.3)
       mlly: 1.7.3
       pathe: 1.1.2
@@ -19273,7 +19273,7 @@ snapshots:
     dependencies:
       acorn: 8.14.0
       estree-walker: 3.0.3
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       unplugin: 1.16.0
 
   undici-types@5.26.5: {}
@@ -19316,7 +19316,7 @@ snapshots:
       estree-walker: 3.0.3
       fast-glob: 3.3.2
       local-pkg: 0.5.1
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       mlly: 1.7.3
       pathe: 1.1.2
       pkg-types: 1.2.1
@@ -19395,7 +19395,7 @@ snapshots:
   unwasm@0.3.9:
     dependencies:
       knitwork: 1.1.0
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       mlly: 1.7.3
       pathe: 1.1.2
       pkg-types: 1.2.1
@@ -19535,7 +19535,7 @@ snapshots:
       chai: 5.1.2
       debug: 4.3.7(supports-color@9.4.0)
       expect-type: 1.1.0
-      magic-string: 0.30.13
+      magic-string: 0.30.14
       pathe: 1.1.2
       std-env: 3.8.0
       tinybench: 2.9.0
