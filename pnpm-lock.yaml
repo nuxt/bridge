@@ -88,8 +88,8 @@ importers:
         specifier: ^5.4.3
         version: 5.4.3(terser@5.36.0)(vite@5.4.11(@types/node@20.11.20)(terser@5.36.0))
       '@vitejs/plugin-vue2':
-        specifier: ^2.3.1
-        version: 2.3.1(vite@5.4.11(@types/node@20.11.20)(terser@5.36.0))(vue@2.7.16)
+        specifier: ^2.3.3
+        version: 2.3.3(vite@5.4.11(@types/node@20.11.20)(terser@5.36.0))(vue@2.7.16)
       acorn:
         specifier: ^8.14.0
         version: 8.14.0
@@ -3429,11 +3429,11 @@ packages:
       terser: ^5.4.0
       vite: ^5.0.0
 
-  '@vitejs/plugin-vue2@2.3.1':
-    resolution: {integrity: sha512-/ksaaz2SRLN11JQhLdEUhDzOn909WEk99q9t9w+N12GjQCljzv7GyvAbD/p20aBUjHkvpGOoQ+FCOkG+mjDF4A==}
+  '@vitejs/plugin-vue2@2.3.3':
+    resolution: {integrity: sha512-qexY6+bbwY8h0AZerzUuGywNTi0cLOkbiSbggr0R3WEW95iB2hblQFyv4MAkkc2vm4gZN1cO5kzT1Kp6xlVzZw==}
     engines: {node: ^14.18.0 || >= 16.0.0}
     peerDependencies:
-      vite: ^3.0.0 || ^4.0.0 || ^5.0.0
+      vite: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
       vue: ^2.7.0-0
 
   '@vitest/expect@2.1.6':
@@ -13125,7 +13125,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue2@2.3.1(vite@5.4.11(@types/node@20.11.20)(terser@5.36.0))(vue@2.7.16)':
+  '@vitejs/plugin-vue2@2.3.3(vite@5.4.11(@types/node@20.11.20)(terser@5.36.0))(vue@2.7.16)':
     dependencies:
       vite: 5.4.11(@types/node@20.11.20)(terser@5.36.0)
       vue: 2.7.16
