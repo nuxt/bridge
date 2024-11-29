@@ -58,7 +58,7 @@
     "mlly": "^1.7.3",
     "nitropack": "^2.10.4",
     "node-fetch": "^3.3.2",
-    "nypm": "^0.4.0",
+    "nypm": "^0.4.1",
     "ofetch": "^1.4.1",
     "ohash": "^1.1.4",
     "pathe": "^1.1.2",
@@ -75,7 +75,7 @@
     "terser": "^5.36.0",
     "ufo": "^1.5.4",
     "unctx": "^2.3.1",
-    "unimport": "^3.13.4",
+    "unimport": "^3.14.1",
     "unplugin": "^1.16.0",
     "untyped": "^1.5.1",
     "vite": "~6.0.1",
@@ -98,5 +98,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@9.14.2"
+  "packageManager": "pnpm@9.14.3"
 }
