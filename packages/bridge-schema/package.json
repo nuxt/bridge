@@ -29,7 +29,7 @@
     "c12": "^2.0.1",
     "create-require": "^1.1.1",
     "defu": "^6.1.4",
-    "jiti": "^2.4.0",
+    "jiti": "^2.4.1",
     "pathe": "^1.1.2",
     "pkg-types": "^1.2.1",
     "postcss-import-resolver": "^2.0.0",
@@ -37,7 +37,7 @@
     "std-env": "^3.8.0",
     "ufo": "^1.5.4",
     "unbuild": "2.0.0",
-    "unimport": "^3.14.1",
+    "unimport": "^3.14.2",
     "untyped": "^1.5.1"
   },
   "engines": {
