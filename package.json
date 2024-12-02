@@ -31,7 +31,7 @@
     "jiti": "^2.4.1",
     "playwright-core": "^1.49.0",
     "std-env": "^3.8.0",
-    "vitest": "^2.1.6"
+    "vitest": "^2.1.7"
   },
   "resolutions": {
     "@nuxt/bridge": "workspace:*",
