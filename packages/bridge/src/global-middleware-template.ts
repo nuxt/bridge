@@ -1,17 +1,12 @@
 
-import type { Nuxt, NuxtApp } from '@nuxt/schema'
+import type { NuxtTemplate } from '@nuxt/schema'
 import { genArrayFromRaw, genImport, genSafeVariableName } from 'knitwork'
 import { resolveFiles } from '@nuxt/kit'
 import { getNameFromPath, hasSuffix } from './utils/names'
 
-interface TemplateContext {
-  nuxt: Nuxt
-  app: NuxtApp & { templateVars: Record<string, any> }
-}
-
-export const globalMiddlewareTemplate = {
+export const globalMiddlewareTemplate: NuxtTemplate = {
   filename: 'global-middleware.mjs',
-  getContents: async ({ nuxt, app }: TemplateContext) => {
+  getContents: async ({ nuxt, app }) => {
     app.middleware = []
     const middlewareDir = nuxt.options.dir.middleware || 'middleware'
     const middlewareFiles = await resolveFiles(nuxt.options.srcDir, `${middlewareDir}/*{${nuxt.options.extensions.join(',')}}`)
