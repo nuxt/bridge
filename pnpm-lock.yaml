@@ -14,7 +14,7 @@ importers:
     devDependencies:
       '@nuxt/test-utils':
         specifier: ^3.15.0
-        version: 3.15.0(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.0)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))
+        version: 3.15.0(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))
       '@nuxtjs/eslint-config':
         specifier: ^12.0.0
         version: 12.0.0(eslint@8.57.1)
@@ -37,8 +37,8 @@ importers:
         specifier: ^2.4.1
         version: 2.4.1
       playwright-core:
-        specifier: ^1.49.0
-        version: 1.49.0
+        specifier: ^1.49.1
+        version: 1.49.1
       std-env:
         specifier: ^3.8.0
         version: 3.8.0
@@ -79,11 +79,11 @@ importers:
         specifier: ^6.0.1
         version: 6.0.1(rollup@4.28.1)
       '@unhead/ssr':
-        specifier: ^1.11.13
-        version: 1.11.13
+        specifier: ^1.11.14
+        version: 1.11.14
       '@unhead/vue':
-        specifier: ^1.11.13
-        version: 1.11.13(vue@2.7.16)
+        specifier: ^1.11.14
+        version: 1.11.14(vue@2.7.16)
       '@vitejs/plugin-legacy':
         specifier: ^6.0.0
         version: 6.0.0(terser@5.37.0)(vite@6.0.3(@types/node@20.11.20)(jiti@2.4.1)(terser@5.37.0)(yaml@2.5.1))
@@ -142,8 +142,8 @@ importers:
         specifier: ^1.1.0
         version: 1.1.0
       magic-string:
-        specifier: ^0.30.14
-        version: 0.30.14
+        specifier: ^0.30.15
+        version: 0.30.15
       mlly:
         specifier: ^1.7.3
         version: 1.7.3
@@ -205,8 +205,8 @@ importers:
         specifier: ^2.3.1
         version: 2.3.1
       unimport:
-        specifier: ^3.14.4
-        version: 3.14.4(rollup@4.28.1)
+        specifier: ^3.14.5
+        version: 3.14.5(rollup@4.28.1)
       unplugin:
         specifier: ^1.16.0
         version: 1.16.0
@@ -293,8 +293,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0(typescript@5.3.3)
       unimport:
-        specifier: ^3.14.4
-        version: 3.14.4(rollup@4.28.1)
+        specifier: ^3.14.5
+        version: 3.14.5(rollup@4.28.1)
       untyped:
         specifier: ^1.5.1
         version: 1.5.1
@@ -306,8 +306,8 @@ importers:
         specifier: ^7.5.8
         version: 7.5.8
       '@unhead/schema':
-        specifier: ^1.11.13
-        version: 1.11.13
+        specifier: ^1.11.14
+        version: 1.11.14
       nitropack:
         specifier: ^2.10.4
         version: 2.10.4(typescript@5.3.3)
@@ -3327,20 +3327,20 @@ packages:
   '@ungap/structured-clone@1.2.0':
     resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
 
-  '@unhead/dom@1.11.13':
-    resolution: {integrity: sha512-8Bpo3e50i49/z0TMiskQk3OqUVJpWOO0cnEEydJeFnjsPczDH76H3mWLvB11cv1B/rjLdBiPgui7yetFta5LCw==}
+  '@unhead/dom@1.11.14':
+    resolution: {integrity: sha512-FaHCWo9JR4h7PCpSRaXuMC6ifXOuBzlI0PD1MmUcxND2ayDl1d6DauIbN8TUf9TDRxNkrK1Ehb0OCXjC1ZJtrg==}
 
-  '@unhead/schema@1.11.13':
-    resolution: {integrity: sha512-fIpQx6GCpl99l4qJXsPqkXxO7suMccuLADbhaMSkeXnVEi4ZIle+l+Ri0z+GHAEpJj17FMaQdO5n9FMSOMUxkw==}
+  '@unhead/schema@1.11.14':
+    resolution: {integrity: sha512-V9W9u5tF1/+TiLqxu+Qvh1ShoMDkPEwHoEo4DKdDG6ko7YlbzFfDxV6el9JwCren45U/4Vy/4Xi7j8OH02wsiA==}
 
-  '@unhead/shared@1.11.13':
-    resolution: {integrity: sha512-EiJ3nsEtf6dvZ6OwVYrrrrCUl4ZE/9GTjpexEMti8EJXweSuL7SifNNXtIFk7UMoM0ULYxb7K/AKQV/odwoZyQ==}
+  '@unhead/shared@1.11.14':
+    resolution: {integrity: sha512-41Qt4PJKYVrEGOTXgBJLRYrEu3S7n5stoB4TFC6312CIBVedXqg7voHQurn32LVDjpfJftjLa2ggCjpqdqoRDw==}
 
-  '@unhead/ssr@1.11.13':
-    resolution: {integrity: sha512-LjomDIH8vXbnQQ8UVItmJ52BZBOyK12i1Q4W658X/f0VGtm0z3AulGQIvYla0rFcxAynDygfvWSC7xrlqDtRUw==}
+  '@unhead/ssr@1.11.14':
+    resolution: {integrity: sha512-JBF2f5PWPtpqBx/dan+4vL/dartSp8Nmd011zkT9qPYmizxO+/fsB1WQalbis1KszkfFatb6c4rO+hm0d6acOA==}
 
-  '@unhead/vue@1.11.13':
-    resolution: {integrity: sha512-s5++LqsNM01rkMQwtc4W19cP1fXC81o4YMyL+Kaqh9X0OPLeWnjONAh0U/Z2CIXBqhJHI+DoNXmDACXyuWPPxg==}
+  '@unhead/vue@1.11.14':
+    resolution: {integrity: sha512-6nfi7FsZ936gscmj+1nUB1pybiFMFbnuEFo7B/OY2klpLWsYDUOVvpsJhbu7C3u7wkTlJXglmAk6jdd8I7WgZA==}
     peerDependencies:
       vue: '>=2.7 || >=3'
 
@@ -6180,8 +6180,8 @@ packages:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
 
-  magic-string@0.30.14:
-    resolution: {integrity: sha512-5c99P1WKTed11ZC0HMJOj6CDIue6F8ySu+bJL+85q1zBEIY8IklrJ1eiKC2NDRh3Ct3FcvmJPyQHb9erXMTJNw==}
+  magic-string@0.30.15:
+    resolution: {integrity: sha512-zXeaYRgZ6ldS1RJJUrMrYgNJ4fdwnyI6tVqoiIhyCyv5IVTK9BU8Ic2l253GGETQHxI4HNUwhJ3fjDhKqEoaAw==}
 
   magicast@0.3.5:
     resolution: {integrity: sha512-L0WhttDl+2BOsybvEOLK7fW3UA0OQ0IQ2d6Zl2x/a6vVRs3bAY0ECOSHHeL5jD+SbOpOCUEi0y1DgHEn9Qn1AQ==}
@@ -6847,8 +6847,8 @@ packages:
   pkg-types@1.2.1:
     resolution: {integrity: sha512-sQoqa8alT3nHjGuTjuKgOnvjo4cljkufdtLMnO2LBP/wRwuDlo1tkaEdMxCRhyGRPacv/ztlZgDPm2b7FAmEvw==}
 
-  playwright-core@1.49.0:
-    resolution: {integrity: sha512-R+3KKTQF3npy5GTiKH/T+kdhoJfJojjHESR1YEWhYuEKRVfVaxH3+4+GvXE5xyCngCxhxnykk0Vlah9v8fs3jA==}
+  playwright-core@1.49.1:
+    resolution: {integrity: sha512-BzmpVcs4kE2CH15rWfzpjzVGhWERJfmnXmniSyKeRZUs9Ws65m+RGIi7mjJK/euCegfn3i7jvqWeWyHe9y3Vgg==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -8348,10 +8348,6 @@ packages:
   tinyexec@0.3.1:
     resolution: {integrity: sha512-WiCJLEECkO18gwqIp6+hJg0//p23HXp4S+gGtAKu3mI2F2/sXC4FvHvXvB0zJVVaTPhx1/tOwdbRsa1sOBIKqQ==}
 
-  tinyglobby@0.2.10:
-    resolution: {integrity: sha512-Zc+8eJlFMvgatPZTl6A9L/yht8QqdmUNtURHaKZLmKBE12hNPSrqNkUp2cs3M/UKmNVVAMFQYSjYIVHDjW5zew==}
-    engines: {node: '>=12.0.0'}
-
   tinypool@1.0.1:
     resolution: {integrity: sha512-URZYihUbRPcGv95En+sz6MfghfIc2OJ1sv/RmhWZLouPY0/8Vo80viwPvg3dlaS9fuq7fQMEfgRRK7BBZThBEA==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -8515,8 +8511,8 @@ packages:
   unfetch@5.0.0:
     resolution: {integrity: sha512-3xM2c89siXg0nHvlmYsQ2zkLASvVMBisZm5lF3gFDqfF2xonNStDJyMpvaOBe0a1Edxmqrf2E0HBdmy9QyZaeg==}
 
-  unhead@1.11.13:
-    resolution: {integrity: sha512-I7yyvqRfpPPzXuCG7HKZkgAWJDbzXDDEVyib4C/78HREqhNGHVSyo4TqX1h1xB5cx7WYc21HHDRT2/8YkqOy2w==}
+  unhead@1.11.14:
+    resolution: {integrity: sha512-XmXW0aZyX9kGk9ejCKCSvv/J4T3Rt4hoAe2EofM+nhG+zwZ7AArUMK/0F/fj6FTkfgY0u0/JryE00qUDULgygA==}
 
   unicode-canonical-property-names-ecmascript@2.0.0:
     resolution: {integrity: sha512-yY5PpDlfVIU5+y/BSCxAJRBIS1Zc2dDG3Ujq+sR0U+JjUevW2JhocOF+soROYDSaAezOzOKuyyixhD6mBknSmQ==}
@@ -8538,8 +8534,8 @@ packages:
     resolution: {integrity: sha512-lRfVq8fE8gz6QMBuDM6a+LO3IAzTi05H6gCVaUpir2E1Rwpo4ZUog45KpNXKC/Mn3Yb9UDuHumeFTo9iV/D9FQ==}
     engines: {node: '>=18'}
 
-  unimport@3.14.4:
-    resolution: {integrity: sha512-90jQsiS2D0vIrWg4U58do7B5Hr4q0qt9o/rS0TrDMzrvNuAQ7XF1sQ47Pe2zjVlvFWNkoPBb/2l2GJFy5XjqDg==}
+  unimport@3.14.5:
+    resolution: {integrity: sha512-tn890SwFFZxqaJSKQPPd+yygfKSATbM8BZWW1aCR2TJBTs1SDrmLamBueaFtYsGjHtQaRgqEbQflOjN2iW12gA==}
 
   union-value@1.0.1:
     resolution: {integrity: sha512-tJfXmxMeWYnczCVs7XAEvIV7ieppALdyepWMkHkwciRpZraG/xwT+s2JN8+pr1+8jCRf80FFzvr+MpQeeoF4Xg==}
@@ -11976,7 +11972,7 @@ snapshots:
       semver: 7.6.3
       ufo: 1.5.4
       unctx: 2.3.1
-      unimport: 3.14.4(rollup@4.28.1)
+      unimport: 3.14.5(rollup@4.28.1)
       untyped: 1.5.1
     transitivePeerDependencies:
       - magicast
@@ -12025,7 +12021,7 @@ snapshots:
       std-env: 3.8.0
       ufo: 1.5.4
       uncrypto: 0.1.3
-      unimport: 3.14.4(rollup@4.28.1)
+      unimport: 3.14.5(rollup@4.28.1)
       untyped: 1.5.1
     transitivePeerDependencies:
       - magicast
@@ -12076,7 +12072,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@nuxt/test-utils@3.15.0(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.0)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))':
+  '@nuxt/test-utils@3.15.0(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))':
     dependencies:
       '@nuxt/kit': 3.14.1592(magicast@0.3.5)(rollup@4.28.1)
       '@nuxt/schema': 3.14.1592(magicast@0.3.5)(rollup@4.28.1)
@@ -12089,7 +12085,7 @@ snapshots:
       get-port-please: 3.1.2
       h3: 1.13.0
       local-pkg: 0.5.1
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       node-fetch-native: 1.6.4
       ofetch: 1.4.1
       pathe: 1.1.2
@@ -12102,10 +12098,10 @@ snapshots:
       unenv: 1.10.0
       unplugin: 2.0.0
       vite: 5.4.11(@types/node@20.11.20)(terser@5.37.0)
-      vitest-environment-nuxt: 1.0.1(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.0)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))
+      vitest-environment-nuxt: 1.0.1(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))
       vue: 3.5.13(typescript@5.3.3)
     optionalDependencies:
-      playwright-core: 1.49.0
+      playwright-core: 1.49.1
       vitest: 2.1.8(@types/node@20.11.20)(terser@5.37.0)
     transitivePeerDependencies:
       - '@types/node'
@@ -12578,7 +12574,7 @@ snapshots:
       estree-walker: 2.0.2
       glob: 8.1.0
       is-reference: 1.2.1
-      magic-string: 0.30.14
+      magic-string: 0.30.15
     optionalDependencies:
       rollup: 3.29.4
 
@@ -12589,7 +12585,7 @@ snapshots:
       estree-walker: 2.0.2
       fdir: 6.4.2(picomatch@4.0.2)
       is-reference: 1.2.1
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       picomatch: 4.0.2
     optionalDependencies:
       rollup: 4.28.1
@@ -12598,7 +12594,7 @@ snapshots:
     dependencies:
       '@rollup/pluginutils': 5.1.3(rollup@4.28.1)
       estree-walker: 2.0.2
-      magic-string: 0.30.14
+      magic-string: 0.30.15
     optionalDependencies:
       rollup: 4.28.1
 
@@ -12638,14 +12634,14 @@ snapshots:
   '@rollup/plugin-replace@5.0.7(rollup@3.29.4)':
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
-      magic-string: 0.30.14
+      magic-string: 0.30.15
     optionalDependencies:
       rollup: 3.29.4
 
   '@rollup/plugin-replace@6.0.1(rollup@4.28.1)':
     dependencies:
       '@rollup/pluginutils': 5.1.2(rollup@4.28.1)
-      magic-string: 0.30.14
+      magic-string: 0.30.15
     optionalDependencies:
       rollup: 4.28.1
 
@@ -13008,32 +13004,32 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@unhead/dom@1.11.13':
+  '@unhead/dom@1.11.14':
     dependencies:
-      '@unhead/schema': 1.11.13
-      '@unhead/shared': 1.11.13
+      '@unhead/schema': 1.11.14
+      '@unhead/shared': 1.11.14
 
-  '@unhead/schema@1.11.13':
+  '@unhead/schema@1.11.14':
     dependencies:
       hookable: 5.5.3
       zhead: 2.2.4
 
-  '@unhead/shared@1.11.13':
+  '@unhead/shared@1.11.14':
     dependencies:
-      '@unhead/schema': 1.11.13
+      '@unhead/schema': 1.11.14
 
-  '@unhead/ssr@1.11.13':
+  '@unhead/ssr@1.11.14':
     dependencies:
-      '@unhead/schema': 1.11.13
-      '@unhead/shared': 1.11.13
+      '@unhead/schema': 1.11.14
+      '@unhead/shared': 1.11.14
 
-  '@unhead/vue@1.11.13(vue@2.7.16)':
+  '@unhead/vue@1.11.14(vue@2.7.16)':
     dependencies:
-      '@unhead/schema': 1.11.13
-      '@unhead/shared': 1.11.13
+      '@unhead/schema': 1.11.14
+      '@unhead/shared': 1.11.14
       defu: 6.1.4
       hookable: 5.5.3
-      unhead: 1.11.13
+      unhead: 1.11.14
       vue: 2.7.16
 
   '@vercel/nft@0.27.5':
@@ -13061,7 +13057,7 @@ snapshots:
       browserslist: 4.24.2
       browserslist-to-esbuild: 2.1.1(browserslist@4.24.2)
       core-js: 3.39.0
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       regenerator-runtime: 0.14.1
       systemjs: 6.15.1
       terser: 5.37.0
@@ -13085,7 +13081,7 @@ snapshots:
     dependencies:
       '@vitest/spy': 2.1.8
       estree-walker: 3.0.3
-      magic-string: 0.30.14
+      magic-string: 0.30.15
     optionalDependencies:
       vite: 5.4.11(@types/node@20.11.20)(terser@5.37.0)
 
@@ -13101,7 +13097,7 @@ snapshots:
   '@vitest/snapshot@2.1.8':
     dependencies:
       '@vitest/pretty-format': 2.1.8
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       pathe: 1.1.2
 
   '@vitest/spy@2.1.8':
@@ -13230,7 +13226,7 @@ snapshots:
       '@vue/compiler-ssr': 3.5.13
       '@vue/shared': 3.5.13
       estree-walker: 2.0.2
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       postcss: 8.4.49
       source-map-js: 1.2.1
 
@@ -16415,7 +16411,7 @@ snapshots:
     dependencies:
       yallist: 4.0.0
 
-  magic-string@0.30.14:
+  magic-string@0.30.15:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
@@ -16726,7 +16722,7 @@ snapshots:
       klona: 2.0.6
       knitwork: 1.1.0
       listhen: 1.9.0
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       magicast: 0.3.5
       mime: 4.0.4
       mlly: 1.7.3
@@ -16750,7 +16746,7 @@ snapshots:
       uncrypto: 0.1.3
       unctx: 2.3.1
       unenv: 1.10.0
-      unimport: 3.14.4(rollup@4.28.1)
+      unimport: 3.14.5(rollup@4.28.1)
       unstorage: 1.13.1(ioredis@5.4.1)
       untyped: 1.5.1
       unwasm: 0.3.9
@@ -17382,7 +17378,7 @@ snapshots:
       mlly: 1.7.3
       pathe: 1.1.2
 
-  playwright-core@1.49.0: {}
+  playwright-core@1.49.1: {}
 
   pluralize@8.0.0: {}
 
@@ -18468,7 +18464,7 @@ snapshots:
 
   rollup-plugin-dts@6.0.0(rollup@3.29.4)(typescript@5.3.3):
     dependencies:
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       rollup: 3.29.4
       typescript: 5.3.3
     optionalDependencies:
@@ -19077,11 +19073,6 @@ snapshots:
 
   tinyexec@0.3.1: {}
 
-  tinyglobby@0.2.10:
-    dependencies:
-      fdir: 6.4.2(picomatch@4.0.2)
-      picomatch: 4.0.2
-
   tinypool@1.0.1: {}
 
   tinyrainbow@1.2.0: {}
@@ -19219,7 +19210,7 @@ snapshots:
       globby: 13.2.2
       hookable: 5.5.3
       jiti: 1.21.6
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       mkdist: 1.3.0(typescript@5.3.3)
       mlly: 1.7.3
       pathe: 1.1.2
@@ -19241,7 +19232,7 @@ snapshots:
     dependencies:
       acorn: 8.14.0
       estree-walker: 3.0.3
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       unplugin: 1.16.0
 
   undici-types@5.26.5: {}
@@ -19256,11 +19247,11 @@ snapshots:
 
   unfetch@5.0.0: {}
 
-  unhead@1.11.13:
+  unhead@1.11.14:
     dependencies:
-      '@unhead/dom': 1.11.13
-      '@unhead/schema': 1.11.13
-      '@unhead/shared': 1.11.13
+      '@unhead/dom': 1.11.14
+      '@unhead/schema': 1.11.14
+      '@unhead/shared': 1.11.14
       hookable: 5.5.3
 
   unicode-canonical-property-names-ecmascript@2.0.0: {}
@@ -19276,21 +19267,21 @@ snapshots:
 
   unicorn-magic@0.1.0: {}
 
-  unimport@3.14.4(rollup@4.28.1):
+  unimport@3.14.5(rollup@4.28.1):
     dependencies:
       '@rollup/pluginutils': 5.1.3(rollup@4.28.1)
       acorn: 8.14.0
       escape-string-regexp: 5.0.0
       estree-walker: 3.0.3
+      fast-glob: 3.3.2
       local-pkg: 0.5.1
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       mlly: 1.7.3
       pathe: 1.1.2
       picomatch: 4.0.2
       pkg-types: 1.2.1
       scule: 1.3.0
       strip-literal: 2.1.1
-      tinyglobby: 0.2.10
       unplugin: 1.16.0
     transitivePeerDependencies:
       - rollup
@@ -19369,7 +19360,7 @@ snapshots:
   unwasm@0.3.9:
     dependencies:
       knitwork: 1.1.0
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       mlly: 1.7.3
       pathe: 1.1.2
       pkg-types: 1.2.1
@@ -19492,9 +19483,9 @@ snapshots:
       terser: 5.37.0
       yaml: 2.5.1
 
-  vitest-environment-nuxt@1.0.1(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.0)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0)):
+  vitest-environment-nuxt@1.0.1(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0)):
     dependencies:
-      '@nuxt/test-utils': 3.15.0(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.0)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))
+      '@nuxt/test-utils': 3.15.0(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))
     transitivePeerDependencies:
       - '@cucumber/cucumber'
       - '@jest/globals'
@@ -19532,7 +19523,7 @@ snapshots:
       chai: 5.1.2
       debug: 4.3.7(supports-color@9.4.0)
       expect-type: 1.1.0
-      magic-string: 0.30.14
+      magic-string: 0.30.15
       pathe: 1.1.2
       std-env: 3.8.0
       tinybench: 2.9.0
