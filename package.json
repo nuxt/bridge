@@ -29,7 +29,7 @@
     "eslint": "^8.57.1",
     "eslint-plugin-jsdoc": "^50.6.0",
     "jiti": "^2.4.1",
-    "playwright-core": "^1.49.0",
+    "playwright-core": "^1.49.1",
     "std-env": "^3.8.0",
     "vitest": "^2.1.8"
   },
