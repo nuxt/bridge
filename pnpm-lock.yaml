@@ -13,8 +13,8 @@ importers:
   .:
     devDependencies:
       '@nuxt/test-utils':
-        specifier: ^3.15.0
-        version: 3.15.0(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))
+        specifier: ^3.15.1
+        version: 3.15.1(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))
       '@nuxtjs/eslint-config':
         specifier: ^12.0.0
         version: 12.0.0(eslint@8.57.1)
@@ -2720,8 +2720,8 @@ packages:
     resolution: {integrity: sha512-MhxiiYCFe0MayN2TvmpcsCV66zBePtrSVkFLJHwTFuneQ5Qma5x0NmCwdov7O4NSuTfgSZels9qPJh0zy0Kc4g==}
     hasBin: true
 
-  '@nuxt/test-utils@3.15.0':
-    resolution: {integrity: sha512-kl8nwCuB5/DhJVFNftO9n83yEHDsVjMCrLQmOc4Pmfb8Ba7CgE7GR+QVoVywv5x4DGiRryce7gRGXJkpLNRmGQ==}
+  '@nuxt/test-utils@3.15.1':
+    resolution: {integrity: sha512-+0MsHsE/F4FZcmirRWSqGSSlEGMeNBHXkdHmYU0cM7UItiFIxyVDdIHLkyW4bBvPfI0IRozQlZc8vht9V/5D7Q==}
     engines: {node: ^18.20.4 || ^20.9.0 || ^22.0.0 || >=23.0.0}
     peerDependencies:
       '@cucumber/cucumber': ^10.3.1 || ^11.0.0
@@ -12072,7 +12072,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@nuxt/test-utils@3.15.0(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))':
+  '@nuxt/test-utils@3.15.1(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))':
     dependencies:
       '@nuxt/kit': 3.14.1592(magicast@0.3.5)(rollup@4.28.1)
       '@nuxt/schema': 3.14.1592(magicast@0.3.5)(rollup@4.28.1)
@@ -19485,7 +19485,7 @@ snapshots:
 
   vitest-environment-nuxt@1.0.1(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0)):
     dependencies:
-      '@nuxt/test-utils': 3.15.0(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))
+      '@nuxt/test-utils': 3.15.1(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))
     transitivePeerDependencies:
       - '@cucumber/cucumber'
       - '@jest/globals'
