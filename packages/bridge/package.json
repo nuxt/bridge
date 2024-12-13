@@ -91,7 +91,7 @@
     "@types/node-fetch": "^3.0.2",
     "nuxt": "^2.18.1",
     "rollup": "^4.28.1",
-    "unbuild": "2.0.0",
+    "unbuild": "3.0.1",
     "vue": "^2.7.15",
     "vue-router": "^3.6.5"
   },
