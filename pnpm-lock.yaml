@@ -208,8 +208,8 @@ importers:
         specifier: ^3.14.5
         version: 3.14.5(rollup@4.28.1)
       unplugin:
-        specifier: ^1.16.0
-        version: 1.16.0
+        specifier: ^2.1.0
+        version: 2.1.0
       untyped:
         specifier: ^1.5.2
         version: 1.5.2
@@ -8264,8 +8264,8 @@ packages:
     resolution: {integrity: sha512-5liCNPuJW8dqh3+DM6uNM2EI3MLLpCKp/KY+9pB5M2S2SR2qvvDHhKgBOaTWEbZTAws3CXfB0rKTIolWKL05VQ==}
     engines: {node: '>=14.0.0'}
 
-  unplugin@2.0.0:
-    resolution: {integrity: sha512-26eihuX14zPtiW6gzz8B112Buhi9CaWH/5ezO67pzBhKoz3MfHyc2lz/QOMOyEd/DWk+OnS0zCiYixnm8Q3dqA==}
+  unplugin@2.1.0:
+    resolution: {integrity: sha512-us4j03/499KhbGP8BU7Hrzrgseo+KdfJYWcbcajCOqsAyb8Gk0Yn2kiUIcZISYCb1JFaZfIuG3b42HmguVOKCQ==}
     engines: {node: '>=18.12.0'}
 
   unset-value@1.0.0:
@@ -11534,7 +11534,7 @@ snapshots:
       tinyexec: 0.3.1
       ufo: 1.5.4
       unenv: 1.10.0
-      unplugin: 2.0.0
+      unplugin: 2.1.0
       vite: 5.4.11(@types/node@20.11.20)(terser@5.37.0)
       vitest-environment-nuxt: 1.0.1(@types/node@20.11.20)(magicast@0.3.5)(playwright-core@1.49.1)(terser@5.37.0)(typescript@5.3.3)(vitest@2.1.8(@types/node@20.11.20)(terser@5.37.0))
       vue: 3.5.13(typescript@5.3.3)
@@ -18733,7 +18733,7 @@ snapshots:
       acorn: 8.14.0
       estree-walker: 3.0.3
       magic-string: 0.30.17
-      unplugin: 2.0.0
+      unplugin: 2.1.0
 
   undici-types@5.26.5: {}
 
@@ -18812,7 +18812,7 @@ snapshots:
       acorn: 8.14.0
       webpack-virtual-modules: 0.6.2
 
-  unplugin@2.0.0:
+  unplugin@2.1.0:
     dependencies:
       acorn: 8.14.0
       webpack-virtual-modules: 0.6.2

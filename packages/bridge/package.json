@@ -76,7 +76,7 @@
     "ufo": "^1.5.4",
     "unctx": "^2.4.0",
     "unimport": "^3.14.5",
-    "unplugin": "^1.16.0",
+    "unplugin": "^2.1.0",
     "untyped": "^1.5.2",
     "vite": "~6.0.3",
     "vite-node": "^2.1.8",
