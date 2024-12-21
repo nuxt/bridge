@@ -80,4 +80,10 @@ declare module 'nitropack' {
   }
 }
 
+declare module '#app/defaults' {
+  type DefaultAsyncDataErrorValue = undefined
+  type DefaultAsyncDataValue = undefined
+  type DefaultErrorValue = undefined
+}
+
 export declare function defineNuxtConfig (config: NuxtConfig): NuxtConfig
