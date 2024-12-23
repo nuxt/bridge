@@ -1,8 +1,13 @@
-name: nightly release
-on: [push, pull_request]
+name: release
+on:
+  push:
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
+  release-pr:
+    if: github.event_name == 'pull_request' || github.repository_owner != 'nuxt'
     runs-on: ubuntu-latest
 
     steps:
