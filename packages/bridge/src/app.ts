@@ -2,7 +2,9 @@ import { useNuxt, addTemplate, resolveAlias, addWebpackPlugin, addVitePlugin, ad
 import { NuxtModule } from '@nuxt/schema'
 import { normalize, resolve } from 'pathe'
 import { resolveImports } from 'mlly'
-import { componentsTypeTemplate, schemaTemplate, middlewareTypeTemplate } from './type-templates'
+import { applyDefaults } from 'untyped'
+import { NuxtConfigSchema } from '@nuxt/bridge-schema'
+import { componentsTypeTemplate, schemaTemplate, middlewareTypeTemplate, appDefaults } from './type-templates'
 import { distDir } from './dirs'
 import { VueCompat } from './vue-compat'
 import { globalMiddlewareTemplate } from './global-middleware-template'
@@ -67,6 +69,7 @@ export async function setupAppBridge (_options: any) {
   nuxt.hook('prepare:types', ({ references }) => {
     references.push({ path: resolve(nuxt.options.buildDir, 'types/components.d.ts') })
     references.push({ path: resolve(nuxt.options.buildDir, 'types/middleware.d.ts') })
+    references.push({ path: resolve(nuxt.options.buildDir, 'types/app-defaults.d.ts') })
   })
 
   // Augment schema with module types
@@ -104,6 +107,31 @@ export async function setupAppBridge (_options: any) {
   })
 
   addTemplate(globalMiddlewareTemplate)
+
+  // @ts-expect-error only partially supported by nuxt bridge
+  nuxt.options.experimental = (
+    await applyDefaults(
+      { future: NuxtConfigSchema.future, experimental: NuxtConfigSchema.experimental },
+      { future: nuxt.options.future, experimental: nuxt.options.experimental }
+    )
+  ).experimental
+
+  addTemplate({
+    filename: 'nuxt.config.mjs',
+    getContents: (ctx) => {
+      return [
+        `export const asyncDataDefaults = ${JSON.stringify({
+          ...ctx.nuxt.options.experimental.defaults.useAsyncData,
+          value: ctx.nuxt.options.experimental.defaults.useAsyncData.value === 'null' ? null : undefined,
+          errorValue: ctx.nuxt.options.experimental.defaults.useAsyncData.errorValue === 'null' ? null : undefined
+        })}`,
+        `export const resetAsyncDataToUndefined = ${ctx.nuxt.options.experimental.resetAsyncDataToUndefined}`,
+        `export const nuxtDefaultErrorValue = ${ctx.nuxt.options.future.compatibilityVersion === 4 ? 'undefined' : 'null'}`
+      ].join('\n\n')
+    }
+  })
+
+  addTemplate(appDefaults)
 
   // Alias vue3 utilities to vue2
   const { dst: vueCompat } = addTemplate({ src: resolve(distDir, 'runtime/vue2-bridge.mjs') })
