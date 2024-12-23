@@ -124,8 +124,8 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2
       fs-extra:
-        specifier: ^11.2.0
-        version: 11.2.0
+        specifier: ^10.1.0
+        version: 10.1.0
       get-port-please:
         specifier: ^3.1.2
         version: 3.1.2
@@ -214,8 +214,8 @@ importers:
         specifier: ^3.14.5
         version: 3.14.5(rollup@4.29.1)
       unplugin:
-        specifier: ^2.1.0
-        version: 2.1.0
+        specifier: ^1.16.0
+        version: 1.16.0
       untyped:
         specifier: ^1.5.2
         version: 1.5.2
@@ -4420,6 +4420,10 @@ packages:
 
   from2@2.3.0:
     resolution: {integrity: sha512-OMcX/4IC/uqEPVgGeyfN22LJk6AZrMkRZHxcHBMBvHScDGgwTm2GT2Wkgtocyd3JfZffjj2kYUDXXII0Fk9W0g==}
+
+  fs-extra@10.1.0:
+    resolution: {integrity: sha512-oRXApq54ETRj4eMiFzGnHWGy+zo5raudjuxN0b8H7s/RU2oW0Wvsx9O0ACRN/kRq9E8Vu/ReskGB5o3ji+FzHQ==}
+    engines: {node: '>=12'}
 
   fs-extra@11.2.0:
     resolution: {integrity: sha512-PmDi3uwK5nFuXh7XDTlVnS17xJS7vW36is2+w3xcv8SVxiB4NyATf4ctkVY5bkSjX0Y4nbvZCq1/EjtEyr9ktw==}
@@ -13467,6 +13471,12 @@ snapshots:
     dependencies:
       inherits: 2.0.4
       readable-stream: 2.3.8
+
+  fs-extra@10.1.0:
+    dependencies:
+      graceful-fs: 4.2.11
+      jsonfile: 6.1.0
+      universalify: 2.0.0
 
   fs-extra@11.2.0:
     dependencies:
