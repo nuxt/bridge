@@ -245,8 +245,8 @@ importers:
         specifier: ^1.0.2
         version: 1.0.2
       '@types/node-fetch':
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^3.0.3
+        version: 3.0.3
       nuxt:
         specifier: ^2.18.1
         version: 2.18.1(@vue/compiler-sfc@3.5.13)(buffer@6.0.3)(consola@3.2.3)(typescript@5.3.3)(vue@2.7.16)
@@ -257,7 +257,7 @@ importers:
         specifier: 3.0.1
         version: 3.0.1(typescript@5.3.3)(vue@2.7.16)
       vue:
-        specifier: ^2.7.15
+        specifier: ^2.7.16
         version: 2.7.16
       vue-router:
         specifier: ^3.6.5
@@ -327,8 +327,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/bridge
       nuxi:
-        specifier: 3.16.0
-        version: 3.16.0
+        specifier: 3.17.2
+        version: 3.17.2
       nuxt:
         specifier: ^2.18.1
         version: 2.18.1(@vue/compiler-sfc@3.5.13)(buffer@6.0.3)(consola@3.2.3)(typescript@5.3.3)(vue@3.5.13(typescript@5.3.3))
@@ -2342,17 +2342,15 @@ packages:
   '@types/mime@1.3.2':
     resolution: {integrity: sha512-YATxVxgRqNH6nHEIsvg6k2Boc1JHI9ZbH5iWFFv/MTkchz3b1ieGDa5T0a9RznNdI0KhVbdbWSN+KWWrQZRxTw==}
 
-  '@types/node-fetch@3.0.2':
-    resolution: {integrity: sha512-3q5FyT6iuekUxXeL2qjcyIhtMJdfMF7RGhYXWKkYpdcW9k36A/+txXrjG0l+NMVkiC30jKNrcOqVlqBl7BcCHA==}
+  '@types/node-fetch@3.0.3':
+    resolution: {integrity: sha512-HhggYPH5N+AQe/OmN6fmhKmRRt2XuNJow+R3pQwJxOOF9GuwM7O2mheyGeIrs5MOIeNjDEdgdoyHBOrFeJBR3g==}
+    deprecated: This is a stub types definition. node-fetch provides its own type definitions, so you do not need this installed.
 
   '@types/node@16.18.36':
     resolution: {integrity: sha512-8egDX8dE50XyXWH6C6PRCNkTP106DuUrvdrednFouDSmCi7IOvrqr0frznfZaHifHH/3aq/7a7v9N4wdXMqhBQ==}
 
   '@types/node@20.11.20':
     resolution: {integrity: sha512-7/rR21OS+fq8IyHTgtLkDK949uzsa6n8BkziAKtPVpugIkO6D+/ooXMvzXxDnZrmtXVfjb1bKQafYpb8s89LOg==}
-
-  '@types/normalize-package-data@2.4.1':
-    resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
 
   '@types/normalize-package-data@2.4.4':
     resolution: {integrity: sha512-37i+OaWTh9qeK4LSHPsyRC7NahnGotNuZvjLSgcPzblpHB3rrCJxAOgI5gCdKm7coonsaX1Of0ILiTcnZjbfxA==}
@@ -5660,8 +5658,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  nuxi@3.16.0:
-    resolution: {integrity: sha512-t9m4zTq44R0/icuzQXJHEyPRM3YbgTPMpytyb6YW2LOL/3mwZ3Bmte1FIlCoigzDvxBJRbcchZGc689+Syyu8w==}
+  nuxi@3.17.2:
+    resolution: {integrity: sha512-JDVtBBwEe9VjVkhxwR/crtGJnyLHzvl2F1pjtglekjTVeiMThfhQHcvsI/u007gBAfPpmaCIdRGnoeTF4VKS8w==}
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
 
@@ -10881,7 +10879,7 @@ snapshots:
 
   '@types/mime@1.3.2': {}
 
-  '@types/node-fetch@3.0.2':
+  '@types/node-fetch@3.0.3':
     dependencies:
       node-fetch: 3.3.2
 
@@ -10890,8 +10888,6 @@ snapshots:
   '@types/node@20.11.20':
     dependencies:
       undici-types: 5.26.5
-
-  '@types/normalize-package-data@2.4.1': {}
 
   '@types/normalize-package-data@2.4.4': {}
 
@@ -14894,7 +14890,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuxi@3.16.0: {}
+  nuxi@3.17.2: {}
 
   nuxt@2.18.1(@vue/compiler-sfc@3.5.13)(buffer@6.0.3)(consola@3.2.3)(typescript@5.3.3)(vue@2.7.16):
     dependencies:
@@ -16309,7 +16305,7 @@ snapshots:
 
   read-pkg@5.2.0:
     dependencies:
-      '@types/normalize-package-data': 2.4.1
+      '@types/normalize-package-data': 2.4.4
       normalize-package-data: 2.5.0
       parse-json: 5.2.0
       type-fest: 0.6.0

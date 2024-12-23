@@ -88,11 +88,11 @@
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@types/fs-extra": "^9.0.13",
     "@types/hash-sum": "^1.0.2",
-    "@types/node-fetch": "^3.0.2",
+    "@types/node-fetch": "^3.0.3",
     "nuxt": "^2.18.1",
     "rollup": "^4.29.1",
     "unbuild": "3.0.1",
-    "vue": "^2.7.15",
+    "vue": "^2.7.16",
     "vue-router": "^3.6.5"
   },
   "engines": {
