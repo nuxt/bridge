@@ -7,6 +7,7 @@ import { expectNoClientErrors, parseData, renderPage } from './utils'
 const isWebpack = process.env.TEST_BUILDER === 'webpack'
 const isNoResolve = process.env.TEST_RESOLVE === 'no-resolve'
 const isDev = process.env.TEST_ENV === 'dev'
+const isV4 = process.env.TEST_V4 === 'true'
 
 await setup({
   rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
@@ -42,7 +43,7 @@ describe('nuxt composables', () => {
   })
 
   // remove after port upstream.
-  it.skipIf((isWebpack && isNoResolve) || isDev)('updates cookies when they are changed', async () => {
+  it.skipIf(isDev)('updates cookies when they are changed', async () => {
     const { page } = await renderPage('/cookies')
     async function extractCookie () {
       const cookie = await page.evaluate(() => document.cookie)
@@ -72,6 +73,22 @@ describe('nuxt composables', () => {
 
     expect(html).not.toContain('clearableData-1: clearableData')
     expect(html).not.toContain('clearableData-2: clearableData')
+  })
+
+  it('should render text synced with useNuxtData', async () => {
+    const html = await $fetch('/async-data')
+    const expectedText = 'helloNuxtData'
+
+    expect(html).toContain(`usedNuxtData: ${expectedText}, nuxtData: ${expectedText}`)
+  })
+
+  it('should render default value', async () => {
+    const defaultValue = isV4 ? 'undefined' : 'null'
+
+    const { page } = await renderPage('/async-data')
+    expect(await page.locator('#immediate-data').getByText(defaultValue).textContent()).toBe(defaultValue)
+
+    await page.close()
   })
 })
 
@@ -127,9 +144,7 @@ describe('pages', () => {
 
     const { page, consoleLogs } = await renderPage('/')
 
-    if (isWebpack && isNoResolve) {
-      expect(consoleLogs.some(i => i.type === 'error')).toBeTruthy()
-    } else if (isDev) {
+    if (isDev) {
       // output [legacy capi] warning
       expect(consoleLogs.some(i => i.type === 'warning')).toBeTruthy()
     } else {
@@ -190,9 +205,7 @@ describe('navigate', () => {
 
     const { page, consoleLogs } = await renderPage('/navigate-to/')
 
-    if (isWebpack && isNoResolve) {
-      expect(consoleLogs.some(i => i.type === 'error')).toBeTruthy()
-    } else if (isDev) {
+    if (isDev) {
       // output [legacy capi] warning
       expect(consoleLogs.some(i => i.type === 'warning')).toBeTruthy()
     } else {
@@ -292,8 +305,7 @@ describe('middleware', () => {
     expect(html).toContain('Navigated successfully')
   })
 
-  // if `no-resolve`, an error occurs at `useRoute`.
-  it.skipIf(isWebpack && isNoResolve)('should be output with target as to and origin as from', async () => {
+  it('should be output with target as to and origin as from', async () => {
     const { page, consoleLogs } = await renderPage('/')
     await page.getByRole('link').click()
 
