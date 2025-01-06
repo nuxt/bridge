@@ -78,7 +78,7 @@
     "unimport": "^3.14.5",
     "unplugin": "^1.16.0",
     "untyped": "^1.5.2",
-    "vite": "~6.0.6",
+    "vite": "~6.0.7",
     "vite-node": "^2.1.8",
     "vue-bundle-renderer": "^2.1.1"
   },
@@ -90,13 +90,14 @@
     "@types/hash-sum": "^1.0.2",
     "@types/node-fetch": "^3.0.3",
     "nuxt": "^2.18.1",
-    "rollup": "^4.29.1",
-    "unbuild": "3.1.0",
+    "rollup": "^4.30.0",
+    "unbuild": "3.2.0",
     "vue": "^2.7.16",
-    "vue-router": "^3.6.5"
+    "vue-router": "^3.6.5",
+    "zhead": "^2.2.4"
   },
   "engines": {
     "node": "^18.20.5 || ^20.0.0 || >=22.0.0"
   },
-  "packageManager": "pnpm@9.15.2"
+  "packageManager": "pnpm@9.15.3"
 }
