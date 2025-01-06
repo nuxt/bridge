@@ -262,6 +262,9 @@ importers:
       vue-router:
         specifier: ^3.6.5
         version: 3.6.5(vue@2.7.16)
+      zhead:
+        specifier: ^2.2.4
+        version: 2.2.4
 
   packages/bridge-schema:
     dependencies:
@@ -5083,10 +5086,6 @@ packages:
   jest-worker@26.6.2:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
-
-  jiti@1.21.6:
-    resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
-    hasBin: true
 
   jiti@1.21.7:
     resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==}
@@ -10165,7 +10164,7 @@ snapshots:
       fs-extra: 8.1.0
       git-url-parse: 13.1.1
       inquirer: 7.3.3
-      jiti: 1.21.6
+      jiti: 1.21.7
       nanoid: 3.3.7
       node-fetch: 2.6.11
       parse-git-config: 3.0.0
@@ -10245,7 +10244,7 @@ snapshots:
       create-require: 1.1.1
       fs-extra: 11.2.0
       hash-sum: 2.0.0
-      jiti: 1.21.6
+      jiti: 1.21.7
       lodash: 4.17.21
       proper-lockfile: 4.1.2
       semver: 7.6.3
@@ -11945,7 +11944,7 @@ snapshots:
       defu: 6.1.4
       dotenv: 16.4.5
       giget: 1.2.3
-      jiti: 1.21.6
+      jiti: 1.21.7
       mlly: 1.7.3
       ohash: 1.1.4
       pathe: 1.1.2
@@ -14198,8 +14197,6 @@ snapshots:
       '@types/node': 20.11.20
       merge-stream: 2.0.0
       supports-color: 7.2.0
-
-  jiti@1.21.6: {}
 
   jiti@1.21.7: {}
 
