@@ -90,13 +90,6 @@ export function viteNodePlugin (ctx: ViteBuildContext): VitePlugin {
   }
 }
 
-export function registerViteNodeMiddleware (ctx: ViteBuildContext) {
-  addDevServerHandler({
-    route: '/__nuxt_vite_node__/',
-    handler: createViteNodeApp(ctx).handler
-  })
-}
-
 function getManifest (ctx: ViteBuildContext) {
   const css = Array.from(
     ctx.ssrServer!.moduleGraph.urlToModuleMap.keys()

@@ -11,5 +11,8 @@
     "@nuxt/bridge": "latest",
     "nuxi": "3.18.2",
     "nuxt": "^2.18.1"
+  },
+  "dependencies": {
+    "ufo": "^1.5.4"
   }
 }
