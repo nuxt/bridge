@@ -80,7 +80,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/hash-sum": "^1.0.2",
     "@types/node-fetch": "^3.0.3",
-    "@types/webpack": "^4.41.40",
+    "@types/webpack": "^5.28.5",
     "@vue/compiler-sfc": "^2.7.16",
     "@vue/reactivity": "^3.5.13",
     "rollup": "^4.30.1",
