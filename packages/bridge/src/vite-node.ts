@@ -10,7 +10,6 @@ import {
 import { ViteNodeServer } from 'vite-node/server'
 import fse from 'fs-extra'
 import { isAbsolute, normalize, resolve } from 'pathe'
-import { addDevServerHandler } from '@nuxt/kit'
 import { isFileServingAllowed } from 'vite'
 import type { ModuleNode, Plugin as VitePlugin } from 'vite'
 import { normalizeViteManifest } from 'vue-bundle-renderer'
