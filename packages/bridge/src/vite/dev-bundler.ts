@@ -13,21 +13,21 @@ import { ViteBuildContext } from './types'
 import { createIsExternal } from './utils/external'
 import { generateDevSSRManifest } from './manifest'
 
-export interface TransformChunk {
+interface TransformChunk {
   id: string,
   code: string,
   deps: string[],
   parents: string[]
 }
 
-export interface SSRTransformResult {
+interface SSRTransformResult {
   code: string,
   map: object,
   deps: string[]
   dynamicDeps: string[]
 }
 
-export interface TransformOptions {
+interface TransformOptions {
   viteServer: ViteDevServer
   isExternal(id: string): ReturnType<typeof isExternal>
 }
@@ -125,7 +125,7 @@ async function transformRequestRecursive (opts: TransformOptions, id, parent = '
   return Object.values(chunks)
 }
 
-export async function bundleRequest (opts: TransformOptions, entryURL: string) {
+async function bundleRequest (opts: TransformOptions, entryURL: string) {
   const chunks = await transformRequestRecursive(opts, entryURL)
 
   const listIds = (ids: string[]) => ids.map(id => `// - ${id} (${hashId(id)})`).join('\n')

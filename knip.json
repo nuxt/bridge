@@ -1,0 +1,40 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignoreWorkspaces": [
+    "packages/bridge-schema"
+  ],
+  "ignore": [
+    "packages/bridge-schema/schema/**"
+  ],
+  "workspaces": {
+    ".": {
+      "entry": [
+        "scripts/*.ts",
+        "test/**"
+      ]
+    },
+    "packages/bridge": {
+      "entry": [
+        "src/module.ts",
+        "src/runtime/**"
+      ],
+      "ignore": [
+        "src/vite/stub-vite.cjs"
+      ],
+      "ignoreDependencies": [
+        "@babel/plugin-proposal-nullish-coalescing-operator",
+        "@babel/plugin-proposal-optional-chaining",
+        "@babel/plugin-transform-typescript",
+        "@nuxt/cli",
+        "exit",
+        "zhead"
+      ]
+    },
+    "playground": {
+      "entry": [
+        "{components,layouts,middleware,pages,plugins,server,store}/**",
+        "*.ts"
+      ]
+    }
+  }
+}

@@ -15,7 +15,7 @@ export function hasSuffix (path: string, suffix: string) {
   return basename(path).replace(extname(path), '').endsWith(suffix)
 }
 
-export function resolveComponentName (fileName: string, prefixParts: string[]) {
+function resolveComponentName (fileName: string, prefixParts: string[]) {
   /**
    * Array of fileName parts splitted by case, / or -
    * @example third-component -> ['third', 'component']

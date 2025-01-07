@@ -10,7 +10,6 @@ import {
 import { ViteNodeServer } from 'vite-node/server'
 import fse from 'fs-extra'
 import { isAbsolute, normalize, resolve } from 'pathe'
-import { addDevServerHandler } from '@nuxt/kit'
 import { isFileServingAllowed } from 'vite'
 import type { ModuleNode, Plugin as VitePlugin } from 'vite'
 import { normalizeViteManifest } from 'vue-bundle-renderer'
@@ -88,13 +87,6 @@ export function viteNodePlugin (ctx: ViteBuildContext): VitePlugin {
       })
     }
   }
-}
-
-export function registerViteNodeMiddleware (ctx: ViteBuildContext) {
-  addDevServerHandler({
-    route: '/__nuxt_vite_node__/',
-    handler: createViteNodeApp(ctx).handler
-  })
 }
 
 function getManifest (ctx: ViteBuildContext) {

@@ -16,7 +16,7 @@ Schema differences from Nuxt2:
 - Apply preset
 - render.etag.hash should be a function
 - deprecated devModules
-- set consola level to 0 if build.quite is true
+- set consola level to 0 if build.quiet is true
 - Ad-hoc: loading-screen, components and telemtry
 - build.indicator and build.loadingScreen
 - build.crossorigin => render.crossorigin

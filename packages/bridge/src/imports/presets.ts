@@ -1,6 +1,6 @@
 import { defineUnimportPreset, InlinePreset } from 'unimport'
 
-export const commonPresets: InlinePreset[] = [
+const commonPresets: InlinePreset[] = [
   // vue-demi (mocked)
   defineUnimportPreset({
     from: '#app/app',
@@ -58,7 +58,7 @@ const granularAppPresets: InlinePreset[] = [
   }
 ]
 
-export const vueKeys: Array<keyof typeof import('vue')> = [
+const vueKeys: Array<keyof typeof import('vue')> = [
   // Lifecycle
   'onActivated',
   'onBeforeMount',
@@ -118,7 +118,7 @@ export const vueKeys: Array<keyof typeof import('vue')> = [
 ]
 
 // vue
-export const vuePreset = defineUnimportPreset({
+const vuePreset = defineUnimportPreset({
   from: 'vue',
   imports: vueKeys
 })

@@ -2,7 +2,7 @@ import { EsbuildPlugin } from 'esbuild-loader'
 import type { Configuration } from 'webpack'
 import type { Nuxt } from '@nuxt/schema'
 
-export interface WebpackConfigContext {
+interface WebpackConfigContext {
   nuxt: Nuxt
   config: Configuration
   isServer: boolean

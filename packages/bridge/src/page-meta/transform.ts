@@ -1,13 +1,7 @@
 import { pathToFileURL } from 'node:url'
 import { createUnplugin } from 'unplugin'
 import { parseQuery, parseURL } from 'ufo'
-import type {
-  CallExpression,
-  ExportDefaultDeclaration,
-  ObjectExpression,
-  Property,
-  VariableDeclaration
-} from 'estree'
+import type { CallExpression, ExportDefaultDeclaration, ObjectExpression, Property, VariableDeclaration } from 'estree'
 import type { Node } from 'estree-walker'
 import { walk } from 'estree-walker'
 import MagicString from 'magic-string'
