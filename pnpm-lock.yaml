@@ -254,8 +254,8 @@ importers:
         specifier: ^4.41.40
         version: 4.41.40
       '@vue/compiler-sfc':
-        specifier: ^2.7.16
-        version: 2.7.16
+        specifier: ^3.5.13
+        version: 3.5.13
       '@vue/reactivity':
         specifier: ^3.5.13
         version: 3.5.13
