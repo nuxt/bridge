@@ -32,7 +32,7 @@
     "eslint-plugin-jsdoc": "50.6.1",
     "execa": "9.5.2",
     "globby": "14.0.2",
-    "h3": "1.13.0",
+    "h3": "1.13.1",
     "installed-check": "9.3.0",
     "jiti": "2.4.2",
     "knip": "5.42.0",
