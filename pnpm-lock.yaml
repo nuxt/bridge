@@ -263,8 +263,8 @@ importers:
         specifier: ^4.30.1
         version: 4.30.1
       unbuild:
-        specifier: 3.3.0
-        version: 3.3.0(typescript@5.3.3)(vue@2.7.16)
+        specifier: 3.3.1
+        version: 3.3.1(typescript@5.3.3)(vue@2.7.16)
       vue:
         specifier: ^2.7.16
         version: 2.7.16
@@ -311,8 +311,8 @@ importers:
         specifier: ^1.5.4
         version: 1.5.4
       unbuild:
-        specifier: 3.3.0
-        version: 3.3.0(typescript@5.3.3)(vue@3.5.13(typescript@5.3.3))
+        specifier: 3.3.1
+        version: 3.3.1(typescript@5.3.3)(vue@3.5.13(typescript@5.3.3))
       unimport:
         specifier: ^3.14.5
         version: 3.14.5(rollup@4.30.1)
@@ -7349,11 +7349,11 @@ packages:
     resolution: {integrity: sha512-nWJ91DjeOkej/TA8pXQ3myruKpKEYgqvpw9lz4OPHj/NWFNluYrjbz9j01CJ8yKQd2g4jFoOkINCTW2I5LEEyw==}
     engines: {node: '>= 0.4'}
 
-  unbuild@3.3.0:
-    resolution: {integrity: sha512-DRBK6KpMo4A2gAkQglItfLWbjJtiBfNfS87UCLf0yoDsxUUwU4AgQJru0dGoX0vW8bfMaBynvWgTUtzr4CJcbQ==}
+  unbuild@3.3.1:
+    resolution: {integrity: sha512-/5OeeHmW1JlWEyQw3SPkB9BV16lzr6C5i8D+O17NLx6ETgvCZ3ZlyXfWkVVfG2YCsv8xAVQCqJNJtbEAGwHg7A==}
     hasBin: true
     peerDependencies:
-      typescript: ^5.7.2
+      typescript: ^5.7.3
     peerDependenciesMeta:
       typescript:
         optional: true
@@ -16264,7 +16264,7 @@ snapshots:
       has-symbols: 1.1.0
       which-boxed-primitive: 1.1.1
 
-  unbuild@3.3.0(typescript@5.3.3)(vue@2.7.16):
+  unbuild@3.3.1(typescript@5.3.3)(vue@2.7.16):
     dependencies:
       '@rollup/plugin-alias': 5.1.1(rollup@4.30.1)
       '@rollup/plugin-commonjs': 28.0.2(rollup@4.30.1)
@@ -16297,7 +16297,7 @@ snapshots:
       - vue
       - vue-tsc
 
-  unbuild@3.3.0(typescript@5.3.3)(vue@3.5.13(typescript@5.3.3)):
+  unbuild@3.3.1(typescript@5.3.3)(vue@3.5.13(typescript@5.3.3)):
     dependencies:
       '@rollup/plugin-alias': 5.1.1(rollup@4.30.1)
       '@rollup/plugin-commonjs': 28.0.2(rollup@4.30.1)
