@@ -1,4 +1,3 @@
-
 import { defineComponent } from 'vue'
 import type { DefineComponent } from 'vue'
 import { useHead } from '@unhead/vue'

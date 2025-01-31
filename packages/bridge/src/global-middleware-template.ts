@@ -1,4 +1,3 @@
-
 import type { Nuxt, NuxtApp } from '@nuxt/schema'
 import { genArrayFromRaw, genImport, genSafeVariableName } from 'knitwork'
 import { resolveFiles } from '@nuxt/kit'
