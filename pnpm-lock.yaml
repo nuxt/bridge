@@ -101,7 +101,7 @@ importers:
         version: 2.0.2
       '@nuxt/kit':
         specifier: 3.15.4
-        version: 3.15.4(magicast@0.3.5)(rollup@4.34.4)
+        version: 3.15.4(magicast@0.3.5)
       '@nuxt/schema':
         specifier: 3.15.4
         version: 3.15.4
@@ -217,8 +217,8 @@ importers:
         specifier: ^1.5.4
         version: 1.5.4
       unimport:
-        specifier: ^3.14.6
-        version: 3.14.6(rollup@4.34.4)
+        specifier: ^4.1.1
+        version: 4.1.1
       unplugin:
         specifier: ^1.16.1
         version: 1.16.1
@@ -314,8 +314,8 @@ importers:
         specifier: 3.3.1
         version: 3.3.1(typescript@5.3.3)(vue@3.5.13(typescript@5.3.3))
       unimport:
-        specifier: ^3.14.6
-        version: 3.14.6(rollup@4.34.4)
+        specifier: ^4.1.1
+        version: 4.1.1
       untyped:
         specifier: ^1.5.2
         version: 1.5.2
@@ -7508,8 +7508,8 @@ packages:
   unimport@3.14.6:
     resolution: {integrity: sha512-CYvbDaTT04Rh8bmD8jz3WPmHYZRG/NnvYVzwD6V1YAlvvKROlAeNDUBhkBGzNav2RKaeuXvlWYaa1V4Lfi/O0g==}
 
-  unimport@4.0.0:
-    resolution: {integrity: sha512-FH+yZ36YaVlh0ZjHesP20Q4uL+wL0EqTNxDZcUupsIn6WRYXZAbIYEMDLTaLBpkNVzFpqZXS+am51/HR3ANUNw==}
+  unimport@4.1.1:
+    resolution: {integrity: sha512-j9+fijH6aDd05yv1fXlyt7HSxtOWtGtrZeYTVBsSUg57Iuf+Ps2itIZjeyu7bEQ4k0WOgYhHrdW8m/pJgOpl5g==}
     engines: {node: '>=18.12.0'}
 
   union-value@1.0.1:
@@ -7533,6 +7533,10 @@ packages:
   unpipe@1.0.0:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
+
+  unplugin-utils@0.2.3:
+    resolution: {integrity: sha512-unB2e2ogZwEoMw/X0Gq1vj2jaRKLmTh9wcSEJggESPllcrZI68uO7B8ykixbXqsSwG8r9T7qaHZudXIC/3qvhw==}
+    engines: {node: '>=18.12.0'}
 
   unplugin@1.16.1:
     resolution: {integrity: sha512-4/u/j4FrCKdi17jaxuJA0jClGxB1AvU2hw/IuayPc4ay1XGaJs/rbb4v5WKwAjNifjmXK9PIFyuPiaK8azyR9w==}
@@ -9687,7 +9691,7 @@ snapshots:
       node-html-parser: 6.1.13
       ufo: 1.5.4
 
-  '@nuxt/kit@3.15.4(magicast@0.3.5)(rollup@4.34.4)':
+  '@nuxt/kit@3.15.4(magicast@0.3.5)':
     dependencies:
       c12: 2.0.1(magicast@0.3.5)
       consola: 3.4.0
@@ -9707,11 +9711,10 @@ snapshots:
       std-env: 3.8.0
       ufo: 1.5.4
       unctx: 2.4.1
-      unimport: 4.0.0(rollup@4.34.4)
+      unimport: 4.1.1
       untyped: 1.5.2
     transitivePeerDependencies:
       - magicast
-      - rollup
       - supports-color
 
   '@nuxt/loading-screen@2.0.4':
@@ -9783,7 +9786,7 @@ snapshots:
 
   '@nuxt/test-utils@3.15.4(@types/node@20.11.20)(jiti@2.4.2)(magicast@0.3.5)(playwright-core@1.50.1)(terser@5.38.0)(typescript@5.3.3)(vitest@3.0.5(@types/node@20.11.20)(jiti@2.4.2)(terser@5.38.0)(yaml@2.5.1))(yaml@2.5.1)':
     dependencies:
-      '@nuxt/kit': 3.15.4(magicast@0.3.5)(rollup@4.34.4)
+      '@nuxt/kit': 3.15.4(magicast@0.3.5)
       '@nuxt/schema': 3.15.4
       c12: 2.0.1(magicast@0.3.5)
       consola: 3.4.0
@@ -9818,7 +9821,6 @@ snapshots:
       - less
       - lightningcss
       - magicast
-      - rollup
       - sass
       - sass-embedded
       - stylus
@@ -16642,9 +16644,8 @@ snapshots:
     transitivePeerDependencies:
       - rollup
 
-  unimport@4.0.0(rollup@4.34.4):
+  unimport@4.1.1:
     dependencies:
-      '@rollup/pluginutils': 5.1.4(rollup@4.34.4)
       acorn: 8.14.0
       escape-string-regexp: 5.0.0
       estree-walker: 3.0.3
@@ -16658,8 +16659,7 @@ snapshots:
       scule: 1.3.0
       strip-literal: 3.0.0
       unplugin: 2.1.2
-    transitivePeerDependencies:
-      - rollup
+      unplugin-utils: 0.2.3
 
   union-value@1.0.1:
     dependencies:
@@ -16681,6 +16681,11 @@ snapshots:
   universalify@2.0.0: {}
 
   unpipe@1.0.0: {}
+
+  unplugin-utils@0.2.3:
+    dependencies:
+      pathe: 2.0.2
+      picomatch: 4.0.2
 
   unplugin@1.16.1:
     dependencies:
@@ -16864,7 +16869,6 @@ snapshots:
       - lightningcss
       - magicast
       - playwright-core
-      - rollup
       - sass
       - sass-embedded
       - stylus
