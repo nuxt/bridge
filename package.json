@@ -31,18 +31,18 @@
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jsdoc": "50.6.3",
     "execa": "9.5.2",
-    "globby": "14.0.2",
-    "h3": "1.14.0",
+    "globby": "14.1.0",
+    "h3": "1.15.0",
     "installed-check": "9.3.0",
     "jiti": "2.4.2",
-    "knip": "5.43.6",
+    "knip": "5.44.4",
     "nuxi": "3.22.2",
     "ofetch": "1.4.1",
-    "pathe": "^2.0.2",
+    "pathe": "^2.0.3",
     "playwright-core": "1.50.1",
     "semver": "7.7.1",
     "std-env": "3.8.0",
-    "vitest": "3.0.5",
+    "vitest": "3.0.6",
     "vue": "2.7.16"
   },
   "resolutions": {
@@ -52,5 +52,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@10.2.0"
+  "packageManager": "pnpm@10.4.1"
 }
