@@ -58,8 +58,8 @@ importers:
         specifier: 5.43.6
         version: 5.43.6(@types/node@20.11.20)(typescript@5.3.3)
       nuxi:
-        specifier: 3.21.1
-        version: 3.21.1
+        specifier: 3.22.2
+        version: 3.22.2
       ofetch:
         specifier: 1.4.1
         version: 1.4.1
@@ -343,8 +343,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/bridge
       nuxi:
-        specifier: 3.21.1
-        version: 3.21.1
+        specifier: 3.22.2
+        version: 3.22.2
       nuxt:
         specifier: ^2.18.1
         version: 2.18.1(@vue/compiler-sfc@3.5.13)(buffer@6.0.3)(consola@3.4.0)(typescript@5.3.3)(vue@2.7.16)
@@ -5565,8 +5565,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  nuxi@3.21.1:
-    resolution: {integrity: sha512-72OhQHeQg15SKZaoDjBTdrki4zqjShgVo69Dou7jm/euXchoss+VOU4/s73lvAXiVN2g84ogGdNSe0112N7ldA==}
+  nuxi@3.22.2:
+    resolution: {integrity: sha512-QaxSecieGbh6aTrKC6czb73Lgb/OyV4Y+nXmrS1oAD/e2o2vWQ20uv9fSCBuHjwnAMADLdbKuhAK9EmJpLi0Ag==}
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
 
@@ -14404,7 +14404,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuxi@3.21.1: {}
+  nuxi@3.22.2: {}
 
   nuxt@2.18.1(@vue/compiler-sfc@3.5.13)(buffer@6.0.3)(consola@3.4.0)(typescript@5.3.3)(vue@2.7.16):
     dependencies:
