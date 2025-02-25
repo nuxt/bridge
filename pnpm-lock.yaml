@@ -199,8 +199,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       pkg-types:
-        specifier: ^1.3.1
-        version: 1.3.1
+        specifier: ^2.0.0
+        version: 2.0.0
       postcss-import-resolver:
         specifier: ^2.0.0
         version: 2.0.0
@@ -296,8 +296,8 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2
       pkg-types:
-        specifier: ^1.3.1
-        version: 1.3.1
+        specifier: ^2.0.0
+        version: 2.0.0
       postcss-import-resolver:
         specifier: ^2.0.0
         version: 2.0.0
@@ -5922,6 +5922,9 @@ packages:
 
   pkg-types@1.3.1:
     resolution: {integrity: sha512-/Jm5M4RvtBFVkKWRu2BLUTNP8/M2a+UwuAX+ae4770q1qVGtfjG+WTCupoZixokjmHiry8uI+dlY8KXYV5HVVQ==}
+
+  pkg-types@2.0.0:
+    resolution: {integrity: sha512-W+831FxieJW1CIAh3JMmHaMhK/SiSeyCqbSWqLjjvbjaPDDY0cRkspIfOx4vLkFNgfxnzSxxGFUiMHMm6QpvYA==}
 
   playwright-core@1.50.1:
     resolution: {integrity: sha512-ra9fsNWayuYumt+NiM069M6OkcRb1FZSK8bgi66AtpFoWkg2+y0bJSNmkFrWhMbEBbVKC/EruAHH3g0zmtwGmQ==}
@@ -14974,6 +14977,11 @@ snapshots:
       confbox: 0.1.8
       mlly: 1.7.4
       pathe: 2.0.2
+
+  pkg-types@2.0.0:
+    dependencies:
+      confbox: 0.1.8
+      pathe: 2.0.3
 
   playwright-core@1.50.1: {}
 
