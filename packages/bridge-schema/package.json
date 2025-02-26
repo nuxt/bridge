@@ -37,7 +37,7 @@
     "ufo": "^1.5.4",
     "unbuild": "3.3.1",
     "unimport": "^4.1.2",
-    "untyped": "^1.5.2"
+    "untyped": "^2.0.0"
   },
   "engines": {
     "node": ">=18.12.0"
