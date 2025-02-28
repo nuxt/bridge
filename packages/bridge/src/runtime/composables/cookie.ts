@@ -5,6 +5,7 @@ import type { CookieParseOptions, CookieSerializeOptions } from 'cookie-es'
 import { deleteCookie, getCookie, getRequestHeader, setCookie } from 'h3'
 import type { H3Event } from 'h3'
 import destr from 'destr'
+// @ts-expect-error only bundler resolution is available
 import { isEqual } from 'ohash/utils'
 import { klona } from 'klona'
 import { useNuxtApp } from '../nuxt'
