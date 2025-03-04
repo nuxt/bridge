@@ -247,9 +247,6 @@ importers:
       '@types/hash-sum':
         specifier: ^1.0.2
         version: 1.0.2
-      '@types/node-fetch':
-        specifier: ^3.0.3
-        version: 3.0.3
       '@types/webpack':
         specifier: ^4.41.40
         version: 4.41.40
@@ -2080,10 +2077,6 @@ packages:
 
   '@types/lodash@4.17.13':
     resolution: {integrity: sha512-lfx+dftrEZcdBPczf9d0Qv0x+j/rfNCMuC6OcfXmO8gkfeNAY88PgKUbvG56whcN23gc27yenwF6oJZXGFpYxg==}
-
-  '@types/node-fetch@3.0.3':
-    resolution: {integrity: sha512-HhggYPH5N+AQe/OmN6fmhKmRRt2XuNJow+R3pQwJxOOF9GuwM7O2mheyGeIrs5MOIeNjDEdgdoyHBOrFeJBR3g==}
-    deprecated: This is a stub types definition. node-fetch provides its own type definitions, so you do not need this installed.
 
   '@types/node@20.11.20':
     resolution: {integrity: sha512-7/rR21OS+fq8IyHTgtLkDK949uzsa6n8BkziAKtPVpugIkO6D+/ooXMvzXxDnZrmtXVfjb1bKQafYpb8s89LOg==}
@@ -10064,10 +10057,6 @@ snapshots:
       '@types/lodash': 4.17.13
 
   '@types/lodash@4.17.13': {}
-
-  '@types/node-fetch@3.0.3':
-    dependencies:
-      node-fetch: 3.3.2
 
   '@types/node@20.11.20':
     dependencies:
