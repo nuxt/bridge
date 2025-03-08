@@ -10,7 +10,7 @@
   "devDependencies": {
     "@nuxt/bridge": "latest",
     "nuxi": "3.22.5",
-    "nuxt": "^2.18.1"
+    "nuxt": "^3.12.4"
   },
   "dependencies": {
     "ufo": "^1.5.4"
