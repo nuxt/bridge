@@ -43,7 +43,7 @@
     "semver": "7.7.1",
     "std-env": "3.8.0",
     "vitest": "3.0.5",
-    "vue": "2.7.16"
+    "vue": "3.0.0"
   },
   "resolutions": {
     "@nuxt/bridge": "workspace:*",

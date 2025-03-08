@@ -84,7 +84,7 @@
     "@vue/reactivity": "^3.5.13",
     "rollup": "^4.34.4",
     "unbuild": "3.3.1",
-    "vue": "^2.7.16",
+    "vue": "^3.0.0",
     "vue-meta": "^2.4.0",
     "vue-router": "^3.6.5",
     "zhead": "^2.2.4"
