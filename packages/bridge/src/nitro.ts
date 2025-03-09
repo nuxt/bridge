@@ -11,6 +11,8 @@ import type { Nitro, NitroEventHandler, NitroDevEventHandler, NitroConfig } from
 import { Nuxt, NuxtPage } from '@nuxt/schema'
 import { defu } from 'defu'
 import { normalizeWebpackManifest } from 'vue-bundle-renderer'
+import { resolveModulePath } from 'exsolve'
+
 import { AsyncLoadingPlugin } from './async-loading'
 import { distDir } from './dirs'
 import { isDirectory, readDirRecursively } from './vite/utils/fs'
@@ -61,6 +63,8 @@ export async function setupNitroBridge () {
       filename: join(rootDir, '.nuxt/stats', '{name}.html')
     }
   }
+
+  const mockProxy = resolveModulePath('mocked-exports/proxy', { from: import.meta.url })
 
   // Resolve config
   const _nitroConfig = (nuxt.options as any).nitro || {} as NitroConfig
@@ -113,12 +117,12 @@ export async function setupNitroBridge () {
     },
     alias: {
       // Vue 2 mocks
-      encoding: 'unenv/runtime/mock/proxy',
-      he: 'unenv/runtime/mock/proxy',
-      resolve: 'unenv/runtime/mock/proxy',
-      'source-map': 'unenv/runtime/mock/proxy',
-      'lodash.template': 'unenv/runtime/mock/proxy',
-      'serialize-javascript': 'unenv/runtime/mock/proxy',
+      encoding: mockProxy,
+      he: mockProxy,
+      resolve: mockProxy,
+      'source-map': mockProxy,
+      'lodash.template': mockProxy,
+      'serialize-javascript': mockProxy,
 
       // Renderer
       '#vue-renderer': resolve(distDir, 'runtime/nitro/vue2'),

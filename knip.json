@@ -27,6 +27,7 @@
         "@babel/plugin-transform-typescript",
         "@nuxt/cli",
         "exit",
+        "mocked-exports",
         "zhead"
       ]
     },
