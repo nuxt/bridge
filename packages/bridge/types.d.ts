@@ -43,7 +43,6 @@ export interface BridgeConfig {
   transpile: boolean
   compatibility: boolean
   postcss8: boolean
-  resolve: boolean
   typescript: boolean | {
     /**
      * @deprecated please use `esbuild` instead
