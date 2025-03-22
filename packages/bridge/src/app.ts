@@ -142,6 +142,10 @@ export async function setupAppBridge (_options: any) {
         type: 'javascript/auto',
         include: [/node_modules/]
       })
+
+      if (Array.isArray(config.externals)) {
+        config.externals.push('node:crypto')
+      }
     }
   })
 
