@@ -6,6 +6,7 @@ import { componentsTypeTemplate, schemaTemplate, middlewareTypeTemplate } from '
 import { distDir } from './dirs'
 import { VueCompat } from './vue-compat'
 import { globalMiddlewareTemplate } from './global-middleware-template'
+import { ProtocolImportsPlugin } from './webpack/protocol-import-plugin'
 
 export async function setupAppBridge (_options: any) {
   const nuxt = useNuxt()
@@ -154,4 +155,6 @@ export async function setupAppBridge (_options: any) {
     src: resolve(distDir, 'runtime/error.plugin.server.mjs'),
     mode: 'server'
   })
+
+  addWebpackPlugin(new ProtocolImportsPlugin())
 }
