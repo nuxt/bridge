@@ -6,6 +6,7 @@ import { componentsTypeTemplate, schemaTemplate, middlewareTypeTemplate } from '
 import { distDir } from './dirs'
 import { VueCompat } from './vue-compat'
 import { globalMiddlewareTemplate } from './global-middleware-template'
+import { ProtocolImportPlugin } from './webpack/protocol-import-plugin'
 
 export async function setupAppBridge (_options: any) {
   const nuxt = useNuxt()
@@ -104,6 +105,8 @@ export async function setupAppBridge (_options: any) {
   })
 
   addTemplate(globalMiddlewareTemplate)
+
+  addWebpackPlugin(new ProtocolImportPlugin())
 
   // Alias vue3 utilities to vue2
   const { dst: vueCompat } = addTemplate({ src: resolve(distDir, 'runtime/vue2-bridge.mjs') })
