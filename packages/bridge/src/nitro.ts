@@ -120,7 +120,9 @@ export async function setupNitroBridge () {
       encoding: mockProxy,
       he: mockProxy,
       resolve: mockProxy,
-      'source-map': mockProxy,
+      ...nuxt.options.dev
+        ? {} 
+        : { 'source-map': mockProxy },
       'lodash.template': mockProxy,
       'serialize-javascript': mockProxy,
 
