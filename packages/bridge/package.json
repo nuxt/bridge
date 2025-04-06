@@ -37,7 +37,7 @@
     "@vitejs/plugin-legacy": "^6.0.1",
     "@vitejs/plugin-vue2": "^2.3.3",
     "acorn": "^8.14.0",
-    "cookie-es": "^1.2.2",
+    "cookie-es": "^2.0.0",
     "defu": "^6.1.4",
     "destr": "^2.0.3",
     "enhanced-resolve": "^5.18.1",
