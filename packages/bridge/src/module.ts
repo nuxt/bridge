@@ -31,7 +31,6 @@ export default defineNuxtModule({
     compatibility: true,
     meta: null,
     typescript: true,
-    resolve: true,
     macros: false
   } as BridgeConfig,
   async setup (opts, nuxt) {
@@ -144,9 +143,9 @@ export default defineNuxtModule({
         })
       }
     }
-    if (opts.resolve) {
-      setupBetterResolve()
-    }
+
+    setupBetterResolve()
+
     if (opts.transpile) {
       setupTranspile()
     }

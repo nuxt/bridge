@@ -85,7 +85,6 @@ jobs:
         builder: ['vite', 'webpack']
         transpile: ['transpile', 'no-transpile']
         compatibility: ['compatibility', 'no-compatibility']
-        resolve: ['resolve', 'no-resolve']
         typescript: ['isTSX', 'esbuild']
         vite-legacy: ['legacy', 'no-legacy']
         exclude:
@@ -94,8 +93,6 @@ jobs:
           - typescript: 'isTSX'
             builder: 'vite'
           - compatibility: 'no-compatibility'
-            builder: 'vite'
-          - resolve: 'no-resolve'
             builder: 'vite'
           - compatibility: 'no-compatibility'
             env: 'dev'
@@ -124,7 +121,6 @@ jobs:
           TEST_VITE_LEGACY: ${{ matrix.vite-legacy || 'legacy' }}
           TEST_TRANSPILE: ${{ matrix.transpile || 'transpile' }}
           TEST_COMPATIBILITY: ${{ matrix.compatibility || 'compatibility' }}
-          TEST_RESOLVE: ${{ matrix.resolve || 'resolve' }}
           TEST_TYPESCRIPT: ${{ matrix.typescript || 'isTSX' }}
           NODE_OPTIONS: --max-old-space-size=8192
 

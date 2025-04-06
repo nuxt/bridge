@@ -8,7 +8,6 @@ const bridgeConfig = {
   vite: process.env.TEST_BUILDER !== 'webpack' ? { legacy: process.env.TEST_VITE_LEGACY !== 'no-legacy' } : false,
   transpile: process.env.TEST_TRANSPILE !== 'no-transpile',
   compatibility: process.env.TEST_COMPATIBILITY !== 'no-compatibility',
-  resolve: process.env.TEST_RESOLVE !== 'no-resolve',
   typescript: {
     isTSX: !process.env.TEST_TYPESCRIPT || process.env.TEST_TYPESCRIPT === 'isTSX',
     esbuild: process.env.TEST_TYPESCRIPT === 'esbuild'
