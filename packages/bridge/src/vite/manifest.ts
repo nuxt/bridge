@@ -124,6 +124,8 @@ async function generateBuildManifest (ctx: ViteBuildContext) {
     })
   }
 
+  await ctx.nuxt.callHook('build:manifest', manifest)
+
   await writeClientManifest(manifest, ctx.nuxt.options.buildDir)
 
   // Remove SSR manifest from public client dir
