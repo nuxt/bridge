@@ -15,6 +15,12 @@
     },
     {
       "matchPackageNames": [
+        "h3"
+      ],
+      "groupName": "h3"
+    },
+    {
+      "matchPackageNames": [
         "vue-router"
       ],
       "allowedVersions": "!/4$/"
