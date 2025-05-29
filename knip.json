@@ -26,9 +26,9 @@
         "@babel/plugin-proposal-optional-chaining",
         "@babel/plugin-transform-typescript",
         "@nuxt/cli",
+        "@unhead/schema",
         "exit",
-        "mocked-exports",
-        "zhead"
+        "mocked-exports"
       ]
     },
     "playground": {
