@@ -23,26 +23,26 @@
   "devDependencies": {
     "@nuxt/test-utils": "3.19.1",
     "@nuxtjs/eslint-config-typescript": "12.1.0",
-    "@types/semver": "7.5.8",
-    "changelogen": "0.5.7",
-    "consola": "^3.4.0",
+    "@types/semver": "7.7.0",
+    "changelogen": "0.6.1",
+    "consola": "^3.4.2",
     "devalue": "5.1.1",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-jsdoc": "50.6.3",
-    "execa": "9.5.2",
-    "globby": "14.0.2",
+    "eslint-plugin-jsdoc": "50.6.17",
+    "execa": "9.6.0",
+    "globby": "14.1.0",
     "h3": "1.14.0",
     "installed-check": "9.3.0",
     "jiti": "2.4.2",
-    "knip": "5.43.6",
+    "knip": "5.59.1",
     "nuxi": "3.25.1",
     "ofetch": "1.4.1",
-    "pathe": "^2.0.2",
-    "playwright-core": "1.50.1",
-    "semver": "7.7.1",
-    "std-env": "3.8.0",
-    "vitest": "3.0.5",
+    "pathe": "^2.0.3",
+    "playwright-core": "1.52.0",
+    "semver": "7.7.2",
+    "std-env": "3.9.0",
+    "vitest": "3.1.4",
     "vue": "2.7.16"
   },
   "resolutions": {
@@ -53,5 +53,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@10.2.0"
+  "packageManager": "pnpm@10.11.0"
 }
