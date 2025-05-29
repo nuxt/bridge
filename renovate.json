@@ -35,10 +35,8 @@
       "groupName": "nuxt core",
       "groupSlug": "nuxt",
       "matchPackageNames": [
-        "nuxi"
-      ],
-      "matchPackagePatterns": [
-        "^@nuxt/"
+        "nuxi",
+        "/^@nuxt//"
       ]
     }
   ]
