@@ -94,5 +94,5 @@
   "engines": {
     "node": "^18.20.5 || ^20.0.0 || >=22.0.0"
   },
-  "packageManager": "pnpm@10.11.0"
+  "packageManager": "pnpm@10.11.1"
 }
