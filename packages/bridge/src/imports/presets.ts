@@ -55,6 +55,10 @@ const granularAppPresets: InlinePreset[] = [
   {
     imports: ['useAsyncData', 'useFetch', 'useHydration'],
     from: '#app/mocks'
+  },
+  {
+    imports: ['useRuntimeHook'],
+    from: '#app/composables/runtime-hook'
   }
 ]
 
