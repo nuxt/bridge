@@ -13,9 +13,7 @@
     "types": [
       "node"
     ],
-    "paths": {
-      "#app": ["./packages/bridge/src/runtime/index"]
-    }
+    "paths": {}
   },
   "exclude": [
     "**/*/dist/*",
