@@ -28,22 +28,22 @@
     "consola": "^3.4.2",
     "devalue": "5.1.1",
     "eslint": "8.57.1",
-    "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-jsdoc": "51.0.1",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-jsdoc": "51.2.1",
     "execa": "9.6.0",
     "globby": "14.1.0",
     "h3": "1.14.0",
     "happy-dom": "^18.0.1",
     "installed-check": "9.3.0",
     "jiti": "2.4.2",
-    "knip": "5.61.0",
+    "knip": "5.61.2",
     "nuxi": "3.25.1",
     "ofetch": "1.4.1",
     "pathe": "^2.0.3",
-    "playwright-core": "1.53.0",
+    "playwright-core": "1.53.1",
     "semver": "7.7.2",
     "std-env": "3.9.0",
-    "vitest": "3.2.3",
+    "vitest": "3.2.4",
     "vue": "2.7.16"
   },
   "resolutions": {
@@ -54,5 +54,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@10.12.1"
+  "packageManager": "pnpm@10.12.2"
 }
