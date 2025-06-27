@@ -38,10 +38,10 @@ export interface AsyncDataOptions<
   default?: () => DefaultT | Ref<DefaultT>
   /**
    * Provide a function which returns cached data.
-   * A `null` or `undefined` return value will trigger a fetch.
+   * A `undefined` return value will trigger a fetch.
    * Default is `key => nuxt.isHydrating ? nuxt.payload.data[key] : nuxt.static.data[key]` which only caches data when payloadExtraction is enabled.
    */
-  getCachedData?: (key: string, nuxtApp: NuxtAppCompat) => DataT
+  getCachedData?: (key: string, nuxtApp: NuxtAppCompat) => NoInfer<DataT> | undefined
   /**
    * A function that can be used to alter handler function result after resolving
    */
