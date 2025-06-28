@@ -48,6 +48,9 @@ export interface NuxtAppCompat {
   }
 
   provide: (name: string, value: any) => void
+
+  /** @internal */
+  _cookies?: Record<string, unknown>
 }
 
 export interface IncomingMessage extends HttpIncomingMessage {
