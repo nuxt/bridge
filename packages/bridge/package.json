@@ -34,7 +34,7 @@
     "@rollup/plugin-replace": "^6.0.2",
     "@unhead/ssr": "^1.11.20",
     "@unhead/vue": "^1.11.20",
-    "@vitejs/plugin-legacy": "^6.1.1",
+    "@vitejs/plugin-legacy": "^7.0.0",
     "@vitejs/plugin-vue2": "^2.3.3",
     "acorn": "^8.15.0",
     "cookie-es": "^2.0.0",
