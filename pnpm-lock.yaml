@@ -15,7 +15,7 @@ importers:
     devDependencies:
       '@nuxt/test-utils':
         specifier: 3.19.2
-        version: 3.19.2(happy-dom@18.0.1)(magicast@0.3.5)(playwright-core@1.53.1)(typescript@5.8.3)(vitest@3.2.4(@types/node@24.0.10)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1))
+        version: 3.19.2(happy-dom@18.0.1)(magicast@0.3.5)(playwright-core@1.53.2)(typescript@5.8.3)(vitest@3.2.4(@types/node@24.0.10)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1))
       '@nuxtjs/eslint-config-typescript':
         specifier: 12.1.0
         version: 12.1.0(eslint@8.57.1)(typescript@5.8.3)
@@ -23,8 +23,8 @@ importers:
         specifier: 7.7.0
         version: 7.7.0
       changelogen:
-        specifier: 0.6.1
-        version: 0.6.1(magicast@0.3.5)
+        specifier: 0.6.2
+        version: 0.6.2(magicast@0.3.5)
       consola:
         specifier: ^3.4.2
         version: 3.4.2
@@ -38,8 +38,8 @@ importers:
         specifier: 2.32.0
         version: 2.32.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.8.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)
       eslint-plugin-jsdoc:
-        specifier: 51.3.1
-        version: 51.3.1(eslint@8.57.1)
+        specifier: 51.3.4
+        version: 51.3.4(eslint@8.57.1)
       execa:
         specifier: 9.6.0
         version: 9.6.0
@@ -71,8 +71,8 @@ importers:
         specifier: ^2.0.3
         version: 2.0.3
       playwright-core:
-        specifier: 1.53.1
-        version: 1.53.1
+        specifier: 1.53.2
+        version: 1.53.2
       semver:
         specifier: 7.7.2
         version: 7.7.2
@@ -95,7 +95,7 @@ importers:
         specifier: ^7.21.0
         version: 7.21.0(@babel/core@7.28.0)
       '@babel/plugin-transform-typescript':
-        specifier: ^7.27.1
+        specifier: ^7.28.0
         version: 7.28.0(@babel/core@7.28.0)
       '@nuxt/bridge-schema':
         specifier: workspace:*
@@ -209,7 +209,7 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       pkg-types:
-        specifier: ^2.1.1
+        specifier: ^2.2.0
         version: 2.2.0
       postcss-import-resolver:
         specifier: ^2.0.0
@@ -246,7 +246,7 @@ importers:
         version: 2.1.1
     devDependencies:
       '@babel/core':
-        specifier: ^7.27.7
+        specifier: ^7.28.0
         version: 7.28.0
       '@types/estree':
         specifier: ^1.0.8
@@ -267,7 +267,7 @@ importers:
         specifier: ^3.5.17
         version: 3.5.17
       rollup:
-        specifier: ^4.44.1
+        specifier: ^4.44.2
         version: 4.44.2
       unbuild:
         specifier: 3.5.0
@@ -303,7 +303,7 @@ importers:
         specifier: ^2.0.3
         version: 2.0.3
       pkg-types:
-        specifier: ^2.1.1
+        specifier: ^2.2.0
         version: 2.2.0
       postcss-import-resolver:
         specifier: ^2.0.0
@@ -3003,8 +3003,8 @@ packages:
     resolution: {integrity: sha512-zgVZuo2WcZgfUEmsn6eO3kINexW8RAE4maiQ8QNs8CtpPCSyMiYsULR3HQYkm3w8FIA3SberyMJMSldGsW+U3w==}
     engines: {node: ^12.17.0 || ^14.13 || >=16.0.0}
 
-  changelogen@0.6.1:
-    resolution: {integrity: sha512-rTw2bZgiEHMgyYzWFMH+qTMFOSpCf4qwmd8LyxLDUKCtL4T/7O7978tPPtKYpjiFbPoHG64y4ugdF0Mt/l+lQg==}
+  changelogen@0.6.2:
+    resolution: {integrity: sha512-QtC7+r9BxoUm+XDAwhLbz3CgU134J1ytfE3iCpLpA4KFzX2P1e6s21RrWDwUBzfx66b1Rv+6lOA2nS2btprd+A==}
     hasBin: true
 
   chardet@0.7.0:
@@ -4070,8 +4070,8 @@ packages:
       '@typescript-eslint/parser':
         optional: true
 
-  eslint-plugin-jsdoc@51.3.1:
-    resolution: {integrity: sha512-9v/e6XyrLf1HIs/uPCgm3GcUpH4BeuGVZJk7oauKKyS7su7d5Q6zx4Fq6TiYh+w7+b4Svy7ZWVCcNZJNx3y52w==}
+  eslint-plugin-jsdoc@51.3.4:
+    resolution: {integrity: sha512-maz6qa95+sAjMr9m5oRyfejc+mnyQWsWSe9oyv9371bh4/T0kWOMryJNO4h8rEd97wo/9lbzwi3OOX4rDhnAzg==}
     engines: {node: '>=20.11.0'}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -6184,8 +6184,8 @@ packages:
   pkg-types@2.2.0:
     resolution: {integrity: sha512-2SM/GZGAEkPp3KWORxQZns4M+WSeXbC2HEvmOIJe3Cmiv6ieAJvdVhDldtHqM5J1Y7MrR1XhkBT/rMlhh9FdqQ==}
 
-  playwright-core@1.53.1:
-    resolution: {integrity: sha512-Z46Oq7tLAyT0lGoFx4DOuB1IA9D1TPj0QkYxpPVUnGDqHHvDpCftu1J2hM2PiWsNMoZh8+LQaarAWcDfPBc6zg==}
+  playwright-core@1.53.2:
+    resolution: {integrity: sha512-ox/OytMy+2w1jcYEYlOo1Hhp8hZkLCximMTUTMBXjGUA1KoFfiSZ+DU+3a739jsPY0yoKH2TFy9S2fsJas8yAw==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -10106,7 +10106,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@nuxt/test-utils@3.19.2(happy-dom@18.0.1)(magicast@0.3.5)(playwright-core@1.53.1)(typescript@5.8.3)(vitest@3.2.4(@types/node@24.0.10)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1))':
+  '@nuxt/test-utils@3.19.2(happy-dom@18.0.1)(magicast@0.3.5)(playwright-core@1.53.2)(typescript@5.8.3)(vitest@3.2.4(@types/node@24.0.10)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1))':
     dependencies:
       '@nuxt/kit': 3.17.6(magicast@0.3.5)
       c12: 3.0.4(magicast@0.3.5)
@@ -10130,11 +10130,11 @@ snapshots:
       tinyexec: 1.0.1
       ufo: 1.6.1
       unplugin: 2.3.5
-      vitest-environment-nuxt: 1.0.1(happy-dom@18.0.1)(magicast@0.3.5)(playwright-core@1.53.1)(typescript@5.8.3)(vitest@3.2.4(@types/node@24.0.10)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1))
+      vitest-environment-nuxt: 1.0.1(happy-dom@18.0.1)(magicast@0.3.5)(playwright-core@1.53.2)(typescript@5.8.3)(vitest@3.2.4(@types/node@24.0.10)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1))
       vue: 3.5.17(typescript@5.8.3)
     optionalDependencies:
       happy-dom: 18.0.1
-      playwright-core: 1.53.1
+      playwright-core: 1.53.2
       vitest: 3.2.4(@types/node@24.0.10)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1)
     transitivePeerDependencies:
       - magicast
@@ -11900,7 +11900,7 @@ snapshots:
 
   chalk@5.4.1: {}
 
-  changelogen@0.6.1(magicast@0.3.5):
+  changelogen@0.6.2(magicast@0.3.5):
     dependencies:
       c12: 3.0.4(magicast@0.3.5)
       confbox: 0.2.2
@@ -12969,7 +12969,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-jsdoc@51.3.1(eslint@8.57.1):
+  eslint-plugin-jsdoc@51.3.4(eslint@8.57.1):
     dependencies:
       '@es-joy/jsdoccomment': 0.52.0
       are-docs-informative: 0.0.2
@@ -15478,7 +15478,7 @@ snapshots:
       exsolve: 1.0.7
       pathe: 2.0.3
 
-  playwright-core@1.53.1: {}
+  playwright-core@1.53.2: {}
 
   pluralize@8.0.0: {}
 
@@ -17625,9 +17625,9 @@ snapshots:
       jiti: 2.4.2
       terser: 5.43.1
 
-  vitest-environment-nuxt@1.0.1(happy-dom@18.0.1)(magicast@0.3.5)(playwright-core@1.53.1)(typescript@5.8.3)(vitest@3.2.4(@types/node@24.0.10)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1)):
+  vitest-environment-nuxt@1.0.1(happy-dom@18.0.1)(magicast@0.3.5)(playwright-core@1.53.2)(typescript@5.8.3)(vitest@3.2.4(@types/node@24.0.10)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1)):
     dependencies:
-      '@nuxt/test-utils': 3.19.2(happy-dom@18.0.1)(magicast@0.3.5)(playwright-core@1.53.1)(typescript@5.8.3)(vitest@3.2.4(@types/node@24.0.10)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1))
+      '@nuxt/test-utils': 3.19.2(happy-dom@18.0.1)(magicast@0.3.5)(playwright-core@1.53.2)(typescript@5.8.3)(vitest@3.2.4(@types/node@24.0.10)(happy-dom@18.0.1)(jiti@2.4.2)(terser@5.43.1))
     transitivePeerDependencies:
       - '@cucumber/cucumber'
       - '@jest/globals'
