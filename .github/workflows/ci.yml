@@ -31,7 +31,7 @@ jobs:
       - run: corepack enable
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 22
+          node-version: 20
           cache: "pnpm"
 
       - name: Install dependencies
@@ -47,7 +47,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/*/dist
-          key: ubuntu-latest-node-v22-${{ github.sha }}
+          key: ubuntu-latest-node-v20-${{ github.sha }}
 
   lint:
     runs-on: ubuntu-latest
@@ -57,7 +57,7 @@ jobs:
       - run: corepack enable
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 22
+          node-version: 20
           cache: "pnpm"
 
       - name: 📦 Install dependencies
@@ -105,7 +105,7 @@ jobs:
       - run: corepack enable
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 22
+          node-version: 20
           cache: "pnpm"
 
       - name: 📦 Install dependencies
@@ -137,7 +137,7 @@ jobs:
       - run: corepack enable
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 22
+          node-version: 20
           cache: "pnpm"
 
       - name: Install dependencies
@@ -166,7 +166,7 @@ jobs:
       - run: corepack enable
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
-          node-version: 22
+          node-version: 20
           cache: "pnpm"
 
       - name: 📦 Install dependencies
@@ -176,7 +176,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/*/dist
-          key: ubuntu-latest-node-v22-${{ github.sha }}
+          key: ubuntu-latest-node-v20-${{ github.sha }}
 
       - name: Release nightly version
         run: ./scripts/release-edge.sh
