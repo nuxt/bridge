@@ -47,7 +47,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: packages/*/dist
-          key: ubuntu-latest-node-v20-${{ github.sha }}
+          key: ubuntu-latest-${{ github.sha }}
 
   lint:
     runs-on: ubuntu-latest
