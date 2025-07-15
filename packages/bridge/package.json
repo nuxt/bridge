@@ -48,7 +48,7 @@
     "externality": "^1.0.2",
     "fs-extra": "^10.1.0",
     "get-port-please": "^3.2.0",
-    "h3": "~1.14.0",
+    "h3": "~1.15.3",
     "hash-sum": "^2.0.0",
     "hookable": "5.5.3",
     "klona": "^2.0.6",
