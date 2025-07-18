@@ -37,7 +37,16 @@
       "matchPackageNames": [
         "nuxi",
         "/^@nuxt//"
-      ]
+      ],
+      "allowedVersions": "!/3$/"
+    },
+    {
+      "matchPackageNames": [
+        "@unhead/vue",
+        "@unhead/ssr",
+        "@unhead/schema"
+      ],
+      "allowedVersions": "!/1$/"
     }
   ]
 }
