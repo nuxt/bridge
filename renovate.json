@@ -46,7 +46,7 @@
         "@unhead/ssr",
         "@unhead/schema"
       ],
-      "allowedVersions": "!/1$/"
+      "allowedVersions": "<2"
     }
   ]
 }
