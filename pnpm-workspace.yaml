@@ -1,3 +1,6 @@
 packages:
-  - "packages/**"
-  - "playground"
+  - packages/**
+  - playground
+
+patchedDependencies:
+  node-mock-http: patches/node-mock-http.patch
