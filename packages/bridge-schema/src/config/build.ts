@@ -1,5 +1,5 @@
 import { defineUntypedSchema } from 'untyped'
-import defu from 'defu'
+import { defu } from 'defu'
 import { join } from 'pathe'
 import { isCI, isTest } from 'std-env'
 import { normalizeURL, withTrailingSlash } from 'ufo'
