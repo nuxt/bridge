@@ -1,7 +1,7 @@
 import { existsSync, readdirSync } from 'node:fs'
 import { defineUntypedSchema } from 'untyped'
 import { resolve, join } from 'pathe'
-import defu from 'defu'
+import { defu } from 'defu'
 import type { AppHeadMetaObject } from '../types/head'
 
 export default defineUntypedSchema({
