@@ -38,8 +38,8 @@ importers:
         specifier: 2.32.0
         version: 2.32.0(@typescript-eslint/parser@6.21.0(eslint@8.57.1)(typescript@5.8.3))(eslint-import-resolver-typescript@3.10.1)(eslint@8.57.1)
       eslint-plugin-jsdoc:
-        specifier: 52.0.2
-        version: 52.0.2(eslint@8.57.1)
+        specifier: 52.0.4
+        version: 52.0.4(eslint@8.57.1)
       execa:
         specifier: 9.6.0
         version: 9.6.0
@@ -122,11 +122,11 @@ importers:
         specifier: ^1.11.20
         version: 1.11.20(vue@2.7.16)
       '@vitejs/plugin-legacy':
-        specifier: ^7.1.0
-        version: 7.1.0(terser@5.43.1)(vite@7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))
+        specifier: ^7.2.1
+        version: 7.2.1(terser@5.43.1)(vite@7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))
       '@vitejs/plugin-vue2':
         specifier: ^2.3.3
-        version: 2.3.3(vite@7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))(vue@2.7.16)
+        version: 2.3.3(vite@7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))(vue@2.7.16)
       acorn:
         specifier: ^8.15.0
         version: 8.15.0
@@ -140,8 +140,8 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5
       enhanced-resolve:
-        specifier: ^5.18.2
-        version: 5.18.2
+        specifier: ^5.18.3
+        version: 5.18.3
       esbuild-loader:
         specifier: ^4.3.0
         version: 4.3.0(webpack@4.47.0)
@@ -236,8 +236,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       vite:
-        specifier: ~7.0.6
-        version: 7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
+        specifier: ~7.1.1
+        version: 7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
       vite-node:
         specifier: ^3.2.4
         version: 3.2.4(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
@@ -337,8 +337,8 @@ importers:
         specifier: ^2.12.4
         version: 2.12.4(@netlify/blobs@9.1.2)
       vite:
-        specifier: ~7.0.6
-        version: 7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
+        specifier: ~7.1.1
+        version: 7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
 
   playground:
     dependencies:
@@ -2658,8 +2658,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  '@vitejs/plugin-legacy@7.1.0':
-    resolution: {integrity: sha512-dzpcfN7gWWgzUwSxv7/ntUTEvoA8BYQWsdrawZFfwDSbitsEOXj8oSLn7I8QHJ8ijDukmCxsuUcib42EyTEVMw==}
+  '@vitejs/plugin-legacy@7.2.1':
+    resolution: {integrity: sha512-CaXb/y0mlfu7jQRELEJJc2/5w2bX2m1JraARgFnvSB2yfvnCNJVWWlqAo6WjnKoepOwKx8gs0ugJThPLKCOXIg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       terser: ^5.16.0
@@ -3761,6 +3761,9 @@ packages:
   core-js@3.44.0:
     resolution: {integrity: sha512-aFCtd4l6GvAXwVEh3XbbVqJGHDJt0OZRa+5ePGx3LLwi12WfexqQxcsohb2wgsa/92xtl19Hd66G/L+TaAxDMw==}
 
+  core-js@3.45.0:
+    resolution: {integrity: sha512-c2KZL9lP4DjkN3hk/an4pWn5b5ZefhRJnAc42n6LJ19kSnbeRbdQZE5dSeE2LBol1OwJD3X1BQvFTAsa8ReeDA==}
+
   core-util-is@1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
 
@@ -4263,8 +4266,8 @@ packages:
     resolution: {integrity: sha512-Nv9m36S/vxpsI+Hc4/ZGRs0n9mXqSWGGq49zxb/cJfPAQMbUtttJAlNPS4AQzaBdw/pKskw5bMbekT/Y7W/Wlg==}
     engines: {node: '>=6.9.0'}
 
-  enhanced-resolve@5.18.2:
-    resolution: {integrity: sha512-6Jw4sE1maoRJo3q8MsSIn2onJFbLTOjY9hlx4DZXmOKvLRd1Ok2kXmAGXaafL2+ijsJZ1ClYbl/pmqr9+k4iUQ==}
+  enhanced-resolve@5.18.3:
+    resolution: {integrity: sha512-d4lC8xfavMeBjzGr2vECC3fsGXziXZQyJxD868h2M/mBI3PwAuODxAkLkq5HYuvrPYcUtiLzsTo8U3PgX3Ocww==}
     engines: {node: '>=10.13.0'}
 
   entities@2.2.0:
@@ -4440,8 +4443,8 @@ packages:
       '@typescript-eslint/parser':
         optional: true
 
-  eslint-plugin-jsdoc@52.0.2:
-    resolution: {integrity: sha512-fYrnc7OpRifxxKjH78Y9/D/EouQDYD3G++bpR1Y+A+fy+CMzKZAdGIiHTIxCd2U10hb2y1NxN5TJt9aupq1vmw==}
+  eslint-plugin-jsdoc@52.0.4:
+    resolution: {integrity: sha512-be5OzGlLExvcK13Il3noU7/v7WmAQGenTmCaBKf1pwVtPOb6X+PGFVnJad0QhMj4KKf45XjE4hbsBxv25q1fTg==}
     engines: {node: '>=20.11.0'}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -8465,8 +8468,8 @@ packages:
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
 
-  vite@7.0.6:
-    resolution: {integrity: sha512-MHFiOENNBd+Bd9uvc8GEsIzdkn1JxMmEeYX35tI3fv0sJBUTfW5tQsoaOwuY4KhBI09A3dUJ/DXf2yxPVPUceg==}
+  vite@7.1.1:
+    resolution: {integrity: sha512-yJ+Mp7OyV+4S+afWo+QyoL9jFWD11QFH0i5i7JypnfTcA1rmgxCbiA8WwAICDEtZ1Z1hzrVhN8R8rGTqkTY8ZQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -11471,7 +11474,7 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vitejs/plugin-legacy@7.1.0(terser@5.43.1)(vite@7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))':
+  '@vitejs/plugin-legacy@7.2.1(terser@5.43.1)(vite@7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))':
     dependencies:
       '@babel/core': 7.28.0
       '@babel/plugin-transform-dynamic-import': 7.27.1(@babel/core@7.28.0)
@@ -11481,18 +11484,18 @@ snapshots:
       babel-plugin-polyfill-regenerator: 0.6.5(@babel/core@7.28.0)
       browserslist: 4.25.1
       browserslist-to-esbuild: 2.1.1(browserslist@4.25.1)
-      core-js: 3.44.0
+      core-js: 3.45.0
       magic-string: 0.30.17
       regenerator-runtime: 0.14.1
       systemjs: 6.15.1
       terser: 5.43.1
-      vite: 7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
+      vite: 7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue2@2.3.3(vite@7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))(vue@2.7.16)':
+  '@vitejs/plugin-vue2@2.3.3(vite@7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))(vue@2.7.16)':
     dependencies:
-      vite: 7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
+      vite: 7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
       vue: 2.7.16
 
   '@vitest/expect@3.2.4':
@@ -11503,13 +11506,13 @@ snapshots:
       chai: 5.2.1
       tinyrainbow: 2.0.0
 
-  '@vitest/mocker@3.2.4(vite@7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))':
+  '@vitest/mocker@3.2.4(vite@7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))':
     dependencies:
       '@vitest/spy': 3.2.4
       estree-walker: 3.0.3
       magic-string: 0.30.17
     optionalDependencies:
-      vite: 7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
+      vite: 7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
 
   '@vitest/pretty-format@3.2.4':
     dependencies:
@@ -12748,6 +12751,8 @@ snapshots:
 
   core-js@3.44.0: {}
 
+  core-js@3.45.0: {}
+
   core-util-is@1.0.3: {}
 
   cosmiconfig@7.1.0:
@@ -13303,7 +13308,7 @@ snapshots:
       memory-fs: 0.5.0
       tapable: 1.1.3
 
-  enhanced-resolve@5.18.2:
+  enhanced-resolve@5.18.3:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.2.2
@@ -13610,7 +13615,7 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  eslint-plugin-jsdoc@52.0.2(eslint@8.57.1):
+  eslint-plugin-jsdoc@52.0.4(eslint@8.57.1):
     dependencies:
       '@es-joy/jsdoccomment': 0.52.0
       are-docs-informative: 0.0.2
@@ -13875,7 +13880,7 @@ snapshots:
 
   externality@1.0.2:
     dependencies:
-      enhanced-resolve: 5.18.2
+      enhanced-resolve: 5.18.3
       mlly: 1.7.4
       pathe: 1.1.2
       ufo: 1.6.1
@@ -18243,7 +18248,7 @@ snapshots:
       debug: 4.4.1
       es-module-lexer: 1.7.0
       pathe: 2.0.3
-      vite: 7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
+      vite: 7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
     transitivePeerDependencies:
       - '@types/node'
       - jiti
@@ -18258,9 +18263,9 @@ snapshots:
       - tsx
       - yaml
 
-  vite@7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1):
+  vite@7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1):
     dependencies:
-      esbuild: 0.25.6
+      esbuild: 0.25.8
       fdir: 6.4.6(picomatch@4.0.3)
       picomatch: 4.0.3
       postcss: 8.5.6
@@ -18293,7 +18298,7 @@ snapshots:
     dependencies:
       '@types/chai': 5.2.2
       '@vitest/expect': 3.2.4
-      '@vitest/mocker': 3.2.4(vite@7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))
+      '@vitest/mocker': 3.2.4(vite@7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1))
       '@vitest/pretty-format': 3.2.4
       '@vitest/runner': 3.2.4
       '@vitest/snapshot': 3.2.4
@@ -18311,7 +18316,7 @@ snapshots:
       tinyglobby: 0.2.14
       tinypool: 1.1.1
       tinyrainbow: 2.0.0
-      vite: 7.0.6(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
+      vite: 7.1.1(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
       vite-node: 3.2.4(@types/node@24.0.13)(jiti@2.5.1)(terser@5.43.1)
       why-is-node-running: 2.3.0
     optionalDependencies:
