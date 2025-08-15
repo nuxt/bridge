@@ -22,6 +22,6 @@ fi
 for p in packages/* ; do
   pushd $p
   echo "Publishing $p"
-  pnpm publish --access public --no-git-checks
+  pnpm publish --access public --no-git-checks --tag latest
   popd
 done
