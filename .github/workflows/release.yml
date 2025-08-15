@@ -1,9 +1,10 @@
 name: release
 
 on:
-  push:
-    tags: 
-      - "v*"
+  pull_request_target:
+    types: [closed]
+    branches:
+      - main
 
 # Remove default permissions of GITHUB_TOKEN for security
 # https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
@@ -11,8 +12,11 @@ permissions: {}
 
 jobs:
   release:
-    if: github.repository_owner == 'nuxt'
+    if: github.repository == 'nuxt/bridge' && github.event.pull_request.merged == true && (startsWith(github.event.pull_request.head.ref, 'v3.') || startsWith(github.event.pull_request.head.ref, 'v4.'))
+    concurrency:
+      group: release
     permissions:
+      contents: write
       id-token: write
     runs-on: ubuntu-latest
     timeout-minutes: 20
@@ -27,8 +31,25 @@ jobs:
           registry-url: "https://registry.npmjs.org/"
           cache: "pnpm"
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: pnpm install
 
-      - name: Release
+      - name: 🛠 Build and release project
         run: ./scripts/release.sh
+        env:
+          TAG: latest
+
+      - name: 🏷️ Create tag
+        env:
+          TAG_NAME: ${{ github.event.pull_request.head.ref }}
+        run: |
+          git tag "$TAG_NAME"
+          git push origin "$TAG_NAME"
+
+      - name: 🛳️ Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG_NAME: ${{ github.event.pull_request.head.ref }}
+          RELEASE_NAME: ${{ github.event.pull_request.head.ref }}
+          BODY: ${{ github.event.pull_request.body }}
+        run: gh release create "$TAG_NAME" --title "$RELEASE_NAME" --notes "$BODY"
