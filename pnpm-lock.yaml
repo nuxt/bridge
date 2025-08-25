@@ -264,8 +264,8 @@ importers:
         specifier: ^2.7.16
         version: 2.7.16
       '@vue/reactivity':
-        specifier: ^3.5.19
-        version: 3.5.19
+        specifier: ^3.5.20
+        version: 3.5.20
       rollup:
         specifier: ^4.48.1
         version: 4.48.1
@@ -2649,8 +2649,8 @@ packages:
   '@vue/reactivity@3.5.18':
     resolution: {integrity: sha512-x0vPO5Imw+3sChLM5Y+B6G1zPjwdOri9e8V21NnTnlEvkxatHEH5B5KEAJcjuzQ7BsjGrKtfzuQ5eQwXh8HXBg==}
 
-  '@vue/reactivity@3.5.19':
-    resolution: {integrity: sha512-4bueZg2qs5MSsK2dQk3sssV0cfvxb/QZntTC8v7J448GLgmfPkQ+27aDjlt40+XFqOwUq5yRxK5uQh14Fc9eVA==}
+  '@vue/reactivity@3.5.20':
+    resolution: {integrity: sha512-hS8l8x4cl1fmZpSQX/NXlqWKARqEsNmfkwOIYqtR2F616NGfsLUm0G6FQBK6uDKUCVyi1YOL8Xmt/RkZcd/jYQ==}
 
   '@vue/runtime-core@3.5.18':
     resolution: {integrity: sha512-DUpHa1HpeOQEt6+3nheUfqVXRog2kivkXHUhoqJiKR33SO4x+a5uNOMkV487WPerQkL0vUuRvq/7JhRgLW3S+w==}
@@ -2666,8 +2666,8 @@ packages:
   '@vue/shared@3.5.18':
     resolution: {integrity: sha512-cZy8Dq+uuIXbxCZpuLd2GJdeSO/lIzIspC2WtkqIpje5QyFbvLaI5wZtdUjLHjGZrlVX6GilejatWwVYYRc8tA==}
 
-  '@vue/shared@3.5.19':
-    resolution: {integrity: sha512-IhXCOn08wgKrLQxRFKKlSacWg4Goi1BolrdEeLYn6tgHjJNXVrWJ5nzoxZqNwl5p88aLlQ8LOaoMa3AYvaKJ/Q==}
+  '@vue/shared@3.5.20':
+    resolution: {integrity: sha512-SoRGP596KU/ig6TfgkCMbXkr4YJ91n/QSdMuqeP5r3hVIYA3CPHUBCc7Skak0EAKV+5lL4KyIh61VA/pK1CIAA==}
 
   '@webassemblyjs/ast@1.9.0':
     resolution: {integrity: sha512-C6wW5L+b7ogSDVqymbkkvuW9kruN//YisMED04xzeBBqjHa2FYnmvOlS6Xj68xWQRgWvI9cIglsjFowH/RJyEA==}
@@ -11538,9 +11538,9 @@ snapshots:
     dependencies:
       '@vue/shared': 3.5.18
 
-  '@vue/reactivity@3.5.19':
+  '@vue/reactivity@3.5.20':
     dependencies:
-      '@vue/shared': 3.5.19
+      '@vue/shared': 3.5.20
 
   '@vue/runtime-core@3.5.18':
     dependencies:
@@ -11562,7 +11562,7 @@ snapshots:
 
   '@vue/shared@3.5.18': {}
 
-  '@vue/shared@3.5.19': {}
+  '@vue/shared@3.5.20': {}
 
   '@webassemblyjs/ast@1.9.0':
     dependencies:
