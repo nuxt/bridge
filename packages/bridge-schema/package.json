@@ -20,9 +20,9 @@
   "devDependencies": {
     "@types/lodash.template": "^4.5.3",
     "@unhead/schema": "^1.11.20",
-    "nitropack": "^2.12.4",
+    "nitropack": "^2.12.6",
     "unbuild": "latest",
-    "vite": "~7.1.4"
+    "vite": "~7.1.5"
   },
   "dependencies": {
     "c12": "^3.2.0",
