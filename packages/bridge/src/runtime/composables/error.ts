@@ -4,9 +4,10 @@ import { useNuxtApp } from '../nuxt'
 
 export const NUXT_ERROR_SIGNATURE = '__nuxt_error'
 
+/* @__NO_SIDE_EFFECTS__ */
 export const useError = () => toRef(useNuxtApp().payload, 'error')
 
-export interface NuxtError<DataT = unknown> extends H3Error<DataT> {}
+export interface NuxtError<DataT = unknown> extends H3Error<DataT> { }
 
 export const showError = <DataT = unknown>(
   error: string | Error | Partial<NuxtError<DataT>>
@@ -14,9 +15,13 @@ export const showError = <DataT = unknown>(
   const nuxtError = createError<DataT>(error)
 
   try {
-    const nuxtApp = useNuxtApp()
-    nuxtApp.callHook('app:error', nuxtError)
     const error = useError()
+
+    if (process.client) {
+      const nuxtApp = useNuxtApp()
+      nuxtApp.callHook('app:error', nuxtError)
+    }
+
     error.value = error.value || nuxtError
   } catch {
     throw nuxtError
