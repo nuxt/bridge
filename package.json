@@ -31,7 +31,7 @@
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-jsdoc": "60.1.1",
     "execa": "9.6.0",
-    "globby": "14.1.0",
+    "globby": "15.0.0",
     "h3": "1.15.4",
     "happy-dom": "^18.0.1",
     "installed-check": "9.3.0",
