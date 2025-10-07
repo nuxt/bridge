@@ -29,7 +29,7 @@
     "devalue": "5.3.2",
     "eslint": "8.57.1",
     "eslint-plugin-import": "2.32.0",
-    "eslint-plugin-jsdoc": "60.8.2",
+    "eslint-plugin-jsdoc": "60.8.3",
     "execa": "9.6.0",
     "globby": "15.0.0",
     "h3": "1.15.4",
@@ -40,7 +40,7 @@
     "nuxi": "3.29.0",
     "ofetch": "1.4.1",
     "pathe": "^2.0.3",
-    "playwright-core": "1.55.1",
+    "playwright-core": "1.56.0",
     "semver": "7.7.2",
     "std-env": "3.9.0",
     "vitest": "3.2.4",
@@ -54,5 +54,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@10.18.0"
+  "packageManager": "pnpm@10.18.1"
 }
