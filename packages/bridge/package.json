@@ -56,7 +56,7 @@
     "magic-string": "^0.30.19",
     "mlly": "^1.8.0",
     "mocked-exports": "^0.1.1",
-    "nitropack": "^2.12.6",
+    "nitropack": "^2.12.7",
     "node-fetch": "^3.3.2",
     "nypm": "^0.6.2",
     "ofetch": "^1.4.1",
@@ -94,5 +94,5 @@
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
-  "packageManager": "pnpm@10.18.1"
+  "packageManager": "pnpm@10.18.2"
 }
