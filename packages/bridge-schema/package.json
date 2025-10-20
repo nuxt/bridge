@@ -22,10 +22,10 @@
     "@unhead/schema": "^1.11.20",
     "nitropack": "^2.12.7",
     "unbuild": "latest",
-    "vite": "~7.1.10"
+    "vite": "~7.1.11"
   },
   "dependencies": {
-    "c12": "^3.3.0",
+    "c12": "^3.3.1",
     "create-require": "^1.1.1",
     "defu": "^6.1.4",
     "jiti": "^2.6.1",
@@ -36,7 +36,7 @@
     "std-env": "^3.10.0",
     "ufo": "^1.6.1",
     "unbuild": "3.6.1",
-    "unimport": "^5.4.1",
+    "unimport": "^5.5.0",
     "untyped": "^2.0.0"
   },
   "engines": {
