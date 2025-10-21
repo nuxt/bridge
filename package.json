@@ -36,7 +36,7 @@
     "happy-dom": "^20.0.7",
     "installed-check": "9.3.0",
     "jiti": "2.6.1",
-    "knip": "5.66.1",
+    "knip": "5.66.2",
     "nuxi": "3.29.3",
     "ofetch": "1.4.1",
     "pathe": "^2.0.3",
@@ -54,5 +54,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@10.18.3"
+  "packageManager": "pnpm@10.19.0"
 }
