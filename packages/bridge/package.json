@@ -25,7 +25,7 @@
   "dependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
     "@babel/plugin-proposal-optional-chaining": "^7.21.0",
-    "@babel/plugin-transform-typescript": "^7.28.0",
+    "@babel/plugin-transform-typescript": "^7.28.5",
     "@nuxt/bridge-schema": "workspace:*",
     "@nuxt/devalue": "^2.0.2",
     "@nuxt/kit": "3.19.3",
@@ -53,13 +53,13 @@
     "hookable": "5.5.3",
     "klona": "^2.0.6",
     "knitwork": "^1.2.0",
-    "magic-string": "^0.30.19",
+    "magic-string": "^0.30.21",
     "mlly": "^1.8.0",
     "mocked-exports": "^0.1.1",
-    "nitropack": "^2.12.7",
+    "nitropack": "^2.12.9",
     "node-fetch": "^3.3.2",
     "nypm": "^0.6.2",
-    "ofetch": "^1.4.1",
+    "ofetch": "^1.5.0",
     "ohash": "^2.0.11",
     "pathe": "^2.0.3",
     "perfect-debounce": "^2.0.0",
@@ -72,12 +72,12 @@
     "unimport": "^5.5.0",
     "unplugin": "^1.16.1",
     "untyped": "^2.0.0",
-    "vite": "~7.1.11",
+    "vite": "~7.1.12",
     "vite-node": "^3.2.4",
     "vue-bundle-renderer": "^2.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.4",
+    "@babel/core": "^7.28.5",
     "@types/estree": "^1.0.8",
     "@types/fs-extra": "^9.0.13",
     "@types/hash-sum": "^1.0.2",
@@ -94,5 +94,5 @@
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
-  "packageManager": "pnpm@10.19.0"
+  "packageManager": "pnpm@10.20.0"
 }
