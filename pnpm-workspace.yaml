@@ -1,3 +1,5 @@
 packages:
   - "packages/**"
   - "playground"
+trustPolicy: no-downgrade
+
