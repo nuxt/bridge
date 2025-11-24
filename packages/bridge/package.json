@@ -83,7 +83,7 @@
     "@types/hash-sum": "^1.0.2",
     "@types/webpack": "^4.41.40",
     "@vue/compiler-sfc": "^2.7.16",
-    "@vue/reactivity": "^3.5.24",
+    "@vue/reactivity": "^3.5.25",
     "rollup": "^4.53.3",
     "unbuild": "3.6.1",
     "vue": "^2.7.16",
