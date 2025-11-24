@@ -72,8 +72,8 @@
     "unimport": "^5.5.0",
     "unplugin": "^1.16.1",
     "untyped": "^2.0.0",
-    "vite": "~7.2.2",
-    "vite-node": "^5.1.0",
+    "vite": "~7.2.4",
+    "vite-node": "^5.2.0",
     "vue-bundle-renderer": "^2.2.0"
   },
   "devDependencies": {
@@ -84,7 +84,7 @@
     "@types/webpack": "^4.41.40",
     "@vue/compiler-sfc": "^2.7.16",
     "@vue/reactivity": "^3.5.24",
-    "rollup": "^4.53.2",
+    "rollup": "^4.53.3",
     "unbuild": "3.6.1",
     "vue": "^2.7.16",
     "vue-meta": "^2.4.0",
@@ -94,5 +94,5 @@
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
-  "packageManager": "pnpm@10.22.0"
+  "packageManager": "pnpm@10.23.0"
 }
