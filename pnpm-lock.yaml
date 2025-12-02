@@ -8,7 +8,7 @@ overrides:
   '@nuxt/bridge': workspace:*
   '@nuxt/bridge-schema': workspace:*
   h3: 1.15.4
-  '@nuxt/kit': 3.20.0
+  '@nuxt/kit': 3.20.1
 
 importers:
 
@@ -63,8 +63,8 @@ importers:
         specifier: 5.71.0
         version: 5.71.0(@types/node@24.10.1)(typescript@5.9.3)
       nuxi:
-        specifier: 3.29.3
-        version: 3.29.3
+        specifier: 3.30.0
+        version: 3.30.0
       ofetch:
         specifier: 1.5.1
         version: 1.5.1
@@ -105,11 +105,11 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2
       '@nuxt/kit':
-        specifier: 3.20.0
-        version: 3.20.0(magicast@0.5.1)
+        specifier: 3.20.1
+        version: 3.20.1(magicast@0.5.1)
       '@nuxt/schema':
-        specifier: 3.20.0
-        version: 3.20.0
+        specifier: 3.20.1
+        version: 3.20.1
       '@nuxt/ui-templates':
         specifier: ^1.3.4
         version: 1.3.4
@@ -351,8 +351,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/bridge
       nuxi:
-        specifier: 3.29.3
-        version: 3.29.3
+        specifier: 3.30.0
+        version: 3.30.0
       nuxt:
         specifier: ^2.18.1
         version: 2.18.1(@vue/compiler-sfc@3.5.25)(buffer@6.0.3)(consola@3.4.2)(typescript@5.9.3)(vue@2.7.16)
@@ -1544,8 +1544,8 @@ packages:
     resolution: {integrity: sha512-kZMfB5Ymvd/5ek+xfk2svQiMJWEAjZf5XNFTG+2WiNsitHb01Bo3W2QGidy+dwfuLtHoiOJkMovRlyAKWxTohg==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
-  '@nuxt/kit@3.20.0':
-    resolution: {integrity: sha512-EoF1Gf0SPj9vxgAIcGEH+a4PRLC7Dwsy21K6f5+POzylT8DgssN8zL5pwXC+X7OcfzBrwYFh7mM7phvh7ubgeg==}
+  '@nuxt/kit@3.20.1':
+    resolution: {integrity: sha512-TIslaylfI5kd3AxX5qts0qyrIQ9Uq3HAA1bgIIJ+c+zpDfK338YS+YrCWxBBzDMECRCbAS58mqAd2MtJfG1ENA==}
     engines: {node: '>=18.12.0'}
 
   '@nuxt/loading-screen@2.0.4':
@@ -1556,8 +1556,8 @@ packages:
     engines: {node: ^14.18.0 || >=16.10.0, npm: '>=5.10.0'}
     hasBin: true
 
-  '@nuxt/schema@3.20.0':
-    resolution: {integrity: sha512-qYs+GyNSZqUwg49mj0QtCp77agZo6LtXcgB7zfe7gTvu1WPoEku2dpbH6DQKoOonx1uaFhf5Tp3e5xuB5NwDVA==}
+  '@nuxt/schema@3.20.1':
+    resolution: {integrity: sha512-ll3C+NsHR6fjBV9AvEZwmypokj0ULp5jb+yqbyl9kuUb6gGUYel5DBx1pZwdI2Oa1wpiMycwtYd/rAxhrZ3w4Q==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
   '@nuxt/server@2.18.1':
@@ -5611,8 +5611,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  nuxi@3.29.3:
-    resolution: {integrity: sha512-+/IHFCXT2t1XO5dQdpVyV/eU12DrVOCkKKwrDv9YwHIL4pXMyTDxIGMfU995YWjLjRb7SUsfNLfGV4wWCFdg0A==}
+  nuxi@3.30.0:
+    resolution: {integrity: sha512-XBa68BF36jAlsXykoKQzEDeaEjxEGPNvzcvd7mkYH/Mzl25b9ji0m7HP0UBFer3Q7dWYV0nK0Citol1PktO3mg==}
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
 
@@ -9610,7 +9610,7 @@ snapshots:
       node-html-parser: 6.1.13
       ufo: 1.6.1
 
-  '@nuxt/kit@3.20.0(magicast@0.5.1)':
+  '@nuxt/kit@3.20.1(magicast@0.5.1)':
     dependencies:
       c12: 3.3.2(magicast@0.5.1)
       consola: 3.4.2
@@ -9650,7 +9650,7 @@ snapshots:
     dependencies:
       consola: 3.4.2
 
-  '@nuxt/schema@3.20.0':
+  '@nuxt/schema@3.20.1':
     dependencies:
       '@vue/shared': 3.5.25
       defu: 6.1.4
@@ -9704,7 +9704,7 @@ snapshots:
 
   '@nuxt/test-utils@3.20.1(happy-dom@20.0.11)(magicast@0.5.1)(playwright-core@1.57.0)(typescript@5.9.3)(vitest@4.0.14(@types/node@24.10.1)(happy-dom@20.0.11)(jiti@2.6.1)(terser@5.44.1))':
     dependencies:
-      '@nuxt/kit': 3.20.0(magicast@0.5.1)
+      '@nuxt/kit': 3.20.1(magicast@0.5.1)
       c12: 3.3.2(magicast@0.5.1)
       consola: 3.4.2
       defu: 6.1.4
@@ -14393,7 +14393,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuxi@3.29.3: {}
+  nuxi@3.30.0: {}
 
   nuxt@2.18.1(@vue/compiler-sfc@3.5.25)(buffer@6.0.3)(consola@3.4.2)(typescript@5.9.3)(vue@2.7.16):
     dependencies:
