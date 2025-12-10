@@ -8,15 +8,15 @@ overrides:
   '@nuxt/bridge': workspace:*
   '@nuxt/bridge-schema': workspace:*
   h3: 1.15.4
-  '@nuxt/kit': 3.20.1
+  '@nuxt/kit': 3.20.2
 
 importers:
 
   .:
     devDependencies:
       '@nuxt/test-utils':
-        specifier: 3.20.1
-        version: 3.20.1(happy-dom@20.0.11)(magicast@0.5.1)(playwright-core@1.57.0)(typescript@5.9.3)(vitest@4.0.15(@types/node@24.10.1)(happy-dom@20.0.11)(jiti@2.6.1)(terser@5.44.1))
+        specifier: 3.21.0
+        version: 3.21.0(happy-dom@20.0.11)(magicast@0.5.1)(playwright-core@1.57.0)(typescript@5.9.3)(vitest@4.0.15(@types/node@24.10.1)(happy-dom@20.0.11)(jiti@2.6.1)(terser@5.44.1))
       '@nuxtjs/eslint-config-typescript':
         specifier: 12.1.0
         version: 12.1.0(eslint@8.57.1)(typescript@5.9.3)
@@ -63,8 +63,8 @@ importers:
         specifier: 5.72.0
         version: 5.72.0(@types/node@24.10.1)(typescript@5.9.3)
       nuxi:
-        specifier: 3.30.0
-        version: 3.30.0
+        specifier: 3.31.2
+        version: 3.31.2
       ofetch:
         specifier: 1.5.1
         version: 1.5.1
@@ -105,11 +105,11 @@ importers:
         specifier: ^2.0.2
         version: 2.0.2
       '@nuxt/kit':
-        specifier: 3.20.1
-        version: 3.20.1(magicast@0.5.1)
+        specifier: 3.20.2
+        version: 3.20.2(magicast@0.5.1)
       '@nuxt/schema':
-        specifier: 3.20.1
-        version: 3.20.1
+        specifier: 3.20.2
+        version: 3.20.2
       '@nuxt/ui-templates':
         specifier: ^1.3.4
         version: 1.3.4
@@ -351,8 +351,8 @@ importers:
         specifier: workspace:*
         version: link:../packages/bridge
       nuxi:
-        specifier: 3.30.0
-        version: 3.30.0
+        specifier: 3.31.2
+        version: 3.31.2
       nuxt:
         specifier: ^2.18.1
         version: 2.18.1(@vue/compiler-sfc@3.5.25)(buffer@6.0.3)(consola@3.4.2)(typescript@5.9.3)(vue@2.7.16)
@@ -1544,8 +1544,8 @@ packages:
     resolution: {integrity: sha512-kZMfB5Ymvd/5ek+xfk2svQiMJWEAjZf5XNFTG+2WiNsitHb01Bo3W2QGidy+dwfuLtHoiOJkMovRlyAKWxTohg==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
-  '@nuxt/kit@3.20.1':
-    resolution: {integrity: sha512-TIslaylfI5kd3AxX5qts0qyrIQ9Uq3HAA1bgIIJ+c+zpDfK338YS+YrCWxBBzDMECRCbAS58mqAd2MtJfG1ENA==}
+  '@nuxt/kit@3.20.2':
+    resolution: {integrity: sha512-laqfmMcWWNV1FsVmm1+RQUoGY8NIJvCRl0z0K8ikqPukoEry0LXMqlQ+xaf8xJRvoH2/78OhZmsEEsUBTXipcw==}
     engines: {node: '>=18.12.0'}
 
   '@nuxt/loading-screen@2.0.4':
@@ -1556,8 +1556,8 @@ packages:
     engines: {node: ^14.18.0 || >=16.10.0, npm: '>=5.10.0'}
     hasBin: true
 
-  '@nuxt/schema@3.20.1':
-    resolution: {integrity: sha512-ll3C+NsHR6fjBV9AvEZwmypokj0ULp5jb+yqbyl9kuUb6gGUYel5DBx1pZwdI2Oa1wpiMycwtYd/rAxhrZ3w4Q==}
+  '@nuxt/schema@3.20.2':
+    resolution: {integrity: sha512-fp584AiXON7vI6NDDpNTjxiJ485iM/ztJSPX9CqptKUNjULhBy9qlacF9+NiwQqxlEs3zvbxHpo/1qLPNSb4MQ==}
     engines: {node: ^14.18.0 || >=16.10.0}
 
   '@nuxt/server@2.18.1':
@@ -1568,8 +1568,8 @@ packages:
     resolution: {integrity: sha512-MhxiiYCFe0MayN2TvmpcsCV66zBePtrSVkFLJHwTFuneQ5Qma5x0NmCwdov7O4NSuTfgSZels9qPJh0zy0Kc4g==}
     hasBin: true
 
-  '@nuxt/test-utils@3.20.1':
-    resolution: {integrity: sha512-SNS8rCoO5vOHkWbAyGU/LgX3p41VHUq6u+7JEc3jNq9YAu/pA9V31AWJcPCfiZtw1PTJzk0TT+H8dhIHPFY2IQ==}
+  '@nuxt/test-utils@3.21.0':
+    resolution: {integrity: sha512-A6XExfgHq88+XuXAU4MMr5QBHS2mWA5qRVSvsMPP2U+YSsnk+Vt7P7dxbvJPE4+n6LHbC1IM0QjTVteo+VCxOA==}
     engines: {node: ^20.0.0 || ^22.0.0 || >=24.0.0}
     peerDependencies:
       '@cucumber/cucumber': ^10.3.1 || >=11.0.0
@@ -5616,8 +5616,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  nuxi@3.30.0:
-    resolution: {integrity: sha512-XBa68BF36jAlsXykoKQzEDeaEjxEGPNvzcvd7mkYH/Mzl25b9ji0m7HP0UBFer3Q7dWYV0nK0Citol1PktO3mg==}
+  nuxi@3.31.2:
+    resolution: {integrity: sha512-sGH2bmLa5Qg4k5Ml/yiLADq/L/O34WmtRNXsl7q/xQdkw+GYq8KmhAt1+BWnW0wD5Q32A/cFgJeUl/Pc+6g37Q==}
     engines: {node: ^16.10.0 || >=18.0.0}
     hasBin: true
 
@@ -9612,7 +9612,7 @@ snapshots:
       node-html-parser: 6.1.13
       ufo: 1.6.1
 
-  '@nuxt/kit@3.20.1(magicast@0.5.1)':
+  '@nuxt/kit@3.20.2(magicast@0.5.1)':
     dependencies:
       c12: 3.3.2(magicast@0.5.1)
       consola: 3.4.2
@@ -9652,7 +9652,7 @@ snapshots:
     dependencies:
       consola: 3.4.2
 
-  '@nuxt/schema@3.20.1':
+  '@nuxt/schema@3.20.2':
     dependencies:
       '@vue/shared': 3.5.25
       defu: 6.1.4
@@ -9704,14 +9704,15 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@nuxt/test-utils@3.20.1(happy-dom@20.0.11)(magicast@0.5.1)(playwright-core@1.57.0)(typescript@5.9.3)(vitest@4.0.15(@types/node@24.10.1)(happy-dom@20.0.11)(jiti@2.6.1)(terser@5.44.1))':
+  '@nuxt/test-utils@3.21.0(happy-dom@20.0.11)(magicast@0.5.1)(playwright-core@1.57.0)(typescript@5.9.3)(vitest@4.0.15(@types/node@24.10.1)(happy-dom@20.0.11)(jiti@2.6.1)(terser@5.44.1))':
     dependencies:
-      '@nuxt/kit': 3.20.1(magicast@0.5.1)
+      '@nuxt/kit': 3.20.2(magicast@0.5.1)
       c12: 3.3.2(magicast@0.5.1)
       consola: 3.4.2
       defu: 6.1.4
       destr: 2.0.5
       estree-walker: 3.0.3
+      exsolve: 1.0.8
       fake-indexeddb: 6.2.5
       get-port-please: 3.2.0
       h3: 1.15.4
@@ -14398,7 +14399,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  nuxi@3.30.0: {}
+  nuxi@3.31.2: {}
 
   nuxt@2.18.1(@vue/compiler-sfc@3.5.25)(buffer@6.0.3)(consola@3.4.2)(typescript@5.9.3)(vue@2.7.16):
     dependencies:
@@ -16900,7 +16901,7 @@ snapshots:
 
   vitest-environment-nuxt@1.0.1(happy-dom@20.0.11)(magicast@0.5.1)(playwright-core@1.57.0)(typescript@5.9.3)(vitest@4.0.15(@types/node@24.10.1)(happy-dom@20.0.11)(jiti@2.6.1)(terser@5.44.1)):
     dependencies:
-      '@nuxt/test-utils': 3.20.1(happy-dom@20.0.11)(magicast@0.5.1)(playwright-core@1.57.0)(typescript@5.9.3)(vitest@4.0.15(@types/node@24.10.1)(happy-dom@20.0.11)(jiti@2.6.1)(terser@5.44.1))
+      '@nuxt/test-utils': 3.21.0(happy-dom@20.0.11)(magicast@0.5.1)(playwright-core@1.57.0)(typescript@5.9.3)(vitest@4.0.15(@types/node@24.10.1)(happy-dom@20.0.11)(jiti@2.6.1)(terser@5.44.1))
     transitivePeerDependencies:
       - '@cucumber/cucumber'
       - '@jest/globals'
