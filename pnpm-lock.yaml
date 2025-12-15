@@ -30,8 +30,8 @@ importers:
         specifier: ^3.4.2
         version: 3.4.2
       devalue:
-        specifier: 5.6.0
-        version: 5.6.0
+        specifier: 5.6.1
+        version: 5.6.1
       eslint:
         specifier: 8.57.1
         version: 8.57.1
@@ -60,8 +60,8 @@ importers:
         specifier: 2.6.1
         version: 2.6.1
       knip:
-        specifier: 5.72.0
-        version: 5.72.0(@types/node@24.10.1)(typescript@5.9.3)
+        specifier: 5.73.4
+        version: 5.73.4(@types/node@24.10.1)(typescript@5.9.3)
       nuxi:
         specifier: 3.31.2
         version: 3.31.2
@@ -141,8 +141,8 @@ importers:
         specifier: ^2.0.5
         version: 2.0.5
       enhanced-resolve:
-        specifier: ^5.18.3
-        version: 5.18.3
+        specifier: ^5.18.4
+        version: 5.18.4
       esbuild-loader:
         specifier: ^4.4.0
         version: 4.4.0(webpack@4.47.0)
@@ -228,8 +228,8 @@ importers:
         specifier: ^1.6.1
         version: 1.6.1
       unimport:
-        specifier: ^5.5.0
-        version: 5.5.0
+        specifier: ^5.6.0
+        version: 5.6.0
       unplugin:
         specifier: ^1.16.1
         version: 1.16.1
@@ -322,8 +322,8 @@ importers:
         specifier: 3.6.1
         version: 3.6.1(typescript@5.9.3)(vue@3.5.25(typescript@5.9.3))
       unimport:
-        specifier: ^5.5.0
-        version: 5.5.0
+        specifier: ^5.6.0
+        version: 5.6.0
       untyped:
         specifier: ^2.0.0
         version: 2.0.0
@@ -3690,8 +3690,8 @@ packages:
   devalue@2.0.1:
     resolution: {integrity: sha512-I2TiqT5iWBEyB8GRfTDP0hiLZ0YeDJZ+upDxjBfOC2lebO5LezQMv7QvIUTzdb64jQyAKLf1AHADtGN+jw6v8Q==}
 
-  devalue@5.6.0:
-    resolution: {integrity: sha512-BaD1s81TFFqbD6Uknni42TrolvEWA1Ih5L+OiHWmi4OYMJVwAYPGtha61I9KxTf52OvVHozHyjPu8zljqdF3uA==}
+  devalue@5.6.1:
+    resolution: {integrity: sha512-jDwizj+IlEZBunHcOuuFVBnIMPAEHvTsJj0BcIp94xYguLRVBcXO853px/MyIJvbVzWdsGvrRweIUWJw8hBP7A==}
 
   diffie-hellman@5.0.3:
     resolution: {integrity: sha512-kqag/Nl+f3GwyK25fhUMYj81BUOrZ9IuJsjIcDE5icNM9FJHAVm3VcUDxdLPoQtTuUylWm6ZIknYJwwaPxsUzg==}
@@ -3804,8 +3804,8 @@ packages:
     resolution: {integrity: sha512-Nv9m36S/vxpsI+Hc4/ZGRs0n9mXqSWGGq49zxb/cJfPAQMbUtttJAlNPS4AQzaBdw/pKskw5bMbekT/Y7W/Wlg==}
     engines: {node: '>=6.9.0'}
 
-  enhanced-resolve@5.18.3:
-    resolution: {integrity: sha512-d4lC8xfavMeBjzGr2vECC3fsGXziXZQyJxD868h2M/mBI3PwAuODxAkLkq5HYuvrPYcUtiLzsTo8U3PgX3Ocww==}
+  enhanced-resolve@5.18.4:
+    resolution: {integrity: sha512-LgQMM4WXU3QI+SYgEc2liRgznaD5ojbmY3sb8LxyguVkIg5FxdpTkvk72te2R38/TGKxH634oLxXRGY6d7AP+Q==}
     engines: {node: '>=10.13.0'}
 
   entities@2.2.0:
@@ -5075,8 +5075,8 @@ packages:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
     engines: {node: '>= 8'}
 
-  knip@5.72.0:
-    resolution: {integrity: sha512-rlyoXI8FcggNtM/QXd/GW0sbsYvNuA/zPXt7bsuVi6kVQogY2PDCr81bPpzNnl0CP8AkFm2Z2plVeL5QQSis2w==}
+  knip@5.73.4:
+    resolution: {integrity: sha512-q0DDgqsRMa4z2IMEPEblns0igitG8Fu7exkvEgQx1QMLKEqSvcvKP9fMk+C1Ehy+Ux6oayl6zfAEGt6DvFtidw==}
     engines: {node: '>=18.18.0'}
     hasBin: true
     peerDependencies:
@@ -7582,8 +7582,8 @@ packages:
     resolution: {integrity: sha512-wH590V9VNgYH9g3lH9wWjTrUoKsjLF6sGLjhR4sH1LWpLmCOH0Zf7PukhDA8BiS7KHe4oPNkcTHqYkj7SOGUOw==}
     engines: {node: '>=20'}
 
-  unimport@5.5.0:
-    resolution: {integrity: sha512-/JpWMG9s1nBSlXJAQ8EREFTFy3oy6USFd8T6AoBaw1q2GGcF4R9yp3ofg32UODZlYEO5VD0EWE1RpI9XDWyPYg==}
+  unimport@5.6.0:
+    resolution: {integrity: sha512-8rqAmtJV8o60x46kBAJKtHpJDJWkA2xcBqWKPI14MgUb05o1pnpnCnXSxedUXyeq7p8fR5g3pTo2BaswZ9lD9A==}
     engines: {node: '>=18.12.0'}
 
   union-value@1.0.1:
@@ -12049,7 +12049,7 @@ snapshots:
 
   devalue@2.0.1: {}
 
-  devalue@5.6.0: {}
+  devalue@5.6.1: {}
 
   diffie-hellman@5.0.3:
     dependencies:
@@ -12175,7 +12175,7 @@ snapshots:
       memory-fs: 0.5.0
       tapable: 1.1.3
 
-  enhanced-resolve@5.18.3:
+  enhanced-resolve@5.18.4:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.3.0
@@ -12688,7 +12688,7 @@ snapshots:
 
   externality@1.0.2:
     dependencies:
-      enhanced-resolve: 5.18.3
+      enhanced-resolve: 5.18.4
       mlly: 1.8.0
       pathe: 1.1.2
       ufo: 1.6.1
@@ -13702,7 +13702,7 @@ snapshots:
 
   klona@2.0.6: {}
 
-  knip@5.72.0(@types/node@24.10.1)(typescript@5.9.3):
+  knip@5.73.4(@types/node@24.10.1)(typescript@5.9.3):
     dependencies:
       '@nodelib/fs.walk': 1.2.8
       '@types/node': 24.10.1
@@ -13898,7 +13898,7 @@ snapshots:
 
   md5.js@1.3.5:
     dependencies:
-      hash-base: 3.0.5
+      hash-base: 3.1.2
       inherits: 2.0.4
       safe-buffer: 5.2.1
 
@@ -14238,7 +14238,7 @@ snapshots:
       uncrypto: 0.1.3
       unctx: 2.4.1
       unenv: 2.0.0-rc.24
-      unimport: 5.5.0
+      unimport: 5.6.0
       unplugin-utils: 0.3.1
       unstorage: 1.17.3(db0@0.3.4)(ioredis@5.8.2)
       untyped: 2.0.0
@@ -16681,7 +16681,7 @@ snapshots:
 
   unicorn-magic@0.4.0: {}
 
-  unimport@5.5.0:
+  unimport@5.6.0:
     dependencies:
       acorn: 8.15.0
       escape-string-regexp: 5.0.0
