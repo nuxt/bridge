@@ -10,6 +10,11 @@ overrides:
   h3: 1.15.4
   '@nuxt/kit': 3.20.2
 
+patchedDependencies:
+  nitropack:
+    hash: 22429783023bf73f00a84aff1ad1a37c136c362c4e96f08e9440a03c0a0b8a17
+    path: patches/nitropack.patch
+
 importers:
 
   .:
@@ -190,7 +195,7 @@ importers:
         version: 0.1.1
       nitropack:
         specifier: ^2.12.9
-        version: 2.12.9
+        version: 2.12.9(patch_hash=22429783023bf73f00a84aff1ad1a37c136c362c4e96f08e9440a03c0a0b8a17)
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -336,7 +341,7 @@ importers:
         version: 1.11.20
       nitropack:
         specifier: ^2.12.9
-        version: 2.12.9
+        version: 2.12.9(patch_hash=22429783023bf73f00a84aff1ad1a37c136c362c4e96f08e9440a03c0a0b8a17)
       vite:
         specifier: ~7.3.0
         version: 7.3.0(@types/node@24.10.1)(jiti@2.6.1)(terser@5.44.1)
@@ -14470,7 +14475,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  nitropack@2.12.9:
+  nitropack@2.12.9(patch_hash=22429783023bf73f00a84aff1ad1a37c136c362c4e96f08e9440a03c0a0b8a17):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.1
       '@rollup/plugin-alias': 5.1.1(rollup@4.54.0)
