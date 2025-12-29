@@ -144,8 +144,8 @@ importers:
         specifier: ^5.18.4
         version: 5.18.4
       esbuild-loader:
-        specifier: ^4.4.1
-        version: 4.4.1(webpack@4.47.0)
+        specifier: ^4.4.2
+        version: 4.4.2(webpack@4.47.0)
       escape-string-regexp:
         specifier: ^5.0.0
         version: 5.0.0
@@ -4031,8 +4031,8 @@ packages:
     resolution: {integrity: sha512-w+5mJ3GuFL+NjVtJlvydShqE1eN3h3PbI7/5LAsYJP/2qtuMXjfL2LpHSRqo4b4eSF5K/DH1JXKUAHSB2UW50g==}
     engines: {node: '>= 0.4'}
 
-  esbuild-loader@4.4.1:
-    resolution: {integrity: sha512-aXMJpkrSKy/x4fvpB0uA7svGOBQFAkWvWdOtKuyWOXtUwruG3Rfr6jqjI/UKf4QDvcHjKQI6pnpKiOejpfE1jg==}
+  esbuild-loader@4.4.2:
+    resolution: {integrity: sha512-8LdoT9sC7fzfvhxhsIAiWhzLJr9yT3ggmckXxsgvM07wgrRxhuT98XhLn3E7VczU5W5AFsPKv9DdWcZIubbWkQ==}
     peerDependencies:
       webpack: ^4.40.0 || ^5.0.0
 
@@ -12549,7 +12549,7 @@ snapshots:
       is-date-object: 1.1.0
       is-symbol: 1.1.1
 
-  esbuild-loader@4.4.1(webpack@4.47.0):
+  esbuild-loader@4.4.2(webpack@4.47.0):
     dependencies:
       esbuild: 0.27.1
       get-tsconfig: 4.13.0
