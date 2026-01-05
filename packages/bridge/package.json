@@ -84,7 +84,7 @@
     "@types/webpack": "^4.41.40",
     "@vue/compiler-sfc": "^2.7.16",
     "@vue/reactivity": "^3.5.26",
-    "rollup": "^4.54.0",
+    "rollup": "^4.55.1",
     "unbuild": "3.6.1",
     "vue": "^2.7.16",
     "vue-meta": "^2.4.0",
