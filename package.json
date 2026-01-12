@@ -33,10 +33,10 @@
     "execa": "9.6.1",
     "globby": "16.1.0",
     "h3": "1.15.4",
-    "happy-dom": "^20.0.11",
+    "happy-dom": "^20.1.0",
     "installed-check": "9.3.0",
     "jiti": "2.6.1",
-    "knip": "5.80.0",
+    "knip": "5.80.2",
     "nuxi": "3.32.0",
     "ofetch": "1.5.1",
     "pathe": "^2.0.3",
@@ -55,5 +55,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@10.27.0"
+  "packageManager": "pnpm@10.28.0"
 }
