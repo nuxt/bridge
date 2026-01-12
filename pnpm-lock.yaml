@@ -10,6 +10,11 @@ overrides:
   h3: 1.15.4
   '@nuxt/kit': 3.20.2
 
+patchedDependencies:
+  nitropack:
+    hash: 22429783023bf73f00a84aff1ad1a37c136c362c4e96f08e9440a03c0a0b8a17
+    path: patches/nitropack.patch
+
 importers:
 
   .:
@@ -171,8 +176,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       hookable:
-        specifier: 5.5.3
-        version: 5.5.3
+        specifier: 6.0.1
+        version: 6.0.1
       klona:
         specifier: ^2.0.6
         version: 2.0.6
@@ -190,7 +195,7 @@ importers:
         version: 0.1.1
       nitropack:
         specifier: ^2.12.9
-        version: 2.12.9
+        version: 2.12.9(patch_hash=22429783023bf73f00a84aff1ad1a37c136c362c4e96f08e9440a03c0a0b8a17)
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -336,7 +341,7 @@ importers:
         version: 1.11.20
       nitropack:
         specifier: ^2.12.9
-        version: 2.12.9
+        version: 2.12.9(patch_hash=22429783023bf73f00a84aff1ad1a37c136c362c4e96f08e9440a03c0a0b8a17)
       vite:
         specifier: ~7.3.0
         version: 7.3.0(@types/node@24.10.1)(jiti@2.6.1)(terser@5.44.1)
@@ -4768,6 +4773,9 @@ packages:
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
+
+  hookable@6.0.1:
+    resolution: {integrity: sha512-uKGyY8BuzN/a5gvzvA+3FVWo0+wUjgtfSdnmjtrOVwQCZPHpHDH2WRO3VZSOeluYrHoDCiXFffZXs8Dj1ULWtw==}
 
   hosted-git-info@2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==}
@@ -13566,6 +13574,8 @@ snapshots:
 
   hookable@5.5.3: {}
 
+  hookable@6.0.1: {}
+
   hosted-git-info@2.8.9: {}
 
   hosted-git-info@7.0.2:
@@ -14529,7 +14539,7 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  nitropack@2.12.9:
+  nitropack@2.12.9(patch_hash=22429783023bf73f00a84aff1ad1a37c136c362c4e96f08e9440a03c0a0b8a17):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.1
       '@rollup/plugin-alias': 5.1.1(rollup@4.55.1)
