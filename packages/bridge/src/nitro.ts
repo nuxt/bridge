@@ -251,9 +251,10 @@ export async function setupNitroBridge () {
   nuxt.hook('build:compiled', async ({ name }) => {
     if (nuxt.options._prepare) { return }
     if (name === 'server') {
-      const jsServerEntry = resolve(nuxt.options.buildDir, 'dist/server/server.js')
-      await fsp.writeFile(jsServerEntry.replace(/.js$/, '.cjs'), 'module.exports = require("./server.js")', 'utf8')
-      await fsp.writeFile(jsServerEntry.replace(/.js$/, '.mjs'), 'export { default } from "./server.cjs"', 'utf8')
+      const serverDir = resolve(nuxt.options.buildDir, 'dist/server')
+      await fsp.writeFile(resolve(serverDir, 'package.json'), JSON.stringify({ type: 'commonjs' }), 'utf8')
+      await fsp.writeFile(resolve(serverDir, 'server.cjs'), 'module.exports = require("./server.js")', 'utf8')
+      await fsp.writeFile(resolve(serverDir, 'server.mjs'), 'export { default } from "./server.cjs"', 'utf8')
     } else if (name === 'client' && nuxt.options.dev) {
       const manifest = await fsp.readFile(resolve(nuxt.options.buildDir, 'dist/server/client.manifest.json'), 'utf8')
       await fsp.writeFile(resolve(nuxt.options.buildDir, 'dist/server/client.manifest.mjs'), 'export default ' + JSON.stringify(normalizeWebpackManifest(JSON.parse(manifest)), null, 2), 'utf8')
