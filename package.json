@@ -32,7 +32,7 @@
     "eslint-plugin-jsdoc": "62.0.0",
     "execa": "9.6.1",
     "globby": "16.1.0",
-    "h3": "1.15.4",
+    "h3": "1.15.5",
     "happy-dom": "^20.1.0",
     "installed-check": "9.3.0",
     "jiti": "2.6.1",
@@ -49,7 +49,7 @@
   "resolutions": {
     "@nuxt/bridge": "workspace:*",
     "@nuxt/bridge-schema": "workspace:*",
-    "h3": "1.15.4",
+    "h3": "1.15.5",
     "@nuxt/kit": "3.20.2"
   },
   "engines": {
