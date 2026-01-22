@@ -134,7 +134,7 @@ describe('useLazyAsyncData', () => {
     )
 
     expect(handler).not.toHaveBeenCalled()
-    expect(asyncData.data.value).toBe(null)
+    expect(asyncData.data.value).toBe(undefined)
     expect(asyncData.pending.value).toBe(true)
 
     await asyncData.execute()
