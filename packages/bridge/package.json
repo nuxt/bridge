@@ -77,14 +77,14 @@
     "vue-bundle-renderer": "^2.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.28.6",
+    "@babel/core": "^7.29.0",
     "@types/estree": "^1.0.8",
     "@types/fs-extra": "^9.0.13",
     "@types/hash-sum": "^1.0.2",
     "@types/webpack": "^4.41.40",
     "@vue/compiler-sfc": "^2.7.16",
     "@vue/reactivity": "^3.5.27",
-    "rollup": "^4.57.0",
+    "rollup": "^4.57.1",
     "unbuild": "3.6.1",
     "vue": "^2.7.16",
     "vue-meta": "^2.4.0",
