@@ -26,9 +26,9 @@
     "changelogen": "0.6.2",
     "consola": "^3.4.2",
     "devalue": "5.6.2",
-    "eslint": "^9.26.0",
+    "eslint": "9.39.2",
     "eslint-plugin-import-x": "^4.16.1",
-    "eslint-plugin-jsdoc": "^62.5.0",
+    "eslint-plugin-jsdoc": "62.5.0",
     "eslint-plugin-unicorn": "^62.0.0",
     "eslint-plugin-vue": "^10.7.0",
     "execa": "9.6.1",
@@ -54,7 +54,9 @@
     "@nuxt/bridge": "workspace:*",
     "@nuxt/bridge-schema": "workspace:*",
     "h3": "1.15.5",
-    "@nuxt/kit": "3.20.2"
+    "@nuxt/kit": "3.20.2",
+    "espree": "11.1.0",
+    "eslint-visitor-keys": "5.0.0"
   },
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
