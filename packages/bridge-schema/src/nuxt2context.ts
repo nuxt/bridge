@@ -28,7 +28,6 @@ export interface RuntimeNuxtHooks {
 }
 
 export interface NuxtAppCompat {
-  // eslint-disable-next-line no-use-before-define
   nuxt2Context: Nuxt2Context
   vue2App: ComponentOptions<Vue>
 
@@ -77,7 +76,6 @@ export interface NuxtAppOptions extends ComponentOptions<Vue> {
   }
   head?: any
   router: import('vue-router').default
-  // eslint-disable-next-line no-use-before-define
   context: Nuxt2Context
   $_nuxtApp: NuxtAppCompat
 }
