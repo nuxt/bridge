@@ -276,8 +276,8 @@ importers:
         specifier: ^2.7.16
         version: 2.7.16
       '@vue/reactivity':
-        specifier: ^3.5.27
-        version: 3.5.27
+        specifier: ^3.5.28
+        version: 3.5.28
       rollup:
         specifier: ^4.57.1
         version: 4.57.1
@@ -2701,8 +2701,8 @@ packages:
   '@vue/reactivity@3.5.26':
     resolution: {integrity: sha512-9EnYB1/DIiUYYnzlnUBgwU32NNvLp/nhxLXeWRhHUEeWNTn1ECxX8aGO7RTXeX6PPcxe3LLuNBFoJbV4QZ+CFQ==}
 
-  '@vue/reactivity@3.5.27':
-    resolution: {integrity: sha512-vvorxn2KXfJ0nBEnj4GYshSgsyMNFnIQah/wczXlsNXt+ijhugmW+PpJ2cNPe4V6jpnBcs0MhCODKllWG+nvoQ==}
+  '@vue/reactivity@3.5.28':
+    resolution: {integrity: sha512-gr5hEsxvn+RNyu9/9o1WtdYdwDjg5FgjUSBEkZWqgTKlo/fvwZ2+8W6AfKsc9YN2k/+iHYdS9vZYAhpi10kNaw==}
 
   '@vue/runtime-core@3.5.26':
     resolution: {integrity: sha512-xJWM9KH1kd201w5DvMDOwDHYhrdPTrAatn56oB/LRG4plEQeZRQLw0Bpwih9KYoqmzaxF0OKSn6swzYi84e1/Q==}
@@ -2718,8 +2718,8 @@ packages:
   '@vue/shared@3.5.26':
     resolution: {integrity: sha512-7Z6/y3uFI5PRoKeorTOSXKcDj0MSasfNNltcslbFrPpcw6aXRUALq4IfJlaTRspiWIUOEZbrpM+iQGmCOiWe4A==}
 
-  '@vue/shared@3.5.27':
-    resolution: {integrity: sha512-dXr/3CgqXsJkZ0n9F3I4elY8wM9jMJpP3pvRG52r6m0tu/MsAFIe6JpXVGeNMd/D9F4hQynWT8Rfuj0bdm9kFQ==}
+  '@vue/shared@3.5.28':
+    resolution: {integrity: sha512-cfWa1fCGBxrvaHRhvV3Is0MgmrbSCxYTXCSCau2I0a1Xw1N1pHAvkWCiXPRAqjvToILvguNyEwjevUqAuBQWvQ==}
 
   '@webassemblyjs/ast@1.9.0':
     resolution: {integrity: sha512-C6wW5L+b7ogSDVqymbkkvuW9kruN//YisMED04xzeBBqjHa2FYnmvOlS6Xj68xWQRgWvI9cIglsjFowH/RJyEA==}
@@ -10143,7 +10143,7 @@ snapshots:
 
   '@nuxt/schema@3.20.2':
     dependencies:
-      '@vue/shared': 3.5.27
+      '@vue/shared': 3.5.28
       defu: 6.1.4
       pathe: 2.0.3
       pkg-types: 2.3.0
@@ -11259,9 +11259,9 @@ snapshots:
     dependencies:
       '@vue/shared': 3.5.26
 
-  '@vue/reactivity@3.5.27':
+  '@vue/reactivity@3.5.28':
     dependencies:
-      '@vue/shared': 3.5.27
+      '@vue/shared': 3.5.28
 
   '@vue/runtime-core@3.5.26':
     dependencies:
@@ -11283,7 +11283,7 @@ snapshots:
 
   '@vue/shared@3.5.26': {}
 
-  '@vue/shared@3.5.27': {}
+  '@vue/shared@3.5.28': {}
 
   '@webassemblyjs/ast@1.9.0':
     dependencies:
