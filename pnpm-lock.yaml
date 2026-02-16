@@ -59,8 +59,8 @@ importers:
         specifier: ^20.6.0
         version: 20.6.0
       installed-check:
-        specifier: 9.3.0
-        version: 9.3.0
+        specifier: 10.0.0
+        version: 10.0.0
       jiti:
         specifier: 2.6.1
         version: 2.6.1
@@ -5041,9 +5041,9 @@ packages:
     resolution: {integrity: sha512-5yH+YyCw2AO1OQpOSce2yUaooOSrK8XXmkOn2xdVpdtpt0pqwfdqU77FIpWN4fPHDcINKUf4R7hgDEfqpy1Z9g==}
     engines: {node: '>=18.6.0'}
 
-  installed-check@9.3.0:
-    resolution: {integrity: sha512-4aL5tUyCc/MVkaKnTqg5CdMa20uf7HYHjHJfiv4WeIoBoSKDLd/frMnIRUglnUovHUHrwRuzUDHOd4DidHKkkA==}
-    engines: {node: '>=18.6.0'}
+  installed-check@10.0.0:
+    resolution: {integrity: sha512-lfk580bIgRtiKJBoyPAd7geSIXF1zlVXi8VP0eU2mBTRpfcqIFG4JK+c8o7R+EOA6lfKPhnThIkx7LjaFwj7fg==}
+    engines: {node: ^20.19.0 || ^22.13.0 || >=24}
     hasBin: true
 
   internal-slot@1.1.0:
@@ -5522,9 +5522,6 @@ packages:
   lodash.uniq@4.5.0:
     resolution: {integrity: sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==}
 
-  lodash@4.17.21:
-    resolution: {integrity: sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==}
-
   lodash@4.17.23:
     resolution: {integrity: sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==}
 
@@ -5610,10 +5607,6 @@ packages:
   memory-fs@0.5.0:
     resolution: {integrity: sha512-jA0rdU5KoQMC0e6ppoNRtpp6vjFq6+NY7r8hywnC7V+1Xj/MtHwGIbB1QaK/dunyjWteJzmkpd7ooeWg10T7GA==}
     engines: {node: '>=4.3.0 <5.0.0 || >=5.10'}
-
-  meow@12.1.1:
-    resolution: {integrity: sha512-BhXM0Au22RwUneMPwSCnyhTOizdWoIEPU9sp0Aqa1PnDMR5Wv2FGXYDjuzJEIX+Eo2Rb8xuYe5jrnm5QowQFkw==}
-    engines: {node: '>=16.10'}
 
   meow@13.2.0:
     resolution: {integrity: sha512-pxQJQzB6djGPXh08dacEloMFopsOqGVRKFPYvPOt9XDZ1HasbgDZA74CJGreSU4G3Ak7EFJGoiH2auq+yXISgA==}
@@ -6233,9 +6226,9 @@ packages:
     resolution: {integrity: sha512-Q3CG/cYvCO1ye4QKkuH7EXxs3VC/rI1/trd+qX2+PolbaKG0H+bgcZzrTt96mMyRtejk+JMCiLUn3y29W8qmFQ==}
     engines: {node: '>= 0.10'}
 
-  peowly@1.3.2:
-    resolution: {integrity: sha512-BYIrwr8JCXY49jUZscgw311w9oGEKo7ux/s+BxrhKTQbiQ0iYNdZNJ5LgagaeercQdFHwnR7Z5IxxFWVQ+BasQ==}
-    engines: {node: '>=18.6.0'}
+  peowly@1.3.3:
+    resolution: {integrity: sha512-5UmUtvuCv3KzBX2NuQw2uF28o0t8Eq4KkPRZfUCzJs+DiNVKw7OaYn29vNDgrt/Pggs23CPlSTqgzlhHJfpT0A==}
+    engines: {node: '>=18.6.0', typescript: '>=5.8'}
 
   perfect-debounce@2.1.0:
     resolution: {integrity: sha512-LjgdTytVFXeUgtHZr9WYViYSM/g8MkcTPYDlPa3cDqMirHjKiSZPYd6DoL7pK8AJQr+uWkQvCjHNdiMqsrJs+g==}
@@ -7104,6 +7097,9 @@ packages:
   resolve-url@0.2.1:
     resolution: {integrity: sha512-ZuF55hVUQaaczgOIwqWzkEcEidmlD/xl44x1UZnhOXcYuFN2S6+rcxpG+C1N3So0wvNI3DmJICUFfu2SxhBmvg==}
     deprecated: https://github.com/lydell/resolve-url#deprecated
+
+  resolve-workspace-root@2.0.1:
+    resolution: {integrity: sha512-nR23LHAvaI6aHtMg6RWoaHpdR4D881Nydkzi2CixINyg9T00KgaJdJI6Vwty+Ps8WLxZHuxsS0BseWjxSA4C+w==}
 
   resolve@1.22.11:
     resolution: {integrity: sha512-RfqAvLnMl313r7c9oclB1HhUEAezcpLjz95wFH4LVuhk9JF/r22qmVP9AMmOU4vMX7Q8pN8jwNg/CSpdFnMjTQ==}
@@ -9948,7 +9944,7 @@ snapshots:
       glob: 8.1.0
       hash-sum: 2.0.0
       ignore: 5.3.2
-      lodash: 4.17.21
+      lodash: 4.17.23
       pify: 5.0.0
       serialize-javascript: 6.0.2
       upath: 2.0.1
@@ -10033,7 +10029,7 @@ snapshots:
       fs-extra: 11.3.2
       globby: 11.1.0
       hookable: 4.4.1
-      lodash: 4.17.21
+      lodash: 4.17.23
       minimist: 1.2.8
       opener: 1.5.2
       pretty-bytes: 5.6.0
@@ -10065,7 +10061,7 @@ snapshots:
       defu: 6.1.4
       destr: 2.0.5
       dotenv: 16.6.1
-      lodash: 4.17.21
+      lodash: 4.17.23
       rc9: 2.1.2
       std-env: 3.10.0
       ufo: 1.6.3
@@ -10079,7 +10075,7 @@ snapshots:
       fs-extra: 11.3.2
       hash-sum: 2.0.0
       hookable: 4.4.1
-      lodash: 4.17.21
+      lodash: 4.17.23
     transitivePeerDependencies:
       - supports-color
 
@@ -10245,7 +10241,7 @@ snapshots:
       fs-extra: 11.3.2
       hash-sum: 2.0.0
       jiti: 1.21.7
-      lodash: 4.17.21
+      lodash: 4.17.23
       proper-lockfile: 4.1.2
       semver: 7.7.4
       serialize-javascript: 6.0.2
@@ -10273,7 +10269,7 @@ snapshots:
       consola: 3.4.2
       defu: 6.1.4
       fs-extra: 11.3.2
-      lodash: 4.17.21
+      lodash: 4.17.23
       lru-cache: 5.1.1
       ufo: 1.6.3
       vue: 2.7.16
@@ -10299,7 +10295,7 @@ snapshots:
       hard-source-webpack-plugin: 0.13.1(webpack@4.47.0)
       hash-sum: 2.0.0
       html-webpack-plugin: 4.5.2(webpack@4.47.0)
-      lodash: 4.17.21
+      lodash: 4.17.23
       memfs: 4.51.1
       mkdirp: 0.5.6
       optimize-css-assets-webpack-plugin: 6.0.1(webpack@4.47.0)
@@ -10320,7 +10316,7 @@ snapshots:
       ufo: 1.6.3
       upath: 2.0.1
       url-loader: 4.1.1(file-loader@6.2.0(webpack@4.47.0))(webpack@4.47.0)
-      vue-loader: 15.11.1(@vue/compiler-sfc@3.5.26)(cache-loader@4.1.0(webpack@4.47.0))(css-loader@5.2.7(webpack@4.47.0))(lodash@4.17.21)(vue-template-compiler@2.7.16)(webpack@4.47.0)
+      vue-loader: 15.11.1(@vue/compiler-sfc@3.5.26)(cache-loader@4.1.0(webpack@4.47.0))(css-loader@5.2.7(webpack@4.47.0))(lodash@4.17.23)(vue-template-compiler@2.7.16)(webpack@4.47.0)
       vue-style-loader: 4.1.3
       vue-template-compiler: 2.7.16
       watchpack: 2.4.4
@@ -11192,9 +11188,9 @@ snapshots:
       '@vue/compiler-dom': 3.5.26
       '@vue/shared': 3.5.26
 
-  '@vue/component-compiler-utils@3.3.0(lodash@4.17.21)':
+  '@vue/component-compiler-utils@3.3.0(lodash@4.17.23)':
     dependencies:
-      consolidate: 0.15.1(lodash@4.17.21)
+      consolidate: 0.15.1(lodash@4.17.23)
       hash-sum: 1.0.2
       lru-cache: 4.1.5
       merge-source-map: 1.1.0
@@ -11491,7 +11487,7 @@ snapshots:
       graceful-fs: 4.2.11
       is-stream: 2.0.1
       lazystream: 1.0.1
-      lodash: 4.17.21
+      lodash: 4.17.23
       normalize-path: 3.0.0
       readable-stream: 4.7.0
 
@@ -12191,11 +12187,11 @@ snapshots:
 
   console-browserify@1.2.0: {}
 
-  consolidate@0.15.1(lodash@4.17.21):
+  consolidate@0.15.1(lodash@4.17.23):
     dependencies:
       bluebird: 3.7.2
     optionalDependencies:
-      lodash: 4.17.21
+      lodash: 4.17.23
 
   constants-browserify@1.0.0: {}
 
@@ -13740,7 +13736,7 @@ snapshots:
       chalk: 2.4.2
       find-cache-dir: 2.1.0
       graceful-fs: 4.2.11
-      lodash: 4.17.21
+      lodash: 4.17.23
       mkdirp: 0.5.6
       node-object-hash: 1.4.2
       parse-json: 4.0.0
@@ -13865,7 +13861,7 @@ snapshots:
       '@types/webpack': 4.41.40
       html-minifier-terser: 5.1.1
       loader-utils: 1.4.2
-      lodash: 4.17.21
+      lodash: 4.17.23
       pretty-error: 2.1.2
       tapable: 1.1.3
       util.promisify: 1.0.0
@@ -13965,7 +13961,7 @@ snapshots:
       cli-width: 3.0.0
       external-editor: 3.1.0
       figures: 3.2.0
-      lodash: 4.17.21
+      lodash: 4.17.23
       mute-stream: 0.0.8
       run-async: 2.4.1
       rxjs: 6.6.7
@@ -13982,12 +13978,13 @@ snapshots:
       picomatch: 4.0.3
       semver: 7.7.4
 
-  installed-check@9.3.0:
+  installed-check@10.0.0:
     dependencies:
       chalk: 5.6.2
       installed-check-core: 8.3.1
-      meow: 12.1.1
+      peowly: 1.3.3
       pony-cause: 2.1.11
+      resolve-workspace-root: 2.0.1
       version-guard: 1.1.3
 
   internal-slot@1.1.0:
@@ -14355,7 +14352,7 @@ snapshots:
 
   last-call-webpack-plugin@3.0.0:
     dependencies:
-      lodash: 4.17.21
+      lodash: 4.17.23
       webpack-sources: 1.4.3
 
   launch-editor-middleware@2.12.0:
@@ -14470,8 +14467,6 @@ snapshots:
 
   lodash.uniq@4.5.0: {}
 
-  lodash@4.17.21: {}
-
   lodash@4.17.23: {}
 
   loose-envify@1.4.0:
@@ -14568,8 +14563,6 @@ snapshots:
     dependencies:
       errno: 0.1.8
       readable-stream: 2.3.8
-
-  meow@12.1.1: {}
 
   meow@13.2.0: {}
 
@@ -14819,7 +14812,7 @@ snapshots:
       eslint-plugin-react: 7.37.5(eslint@9.39.2(jiti@2.6.1))
       find-up: 5.0.0
       globals: 15.15.0
-      peowly: 1.3.2
+      peowly: 1.3.3
       typescript-eslint: 8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
     transitivePeerDependencies:
       - '@typescript-eslint/utils'
@@ -15449,7 +15442,7 @@ snapshots:
       sha.js: 2.4.12
       to-buffer: 1.2.2
 
-  peowly@1.3.2: {}
+  peowly@1.3.3: {}
 
   perfect-debounce@2.1.0: {}
 
@@ -16103,7 +16096,7 @@ snapshots:
 
   pretty-error@2.1.2:
     dependencies:
-      lodash: 4.17.21
+      lodash: 4.17.23
       renderkid: 2.0.7
 
   pretty-ms@9.3.0:
@@ -16333,7 +16326,7 @@ snapshots:
       css-select: 4.3.0
       dom-converter: 0.2.0
       htmlparser2: 6.1.0
-      lodash: 4.17.21
+      lodash: 4.17.23
       strip-ansi: 3.0.1
 
   repeat-element@1.1.4: {}
@@ -16353,6 +16346,8 @@ snapshots:
   resolve-pkg-maps@1.0.0: {}
 
   resolve-url@0.2.1: {}
+
+  resolve-workspace-root@2.0.1: {}
 
   resolve@1.22.11:
     dependencies:
@@ -17672,9 +17667,9 @@ snapshots:
 
   vue-hot-reload-api@2.3.4: {}
 
-  vue-loader@15.11.1(@vue/compiler-sfc@3.5.26)(cache-loader@4.1.0(webpack@4.47.0))(css-loader@5.2.7(webpack@4.47.0))(lodash@4.17.21)(vue-template-compiler@2.7.16)(webpack@4.47.0):
+  vue-loader@15.11.1(@vue/compiler-sfc@3.5.26)(cache-loader@4.1.0(webpack@4.47.0))(css-loader@5.2.7(webpack@4.47.0))(lodash@4.17.23)(vue-template-compiler@2.7.16)(webpack@4.47.0):
     dependencies:
-      '@vue/component-compiler-utils': 3.3.0(lodash@4.17.21)
+      '@vue/component-compiler-utils': 3.3.0(lodash@4.17.23)
       css-loader: 5.2.7(webpack@4.47.0)
       hash-sum: 1.0.2
       loader-utils: 1.4.2
