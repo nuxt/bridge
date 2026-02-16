@@ -1,4 +1,4 @@
-name: Reproduire
+name: issue-labelled
 on:
   issues:
     types: [labeled]
