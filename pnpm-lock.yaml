@@ -18,7 +18,7 @@ importers:
     devDependencies:
       '@nuxt/test-utils':
         specifier: 3.23.0
-        version: 3.23.0(happy-dom@20.6.0)(magicast@0.5.1)(playwright-core@1.58.2)(typescript@5.9.3)(vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.0)(jiti@2.6.1)(terser@5.46.0))
+        version: 3.23.0(happy-dom@20.6.1)(magicast@0.5.1)(playwright-core@1.58.2)(typescript@5.9.3)(vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.1)(jiti@2.6.1)(terser@5.46.0))
       '@types/semver':
         specifier: 7.7.1
         version: 7.7.1
@@ -35,14 +35,14 @@ importers:
         specifier: 9.39.2
         version: 9.39.2(jiti@2.6.1)
       eslint-plugin-jsdoc:
-        specifier: 62.5.4
-        version: 62.5.4(eslint@9.39.2(jiti@2.6.1))
+        specifier: 62.5.5
+        version: 62.5.5(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-unicorn:
         specifier: ^62.0.0
         version: 62.0.0(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-vue:
-        specifier: ^10.7.0
-        version: 10.7.0(@stylistic/eslint-plugin@2.11.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/parser@8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(vue-eslint-parser@9.4.3(eslint@9.39.2(jiti@2.6.1)))
+        specifier: ^10.8.0
+        version: 10.8.0(@stylistic/eslint-plugin@2.11.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/parser@8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(vue-eslint-parser@9.4.3(eslint@9.39.2(jiti@2.6.1)))
       execa:
         specifier: 9.6.1
         version: 9.6.1
@@ -56,8 +56,8 @@ importers:
         specifier: 1.15.5
         version: 1.15.5
       happy-dom:
-        specifier: ^20.6.0
-        version: 20.6.0
+        specifier: ^20.6.1
+        version: 20.6.1
       installed-check:
         specifier: 10.0.0
         version: 10.0.0
@@ -93,7 +93,7 @@ importers:
         version: 8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
       vitest:
         specifier: 4.0.18
-        version: 4.0.18(@types/node@24.10.1)(happy-dom@20.6.0)(jiti@2.6.1)(terser@5.46.0)
+        version: 4.0.18(@types/node@24.10.1)(happy-dom@20.6.1)(jiti@2.6.1)(terser@5.46.0)
       vue:
         specifier: 2.7.16
         version: 2.7.16
@@ -4277,8 +4277,8 @@ packages:
       '@typescript-eslint/parser':
         optional: true
 
-  eslint-plugin-jsdoc@62.5.4:
-    resolution: {integrity: sha512-U+Q5ppErmC17VFQl542eBIaXcuq975BzoIHBXyx7UQx/i4gyHXxPiBkonkuxWyFA98hGLALLUuD+NJcXqSGKxg==}
+  eslint-plugin-jsdoc@62.5.5:
+    resolution: {integrity: sha512-aRp0KVW26imgPqn17oSDnJdA3tlu+6D/xI/pqWzK5qDPQbldQ1Hsg84dYAsFyvGJhI+u/sGvzgGjMjlKQtUG/Q==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -4307,13 +4307,13 @@ packages:
     peerDependencies:
       eslint: '>=9.38.0'
 
-  eslint-plugin-vue@10.7.0:
-    resolution: {integrity: sha512-r2XFCK4qlo1sxEoAMIoTTX0PZAdla0JJDt1fmYiworZUX67WeEGqm+JbyAg3M+pGiJ5U6Mp5WQbontXWtIW7TA==}
+  eslint-plugin-vue@10.8.0:
+    resolution: {integrity: sha512-f1J/tcbnrpgC8suPN5AtdJ5MQjuXbSU9pGRSSYAuF3SHoiYCOdEX6O22pLaRyLHXvDcOe+O5ENgc1owQ587agA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       '@stylistic/eslint-plugin': ^2.0.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
       '@typescript-eslint/parser': ^7.0.0 || ^8.0.0
-      eslint: ^8.57.0 || ^9.0.0
+      eslint: ^8.57.0 || ^9.0.0 || ^10.0.0
       vue-eslint-parser: ^10.0.0
     peerDependenciesMeta:
       '@stylistic/eslint-plugin':
@@ -4815,8 +4815,8 @@ packages:
       crossws:
         optional: true
 
-  happy-dom@20.6.0:
-    resolution: {integrity: sha512-a+Sz2bPai3rajDuE82Y4B0OxlXJ19ckUjyfWDmeCAs8ZbEbnqtwzV9d4CVhQjWIuOBTOw8rhlxNeaSCHeknXRQ==}
+  happy-dom@20.6.1:
+    resolution: {integrity: sha512-+0vhESXXhFwkdjZnJ5DlmJIfUYGgIEEjzIjB+aKJbFuqlvvKyOi+XkI1fYbgYR9QCxG5T08koxsQ6HrQfa5gCQ==}
     engines: {node: '>=20.0.0'}
 
   hard-source-webpack-plugin@0.13.1:
@@ -10193,7 +10193,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@nuxt/test-utils@3.23.0(happy-dom@20.6.0)(magicast@0.5.1)(playwright-core@1.58.2)(typescript@5.9.3)(vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.0)(jiti@2.6.1)(terser@5.46.0))':
+  '@nuxt/test-utils@3.23.0(happy-dom@20.6.1)(magicast@0.5.1)(playwright-core@1.58.2)(typescript@5.9.3)(vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.1)(jiti@2.6.1)(terser@5.46.0))':
     dependencies:
       '@clack/prompts': 1.0.0-alpha.9
       '@nuxt/kit': 3.20.2(magicast@0.5.1)
@@ -10221,12 +10221,12 @@ snapshots:
       tinyexec: 1.0.2
       ufo: 1.6.3
       unplugin: 2.3.11
-      vitest-environment-nuxt: 1.0.1(happy-dom@20.6.0)(magicast@0.5.1)(playwright-core@1.58.2)(typescript@5.9.3)(vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.0)(jiti@2.6.1)(terser@5.46.0))
+      vitest-environment-nuxt: 1.0.1(happy-dom@20.6.1)(magicast@0.5.1)(playwright-core@1.58.2)(typescript@5.9.3)(vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.1)(jiti@2.6.1)(terser@5.46.0))
       vue: 3.5.26(typescript@5.9.3)
     optionalDependencies:
-      happy-dom: 20.6.0
+      happy-dom: 20.6.1
       playwright-core: 1.58.2
-      vitest: 4.0.18(@types/node@24.10.1)(happy-dom@20.6.0)(jiti@2.6.1)(terser@5.46.0)
+      vitest: 4.0.18(@types/node@24.10.1)(happy-dom@20.6.1)(jiti@2.6.1)(terser@5.46.0)
     transitivePeerDependencies:
       - crossws
       - magicast
@@ -13014,7 +13014,7 @@ snapshots:
       - supports-color
     optional: true
 
-  eslint-plugin-jsdoc@62.5.4(eslint@9.39.2(jiti@2.6.1)):
+  eslint-plugin-jsdoc@62.5.5(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
       '@es-joy/jsdoccomment': 0.84.0
       '@es-joy/resolve.exports': 1.2.0
@@ -13098,7 +13098,7 @@ snapshots:
       semver: 7.7.4
       strip-indent: 4.1.1
 
-  eslint-plugin-vue@10.7.0(@stylistic/eslint-plugin@2.11.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/parser@8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(vue-eslint-parser@9.4.3(eslint@9.39.2(jiti@2.6.1))):
+  eslint-plugin-vue@10.8.0(@stylistic/eslint-plugin@2.11.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(@typescript-eslint/parser@8.55.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.2(jiti@2.6.1))(vue-eslint-parser@9.4.3(eslint@9.39.2(jiti@2.6.1))):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.2(jiti@2.6.1))
       eslint: 9.39.2(jiti@2.6.1)
@@ -13719,7 +13719,7 @@ snapshots:
       rou3: 0.7.12
       srvx: 0.11.4
 
-  happy-dom@20.6.0:
+  happy-dom@20.6.1:
     dependencies:
       '@types/node': 24.10.1
       '@types/whatwg-mimetype': 3.0.2
@@ -17588,9 +17588,9 @@ snapshots:
       jiti: 2.6.1
       terser: 5.46.0
 
-  vitest-environment-nuxt@1.0.1(happy-dom@20.6.0)(magicast@0.5.1)(playwright-core@1.58.2)(typescript@5.9.3)(vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.0)(jiti@2.6.1)(terser@5.46.0)):
+  vitest-environment-nuxt@1.0.1(happy-dom@20.6.1)(magicast@0.5.1)(playwright-core@1.58.2)(typescript@5.9.3)(vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.1)(jiti@2.6.1)(terser@5.46.0)):
     dependencies:
-      '@nuxt/test-utils': 3.23.0(happy-dom@20.6.0)(magicast@0.5.1)(playwright-core@1.58.2)(typescript@5.9.3)(vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.0)(jiti@2.6.1)(terser@5.46.0))
+      '@nuxt/test-utils': 3.23.0(happy-dom@20.6.1)(magicast@0.5.1)(playwright-core@1.58.2)(typescript@5.9.3)(vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.1)(jiti@2.6.1)(terser@5.46.0))
     transitivePeerDependencies:
       - '@cucumber/cucumber'
       - '@jest/globals'
@@ -17606,7 +17606,7 @@ snapshots:
       - typescript
       - vitest
 
-  vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.0)(jiti@2.6.1)(terser@5.46.0):
+  vitest@4.0.18(@types/node@24.10.1)(happy-dom@20.6.1)(jiti@2.6.1)(terser@5.46.0):
     dependencies:
       '@vitest/expect': 4.0.18
       '@vitest/mocker': 4.0.18(vite@7.3.1(@types/node@24.10.1)(jiti@2.6.1)(terser@5.46.0))
@@ -17630,7 +17630,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.10.1
-      happy-dom: 20.6.0
+      happy-dom: 20.6.1
     transitivePeerDependencies:
       - jiti
       - less
