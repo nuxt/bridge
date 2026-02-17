@@ -182,8 +182,8 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0
       hookable:
-        specifier: 5.5.3
-        version: 5.5.3
+        specifier: 6.0.1
+        version: 6.0.1
       klona:
         specifier: ^2.0.6
         version: 2.0.6
@@ -4901,6 +4901,9 @@ packages:
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
+
+  hookable@6.0.1:
+    resolution: {integrity: sha512-uKGyY8BuzN/a5gvzvA+3FVWo0+wUjgtfSdnmjtrOVwQCZPHpHDH2WRO3VZSOeluYrHoDCiXFffZXs8Dj1ULWtw==}
 
   hosted-git-info@7.0.2:
     resolution: {integrity: sha512-puUZAUKT5m8Zzvs72XWy3HtvVbTWljRE66cP60bxJzAqf2DgICo7lYTY2IHUmLnNpjYvw5bvmoHvPc0QO2a62w==}
@@ -13821,6 +13824,8 @@ snapshots:
   hookable@4.4.1: {}
 
   hookable@5.5.3: {}
+
+  hookable@6.0.1: {}
 
   hosted-git-info@7.0.2:
     dependencies:
