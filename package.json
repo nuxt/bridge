@@ -39,7 +39,7 @@
     "jiti": "2.6.1",
     "knip": "5.83.1",
     "neostandard": "^0.12.2",
-    "nuxi": "3.32.0",
+    "nuxi": "3.33.1",
     "ofetch": "1.5.1",
     "pathe": "^2.0.3",
     "playwright-core": "1.58.2",
@@ -53,7 +53,7 @@
     "@nuxt/bridge": "workspace:*",
     "@nuxt/bridge-schema": "workspace:*",
     "h3": "1.15.5",
-    "@nuxt/kit": "3.20.2",
+    "@nuxt/kit": "3.21.1",
     "espree": "11.1.0",
     "eslint-visitor-keys": "5.0.0"
   },
