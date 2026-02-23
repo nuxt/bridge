@@ -59,8 +59,8 @@ importers:
         specifier: ^20.7.0
         version: 20.7.0
       installed-check:
-        specifier: 10.0.0
-        version: 10.0.0
+        specifier: 10.0.1
+        version: 10.0.1
       jiti:
         specifier: 2.6.1
         version: 2.6.1
@@ -5037,8 +5037,8 @@ packages:
     resolution: {integrity: sha512-5yH+YyCw2AO1OQpOSce2yUaooOSrK8XXmkOn2xdVpdtpt0pqwfdqU77FIpWN4fPHDcINKUf4R7hgDEfqpy1Z9g==}
     engines: {node: '>=18.6.0'}
 
-  installed-check@10.0.0:
-    resolution: {integrity: sha512-lfk580bIgRtiKJBoyPAd7geSIXF1zlVXi8VP0eU2mBTRpfcqIFG4JK+c8o7R+EOA6lfKPhnThIkx7LjaFwj7fg==}
+  installed-check@10.0.1:
+    resolution: {integrity: sha512-jJDj07Sm2K5fwpnFjnwZjyjeUrWnTx1bHYZu1Lcj2C/l1mYpsujUUhiNpgsxQdKuFbcdvngqHV5MUaYFppZtDA==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
     hasBin: true
 
@@ -13970,7 +13970,7 @@ snapshots:
       picomatch: 4.0.3
       semver: 7.7.4
 
-  installed-check@10.0.0:
+  installed-check@10.0.1:
     dependencies:
       chalk: 5.6.2
       installed-check-core: 8.3.1
