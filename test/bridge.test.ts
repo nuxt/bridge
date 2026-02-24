@@ -64,10 +64,10 @@ describe('nuxt composables', () => {
 
     // Verify cookies were set
     const cookies = res.headers.get('set-cookie')
-    expect(cookies).toBeTruthy() 
+    expect(cookies).toBeTruthy()
     expect(cookies).toContain('redirect-test=foo')
   })
-  
+
   it('error should be render', async () => {
     const html = await $fetch('/async-data')
 

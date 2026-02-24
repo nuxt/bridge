@@ -4,7 +4,7 @@
 
 <script setup>
 definePageMeta({
-  middleware: defineNuxtRouteMiddleware(async () => {
+  middleware: defineNuxtRouteMiddleware(() => {
     useCookie('redirect-test').value = 'foo'
 
     // Immediately redirect during SSR
