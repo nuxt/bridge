@@ -45,6 +45,7 @@ interface NuxtSSRContext extends SSRContext {
   url: string
   noSSR: boolean
   redirected?: boolean
+  '~renderResponse'?: RenderResponse
   event: H3Event
   /** @deprecated use `ssrContext.event` instead */
   req: H3Event['req']
@@ -198,6 +199,12 @@ export default defineRenderHandler(async (event) => {
   // If we error on rendering error page, we bail out and directly return to the error handler
   if (!_rendered) { return }
 
+  await ssrContext.nuxtApp?.hooks.callHook('app:rendered', { ssrContext, renderResult: _rendered })
+
+  if (ssrContext['~renderResponse']) {
+    return ssrContext['~renderResponse']
+  }
+
   if (ssrContext.redirected || event.node.res.writableEnded) {
     return
   }
@@ -206,8 +213,6 @@ export default defineRenderHandler(async (event) => {
   if (ssrContext.nuxt?.error && !ssrError) {
     throw ssrContext.nuxt.error
   }
-
-  ssrContext.nuxtApp?.hooks.callHook('app:rendered', { ssrContext, renderResult: _rendered })
 
   ssrContext.nuxt = ssrContext.nuxt || {}
 
