@@ -195,7 +195,7 @@ importers:
         version: 0.30.21
       mlly:
         specifier: ^1.8.0
-        version: 1.8.0
+        version: 1.8.1
       mocked-exports:
         specifier: ^0.1.1
         version: 0.1.1
@@ -239,8 +239,8 @@ importers:
         specifier: ^1.6.3
         version: 1.6.3
       unimport:
-        specifier: ^5.6.0
-        version: 5.6.0
+        specifier: ^6.0.1
+        version: 6.0.1
       unplugin:
         specifier: ^1.16.1
         version: 1.16.1
@@ -333,8 +333,8 @@ importers:
         specifier: 3.6.1
         version: 3.6.1(typescript@5.9.3)(vue@3.5.26(typescript@5.9.3))
       unimport:
-        specifier: ^5.6.0
-        version: 5.6.0
+        specifier: ^6.0.1
+        version: 6.0.1
       untyped:
         specifier: ^2.0.0
         version: 2.0.0
@@ -5766,8 +5766,8 @@ packages:
       vue-tsc:
         optional: true
 
-  mlly@1.8.0:
-    resolution: {integrity: sha512-l8D9ODSRWLe2KHJSifWGwBqpTZXIXTeo8mlKjY+E2HAakaTeNpqAyBZ8GSqLzHgw4XmHmC8whvpjJNMbFZN7/g==}
+  mlly@1.8.1:
+    resolution: {integrity: sha512-SnL6sNutTwRWWR/vcmCYHSADjiEesp5TGQQ0pXyLhW5IoeibRlF/CbSLailbB3CNqJUk9cVJ9dUDnbD7GrcHBQ==}
 
   mocked-exports@0.1.1:
     resolution: {integrity: sha512-aF7yRQr/Q0O2/4pIXm6PZ5G+jAd7QS4Yu8m+WEeEHGnbo+7mE36CbLSDQiXYV8bVL3NfmdeqPJct0tUlnjVSnA==}
@@ -7942,6 +7942,10 @@ packages:
     resolution: {integrity: sha512-8rqAmtJV8o60x46kBAJKtHpJDJWkA2xcBqWKPI14MgUb05o1pnpnCnXSxedUXyeq7p8fR5g3pTo2BaswZ9lD9A==}
     engines: {node: '>=18.12.0'}
 
+  unimport@6.0.1:
+    resolution: {integrity: sha512-RbT3PfMshH2eYH5ylQuCf1sUQ1ocygZp57HaBNIp96g1upcTZnIstCfl6ZbZM7KHI88K3jmwhgeMxwtYsWSqug==}
+    engines: {node: '>=18.12.0'}
+
   union-value@1.0.1:
     resolution: {integrity: sha512-tJfXmxMeWYnczCVs7XAEvIV7ieppALdyepWMkHkwciRpZraG/xwT+s2JN8+pr1+8jCRf80FFzvr+MpQeeoF4Xg==}
     engines: {node: '>=0.10.0'}
@@ -7975,6 +7979,10 @@ packages:
   unplugin@2.3.11:
     resolution: {integrity: sha512-5uKD0nqiYVzlmCRs01Fhs2BdkEgBS3SAVP6ndrBsuK42iC2+JHyxM05Rm9G8+5mkmRtzMZGY8Ct5+mliZxU/Ww==}
     engines: {node: '>=18.12.0'}
+
+  unplugin@3.0.0:
+    resolution: {integrity: sha512-0Mqk3AT2TZCXWKdcoaufeXNukv2mTrEZExeXlHIOZXdqYoHHr4n51pymnwV8x2BOVxwXbK2HLlI7usrqMpycdg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
 
   unrs-resolver@1.11.1:
     resolution: {integrity: sha512-bSjt9pjaEBnNiGgc9rUiHGKv5l4/TGzDmYw3RhnkJGtLhbnnA/5qJj7x3dNDCRx/PJxu774LlH8lCOlB4hEfKg==}
@@ -10103,7 +10111,7 @@ snapshots:
       jiti: 2.6.1
       klona: 2.0.6
       knitwork: 1.3.0
-      mlly: 1.8.0
+      mlly: 1.8.1
       ohash: 2.0.11
       pathe: 2.0.3
       pkg-types: 2.3.0
@@ -13282,7 +13290,7 @@ snapshots:
   externality@1.0.2:
     dependencies:
       enhanced-resolve: 5.19.0
-      mlly: 1.8.0
+      mlly: 1.8.1
       pathe: 1.1.2
       ufo: 1.6.3
 
@@ -13420,7 +13428,7 @@ snapshots:
   fix-dts-default-cjs-exports@1.0.1:
     dependencies:
       magic-string: 0.30.21
-      mlly: 1.8.0
+      mlly: 1.8.1
       rollup: 4.59.0
 
   flat-cache@4.0.1:
@@ -14391,7 +14399,7 @@ snapshots:
       h3: 1.15.5
       http-shutdown: 1.2.2
       jiti: 2.6.1
-      mlly: 1.8.0
+      mlly: 1.8.1
       node-forge: 1.3.2
       pathe: 1.1.2
       std-env: 3.10.0
@@ -14417,7 +14425,7 @@ snapshots:
 
   local-pkg@1.1.2:
     dependencies:
-      mlly: 1.8.0
+      mlly: 1.8.1
       pkg-types: 2.3.0
       quansync: 0.2.11
 
@@ -14703,7 +14711,7 @@ snapshots:
       defu: 6.1.4
       esbuild: 0.25.12
       jiti: 1.21.7
-      mlly: 1.8.0
+      mlly: 1.8.1
       pathe: 2.0.3
       pkg-types: 2.3.0
       postcss: 8.5.6
@@ -14722,7 +14730,7 @@ snapshots:
       defu: 6.1.4
       esbuild: 0.25.12
       jiti: 1.21.7
-      mlly: 1.8.0
+      mlly: 1.8.1
       pathe: 2.0.3
       pkg-types: 2.3.0
       postcss: 8.5.6
@@ -14733,7 +14741,7 @@ snapshots:
       typescript: 5.9.3
       vue: 3.5.26(typescript@5.9.3)
 
-  mlly@1.8.0:
+  mlly@1.8.1:
     dependencies:
       acorn: 8.16.0
       pathe: 2.0.3
@@ -14855,7 +14863,7 @@ snapshots:
       magic-string: 0.30.21
       magicast: 0.5.1
       mime: 4.1.0
-      mlly: 1.8.0
+      mlly: 1.8.1
       node-fetch-native: 1.6.7
       node-mock-http: 1.0.4
       ofetch: 1.5.1
@@ -15465,7 +15473,7 @@ snapshots:
   pkg-types@1.3.1:
     dependencies:
       confbox: 0.1.8
-      mlly: 1.8.0
+      mlly: 1.8.1
       pathe: 2.0.3
 
   pkg-types@2.3.0:
@@ -17270,7 +17278,7 @@ snapshots:
       jiti: 2.6.1
       magic-string: 0.30.21
       mkdist: 2.4.1(typescript@5.9.3)(vue@2.7.16)
-      mlly: 1.8.0
+      mlly: 1.8.1
       pathe: 2.0.3
       pkg-types: 2.3.0
       pretty-bytes: 7.1.0
@@ -17304,7 +17312,7 @@ snapshots:
       jiti: 2.6.1
       magic-string: 0.30.21
       mkdist: 2.4.1(typescript@5.9.3)(vue@3.5.26(typescript@5.9.3))
-      mlly: 1.8.0
+      mlly: 1.8.1
       pathe: 2.0.3
       pkg-types: 2.3.0
       pretty-bytes: 7.1.0
@@ -17369,7 +17377,7 @@ snapshots:
       estree-walker: 3.0.3
       local-pkg: 1.1.2
       magic-string: 0.30.21
-      mlly: 1.8.0
+      mlly: 1.8.1
       pathe: 2.0.3
       picomatch: 4.0.3
       pkg-types: 2.3.0
@@ -17377,6 +17385,23 @@ snapshots:
       strip-literal: 3.1.0
       tinyglobby: 0.2.15
       unplugin: 2.3.11
+      unplugin-utils: 0.3.1
+
+  unimport@6.0.1:
+    dependencies:
+      acorn: 8.16.0
+      escape-string-regexp: 5.0.0
+      estree-walker: 3.0.3
+      local-pkg: 1.1.2
+      magic-string: 0.30.21
+      mlly: 1.8.1
+      pathe: 2.0.3
+      picomatch: 4.0.3
+      pkg-types: 2.3.0
+      scule: 1.3.0
+      strip-literal: 3.1.0
+      tinyglobby: 0.2.15
+      unplugin: 3.0.0
       unplugin-utils: 0.3.1
 
   union-value@1.0.1:
@@ -17414,6 +17439,12 @@ snapshots:
     dependencies:
       '@jridgewell/remapping': 2.3.5
       acorn: 8.16.0
+      picomatch: 4.0.3
+      webpack-virtual-modules: 0.6.2
+
+  unplugin@3.0.0:
+    dependencies:
+      '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.3
       webpack-virtual-modules: 0.6.2
 
@@ -17479,7 +17510,7 @@ snapshots:
       exsolve: 1.0.8
       knitwork: 1.3.0
       magic-string: 0.30.21
-      mlly: 1.8.0
+      mlly: 1.8.1
       pathe: 2.0.3
       pkg-types: 2.3.0
 
