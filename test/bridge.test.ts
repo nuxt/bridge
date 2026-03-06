@@ -54,6 +54,20 @@ describe('nuxt composables', () => {
     expect(await extractCookie()).toEqual({ foo: 'baz' })
     await page.close()
   })
+
+  it('should respond with set-cookie header even when SSR redirect occurs', async () => {
+    const res = await fetch('/cookie-with-redirect', { redirect: 'manual' })
+
+    // Verify redirect occurred
+    expect(res.status).toBe(302)
+    expect(res.headers.get('location')).toEqual('/')
+
+    // Verify cookies were set
+    const cookies = res.headers.get('set-cookie')
+    expect(cookies).toBeTruthy()
+    expect(cookies).toContain('redirect-test=foo')
+  })
+
   it('error should be render', async () => {
     const html = await $fetch('/async-data')
 

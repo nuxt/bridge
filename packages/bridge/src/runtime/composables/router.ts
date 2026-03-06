@@ -1,12 +1,25 @@
 import { getCurrentInstance, reactive } from 'vue'
 import type VueRouter from 'vue-router'
 import type { Location, RawLocation, Route, NavigationFailure } from 'vue-router'
-import { sendRedirect } from 'h3'
+import { sanitizeStatusCode } from 'h3'
 import { useRouter as useVueRouter, useRoute as useVueRoute } from 'vue-router/composables'
 import { hasProtocol, joinURL, parseURL, withQuery } from 'ufo'
 import { useNuxtApp, callWithNuxt, useRuntimeConfig } from '../nuxt'
 import { createError, showError } from './error'
 import type { NuxtError } from './error'
+
+const URL_QUOTE_RE = /"/g
+
+export function encodeURL (location: string, isExternalHost = false) {
+  const url = new URL(location, 'http://localhost')
+  if (!isExternalHost) {
+    return url.pathname + url.search + url.hash
+  }
+  if (location.startsWith('//')) {
+    return url.toString().replace(url.protocol, '')
+  }
+  return url.toString()
+}
 
 // Auto-import equivalents for `vue-router`
 export const useRouter = () => {
@@ -138,11 +151,20 @@ export const navigateTo = (to: RawLocation | undefined | null, options?: Navigat
       const fullPath = typeof to === 'string' || isExternal ? toPath : router.resolve(to).resolved.fullPath || '/'
       const location = isExternal ? toPath : joinURL(useRuntimeConfig().app.baseURL, fullPath)
 
+      const isExternalHost = hasProtocol(toPath, { acceptRelative: true })
+
       const redirect = async function (response: any) {
         // @ts-expect-error
         await nuxtApp.callHook('app:redirected')
 
-        await sendRedirect(nuxtApp.ssrContext!.event, location, options?.redirectCode || 302)
+        const encodedLoc = location.replace(URL_QUOTE_RE, '%22')
+        const encodedHeader = encodeURL(location, isExternalHost)
+
+        nuxtApp.ssrContext!['~renderResponse'] = {
+          statusCode: sanitizeStatusCode(options?.redirectCode || 302, 302),
+          body: `<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=${encodedLoc}"></head></html>`,
+          headers: { location: encodedHeader }
+        }
         return response
       }
 
