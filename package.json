@@ -26,7 +26,7 @@
     "changelogen": "0.6.2",
     "consola": "^3.4.2",
     "devalue": "5.6.3",
-    "eslint": "10.0.2",
+    "eslint": "9.39.3",
     "eslint-plugin-jsdoc": "62.7.0",
     "eslint-plugin-unicorn": "^63.0.0",
     "eslint-plugin-vue": "^10.8.0",
@@ -55,6 +55,7 @@
     "h3": "1.15.5",
     "@nuxt/kit": "3.21.2",
     "espree": "11.1.1",
+    "eslint-scope": "9.1.1",
     "eslint-visitor-keys": "5.0.1"
   },
   "engines": {
