@@ -110,9 +110,10 @@ export default defineNuxtModule({
       // @ts-expect-error TODO: legacy module container usage
       nuxt.hook('modules:done', moduleContainer =>
         installModule(
-          importsModule.bind(moduleContainer, {
+          importsModule.bind(moduleContainer),
+          {
             autoImport: nuxt.options.imports?.autoImport ?? opts.imports ?? opts.autoImports
-          })
+          }
         )
       )
     }
