@@ -35,7 +35,7 @@
     "execa": "9.6.1",
     "globals": "^17.4.0",
     "globby": "16.1.1",
-    "h3": "1.15.5",
+    "h3": "1.15.6",
     "happy-dom": "^20.8.4",
     "installed-check": "10.0.1",
     "jiti": "2.6.1",
@@ -54,7 +54,7 @@
   "resolutions": {
     "@nuxt/bridge": "workspace:*",
     "@nuxt/bridge-schema": "workspace:*",
-    "h3": "1.15.5",
+    "h3": "1.15.6",
     "@nuxt/kit": "3.21.2",
     "espree": "11.2.0",
     "eslint-scope": "9.1.2",
