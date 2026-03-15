@@ -4,6 +4,8 @@ import tseslint from 'typescript-eslint'
 import pluginVue from 'eslint-plugin-vue'
 import jsdoc from 'eslint-plugin-jsdoc'
 import pluginUnicorn from 'eslint-plugin-unicorn'
+import importX from 'eslint-plugin-import-x'
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript'
 import { defineConfig } from 'eslint/config'
 
 export default defineConfig(
@@ -39,10 +41,11 @@ export default defineConfig(
           note: 'note',
         },
       },
-      'import-x/resolver': {
-        typescript: true,
-        node: true,
-      },
+      'import-x/resolver-next': [
+        createTypeScriptImportResolver({
+          project: './tsconfig.json'
+        })
+      ]
     },
   },
   {
@@ -56,6 +59,7 @@ export default defineConfig(
   {
     plugins: {
       unicorn: pluginUnicorn,
+      'import-x': importX
     },
   },
   {
