@@ -7,7 +7,7 @@ settings:
 overrides:
   '@nuxt/bridge': workspace:*
   '@nuxt/bridge-schema': workspace:*
-  h3: 1.15.5
+  h3: 1.15.6
   '@nuxt/kit': 3.21.2
   espree: 11.2.0
   eslint-scope: 9.1.2
@@ -60,8 +60,8 @@ importers:
         specifier: 16.1.1
         version: 16.1.1
       h3:
-        specifier: 1.15.5
-        version: 1.15.5
+        specifier: 1.15.6
+        version: 1.15.6
       happy-dom:
         specifier: ^20.8.4
         version: 20.8.4
@@ -183,8 +183,8 @@ importers:
         specifier: ^3.2.0
         version: 3.2.0
       h3:
-        specifier: 1.15.5
-        version: 1.15.5
+        specifier: 1.15.6
+        version: 1.15.6
       hash-sum:
         specifier: ^2.0.0
         version: 2.0.0
@@ -4744,8 +4744,8 @@ packages:
     resolution: {integrity: sha512-O1Ld7Dr+nqPnmGpdhzLmMTQ4vAsD+rHwMm1NLUmoUFFymBOMKxCCrtDxqdBRYXdeEPEi3SyoR4TizJLQrnKBNA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  h3@1.15.5:
-    resolution: {integrity: sha512-xEyq3rSl+dhGX2Lm0+eFQIAzlDN6Fs0EcC4f7BNUmzaRX/PTzeuM+Tr2lHB8FoXggsQIeXLj8EDVgs5ywxyxmg==}
+  h3@1.15.6:
+    resolution: {integrity: sha512-oi15ESLW5LRthZ+qPCi5GNasY/gvynSKUQxgiovrY63bPAtG59wtM+LSrlcwvOHAXzGrXVLnI97brbkdPF9WoQ==}
 
   h3@2.0.1-rc.14:
     resolution: {integrity: sha512-163qbGmTr/9rqQRNuqMqtgXnOUAkE4KTdauiC9y0E5iG1I65kte9NyfWvZw5RTDMt6eY+DtyoNzrQ9wA2BfvGQ==}
@@ -10165,7 +10165,7 @@ snapshots:
       exsolve: 1.0.8
       fake-indexeddb: 6.2.5
       get-port-please: 3.2.0
-      h3: 1.15.5
+      h3: 1.15.6
       h3-next: h3@2.0.1-rc.14
       local-pkg: 1.1.2
       magic-string: 0.30.21
@@ -13590,7 +13590,7 @@ snapshots:
     dependencies:
       duplexer: 0.1.2
 
-  h3@1.15.5:
+  h3@1.15.6:
     dependencies:
       cookie-es: 1.2.2
       crossws: 0.3.5
@@ -14285,7 +14285,7 @@ snapshots:
       crossws: 0.3.5
       defu: 6.1.4
       get-port-please: 3.2.0
-      h3: 1.15.5
+      h3: 1.15.6
       http-shutdown: 1.2.2
       jiti: 2.6.1
       mlly: 1.8.1
@@ -14740,7 +14740,7 @@ snapshots:
       exsolve: 1.0.8
       globby: 16.1.1
       gzip-size: 7.0.0
-      h3: 1.15.5
+      h3: 1.15.6
       hookable: 5.5.3
       httpxy: 0.1.7
       ioredis: 5.9.1
@@ -17367,7 +17367,7 @@ snapshots:
       anymatch: 3.1.3
       chokidar: 5.0.0
       destr: 2.0.5
-      h3: 1.15.5
+      h3: 1.15.6
       lru-cache: 11.2.4
       node-fetch-native: 1.6.7
       ofetch: 1.5.1
