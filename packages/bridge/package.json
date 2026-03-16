@@ -67,7 +67,7 @@
     "postcss-import-resolver": "^2.0.0",
     "scule": "^1.3.0",
     "std-env": "^4.0.0",
-    "terser": "^5.46.0",
+    "terser": "^5.46.1",
     "ufo": "^1.6.3",
     "unimport": "^6.0.1",
     "unplugin": "^1.16.1",
