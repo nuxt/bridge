@@ -46,7 +46,7 @@
     "pathe": "^2.0.3",
     "playwright-core": "1.58.2",
     "semver": "7.7.4",
-    "std-env": "3.10.0",
+    "std-env": "4.0.0",
     "typescript-eslint": "^8.57.0",
     "vitest": "4.1.0",
     "vue": "2.7.16"
