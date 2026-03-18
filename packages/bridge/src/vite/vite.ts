@@ -34,10 +34,12 @@ async function bundle (nuxt: Nuxt, builder: any) {
             compilerOptions: nuxt.options.vue.compilerOptions
           }
         },
-        esbuild: {
-          jsxFactory: 'h',
-          jsxFragment: 'Fragment',
-          tsconfigRaw: '{}'
+        oxc: {
+          jsx: {
+            runtime: 'classic',
+            pragma: 'h',
+            pragmaFrag: 'Fragment'
+          }
         },
         clearScreen: false,
         define: {
