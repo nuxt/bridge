@@ -39,7 +39,7 @@
     "happy-dom": "^20.8.4",
     "installed-check": "10.0.1",
     "jiti": "2.6.1",
-    "knip": "6.0.2",
+    "knip": "6.0.3",
     "neostandard": "^0.13.0",
     "nuxi": "3.34.0",
     "ofetch": "1.5.1",
@@ -48,7 +48,7 @@
     "semver": "7.7.4",
     "std-env": "4.0.0",
     "typescript-eslint": "^8.57.1",
-    "vitest": "4.1.0",
+    "vitest": "4.1.1",
     "vue": "2.7.16"
   },
   "resolutions": {
