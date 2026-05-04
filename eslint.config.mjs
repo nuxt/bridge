@@ -1,6 +1,7 @@
 import globals from 'globals'
 import neostandard from 'neostandard'
 import tseslint from 'typescript-eslint'
+import vueParser from 'vue-eslint-parser'
 import pluginVue from 'eslint-plugin-vue'
 import jsdoc from 'eslint-plugin-jsdoc'
 import pluginUnicorn from 'eslint-plugin-unicorn'
@@ -51,6 +52,7 @@ export default defineConfig(
   {
     files: ['**/*.vue'],
     languageOptions: {
+      parser: vueParser,
       parserOptions: {
         parser: tseslint.parser,
       },
