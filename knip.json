@@ -28,7 +28,8 @@
         "@nuxt/cli",
         "@unhead/schema",
         "exit",
-        "mocked-exports"
+        "mocked-exports",
+        "webpack"
       ]
     },
     "playground": {
