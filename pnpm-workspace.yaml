@@ -6,7 +6,7 @@ packages:
 overrides:
   "@nuxt/bridge": "workspace:*"
   "@nuxt/bridge-schema": "workspace:*"
-  "@nuxt/kit": "3.21.4"
+  "@nuxt/kit": "3.21.5"
   eslint-scope: "9.1.2"
   eslint-visitor-keys: "5.0.1"
   espree: "11.2.0"
