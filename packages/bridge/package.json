@@ -40,7 +40,7 @@
     "cookie-es": "^3.1.1",
     "defu": "^6.1.7",
     "destr": "^2.0.5",
-    "enhanced-resolve": "^5.21.2",
+    "enhanced-resolve": "^5.21.3",
     "esbuild-loader": "^4.4.3",
     "escape-string-regexp": "^5.0.0",
     "estree-walker": "^3.0.3",
