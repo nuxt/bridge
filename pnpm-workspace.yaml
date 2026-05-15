@@ -2,7 +2,6 @@ packages:
   - "packages/**"
   - "playground"
 
-
 overrides:
   "@nuxt/bridge": "workspace:*"
   "@nuxt/bridge-schema": "workspace:*"
