@@ -36,7 +36,7 @@
     "std-env": "^4.1.0",
     "ufo": "^1.6.4",
     "unbuild": "3.6.1",
-    "unimport": "^6.2.0",
+    "unimport": "^6.3.0",
     "untyped": "^2.0.0"
   },
   "engines": {
