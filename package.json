@@ -47,7 +47,7 @@
     "playwright-core": "1.60.0",
     "semver": "7.8.1",
     "std-env": "4.1.0",
-    "typescript-eslint": "^8.59.4",
+    "typescript-eslint": "^8.60.0",
     "vitest": "4.1.7",
     "vue": "2.7.16",
     "vue-eslint-parser": "^10.4.0"
@@ -55,5 +55,5 @@
   "engines": {
     "node": "^14.16.0 || ^16.11.0 || >=17.0.0"
   },
-  "packageManager": "pnpm@10.33.4"
+  "packageManager": "pnpm@10.34.1"
 }
