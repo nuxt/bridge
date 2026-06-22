@@ -41,7 +41,7 @@
     "defu": "^6.1.7",
     "destr": "^2.0.5",
     "enhanced-resolve": "^5.24.0",
-    "esbuild-loader": "^4.4.3",
+    "esbuild-loader": "^4.5.0",
     "escape-string-regexp": "^5.0.0",
     "estree-walker": "^3.0.3",
     "exsolve": "^1.0.8",
@@ -84,7 +84,7 @@
     "@types/webpack": "^4.41.40",
     "@vue/compiler-sfc": "^2.7.16",
     "@vue/reactivity": "^3.5.38",
-    "rollup": "^4.62.0",
+    "rollup": "^4.62.2",
     "unbuild": "3.6.1",
     "vue": "^2.7.16",
     "vue-meta": "^2.4.0",
@@ -94,5 +94,5 @@
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
-  "packageManager": "pnpm@10.34.3"
+  "packageManager": "pnpm@10.34.4"
 }
