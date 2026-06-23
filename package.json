@@ -29,7 +29,7 @@
     "eslint": "9.39.4",
     "eslint-import-resolver-typescript": "^4.4.5",
     "eslint-plugin-import-x": "^4.16.2",
-    "eslint-plugin-jsdoc": "63.0.6",
+    "eslint-plugin-jsdoc": "63.0.7",
     "eslint-plugin-unicorn": "^65.0.1",
     "eslint-plugin-vue": "^10.9.2",
     "execa": "9.6.1",
