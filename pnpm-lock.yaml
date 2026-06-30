@@ -211,7 +211,7 @@ importers:
         version: 0.1.1
       nitropack:
         specifier: ^2.13.4
-        version: 2.13.4(oxc-parser@0.135.0)(rolldown@1.0.3)
+        version: 2.13.4(oxc-parser@0.135.0)(rolldown@1.0.3)(vite@7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0))(webpack@4.47.0)
       node-fetch:
         specifier: ^3.3.2
         version: 3.3.2
@@ -250,10 +250,10 @@ importers:
         version: 1.6.4
       unimport:
         specifier: ^6.3.0
-        version: 6.3.0(oxc-parser@0.135.0)(rolldown@1.0.3)
+        version: 6.3.0(esbuild@0.28.1)(oxc-parser@0.135.0)(rolldown@1.0.3)(rollup@4.62.2)(vite@7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0))(webpack@4.47.0)
       unplugin:
-        specifier: ^1.16.1
-        version: 1.16.1
+        specifier: ^3.3.0
+        version: 3.3.0(esbuild@0.28.1)(rolldown@1.0.3)(rollup@4.62.2)(vite@7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0))(webpack@4.47.0)
       untyped:
         specifier: ^2.0.0
         version: 2.0.0
@@ -344,7 +344,7 @@ importers:
         version: 3.6.1(typescript@6.0.3)(vue@3.5.33(typescript@6.0.3))
       unimport:
         specifier: ^6.3.0
-        version: 6.3.0(oxc-parser@0.135.0)(rolldown@1.0.3)
+        version: 6.3.0(esbuild@0.28.1)(oxc-parser@0.135.0)(rolldown@1.0.3)(rollup@4.62.2)(vite@7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0))(webpack@4.47.0)
       untyped:
         specifier: ^2.0.0
         version: 2.0.0
@@ -357,7 +357,7 @@ importers:
         version: 1.11.20
       nitropack:
         specifier: ^2.13.4
-        version: 2.13.4(oxc-parser@0.135.0)(rolldown@1.0.3)
+        version: 2.13.4(oxc-parser@0.135.0)(rolldown@1.0.3)(vite@7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0))(webpack@4.47.0)
       vite:
         specifier: ~7.3.5
         version: 7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0)
@@ -8503,17 +8503,42 @@ packages:
     resolution: {integrity: sha512-5lWVjgi6vuHhJ526bI4nlCOmkCIF3nnfXkCMDeMJrtdvxTs6ZFCM8oNufGTsDbKv/tJ/xj8RpvXjRuPBZJuJog==}
     engines: {node: '>=20.19.0'}
 
-  unplugin@1.16.1:
-    resolution: {integrity: sha512-4/u/j4FrCKdi17jaxuJA0jClGxB1AvU2hw/IuayPc4ay1XGaJs/rbb4v5WKwAjNifjmXK9PIFyuPiaK8azyR9w==}
-    engines: {node: '>=14.0.0'}
-
   unplugin@2.3.11:
     resolution: {integrity: sha512-5uKD0nqiYVzlmCRs01Fhs2BdkEgBS3SAVP6ndrBsuK42iC2+JHyxM05Rm9G8+5mkmRtzMZGY8Ct5+mliZxU/Ww==}
     engines: {node: '>=18.12.0'}
 
-  unplugin@3.0.0:
-    resolution: {integrity: sha512-0Mqk3AT2TZCXWKdcoaufeXNukv2mTrEZExeXlHIOZXdqYoHHr4n51pymnwV8x2BOVxwXbK2HLlI7usrqMpycdg==}
+  unplugin@3.3.0:
+    resolution: {integrity: sha512-qa66K+crbfyE6JK10GjvbJeRrOsuC/JpbnHctfyp/i4oBTxWOzJfRZyDiOk1PtErMFRu8JhsU/wPvOdBNWe5Rg==}
     engines: {node: ^20.19.0 || >=22.12.0}
+    peerDependencies:
+      '@farmfe/core': '*'
+      '@rspack/core': '*'
+      bun-types-no-globals: '*'
+      esbuild: '*'
+      rolldown: '*'
+      rollup: '*'
+      unloader: '*'
+      vite: '*'
+      webpack: '*'
+    peerDependenciesMeta:
+      '@farmfe/core':
+        optional: true
+      '@rspack/core':
+        optional: true
+      bun-types-no-globals:
+        optional: true
+      esbuild:
+        optional: true
+      rolldown:
+        optional: true
+      rollup:
+        optional: true
+      unloader:
+        optional: true
+      vite:
+        optional: true
+      webpack:
+        optional: true
 
   unrs-resolver@1.11.1:
     resolution: {integrity: sha512-bSjt9pjaEBnNiGgc9rUiHGKv5l4/TGzDmYw3RhnkJGtLhbnnA/5qJj7x3dNDCRx/PJxu774LlH8lCOlB4hEfKg==}
@@ -15741,7 +15766,7 @@ snapshots:
       - supports-color
       - typescript
 
-  nitropack@2.13.4(oxc-parser@0.135.0)(rolldown@1.0.3):
+  nitropack@2.13.4(oxc-parser@0.135.0)(rolldown@1.0.3)(vite@7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0))(webpack@4.47.0):
     dependencies:
       '@cloudflare/kv-asset-handler': 0.4.2
       '@rollup/plugin-alias': 6.0.0(rollup@4.62.2)
@@ -15806,7 +15831,7 @@ snapshots:
       uncrypto: 0.1.3
       unctx: 2.5.0
       unenv: 2.0.0-rc.24
-      unimport: 6.3.0(oxc-parser@0.135.0)(rolldown@1.0.3)
+      unimport: 6.3.0(esbuild@0.28.1)(oxc-parser@0.135.0)(rolldown@1.0.3)(rollup@4.62.2)(vite@7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0))(webpack@4.47.0)
       unplugin-utils: 0.3.1
       unstorage: 1.17.5(db0@0.3.4)(ioredis@5.10.1)
       untyped: 2.0.0
@@ -15823,9 +15848,11 @@ snapshots:
       - '@capacitor/preferences'
       - '@deno/kv'
       - '@electric-sql/pglite'
+      - '@farmfe/core'
       - '@libsql/client'
       - '@netlify/blobs'
       - '@planetscale/database'
+      - '@rspack/core'
       - '@upstash/redis'
       - '@vercel/blob'
       - '@vercel/functions'
@@ -15834,6 +15861,7 @@ snapshots:
       - bare-abort-controller
       - bare-buffer
       - better-sqlite3
+      - bun-types-no-globals
       - drizzle-orm
       - encoding
       - idb-keyval
@@ -15843,7 +15871,10 @@ snapshots:
       - rolldown
       - sqlite3
       - supports-color
+      - unloader
       - uploadthing
+      - vite
+      - webpack
 
   no-case@3.0.4:
     dependencies:
@@ -18356,7 +18387,7 @@ snapshots:
 
   unicorn-magic@0.4.0: {}
 
-  unimport@6.3.0(oxc-parser@0.135.0)(rolldown@1.0.3):
+  unimport@6.3.0(esbuild@0.28.1)(oxc-parser@0.135.0)(rolldown@1.0.3)(rollup@4.62.2)(vite@7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0))(webpack@4.47.0):
     dependencies:
       acorn: 8.17.0
       escape-string-regexp: 5.0.0
@@ -18370,11 +18401,20 @@ snapshots:
       scule: 1.3.0
       strip-literal: 3.1.0
       tinyglobby: 0.2.17
-      unplugin: 3.0.0
+      unplugin: 3.3.0(esbuild@0.28.1)(rolldown@1.0.3)(rollup@4.62.2)(vite@7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0))(webpack@4.47.0)
       unplugin-utils: 0.3.1
     optionalDependencies:
       oxc-parser: 0.135.0
       rolldown: 1.0.3
+    transitivePeerDependencies:
+      - '@farmfe/core'
+      - '@rspack/core'
+      - bun-types-no-globals
+      - esbuild
+      - rollup
+      - unloader
+      - vite
+      - webpack
 
   union-value@1.0.1:
     dependencies:
@@ -18402,11 +18442,6 @@ snapshots:
       pathe: 2.0.3
       picomatch: 4.0.4
 
-  unplugin@1.16.1:
-    dependencies:
-      acorn: 8.17.0
-      webpack-virtual-modules: 0.6.2
-
   unplugin@2.3.11:
     dependencies:
       '@jridgewell/remapping': 2.3.5
@@ -18414,11 +18449,17 @@ snapshots:
       picomatch: 4.0.4
       webpack-virtual-modules: 0.6.2
 
-  unplugin@3.0.0:
+  unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.0.3)(rollup@4.62.2)(vite@7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0))(webpack@4.47.0):
     dependencies:
       '@jridgewell/remapping': 2.3.5
       picomatch: 4.0.4
       webpack-virtual-modules: 0.6.2
+    optionalDependencies:
+      esbuild: 0.28.1
+      rolldown: 1.0.3
+      rollup: 4.62.2
+      vite: 7.3.5(@types/node@25.6.0)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.0)
+      webpack: 4.47.0
 
   unrs-resolver@1.11.1:
     dependencies:
