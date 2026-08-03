@@ -32,7 +32,7 @@
     "eslint-plugin-jsdoc": "63.0.7",
     "eslint-plugin-unicorn": "^72.0.0",
     "eslint-plugin-vue": "^10.9.2",
-    "execa": "9.6.1",
+    "execa": "10.0.1",
     "globals": "^17.6.0",
     "globby": "16.2.0",
     "h3": "1.15.11",
