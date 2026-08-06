@@ -11,3 +11,10 @@ overrides:
   eslint-visitor-keys: "5.0.1"
   espree: "11.2.0"
   h3: "1.15.11"
+
+minimumReleaseAgeExclude:
+  - nuxt
+  - nuxt-nightly
+  - '@nuxt/*'
+  - vue
+  - '@vue/*'
