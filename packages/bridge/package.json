@@ -69,7 +69,7 @@
     "std-env": "^4.1.0",
     "terser": "^5.48.0",
     "ufo": "^1.6.4",
-    "unimport": "^6.3.0",
+    "unimport": "^7.0.2",
     "unplugin": "^1.16.1",
     "untyped": "^2.0.0",
     "vite": "~7.3.5",
