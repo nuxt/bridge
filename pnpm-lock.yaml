@@ -30,8 +30,8 @@ importers:
         specifier: ^3.4.2
         version: 3.4.2
       devalue:
-        specifier: 5.8.1
-        version: 5.8.1
+        specifier: 6.0.0
+        version: 6.0.0
       eslint:
         specifier: 9.39.4
         version: 9.39.4(jiti@2.7.0)
@@ -4539,8 +4539,9 @@ packages:
   devalue@2.0.1:
     resolution: {integrity: sha512-I2TiqT5iWBEyB8GRfTDP0hiLZ0YeDJZ+upDxjBfOC2lebO5LezQMv7QvIUTzdb64jQyAKLf1AHADtGN+jw6v8Q==}
 
-  devalue@5.8.1:
-    resolution: {integrity: sha512-4CXDYRBGqN+57wVJkuXBYmpAVUSg3L6JAQa/DFqm238G73E1wuyc/JhGQJzN7vUf/CMphYau2zXbfWzDR5aTEw==}
+  devalue@6.0.0:
+    resolution: {integrity: sha512-jITRGmc7d+UInNVsQxcz3zsbDwP1MvvVzlNto94FAeieVO5oAk3lupptFvTVBcB+rM2BAagsKtTjgVKFsddCkA==}
+    engines: {node: '>=22.17'}
 
   diffie-hellman@5.0.3:
     resolution: {integrity: sha512-kqag/Nl+f3GwyK25fhUMYj81BUOrZ9IuJsjIcDE5icNM9FJHAVm3VcUDxdLPoQtTuUylWm6ZIknYJwwaPxsUzg==}
@@ -13684,7 +13685,7 @@ snapshots:
 
   devalue@2.0.1: {}
 
-  devalue@5.8.1: {}
+  devalue@6.0.0: {}
 
   diffie-hellman@5.0.3:
     dependencies:
