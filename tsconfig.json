@@ -10,6 +10,7 @@
     "allowJs": true,
     "noUnusedLocals": true,
     "resolveJsonModule": true,
+    "erasableSyntaxOnly": true,
     "types": [
       "node"
     ],
