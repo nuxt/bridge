@@ -1,6 +1,6 @@
 import { execSync } from 'node:child_process'
 import { $fetch } from 'ofetch'
-import { inc } from 'semver'
+import { increment } from 'verkit'
 import { generateMarkDown, getCurrentGitBranch, loadChangelogConfig } from 'changelogen'
 import { consola } from 'consola'
 import { determineBumpType, getContributors, getLatestCommits, loadWorkspace } from './_utils.ts'
@@ -15,7 +15,7 @@ async function main () {
   ))
   const bumpType = await determineBumpType()
 
-  const newVersion = inc(workspace.find('@nuxt/bridge').data.version, bumpType || 'patch')
+  const newVersion = increment(workspace.find('@nuxt/bridge').data.version, bumpType || 'patch')
   const changelog = await generateMarkDown(commits, config)
 
   // Create and push a branch with bumped versions if it has not already been created
