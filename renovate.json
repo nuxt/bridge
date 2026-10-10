@@ -47,6 +47,12 @@
         "@unhead/schema"
       ],
       "allowedVersions": "<2"
+    },
+    {
+      "matchPackageNames": [
+        "/^@babel\\//"
+      ],
+      "allowedVersions": "<8"
     }
   ]
 }
