@@ -138,8 +138,8 @@ importers:
         specifier: ^1.11.20
         version: 1.11.20(vue@2.7.16)
       '@vitejs/plugin-legacy':
-        specifier: ^8.0.2
-        version: 8.0.2(terser@5.48.0)(vite@7.3.5(@types/node@26.6.4)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.1))
+        specifier: ^7.2.1
+        version: 7.2.1(terser@5.48.0)(vite@7.3.5(@types/node@26.6.4)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.1))
       '@vitejs/plugin-vue2':
         specifier: ^2.3.4
         version: 2.3.4(vite@7.3.5(@types/node@26.6.4)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.1))(vue@2.7.16)
@@ -3115,12 +3115,12 @@ packages:
     engines: {node: '>=20'}
     hasBin: true
 
-  '@vitejs/plugin-legacy@8.0.2':
-    resolution: {integrity: sha512-+n6znc/hTsuD2v/qWX3nfR6UFWFKwpL+XS+SPyiPuEwAvR24iRvLkJQDh18u0XrHPEwuwxPmw0VopvlmLSg66Q==}
+  '@vitejs/plugin-legacy@7.2.1':
+    resolution: {integrity: sha512-CaXb/y0mlfu7jQRELEJJc2/5w2bX2m1JraARgFnvSB2yfvnCNJVWWlqAo6WjnKoepOwKx8gs0ugJThPLKCOXIg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     peerDependencies:
       terser: ^5.16.0
-      vite: ^8.0.0
+      vite: ^7.0.0
 
   '@vitejs/plugin-vue2@2.3.4':
     resolution: {integrity: sha512-LgqtRRedJb1KdmgcllwGX0gtlPvOvtR6pITXmqxGwQhBZaAysg0Hd7wvj3sjCsj4+PENWsqS7O+ceYSOgJ+H9g==}
@@ -12192,13 +12192,13 @@ snapshots:
       - rollup
       - supports-color
 
-  '@vitejs/plugin-legacy@8.0.2(terser@5.48.0)(vite@7.3.5(@types/node@26.6.4)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.1))':
+  '@vitejs/plugin-legacy@7.2.1(terser@5.48.0)(vite@7.3.5(@types/node@26.6.4)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.48.0)(yaml@2.9.1))':
     dependencies:
       '@babel/core': 7.29.7
       '@babel/plugin-transform-dynamic-import': 7.27.1(@babel/core@7.29.7)
       '@babel/plugin-transform-modules-systemjs': 7.29.4(@babel/core@7.29.7)
       '@babel/preset-env': 7.29.5(@babel/core@7.29.7)
-      babel-plugin-polyfill-corejs3: 0.14.2(@babel/core@7.29.7)
+      babel-plugin-polyfill-corejs3: 0.13.0(@babel/core@7.29.7)
       babel-plugin-polyfill-regenerator: 0.6.8(@babel/core@7.29.7)
       browserslist: 4.29.3
       browserslist-to-esbuild: 2.1.1(browserslist@4.29.3)
