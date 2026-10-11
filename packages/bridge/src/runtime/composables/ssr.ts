@@ -1,8 +1,12 @@
 import type { H3Event } from 'h3'
 import type { NuxtAppCompat } from '@nuxt/bridge-schema'
 import { getRequestHeaders, createEvent } from 'h3'
-import type { H3Event$Fetch } from 'nitropack'
+import type { $Fetch, H3Event$Fetch } from 'nitropack'
 import { useNuxtApp } from '../nuxt'
+// @ts-expect-error virtual file
+import { $fetch as _$fetch } from '#build/fetch.mjs'
+
+const $fetch: $Fetch = _$fetch
 
 export function useRequestHeaders<K extends string = string> (include: K[]): { [key in Lowercase<K>]?: string }
 export function useRequestHeaders (): Readonly<Record<string, string>>
@@ -27,9 +31,9 @@ export function useRequestEvent (nuxtApp: NuxtAppCompat = useNuxtApp()): H3Event
   return nuxtApp.ssrContext._event
 }
 
-export function useRequestFetch (): H3Event$Fetch | typeof global.$fetch {
+export function useRequestFetch (): H3Event$Fetch | $Fetch {
   if (process.client) {
-    return globalThis.$fetch
+    return $fetch
   }
-  return useRequestEvent()?.$fetch || globalThis.$fetch
+  return useRequestEvent()?.$fetch || $fetch
 }

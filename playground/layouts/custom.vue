@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const count = ref(0)
+const customFetchType = typeof customFetch
 
 </script>
 
@@ -14,5 +15,8 @@ const count = ref(0)
     <button class="add-count" @click="count++">
       add count
     </button>
+    <div class="custom-fetch">
+      customFetch: {{ customFetchType }}
+    </div>
   </div>
 </template>

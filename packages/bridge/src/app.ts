@@ -106,6 +106,22 @@ export async function setupAppBridge (_options: any) {
 
   addTemplate(globalMiddlewareTemplate)
 
+  // Expose `$fetch` as a module export so that it can be imported regardless of plugin order
+  addTemplate({
+    filename: 'fetch.mjs',
+    getContents: () => [
+      'import { $fetch as _$fetch } from \'ofetch\'',
+      'if (!globalThis.$fetch) {',
+      '  globalThis.$fetch = _$fetch',
+      '}',
+      'export const $fetch = globalThis.$fetch'
+    ].join('\n')
+  })
+  addTemplate({
+    filename: 'fetch.d.ts',
+    getContents: () => 'export declare const $fetch: typeof globalThis.$fetch\n'
+  })
+
   addWebpackPlugin(new ProtocolImportPlugin())
 
   // Alias vue3 utilities to vue2
