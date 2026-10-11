@@ -53,6 +53,12 @@
         "/^@babel\\//"
       ],
       "allowedVersions": "<8"
+    },
+    {
+      "matchPackageNames": [
+        "@vitejs/plugin-legacy"
+      ],
+      "allowedVersions": "<8"
     }
   ]
 }
