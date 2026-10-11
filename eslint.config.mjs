@@ -21,7 +21,7 @@ export default defineConfig(
       '**/.output/**',
     ],
   },
-  ...neostandard({ ts: true }),
+  ...neostandard({ ts: true, files: ['**/*.vue'] }),
   ...tseslint.configs.recommended,
   ...pluginVue.configs['flat/vue2-recommended'],
   jsdoc.configs['flat/recommended'],
