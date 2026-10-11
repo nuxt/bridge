@@ -380,6 +380,17 @@ describe('layouts', () => {
     expect(html).toContain('with-layout.vue')
     expect(html).toContain('Custom Layout:')
   })
+
+  it('should hydrate when a layout uses `$fetch` at the top level of a module', async () => {
+    const { page, pageErrors } = await renderPage('/with-layout')
+
+    expect(pageErrors).toEqual([])
+    expect(await page.locator('.custom-fetch').textContent()).toContain('customFetch: function')
+    await page.locator('.add-count').click()
+    await page.waitForFunction(() => document.querySelector('.count')?.textContent?.trim() === '1')
+
+    await page.close()
+  })
 })
 
 describe('nitro plugins', () => {

@@ -1,11 +1,15 @@
 import type { FetchOptions, FetchError } from 'ofetch'
-import type { NitroFetchRequest, TypedInternalResponse, AvailableRouterMethod as _AvailableRouterMethod } from 'nitropack'
+import type { $Fetch, NitroFetchRequest, TypedInternalResponse, AvailableRouterMethod as _AvailableRouterMethod } from 'nitropack'
 import { hash } from 'ohash'
 import { computed, unref, reactive } from 'vue'
 import type { Ref } from 'vue'
 import type { AsyncData, AsyncDataOptions, KeysOf, MultiWatchSources, PickFrom } from './asyncData'
 import { useAsyncData } from './asyncData'
 import { useRequestFetch } from './ssr'
+// @ts-expect-error virtual file
+import { $fetch as _$fetch } from '#build/fetch.mjs'
+
+const $fetch: $Fetch = _$fetch
 
 // support uppercase methods, detail: https://github.com/nuxt/nuxt/issues/22313
 type AvailableRouterMethod<R extends NitroFetchRequest> = _AvailableRouterMethod<R> | Uppercase<_AvailableRouterMethod<R>>
@@ -31,7 +35,7 @@ export interface UseFetchOptions<
   M extends AvailableRouterMethod<R> = AvailableRouterMethod<R>
 > extends Omit<AsyncDataOptions<ResT, DataT, PickKeys, DefaultT>, 'watch'>, ComputedFetchOptions<R, M> {
   key?: string
-  $fetch?: typeof globalThis.$fetch
+  $fetch?: $Fetch
   watch?: MultiWatchSources | false
 }
 
@@ -150,7 +154,7 @@ export function useFetch<
       controller.signal.onabort = () => clearTimeout(timeoutId)
     }
 
-    let _$fetch = opts.$fetch || globalThis.$fetch
+    let _$fetch = opts.$fetch || $fetch
 
     // Use fetch with request context and headers for server direct API calls
     if (process.server && !opts.$fetch) {

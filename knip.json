@@ -34,7 +34,7 @@
     },
     "playground": {
       "entry": [
-        "{components,layouts,middleware,pages,plugins,server,store}/**",
+        "{components,composables,layouts,middleware,pages,plugins,server,store}/**",
         "*.ts"
       ]
     }
