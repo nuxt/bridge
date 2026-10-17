@@ -17,7 +17,8 @@
       "matchPackageNames": [
         "h3"
       ],
-      "groupName": "h3"
+      "groupName": "h3",
+      "allowedVersions": "<2"
     },
     {
       "matchPackageNames": [
