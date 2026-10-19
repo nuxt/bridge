@@ -19,7 +19,7 @@ importers:
     devDependencies:
       '@nuxt/test-utils':
         specifier: 3.23.0
-        version: 3.23.0(happy-dom@20.10.6)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
+        version: 3.23.0(happy-dom@21.0.3)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
       changelogen:
         specifier: 0.6.2
         version: 0.6.2(magicast@0.5.2)
@@ -60,8 +60,8 @@ importers:
         specifier: 1.15.11
         version: 1.15.11
       happy-dom:
-        specifier: ^20.10.6
-        version: 20.10.6
+        specifier: ^21.0.3
+        version: 21.0.3
       installed-check:
         specifier: 11.0.0
         version: 11.0.0
@@ -94,7 +94,7 @@ importers:
         version: 0.5.0
       vitest:
         specifier: 4.1.11
-        version: 4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))
+        version: 4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))
       vue:
         specifier: 2.7.16
         version: 2.7.16
@@ -5355,8 +5355,8 @@ packages:
       ocache:
         optional: true
 
-  happy-dom@20.10.6:
-    resolution: {integrity: sha512-6QD0ilzDDt93tX44y8tbmZdAcdTRYDhUP+Asgi6pC8Pp5IA3cvaZGyoVN/EGtlq9ziT65iPuBBn3ASLr6hCgVw==}
+  happy-dom@21.0.3:
+    resolution: {integrity: sha512-PesNgu5BnIEmAwzKGewB3K1ORFeznFZJ4JrRz89ea1wkHnxskdpzX9sN/+zb4KO6k8oSMhyJSj/cwXAFrYBBNA==}
     engines: {node: '>=20.0.0'}
 
   hard-source-webpack-plugin@0.13.1:
@@ -11239,7 +11239,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@nuxt/test-utils@3.23.0(happy-dom@20.10.6)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))':
+  '@nuxt/test-utils@3.23.0(happy-dom@21.0.3)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))':
     dependencies:
       '@clack/prompts': 1.0.0-alpha.9
       '@nuxt/kit': 3.21.11(magicast@0.5.2)
@@ -11267,12 +11267,12 @@ snapshots:
       tinyexec: 1.2.4
       ufo: 1.6.4
       unplugin: 2.3.11
-      vitest-environment-nuxt: 1.0.1(happy-dom@20.10.6)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
+      vitest-environment-nuxt: 1.0.1(happy-dom@21.0.3)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
       vue: 3.5.33(typescript@6.0.3)
     optionalDependencies:
-      happy-dom: 20.10.6
+      happy-dom: 21.0.3
       playwright-core: 1.61.0
-      vitest: 4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))
+      vitest: 4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))
     transitivePeerDependencies:
       - crossws
       - magicast
@@ -14846,7 +14846,7 @@ snapshots:
       rou3: 1.0.0
       srvx: 1.0.5
 
-  happy-dom@20.10.6:
+  happy-dom@21.0.3:
     dependencies:
       '@types/node': 26.6.4
       '@types/whatwg-mimetype': 3.0.2
@@ -19004,9 +19004,9 @@ snapshots:
       terser: 5.48.0
       yaml: 2.9.1
 
-  vitest-environment-nuxt@1.0.1(happy-dom@20.10.6)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))):
+  vitest-environment-nuxt@1.0.1(happy-dom@21.0.3)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))):
     dependencies:
-      '@nuxt/test-utils': 3.23.0(happy-dom@20.10.6)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
+      '@nuxt/test-utils': 3.23.0(happy-dom@21.0.3)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
     transitivePeerDependencies:
       - '@cucumber/cucumber'
       - '@jest/globals'
@@ -19023,7 +19023,7 @@ snapshots:
       - typescript
       - vitest
 
-  vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)):
+  vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)):
     dependencies:
       '@vitest/expect': 4.1.11
       '@vitest/mocker': 4.1.11(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))
@@ -19047,7 +19047,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 26.6.4
-      happy-dom: 20.10.6
+      happy-dom: 21.0.3
     transitivePeerDependencies:
       - msw
 
