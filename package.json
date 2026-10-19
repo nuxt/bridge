@@ -35,7 +35,7 @@
     "globals": "^17.6.0",
     "globby": "16.2.0",
     "h3": "1.15.11",
-    "happy-dom": "^20.10.6",
+    "happy-dom": "^21.0.3",
     "installed-check": "11.0.0",
     "knip": "6.17.1",
     "neostandard": "^0.14.0",

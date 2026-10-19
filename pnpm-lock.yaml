@@ -19,7 +19,7 @@ importers:
     devDependencies:
       '@nuxt/test-utils':
         specifier: 3.23.0
-        version: 3.23.0(happy-dom@20.10.6)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
+        version: 3.23.0(happy-dom@21.0.3)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
       changelogen:
         specifier: 0.6.2
         version: 0.6.2(magicast@0.5.2)
@@ -60,8 +60,8 @@ importers:
         specifier: 1.15.11
         version: 1.15.11
       happy-dom:
-        specifier: ^20.10.6
-        version: 20.10.6
+        specifier: ^21.0.3
+        version: 21.0.3
       installed-check:
         specifier: 11.0.0
         version: 11.0.0
@@ -94,7 +94,7 @@ importers:
         version: 0.5.0
       vitest:
         specifier: 4.1.11
-        version: 4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))
+        version: 4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))
       vue:
         specifier: 2.7.16
         version: 2.7.16
@@ -1992,28 +1992,34 @@ packages:
   '@nuxt/babel-preset-app@2.18.1':
     resolution: {integrity: sha512-7AYAGVjykrvta7k+koMGbt6y6PTMwl74PX2i9Ubyc1VC9ewy9U/b6cW0gVJOR/ZJWPzaABAgVZC7N58PprUDfA==}
     engines: {node: ^14.18.0 || >=16.10.0}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@nuxt/builder@2.18.1':
     resolution: {integrity: sha512-hc4AUP3Nvov7jL0BEP7jFXt8zOfa6gt+y1kyoVvU1WHEVNcWnrGtRKvJuCwi1IwCVlx7Weh+luvHI4nzQwEeKg==}
     engines: {node: ^14.18.0 || >=16.10.0}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@nuxt/cli@2.18.1':
     resolution: {integrity: sha512-ZOoDlE4Fw1Cum6oG8DVnb7B4ivovXySxdDI8vnIt49Ypx22pBGt5y2ErF7g+5TAxGMIHpyh7peJWJwYp88PqPA==}
     engines: {node: ^14.18.0 || >=16.10.0}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
     hasBin: true
 
   '@nuxt/components@2.2.1':
     resolution: {integrity: sha512-r1LHUzifvheTnJtYrMuA+apgsrEJbxcgFKIimeXKb+jl8TnPWdV3egmrxBCaDJchrtY/wmHyP47tunsft7AWwg==}
+    deprecated: '@nuxt/components was built for Nuxt 2, which has reached EOL. Nuxt 3+ auto-imports components out of the box.'
     peerDependencies:
       consola: '*'
 
   '@nuxt/config@2.18.1':
     resolution: {integrity: sha512-CTsUMFtNCJ6+7AkgMRz53zM9vxmsMYVJWBQOnikVzwFxm/jsWzjyXkp3pQb5/fNZuqR7qXmpUKIRtrdeUeN4JQ==}
     engines: {node: ^14.18.0 || >=16.10.0}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@nuxt/core@2.18.1':
     resolution: {integrity: sha512-BFnKVH7caEdDrK04qQ2U9F4Rf4hV/BqqXBJiIeHp7vM9CLKjTL5/yhiognDw3SBefmSJkpOATx1HJl3XM8c4fg==}
     engines: {node: ^14.18.0 || >=16.10.0}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@nuxt/devalue@2.0.2':
     resolution: {integrity: sha512-GBzP8zOc7CGWyFQS6dv1lQz8VVpz5C2yRszbXufwG/9zhStTIH50EtD87NmWbTMwXDvZLNg8GIpb1UFdH93JCA==}
@@ -2027,6 +2033,7 @@ packages:
   '@nuxt/generator@2.18.1':
     resolution: {integrity: sha512-kZMfB5Ymvd/5ek+xfk2svQiMJWEAjZf5XNFTG+2WiNsitHb01Bo3W2QGidy+dwfuLtHoiOJkMovRlyAKWxTohg==}
     engines: {node: ^14.18.0 || >=16.10.0}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@nuxt/kit@3.21.11':
     resolution: {integrity: sha512-0Xi3tgwN77w43Q8GCPIrvWmF1J7Peehkts44E0uKNIml9lB8WoUn8YxyUjxBv47XtVR86NWoWALAT+/IEMHJEA==}
@@ -2034,6 +2041,7 @@ packages:
 
   '@nuxt/loading-screen@2.0.4':
     resolution: {integrity: sha512-xpEDAoRu75tLUYCkUJCIvJkWJSuwr8pqomvQ+fkXpSrkxZ/9OzlBFjAbVdOAWTMj4aV/LVQso4vcEdircKeFIQ==}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@nuxt/opencollective@0.4.1':
     resolution: {integrity: sha512-GXD3wy50qYbxCJ652bDrDzgMr3NFEkIS374+IgFQKkCvk9yiYcLvX2XDYr7UyQxf4wK0e+yqDYRubZ0DtOxnmQ==}
@@ -2047,6 +2055,7 @@ packages:
   '@nuxt/server@2.18.1':
     resolution: {integrity: sha512-4GHmgi1NS6uCL+3QzlxmHmEoKkejQKTDrKPtA16w8iw/8EBgCrAkvXukcIMxF7Of+IYi1I/duVmCyferxo7jyw==}
     engines: {node: ^14.18.0 || >=16.10.0}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@nuxt/telemetry@1.5.0':
     resolution: {integrity: sha512-MhxiiYCFe0MayN2TvmpcsCV66zBePtrSVkFLJHwTFuneQ5Qma5x0NmCwdov7O4NSuTfgSZels9qPJh0zy0Kc4g==}
@@ -2090,25 +2099,31 @@ packages:
 
   '@nuxt/ui-templates@1.3.4':
     resolution: {integrity: sha512-zjuslnkj5zboZGis5QpmR5gvRTx5N8Ha/Rll+RRT8YZhXVNBincifhZ9apUQ9f6T0xJE8IHPyVyPx6WokomdYw==}
+    deprecated: '@nuxt/ui-templates is no longer maintained. Error and loading templates now ship with nuxt itself.'
 
   '@nuxt/utils@2.18.1':
     resolution: {integrity: sha512-aWeB8VMhtymo5zXUiQaohCu8IqJqENF9iCag3wyJpdhpNDVoghGUJAl0F6mQvNTJgQzseFtf4XKqTfvcgVzyGg==}
     engines: {node: ^14.18.0 || >=16.10.0}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@nuxt/vue-app@2.18.1':
     resolution: {integrity: sha512-yxkunoTv6EVa42xM7qES0N1DNMo4UbP/s89L7HjqngQ4KzVWyyzK0qqJ9u3Gu4CabXhHFSquu11gtn+dylKyTA==}
     engines: {node: ^14.18.0 || >=16.10.0}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@nuxt/vue-renderer@2.18.1':
     resolution: {integrity: sha512-Nl8/IbV+sTEWCczHKcjLbZrFO6y5fCcFxZwd6Opatcbr2z380abwpDf3a9UjnVW3wPEM+/xoy1/MBCLY3VmWcw==}
     engines: {node: ^14.18.0 || >=16.10.0}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@nuxt/webpack@2.18.1':
     resolution: {integrity: sha512-6EqbIoheLAJ0E7dfQB5ftOKL4d74N98dFMY3q89QTaoS9VXBFB5D1MLd27WuyfhChmzuHRwHfjaBW8QFdhjwew==}
     engines: {node: ^14.18.0 || >=16.10.0}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@nuxtjs/youch@4.2.3':
     resolution: {integrity: sha512-XiTWdadTwtmL/IGkNqbVe+dOlT+IMvcBu7TvKI7plWhVQeBCQ9iKhk3jgvVWFyiwL2yHJDlEwOM5v9oVES5Xmw==}
+    deprecated: Nuxt 2 has reached EOL and is no longer actively maintained. See https://nuxt.com/blog/nuxt2-eol for more details.
 
   '@oxc-parser/binding-android-arm-eabi@0.135.0':
     resolution: {integrity: sha512-sHeZItACNcA5WRAWqF6ixriR4GkZDyY10gVgnZU7pXku1DjHFATSqnwZM809jl0gXPHxb6fKzYQCK7bNK5cACQ==}
@@ -5317,8 +5332,8 @@ packages:
       ocache:
         optional: true
 
-  happy-dom@20.10.6:
-    resolution: {integrity: sha512-6QD0ilzDDt93tX44y8tbmZdAcdTRYDhUP+Asgi6pC8Pp5IA3cvaZGyoVN/EGtlq9ziT65iPuBBn3ASLr6hCgVw==}
+  happy-dom@21.0.3:
+    resolution: {integrity: sha512-PesNgu5BnIEmAwzKGewB3K1ORFeznFZJ4JrRz89ea1wkHnxskdpzX9sN/+zb4KO6k8oSMhyJSj/cwXAFrYBBNA==}
     engines: {node: '>=20.0.0'}
 
   hard-source-webpack-plugin@0.13.1:
@@ -8937,6 +8952,7 @@ packages:
 
   vue-meta@2.4.0:
     resolution: {integrity: sha512-XEeZUmlVeODclAjCNpWDnjgw+t3WA6gdzs6ENoIAgwO1J1d5p1tezDhtteLUFwcaQaTtayRrsx7GL6oXp/m2Jw==}
+    deprecated: vue-meta is no longer maintained. See https://github.com/nuxt/vue-meta/issues/808
 
   vue-no-ssr@1.1.1:
     resolution: {integrity: sha512-ZMjqRpWabMPqPc7gIrG0Nw6vRf1+itwf0Itft7LbMXs2g3Zs/NFmevjZGN1x7K3Q95GmIjWbQZTVerxiBxI+0g==}
@@ -11134,7 +11150,7 @@ snapshots:
     transitivePeerDependencies:
       - encoding
 
-  '@nuxt/test-utils@3.23.0(happy-dom@20.10.6)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))':
+  '@nuxt/test-utils@3.23.0(happy-dom@21.0.3)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))':
     dependencies:
       '@clack/prompts': 1.0.0-alpha.9
       '@nuxt/kit': 3.21.11(magicast@0.5.2)
@@ -11162,12 +11178,12 @@ snapshots:
       tinyexec: 1.2.4
       ufo: 1.6.4
       unplugin: 2.3.11
-      vitest-environment-nuxt: 1.0.1(happy-dom@20.10.6)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
+      vitest-environment-nuxt: 1.0.1(happy-dom@21.0.3)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
       vue: 3.5.33(typescript@6.0.3)
     optionalDependencies:
-      happy-dom: 20.10.6
+      happy-dom: 21.0.3
       playwright-core: 1.61.0
-      vitest: 4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))
+      vitest: 4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))
     transitivePeerDependencies:
       - crossws
       - magicast
@@ -14717,7 +14733,7 @@ snapshots:
       rou3: 1.0.0
       srvx: 1.0.5
 
-  happy-dom@20.10.6:
+  happy-dom@21.0.3:
     dependencies:
       '@types/node': 26.6.4
       '@types/whatwg-mimetype': 3.0.2
@@ -18739,9 +18755,9 @@ snapshots:
       terser: 5.48.0
       yaml: 2.9.1
 
-  vitest-environment-nuxt@1.0.1(happy-dom@20.10.6)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))):
+  vitest-environment-nuxt@1.0.1(happy-dom@21.0.3)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))):
     dependencies:
-      '@nuxt/test-utils': 3.23.0(happy-dom@20.10.6)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
+      '@nuxt/test-utils': 3.23.0(happy-dom@21.0.3)(magicast@0.5.2)(playwright-core@1.61.0)(typescript@6.0.3)(vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)))
     transitivePeerDependencies:
       - '@cucumber/cucumber'
       - '@jest/globals'
@@ -18758,7 +18774,7 @@ snapshots:
       - typescript
       - vitest
 
-  vitest@4.1.11(@types/node@26.6.4)(happy-dom@20.10.6)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)):
+  vitest@4.1.11(@types/node@26.6.4)(happy-dom@21.0.3)(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1)):
     dependencies:
       '@vitest/expect': 4.1.11
       '@vitest/mocker': 4.1.11(vite@8.0.16(@types/node@26.6.4)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(yaml@2.9.1))
@@ -18782,7 +18798,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 26.6.4
-      happy-dom: 20.10.6
+      happy-dom: 21.0.3
     transitivePeerDependencies:
       - msw
 
