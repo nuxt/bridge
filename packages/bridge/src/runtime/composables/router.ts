@@ -55,7 +55,7 @@ export interface AddRouteMiddlewareOptions {
 }
 
 /** internal */
-function convertToLegacyMiddleware (middleware) {
+function convertToLegacyMiddleware (middleware: RouteMiddleware) {
   return async (ctx: any) => {
     // because the middleware is executed before the plugin
     ctx.$_nuxtApp._processingMiddleware = true
@@ -63,6 +63,24 @@ function convertToLegacyMiddleware (middleware) {
     delete ctx.$_nuxtApp._processingMiddleware
     if (result instanceof Error) {
       return ctx.error(result)
+    }
+    if (result === false) {
+      // global middleware passes the result to `next` within `router.beforeEach`
+      if (ctx._isGlobalMiddleware) {
+        return result
+      }
+      // Nuxt 2 `middlewareSeries` stops calling the remaining middleware when `_redirected` is set
+      ctx._redirected = true
+      if (process.server && ctx.ssrContext['~renderResponse']) {
+        ctx.ssrContext.redirected = true
+        return
+      }
+      if (process.server || (!ctx.$_nuxtApp.payload.serverRendered && ctx.$_nuxtApp.isHydrating)) {
+        return ctx.error(createError({ statusCode: 404, statusMessage: `Page Not Found: ${ctx.route.fullPath}` }))
+      }
+      ctx.next(false)
+      ctx.$_nuxtApp.vue2App.$loading?.finish?.()
+      return
     }
     if (result) {
       return ctx.redirect(result)
