@@ -2,8 +2,8 @@ import { promises as fsp, existsSync } from 'fs'
 import { pathToFileURL } from 'url'
 import fetch from 'node-fetch'
 import fsExtra from 'fs-extra'
-import { addPluginTemplate, resolvePath, tryImportModule, useNuxt } from '@nuxt/kit'
-import { joinURL, stringifyQuery, withBase, withoutTrailingSlash } from 'ufo'
+import { addPluginTemplate, addTemplate, resolvePath, tryImportModule, useNuxt } from '@nuxt/kit'
+import { joinURL, stringifyQuery, withBase, withTrailingSlash, withoutTrailingSlash } from 'ufo'
 import { resolve, join, dirname, normalize } from 'pathe'
 import { createNitro, createDevServer, build, writeTypes, prepare, copyPublicAssets, prerender } from 'nitropack'
 import { dynamicEventHandler } from 'h3'
@@ -16,6 +16,7 @@ import { resolveModulePath } from 'exsolve'
 import { AsyncLoadingPlugin } from './async-loading'
 import { distDir } from './dirs'
 import { isDirectory, readDirRecursively } from './vite/utils/fs'
+import { clientConfigTemplate, publicPathTemplate } from './vite/templates'
 
 export async function setupNitroBridge () {
   const nuxt = useNuxt() as Nuxt & { _nitro?: Nitro }
@@ -33,7 +34,9 @@ export async function setupNitroBridge () {
   nuxt.options.app.baseURL = nuxt.options.app.baseURL || (nuxt.options.app as any).basePath
   nuxt.options.app.cdnURL = nuxt.options.app.cdnURL || ''
   // @ts-expect-error `publicPath` is legacy options
-  nuxt.options.build.publicPath = nuxt.options.app.cdnURL || nuxt.options.build.publicPath
+  nuxt.options.build.publicPath = nuxt.options.app.cdnURL
+    ? withTrailingSlash(joinURL(nuxt.options.app.cdnURL, nuxt.options.app.buildAssetsDir))
+    : nuxt.options.build.publicPath
 
   // Extract publicConfig and app
   const publicConfig = nuxt.options.publicRuntimeConfig
@@ -204,6 +207,28 @@ export async function setupNitroBridge () {
 
   // .ts is supported for serverMiddleware
   nuxt.options.extensions.push('ts')
+
+  if (!(nuxt.options as any).bridge.vite) {
+    addTemplate(clientConfigTemplate)
+    addTemplate({ ...publicPathTemplate, options: { nuxt } })
+    const publicPath = addTemplate({
+      filename: 'webpack-public-path.mjs',
+      getContents: () => [
+        'import { withTrailingSlash } from \'ufo\'',
+        'import { buildAssetsURL } from \'./paths.mjs\'',
+        '__webpack_public_path__ = withTrailingSlash(buildAssetsURL())'
+      ].join('\n')
+    })
+
+    nuxt.hook('webpack:config', (configs) => {
+      for (const config of configs) {
+        if (config.name !== 'client' && config.name !== 'modern') { continue }
+        config.resolve.alias['#internal/nitro'] = resolve(nuxt.options.buildDir, 'nitro.client.mjs')
+        // Set the runtime asset URL before any application modules can load chunks.
+        config.entry.app = [publicPath.dst, ...[].concat(config.entry.app)]
+      }
+    })
+  }
 
   // Disable server sourceMap, esbuild will generate for it.
   nuxt.hook('webpack:config', (webpackConfigs) => {

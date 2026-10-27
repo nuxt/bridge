@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url'
 import { describe, expect, it } from 'vitest'
-import { setup, $fetch, fetch, startServer } from '@nuxt/test-utils'
+import { setup, $fetch, fetch, startServer, url } from '@nuxt/test-utils'
 import { isWindows } from 'std-env'
 import { expectNoClientErrors, parseData, renderPage } from './utils'
 
@@ -14,7 +14,12 @@ await setup({
   browser: true,
   dev: isDev,
   setupTimeout: (isWindows ? 360 : 120) * 1000,
+  env: { NUXT_APP_CDN_URL: '' },
   nuxtConfig: {
+    app: {
+      cdnURL: 'https://cdn.example.com'
+    },
+    build: { extractCSS: true },
     buildDir: process.env.NITRO_BUILD_DIR,
     nitro: { output: { dir: process.env.NITRO_OUTPUT_DIR } }
   }
@@ -406,9 +411,56 @@ describe('dynamic paths', () => {
     it.todo('dynamic paths in dev')
     return
   }
+  it.each([
+    'https://cdn.example.com',
+    'https://cdn.example.com/',
+    'https://runtime.example.com/prefix/',
+    ''
+  ])('loads page assets with cdnURL=%j', async (cdnURL) => {
+    await startServer({ env: { NUXT_APP_CDN_URL: cdnURL } })
+    const { page, pageErrors } = await renderPage('')
+    const requests: string[] = []
+    const publicURL = `${(cdnURL || url('/')).replace(/\/$/, '')}/`
+    const assetURL = publicURL + '_nuxt/'
+
+    page.on('request', (request) => {
+      if (['script', 'stylesheet'].includes(request.resourceType())) {
+        requests.push(request.url())
+      }
+    })
+    await page.route(/^https:\/\/(cdn|runtime)\.example\.com/, async (route) => {
+      const requestURL = route.request().url()
+      if (!requestURL.startsWith(publicURL)) {
+        await route.abort()
+        return
+      }
+      const response = await page.request.get(url('/' + requestURL.slice(publicURL.length)))
+      await route.fulfill({ response, headers: { ...response.headers(), 'access-control-allow-origin': '*' } })
+    })
+
+    try {
+      await page.goto(url('/url'), { waitUntil: 'networkidle' })
+      const initialRequests = requests.length
+      await page.evaluate(() => window.$nuxt.$router.push('/'))
+      await page.waitForSelector('.links-container', { timeout: 5000 })
+
+      expect(await page.locator('.links-container').evaluate(el => getComputedStyle(el).paddingTop)).toBe('8px')
+      // Vite's legacy entry loads the chunks up front, so only webpack guarantees lazy requests.
+      if (isWebpack) {
+        const lazyRequests = requests.slice(initialRequests)
+        expect(lazyRequests.some(request => request.endsWith('.js'))).toBe(true)
+        expect(lazyRequests.some(request => request.endsWith('.css'))).toBe(true)
+      }
+      expect(requests.filter(request => !request.startsWith(assetURL))).toEqual([])
+      expect(pageErrors).toEqual([])
+    } finally {
+      await page.close()
+    }
+  }, 30_000)
+
   if (isWebpack) {
     // TODO:
-    it.todo('work with webpack')
+    it.todo('other dynamic paths with webpack')
     return
   }
   it('should work with no overrides', async () => {
@@ -525,9 +577,8 @@ describe('dynamic paths', () => {
 
   it('should allow setting CDN URL', async () => {
     process.env.NUXT_APP_BASE_URL = '/foo/'
-    process.env.NUXT_APP_CDN_URL = 'https://example.com/'
     process.env.NUXT_APP_BUILD_ASSETS_DIR = '/_cdn/'
-    await startServer()
+    await startServer({ env: { NUXT_APP_CDN_URL: 'https://example.com/' } })
 
     const html = await $fetch('/foo/assets')
     for (const match of html.matchAll(/(href|src)="(.*?)"/g)) {
