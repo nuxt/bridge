@@ -211,12 +211,18 @@ export async function setupNitroBridge () {
   if (!(nuxt.options as any).bridge.vite) {
     addTemplate(clientConfigTemplate)
     addTemplate({ ...publicPathTemplate, options: { nuxt } })
+    // Keep a custom legacy public path unless a runtime CDN URL overrides it.
+    // @ts-expect-error `publicPath` is legacy options
+    const preservePublicPath = !nuxt.options.app.cdnURL && nuxt.options.build.publicPath !== nuxt.options.app.buildAssetsDir
     const publicPath = addTemplate({
       filename: 'webpack-public-path.mjs',
       getContents: () => [
         'import { withTrailingSlash } from \'ufo\'',
+        'import { useRuntimeConfig } from \'#internal/nitro\'',
         'import { buildAssetsURL } from \'./paths.mjs\'',
-        '__webpack_public_path__ = withTrailingSlash(buildAssetsURL())'
+        `__webpack_public_path__ = withTrailingSlash(${preservePublicPath
+          ? 'useRuntimeConfig().app.cdnURL ? buildAssetsURL() : __webpack_public_path__'
+          : 'buildAssetsURL()'})`
       ].join('\n')
     })
 

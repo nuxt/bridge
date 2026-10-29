@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url'
-import { describe, expect, it } from 'vitest'
-import { setup, $fetch, fetch, startServer, url } from '@nuxt/test-utils'
+import { beforeAll, describe, expect, it } from 'vitest'
+import { setup, $fetch, fetch, setTestContext, startServer, url, useTestContext } from '@nuxt/test-utils'
 import { isWindows } from 'std-env'
 import { expectNoClientErrors, parseData, renderPage } from './utils'
 
@@ -411,54 +411,82 @@ describe('dynamic paths', () => {
     it.todo('dynamic paths in dev')
     return
   }
-  it.each([
-    'https://cdn.example.com',
-    'https://cdn.example.com/',
-    'https://runtime.example.com/prefix/',
-    ''
-  ])('loads page assets with cdnURL=%j', async (cdnURL) => {
+
+  async function expectPageAssets (cdnURL: string, publicPath?: string) {
     await startServer({ env: { NUXT_APP_CDN_URL: cdnURL } })
     const { page, pageErrors } = await renderPage('')
     const requests: string[] = []
     const publicURL = `${(cdnURL || url('/')).replace(/\/$/, '')}/`
     const assetURL = publicURL + '_nuxt/'
+    const lazyAssetURL = cdnURL ? assetURL : publicPath || assetURL
 
     page.on('request', (request) => {
       if (['script', 'stylesheet'].includes(request.resourceType())) {
         requests.push(request.url())
       }
     })
-    await page.route(/^https:\/\/(cdn|runtime)\.example\.com/, async (route) => {
+    await page.route(/^https:\/\/(cdn|runtime|legacy)\.example\.com\//, async (route) => {
       const requestURL = route.request().url()
-      if (!requestURL.startsWith(publicURL)) {
+      if (!requestURL.startsWith(lazyAssetURL)) {
         await route.abort()
         return
       }
-      const response = await page.request.get(url('/' + requestURL.slice(publicURL.length)))
+      const response = await page.request.get(url('/_nuxt/' + requestURL.slice(lazyAssetURL.length)))
       await route.fulfill({ response, headers: { ...response.headers(), 'access-control-allow-origin': '*' } })
     })
 
     try {
       await page.goto(url('/url'), { waitUntil: 'networkidle' })
+      // Hydration can also load chunks through webpack's legacy public path.
+      expect(requests.filter(request => !request.startsWith(assetURL) && !request.startsWith(lazyAssetURL))).toEqual([])
       const initialRequests = requests.length
       await page.evaluate(() => window.$nuxt.$router.push('/'))
       await page.waitForSelector('.links-container', { timeout: 5000 })
 
       expect(await page.locator('.links-container').evaluate(el => getComputedStyle(el).paddingTop)).toBe('8px')
+      const lazyRequests = requests.slice(initialRequests)
       // Vite's legacy entry loads the chunks up front, so only webpack guarantees lazy requests.
       if (isWebpack) {
-        const lazyRequests = requests.slice(initialRequests)
         expect(lazyRequests.some(request => request.endsWith('.js'))).toBe(true)
         expect(lazyRequests.some(request => request.endsWith('.css'))).toBe(true)
       }
-      expect(requests.filter(request => !request.startsWith(assetURL))).toEqual([])
+      expect(lazyRequests.filter(request => !request.startsWith(lazyAssetURL))).toEqual([])
       expect(pageErrors).toEqual([])
     } finally {
       await page.close()
     }
-  }, 30_000)
+  }
+
+  it.each([
+    'https://cdn.example.com',
+    'https://cdn.example.com/',
+    'https://runtime.example.com/prefix/',
+    ''
+  ])('loads page assets with cdnURL=%j', cdnURL => expectPageAssets(cdnURL), 30_000)
 
   if (isWebpack) {
+    describe('legacy build.publicPath', async () => {
+      const parentContext = useTestContext()
+      beforeAll(() => setTestContext(context))
+      await setup({
+        rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
+        server: true,
+        browser: true,
+        dev: false,
+        setupTimeout: (isWindows ? 360 : 120) * 1000,
+        nuxtConfig: {
+          app: { cdnURL: '', buildAssetsDir: '/_nuxt/' },
+          build: { publicPath: 'https://legacy.example.com/assets/', extractCSS: true }
+        }
+      })
+      const context = useTestContext()
+      // Restore the parent context for its setup hook; this suite selects its own above.
+      setTestContext(parentContext)
+
+      it.each(['', 'https://runtime.example.com/prefix/'])('loads page assets with cdnURL=%j',
+        cdnURL => expectPageAssets(cdnURL, 'https://legacy.example.com/assets/'), 30_000)
+    })
+
     // TODO:
     it.todo('other dynamic paths with webpack')
     return
