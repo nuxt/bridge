@@ -17,8 +17,6 @@ export function setupAnalyze (options: { writeTypes: boolean }) {
     })
   }
 
-  // `analyzeDir` usually lives inside `buildDir`, so it is removed by the Nuxt 2 builder as well.
-  // Recreate it so that `nuxi analyze` can write its results.
   nuxt.hook('build:done', async () => {
     await mkdir(nuxt.options.analyzeDir, { recursive: true })
   })
