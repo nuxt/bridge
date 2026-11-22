@@ -15,6 +15,7 @@ import { setupTranspile } from './transpile'
 import { generateWebpackBuildManifest } from './webpack/manifest'
 import pageMetaModule from './page-meta/module'
 import { ImportMetaPlugin } from './webpack/import-meta'
+import { setupAnalyze } from './analyze'
 
 export default defineNuxtModule({
   meta: {
@@ -46,6 +47,7 @@ export default defineNuxtModule({
     nuxt.options.analyzeDir = nuxt.options.analyzeDir
       ? resolve(nuxt.options.rootDir, nuxt.options.analyzeDir)
       : resolve(nuxt.options.buildDir, 'analyze')
+    setupAnalyze({ writeTypes: !(opts.typescript && !opts.nitro) })
 
     if (opts.vite && !opts.nitro && !nuxt.options.dev) {
       throw new Error('[bridge] Vite build will not work unless Nitro is enabled.')
