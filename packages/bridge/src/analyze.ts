@@ -12,7 +12,7 @@ export function setupAnalyze (options: { writeTypes: boolean }) {
   // The Nuxt 2 builder empties `buildDir` before building, which removes `.nuxt/tsconfig.json`.
   // `nuxi build` restores it by calling `writeTypes`, but `nuxi analyze` does not.
   if (options.writeTypes) {
-    nuxt.hook('modules:done', async () => {
+    nuxt.hook('build:before', async () => {
       await writeTypes(nuxt)
     })
   }
@@ -31,9 +31,9 @@ export function setupAnalyze (options: { writeTypes: boolean }) {
       ? analyze.filename.replace('{name}', 'client')
       : join(dirname(analyze.filename), 'client.html')
 
-    Object.assign(analyze, {
-      reportFilename,
-      statsFilename: reportFilename.replace(/\.html$/, '.json')
-    })
+    analyze.reportFilename = reportFilename
+    if (!('statsFilename' in analyze)) {
+      analyze.statsFilename = reportFilename.replace(/\.html$/, '.json')
+    }
   })
 }
