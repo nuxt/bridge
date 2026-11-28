@@ -36,6 +36,9 @@
       "entry": [
         "{components,composables,layouts,middleware,pages,plugins,server,store}/**",
         "*.ts"
+      ],
+      "ignoreDependencies": [
+        "nuxt"
       ]
     }
   }
