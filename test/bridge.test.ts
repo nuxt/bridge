@@ -306,6 +306,31 @@ describe('middleware', () => {
     expect(html).toContain('Navigated successfully')
   })
 
+  it('should not call the remaining middleware after navigateTo on server-side', async () => {
+    const res = await fetch('/middleware-chain/break', { redirect: 'manual' })
+
+    expect(res.status).toEqual(302)
+    expect(res.headers.get('location')).toEqual('/navigation-target')
+  })
+
+  it('should not call the remaining middleware after abortNavigation on server-side', async () => {
+    const res = await fetch('/middleware-chain/break?abort', { redirect: 'manual' })
+
+    expect(res.status).toEqual(404)
+  })
+
+  it('should abort navigation without calling the remaining middleware on client-side', async () => {
+    const { page, pageErrors } = await renderPage('/middleware-chain')
+    await page.getByRole('button', { name: 'navigate' }).click()
+    await page.getByText('navigation aborted').waitFor()
+
+    expect(new URL(page.url()).pathname).toEqual('/middleware-chain')
+    expect(await page.textContent('body')).toContain('middleware-chain/index.vue')
+    expect(pageErrors).toEqual([])
+
+    await page.close()
+  })
+
   // if `no-resolve`, an error occurs at `useRoute`.
   it.skipIf(isWebpack && isNoResolve)('should be output with target as to and origin as from', async () => {
     const { page, consoleLogs } = await renderPage('/')
