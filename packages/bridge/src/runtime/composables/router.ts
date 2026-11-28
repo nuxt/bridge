@@ -3,8 +3,9 @@ import type VueRouter from 'vue-router'
 import type { Location, RawLocation, Route, NavigationFailure } from 'vue-router'
 import { sanitizeStatusCode } from 'h3'
 import { useRouter as useVueRouter, useRoute as useVueRoute } from 'vue-router/composables'
-import { hasProtocol, joinURL, parseURL, withQuery } from 'ufo'
+import { joinURL, withQuery } from 'ufo'
 import { useNuxtApp, callWithNuxt, useRuntimeConfig } from '../nuxt'
+import { getScriptProtocol, isAbsoluteHref } from '../utils/url'
 import { createError, showError } from './error'
 import type { NuxtError } from './error'
 
@@ -116,6 +117,11 @@ export const navigateTo = (to: RawLocation | undefined | null, options?: Navigat
 
   // Early open handler
   if (process.client && options?.open) {
+    const protocol = getScriptProtocol(toPath)
+    if (protocol !== null) {
+      throw new Error(`Cannot navigate to a URL with '${protocol}' protocol.`)
+    }
+
     const { target = '_blank', windowFeatures = {} } = options.open
 
     const features = Object.entries(windowFeatures)
@@ -127,12 +133,16 @@ export const navigateTo = (to: RawLocation | undefined | null, options?: Navigat
     return Promise.resolve()
   }
 
-  const isExternal = options?.external || hasProtocol(toPath, { acceptRelative: true })
-  if (isExternal && !options?.external) {
-    throw new Error('Navigating to external URL is not allowed by default. Use `nagivateTo (url, { external: true })`.')
-  }
-  if (isExternal && parseURL(toPath).protocol === 'script:') {
-    throw new Error('Cannot navigate to an URL with script protocol.')
+  const isExternalHost = isAbsoluteHref(toPath)
+  const isExternal = options?.external || isExternalHost
+  if (isExternal) {
+    if (!options?.external) {
+      throw new Error('Navigating to external URL is not allowed by default. Use `nagivateTo (url, { external: true })`.')
+    }
+    const protocol = getScriptProtocol(toPath)
+    if (protocol !== null) {
+      throw new Error(`Cannot navigate to a URL with '${protocol}' protocol.`)
+    }
   }
 
   const inMiddleware = isProcessingMiddleware()
@@ -150,8 +160,6 @@ export const navigateTo = (to: RawLocation | undefined | null, options?: Navigat
     if (nuxtApp.ssrContext) {
       const fullPath = typeof to === 'string' || isExternal ? toPath : router.resolve(to).resolved.fullPath || '/'
       const location = isExternal ? toPath : joinURL(useRuntimeConfig().app.baseURL, fullPath)
-
-      const isExternalHost = hasProtocol(toPath, { acceptRelative: true })
 
       const redirect = async function (response: any) {
         // @ts-expect-error
