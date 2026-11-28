@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url'
-import { describe, expect, it } from 'vitest'
-import { setup, $fetch, fetch, startServer } from '@nuxt/test-utils'
+import { beforeAll, describe, expect, it } from 'vitest'
+import { setup, $fetch, fetch, setTestContext, startServer, url, useTestContext } from '@nuxt/test-utils'
 import { isWindows } from 'std-env'
 import { expectNoClientErrors, parseData, renderPage } from './utils'
 
@@ -14,7 +14,12 @@ await setup({
   browser: true,
   dev: isDev,
   setupTimeout: (isWindows ? 360 : 120) * 1000,
+  env: { NUXT_APP_CDN_URL: '' },
   nuxtConfig: {
+    app: {
+      cdnURL: 'https://cdn.example.com'
+    },
+    build: { extractCSS: true },
     buildDir: process.env.NITRO_BUILD_DIR,
     nitro: { output: { dir: process.env.NITRO_OUTPUT_DIR } }
   }
@@ -406,9 +411,84 @@ describe('dynamic paths', () => {
     it.todo('dynamic paths in dev')
     return
   }
+
+  async function expectPageAssets (cdnURL: string, publicPath?: string) {
+    await startServer({ env: { NUXT_APP_CDN_URL: cdnURL } })
+    const { page, pageErrors } = await renderPage('')
+    const requests: string[] = []
+    const publicURL = `${(cdnURL || url('/')).replace(/\/$/, '')}/`
+    const assetURL = publicURL + '_nuxt/'
+    const lazyAssetURL = cdnURL ? assetURL : publicPath || assetURL
+
+    page.on('request', (request) => {
+      if (['script', 'stylesheet'].includes(request.resourceType())) {
+        requests.push(request.url())
+      }
+    })
+    await page.route(/^https:\/\/(cdn|runtime|legacy)\.example\.com\//, async (route) => {
+      const requestURL = route.request().url()
+      if (!requestURL.startsWith(lazyAssetURL)) {
+        await route.abort()
+        return
+      }
+      const response = await page.request.get(url('/_nuxt/' + requestURL.slice(lazyAssetURL.length)))
+      await route.fulfill({ response, headers: { ...response.headers(), 'access-control-allow-origin': '*' } })
+    })
+
+    try {
+      await page.goto(url('/url'), { waitUntil: 'networkidle' })
+      // Hydration can also load chunks through webpack's legacy public path.
+      expect(requests.filter(request => !request.startsWith(assetURL) && !request.startsWith(lazyAssetURL))).toEqual([])
+      const initialRequests = requests.length
+      await page.evaluate(() => window.$nuxt.$router.push('/'))
+      await page.waitForSelector('.links-container', { timeout: 5000 })
+
+      expect(await page.locator('.links-container').evaluate(el => getComputedStyle(el).paddingTop)).toBe('8px')
+      const lazyRequests = requests.slice(initialRequests)
+      // Vite's legacy entry loads the chunks up front, so only webpack guarantees lazy requests.
+      if (isWebpack) {
+        expect(lazyRequests.some(request => request.endsWith('.js'))).toBe(true)
+        expect(lazyRequests.some(request => request.endsWith('.css'))).toBe(true)
+      }
+      expect(lazyRequests.filter(request => !request.startsWith(lazyAssetURL))).toEqual([])
+      expect(pageErrors).toEqual([])
+    } finally {
+      await page.close()
+    }
+  }
+
+  it.each([
+    'https://cdn.example.com',
+    'https://cdn.example.com/',
+    'https://runtime.example.com/prefix/',
+    ''
+  ])('loads page assets with cdnURL=%j', cdnURL => expectPageAssets(cdnURL), 30_000)
+
   if (isWebpack) {
+    describe('legacy build.publicPath', async () => {
+      const parentContext = useTestContext()
+      beforeAll(() => setTestContext(context))
+      await setup({
+        rootDir: fileURLToPath(new URL('../playground', import.meta.url)),
+        server: true,
+        browser: true,
+        dev: false,
+        setupTimeout: (isWindows ? 360 : 120) * 1000,
+        nuxtConfig: {
+          app: { cdnURL: '', buildAssetsDir: '/_nuxt/' },
+          build: { publicPath: 'https://legacy.example.com/assets/', extractCSS: true }
+        }
+      })
+      const context = useTestContext()
+      // Restore the parent context for its setup hook; this suite selects its own above.
+      setTestContext(parentContext)
+
+      it.each(['', 'https://runtime.example.com/prefix/'])('loads page assets with cdnURL=%j',
+        cdnURL => expectPageAssets(cdnURL, 'https://legacy.example.com/assets/'), 30_000)
+    })
+
     // TODO:
-    it.todo('work with webpack')
+    it.todo('other dynamic paths with webpack')
     return
   }
   it('should work with no overrides', async () => {
@@ -525,9 +605,8 @@ describe('dynamic paths', () => {
 
   it('should allow setting CDN URL', async () => {
     process.env.NUXT_APP_BASE_URL = '/foo/'
-    process.env.NUXT_APP_CDN_URL = 'https://example.com/'
     process.env.NUXT_APP_BUILD_ASSETS_DIR = '/_cdn/'
-    await startServer()
+    await startServer({ env: { NUXT_APP_CDN_URL: 'https://example.com/' } })
 
     const html = await $fetch('/foo/assets')
     for (const match of html.matchAll(/(href|src)="(.*?)"/g)) {
