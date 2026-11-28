@@ -1,5 +1,6 @@
 import { defineNuxtModule, installModule, checkNuxtCompatibility, logger, writeTypes, addTemplate, addWebpackPlugin } from '@nuxt/kit'
 import type { NuxtModule, NuxtCompatibility } from '@nuxt/schema'
+import { resolve } from 'pathe'
 import type { NodeMiddleware } from 'h3'
 import { fromNodeMiddleware } from 'h3'
 import type { BridgeConfig } from '../types'
@@ -14,6 +15,7 @@ import { setupTranspile } from './transpile'
 import { generateWebpackBuildManifest } from './webpack/manifest'
 import pageMetaModule from './page-meta/module'
 import { ImportMetaPlugin } from './webpack/import-meta'
+import { setupAnalyze } from './analyze'
 
 export default defineNuxtModule({
   meta: {
@@ -40,6 +42,12 @@ export default defineNuxtModule({
     if (!(nuxt.options as any).bridge._version) {
       throw new Error('[bridge] Bridge must be enabled by using `defineNuxtConfig` to wrap your Nuxt configuration.')
     }
+
+    // Nuxt 2 does not provide a default for `analyzeDir`, which is required by `nuxi analyze`
+    nuxt.options.analyzeDir = nuxt.options.analyzeDir
+      ? resolve(nuxt.options.rootDir, nuxt.options.analyzeDir)
+      : resolve(nuxt.options.buildDir, 'analyze')
+    setupAnalyze({ writeTypes: !(opts.typescript && !opts.nitro) })
 
     if (opts.vite && !opts.nitro && !nuxt.options.dev) {
       throw new Error('[bridge] Vite build will not work unless Nitro is enabled.')
